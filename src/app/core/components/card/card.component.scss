@@ -1,3 +1,79 @@
 mat-card {
   width: 350px;
+  height: 550px;
+  gap: 1rem;
+}
+
+mat-card-header {
+  padding: unset;
+
+  mat-chip-option {
+    position: absolute;
+    z-index: 2;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  button {
+    perspective: 150rem;
+    position: absolute;
+    z-index: 2;
+    top: .5rem;
+    right: 1rem;
+  }
+}
+
+mat-card-content {
+  flex-grow: 2;
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+
+  :first-child,
+  :last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+  }
+
+  :first-child {
+    -webkit-line-clamp: 1;
+  }
+
+  :last-child {
+    -webkit-line-clamp: 3;
+  }
+}
+
+mat-card-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+app-image {
+  width: 10%;
+}
+
+button {
+  transition: transform .2s ease-in-out;
+
+  &:active {
+    animation: pulse .2s ease-in-out;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.5);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
 }

@@ -6,4 +6,22 @@ fragment Event on EventEntity {
   contact {
     ...Contact
   }
+    translatables {
+    id
+    name
+    description
+    shortDescription
+    language {
+      id
+      locale
+      name
+    }
+  }
+  category {
+    ...Category
+  }
+  
+  schedules{
+    ...Schedules
+  }
 }

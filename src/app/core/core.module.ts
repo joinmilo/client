@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -54,6 +55,8 @@ const materials: Type<any>[] = [
   MatButtonModule,
   MatCardModule,
   MatSnackBarModule,
+  MatChipsModule
+
 ];
 
 const libs: any = [

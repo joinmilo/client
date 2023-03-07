@@ -23,11 +23,11 @@ export const selectRecentEvents = createSelector(
     categoryTranslatableField: 'name',
     creator: event.contact?.name,
     creatorImage: event.creator?.titleImage,
-    date: event.modified,
+    date: event.schedules?.filter(a => a?.startDate).sort((a, b) => Math.abs(Date.now() - a?.startDate) - Math.abs(Date.now() - b?.startDate)).shift(),
     dateTime: true,
     image: event.titleImage,
-    textTranslatableField: 'shortDescription',
-    titleTranslatableFieldd: 'name',
+    textTranslatableField: 'description',
+    titleTranslatableField: 'name',
     translatables: event.translatables,
   })) as CardInput[]
 );

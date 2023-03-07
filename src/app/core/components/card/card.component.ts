@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CardInput } from '../../typings/card';
 
+
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -11,4 +13,9 @@ export class CardComponent {
   @Input()
   public data: CardInput = { dateTime: true };
 
+  isFavorite = false;
+
+  changeFavorite() {
+    this.isFavorite = !this.isFavorite;
+  }
 }

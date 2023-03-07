@@ -3925,16 +3925,20 @@ export type RoleTranslatableEntityInput = {
 export type ScheduleEntity = {
   __typename?: 'ScheduleEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
+  endDate?: Maybe<Scalars['Date']>;
   event?: Maybe<EventEntity>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  startDate?: Maybe<Scalars['Date']>;
 };
 
 export type ScheduleEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['Date']>;
   event?: InputMaybe<EventEntityInput>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['Date']>;
 };
 
 export type SocialMediaEntity = {
@@ -4382,7 +4386,11 @@ export type GetSocialMediaQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetSocialMediaQuery = { __typename?: 'Query', getSocialMedias?: { __typename?: 'PageableList_SocialMediaEntity', result?: Array<{ __typename?: 'SocialMediaEntity', icon?: string | null, name?: string | null, url?: string | null } | null> | null } | null };
 
-export type EventFragment = { __typename?: 'EventEntity', id?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null };
+export type CategoryFragment = { __typename?: 'EventCategoryEntity', id?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+
+export type EventFragment = { __typename?: 'EventEntity', id?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, translatables?: Array<{ __typename?: 'EventTranslatableEntity', id?: string | null, name?: string | null, description?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, category?: { __typename?: 'EventCategoryEntity', id?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, schedules?: Array<{ __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null } | null> | null };
+
+export type SchedulesFragment = { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null };
 
 export type GetEventDetailsQueryVariables = Exact<{
   id?: InputMaybe<Scalars['String']>;
@@ -4398,7 +4406,7 @@ export type GetEventsQueryVariables = Exact<{
 }>;
 
 
-export type GetEventsQuery = { __typename?: 'Query', getEvents?: { __typename?: 'PageableList_EventEntity', result?: Array<{ __typename?: 'EventEntity', id?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null } | null> | null } | null };
+export type GetEventsQuery = { __typename?: 'Query', getEvents?: { __typename?: 'PageableList_EventEntity', result?: Array<{ __typename?: 'EventEntity', id?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, translatables?: Array<{ __typename?: 'EventTranslatableEntity', id?: string | null, name?: string | null, description?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, category?: { __typename?: 'EventCategoryEntity', id?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, schedules?: Array<{ __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null } | null> | null } | null> | null } | null };
 
 export type GetPageQueryVariables = Exact<{
   isLanding?: InputMaybe<Scalars['Boolean']>;
@@ -4507,6 +4515,27 @@ export const ContactFragmentDoc = gql`
   preferredContact
 }
     `;
+export const CategoryFragmentDoc = gql`
+    fragment Category on EventCategoryEntity {
+  id
+  translatables {
+    id
+    name
+    language {
+      id
+      locale
+      name
+    }
+  }
+}
+    `;
+export const SchedulesFragmentDoc = gql`
+    fragment Schedules on ScheduleEntity {
+  id
+  startDate
+  endDate
+}
+    `;
 export const EventFragmentDoc = gql`
     fragment Event on EventEntity {
   id
@@ -4516,9 +4545,28 @@ export const EventFragmentDoc = gql`
   contact {
     ...Contact
   }
+  translatables {
+    id
+    name
+    description
+    shortDescription
+    language {
+      id
+      locale
+      name
+    }
+  }
+  category {
+    ...Category
+  }
+  schedules {
+    ...Schedules
+  }
 }
     ${AddressFragmentDoc}
-${ContactFragmentDoc}`;
+${ContactFragmentDoc}
+${CategoryFragmentDoc}
+${SchedulesFragmentDoc}`;
 export const MediaFragmentDoc = gql`
     fragment Media on MediaEntity {
   id
