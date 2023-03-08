@@ -66,14 +66,14 @@ button {
 
 @keyframes pulse {
   0% {
-    transform: scaleY(1);
+    transform: scale(1);
   }
 
   50% {
-    transform: scaleY(1.5);
+    transform: scale(1.25);
   }
 
   100% {
-    transform: scaleY(1);
+    transform: scale(1);
   }
 }
