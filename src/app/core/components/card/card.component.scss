@@ -1,13 +1,29 @@
+:host {
+  max-width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 mat-card {
-  width: 350px;
-  height: 550px;
+  width: 22rem;
+  max-width: calc(100% - 2rem);
   gap: 1rem;
+
+  * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 mat-card-header {
   padding: unset;
 
   mat-chip-option {
+    background-color: white;
     position: absolute;
     z-index: 2;
     top: 1rem;
@@ -15,52 +31,42 @@ mat-card-header {
   }
 
   button {
-    perspective: 150rem;
     position: absolute;
     z-index: 2;
     top: .5rem;
     right: 1rem;
+
+    &.favorite {
+      color: var(--color-warn-400);
+    }
+    
+    perspective: 150rem;
+    transition: transform .2s ease-in-out;
+    background-color: white;
+  
+    &:active {
+      animation: pulse .2s ease-in-out;
+    }
   }
 }
 
 mat-card-content {
-  flex-grow: 2;
   display: flex;
   flex-flow: column;
   gap: 1rem;
 
-  :first-child,
-  :last-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-  }
-
-  :first-child {
-    -webkit-line-clamp: 1;
-  }
-
-  :last-child {
-    -webkit-line-clamp: 3;
+  span {
+    height: 5rem;
+    white-space: initial;
   }
 }
 
 mat-card-actions {
   display: flex;
   gap: 1rem;
-}
 
-app-image {
-  width: 10%;
-}
-
-button {
-  transition: transform .2s ease-in-out;
-
-  &:active {
-    animation: pulse .2s ease-in-out;
+  app-image {
+    width: 10%;
   }
 }
 

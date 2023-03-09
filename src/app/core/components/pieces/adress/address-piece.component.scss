@@ -1,4 +1,10 @@
 div {
   display: flex;
   gap: 1rem;
+
+  address {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

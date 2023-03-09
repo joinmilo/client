@@ -1,41 +1,43 @@
-<mat-card>
-  <mat-card-header>
-    <div>
-      <mat-chip-option>
-        <span>
-          {{
-          data.category
-          ? data.category
-          : (data.categoryTranslatables | translatable: data.categoryTranslatableField | async) || 'Kategorie'
-          }}
-        </span>
-      </mat-chip-option>
-      <button (click)="changeFavorite()" mat-icon-button>
-        <fa-icon click [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
-      </button>
-      <app-image mat-card-image [image]="data.image" [roundedTopLeft]="true" [roundedTopRight]="true"></app-image>
-    </div>
-  </mat-card-header>
-  <mat-card-content>
-    <h1>
-      {{
-      data.title
-      ? data.title
-      : (data.translatables | translatable: data.titleTranslatableField| async) || 'Title'
-      }}
-    </h1>
-    <app-date-piece [date]="data.date" [dateTime]="data.dateTime">Date</app-date-piece>
-    <app-address-piece [address]="data.address"></app-address-piece>
-    <span>
-      {{
-      (data.text
-      ? data.text
-      : (data.translatables | translatable: data.textTranslatableField| async))
-      }}
-    </span>
-  </mat-card-content>
-  <mat-card-actions>
-    <app-image [image]="data.creatorImage" [rounded]="true"></app-image>
-    <span>{{data.creator}}</span>
-  </mat-card-actions>
-</mat-card>
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <div>
+        <mat-chip-option>
+          <span>
+            {{
+              data.category
+                ? data.category
+                : data.categoryTranslatables | translatable: data.categoryTranslatableField | async
+            }}
+          </span>
+        </mat-chip-option>
+        <button mat-icon-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
+          <fa-icon click [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+        </button>
+        <app-image mat-card-image [image]="data.image" [roundedTopLeft]="true" [roundedTopRight]="true"></app-image>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <h1>
+        {{
+          data.title
+            ? data.title
+            : data.translatables | translatable: data.titleTranslatableField | async
+        }}
+      </h1>
+      <app-date-piece [date]="data.date" [dateTime]="data.dateTime">Date</app-date-piece>
+      <app-address-piece [address]="data.address"></app-address-piece>
+      <span appHtml>
+        {{
+          data.text
+            ? data.text
+            : data.translatables | translatable: data.textTranslatableField | async
+        }}
+      </span>
+    </mat-card-content>
+    <mat-card-actions>
+      <app-image [image]="data.creatorImage" [rounded]="true"></app-image>
+      <span>{{data.creator}}</span>
+    </mat-card-actions>
+  </mat-card>
+</div>

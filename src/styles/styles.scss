@@ -9,7 +9,7 @@ body {
 }
 
 .main {
-  width: 80rem;
+  width: 90rem;
   max-width: calc(100% - var(--gap));
   margin: var(--gap) auto;
 }
@@ -17,7 +17,7 @@ body {
 a {
   cursor: pointer;
   text-decoration: none;
-  color: black;
+  color: var(--color-accent-900);
 
   &:hover {
     text-decoration: underline;

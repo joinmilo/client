@@ -20,6 +20,7 @@ import { AddressPieceComponent } from './components/pieces/adress/address-piece.
 import { DatePieceComponent } from './components/pieces/date/date-piece.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { coreFeatureKey } from './constants/core.constants';
+import { HtmlDirective } from './directives/html.directive';
 import { I18nDirective } from './directives/i18n.directive';
 import { AddressPipe } from './pipes/address.pipe';
 import { TranslatablePipe } from './pipes/translatable.pipe';
@@ -37,6 +38,7 @@ const components: Type<any>[] = [
 ];
 
 const directives: Type<any>[] = [
+  HtmlDirective,
   I18nDirective
 ];
 
