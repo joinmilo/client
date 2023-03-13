@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { PortalFooterComponent } from './components/footer/portal-footer.component';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
@@ -32,6 +33,7 @@ const framework: Type<any>[] = [
 
 const materials: Type<any>[] = [
   FontAwesomeModule,
+  MatButtonModule,
   MatToolbarModule,
 ];
 
