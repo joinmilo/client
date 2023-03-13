@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, dealsFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
+import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, dealsFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, mapFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
 
 const routes: Routes = [
   {
@@ -67,6 +67,11 @@ const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./shared/search/search.module')
       .then((imported) => imported.PortalSearchModule),
+  },
+  {
+    path: mapFeatureKey,
+    loadChildren: () => import('./features/map/map.module')
+      .then((imported) => imported.MapPortalModule),
   },
   {
     path: '404',
