@@ -3,7 +3,20 @@ fragment EventCategory on EventCategoryEntity {
   icon
   color
   translatables {
-    id 
+    id
+    name
+    language {
+      ...Language
+    }
+  }
+}
+
+fragment DealCategory on DealCategoryEntity {
+  id
+  color
+  icon
+  translatables {
+    id
     name
     language {
       ...Language

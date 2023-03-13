@@ -1,0 +1,26 @@
+<div class="main">
+
+  <form *ngIf="(eventFilterOptions | async) as options" [formGroup]="eventFilterForm">
+    <mat-form-field>
+      <label appI18n="targetGroups"></label>
+      <mat-select formControlName="targetGroupId">
+        <mat-option *ngFor="let group of options.targetGroups" [value]="group.id">
+          {{group | translatable: 'name' | async }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <label appI18n="categories"></label>
+      <mat-select formControlName="categoryId">
+        <mat-option *ngFor="let category of options.categories" [value]="category.id">
+          {{ category | translatable: 'name' | async }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div *ngFor="let item of (events | async)">
+    <p>E: {{ item | translatable: 'name' | async }}</p>
+  </div>
+</div>
+

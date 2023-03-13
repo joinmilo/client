@@ -1,0 +1,29 @@
+query getMapFilterOptions {
+  getEventCategories {
+    result {
+      ...EventCategory
+    }
+  }
+  getEventTargetGroups {
+    result {
+      id
+      translatables {
+        language {
+          locale
+        }
+        name
+      }
+    }
+  }
+  getSuburbs {
+    result {
+      id
+      name
+    }
+  }
+  getDealCategories {
+    result {
+      ...DealCategory
+    }
+  }
+}
