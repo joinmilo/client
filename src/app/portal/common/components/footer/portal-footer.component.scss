@@ -1,6 +1,6 @@
 footer {
   display: grid;
-  grid-template-columns: repeat(3, 1fr) min-content;
+  grid-template-columns: repeat(3, 1fr) min-content;  
 
   padding: var(--gap);
 
@@ -26,10 +26,4 @@ aside {
     flex-flow: row;
     justify-content: center;
   }
-  
 }
-
-
-
-
-
