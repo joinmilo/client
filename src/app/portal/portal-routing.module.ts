@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { articlesFeatureKey, eventsFeatureKey } from './common/constants/common.constants';
+import { articlesFeatureKey, eventsFeatureKey, reportFeatureKey } from './common/constants/common.constants';
 import { PortalNotFoundComponent } from './common/pages/not-found/not-found.component';
 
 const routes: Routes = [
@@ -14,6 +14,13 @@ const routes: Routes = [
     loadChildren: () => import('./features/article/article.module')
       .then((imported) => imported.ArticlePortalModule),
   },
+
+  {
+    path: reportFeatureKey,
+    loadChildren: () => import('./features/report/report.module')
+      .then((imported) => imported.ReportPortalModule),
+  },
+
   {
     path: '404',
     component: PortalNotFoundComponent,

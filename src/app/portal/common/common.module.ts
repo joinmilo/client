@@ -3,6 +3,7 @@ import { PortalFooterComponent } from './components/footer/portal-footer.compone
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -29,6 +30,7 @@ const pages: Type<any>[] = [
 const framework: Type<any>[] = [
   CommonModule,
   RouterModule,
+  MatMenuModule
 ];
 
 const materials: Type<any>[] = [

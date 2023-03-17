@@ -11,7 +11,7 @@ const components: Type<any>[] = [
 
 const framework: Type<any>[] = [
   CommonModule,
-  PortalRoutingModule,
+  PortalRoutingModule
 ];
 
 const materials: Type<any>[] = [];

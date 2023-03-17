@@ -1,0 +1,5 @@
+mutation saveReport($entity: ReportEntityInput!) {
+  saveReport(entity: $entity) {
+    ...Report
+  }
+}

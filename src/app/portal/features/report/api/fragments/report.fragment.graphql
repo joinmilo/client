@@ -1,0 +1,14 @@
+fragment Report on ReportEntity {
+  id
+  name
+  email
+  translatables{
+    id
+    content
+  }
+  type{
+    id
+    }
+   }
+
+ 

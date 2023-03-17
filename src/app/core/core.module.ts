@@ -1,9 +1,14 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -43,6 +48,7 @@ const components: Type<any>[] = [
   LogoComponent,
   SliderComponent,
   SponsoredCardComponent,
+  SliderComponent
 ];
 
 const directives: Type<any>[] = [
@@ -58,6 +64,8 @@ const pipes: Type<any>[] = [
 const framework: Type<any>[] = [
   CommonModule,
   RouterModule,
+  ReactiveFormsModule,
+  FormsModule
 ];
 
 const materials: Type<any>[] = [
@@ -66,6 +74,11 @@ const materials: Type<any>[] = [
   MatCardModule,
   MatSnackBarModule,
   MatChipsModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule
+
 ];
 
 const libs: any = [
@@ -82,7 +95,7 @@ const libs: any = [
   imports: [
     ...framework,
     ...materials,
-    ...libs,
+    ...libs
   ],
   exports: [
     ...components,

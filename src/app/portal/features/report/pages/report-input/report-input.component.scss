@@ -1,0 +1,63 @@
+@import 'src/styles/mixins.scss';
+
+form {
+  background-color: var(--color-background-inside);
+  width: 70vw;
+  margin: 0 auto;
+  min-height: 100%;
+  box-shadow: var(--box-shadow);
+  padding: 5%;
+  align-items: center;
+}
+
+h1 {
+  border-bottom: 2px solid var(--color-primary-500);
+  width: 100%;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+main {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  margin: 2.5%;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  :first-child mat-form-field,
+  :nth-child(2) mat-form-field {
+    width: 49%;
+    min-width: 16rem;
+
+    @include responsive(phone) {
+      width: 100%;
+    }
+  }
+
+  :nth-child(3) mat-form-field {
+    width: 100%;
+    min-width: 16rem;
+  }
+
+  :nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+fa-icon {
+  padding-right: .5rem;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all;
+}

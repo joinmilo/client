@@ -1,0 +1,16 @@
+query getReportTypes($params: FilterSortPaginateInput) {
+  getReportTypes(params: $params) {
+    result {
+      id
+      translatables{
+        id
+        name
+        language{
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}

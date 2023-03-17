@@ -1,13 +1,13 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { APP_INITIALIZER, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +31,7 @@ const framework: Type<any>[] = [
   BrowserModule,
   BrowserAnimationsModule,
   HttpClientModule,
-  RouterModule,
+  RouterModule
 ];
 
 const libs: any[] = [
@@ -41,6 +41,10 @@ const libs: any[] = [
   StoreDevtoolsModule.instrument({
     logOnly: environment.production,
     autoPause: true,
+  }),
+  NgHcaptchaModule.forRoot({
+    siteKey: '10000000-ffff-ffff-ffff-000000000001',
+    languageCode: 'de'
   }),
 ];
 

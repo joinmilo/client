@@ -456,7 +456,7 @@ export type ContestParticipationEntity = {
   contestVotes?: Maybe<Array<Maybe<ContestVoteEntity>>>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
-  media?: Maybe<Array<Maybe<MediaEntity>>>;
+  media_submissions?: Maybe<Array<Maybe<MediaEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   translatables?: Maybe<Array<Maybe<ContestParticipationTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
@@ -468,7 +468,7 @@ export type ContestParticipationEntityInput = {
   contestVotes?: InputMaybe<Array<InputMaybe<ContestVoteEntityInput>>>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  media?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
+  media_submissions?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestParticipationTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
@@ -1305,6 +1305,10 @@ export type Mutation = {
   deleteQuestionType?: Maybe<Scalars['Boolean']>;
   deleteQuestionTypes?: Maybe<Scalars['Boolean']>;
   deleteQuestions?: Maybe<Scalars['Boolean']>;
+  deleteReport?: Maybe<Scalars['Boolean']>;
+  deleteReportType?: Maybe<Scalars['Boolean']>;
+  deleteReportTypes?: Maybe<Scalars['Boolean']>;
+  deleteReports?: Maybe<Scalars['Boolean']>;
   deleteRole?: Maybe<Scalars['Boolean']>;
   deleteRoles?: Maybe<Scalars['Boolean']>;
   deleteSchedule?: Maybe<Scalars['Boolean']>;
@@ -1403,6 +1407,10 @@ export type Mutation = {
   saveQuestionType?: Maybe<QuestionTypeEntity>;
   saveQuestionTypes?: Maybe<Array<Maybe<QuestionTypeEntity>>>;
   saveQuestions?: Maybe<Array<Maybe<QuestionEntity>>>;
+  saveReport?: Maybe<ReportEntity>;
+  saveReportType?: Maybe<ReportTypeEntity>;
+  saveReportTypes?: Maybe<Array<Maybe<ReportTypeEntity>>>;
+  saveReports?: Maybe<Array<Maybe<ReportEntity>>>;
   saveRole?: Maybe<RoleEntity>;
   saveRoles?: Maybe<Array<Maybe<RoleEntity>>>;
   saveSchedule?: Maybe<ScheduleEntity>;
@@ -1886,6 +1894,30 @@ export type MutationDeleteQuestionTypesArgs = {
 
 /** Mutation root */
 export type MutationDeleteQuestionsArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteReportArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteReportTypeArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteReportTypesArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteReportsArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -2476,6 +2508,30 @@ export type MutationSaveQuestionTypesArgs = {
 /** Mutation root */
 export type MutationSaveQuestionsArgs = {
   entities?: InputMaybe<Array<InputMaybe<QuestionEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveReportArgs = {
+  entity?: InputMaybe<ReportEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveReportTypeArgs = {
+  entity?: InputMaybe<ReportTypeEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveReportTypesArgs = {
+  entities?: InputMaybe<Array<InputMaybe<ReportTypeEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveReportsArgs = {
+  entities?: InputMaybe<Array<InputMaybe<ReportEntityInput>>>;
 };
 
 
@@ -3132,6 +3188,18 @@ export type PageableList_QuestionTypeEntity = {
   total: Scalars['Long'];
 };
 
+export type PageableList_ReportEntity = {
+  __typename?: 'PageableList_ReportEntity';
+  result?: Maybe<Array<Maybe<ReportEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_ReportTypeEntity = {
+  __typename?: 'PageableList_ReportTypeEntity';
+  result?: Maybe<Array<Maybe<ReportTypeEntity>>>;
+  total: Scalars['Long'];
+};
+
 export type PageableList_RoleEntity = {
   __typename?: 'PageableList_RoleEntity';
   result?: Maybe<Array<Maybe<RoleEntity>>>;
@@ -3312,6 +3380,10 @@ export type Query = {
   getQuestionType?: Maybe<QuestionTypeEntity>;
   getQuestionTypes?: Maybe<PageableList_QuestionTypeEntity>;
   getQuestions?: Maybe<PageableList_QuestionEntity>;
+  getReport?: Maybe<ReportEntity>;
+  getReportType?: Maybe<ReportTypeEntity>;
+  getReportTypes?: Maybe<PageableList_ReportTypeEntity>;
+  getReports?: Maybe<PageableList_ReportEntity>;
   getRole?: Maybe<RoleEntity>;
   getRoles?: Maybe<PageableList_RoleEntity>;
   getSchedule?: Maybe<ScheduleEntity>;
@@ -3771,6 +3843,30 @@ export type QueryGetQuestionsArgs = {
 
 
 /** Query root */
+export type QueryGetReportArgs = {
+  entity?: InputMaybe<ReportEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetReportTypeArgs = {
+  entity?: InputMaybe<ReportTypeEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetReportTypesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetReportsArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
 export type QueryGetRoleArgs = {
   entity?: InputMaybe<RoleEntityInput>;
 };
@@ -4022,6 +4118,78 @@ export type QuestionTypeEntityInput = {
   key?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   questions?: InputMaybe<Array<InputMaybe<QuestionEntityInput>>>;
+};
+
+export type ReportEntity = {
+  __typename?: 'ReportEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  email?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  media?: Maybe<Array<Maybe<MediaEntity>>>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  translatables?: Maybe<Array<Maybe<ReportTranslatableEntity>>>;
+  type?: Maybe<ReportTypeEntity>;
+};
+
+export type ReportEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  email?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  media?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  translatables?: InputMaybe<Array<InputMaybe<ReportTranslatableEntityInput>>>;
+  type?: InputMaybe<ReportTypeEntityInput>;
+};
+
+export type ReportTranslatableEntity = {
+  __typename?: 'ReportTranslatableEntity';
+  content?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+};
+
+export type ReportTranslatableEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+};
+
+export type ReportTypeEntity = {
+  __typename?: 'ReportTypeEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  reports?: Maybe<Array<Maybe<ReportEntity>>>;
+  translatables?: Maybe<Array<Maybe<ReportTypeTranslatableEntity>>>;
+};
+
+export type ReportTypeEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  reports?: InputMaybe<Array<InputMaybe<ReportEntityInput>>>;
+  translatables?: InputMaybe<Array<InputMaybe<ReportTypeTranslatableEntityInput>>>;
+};
+
+export type ReportTypeTranslatableEntity = {
+  __typename?: 'ReportTypeTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type ReportTypeTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type RoleEntity = {
@@ -4612,6 +4780,22 @@ export type GetPageQueryVariables = Exact<{
 
 export type GetPageQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
 
+export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
+
+export type GetReportTypesQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type GetReportTypesQuery = { __typename?: 'Query', getReportTypes?: { __typename?: 'PageableList_ReportTypeEntity', result?: Array<{ __typename?: 'ReportTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ReportTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, name?: string | null, locale?: string | null } | null } | null> | null } | null> | null } | null };
+
+export type SaveReportMutationVariables = Exact<{
+  entity: ReportEntityInput;
+}>;
+
+
+export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
+
 export const LabelFragmentDoc = gql`
     fragment Label on LabelEntity {
   id
@@ -4860,6 +5044,20 @@ export const PageFragmentDoc = gql`
   }
 }
     ${MediaFragmentDoc}`;
+export const ReportFragmentDoc = gql`
+    fragment Report on ReportEntity {
+  id
+  name
+  email
+  translatables {
+    id
+    content
+  }
+  type {
+    id
+  }
+}
+    `;
 export const LoginDocument = gql`
     mutation login($username: String!, $password: String!) {
   createToken(username: $username, password: $password) {
@@ -5115,6 +5313,53 @@ export const GetPageDocument = gql`
   })
   export class GetPageGQL extends Apollo.Query<GetPageQuery, GetPageQueryVariables> {
     override document = GetPageDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetReportTypesDocument = gql`
+    query getReportTypes($params: FilterSortPaginateInput) {
+  getReportTypes(params: $params) {
+    result {
+      id
+      translatables {
+        id
+        name
+        language {
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetReportTypesGQL extends Apollo.Query<GetReportTypesQuery, GetReportTypesQueryVariables> {
+    override document = GetReportTypesDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SaveReportDocument = gql`
+    mutation saveReport($entity: ReportEntityInput!) {
+  saveReport(entity: $entity) {
+    ...Report
+  }
+}
+    ${ReportFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SaveReportGQL extends Apollo.Mutation<SaveReportMutation, SaveReportMutationVariables> {
+    override document = SaveReportDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

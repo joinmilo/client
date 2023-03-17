@@ -17,5 +17,4 @@ export class PageLandingComponent {
   ) {
     this.store.dispatch(PageActions.getLandingPage());
   }
-
 }
