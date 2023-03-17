@@ -1,8 +1,10 @@
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
@@ -30,7 +32,7 @@ const components: Type<any>[] = [
   PortalFooterSocialMediaComponent,
   
   PortalHeaderComponent,
-  PortalMenuComponent,
+  PortalMenuComponent
 ];
 
 const pages: Type<any>[] = [
@@ -48,6 +50,9 @@ const materials: Type<any>[] = [
   MatExpansionModule,
   MatButtonModule,
   MatToolbarModule,
+  MatFormFieldModule,
+  MatMenuModule,
+  FormsModule
 ];
 
 const modules: Type<any>[] = [

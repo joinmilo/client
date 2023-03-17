@@ -1,4 +1,14 @@
-mat-toolbar {
+mat-toolbar {   
   border-bottom: 1px solid var(--color-border);
   background-color: white;
+  display: grid;
+  grid-area: span;
+  grid-template-columns: min-content auto;
+
+  height: 4rem;
+
+  app-logo {
+      padding-right: 1rem;
+  }   
 }
+
