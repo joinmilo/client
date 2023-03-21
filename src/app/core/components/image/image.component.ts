@@ -16,6 +16,9 @@ export class ImageComponent {
   public image?: Maybe<MediaEntity>;
 
   @Input()
+  public round = false;
+
+  @Input()
   public rounded = false;
 
   @Input()

@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-card>
+    <figure>
+      <app-image [image]="data.creatorImage" [round]="true"></app-image>
+    </figure>
+    <mat-card-content>
+      <h3>
+        {{'Organisation Name'}}
+      </h3>
+      <span>
+        {{'organisation@emailcom' }}
+      </span>
+    </mat-card-content>
+    <button mat-icon-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
+      <fa-icon click [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+    </button>
+  </mat-card>
+</div>

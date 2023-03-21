@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CardSliderComponent } from './components/card-slider/card-slider.component';
 import { CardComponent } from './components/card/card.component';
+import { ContactCardComponent } from './components/contact-card/contact-card.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { ImageComponent } from './components/image/image.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -37,6 +38,7 @@ const components: Type<any>[] = [
   ImageComponent,
   LogoComponent,
   SliderComponent,
+  ContactCardComponent
 ];
 
 const directives: Type<any>[] = [
