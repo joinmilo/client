@@ -1,10 +1,3 @@
-<div class="search-field">
-  <input type="search" name="search-field" id="search-field" placeholder="Suche..."
-    *ngIf="showSearch" [(ngModel)]="value">
-<button class="magnifying-glass" mat-icon-button 
-  (click)="toggleSearch()">
-  <fa-icon
-    [icon]="['fas', 'magnifying-glass']">
-  </fa-icon>
-</button>
-</div>
+<mat-form-field appearance="outline">
+  <input matInput placeholder="Placeholder">
+</mat-form-field>

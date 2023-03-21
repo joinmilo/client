@@ -150,10 +150,3 @@ app-search-field  {
     }
 }
 
-::ng-deep mat-form-field {
-    .mat-mdc-text-field-wrapper {
-        background-color: var(--color-primary-50);
-        border-radius: 1rem;
-    }
-}
-

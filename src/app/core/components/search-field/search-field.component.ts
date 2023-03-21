@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class SearchFieldComponent {
 
-  showSearch = false;
-
-  value = '';
-
-  toggleSearch() {
-    this.showSearch = !this.showSearch;
-  }
 }
