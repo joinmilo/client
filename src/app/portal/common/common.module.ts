@@ -1,3 +1,4 @@
+import { MenuMobileComponent } from './../../core/components/menu-mobile/menu-mobile.component';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
@@ -5,12 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { SearchFieldComponent } from 'src/app/core/components/search-field/search-field.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalFooterAppStoreComponent } from './components/footer/appstore/portal-footer-appstore.component';
 import { PortalFooterDesktopComponent } from './components/footer/desktop/portal-footer-desktop.component';
@@ -32,7 +35,9 @@ const components: Type<any>[] = [
   PortalFooterSocialMediaComponent,
   
   PortalHeaderComponent,
-  PortalMenuComponent
+  PortalMenuComponent,
+  SearchFieldComponent,
+  MenuMobileComponent
 ];
 
 const pages: Type<any>[] = [
@@ -52,7 +57,9 @@ const materials: Type<any>[] = [
   MatToolbarModule,
   MatFormFieldModule,
   MatMenuModule,
-  FormsModule
+  FormsModule,
+  MatExpansionModule,
+  MatInputModule
 ];
 
 const modules: Type<any>[] = [

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-
-
 @Component({
   selector: 'app-search-field',
   templateUrl: './search-field.component.html',
@@ -16,5 +14,4 @@ export class SearchFieldComponent {
   toggleSearch() {
     this.showSearch = !this.showSearch;
   }
-
 }

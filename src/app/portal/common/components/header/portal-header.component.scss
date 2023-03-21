@@ -1,14 +1,39 @@
+@import 'src/styles/mixins.scss';
 mat-toolbar {   
   border-bottom: 1px solid var(--color-border);
   background-color: white;
   display: grid;
   grid-area: span;
   grid-template-columns: min-content auto;
-
+  display: flex;
   height: 4rem;
+}
 
-  app-logo {
-      padding-right: 1rem;
-  }   
+    @include responsive(phone) {
+        display: flex;
+        grid-template-columns: none;
+    }
+    
+    @include responsive(tablet) {
+        display: flex;
+        grid-template-columns: none;
+    }
+
+    app-logo {
+        padding-right: 1rem;
+    }
+
+app-logo {
+    @include responsive(phone) {
+        display: none;
+    }
+    
+    @include responsive(tablet) {
+        display: none;
+    }
+}
+
+app-portal-menu {
+    width: 100%;
 }
 

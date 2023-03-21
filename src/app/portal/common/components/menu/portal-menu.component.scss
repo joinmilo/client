@@ -1,24 +1,47 @@
+@import 'src/styles/mixins.scss'; 
+
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 4rem;
+    width: 100%;
 }
 
-.menu{ 
+.menu { 
     button {
         margin-right: var(--gap);
         font-size: large;
         font-weight: 600;
     }            
+
+    @include responsive(phone) {
+        display: none;
+    }
+
+    @include responsive(tablet) {
+        display: none;
+    }
+}
+
+.menu-mobile {
+    display: flex;
+    width: 100%;
+    flex: wrap;
+    justify-content: space-between;
+
+    
+    @include responsive(desktop) {
+      display: none;
+    }
 }
 
 .mat-menu-item{
     &:hover {
-        background-color: var(--color-primary-500);
+        background-color: var(--color-primary-50);
         p,
         fa-icon {
-            color: var(--color-primary-contrast-500);
+            color: var(--color-primary-contrast-50);
         }
     }
 }
@@ -72,12 +95,14 @@ header {
 .actions {
     display: flex;
     align-items: center;
-}
 
-.search-field {
-    width: 16rem;
-    padding: 0%;
-   
+    @include responsive(phone) {
+        display: none;
+    }  
+
+    @include responsive(tablet) {
+        display: none;
+    }
 }
 
 .text {
@@ -107,5 +132,28 @@ header {
     width: 7rem;
     display: flex;
     justify-content: space-between;
+}
+
+app-search-field  {
+    @include responsive(phone) {
+        display: none;
+    }
+    
+    @include responsive(tablet) {
+        display: none;
+    }
+}
+
+::ng-deep mat-form-field {
+    .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+    }
+}
+
+::ng-deep mat-form-field {
+    .mat-mdc-text-field-wrapper {
+        background-color: var(--color-primary-50);
+        border-radius: 1rem;
+    }
 }
 

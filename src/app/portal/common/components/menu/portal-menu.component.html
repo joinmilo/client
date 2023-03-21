@@ -1,5 +1,4 @@
 <header>
-  <!-- Menupoint Discover -->
   <div class="menu">
     <button mat-button [matMenuTriggerFor]="menu">Entdecken</button>
     <mat-menu #menu="matMenu" class="dropdown-menu">
@@ -49,14 +48,31 @@
     
     <!-- Menupoint Participate -->
     <button mat-button [matMenuTriggerFor]="menu">Mitmachen</button>
+  </div>
 
+  <div class="menu-mobile">
+    <button class="chevron-left" mat-icon-button>
+    <fa-icon
+      [icon]="['fas', 'chevron-left']">
+    </fa-icon>
+    </button>
+    <button class="bars" mat-icon-button>
+    <fa-icon
+      [icon]="['fas', 'language']">
+    </fa-icon>
+    </button>
+    <app-logo></app-logo>
+    <app-menu-mobile></app-menu-mobile>
   </div>
 
  <div class="actions">
 
-<app-search-field></app-search-field>
+  <!-- <app-search-field></app-search-field> -->
 
-
+  <mat-form-field appearance="outline">
+    <mat-label>Outline form field</mat-label>
+    <input matInput placeholder="Placeholder">
+  </mat-form-field>
 
     <div class="buttons">  
     <!-- Log in  -->
