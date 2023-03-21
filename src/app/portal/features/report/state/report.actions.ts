@@ -1,11 +1,11 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { ReportEntityInput, ReportTypeEntity } from '../../../../../schema/schema';
+import { ReportEntity, ReportEntityInput, ReportTypeEntity } from '../../../../../schema/schema';
 
 export const ReportActions = createActionGroup({
   source: 'Report',
   events: {
     'save report': (entity: ReportEntityInput) => ({ entity }),
-    'report saved': emptyProps(),
+    'report saved': (entity: ReportEntity) => ({ entity }),
   }
 });
 

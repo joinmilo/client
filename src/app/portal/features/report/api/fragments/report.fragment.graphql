@@ -2,6 +2,7 @@ fragment Report on ReportEntity {
   id
   name
   email
+  captcha
   translatables{
     id
     content

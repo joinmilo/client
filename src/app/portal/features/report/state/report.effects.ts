@@ -4,7 +4,7 @@ import { map, switchMap } from 'rxjs';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ReportTypeEntity, SaveReportGQL } from 'src/schema/schema';
 import { CoreActions } from '../../../../core/state/core.actions';
-import { GetReportTypesGQL } from './../../../../../schema/schema';
+import { GetReportTypesGQL, ReportEntity } from './../../../../../schema/schema';
 import { ReportActions, ReportTypeActions } from './report.actions';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class ReportEffects {
     switchMap((action) => this.saveReportService.mutate({
       entity: action.entity
     })),
-    map(response => ReportActions.reportSaved())
+    map(response => ReportActions.reportSaved(response.data?.saveReport as ReportEntity))
   ));
 
   reportSaved = createEffect(() => this.actions.pipe(

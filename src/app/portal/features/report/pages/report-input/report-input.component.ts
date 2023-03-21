@@ -1,11 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { captchaValidationApi } from '../../../../../core/constants/core.constants';
 import { ReportActions, ReportTypeActions } from '../../state/report.actions';
 import { ReportTypeEntity } from './../../../../../../schema/schema';
-import { selectReportTypes } from './../../state/report.selectors';
+import { selectReportTypes, selectSavedReport } from './../../state/report.selectors';
 
 @Component({
   selector: 'app-report-input',
@@ -14,20 +12,13 @@ import { selectReportTypes } from './../../state/report.selectors';
 })
 export class ReportInputComponent implements OnInit {
 
-
   reportForm!: FormGroup;
-  isHcaptchaCompleted = false;
 
   public types?= this.store.select(selectReportTypes)
   selectedType?: ReportTypeEntity;
 
-  onVerify(token: string) {
-    this.isHcaptchaCompleted = true;
-  }
-
   constructor(
-    private store: Store,
-    private http: HttpClient,
+    private store: Store
   ) {
     this.store.dispatch(ReportTypeActions.getReportTypes())
   }
@@ -42,26 +33,16 @@ export class ReportInputComponent implements OnInit {
     })
   }
 
-  onSubmit() {
-    const formData = new FormData();
-    formData.append('name', this.reportForm.value.name);
-    formData.append('email', this.reportForm.value.email);
-    formData.append('h-captcha-response', this.reportForm.value.captcha);
-    this.http.post<boolean>(captchaValidationApi, formData).subscribe(
-      ok => {
-        if (ok) {
-          this.store.dispatch(ReportActions.saveReport({
-            name: this.reportForm.value.name,
-            email: this.reportForm.value.email,
-            type: { id: this.selectedType?.id }
-          }))
-          this.reportForm.reset();
-          Object.keys(this.reportForm.controls).forEach(key => {
-            this.reportForm.controls[key].setErrors(null)
-          });
-        }
-      }
-    );
+  onSubmit(formDirective: FormGroupDirective) {
+    this.store.dispatch(ReportActions.saveReport({
+      name: this.reportForm.value.name,
+      email: this.reportForm.value.email,
+      type: { id: this.selectedType?.id },
+      captcha: this.reportForm.value.captcha
+    }));
+
+    this.store.select(selectSavedReport)
+      .subscribe(report => report?.id && formDirective.resetForm());
   }
 
   setType(type: ReportTypeEntity) {

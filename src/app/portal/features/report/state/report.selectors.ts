@@ -6,4 +6,10 @@ export const selectReportState = createFeatureSelector<ReportState>(reportFeatur
 
 export const selectReportTypes = createSelector(
   selectReportState,
-  state => state.types);
+  state => state.types
+);
+
+export const selectSavedReport = createSelector(
+  selectReportState,
+  state => state.savedReport
+);

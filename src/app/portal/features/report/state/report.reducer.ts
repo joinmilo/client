@@ -5,7 +5,7 @@ import { ReportActions, ReportTypeActions } from './report.actions';
 
 export interface ReportState {
   types?: Maybe<ReportTypeEntity[]>,
-  report?: ReportEntity | null;
+  savedReport?: Maybe<ReportEntity>;
 }
 
 export const initialState: ReportState = {};
@@ -13,8 +13,8 @@ export const initialState: ReportState = {};
 export const reportReducer = createReducer(
   initialState,
 
-  on(ReportActions.saveReport, (state, action): ReportState => (
-    { ...state, report: action.entity }
+  on(ReportActions.reportSaved, (state, action): ReportState => (
+    { ...state, savedReport: action.entity }
   )),
 
   on(ReportTypeActions.setCurrentTypes, (state, action): ReportState => (
