@@ -1,3 +1,4 @@
+import { CardSponsoredComponent } from './components/card-sponsored/card-sponsored.component';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
@@ -38,7 +39,8 @@ const components: Type<any>[] = [
   ImageComponent,
   LogoComponent,
   SliderComponent,
-  ContactCardComponent
+  ContactCardComponent,
+  CardSponsoredComponent,
 ];
 
 const directives: Type<any>[] = [

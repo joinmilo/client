@@ -1,0 +1,43 @@
+<div class="container">
+  <mat-card>
+      <figure>
+        <app-image mat-card-image [image]="data.image" [roundedTopLeft]="true" [roundedBottomLeft]="true"></app-image>
+      </figure>
+      <div class="wrapper">
+      <mat-card-header>
+        <mat-chip-option>
+          <span>
+            {{ data.category
+              ? data.category
+              : (data.categoryTranslatables | translatable: data.categoryTranslatableField | async) || 'Test' 
+            }}
+          </span>
+        </mat-chip-option>
+        <button mat-icon-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
+          <fa-icon click [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>{{
+          data.title
+            ? data.title
+            : data.translatables | translatable: data.titleTranslatableField | async
+          }}
+        </h1>
+        <app-date-piece [date]="data.date" [dateTime]="data.dateTime">Date</app-date-piece>
+        <app-address-piece *ngIf="data.address" [address]="data.address"></app-address-piece>
+        <span>
+          {{
+            data.text
+              ? data.text
+              : data.translatables | translatable: data.textTranslatableField | async
+          }}
+        </span>
+        <mat-card-actions>
+          <app-image [image]="data.creatorImage" [rounded]="true"></app-image>
+          <span>{{data.creator}}</span>
+        </mat-card-actions>
+      </mat-card-content>
+    </div>
+    </mat-card>
+</div>

@@ -6,7 +6,7 @@ import { PortalRoutingModule } from './portal-routing.module';
 import { PortalComponent } from './portal.component';
 
 const components: Type<any>[] = [
-  PortalComponent,
+  PortalComponent
 ];
 
 const framework: Type<any>[] = [

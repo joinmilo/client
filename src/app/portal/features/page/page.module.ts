@@ -16,7 +16,7 @@ import { PageEffects } from './state/page.effects';
 import { pageReducer } from './state/page.reducer';
 
 const components: Type<any>[] = [
-  PageFeaturesComponent,
+  PageFeaturesComponent
 ];
 
 const pages: Type<any>[] = [
