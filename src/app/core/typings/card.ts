@@ -13,6 +13,7 @@ export type CardInput = {
 
   creator?: Maybe<string>,
   creatorImage?: Maybe<MediaEntity>,
+  email?: Maybe<MediaEntity>,
   date?: Maybe<string>,
   dateTime: boolean,
   image?: Maybe<MediaEntity>,

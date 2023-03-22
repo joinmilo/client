@@ -5,10 +5,10 @@
     </figure>
     <mat-card-content>
       <h3>
-        {{'Organisation Name'}}
+        {{data.creator}}
       </h3>
       <span>
-        {{'organisation@emailcom' }}
+        {{data.email}}
       </span>
     </mat-card-content>
     <button mat-icon-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
