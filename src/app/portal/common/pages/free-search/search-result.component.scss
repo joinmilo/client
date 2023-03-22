@@ -1,0 +1,17 @@
+div {
+
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 70vw;
+  margin: var(--gap) auto;
+}
+
+h1 {
+  border-bottom: 2px solid black;
+}

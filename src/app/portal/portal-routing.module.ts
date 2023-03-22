@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeatureKey } from './common/constants/common.constants';
+import { PortalSearchResultComponent } from './common/pages/free-search/search-result.component';
 import { PortalNotFoundComponent } from './common/pages/not-found/not-found.component';
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
       .then((imported) => imported.ReportPortalModule),
   },
 
+  {
+    path: 'search',
+    component: PortalSearchResultComponent
+  },
   {
     path: '404',
     component: PortalNotFoundComponent,

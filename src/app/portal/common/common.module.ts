@@ -30,6 +30,7 @@ import { PortalHeaderUserComponent } from './components/header/user/portal-heade
 import { PortalMenuAccordionComponent } from './components/menu/accordion/portal-menu-accordion.component';
 import { PortalMenuOverlayComponent } from './components/menu/overlay-menu/portal-menu-overlay.component';
 import { commonFeatureKey } from './constants/common.constants';
+import { PortalSearchResultComponent } from './pages/free-search/search-result.component';
 import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
 import { CommonEffects } from './state/common.effects';
 import { commonReducer } from './state/common.reducer';
@@ -50,11 +51,12 @@ const components = [
   
   PortalMenuAccordionComponent,
   PortalMenuOverlayComponent,
-  
 ];
 
 const pages = [
   PortalNotFoundComponent,
+  PortalSearchResultComponent
+
 ];
 
 const framework = [
