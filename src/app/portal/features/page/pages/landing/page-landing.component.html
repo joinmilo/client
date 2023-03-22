@@ -1,12 +1,13 @@
-<header>
-  <app-image [image]="(page | async)?.titleImage" [rounded]="true"></app-image>
-  <section class="main">
-    <h1 class="mat-headline-3">{{page | translatable: "name" | async}}</h1>
+<header> 
+  <section>
+    <h1 class="mat-headline-1">{{page | translatable: "name" | async}}</h1>
     <p>{{page | translatable: "shortDescription" | async}}</p>
-    <button *ngIf="(page | async)?.callUrl" mat-raised-button color="primary" [routerLink]="(page | async)?.callUrl">
+    <!-- <button *ngIf="(page | async)?.callUrl" mat-raised-button color="primary" [routerLink]="(page | async)?.callUrl">
       {{page | translatable: "callText" | async}}
-    </button>
+    </button> -->
+    <button mat-flat-button color="primary">Mehr erfahren</button>
   </section>
+  <app-image [src]="'assets/hero.jpg'"></app-image>
 </header>
 <div class="main">
   <app-page-features [pageFeatures]="(page | async)?.pageFeatures"></app-page-features>
