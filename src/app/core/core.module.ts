@@ -1,4 +1,4 @@
-import { CardSponsoredComponent } from './components/card-sponsored/card-sponsored.component';
+import { CardSponsoredComponent } from './components/cards/card-sponsored/card-sponsored.component';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
@@ -14,13 +14,14 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CardSliderComponent } from './components/card-slider/card-slider.component';
-import { CardComponent } from './components/card/card.component';
-import { ContactCardComponent } from './components/contact-card/contact-card.component';
+import { ContactCardComponent } from './components/cards/contact-card/contact-card.component';
+import { ContentCardComponent } from './components/cards/content-card/content-card.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { ImageComponent } from './components/image/image.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AddressPieceComponent } from './components/pieces/adress/address-piece.component';
 import { DatePieceComponent } from './components/pieces/date/date-piece.component';
+import { FavoritePieceComponent } from './components/pieces/favorite/favorite-piece.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { coreFeatureKey } from './constants/core.constants';
 import { HtmlDirective } from './directives/html.directive';
@@ -32,7 +33,7 @@ import { coreReducer } from './state/core.reducer';
 
 const components: Type<any>[] = [
   AddressPieceComponent,
-  CardComponent,
+  ContentCardComponent,
   CardSliderComponent,
   DatePieceComponent,
   FeedbackComponent,
@@ -41,6 +42,7 @@ const components: Type<any>[] = [
   SliderComponent,
   ContactCardComponent,
   CardSponsoredComponent,
+  FavoritePieceComponent,
 ];
 
 const directives: Type<any>[] = [
@@ -63,8 +65,7 @@ const materials: Type<any>[] = [
   MatButtonModule,
   MatCardModule,
   MatSnackBarModule,
-  MatChipsModule
-
+  MatChipsModule,
 ];
 
 const libs: any = [

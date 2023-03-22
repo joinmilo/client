@@ -1,0 +1,3 @@
+<button mat-icon-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
+    <fa-icon click [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+  </button>

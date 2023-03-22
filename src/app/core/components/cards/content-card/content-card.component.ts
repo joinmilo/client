@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { CardInput } from '../../typings/card';
+import { CardInput } from 'src/app/core/typings/card';
 
 
 
 @Component({
   selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  templateUrl: './content-card.component.html',
+  styleUrls: ['./content-card.component.scss']
 })
-export class CardComponent {
+export class ContentCardComponent {
 
   @Input()
   public data: CardInput = { dateTime: true };

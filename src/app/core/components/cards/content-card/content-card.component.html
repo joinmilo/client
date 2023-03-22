@@ -10,9 +10,7 @@
           }}
         </span>
       </mat-chip-option>
-      <button mat-icon-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
-        <fa-icon click [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
-      </button>
+      <app-favorite-piece></app-favorite-piece>
       <app-image mat-card-image [image]="data.image" [roundedTopLeft]="true" [roundedTopRight]="true"></app-image>
     </mat-card-header>
     <mat-card-content>

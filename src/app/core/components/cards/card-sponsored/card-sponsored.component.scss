@@ -42,22 +42,6 @@ mat-card-header {
   mat-chip-option {
     margin-right: auto;
   } 
-
-  button {
-    margin-left: auto;
-
-    &.favorite {
-      color: var(--color-warn-400);
-    }
-    
-    perspective: 150rem;
-    transition: transform .2s ease-in-out;
-    background-color: white;
-  
-    &:active {
-      animation: pulse .2s ease-in-out;
-    }
-  }
 }
 
 mat-card-content {
@@ -95,19 +79,5 @@ mat-card-actions {
     display: flex;
     align-items: center;
     height: 3rem;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
   }
 }

@@ -37,40 +37,7 @@ app-image {
   transform: translate(-50%, -50%);
 }
 
-button {
-  position: absolute;
-  z-index: 2;
-  top: .5rem;
-  right: 1rem;
-
-  &.favorite {
-    color: var(--color-warn-400);
-  }
-
-  perspective: 150rem;
-  transition: transform .2s ease-in-out;
-  background-color: white;
-
-  &:active {
-    animation: pulse .2s ease-in-out;
-  }
-}
-
 mat-card-content {
   display: flex;
   flex-direction: column;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
-  }
 }
