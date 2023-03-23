@@ -10,7 +10,7 @@ header {
   padding-bottom: var(--gap);
 
   app-image {
-    flex: 2 1 50%;
+    flex: 2 1 auto;
     clip-path: polygon(0 0, 100% 0%, 100% 95%, 0 100%);
   }
 
