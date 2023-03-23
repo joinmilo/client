@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { map, switchMap, tap } from 'rxjs';
-import { AppEntity, GetAppsGQL, GetMenuGQL, GetSocialMediaGQL, MenuItemEntity, SocialMediaEntity } from './../../../../schema/schema';
+import { AppEntity, GetAppsGQL, GetMenuGQL, GetSocialMediaGQL, MenuItemEntity, SearchDto, SearchGQL, SocialMediaEntity } from './../../../../schema/schema';
 import { CommonActions } from './common.actions';
 
 @Injectable()
@@ -54,10 +54,22 @@ export class CommonEffects {
     tap(() => this.router.navigate(['/portal', '404'])),
   ), { dispatch: false });
 
+  getSearchResult = createEffect(() => this.actions.pipe(
+    ofType(CommonActions.getSearchResult),
+    switchMap((action) => this.getSearchService.watch({
+      params: {
+        search: action.query
+      }
+    }).valueChanges),
+    map(response => CommonActions.setSearchResult(response.data.search as SearchDto[]))
+  ));
+
   constructor(
     private actions: Actions,
     private getAppsService: GetAppsGQL,
     private getMenuService: GetMenuGQL,
     private getSocialMediaService: GetSocialMediaGQL,
-    private router: Router) { }
+    private getSearchService: SearchGQL,
+    private router: Router
+  ) { }
 }

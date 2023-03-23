@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PortalSearchResultComponent } from './portal/common/pages/free-search/search-result.component';
 import { PortalComponent } from './portal/portal.component';
 
 const routes: Routes = [

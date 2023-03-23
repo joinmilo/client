@@ -205,6 +205,7 @@ export type ArticleEntity = {
   __typename?: 'ArticleEntity';
   approved?: Maybe<Scalars['Boolean']>;
   author?: Maybe<UserContextEntity>;
+  captchaToken?: Maybe<Scalars['String']>;
   cardImage?: Maybe<MediaEntity>;
   category?: Maybe<ArticleCategoryEntity>;
   comments?: Maybe<Array<Maybe<ArticleCommentEntity>>>;
@@ -225,6 +226,7 @@ export type ArticleEntity = {
 export type ArticleEntityInput = {
   approved?: InputMaybe<Scalars['Boolean']>;
   author?: InputMaybe<UserContextEntityInput>;
+  captchaToken?: InputMaybe<Scalars['String']>;
   cardImage?: InputMaybe<MediaEntityInput>;
   category?: InputMaybe<ArticleCategoryEntityInput>;
   comments?: InputMaybe<Array<InputMaybe<ArticleCommentEntityInput>>>;
@@ -419,6 +421,7 @@ export type ContactEntityInput = {
 
 export type ContestEntity = {
   __typename?: 'ContestEntity';
+  cardImage?: Maybe<MediaEntity>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   dueDate?: Maybe<Scalars['Date']>;
   id?: Maybe<Scalars['String']>;
@@ -431,11 +434,13 @@ export type ContestEntity = {
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
   state?: Maybe<ContestStateEntity>;
+  translatables?: Maybe<Array<Maybe<ContestTranslatableEntity>>>;
   type?: Maybe<ContestTypeEntity>;
-  votable?: Maybe<Scalars['Boolean']>;
+  voteable?: Maybe<Scalars['Boolean']>;
 };
 
 export type ContestEntityInput = {
+  cardImage?: InputMaybe<MediaEntityInput>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   dueDate?: InputMaybe<Scalars['Date']>;
   id?: InputMaybe<Scalars['String']>;
@@ -448,8 +453,9 @@ export type ContestEntityInput = {
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
   state?: InputMaybe<ContestStateEntityInput>;
+  translatables?: InputMaybe<Array<InputMaybe<ContestTranslatableEntityInput>>>;
   type?: InputMaybe<ContestTypeEntityInput>;
-  votable?: InputMaybe<Scalars['Boolean']>;
+  voteable?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type ContestParticipationEntity = {
@@ -508,6 +514,26 @@ export type ContestStateEntityInput = {
   id?: InputMaybe<Scalars['String']>;
   key?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+};
+
+export type ContestTranslatableEntity = {
+  __typename?: 'ContestTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']>;
+};
+
+export type ContestTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
 };
 
 export type ContestTypeEntity = {
@@ -616,6 +642,7 @@ export type DealEntity = {
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
   titleImage?: Maybe<MediaEntity>;
+  translatables?: Maybe<Array<Maybe<DealTranslatableEntity>>>;
   visitors?: Maybe<Array<Maybe<DealVisitorEntity>>>;
 };
 
@@ -635,7 +662,28 @@ export type DealEntityInput = {
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
   titleImage?: InputMaybe<MediaEntityInput>;
+  translatables?: InputMaybe<Array<InputMaybe<DealTranslatableEntityInput>>>;
   visitors?: InputMaybe<Array<InputMaybe<DealVisitorEntityInput>>>;
+};
+
+export type DealTranslatableEntity = {
+  __typename?: 'DealTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']>;
+};
+
+export type DealTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
 };
 
 export type DealVisitorEntity = {
@@ -1057,7 +1105,6 @@ export type LanguageEntityInput = {
 
 export type MediaEntity = {
   __typename?: 'MediaEntity';
-  base64?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   credits?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
@@ -1067,7 +1114,6 @@ export type MediaEntity = {
 };
 
 export type MediaEntityInput = {
-  base64?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   credits?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
@@ -2796,7 +2842,7 @@ export type OrganisationEntity = {
   __typename?: 'OrganisationEntity';
   address?: Maybe<AddressEntity>;
   approved?: Maybe<Scalars['Boolean']>;
-  cardImage?: Maybe<MediaEntity>;
+  avatar?: Maybe<MediaEntity>;
   comments?: Maybe<Array<Maybe<OrganisationCommentEntity>>>;
   contact?: Maybe<ContactEntity>;
   created?: Maybe<Scalars['OffsetDateTime']>;
@@ -2817,7 +2863,7 @@ export type OrganisationEntity = {
 export type OrganisationEntityInput = {
   address?: InputMaybe<AddressEntityInput>;
   approved?: InputMaybe<Scalars['Boolean']>;
-  cardImage?: InputMaybe<MediaEntityInput>;
+  avatar?: InputMaybe<MediaEntityInput>;
   comments?: InputMaybe<Array<InputMaybe<OrganisationCommentEntityInput>>>;
   contact?: InputMaybe<ContactEntityInput>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
@@ -3416,6 +3462,7 @@ export type Query = {
   getUserContexts?: Maybe<PageableList_UserContextEntity>;
   getUsers?: Maybe<PageableList_UserEntity>;
   me?: Maybe<UserEntity>;
+  search?: Maybe<Array<Maybe<SearchDto>>>;
 };
 
 
@@ -4006,6 +4053,12 @@ export type QueryGetUsersArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
 };
 
+
+/** Query root */
+export type QuerySearchArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
 export type QueryConjunctionInput = {
   operands?: InputMaybe<Array<InputMaybe<QueryExpressionInput>>>;
   operator?: InputMaybe<ConjunctionOperator>;
@@ -4262,6 +4315,12 @@ export type ScheduleEntityInput = {
   startDate?: InputMaybe<Scalars['OffsetDateTime']>;
 };
 
+export type SearchDto = {
+  __typename?: 'SearchDto';
+  feature?: Maybe<FeatureEntity>;
+  id?: Maybe<Scalars['String']>;
+};
+
 export type SocialMediaEntity = {
   __typename?: 'SocialMediaEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
@@ -4337,6 +4396,7 @@ export type SuburbEntityInput = {
 export type SurveyEntity = {
   __typename?: 'SurveyEntity';
   assignments?: Maybe<Array<Maybe<AssignmentEntity>>>;
+  cardImage?: Maybe<MediaEntity>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   due_date?: Maybe<Scalars['Date']>;
   id?: Maybe<Scalars['String']>;
@@ -4352,6 +4412,7 @@ export type SurveyEntity = {
 
 export type SurveyEntityInput = {
   assignments?: InputMaybe<Array<InputMaybe<AssignmentEntityInput>>>;
+  cardImage?: InputMaybe<MediaEntityInput>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   due_date?: InputMaybe<Scalars['Date']>;
   id?: InputMaybe<Scalars['String']>;
@@ -4508,6 +4569,7 @@ export type UserContextEntity = {
   articles?: Maybe<Array<Maybe<ArticleEntity>>>;
   assignments?: Maybe<Array<Maybe<AssignmentEntity>>>;
   attendee?: Maybe<Array<Maybe<AttendeeEntity>>>;
+  avatar?: Maybe<MediaEntity>;
   contacts?: Maybe<Array<Maybe<ContactEntity>>>;
   contestPariticpations?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
   contestVotes?: Maybe<Array<Maybe<ContestVoteEntity>>>;
@@ -4525,7 +4587,6 @@ export type UserContextEntity = {
   member?: Maybe<Array<Maybe<MemberEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   organisationRating?: Maybe<Array<Maybe<OrganisationRatingEntity>>>;
-  profilePicture?: Maybe<MediaEntity>;
   surveyResults?: Maybe<Array<Maybe<SurveyResultEntity>>>;
   titleImage?: Maybe<MediaEntity>;
   translatables?: Maybe<Array<Maybe<UserContextTranslatableEntity>>>;
@@ -4540,6 +4601,7 @@ export type UserContextEntityInput = {
   articles?: InputMaybe<Array<InputMaybe<ArticleEntityInput>>>;
   assignments?: InputMaybe<Array<InputMaybe<AssignmentEntityInput>>>;
   attendee?: InputMaybe<Array<InputMaybe<AttendeeEntityInput>>>;
+  avatar?: InputMaybe<MediaEntityInput>;
   contacts?: InputMaybe<Array<InputMaybe<ContactEntityInput>>>;
   contestPariticpations?: InputMaybe<Array<InputMaybe<ContestParticipationEntityInput>>>;
   contestVotes?: InputMaybe<Array<InputMaybe<ContestVoteEntityInput>>>;
@@ -4557,7 +4619,6 @@ export type UserContextEntityInput = {
   member?: InputMaybe<Array<InputMaybe<MemberEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   organisationRating?: InputMaybe<Array<InputMaybe<OrganisationRatingEntityInput>>>;
-  profilePicture?: InputMaybe<MediaEntityInput>;
   surveyResults?: InputMaybe<Array<InputMaybe<SurveyResultEntityInput>>>;
   titleImage?: InputMaybe<MediaEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<UserContextTranslatableEntityInput>>>;
@@ -4782,6 +4843,13 @@ export type GetSocialMediaQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetSocialMediaQuery = { __typename?: 'Query', getSocialMedias?: { __typename?: 'PageableList_SocialMediaEntity', result?: Array<{ __typename?: 'SocialMediaEntity', icon?: string | null, name?: string | null, url?: string | null } | null> | null } | null };
+
+export type SearchQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type SearchQuery = { __typename?: 'Query', search?: Array<{ __typename?: 'SearchDto', id?: string | null } | null> | null };
 
 export type CalendarScheduleFragment = { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null };
 
@@ -5344,6 +5412,24 @@ export const GetSocialMediaDocument = gql`
   })
   export class GetSocialMediaGQL extends Apollo.Query<GetSocialMediaQuery, GetSocialMediaQueryVariables> {
     override document = GetSocialMediaDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SearchDocument = gql`
+    query search($params: FilterSortPaginateInput) {
+  search(params: $params) {
+    id
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SearchGQL extends Apollo.Query<SearchQuery, SearchQueryVariables> {
+    override document = SearchDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

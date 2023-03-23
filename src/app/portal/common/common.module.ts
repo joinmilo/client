@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
@@ -30,8 +31,8 @@ import { PortalHeaderUserComponent } from './components/header/user/portal-heade
 import { PortalMenuAccordionComponent } from './components/menu/accordion/portal-menu-accordion.component';
 import { PortalMenuOverlayComponent } from './components/menu/overlay-menu/portal-menu-overlay.component';
 import { commonFeatureKey } from './constants/common.constants';
-import { PortalSearchResultComponent } from './pages/free-search/search-result.component';
 import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
+import { PortalSearchResultComponent } from './pages/search-result/search-result.component';
 import { CommonEffects } from './state/common.effects';
 import { commonReducer } from './state/common.reducer';
 
@@ -62,12 +63,15 @@ const pages = [
 const framework = [
   CommonModule,
   FormsModule,
+  ReactiveFormsModule,
   RouterModule,
 ];
 
 const materials = [
   FontAwesomeModule,
+  MatAutocompleteModule,
   MatButtonModule,
+  MatDatepickerModule,
   MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -75,7 +79,6 @@ const materials = [
   MatMenuModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
-  MatDatepickerModule,
 ];
 
 const modules = [

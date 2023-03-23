@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
 import { AppEntity, Maybe, MenuItemEntity, SocialMediaEntity } from 'src/schema/schema';
+import { SearchDto } from './../../../../schema/schema';
 
 export const CommonActions = createActionGroup({
   source: 'Portal Common',
@@ -15,9 +16,8 @@ export const CommonActions = createActionGroup({
 
     'navigate': (item: Maybe<MenuItemEntity>) => ({ item }),
     'not found': emptyProps(),
+
+    'get search result': (query: Maybe<string>) => ({ query }),
+    'set search result': (searchResult: SearchDto[]) => ({ searchResult }),
   },
 });
-
-
-
-

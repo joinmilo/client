@@ -1,11 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppEntity, Maybe, MenuItemEntity, SocialMediaEntity } from 'src/schema/schema';
+import { SearchDto } from './../../../../schema/schema';
 import { CommonActions } from './common.actions';
 
 export interface CommonState {
   apps?: Maybe<AppEntity[]>
   menu?: Maybe<MenuItemEntity[]>,
   socialMedia?: Maybe<SocialMediaEntity[]>,
+  searchResult?: Maybe<SearchDto[]>
 }
 
 export const initialState: CommonState = {
@@ -24,5 +26,10 @@ export const commonReducer = createReducer(
 
   on(CommonActions.setSocialMedia, (state, action): CommonState => (
     { ...state, socialMedia: action.socialMedia }
+  )),
+
+
+  on(CommonActions.setSearchResult, (state, action): CommonState => (
+    { ...state, searchResult: action.searchResult }
   )),
 );

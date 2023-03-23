@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeatureKey } from './common/constants/common.constants';
-import { PortalSearchResultComponent } from './common/pages/free-search/search-result.component';
 import { PortalNotFoundComponent } from './common/pages/not-found/not-found.component';
+import { PortalSearchResultComponent } from './common/pages/search-result/search-result.component';
 
 const routes: Routes = [
   {
