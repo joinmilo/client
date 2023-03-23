@@ -1,4 +1,3 @@
-import { CardSponsoredComponent } from './components/cards/card-sponsored/card-sponsored.component';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
@@ -16,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import { CardSliderComponent } from './components/card-slider/card-slider.component';
 import { ContactCardComponent } from './components/cards/contact-card/contact-card.component';
 import { ContentCardComponent } from './components/cards/content-card/content-card.component';
+import { SponsoredCardComponent } from './components/cards/sponsored-card/sponsored-card.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { ImageComponent } from './components/image/image.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -35,14 +35,14 @@ const components: Type<any>[] = [
   AddressPieceComponent,
   ContentCardComponent,
   CardSliderComponent,
+  ContactCardComponent,
   DatePieceComponent,
+  FavoritePieceComponent,
   FeedbackComponent,
   ImageComponent,
   LogoComponent,
   SliderComponent,
-  ContactCardComponent,
-  CardSponsoredComponent,
-  FavoritePieceComponent,
+  SponsoredCardComponent,
 ];
 
 const directives: Type<any>[] = [

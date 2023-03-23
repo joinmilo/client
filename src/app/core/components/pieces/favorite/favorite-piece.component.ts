@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { CardInput } from 'src/app/core/typings/card';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-favorite-piece',
@@ -7,9 +6,6 @@ import { CardInput } from 'src/app/core/typings/card';
   styleUrls: ['./favorite-piece.component.scss'],
 })
 export class FavoritePieceComponent {
-
-  @Input()
-  public data: CardInput = { dateTime: true };
 
   isFavorite = false;
 

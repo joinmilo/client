@@ -2,10 +2,10 @@
   <section>
     <h1 class="mat-headline-1">{{page | translatable: "name" | async}}</h1>
     <p>{{page | translatable: "shortDescription" | async}}</p>
-    <!-- <button *ngIf="(page | async)?.callUrl" mat-raised-button color="primary" [routerLink]="(page | async)?.callUrl">
-      {{page | translatable: "callText" | async}}
-    </button> -->
-    <button mat-flat-button color="primary">Mehr erfahren</button>
+    <button mat-flat-button color="primary"
+      *ngIf="(page | async)?.callUrl" [routerLink]="(page | async)?.callUrl">
+        {{page | translatable: "callText" | async}}
+    </button>
   </section>
   <app-image [src]="'assets/hero.jpg'"></app-image>
 </header>
