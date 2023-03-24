@@ -1,5 +1,7 @@
 fragment DealCategory on DealCategoryEntity {
   id
+  color
+  icon
   created
   color
   icon

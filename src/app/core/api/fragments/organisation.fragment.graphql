@@ -11,6 +11,9 @@ fragment Organisation on OrganisationEntity {
       ...Media
     }
   }
+  address {
+    ...Address
+  }
   contact {
     ...Contact
   }
