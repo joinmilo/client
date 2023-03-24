@@ -11,11 +11,16 @@ import {mapReducer} from './state/map.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {MapEffects} from './state/map.effects';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
+import {MapEventFilterComponent} from './components/forms/event-filter.component';
+import {MapOrganisationsFilterComponent} from './components/forms/organisation-filter.component';
 
-const components: Type<any>[] = [];
+const components: Type<any>[] = [
+  MapEventFilterComponent,
+  MapOrganisationsFilterComponent
+];
 
 const pages: Type<any>[] = [
   MapPageComponent,
@@ -29,6 +34,7 @@ const framework: any[] = [
 ];
 
 const materials: Type<any>[] = [
+  MatButtonModule,
   MatInputModule,
   MatSelectModule,
 ];
@@ -44,11 +50,11 @@ const modules: Type<any>[] =[
     ...components,
     ...pages
   ],
-  imports: [
-    ...framework,
-    ...materials,
-    ...modules,
-  ],
+    imports: [
+        ...framework,
+        ...materials,
+        ...modules,
+    ],
   exports: [
     ...components
   ]

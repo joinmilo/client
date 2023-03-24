@@ -1,22 +1,20 @@
 import {createReducer, on} from '@ngrx/store';
 import {
-  DealCategoryEntity, DealEntity,
+  DealCategoryEntity,
+  DealEntity,
   EventCategoryEntity,
   EventEntity,
-  EventTargetGroupEntity, OrganisationEntity,
+  EventTargetGroupEntity,
+  OrganisationEntity,
   SuburbEntity
 } from 'src/schema/schema';
 import {MapFeatureActions} from './map.actions';
-import {dealsFilterKey, eventFilterKey, oraganisationsFilterKey} from '../constants/map.constants'
-
-type FilterKey = typeof  eventFilterKey
-  | typeof dealsFilterKey
-  | typeof oraganisationsFilterKey;
+import {FilterKey} from '../constants/map.constants'
 
 export interface MapState {
   activeFilter: FilterKey;
 
-  eventFilterOptions?: {
+  eventsFilterOptions?: {
     categories: EventCategoryEntity[]
     targetGroups: EventTargetGroupEntity[]
     suburbs: SuburbEntity[]
@@ -39,8 +37,8 @@ export interface MapState {
     suburbs?: SuburbEntity[]
   }
   organisationFilter?: {
-    rating: number
-    suburbId: string
+    rating?: number
+    suburbId?: string
   }
   organisations?: OrganisationEntity[]
 
@@ -49,15 +47,15 @@ export interface MapState {
     suburbs: SuburbEntity[]
   }
   dealFilter?: {
-    categoryId: string
-    suburbId: string,
-    isOffer: boolean
+    categoryId?: string
+    suburbId?: string,
+    isOffer?: boolean
   }
   deals?: DealEntity[]
 }
 
 export const initialState: MapState = {
-  activeFilter: eventFilterKey,
+  activeFilter: FilterKey.events,
   organisationFilterOptions: {
     ratings: [1, 2, 3, 4, 5],
   }
@@ -66,9 +64,14 @@ export const initialState: MapState = {
 export const mapReducer = createReducer(
   initialState,
 
+  on(MapFeatureActions.setActiveFilter, (state, action): MapState => ({
+    ...state,
+    activeFilter: action.key
+  })),
+
   on(MapFeatureActions.setFilterOptions, (state, action): MapState => ({
     ...state,
-    eventFilterOptions: {
+    eventsFilterOptions: {
       categories: action.eventCategories,
       targetGroups: action.targetGroups,
       suburbs: action.suburbs
@@ -94,5 +97,32 @@ export const mapReducer = createReducer(
   on(MapFeatureActions.setEvents, (state, action): MapState => ({
     ...state,
     events: action.events
+  })),
+
+  on(MapFeatureActions.setOrganisationFilter, (state, action): MapState => ({
+    ...state,
+    organisationFilter: {
+      suburbId: action.suburbId,
+      rating: action.rating
+    }
+  })),
+
+  on(MapFeatureActions.setOrganisations, (state, action): MapState => ({
+    ...state,
+    organisations: action.organisations
+  })),
+
+  on(MapFeatureActions.setDealFilter, (state, action): MapState => ({
+    ...state,
+    dealFilter: {
+      categoryId: action.categoryId,
+      suburbId: action.suburbId,
+      isOffer: action.isOffer
+    }
+  })),
+
+  on(MapFeatureActions.setDeals, (state, action): MapState => ({
+    ...state,
+    deals: action.deals
   }))
 )
