@@ -7,21 +7,21 @@ mat-toolbar {
   grid-template-columns: min-content auto;
   display: flex;
   height: 4rem;
+
+  @include responsive(phone) {
+    display: flex;
+    grid-template-columns: none;
+  }
+  
+  @include responsive(tablet) {
+    display: flex;
+    grid-template-columns: none;
+  }
+
+  app-logo {
+    padding-right: 1rem;
+  }
 }
-
-    @include responsive(phone) {
-        display: flex;
-        grid-template-columns: none;
-    }
-    
-    @include responsive(tablet) {
-        display: flex;
-        grid-template-columns: none;
-    }
-
-    app-logo {
-        padding-right: 1rem;
-    }
 
 app-logo {
     @include responsive(phone) {
