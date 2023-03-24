@@ -3,12 +3,14 @@
     <mat-expansion-panel *ngFor="let menuItem of menu | async">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <h3>{{menuItem | translatable: 'name' | async}}</h3>
+          <strong>{{menuItem | translatable: 'name' | async}}</strong>
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <a *ngFor="let subItem of menuItem.subMenuItems" (click)="route(subItem)">
-        {{subItem | translatable: 'name' | async}}
-      </a>
+      <div class="submenu">
+        <a *ngFor="let subItem of menuItem.subMenuItems" (click)="route(subItem)">
+          {{subItem | translatable: 'name' | async}}
+        </a>
+      </div>
     </mat-expansion-panel>
   </mat-accordion>
   <aside>
