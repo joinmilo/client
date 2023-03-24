@@ -1,4 +1,7 @@
 export const mapFeatureKey = 'mapState';
-export const eventFilterKey = 'events';
-export const oraganisationsFilterKey = 'organisations';
-export const dealsFilterKey = 'deals';
+
+export enum FilterKey {
+  events = 1,  // keep values truthy
+  organisations,
+  deals
+}

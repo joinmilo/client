@@ -4797,9 +4797,9 @@ export type ArticleFragment = { __typename?: 'ArticleEntity', id?: string | null
 
 export type ContestFragment = { __typename?: 'ContestEntity', id?: string | null, dueDate?: any | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, description?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
-export type DealCategoryFragment = { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+export type DealCategoryFragment = { __typename?: 'DealCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
-export type DealFragment = { __typename?: 'DealEntity', id?: string | null, price: number, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, description?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+export type DealFragment = { __typename?: 'DealEntity', id?: string | null, price: number, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, description?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
 export type EventCategoryFragment = { __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
@@ -4841,7 +4841,7 @@ export type GetDealsQueryVariables = Exact<{
 }>;
 
 
-export type GetDealsQuery = { __typename?: 'Query', getDeals?: { __typename?: 'PageableList_DealEntity', result?: Array<{ __typename?: 'DealEntity', id?: string | null, price: number, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, description?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetDealsQuery = { __typename?: 'Query', getDeals?: { __typename?: 'PageableList_DealEntity', result?: Array<{ __typename?: 'DealEntity', id?: string | null, price: number, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, description?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export type GetEventQueryVariables = Exact<{
   entity?: InputMaybe<EventEntityInput>;
@@ -4925,6 +4925,11 @@ export type SaveArticleMutationVariables = Exact<{
 
 
 export type SaveArticleMutation = { __typename?: 'Mutation', saveArticle?: { __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
+export type GetMapFilterOptionsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetMapFilterOptionsQuery = { __typename?: 'Query', getEventCategories?: { __typename?: 'PageableList_EventCategoryEntity', result?: Array<{ __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, getEventTargetGroups?: { __typename?: 'PageableList_EventTargetGroupEntity', result?: Array<{ __typename?: 'EventTargetGroupEntity', id?: string | null, translatables?: Array<{ __typename?: 'EventTargetGroupTranslatableEntity', name?: string | null, language?: { __typename?: 'LanguageEntity', locale?: string | null } | null } | null> | null } | null> | null } | null, getSuburbs?: { __typename?: 'PageableList_SuburbEntity', result?: Array<{ __typename?: 'SuburbEntity', id?: string | null, name?: string | null } | null> | null } | null, getDealCategories?: { __typename?: 'PageableList_DealCategoryEntity', result?: Array<{ __typename?: 'DealCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
 
@@ -5047,6 +5052,8 @@ export const LanguageFragmentDoc = gql`
 export const DealCategoryFragmentDoc = gql`
     fragment DealCategory on DealCategoryEntity {
   id
+  color
+  icon
   created
   translatables {
     id
@@ -5207,9 +5214,13 @@ export const OrganisationFragmentDoc = gql`
   avatar {
     ...Media
   }
+  address {
+    ...Address
+  }
   contact {
     ...Contact
   }
+  name
   translatables {
     id
     description
@@ -5814,6 +5825,49 @@ export const SaveArticleDocument = gql`
   })
   export class SaveArticleGQL extends Apollo.Mutation<SaveArticleMutation, SaveArticleMutationVariables> {
     override document = SaveArticleDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetMapFilterOptionsDocument = gql`
+    query getMapFilterOptions {
+  getEventCategories {
+    result {
+      ...EventCategory
+    }
+  }
+  getEventTargetGroups {
+    result {
+      id
+      translatables {
+        language {
+          locale
+        }
+        name
+      }
+    }
+  }
+  getSuburbs {
+    result {
+      id
+      name
+    }
+  }
+  getDealCategories {
+    result {
+      ...DealCategory
+    }
+  }
+}
+    ${EventCategoryFragmentDoc}
+${DealCategoryFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetMapFilterOptionsGQL extends Apollo.Query<GetMapFilterOptionsQuery, GetMapFilterOptionsQueryVariables> {
+    override document = GetMapFilterOptionsDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

@@ -10,16 +10,3 @@ fragment EventCategory on EventCategoryEntity {
     }
   }
 }
-
-fragment DealCategory on DealCategoryEntity {
-  id
-  color
-  icon
-  translatables {
-    id
-    name
-    language {
-      ...Language
-    }
-  }
-}

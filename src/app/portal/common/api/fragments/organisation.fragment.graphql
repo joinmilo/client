@@ -7,9 +7,13 @@ fragment Organisation on OrganisationEntity {
   avatar {
     ...Media
   }
+  address {
+    ...Address
+  }
   contact {
     ...Contact
   }
+  name
   translatables {
     id
     description

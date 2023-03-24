@@ -1,26 +1,46 @@
 <div class="main">
 
-  <form *ngIf="(eventFilterOptions | async) as options" [formGroup]="eventFilterForm">
-    <mat-form-field>
-      <label appI18n="targetGroups"></label>
-      <mat-select formControlName="targetGroupId">
-        <mat-option *ngFor="let group of options.targetGroups" [value]="group.id">
-          {{group | translatable: 'name' | async }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <label appI18n="categories"></label>
-      <mat-select formControlName="categoryId">
-        <mat-option *ngFor="let category of options.categories" [value]="category.id">
-          {{ category | translatable: 'name' | async }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </form>
+  <div *ngIf="(activeFilter | async) as filter">
 
-  <div *ngFor="let item of (events | async)">
-    <p>E: {{ item | translatable: 'name' | async }}</p>
+    <div style="display: flex;">
+      <button mat-stroked-button appI18n="events"
+              [disabled]="filter === FilterKey.events"
+              (click)="setFilter(FilterKey.events)">
+      </button>
+      <button mat-stroked-button appI18n="organisations"
+              [disabled]="filter === FilterKey.organisations"
+              (click)="setFilter(FilterKey.organisations)">
+      </button>
+      <button mat-stroked-button
+              [disabled]="filter === FilterKey.deals"
+              (click)="setFilter(FilterKey.deals)">
+        Deals*
+      </button>
+    </div>
+
+    <div *ngIf="filter === FilterKey.events">
+      <app-portal-map-event-filter></app-portal-map-event-filter>
+
+      <div *ngFor="let item of (events | async)">
+        <p>E: {{ item | translatable: 'name' | async }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="filter === FilterKey.organisations">
+      <app-portal-map-organisations-filter></app-portal-map-organisations-filter>
+
+      <div *ngFor="let item of (organisations | async)">
+        <p>E: {{ item.name }}</p>
+      </div>
+    </div>
+
+    <div *ngIf="filter === FilterKey.deals">
+      deals
+    </div>
+
+
   </div>
+
+
 </div>
 
