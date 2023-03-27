@@ -14,33 +14,7 @@
     </mat-expansion-panel>
   </mat-accordion>
   <aside>
-    <nav>
-      <a *ngFor="let app of apps | async"
-        [href]="app.url"
-        [title]="app.platform?.name">
-        <app-image
-          [src]="app.platform?.key === 'google'
-            ? 'assets/google-play.svg'
-            : 'assets/app-store.svg'"></app-image>
-      </a>
-    </nav>
-
-    <nav>
-      <a *ngFor="let item of socialMedia | async"
-        mat-icon-button 
-        [href]="item.url"
-        [title]="item.name">
-        <fa-icon
-          size="2x" 
-          [icon]="['fab', icon(item.icon)]">
-        </fa-icon>
-      </a>
-      <button mat-icon-button>
-        <fa-icon
-          size="2x" 
-          [icon]="['fas', 'rss']">
-        </fa-icon>
-      </button>
-    </nav>
+    <app-app-store-piece></app-app-store-piece>
+    <app-social-media-piece></app-social-media-piece>
   </aside>
 </footer>

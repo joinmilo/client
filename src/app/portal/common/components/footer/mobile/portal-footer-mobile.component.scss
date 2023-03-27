@@ -41,14 +41,3 @@ aside {
     gap: var(--gap); 
   }
 }
-
-:host ::ng-deep {
-  .mat-expansion-panel-body {
-    padding: 0 1.5rem !important;
-  }
-
-  img {
-    height: 2rem !important;
-    width: unset !important;
-  }
-}

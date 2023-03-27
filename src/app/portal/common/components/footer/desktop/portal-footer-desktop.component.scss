@@ -27,11 +27,3 @@ aside {
     justify-content: center;
   }
 }
-
-:host ::ng-deep {
-
-  img {
-    height: unset !important;
-    width: 7rem !important;
-  }
-}

@@ -1,0 +1,10 @@
+<nav>
+  <a *ngFor="let app of apps | async"
+    [href]="app.url"
+    [title]="app.platform?.name">
+    <app-image
+      [src]="app.platform?.key === 'google'
+        ? 'assets/google-play.svg'
+        : 'assets/app-store.svg'"></app-image>
+  </a>
+</nav>

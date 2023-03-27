@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { AppStorePieceComponent } from 'src/app/core/components/pieces/app-store/app-store-piece.component';
+import { SocialMediaPieceComponent } from 'src/app/core/components/pieces/social-media/social-media-piece.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalFooterDesktopComponent } from './components/footer/desktop/portal-footer-desktop.component';
 import { PortalFooterMobileComponent } from './components/footer/mobile/portal-footer-mobile.component';
@@ -26,6 +28,8 @@ const components: Type<any>[] = [
   PortalFooterMobileComponent,
   PortalHeaderComponent,
   PortalMenuComponent,
+  SocialMediaPieceComponent,
+  AppStorePieceComponent, 
 ];
 
 const pages: Type<any>[] = [
