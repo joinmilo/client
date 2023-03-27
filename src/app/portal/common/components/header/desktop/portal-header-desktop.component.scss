@@ -1,0 +1,16 @@
+@import 'src/styles/mixins.scss'; 
+
+header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  app-portal-header-action {
+    margin-left: auto;
+  }
+
+  section {
+    display: flex;
+    gap: var(--gap);
+  }
+}

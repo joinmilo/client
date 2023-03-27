@@ -1,0 +1,8 @@
+<header>
+  <app-logo></app-logo>
+  <section>
+    <app-portal-menu-item *ngFor="let menuItem of menu | async" [root]="true"
+      [menuItem]="menuItem"></app-portal-menu-item>
+  </section>
+  <app-portal-header-action></app-portal-header-action>
+</header>

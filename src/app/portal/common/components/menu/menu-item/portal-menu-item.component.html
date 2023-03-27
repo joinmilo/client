@@ -1,0 +1,27 @@
+<button *ngIf="root" mat-button [matMenuTriggerFor]="menu">
+  <strong>{{ menuItem | translatable: 'name' | async }}</strong>
+</button>
+<button
+  *ngIf="!root"
+  mat-menu-item
+  [matMenuTriggerFor]="menu"
+  (menuOpened)="getData('')">
+    {{ menuItem | translatable: 'name' | async }}
+</button>
+<mat-menu #menu="matMenu">
+  <ng-container *ngFor="let subItem of menuItem?.subMenuItems; let i = index">
+    
+    <app-portal-menu-item
+      *ngIf="hasSubmenu"
+      [menuItem]="subItem">
+    </app-portal-menu-item>
+    
+    <button
+      *ngIf="!hasSubmenu"
+      mat-menu-item
+      (click)="route(subItem)">
+        {{ subItem | translatable: 'name' | async }}
+    </button>
+
+  </ng-container>
+</mat-menu>
