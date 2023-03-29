@@ -1,5 +1,7 @@
 <div>
-  <fa-icon size="lg" [icon]="['far', 'calendar']"></fa-icon>
-  <time *ngIf="dateTime">{{date | date: 'medium' }}</time>
-  <time *ngIf="!dateTime">{{date | date: 'short' }}</time>
+  <section>
+    <fa-icon size="lg" [icon]="['far', 'calendar']"></fa-icon>
+    <time *ngIf="dateTime">{{date | date: 'short' }}</time>
+    <time *ngIf="!dateTime">{{date | date: 'shortDate' }}</time>
+  </section>
 </div>

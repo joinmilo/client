@@ -1,11 +1,15 @@
 <form>
   <mat-form-field appearance="fill">
-    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="searchControl"
+    <input type="text" placeholder="Suche" aria-label="text" matInput [formControl]="searchControl"
       [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let entity of searchResult |async" [value]="entity">
-        {{entity}}
-      </mat-option>
+      <ng-container *ngIf="searchResult | async as entities">
+        <mat-option (click)="showOneEntity(entity.id)" *ngFor="let entity of entities.slice(0, 4)" [value]="entity">
+          {{entity.id}}
+        </mat-option>
+        <mat-divider *ngIf="entities.length > 4"></mat-divider>
+        <mat-option (click)="showAllEntities()" *ngIf="entities.length > 4">Erweitere Ansicht</mat-option>
+      </ng-container>
     </mat-autocomplete>
   </mat-form-field>
 </form>

@@ -1,0 +1,17 @@
+fragment Survey on SurveyEntity {
+  id
+  due_date
+  cardImage {
+    ...Media
+  }
+  translatables {
+    id
+    name
+    description
+    language {
+      id
+      locale
+      name
+    }
+  }
+}

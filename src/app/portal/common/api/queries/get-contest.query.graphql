@@ -1,0 +1,7 @@
+query getContests($params: FilterSortPaginateInput) {
+  getContests(params: $params) {
+    result {
+      ...Contest
+    }
+  }
+}

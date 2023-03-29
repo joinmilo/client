@@ -1,0 +1,24 @@
+fragment Deal on DealEntity {
+  id
+  price
+  cardImage {
+    ...Media
+  }
+    contact {
+    ...Contact
+  }
+  category {
+    ...DealCategory
+  }
+  translatables {
+    id
+    description
+    shortDescription
+    name
+    language {
+      id
+      locale
+      name
+    }
+  }
+}

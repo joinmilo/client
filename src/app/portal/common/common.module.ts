@@ -57,7 +57,6 @@ const components = [
 const pages = [
   PortalNotFoundComponent,
   PortalSearchResultComponent
-
 ];
 
 const framework = [

@@ -1,7 +1,9 @@
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
@@ -49,8 +51,11 @@ const libs = [
   }),
 ];
 
+//TODO: Breaks scrolling Angular:
+// https://github.com/angular/angular/issues/35759
 const materials = [
-  MatMenuModule
+  MatAutocompleteModule,
+  MatMenuModule,
 ];
 
 const modules = [

@@ -9,6 +9,8 @@ import {
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss'],
 })
+
+
 export class SliderComponent implements AfterViewInit {
 
   @ViewChild('content', { static: true, read: ElementRef })
@@ -20,12 +22,12 @@ export class SliderComponent implements AfterViewInit {
 
   private gap = 32;
 
-  @ContentChildren(TemplateRef, {descendants: true})
+  @ContentChildren(TemplateRef, { descendants: true })
   private template?: QueryList<TemplateRef<unknown>>;
 
 
   public ngAfterViewInit(): void {
-    const gap =  parseFloat(getComputedStyle(document.body).getPropertyValue('--gap'));
+    const gap = parseFloat(getComputedStyle(document.body).getPropertyValue('--gap'));
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
     this.gap = (gap || 1) * (fontSize || 16);
   }
@@ -51,4 +53,5 @@ export class SliderComponent implements AfterViewInit {
     }
     return 200;
   }
+
 }

@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { Maybe } from 'graphql/jsutils/Maybe';
+import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 import { CommonActions } from '../../../state/common.actions';
-import { selectSearchResult } from '../../../state/common.selectors';
+import { selectSearchQuery, selectSearchResult } from '../../../state/common.selectors';
 
 @Component({
   selector: 'app-portal-header-search',
@@ -12,22 +14,42 @@ import { selectSearchResult } from '../../../state/common.selectors';
 })
 export class PortalHeaderSearchComponent {
 
-  searchControl = new FormControl('');
-
+  searchControl = new FormControl();
   searchResult = this.store.select(selectSearchResult);
-
-  @Output() searchClicked = new EventEmitter<string>();
+  private destroy = new Subject<void>();
 
   constructor(
-    private store: Store,) {
+    private store: Store,
+    private router: Router) {
+  }
+
+  ngOnInit(): void {
     this.searchControl.valueChanges
       .pipe(
-        debounceTime(300),
-        distinctUntilChanged()
+        distinctUntilChanged(),
+        takeUntil(this.destroy)
       )
       .subscribe((query) => {
-        this.store.dispatch(CommonActions.getSearchResult(query));
+        query !== undefined && this.store.dispatch(CommonActions.searchQuerySet(query));
       });
   }
+
+  showOneEntity(id: Maybe<string>) {
+    this.router.navigate(['/portal/' + id]);
+  }
+
+  showAllEntities() {
+    this.store.select(selectSearchQuery).pipe(takeUntil(this.destroy))
+      .subscribe((query => {
+        this.searchControl.setValue(query);
+      }))
+    this.router.navigate(['/portal/search'])
+  }
+
+  ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
+  }
+}
 
 }

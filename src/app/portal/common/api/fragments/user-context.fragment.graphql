@@ -1,0 +1,11 @@
+fragment UserContext on UserContextEntity {
+  id
+  articles{
+    ...Article
+  }
+  user{
+    firstName
+    lastName
+    email
+  }
+}

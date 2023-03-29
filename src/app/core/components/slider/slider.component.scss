@@ -3,7 +3,8 @@
 .container {
   display: flex;
 
-  :first-child, :last-child {
+  :first-child,
+  :last-child {
     display: flex;
     padding: 1rem;
 
@@ -25,5 +26,3 @@
     scroll-behavior: smooth;
   }
 }
-
-

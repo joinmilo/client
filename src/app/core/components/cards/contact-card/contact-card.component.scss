@@ -11,7 +11,8 @@ mat-card {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
-  width: 26rem;
+  width: 30rem;
+  max-width: calc(100% - 2rem);
   height: 10rem;
 }
 
@@ -20,7 +21,8 @@ mat-card-content {
   flex-direction: column;
   justify-content: center;
   padding: unset;
-  margin-right: 17%;
+  margin-right: 5%;
+  max-width: 16rem;
 }
 
 figure {
@@ -40,4 +42,11 @@ app-image {
 mat-card-content {
   display: flex;
   flex-direction: column;
+  flex-grow: 2;
+
+  * {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }

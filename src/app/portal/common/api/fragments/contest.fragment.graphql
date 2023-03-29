@@ -1,0 +1,18 @@
+fragment Contest on ContestEntity {
+  id
+  dueDate
+  cardImage {
+    ...Media
+  }
+  translatables {
+    id
+    name
+    description
+    shortDescription
+    language {
+      id
+      locale
+      name
+    }
+  }
+}

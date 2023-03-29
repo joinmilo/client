@@ -28,7 +28,9 @@ export const coreReducer = createReducer(
     {
       ...state,
       labels: action.labels.reduce((map, label) =>
-        (label.tagId && label.translatables?.length && (map.set(label.tagId, label.translatables)), map),
+      (label.tagId && (map.set(label.tagId, label.translatables?.length
+        ? label.translatables
+        : [])), map),
         new Map())
     }
   )),

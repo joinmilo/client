@@ -1,0 +1,22 @@
+fragment Organisation on OrganisationEntity {
+  id
+  name
+  address {
+    ...Address
+  }
+  avatar {
+    ...Media
+  }
+  contact {
+    ...Contact
+  }
+  translatables {
+    id
+    description
+    language {
+      id
+      locale
+      name
+    }
+  }
+}

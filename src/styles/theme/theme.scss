@@ -1,4 +1,3 @@
-
 @use '@angular/material' as mat;
 @import '@angular/material/theming';
 @import 'src/styles/theme/colors.theme.scss';
@@ -20,14 +19,12 @@ $typography: (
     $button: mat.define-typography-level(1rem, 1rem, 500))
 );
 
-$theme: mat-light-theme((
-  color: (
-    primary: mat-palette($theme-palette-primary, 500),
-    accent: mat-palette($theme-palette-accent, 500),
-    warn: mat-palette($theme-palette-warn, 500),
-  ),
-  typography: $typography,
-));
+$theme: mat-light-theme((color: (primary: mat-palette($theme-palette-primary, 500),
+        accent: mat-palette($theme-palette-accent, 500),
+        warn: mat-palette($theme-palette-warn, 500),
+      ),
+      typography: $typography,
+    ));
 
 @include mat.core();
 @include mat.all-component-themes($theme);

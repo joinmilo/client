@@ -21,4 +21,7 @@ export class CardSliderComponent {
   @Input()
   public titleLabel?: string;
 
+  @Input()
+  public cardType?: string;
+
 }

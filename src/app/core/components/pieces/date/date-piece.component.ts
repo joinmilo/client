@@ -13,4 +13,7 @@ export class DatePieceComponent {
 
   @Input()
   public dateTime = true;
+
+  @Input()
+  public label = 'date';
 }

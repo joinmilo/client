@@ -3,6 +3,7 @@ fragment Article on ArticleEntity {
   approved
   slug
   modified
+  created
   author {
     user {
       firstName 
