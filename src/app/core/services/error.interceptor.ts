@@ -27,19 +27,19 @@ export class ErrorInterceptor implements HttpInterceptor {
       );
   }
 
-  private handleCritical(message: string): void {
+  private handleCritical(labelMessage: string): void {
     this.store.dispatch(CoreActions.setFeedback({
       type: FeedbackType.Critical,
-      message,
-      action: 'Schwerwiegender Fehler! Bitte Support kontaktieren.',
+      labelMessage,
+      labelAction: 'criticalError',
     }));
   }
 
-  private handleError(message: string): void {
+  private handleError(labelMessage: string): void {
     this.store.dispatch(CoreActions.setFeedback({
       type: FeedbackType.Error,
-      message,
-      action: 'Bitte erneut probieren',
+      labelMessage,
+      labelAction: 'tryAgain',
     }));
   }
 }

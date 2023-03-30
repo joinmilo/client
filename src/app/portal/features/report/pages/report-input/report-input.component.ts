@@ -1,61 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
+import { Component, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
-import { ConfigurationEntity, ReportTypeEntity } from '../../../../../../schema/schema';
-import { ReportActions, ReportTypeActions } from '../../state/report.actions';
-import { selectConfiguration, selectReportTypes, selectSavedReport } from '../../state/report.selectors';
+import { filter, map, Subject, takeUntil } from 'rxjs';
+import { ReportTypeEntity } from 'src/schema/schema';
+import { ReportActions } from '../../state/report.actions';
+import { selectCaptchaSitekey, selectReportTypes, selectSavedReport } from '../../state/report.selectors';
 
 @Component({
   selector: 'app-report-input',
   templateUrl: './report-input.component.html',
   styleUrls: ['./report-input.component.scss'],
 })
-export class ReportInputComponent implements OnInit {
+export class ReportInputComponent implements OnDestroy {
 
-  reportForm!: FormGroup;
+  public form = this.fb.group({
+    type: [{} as ReportTypeEntity, [Validators.required]],
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    content: ['', [Validators.required]],
+    captchaToken: ['', [Validators.required]]
+  });
 
-  public types?= this.store.select(selectReportTypes)
-  selectedType?: ReportTypeEntity;
+  private destroy = new Subject<void>();
 
-  configuration$?: Observable<ConfigurationEntity | undefined>;
-  configurationSubscription?: Subscription;
-  sitekey?: string;
+  public sitekey = this.store.select(selectCaptchaSitekey)
+    .pipe(
+      filter(config => !!config?.value),
+      map(config => config?.value as string),
+    );
+
+  public types = this.store.select(selectReportTypes);
 
   constructor(
     private store: Store,
     private fb: FormBuilder,
   ) {
-    this.store.dispatch(ReportTypeActions.getReportTypes());
-    this.configuration$ = this.store.select(selectConfiguration);
+    this.store.dispatch(ReportActions.getReportTypes());
   }
-
-  ngOnInit(): void {
-    this.configurationSubscription = this.configuration$?.subscribe(configuration => { this.sitekey = configuration?.value as string })
-    console.log(this.sitekey);
-
-    this.reportForm = this.fb.group({
-      type: [null, [Validators.required]],
-      name: [null, [Validators.required]],
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      content: new FormControl(null, Validators.required),
-      captchaToken: new FormControl(null, Validators.required)
-    })
-  }
-
+  
   onSubmit(formDirective: FormGroupDirective) {
     this.store.dispatch(ReportActions.saveReport({
-      name: this.reportForm.value.name,
-      email: this.reportForm.value.email,
-      type: { id: this.selectedType?.id },
-      captchaToken: this.reportForm.value.captchaToken
+      name: this.form.value.name,
+      email: this.form.value.email,
+      type: { 
+        id: this.form.value.type?.id
+      },
+      captchaToken: this.form?.value.captchaToken
     }));
-
+    
     this.store.select(selectSavedReport)
+      .pipe(takeUntil(this.destroy))
       .subscribe(report => report?.id && formDirective.resetForm());
   }
 
-  setType(type: ReportTypeEntity) {
-    this.selectedType = type;
+  ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

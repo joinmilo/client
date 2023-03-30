@@ -1,19 +1,17 @@
 <main class="main">
   <app-page-title titleLabel="feedback"></app-page-title>
-  <form [formGroup]="reportForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
-    <h2 class="mat-headline-6">Gib uns Feedback!</h2>
+  <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+    <h2 class="mat-headline-6" appLabel="giveUsFeedback"></h2>
     <div>
-      <p>Um die Seite bestmöglich an eure Wünsche und Bedürfnisse brauchen wir euer Feedback!</p>
-      <p> Ihr könnt uns auch gerne eure Anregungen für neue Features zukommen lassen, damit wir diese zukünftig
-        ebenfalls
-        einbauen können.
+      <p appLabel="needYourFeedback"></p>
+      <p appLabel="featureRequest">
       </p>
     </div>
     <section>
       <div>
         <mat-form-field appearance="outline">
-          <mat-label>Thema</mat-label>
-          <mat-select formControlName="type" disableRipple (selectionChange)="setType($event.value)">
+          <mat-label appLabel="topic"></mat-label>
+          <mat-select formControlName="type">
             <mat-option [value]="type" *ngFor="let type of types | async">
               <p>{{type | translatable: "name" | async}}</p>
             </mat-option>
@@ -22,28 +20,29 @@
       </div>
       <div>
         <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
+          <mat-label appLabel="name"></mat-label>
           <input matInput id="name" formControlName="name" placeholder="Max Mustermann">
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label>E-Mail</mat-label>
+          <mat-label appLabel="email"></mat-label>
           <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field appearance="outline">
-          <mat-label>Textbereich</mat-label>
-          <textarea formControlName="content" matInput rows="4"></textarea>
+          <mat-label appLabel="content"></mat-label>
+          <textarea formControlName="content" matInput rows="5"></textarea>
         </mat-form-field>
       </div>
-      <div *ngIf="sitekey">
-        <ng-hcaptcha class="mobile" formControlName="captchaToken" [siteKey]="sitekey" data-size="compact"></ng-hcaptcha>
-        <ng-hcaptcha class="desktop" *ngIf="sitekey" formControlName="captchaToken" [siteKey]="sitekey"></ng-hcaptcha>
+      <div *ngIf="sitekey | async">
+        <ng-hcaptcha class="mobile" formControlName="captchaToken" [siteKey]="(sitekey | async)!" size="compact"></ng-hcaptcha>
+        <ng-hcaptcha class="desktop" formControlName="captchaToken" [siteKey]="(sitekey | async)!"></ng-hcaptcha>
       </div>
       <div>
-        <button mat-flat-button [disabled]="!reportForm.valid" type="submit" mat-flat-button color="primary">
+        <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
           <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>
-          Abschicken</button>
+          <label appLabel="send"></label>
+        </button>
       </div>
     </section>
   </form>

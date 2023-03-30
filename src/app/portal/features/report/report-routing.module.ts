@@ -5,7 +5,7 @@ import { ReportInputComponent } from './pages/report-input/report-input.componen
 const routes: Routes = [
 
   {
-    path: ``,
+    path: '',
     component: ReportInputComponent
   },
 

@@ -28,8 +28,20 @@ section {
 
     mat-form-field {
       flex: 2 1 auto;
-      min-width: 16rem;
+      min-width: 16rem; //TODO: Widget width as variable
     }
+  }
+}
+
+@include responsive(tablet) {
+  .desktop {
+    display: none;
+  }
+}
+
+@include responsive(desktop) {
+  .mobile {
+    display: none;
   }
 }
 

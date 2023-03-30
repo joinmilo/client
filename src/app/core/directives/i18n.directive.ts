@@ -3,12 +3,12 @@ import { Subject } from 'rxjs';
 import { LabelService } from '../services/label.service';
 
 @Directive({
-  selector: '[appI18n]'
+  selector: '[appLabel]'
 })
 export class I18nDirective implements OnInit, OnDestroy {
 
   @Input()
-  public appI18n?: string;
+  public appLabel?: string;
 
   @Input()
   public preFix?: string;
@@ -23,7 +23,7 @@ export class I18nDirective implements OnInit, OnDestroy {
     private labelService: LabelService) { }
 
   public ngOnInit(): void {
-    this.labelService.lookup(this.appI18n)
+    this.labelService.lookup(this.appLabel)
       .subscribe(label => this.el.nativeElement.innerHTML = `${this.preFix ?? ''} ${label} ${this.postFix ?? ''}`);
   }
 

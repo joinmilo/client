@@ -7,6 +7,6 @@ export enum FeedbackType {
 
 export interface Feedback {
   type: FeedbackType,
-  message?: string,
-  action?: string,
+  labelMessage?: string,
+  labelAction?: string,
 }

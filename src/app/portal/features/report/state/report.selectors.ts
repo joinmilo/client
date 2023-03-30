@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { selectCoreState } from 'src/app/core/state/core.selectors';
+import { selectConfigurations } from 'src/app/core/state/core.selectors';
 import { reportFeatureKey } from '../constants/report.constant';
 import { ReportState } from './report.reducer';
 
@@ -15,10 +15,7 @@ export const selectSavedReport = createSelector(
   state => state.savedReport
 );
 
-export const selectConfiguration = createSelector(
-  selectCoreState,
-  state => {
-
-    return state?.configurations?.find(c => c?.key === 'sitekey')
-  }
+export const selectCaptchaSitekey = createSelector(
+  selectConfigurations,
+  configurations => configurations?.find(c => c?.key === 'sitekey')
 );

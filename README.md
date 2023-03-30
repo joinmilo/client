@@ -57,7 +57,7 @@ constructor(
 
 ## Translation / i18n
 
-All static labels within the client are not hardcoded in the template because it's a multi language application. There are is a `appI18n` directive in the `core` module which should be used in order to display a labels.
+All static labels within the client are not hardcoded in the template because it's a multi language application. There are is a `appLabel` directive in the `core` module which should be used in order to display a labels.
 
 The directive works as follows:
 - it takes the `label` input and does a lookup on the previous loaded labels searching for the correct `tagId`.
@@ -73,7 +73,7 @@ The directive works as follows:
 **Do:**
 ``` html
 ...
-<span appI18n="newActivities"></span>
+<span appLabel="newActivities"></span>
 ...
 ```
 
@@ -111,5 +111,5 @@ In case you find the right label, copy the `tagId` of the label and place it wit
 **Example:**
 ``` html
 ...
-<span appI18n="newActivities"></span>
+<span appLabel="newActivities"></span>
 ...

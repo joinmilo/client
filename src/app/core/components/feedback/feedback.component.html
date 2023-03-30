@@ -12,7 +12,7 @@
     <fa-icon *ngIf="feedback.type === info"
       size="2x" [icon]="['fas', 'circle-info']"></fa-icon>
 
-    <span><strong>{{feedback.message}}</strong></span>
-    <span>{{feedback.action}}</span>
+    <span><strong [appLabel]="feedback.labelMessage"></strong></span>
+    <span [appLabel]="feedback.labelAction"></span>
   </section>
 </div>

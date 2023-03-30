@@ -5,7 +5,7 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ReportTypeEntity, SaveReportGQL } from 'src/schema/schema';
 import { CoreActions } from '../../../../core/state/core.actions';
 import { GetReportTypesGQL, ReportEntity } from './../../../../../schema/schema';
-import { ReportActions, ReportTypeActions } from './report.actions';
+import { ReportActions } from './report.actions';
 
 @Injectable()
 export class ReportEffects {
@@ -22,14 +22,14 @@ export class ReportEffects {
     ofType(ReportActions.reportSaved),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
-      message: 'Dein Report is bei uns angekommen. Wir kümmern uns bald darum!'
+      labelMessage: 'reportReceived'
     }))
   ));
 
   getCurrentTypes = createEffect(() => this.actions.pipe(
-    ofType(ReportTypeActions.getReportTypes),
+    ofType(ReportActions.getReportTypes),
     switchMap(() => this.getReportTypeService.watch().valueChanges),
-    map(response => ReportTypeActions.setCurrentTypes(response.data.getReportTypes?.result as ReportTypeEntity[]))
+    map(response => ReportActions.setCurrentTypes(response.data.getReportTypes?.result as ReportTypeEntity[]))
   ));
 
 
