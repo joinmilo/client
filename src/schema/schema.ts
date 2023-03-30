@@ -4122,7 +4122,7 @@ export type QuestionTypeEntityInput = {
 
 export type ReportEntity = {
   __typename?: 'ReportEntity';
-  captcha?: Maybe<Scalars['String']>;
+  captchaToken?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
@@ -4134,7 +4134,7 @@ export type ReportEntity = {
 };
 
 export type ReportEntityInput = {
-  captcha?: InputMaybe<Scalars['String']>;
+  captchaToken?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   email?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
@@ -4789,7 +4789,7 @@ export type GetPageQueryVariables = Exact<{
 
 export type GetPageQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
 
-export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captcha?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
+export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
 
 export type GetReportTypesQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
@@ -4803,7 +4803,7 @@ export type SaveReportMutationVariables = Exact<{
 }>;
 
 
-export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captcha?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
+export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
 
 export const ConfigurationFragmentDoc = gql`
     fragment Configuration on ConfigurationEntity {
@@ -5065,7 +5065,7 @@ export const ReportFragmentDoc = gql`
   id
   name
   email
-  captcha
+  captchaToken
   translatables {
     id
     content

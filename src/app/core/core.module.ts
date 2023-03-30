@@ -24,6 +24,7 @@ import { SponsoredCardComponent } from './components/cards/sponsored-card/sponso
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { ImageComponent } from './components/image/image.component';
 import { LogoComponent } from './components/logo/logo.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 import { AddressPieceComponent } from './components/pieces/adress/address-piece.component';
 import { DatePieceComponent } from './components/pieces/date/date-piece.component';
 import { FavoritePieceComponent } from './components/pieces/favorite/favorite-piece.component';
@@ -46,6 +47,7 @@ const components: Type<any>[] = [
   FeedbackComponent,
   ImageComponent,
   LogoComponent,
+  PageTitleComponent,
   SliderComponent,
   SponsoredCardComponent,
   SliderComponent

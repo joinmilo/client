@@ -1,7 +1,7 @@
-<form [formGroup]="reportForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
-  <h1>Feedback</h1>
-  <main>
-    <h2>Gib uns Feedback!</h2>
+<main class="main">
+  <app-page-title titleLabel="feedback"></app-page-title>
+  <form [formGroup]="reportForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+    <h2 class="mat-headline-6">Gib uns Feedback!</h2>
     <div>
       <p>Um die Seite bestmöglich an eure Wünsche und Bedürfnisse brauchen wir euer Feedback!</p>
       <p> Ihr könnt uns auch gerne eure Anregungen für neue Features zukommen lassen, damit wir diese zukünftig
@@ -33,9 +33,12 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Textbereich</mat-label>
-          <textarea formControlName="content" matInput></textarea>
+          <textarea formControlName="content" matInput rows="4"></textarea>
         </mat-form-field>
-        <ng-hcaptcha *ngIf="sitekey" formControlName="captcha" [siteKey]="sitekey"></ng-hcaptcha>
+      </div>
+      <div *ngIf="sitekey">
+        <ng-hcaptcha class="mobile" formControlName="captchaToken" [siteKey]="sitekey" data-size="compact"></ng-hcaptcha>
+        <ng-hcaptcha class="desktop" *ngIf="sitekey" formControlName="captchaToken" [siteKey]="sitekey"></ng-hcaptcha>
       </div>
       <div>
         <button mat-flat-button [disabled]="!reportForm.valid" type="submit" mat-flat-button color="primary">
@@ -43,5 +46,5 @@
           Abschicken</button>
       </div>
     </section>
-  </main>
-</form>
+  </form>
+</main>

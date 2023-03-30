@@ -35,7 +35,6 @@ const materials: Type<any>[] = [
   MatButtonModule,
   MatSelectModule,
   MatInputModule
-
 ];
 
 const modules: Type<any>[] = [
@@ -43,16 +42,19 @@ const modules: Type<any>[] = [
   ReportPortalRoutingModule,
 ];
 
+const libs: any[] = [
+  NgHcaptchaModule.forRoot({
+    languageCode: 'de' //TODO
+  }),
+]
+
 @NgModule({
   declarations: [...components],
   imports: [
     ...framework,
     ...materials,
     ...modules,
-    NgHcaptchaModule.forRoot({
-      siteKey: '10000000-ffff-ffff-ffff-000000000001',
-      languageCode: 'de'
-    }),
+    ...libs,
   ],
   exports: [...components],
 })

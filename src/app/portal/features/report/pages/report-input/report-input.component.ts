@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { ConfigurationEntity, ReportTypeEntity } from '../../../../../../schema/schema';
 import { ReportActions, ReportTypeActions } from '../../state/report.actions';
-import { ConfigurationEntity, ReportTypeEntity } from './../../../../../../schema/schema';
-import { selectConfiguration, selectReportTypes, selectSavedReport } from './../../state/report.selectors';
+import { selectConfiguration, selectReportTypes, selectSavedReport } from '../../state/report.selectors';
 
 @Component({
   selector: 'app-report-input',
@@ -39,7 +39,7 @@ export class ReportInputComponent implements OnInit {
       name: [null, [Validators.required]],
       email: new FormControl(null, [Validators.required, Validators.email]),
       content: new FormControl(null, Validators.required),
-      captcha: new FormControl(null, Validators.required)
+      captchaToken: new FormControl(null, Validators.required)
     })
   }
 
@@ -48,7 +48,7 @@ export class ReportInputComponent implements OnInit {
       name: this.reportForm.value.name,
       email: this.reportForm.value.email,
       type: { id: this.selectedType?.id },
-      captcha: this.reportForm.value.captcha
+      captchaToken: this.reportForm.value.captchaToken
     }));
 
     this.store.select(selectSavedReport)
