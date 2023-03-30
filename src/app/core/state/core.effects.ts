@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
+import { ConfigurationEntity } from './../../../schema/schema';
 
 import { filter, map, switchMap, tap } from 'rxjs/operators';
-import { GetLabelsGQL, GetServerVersionGQL, GetThemeGQL, LabelEntity, SaveLabelGQL, ThemeEntity } from 'src/schema/schema';
+import { GetConfigurationsGQL, GetLabelsGQL, GetServerVersionGQL, GetThemeGQL, LabelEntity, SaveLabelGQL, ThemeEntity } from 'src/schema/schema';
 import { FeedbackService } from '../services/feedback.service';
 import { CoreActions } from './core.actions';
 
@@ -10,7 +11,7 @@ import { Action } from '@ngrx/store';
 
 @Injectable()
 export class CoreEffects implements OnInitEffects {
-  
+
   ngrxOnInitEffects(): Action {
     return CoreActions.init();
   }
@@ -49,11 +50,19 @@ export class CoreEffects implements OnInitEffects {
     tap(action => this.feedbackService.open(action.feedback)),
   ), { dispatch: false });
 
+  getConfigurations = createEffect(() => this.actions.pipe(
+    ofType(CoreActions.init),
+    switchMap(() => this.getCofigurationsService.watch().valueChanges),
+    filter(response => !!response.data.getConfigurations?.result?.length),
+    map(response => CoreActions.setConfigurations(response.data.getConfigurations?.result as ConfigurationEntity[]))
+  ));
+
   constructor(
     private actions: Actions,
     private feedbackService: FeedbackService,
     private getLabelsService: GetLabelsGQL,
     private getServerVersionService: GetServerVersionGQL,
     private getThemeService: GetThemeGQL,
-    private saveLabelService: SaveLabelGQL,) {}
+    private saveLabelService: SaveLabelGQL,
+    private getCofigurationsService: GetConfigurationsGQL) { }
 }

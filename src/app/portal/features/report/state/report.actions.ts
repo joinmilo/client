@@ -1,3 +1,4 @@
+import { ConfigurationEntity, ConfigurationEntityInput } from './../../../../../schema/schema';
 import { createActionGroup, emptyProps } from '@ngrx/store';
 import { ReportEntity, ReportEntityInput, ReportTypeEntity } from '../../../../../schema/schema';
 

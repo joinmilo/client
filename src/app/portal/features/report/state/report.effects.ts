@@ -32,6 +32,7 @@ export class ReportEffects {
     map(response => ReportTypeActions.setCurrentTypes(response.data.getReportTypes?.result as ReportTypeEntity[]))
   ));
 
+
   constructor(
     private actions: Actions,
     private saveReportService: SaveReportGQL,

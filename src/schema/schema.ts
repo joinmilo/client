@@ -4675,6 +4675,8 @@ export type VisitorEntity = {
 
 export type AddressFragment = { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number };
 
+export type ConfigurationFragment = { __typename?: 'ConfigurationEntity', id?: string | null, key?: string | null, value?: string | null };
+
 export type ContactFragment = { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null };
 
 export type LabelFragment = { __typename?: 'LabelEntity', id?: string | null, tagId?: string | null, translatables?: Array<{ __typename?: 'LabelTranslatablesEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
@@ -4706,6 +4708,11 @@ export type SaveLabelMutationVariables = Exact<{
 
 
 export type SaveLabelMutation = { __typename?: 'Mutation', saveLabel?: { __typename?: 'LabelEntity', id?: string | null, tagId?: string | null, translatables?: Array<{ __typename?: 'LabelTranslatablesEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
+export type GetConfigurationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetConfigurationsQuery = { __typename?: 'Query', getConfigurations?: { __typename?: 'PageableList_ConfigurationEntity', result?: Array<{ __typename?: 'ConfigurationEntity', id?: string | null, key?: string | null, value?: string | null } | null> | null } | null };
 
 export type GetLabelsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4798,6 +4805,13 @@ export type SaveReportMutationVariables = Exact<{
 
 export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captcha?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
 
+export const ConfigurationFragmentDoc = gql`
+    fragment Configuration on ConfigurationEntity {
+  id
+  key
+  value
+}
+    `;
 export const LabelFragmentDoc = gql`
     fragment Label on LabelEntity {
   id
@@ -5112,6 +5126,26 @@ export const SaveLabelDocument = gql`
   })
   export class SaveLabelGQL extends Apollo.Mutation<SaveLabelMutation, SaveLabelMutationVariables> {
     override document = SaveLabelDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetConfigurationsDocument = gql`
+    query getConfigurations {
+  getConfigurations {
+    result {
+      ...Configuration
+    }
+  }
+}
+    ${ConfigurationFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetConfigurationsGQL extends Apollo.Query<GetConfigurationsQuery, GetConfigurationsQueryVariables> {
+    override document = GetConfigurationsDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
