@@ -18,12 +18,3 @@ nav {
 a {
   color: var(--color-primary-900);
 }
-
-aside {
-  place-self: end;
-
-  nav:last-child {
-    flex-flow: row;
-    justify-content: center;
-  }
-}
