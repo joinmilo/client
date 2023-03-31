@@ -1,9 +1,13 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Subject, filter, map, takeUntil } from 'rxjs';
+<<<<<<< Upstream, based on main
+import { filter, map, Subject, takeUntil } from 'rxjs';
 import { hCaptchaSitekeyConfig } from 'src/app/core/constants/core.constants';
 import { selectConfiguration } from 'src/app/core/state/core.selectors';
+=======
+import { Subject, takeUntil } from 'rxjs';
+>>>>>>> dcd116a hcpatcha component in core (wip)
 import { ReportTypeEntity } from 'src/schema/schema';
 import { ReportActions } from '../../state/report.actions';
 import { selectReportTypes, selectSavedReport } from '../../state/report.selectors';

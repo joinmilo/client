@@ -42,19 +42,12 @@ const modules: Type<any>[] = [
   ReportPortalRoutingModule,
 ];
 
-const libs: any[] = [
-  NgHcaptchaModule.forRoot({
-    languageCode: 'de' //TODO
-  }),
-]
-
 @NgModule({
   declarations: [...components],
   imports: [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [...components],
 })

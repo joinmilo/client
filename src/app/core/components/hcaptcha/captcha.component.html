@@ -1,0 +1,6 @@
+<div *ngIf="sitekey | async">
+  <ng-hcaptcha class="mobile" formControlName="captchaToken" [siteKey]="(sitekey | async)!"
+    size="compact"></ng-hcaptcha>
+  <ng-hcaptcha class="desktop" formControlName="captchaToken" [siteKey]="(sitekey | async)!">
+  </ng-hcaptcha>
+</div>

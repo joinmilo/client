@@ -34,10 +34,7 @@
           <textarea formControlName="content" matInput rows="5"></textarea>
         </mat-form-field>
       </div>
-      <div *ngIf="sitekey | async">
-        <ng-hcaptcha class="mobile" formControlName="captchaToken" [siteKey]="(sitekey | async)!" size="compact"></ng-hcaptcha>
-        <ng-hcaptcha class="desktop" formControlName="captchaToken" [siteKey]="(sitekey | async)!"></ng-hcaptcha>
-      </div>
+      <app-captcha></app-captcha>
       <div>
         <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
           <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>

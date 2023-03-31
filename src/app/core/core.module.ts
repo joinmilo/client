@@ -1,6 +1,9 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgHcaptchaModule } from 'ng-hcaptcha';
+import { CaptchaComponent } from './components/hcaptcha/captcha.component';
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -49,6 +52,7 @@ const components = [
   ContentCardComponent,
   CalendarComponent,
   CalendarHeaderComponent,
+  CaptchaComponent,
   CardSliderComponent,
   ContactCardComponent,
   DatePieceComponent,
@@ -99,6 +103,9 @@ const materials = [
 const libs = [
   StoreModule.forFeature(coreFeatureKey, coreReducer),
   EffectsModule.forFeature([CoreEffects]),
+  NgHcaptchaModule.forRoot({
+    languageCode: 'de' //TODO
+  }),
 ];
 
 @NgModule({

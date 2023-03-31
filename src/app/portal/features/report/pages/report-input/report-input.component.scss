@@ -1,5 +1,3 @@
-@import 'src/styles/mixins.scss';
-
 main {
   display: flex;
   flex-flow: column;
@@ -30,18 +28,6 @@ section {
       flex: 2 1 auto;
       min-width: 16rem; //TODO: Widget width as variable
     }
-  }
-}
-
-@include responsive(tablet) {
-  .desktop {
-    display: none;
-  }
-}
-
-@include responsive(desktop) {
-  .mobile {
-    display: none;
   }
 }
 
