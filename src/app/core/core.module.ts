@@ -1,7 +1,6 @@
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
-import { NgModule, Type } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -37,7 +36,7 @@ import { TranslatablePipe } from './pipes/translatable.pipe';
 import { CoreEffects } from './state/core.effects';
 import { coreReducer } from './state/core.reducer';
 
-const components: Type<any>[] = [
+const components = [
   AddressPieceComponent,
   ContentCardComponent,
   CardSliderComponent,
@@ -53,24 +52,24 @@ const components: Type<any>[] = [
   SliderComponent
 ];
 
-const directives: Type<any>[] = [
+const directives = [
   AppLabelDirective,
   HtmlDirective,
 ];
 
-const pipes: Type<any>[] = [
+const pipes = [
   AddressPipe,
   TranslatablePipe,
 ];
 
-const framework: Type<any>[] = [
+const framework = [
   CommonModule,
   RouterModule,
   ReactiveFormsModule,
   FormsModule
 ];
 
-const materials: Type<any>[] = [
+const materials = [
   FontAwesomeModule,
   MatButtonModule,
   MatCardModule,
@@ -83,7 +82,7 @@ const materials: Type<any>[] = [
 
 ];
 
-const libs: any = [
+const libs = [
   StoreModule.forFeature(coreFeatureKey, coreReducer),
   EffectsModule.forFeature([CoreEffects]),
 ];

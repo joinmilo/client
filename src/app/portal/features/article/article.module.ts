@@ -1,29 +1,24 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
-import { NgModule, Type } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticlePortalRoutingModule } from './article-routing.module';
 
-const components: Type<any>[] = [
-
-];
-
-const framework: Type<any>[] = [
+const framework = [
   CommonModule,
 ];
 
-const materials: Type<any>[] = [
+const materials = [
   MatToolbarModule,
 ];
 
-const modules: Type<any>[] = [
+const modules = [
   ArticlePortalRoutingModule,
   CoreModule,
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [],
   imports: [
     ...framework,
     ...materials,

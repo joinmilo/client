@@ -1,7 +1,5 @@
-import { PortalHeaderMobileComponent } from './components/header/mobile/portal-header-mobile.component';
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
-import { NgModule, Type } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -23,6 +21,7 @@ import { PortalFooterComponent } from './components/footer/portal-footer.compone
 import { PortalFooterSocialMediaComponent } from './components/footer/socialmedia/portal-footer-socialmedia.component';
 import { PortalHeaderActionComponent } from './components/header/action/portal-header-action.component';
 import { PortalHeaderDesktopComponent } from './components/header/desktop/portal-header-desktop.component';
+import { PortalHeaderMobileComponent } from './components/header/mobile/portal-header-mobile.component';
 import { PortalHeaderComponent } from './components/header/portal-header.component';
 import { PortalMenuItemComponent } from './components/menu/menu-item/portal-menu-item.component';
 import { commonFeatureKey } from './constants/common.constants';
@@ -30,7 +29,7 @@ import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
 import { CommonEffects } from './state/common.effects';
 import { commonReducer } from './state/common.reducer';
 
-const components: Type<any>[] = [
+const components = [
   PortalFooterComponent,
   PortalFooterAppStoreComponent,
   PortalFooterDesktopComponent,
@@ -45,18 +44,17 @@ const components: Type<any>[] = [
   SearchFieldComponent,
 ];
 
-const pages: Type<any>[] = [
+const pages = [
   PortalNotFoundComponent,
 ];
 
-const framework: Type<any>[] = [
+const framework = [
   CommonModule,
-  RouterModule,
-  MatMenuModule,
   FormsModule,
+  RouterModule,
 ];
 
-const materials: Type<any>[] = [
+const materials = [
   FontAwesomeModule,
   MatExpansionModule,
   MatButtonModule,
@@ -68,9 +66,14 @@ const materials: Type<any>[] = [
   MatToolbarModule,
 ];
 
-const modules: Type<any>[] = [
+const modules = [
   CoreModule,
 ];
+
+const libs = [
+  StoreModule.forFeature(commonFeatureKey, commonReducer),
+  EffectsModule.forFeature([CommonEffects]),
+]
 
 @NgModule({
   declarations: [
@@ -81,8 +84,7 @@ const modules: Type<any>[] = [
     ...framework,
     ...materials,
     ...modules,
-    StoreModule.forFeature(commonFeatureKey, commonReducer),
-    EffectsModule.forFeature([CommonEffects]),
+    ...libs,
   ],
   exports: [
     ...components,

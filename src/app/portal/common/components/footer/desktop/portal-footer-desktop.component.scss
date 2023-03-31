@@ -1,6 +1,7 @@
 footer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr) min-content;  
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
 
   padding: var(--gap);
 

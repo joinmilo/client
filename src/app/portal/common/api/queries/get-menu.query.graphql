@@ -1,8 +1,8 @@
-query getMenu {
+query getMenu($parent: String) {
   getMenuItems(
     params: {
       sort: "order"
-      expression: { entity: { path: "parent", value: null } }
+      expression: { entity: { path: "parent.id", value: $parent } }
     }
   ) {
     result {

@@ -1,7 +1,6 @@
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { MatMenuModule } from '@angular/material/menu';
-/* eslint-disable  @typescript-eslint/no-explicit-any */
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { APP_INITIALIZER, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -23,11 +22,11 @@ function init(authService: AuthService): () => Observable<unknown> {
   return () => authService.refresh();
 }
 
-const components: Type<any>[] = [
+const components = [
   AppComponent,
 ];
 
-const framework: Type<any>[] = [
+const framework = [
   AppRoutingModule,
   BrowserModule,
   BrowserAnimationsModule,
@@ -35,7 +34,7 @@ const framework: Type<any>[] = [
   RouterModule
 ];
 
-const libs: any[] = [
+const libs = [
   GraphQLModule,
   StoreModule.forRoot({}, {}),
   EffectsModule.forRoot([]),
@@ -48,15 +47,15 @@ const libs: any[] = [
   }),
 ];
 
-const materials: Type<any>[] = [
+const materials = [
   MatMenuModule
 ];
 
-const modules: Type<any>[] = [
+const modules = [
   CoreModule
 ];
 
-const providers: any[] = [
+const providers = [
   {
     provide: APP_INITIALIZER,
     useFactory: init,

@@ -1,6 +1,5 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
-import { NgModule, Type } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { EffectsModule } from '@ngrx/effects';
@@ -15,31 +14,34 @@ import { PageComponent } from './pages/page/page.component';
 import { PageEffects } from './state/page.effects';
 import { pageReducer } from './state/page.reducer';
 
-const components: Type<any>[] = [
+const components = [
   PageFeaturesComponent
 ];
 
-const pages: Type<any>[] = [
+const pages = [
   PageComponent,
   PageLandingComponent,
 ];
 
-const framework: any[] = [
+const framework = [
   CommonModule,
-  StoreModule.forFeature(pageFeatureKey, pageReducer),
-  EffectsModule.forFeature([PageEffects]),
 ];
 
-const materials: Type<any>[] = [
+const materials = [
   MatButtonModule,
   MatToolbarModule,
 ];
 
-const modules: Type<any>[] = [
+const modules = [
   CoreModule,
   PagePortalRoutingModule,
   PortalCommonModule,
 ];
+
+const libs = [
+  StoreModule.forFeature(pageFeatureKey, pageReducer),
+  EffectsModule.forFeature([PageEffects]),
+]
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ const modules: Type<any>[] = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [
     ...components,
