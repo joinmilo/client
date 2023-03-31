@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { AppEntity, MenuItemEntity, SocialMediaEntity } from 'src/schema/schema';
+import { AppEntity, Maybe, MenuItemEntity, SocialMediaEntity } from 'src/schema/schema';
 
 export const CommonActions = createActionGroup({
   source: 'Portal Common',
@@ -13,6 +13,7 @@ export const CommonActions = createActionGroup({
     'get social media': emptyProps(),
     'set social media': (socialMedia: SocialMediaEntity[]) => ({ socialMedia }),
 
+    'navigate': (item: Maybe<MenuItemEntity>) => ({ item }),
     'not found': emptyProps(),
   },
 });

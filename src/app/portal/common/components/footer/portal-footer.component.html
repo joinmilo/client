@@ -1,2 +1,8 @@
-<app-portal-footer-desktop></app-portal-footer-desktop>
-<app-portal-footer-mobile></app-portal-footer-mobile>
+<app-portal-footer-desktop
+  [menu]="menu | async"
+  (menuClicked)="navigate($event)">
+</app-portal-footer-desktop>
+<app-portal-footer-mobile
+  [menu]="menu | async"
+  (menuClicked)="navigate($event)">
+</app-portal-footer-mobile>

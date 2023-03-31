@@ -1,20 +1,20 @@
 <footer>
   <mat-accordion multi>
-    <mat-expansion-panel *ngFor="let menuItem of menu | async">
+    <mat-expansion-panel *ngFor="let menuItem of menu">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <strong>{{menuItem | translatable: 'name' | async}}</strong>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="submenu">
-        <a *ngFor="let subItem of menuItem.subMenuItems" (click)="route(subItem)">
+        <a *ngFor="let subItem of menuItem.subMenuItems" (click)="menuClicked.emit(subItem)">
           {{subItem | translatable: 'name' | async}}
         </a>
       </div>
     </mat-expansion-panel>
   </mat-accordion>
   <aside>
-    <app-app-store-piece></app-app-store-piece>
-    <app-social-media-piece></app-social-media-piece>
+    <app-portal-footer-appstore></app-portal-footer-appstore>
+    <app-portal-footer-socialmedia></app-portal-footer-socialmedia>
   </aside>
 </footer>

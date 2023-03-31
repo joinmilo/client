@@ -9,12 +9,12 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { AppStorePieceComponent } from 'src/app/core/components/pieces/app-store/app-store-piece.component';
-import { SocialMediaPieceComponent } from 'src/app/core/components/pieces/social-media/social-media-piece.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { PortalFooterAppStoreComponent } from './components/footer/appstore/portal-footer-appstore.component';
 import { PortalFooterDesktopComponent } from './components/footer/desktop/portal-footer-desktop.component';
 import { PortalFooterMobileComponent } from './components/footer/mobile/portal-footer-mobile.component';
 import { PortalFooterComponent } from './components/footer/portal-footer.component';
+import { PortalFooterSocialMediaComponent } from './components/footer/socialmedia/portal-footer-socialmedia.component';
 import { PortalHeaderComponent } from './components/header/portal-header.component';
 import { PortalMenuComponent } from './components/menu/portal-menu.component';
 import { commonFeatureKey } from './constants/common.constants';
@@ -24,12 +24,13 @@ import { commonReducer } from './state/common.reducer';
 
 const components: Type<any>[] = [
   PortalFooterComponent,
+  PortalFooterAppStoreComponent,
   PortalFooterDesktopComponent,
   PortalFooterMobileComponent,
+  PortalFooterSocialMediaComponent,
+  
   PortalHeaderComponent,
   PortalMenuComponent,
-  SocialMediaPieceComponent,
-  AppStorePieceComponent, 
 ];
 
 const pages: Type<any>[] = [

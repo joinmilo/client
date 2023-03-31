@@ -1,12 +1,12 @@
 <footer>
-  <nav *ngFor="let menuItem of menu | async">
+  <nav *ngFor="let menuItem of menu">
     <h3>{{menuItem | translatable: 'name' | async}}</h3>
-    <a *ngFor="let subItem of menuItem.subMenuItems" (click)="route(subItem)">
+    <a *ngFor="let subItem of menuItem.subMenuItems" (click)="menuClicked.emit(subItem)">
       {{subItem | translatable: 'name' | async}}
     </a>
   </nav>
   <aside>
-    <app-app-store-piece></app-app-store-piece>
-    <app-social-media-piece></app-social-media-piece>
+    <app-portal-footer-appstore></app-portal-footer-appstore>
+    <app-portal-footer-socialmedia></app-portal-footer-socialmedia>
   </aside>
 </footer>

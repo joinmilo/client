@@ -5,11 +5,11 @@ import { ConfigurationEntity } from './../../../schema/schema';
 import { CoreActions } from './core.actions';
 
 export interface CoreState {
+  configurations?: ConfigurationEntity[]
   currentTheme?: Maybe<ThemeEntity>,
   language?: LanguageEntity,
   labels?: Map<string, Maybe<Translatable>[]>,
   themes?: ThemeEntity[],
-  configurations?: ConfigurationEntity[]
 }
 
 export const initialState: CoreState = {
@@ -19,6 +19,10 @@ export const initialState: CoreState = {
 export const coreReducer = createReducer(
   initialState,
 
+  on(CoreActions.setConfigurations, (state, action): CoreState => (
+    { ...state, configurations: action.configurations }
+  )),
+  
   on(CoreActions.setLabels, (state, action): CoreState => (
     {
       ...state,
@@ -36,8 +40,5 @@ export const coreReducer = createReducer(
     }
   )),
 
-  on(CoreActions.setConfigurations, (state, action): CoreState => (
-    { ...state, configurations: action.configurations }
-  )),
 
 );

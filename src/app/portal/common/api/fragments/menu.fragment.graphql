@@ -4,6 +4,7 @@ fragment MenuItem on MenuItemEntity {
   order
   feature {
     id
+    key
   }
   page {
     id
@@ -19,6 +20,7 @@ fragment MenuItem on MenuItemEntity {
     id
     feature {
       id
+      key
     }
     page {
       id

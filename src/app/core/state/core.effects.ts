@@ -15,6 +15,13 @@ export class CoreEffects implements OnInitEffects {
   ngrxOnInitEffects(): Action {
     return CoreActions.init();
   }
+  
+  getConfigurations = createEffect(() => this.actions.pipe(
+    ofType(CoreActions.init),
+    switchMap(() => this.getCofigurationsService.watch().valueChanges),
+    filter(response => !!response.data.getConfigurations?.result?.length),
+    map(response => CoreActions.setConfigurations(response.data.getConfigurations?.result as ConfigurationEntity[]))
+  ));
 
   getLabels = createEffect(() => this.actions.pipe(
     ofType(CoreActions.init),
@@ -42,12 +49,6 @@ export class CoreEffects implements OnInitEffects {
     tap(action => this.feedbackService.open(action.feedback)),
   ), { dispatch: false });
 
-  getConfigurations = createEffect(() => this.actions.pipe(
-    ofType(CoreActions.init),
-    switchMap(() => this.getCofigurationsService.watch().valueChanges),
-    filter(response => !!response.data.getConfigurations?.result?.length),
-    map(response => CoreActions.setConfigurations(response.data.getConfigurations?.result as ConfigurationEntity[]))
-  ));
 
   constructor(
     private actions: Actions,

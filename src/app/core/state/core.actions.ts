@@ -7,13 +7,12 @@ export const CoreActions = createActionGroup({
   events: {
     'init': emptyProps(),
 
-    'set labels': (labels: LabelEntity[]) => ({ labels }),
-
+    'set configurations': (configurations: ConfigurationEntity[]) => ({ configurations }),
     'set feedback': (feedback: Feedback) => ({ feedback }),
+    'set labels': (labels: LabelEntity[]) => ({ labels }),
     'set server version': (version?: Maybe<InformationDto>) => ({ version }),
     'set themes': (themes: ThemeEntity[]) => ({ themes }),
-
-    'set configurations': (configurations: ConfigurationEntity[]) => ({ configurations })
+    
   },
 });
 

@@ -26,6 +26,19 @@ export class CommonEffects {
     map(response => CommonActions.setSocialMedia(response.data.getSocialMedias?.result as SocialMediaEntity[]))
   ));
 
+  navigate = createEffect(() => this.actions.pipe(
+    ofType(CommonActions.navigate),
+    tap(action => {
+      if (action?.item?.feature?.key) {
+        this.router.navigate(['portal', action.item.feature.key]);
+      }
+
+      if (action?.item?.page?.slug) {
+        this.router.navigate([`/${action.item.page.slug}`]);
+      }
+    }),
+  ), { dispatch: false });
+
   notFound = createEffect(() => this.actions.pipe(
     ofType(CommonActions.notFound),
     tap(() => this.router.navigate(['/portal', '404'])),
