@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { GetMenuGQL, Maybe, MenuItemEntity } from 'src/schema/schema';
 import { CommonActions } from '../../../state/common.actions';
 
 @Component({
-  selector: 'app-portal-menu-item',
-  templateUrl: './portal-menu-item.component.html',
-  styleUrls: ['./portal-menu-item.component.scss'],
+  selector: 'app-portal-header-menu-item',
+  templateUrl: './portal-header-menu-item.component.html',
+  styleUrls: ['./portal-header-menu-item.component.scss'],
 })
-export class PortalMenuItemComponent implements OnInit {
+export class PortalHeaderMenuItemComponent implements OnInit {
 
   @Input()
   public root = false;
@@ -17,28 +17,23 @@ export class PortalMenuItemComponent implements OnInit {
   @Input()
   public parent?: Maybe<MenuItemEntity>;
   
-  public subMenuItems?: Maybe<Maybe<MenuItemEntity>[]>;
+  public subMenuItems?: Observable<Maybe<Maybe<MenuItemEntity>[]> | undefined>;
 
   constructor(
     private store: Store,
     private menuService: GetMenuGQL,
   ) { }
 
-  ngOnInit(): void {
-    this.subMenuItems = this.parent?.subMenuItems;
+  public ngOnInit(): void {
+    this.subMenuItems = of(this.parent?.subMenuItems);
   }
 
   public retrieveSubmenu(): void {
-    this.menuService
-      .watch({ parent: this.parent?.id })
-      .valueChanges
+    this.subMenuItems = this.menuService
+      .watch({ parent: this.parent?.id }).valueChanges
       .pipe(
         map(response => response.data.getMenuItems?.result as MenuItemEntity[]),
-      ).subscribe(items => this.subMenuItems = items);
-  }
-
-  public hasSubmenu(subItem: Maybe<MenuItemEntity>): boolean {
-    return (subItem?.subMenuItems?.length || 0) > 0
+      );
   }
 
   public route(item: Maybe<MenuItemEntity>) {

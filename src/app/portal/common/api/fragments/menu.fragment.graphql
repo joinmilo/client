@@ -6,6 +6,9 @@ fragment MenuItem on MenuItemEntity {
     id
     key
   }
+  parent {
+    id
+  }
   page {
     id
   }

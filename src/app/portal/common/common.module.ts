@@ -21,9 +21,9 @@ import { PortalFooterComponent } from './components/footer/portal-footer.compone
 import { PortalFooterSocialMediaComponent } from './components/footer/socialmedia/portal-footer-socialmedia.component';
 import { PortalHeaderActionComponent } from './components/header/action/portal-header-action.component';
 import { PortalHeaderDesktopComponent } from './components/header/desktop/portal-header-desktop.component';
+import { PortalHeaderMenuItemComponent } from './components/header/menu-item/portal-header-menu-item.component';
 import { PortalHeaderMobileComponent } from './components/header/mobile/portal-header-mobile.component';
 import { PortalHeaderComponent } from './components/header/portal-header.component';
-import { PortalMenuItemComponent } from './components/menu/menu-item/portal-menu-item.component';
 import { commonFeatureKey } from './constants/common.constants';
 import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
 import { CommonEffects } from './state/common.effects';
@@ -40,7 +40,8 @@ const components = [
   PortalHeaderActionComponent,
   PortalHeaderDesktopComponent,
   PortalHeaderMobileComponent,
-  PortalMenuItemComponent,
+  PortalHeaderMenuItemComponent,
+  
   SearchFieldComponent,
 ];
 

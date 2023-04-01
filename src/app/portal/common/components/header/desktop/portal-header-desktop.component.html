@@ -1,9 +1,10 @@
 <header>
   <app-logo></app-logo>
   <section>
-    <app-portal-menu-item *ngFor="let menuItem of menu | async" [root]="true"
+    <app-portal-header-menu-item *ngFor="let menuItem of menu | async"
+      [root]="true"
       [parent]="menuItem">
-    </app-portal-menu-item>
+    </app-portal-header-menu-item>
   </section>
   <app-portal-header-action></app-portal-header-action>
 </header>

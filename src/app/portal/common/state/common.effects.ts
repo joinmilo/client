@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
 import { map, switchMap, tap } from 'rxjs';
 import { AppEntity, GetAppsGQL, GetMenuGQL, GetSocialMediaGQL, MenuItemEntity, SocialMediaEntity } from './../../../../schema/schema';
 import { CommonActions } from './common.actions';
@@ -8,20 +9,29 @@ import { CommonActions } from './common.actions';
 @Injectable()
 export class CommonEffects {
 
+  ngrxOnInitEffects(): Action {
+    return CommonActions.init();
+  }
+  
+
   getApps = createEffect(() => this.actions.pipe(
-    ofType(CommonActions.getApps),
+    ofType(CommonActions.init),
     switchMap(() => this.getAppsService.watch().valueChanges),
     map(response => CommonActions.setApps(response.data.getApps?.result as AppEntity[]))
   ));
 
   getMenu = createEffect(() => this.actions.pipe(
-    ofType(CommonActions.getMenu),
-    switchMap(() => this.getMenuService.watch().valueChanges),
+    ofType(
+      CommonActions.init,
+      CommonActions.getMenu),
+    switchMap(action => this.getMenuService.watch({
+      parent: (action as ({ parentId: string })).parentId
+    }).valueChanges),
     map(response => CommonActions.setMenu(response.data.getMenuItems?.result as MenuItemEntity[]))
   ));
 
   getSocialMedia = createEffect(() => this.actions.pipe(
-    ofType(CommonActions.getSocialMedia),
+    ofType(CommonActions.init),
     switchMap(() => this.getSocialMediaService.watch().valueChanges),
     map(response => CommonActions.setSocialMedia(response.data.getSocialMedias?.result as SocialMediaEntity[]))
   ));

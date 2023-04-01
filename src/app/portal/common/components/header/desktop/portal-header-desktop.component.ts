@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
-import { CommonActions } from '../../../state/common.actions';
 import { selectMenu } from '../../../state/common.selectors';
 
 @Component({
@@ -11,9 +9,7 @@ import { selectMenu } from '../../../state/common.selectors';
 })
 export class PortalHeaderDesktopComponent {
 
-  public menu = this.store.select(selectMenu).pipe(
-    tap(menu => !menu?.length && this.store.dispatch(CommonActions.getMenu()))
-  );
+  public menu = this.store.select(selectMenu);
 
   constructor(
     private store: Store,
