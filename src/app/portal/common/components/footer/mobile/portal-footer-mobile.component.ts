@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Maybe, MenuItemEntity } from 'src/schema/schema';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-portal-footer-mobile',
@@ -8,11 +7,6 @@ import { Maybe, MenuItemEntity } from 'src/schema/schema';
 })
 export class PortalFooterMobileComponent {
 
-  @Input()
-  public menu?: Maybe<MenuItemEntity[]>
-
-  @Output()
-  public menuClicked = new EventEmitter<Maybe<MenuItemEntity>>();
 }
 
 

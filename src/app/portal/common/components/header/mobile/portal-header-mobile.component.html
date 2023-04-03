@@ -1,116 +1,16 @@
-<div class="menu-mobile"> 
-  
-  
-  <button class="bars" mat-icon-button
-    (click)="toggleMenu()"> 
-    <fa-icon
-      [icon]="['fas', 'bars']">
-    </fa-icon>
-    </button>
-
-    <div class="overlay" *ngIf="showMenu">
-
-      
-
-      <div class="menu">
-        <div class="top">
-          <app-logo></app-logo>
-          <section>
-          <app-search-field></app-search-field>
-            <button class="xmark" mat-icon-button
-              (click)="toggleMenu()"> 
-            <fa-icon
-              [icon]="['fas', 'xmark']">
-            </fa-icon>
-          </button>
-          </section>
-        </div>
-
-        <button mat-fab extended color="primary">
-          <fa-icon
-            [icon]="['fas', 'house']">
-          </fa-icon>
-          Primary
-        </button>
-
-          <mat-accordion>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                 (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <fa-icon
-                     [icon]="['fas', 'house']">
-                  </fa-icon>
-                </mat-panel-title>
-                <mat-panel-description>
-                  Entdecken
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                 (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <fa-icon
-                     [icon]="['fas', 'house']">
-                  </fa-icon>
-                </mat-panel-title>
-                <mat-panel-description>
-                  Erfahren
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-
-            <mat-expansion-panel (opened)="panelOpenState = true"
-            (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-              <mat-panel-title>
-              <fa-icon
-              [icon]="['fas', 'house']">
-              </fa-icon>
-              </mat-panel-title>
-              <mat-panel-description>
-              Mitmachen
-              </mat-panel-description>
-              </mat-expansion-panel-header>
-              <p>I'm visible because I am open</p>
-              </mat-expansion-panel>
-          </mat-accordion>
-
-          <button mat-fab extended color="primary">
-            <fa-icon
-              [icon]="['fas', 'house']">
-            </fa-icon>
-            Primary
-          </button>
-
-          <button mat-fab extended color="primary">
-            <fa-icon
-              [icon]="['fas', 'house']">
-            </fa-icon>
-            Primary
-          </button>
-          <hr>
-          <button mat-fab extended color="primary">
-            <fa-icon
-              [icon]="['fas', 'house']">
-            </fa-icon>
-            Primary
-          </button>
-          <button mat-fab extended color="primary">
-            <fa-icon
-              [icon]="['fas', 'house']">
-            </fa-icon>
-            Primary
-          </button>
-
-        </div>
-    
-
-  </div>
-
-  
-</div>
+<header>
+  <app-portal-header-back></app-portal-header-back>
+  <app-portal-header-language></app-portal-header-language>
+  <app-logo></app-logo>
+  <button mat-icon-button>
+    <fa-icon [icon]="['far', 'bell']"></fa-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <app-portal-menu-accordion></app-portal-menu-accordion>
+    <mat-divider></mat-divider>
+    <app-portal-header-user></app-portal-header-user>
+  </mat-menu>
+</header>

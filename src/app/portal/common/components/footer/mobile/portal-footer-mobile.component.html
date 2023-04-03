@@ -1,18 +1,5 @@
 <footer>
-  <mat-accordion multi>
-    <mat-expansion-panel *ngFor="let menuItem of menu">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <strong>{{menuItem | translatable: 'name' | async}}</strong>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="submenu">
-        <a *ngFor="let subItem of menuItem.subMenuItems" (click)="menuClicked.emit(subItem)">
-          {{subItem | translatable: 'name' | async}}
-        </a>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+  <app-portal-menu-accordion></app-portal-menu-accordion>
   <aside>
     <app-portal-footer-appstore></app-portal-footer-appstore>
     <app-portal-footer-socialmedia></app-portal-footer-socialmedia>

@@ -5,11 +5,11 @@ import { CommonActions } from '../../../state/common.actions';
 import { selectMenu } from '../../../state/common.selectors';
 
 @Component({
-  selector: 'app-portal-footer-desktop',
-  templateUrl: './portal-footer-desktop.component.html',
-  styleUrls: ['./portal-footer-desktop.component.scss']
+  selector: 'app-portal-menu-accordion',
+  templateUrl: './portal-menu-accordion.component.html',
+  styleUrls: ['./portal-menu-accordion.component.scss']
 })
-export class PortalFooterDesktopComponent {
+export class PortalMenuAccordionComponent {
 
   public menu = this.store.select(selectMenu);
 
@@ -20,8 +20,4 @@ export class PortalFooterDesktopComponent {
   public navigate(item: Maybe<MenuItemEntity>) {
     this.store.dispatch(CommonActions.navigate(item));
   }
-
 }
-
-
-

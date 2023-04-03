@@ -109,6 +109,6 @@ export class CoreModule {
   public constructor(
     iconLibrary: FaIconLibrary
   ) {
-    iconLibrary.addIconPacks(fab, fas, far);
+    iconLibrary.addIconPacks(fab, far, fas);
   }
 }

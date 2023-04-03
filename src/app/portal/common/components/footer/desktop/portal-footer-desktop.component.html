@@ -1,7 +1,7 @@
 <footer>
-  <nav *ngFor="let menuItem of menu">
+  <nav *ngFor="let menuItem of menu | async">
     <h3>{{menuItem | translatable: 'name' | async}}</h3>
-    <a *ngFor="let subItem of menuItem.subMenuItems" (click)="menuClicked.emit(subItem)">
+    <a *ngFor="let subItem of menuItem.subMenuItems" (click)="navigate(subItem)">
       {{subItem | translatable: 'name' | async}}
     </a>
   </nav>

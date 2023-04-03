@@ -1,16 +1,16 @@
 <header>
   <app-logo></app-logo>
   <section>
-    <app-portal-header-desktop-menu *ngFor="let menuItem of menu | async"
+    <app-portal-menu-overlay *ngFor="let menuItem of menu | async"
       [root]="true"
       [parent]="menuItem">
-    </app-portal-header-desktop-menu>
+    </app-portal-menu-overlay>
   </section>
   <section>
-    <!-- <app-search-field></app-search-field> -->
+    <!-- <app-portal-header-search></app-portal-header-search> -->
     <button mat-raised-button color="primary"
       [routerLink]="['/portal', 'register']">
-        <span appLabel="register" ></span>
+        <span appLabel="register"></span>
     </button>
     <button mat-raised-button color="primary"
       [routerLink]="['/portal', 'login']">
@@ -19,9 +19,14 @@
     <div>
       <app-portal-header-language></app-portal-header-language>
       <button mat-icon-button>
-        <fa-icon [icon]="['far', 'circle-user']">
-        </fa-icon>
+        <fa-icon [icon]="['far', 'bell']"></fa-icon>
       </button>
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <fa-icon [icon]="['far', 'circle-user']"></fa-icon>
+      </button>
+      <mat-menu #userMenu="matMenu">
+        <app-portal-header-user></app-portal-header-user>
+      </mat-menu>
     </div>
   </section>
 </header>

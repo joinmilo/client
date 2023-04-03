@@ -2,14 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map, of } from 'rxjs';
 import { GetMenuGQL, Maybe, MenuItemEntity } from 'src/schema/schema';
-import { CommonActions } from '../../../../state/common.actions';
+import { CommonActions } from '../../../state/common.actions';
 
 @Component({
-  selector: 'app-portal-header-desktop-menu',
-  templateUrl: './portal-header-desktop-menu.component.html',
-  styleUrls: ['./portal-header-desktop-menu.component.scss'],
+  selector: 'app-portal-menu-overlay',
+  templateUrl: './portal-menu-overlay.component.html',
+  styleUrls: ['./portal-menu-overlay.component.scss'],
 })
-export class PortalHeaderDesktopMenuComponent implements OnInit {
+export class PortalMenuOverlayComponent implements OnInit {
 
   @Input()
   public root = false;

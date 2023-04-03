@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class PortalHeaderMobileComponent {
 
-    showMenu = false;
-
-    toggleMenu() {
-      this.showMenu = !this.showMenu;
-    }
-
-    panelOpenState = false;
 }

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -18,12 +19,15 @@ import { PortalFooterDesktopComponent } from './components/footer/desktop/portal
 import { PortalFooterMobileComponent } from './components/footer/mobile/portal-footer-mobile.component';
 import { PortalFooterComponent } from './components/footer/portal-footer.component';
 import { PortalFooterSocialMediaComponent } from './components/footer/socialmedia/portal-footer-socialmedia.component';
-import { PortalHeaderDesktopMenuComponent } from './components/header/desktop/menu/portal-header-desktop-menu.component';
+import { PortalHeaderBackComponent } from './components/header/back/portal-header-back.component';
 import { PortalHeaderDesktopComponent } from './components/header/desktop/portal-header-desktop.component';
-import { SearchFieldComponent } from './components/header/desktop/search-field/search-field.component';
 import { PortalHeaderLanguageComponent } from './components/header/language/portal-header-language.component';
 import { PortalHeaderMobileComponent } from './components/header/mobile/portal-header-mobile.component';
 import { PortalHeaderComponent } from './components/header/portal-header.component';
+import { PortalHeaderSearchComponent } from './components/header/search/portal-header-search.component';
+import { PortalHeaderUserComponent } from './components/header/user/portal-header-user.component';
+import { PortalMenuAccordionComponent } from './components/menu/accordion/portal-menu-accordion.component';
+import { PortalMenuOverlayComponent } from './components/menu/overlay-menu/portal-menu-overlay.component';
 import { commonFeatureKey } from './constants/common.constants';
 import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
 import { CommonEffects } from './state/common.effects';
@@ -37,12 +41,16 @@ const components = [
   PortalFooterSocialMediaComponent,
   
   PortalHeaderComponent,
+  PortalHeaderBackComponent,
   PortalHeaderDesktopComponent,
-  PortalHeaderDesktopMenuComponent,
   PortalHeaderMobileComponent,
   PortalHeaderLanguageComponent,
+  PortalHeaderSearchComponent,
+  PortalHeaderUserComponent,
   
-  SearchFieldComponent,
+  PortalMenuAccordionComponent,
+  PortalMenuOverlayComponent,
+  
 ];
 
 const pages = [
@@ -57,8 +65,8 @@ const framework = [
 
 const materials = [
   FontAwesomeModule,
-  MatExpansionModule,
   MatButtonModule,
+  MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatInputModule,
