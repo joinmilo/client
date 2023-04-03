@@ -7,7 +7,7 @@
     </app-portal-header-desktop-menu>
   </section>
   <section>
-    <app-search-field></app-search-field>
+    <!-- <app-search-field></app-search-field> -->
     <button mat-raised-button color="primary"
       [routerLink]="['/portal', 'register']">
         <span appLabel="register" ></span>
@@ -16,14 +16,12 @@
       [routerLink]="['/portal', 'login']">
         <span appLabel="login"></span>
     </button>
-    <app-portal-header-language></app-portal-header-language>
-    <button mat-icon-button>
-      <fa-icon [icon]="['far', 'bell']">
-      </fa-icon>
-    </button>
-    <button mat-icon-button>
-      <fa-icon [icon]="['far', 'circle-user']">
-      </fa-icon>
-    </button>
+    <div>
+      <app-portal-header-language></app-portal-header-language>
+      <button mat-icon-button>
+        <fa-icon [icon]="['far', 'circle-user']">
+        </fa-icon>
+      </button>
+    </div>
   </section>
 </header>

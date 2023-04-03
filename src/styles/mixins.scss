@@ -16,4 +16,10 @@
       @content;
     }
   }
+
+  @if $breakpoint == maxi {
+    @media (max-width: 1279px) {
+      @content;
+    }
+  }
 }
