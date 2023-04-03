@@ -19,7 +19,18 @@ export const selectLanguage = createSelector(
   state => state?.language
 );
 
+export const selectLanguages = createSelector(
+  selectCoreState,
+  state => state?.languages
+);
+
 export const selectTheme = createSelector(
   selectCoreState,
   state => state?.currentTheme
 );
+
+export const selectConfiguration = (key: string) =>
+  createSelector(
+    selectConfigurations,
+    configurations => configurations?.find(c => c?.key === key)
+  );

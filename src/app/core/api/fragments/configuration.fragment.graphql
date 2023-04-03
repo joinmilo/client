@@ -2,4 +2,7 @@ fragment Configuration on ConfigurationEntity {
   id
   key
   value
+  media {
+    ...Media
+  }
 }

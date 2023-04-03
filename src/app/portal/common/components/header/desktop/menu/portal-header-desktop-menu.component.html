@@ -16,10 +16,10 @@
 <mat-menu #menu="matMenu">
   <ng-container *ngFor="let subItem of subMenuItems | async">
     
-    <app-portal-header-menu-item
+    <app-portal-header-desktop-menu
       *ngIf="(subItem?.subMenuItems?.length || 0) > 0; else entries"
       [parent]="subItem">
-    </app-portal-header-menu-item>
+    </app-portal-header-desktop-menu>
     
     <ng-template #entries>
       <button

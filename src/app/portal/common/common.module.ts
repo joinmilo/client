@@ -12,16 +12,16 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { SearchFieldComponent } from 'src/app/core/components/search-field/search-field.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalFooterAppStoreComponent } from './components/footer/appstore/portal-footer-appstore.component';
 import { PortalFooterDesktopComponent } from './components/footer/desktop/portal-footer-desktop.component';
 import { PortalFooterMobileComponent } from './components/footer/mobile/portal-footer-mobile.component';
 import { PortalFooterComponent } from './components/footer/portal-footer.component';
 import { PortalFooterSocialMediaComponent } from './components/footer/socialmedia/portal-footer-socialmedia.component';
-import { PortalHeaderActionComponent } from './components/header/action/portal-header-action.component';
+import { PortalHeaderDesktopMenuComponent } from './components/header/desktop/menu/portal-header-desktop-menu.component';
 import { PortalHeaderDesktopComponent } from './components/header/desktop/portal-header-desktop.component';
-import { PortalHeaderMenuItemComponent } from './components/header/menu-item/portal-header-menu-item.component';
+import { SearchFieldComponent } from './components/header/desktop/search-field/search-field.component';
+import { PortalHeaderLanguageComponent } from './components/header/language/portal-header-language.component';
 import { PortalHeaderMobileComponent } from './components/header/mobile/portal-header-mobile.component';
 import { PortalHeaderComponent } from './components/header/portal-header.component';
 import { commonFeatureKey } from './constants/common.constants';
@@ -37,10 +37,10 @@ const components = [
   PortalFooterSocialMediaComponent,
   
   PortalHeaderComponent,
-  PortalHeaderActionComponent,
   PortalHeaderDesktopComponent,
+  PortalHeaderDesktopMenuComponent,
   PortalHeaderMobileComponent,
-  PortalHeaderMenuItemComponent,
+  PortalHeaderLanguageComponent,
   
   SearchFieldComponent,
 ];

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
-import { ConfigurationEntity } from './../../../schema/schema';
+import { ConfigurationEntity, GetLanguagesGQL, LanguageEntity } from './../../../schema/schema';
 
 import { filter, map, switchMap, tap } from 'rxjs/operators';
-import { GetConfigurationsGQL, GetLabelsGQL, GetServerVersionGQL, GetThemeGQL, LabelEntity, SaveLabelGQL, ThemeEntity } from 'src/schema/schema';
+import { GetConfigurationsGQL, GetLabelsGQL, GetServerVersionGQL, GetThemeGQL, LabelEntity, ThemeEntity } from 'src/schema/schema';
 import { FeedbackService } from '../services/feedback.service';
 import { CoreActions } from './core.actions';
 
@@ -30,6 +30,13 @@ export class CoreEffects implements OnInitEffects {
     map(response => CoreActions.setLabels(response.data.getLabels?.result as LabelEntity[]))
   ));
 
+  getLanguages = createEffect(() => this.actions.pipe(
+    ofType(CoreActions.init),
+    switchMap(() => this.getLanguagesService.watch().valueChanges),
+    filter(response => !!response?.data?.getLanguages?.result?.length),
+    map(response => CoreActions.setLanguages(response.data.getLanguages?.result as LanguageEntity[]))
+  ));
+
   getServerVersion = createEffect(() => this.actions.pipe(
     ofType(CoreActions.init),
     switchMap(() => this.getServerVersionService.watch().valueChanges),
@@ -54,8 +61,8 @@ export class CoreEffects implements OnInitEffects {
     private actions: Actions,
     private feedbackService: FeedbackService,
     private getLabelsService: GetLabelsGQL,
+    private getLanguagesService: GetLanguagesGQL,
     private getServerVersionService: GetServerVersionGQL,
     private getThemeService: GetThemeGQL,
-    private saveLabelService: SaveLabelGQL,
     private getCofigurationsService: GetConfigurationsGQL) { }
 }

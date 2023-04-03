@@ -1,21 +1,21 @@
 /* BUTTON */
 
 //TODO: Necessary to set text color to contrast because of
-// https: //github.com/angular/components/issues/26056
+// https://github.com/angular/components/issues/26056
 .mat-mdc-unelevated-button.mat-primary {
-  --mdc-filled-button-label-text-color: var(--color-primary-contrast-500);
+  --mdc-filled-button-label-text-color: var(--color-primary-contrast-500) !important;
 }
 
 .mat-mdc-unelevated-button.mat-accent {
-  --mdc-filled-button-label-text-color: var(--color-accent-contrast-500);
+  --mdc-filled-button-label-text-color: var(--color-accent-contrast-500) !important;
 }
 
 .mat-mdc-raised-button.mat-primary {
-  --mdc-protected-button-label-text-color: var(--color-primary-contrast-500);
+  --mdc-protected-button-label-text-color: var(--color-primary-contrast-500) !important;
 }
 
 .mat-mdc-raised-button.mat-accent {
-  --mdc-protected-button-label-text-color: var(--color-accent-contrast-500);
+  --mdc-protected-button-label-text-color: var(--color-accent-contrast-500) !important;
 }
 
 /* Form Fields*/

@@ -1,10 +1,29 @@
 <header>
   <app-logo></app-logo>
   <section>
-    <app-portal-header-menu-item *ngFor="let menuItem of menu | async"
+    <app-portal-header-desktop-menu *ngFor="let menuItem of menu | async"
       [root]="true"
       [parent]="menuItem">
-    </app-portal-header-menu-item>
+    </app-portal-header-desktop-menu>
   </section>
-  <app-portal-header-action></app-portal-header-action>
+  <section>
+    <app-search-field></app-search-field>
+    <button mat-raised-button color="primary"
+      [routerLink]="['/portal', 'register']">
+        <span appLabel="register" ></span>
+    </button>
+    <button mat-raised-button color="primary"
+      [routerLink]="['/portal', 'login']">
+        <span appLabel="login"></span>
+    </button>
+    <app-portal-header-language></app-portal-header-language>
+    <button mat-icon-button>
+      <fa-icon [icon]="['far', 'bell']">
+      </fa-icon>
+    </button>
+    <button mat-icon-button>
+      <fa-icon [icon]="['far', 'circle-user']">
+      </fa-icon>
+    </button>
+  </section>
 </header>

@@ -1,1 +1,11 @@
-<div class="white-container"></div>
+<a [routerLink]="['/']">
+  <app-image
+    [image]="(logoConfig | async)?.media"
+    alt="logo">
+  </app-image>
+  <app-image
+    *ngIf="(logoTextConfig | async)?.media?.id"
+    [image]="(logoTextConfig | async)?.media"
+    alt="logo">
+  </app-image>
+</a>

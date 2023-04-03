@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Maybe } from 'src/schema/schema';
 import { LabelService } from '../services/label.service';
 
 @Directive({
@@ -8,7 +9,7 @@ import { LabelService } from '../services/label.service';
 export class AppLabelDirective implements OnInit, OnDestroy {
 
   @Input()
-  public appLabel?: string;
+  public appLabel?: Maybe<string>;
 
   @Input()
   public preFix?: string;

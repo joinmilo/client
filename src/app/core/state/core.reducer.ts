@@ -8,6 +8,7 @@ export interface CoreState {
   configurations?: ConfigurationEntity[]
   currentTheme?: Maybe<ThemeEntity>,
   language?: LanguageEntity,
+  languages?: LanguageEntity[],
   labels?: Map<string, Maybe<Translatable>[]>,
   themes?: ThemeEntity[],
 }
@@ -32,6 +33,10 @@ export const coreReducer = createReducer(
     }
   )),
 
+  on(CoreActions.setLanguages, (state, action): CoreState => (
+    { ...state, languages: action.languages }
+  )),
+
   on(CoreActions.setThemes, (state, action): CoreState => (
     {
       ...state,
@@ -40,5 +45,7 @@ export const coreReducer = createReducer(
     }
   )),
 
-
+    on(CoreActions.changeLanguage, (state, action): CoreState => (
+    { ...state, language: action.language }
+  )),
 );

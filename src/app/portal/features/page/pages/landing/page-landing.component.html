@@ -1,5 +1,5 @@
 <header> 
-  <app-image [src]="'assets/hero.jpg'"></app-image>
+  <app-image [image]="(page | async)?.titleImage"></app-image>
   <section>
     <div>
       <div class="title title-gradient">{{page | translatable: "name" | async}}</div>

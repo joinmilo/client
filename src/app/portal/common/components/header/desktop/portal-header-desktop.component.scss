@@ -4,13 +4,21 @@ header {
   display: flex;
   width: 100%;
   align-items: center;
-
-  app-portal-header-action {
-    margin-left: auto;
-  }
+  gap: 1rem;
 
   section {
     display: flex;
+    align-items: center;
+  }
+
+  section:nth-of-type(1) {
     gap: var(--gap);
   }
+
+  section:last-of-type {
+    margin-left: auto;
+    gap: 1rem;
+  }
+
+
 }

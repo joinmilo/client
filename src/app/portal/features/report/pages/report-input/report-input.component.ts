@@ -1,10 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { filter, map, Subject, takeUntil } from 'rxjs';
+import { Subject, filter, map, takeUntil } from 'rxjs';
+import { hCaptchaSitekeyConfig } from 'src/app/core/constants/core.constants';
+import { selectConfiguration } from 'src/app/core/state/core.selectors';
 import { ReportTypeEntity } from 'src/schema/schema';
 import { ReportActions } from '../../state/report.actions';
-import { selectCaptchaSitekey, selectReportTypes, selectSavedReport } from '../../state/report.selectors';
+import { selectReportTypes, selectSavedReport } from '../../state/report.selectors';
 
 @Component({
   selector: 'app-report-input',
@@ -23,7 +25,7 @@ export class ReportInputComponent implements OnDestroy {
 
   private destroy = new Subject<void>();
 
-  public sitekey = this.store.select(selectCaptchaSitekey)
+  public sitekey = this.store.select(selectConfiguration(hCaptchaSitekeyConfig))
     .pipe(
       filter(config => !!config?.value),
       map(config => config?.value as string),
