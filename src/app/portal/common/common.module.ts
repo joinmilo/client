@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -39,7 +40,6 @@ const components = [
   PortalFooterDesktopComponent,
   PortalFooterMobileComponent,
   PortalFooterSocialMediaComponent,
-  
   PortalHeaderComponent,
   PortalHeaderBackComponent,
   PortalHeaderDesktopComponent,
@@ -73,6 +73,7 @@ const materials = [
   MatMenuModule,
   MatProgressSpinnerModule,
   MatToolbarModule,
+  MatDatepickerModule,
 ];
 
 const modules = [

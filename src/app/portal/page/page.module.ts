@@ -5,9 +5,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { PortalCommonModule } from '../../common/common.module';
+import { PortalCommonModule } from '../common/common.module';
+import { EventPortalPageFeatureModule } from '../features/event/page-feature/event-page-feature.module';
 import { PageFeaturesComponent } from './components/features/page-features.component';
-import { pageFeatureKey } from './constants/page.constants';
+import { pageStateKey } from './constants/page.constants';
 import { PagePortalRoutingModule } from './page-routing.module';
 import { PageLandingComponent } from './pages/landing/page-landing.component';
 import { PageComponent } from './pages/page/page.component';
@@ -22,6 +23,10 @@ const pages = [
   PageComponent,
   PageLandingComponent,
 ];
+
+const features = [
+  EventPortalPageFeatureModule,
+]
 
 const framework = [
   CommonModule,
@@ -39,7 +44,7 @@ const modules = [
 ];
 
 const libs = [
-  StoreModule.forFeature(pageFeatureKey, pageReducer),
+  StoreModule.forFeature(pageStateKey, pageReducer),
   EffectsModule.forFeature([PageEffects]),
 ]
 
@@ -48,14 +53,15 @@ const libs = [
     ...components,
     ...pages
   ],
+  exports: [
+    ...components,
+  ],
   imports: [
+    ...features,
     ...framework,
     ...materials,
     ...modules,
     ...libs,
   ],
-  exports: [
-    ...components,
-  ]
 })
 export class PagePortalModule { }

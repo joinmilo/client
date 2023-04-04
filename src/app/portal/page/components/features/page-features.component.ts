@@ -5,7 +5,7 @@ import { CardInput } from 'src/app/core/typings/card';
 import { articlesFeatureKey, eventsFeatureKey } from 'src/app/portal/common/constants/common.constants';
 import { Maybe, PageFeatureEntity } from 'src/schema/schema';
 import { PageFeatureActions } from '../../state/page.actions';
-import { selectRecentArticles, selectRecentEvents } from '../../state/page.selectors';
+import { selectRecentArticles } from '../../state/page.selectors';
 
 @Component({
   selector: 'app-page-features',
@@ -18,10 +18,10 @@ export class PageFeaturesComponent implements OnChanges {
   public pageFeatures?: Maybe<Maybe<PageFeatureEntity>[]>
 
   public articlesFeatureKey = articlesFeatureKey;
+  public eventFeatureKey = eventsFeatureKey;
+  
   public articles?: Observable<CardInput[]>;
 
-  public eventFeatureKey = eventsFeatureKey;
-  public events?: Observable<CardInput[]>
 
   constructor(
     private store: Store, 
@@ -35,9 +35,6 @@ export class PageFeaturesComponent implements OnChanges {
           case this.articlesFeatureKey:
             this.fetchRecentArticles();
             break;
-          case this.eventFeatureKey:
-            this.fetchRecentEvents();
-            break;
         }
       })
     }
@@ -47,12 +44,6 @@ export class PageFeaturesComponent implements OnChanges {
     this.articles = this.store.select(selectRecentArticles).pipe(
       tap(result => !result?.length
         && this.store.dispatch(PageFeatureActions.getRecentArticles())));
-  }
-
-  private fetchRecentEvents(): void {
-    this.events = this.store.select(selectRecentEvents).pipe(
-      tap(result => !result?.length 
-        && this.store.dispatch(PageFeatureActions.getRecentEvents())));
   }
 
 }

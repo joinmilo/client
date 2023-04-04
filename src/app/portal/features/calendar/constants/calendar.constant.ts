@@ -1,0 +1,1 @@
+export const calendarStateKey = 'calendarState';

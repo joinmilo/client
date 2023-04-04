@@ -49,7 +49,7 @@ const components = [
   PageTitleComponent,
   SliderComponent,
   SponsoredCardComponent,
-  SliderComponent
+  SliderComponent,
 ];
 
 const directives = [
@@ -78,8 +78,7 @@ const materials = [
   MatSelectModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
-
+  MatInputModule,
 ];
 
 const libs = [
