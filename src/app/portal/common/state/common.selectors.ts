@@ -1,8 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { commonFeatureKey } from '../constants/common.constants';
+import { commonStateKey } from '../constants/common.constants';
 import { CommonState } from './common.reducer';
 
-export const selectCommonState = createFeatureSelector<CommonState>(commonFeatureKey);
+export const selectCommonState = createFeatureSelector<CommonState>(commonStateKey);
 
 export const selectApps = createSelector(
   selectCommonState,

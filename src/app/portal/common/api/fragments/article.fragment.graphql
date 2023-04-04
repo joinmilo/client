@@ -4,6 +4,9 @@ fragment Article on ArticleEntity {
   slug
   modified
   created
+  publicAuthor{
+    ...PublicAuthor
+    }
   author {
     user {
       firstName 
@@ -14,16 +17,7 @@ fragment Article on ArticleEntity {
     ...Media
   }
   category {
-    id
-    icon
-    color
-    translatables {
-      id
-      name
-      language {
-        ...Language
-      }
-    }
+    ...ArticleCategory
   }
   publicAuthor {
     name

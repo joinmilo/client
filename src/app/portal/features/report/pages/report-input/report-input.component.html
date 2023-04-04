@@ -34,7 +34,7 @@
           <textarea formControlName="content" matInput rows="5"></textarea>
         </mat-form-field>
       </div>
-      <app-captcha></app-captcha>
+      <app-form-captcha formControlName="captchaToken"></app-form-captcha>
       <div>
         <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
           <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>

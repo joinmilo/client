@@ -1,4 +1,4 @@
-fragment EventCategory on EventCategoryEntity {
+fragment ArticleCategory on ArticleCategoryEntity {
   id
   icon
   color

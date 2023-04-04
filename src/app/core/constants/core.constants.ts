@@ -1,11 +1,10 @@
 import { environment } from 'src/environments/environment';
 import { MediaEntity } from 'src/schema/schema';
 
-export const coreFeatureKey = 'coreState';
-
 /**
  * URLs
  */
+export const coreStateKey = 'coreState';
 export const baseApi = `${environment.base}api`;
 export const graphqlApi = `${baseApi}/graphql`;
 export const mediaBaseApi = `${baseApi}/media`;

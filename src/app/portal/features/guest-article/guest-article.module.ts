@@ -1,9 +1,11 @@
-import { ReportInputComponent } from './pages/report-input/report-input.component';
+
+import { GuestArticleInputComponent } from './pages/guest-article-input/guest-article-input.component';
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { NgModule, Type } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -11,20 +13,20 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { reportStateKey } from './constants/report.constant';
-import { ReportPortalRoutingModule } from './report-routing.module';
-import { ReportEffects } from './state/report.effects';
-import { reportReducer } from './state/report.reducer';
+import { guestArticleStateKey } from './constants/guest-article.constant';
+import { GuestArticlePortalRoutingModule } from './guest-article-routing.module';
+import { ReportEffects } from './state/guest-article.effects';
+import { reportReducer } from './state/guest-article.reducer';
 
 const components: Type<any>[] = [
-  ReportInputComponent
+  GuestArticleInputComponent
 ];
 
 const framework: any[] = [
   CommonModule,
-  StoreModule.forFeature(reportStateKey, reportReducer),
+  CoreModule,
+  StoreModule.forFeature(guestArticleStateKey, reportReducer),
   EffectsModule.forFeature([ReportEffects]),
-  ReactiveFormsModule
 ];
 
 const materials: Type<any>[] = [
@@ -33,12 +35,15 @@ const materials: Type<any>[] = [
   FontAwesomeModule,
   MatButtonModule,
   MatSelectModule,
-  MatInputModule
+  MatInputModule,
+  MatExpansionModule,
+  ReactiveFormsModule,
+  FormsModule
 ];
 
 const modules: Type<any>[] = [
   CoreModule,
-  ReportPortalRoutingModule,
+  GuestArticlePortalRoutingModule
 ];
 
 @NgModule({
@@ -50,4 +55,4 @@ const modules: Type<any>[] = [
   ],
   exports: [...components],
 })
-export class ReportPortalModule { }
+export class GuestArticlePortalModule { }

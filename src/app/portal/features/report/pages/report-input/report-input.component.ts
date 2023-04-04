@@ -1,13 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-<<<<<<< Upstream, based on main
 import { filter, map, Subject, takeUntil } from 'rxjs';
 import { hCaptchaSitekeyConfig } from 'src/app/core/constants/core.constants';
 import { selectConfiguration } from 'src/app/core/state/core.selectors';
-=======
-import { Subject, takeUntil } from 'rxjs';
->>>>>>> dcd116a hcpatcha component in core (wip)
 import { ReportTypeEntity } from 'src/schema/schema';
 import { ReportActions } from '../../state/report.actions';
 import { selectReportTypes, selectSavedReport } from '../../state/report.selectors';
@@ -39,21 +35,22 @@ export class ReportInputComponent implements OnDestroy {
 
   constructor(
     private store: Store,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {
     this.store.dispatch(ReportActions.getReportTypes());
   }
 
   onSubmit(formDirective: FormGroupDirective) {
+    console.log(this.form.value.content);
     this.store.dispatch(ReportActions.saveReport({
+      //TODO translatables content
       name: this.form.value.name,
       email: this.form.value.email,
       type: {
         id: this.form.value.type?.id
       },
-      captchaToken: this.form?.value.captchaToken
+      captchaToken: this.form.value.captchaToken
     }));
-
     this.store.select(selectSavedReport)
       .pipe(takeUntil(this.destroy))
       .subscribe(report => report?.id && formDirective.resetForm());
