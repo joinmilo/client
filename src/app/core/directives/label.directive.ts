@@ -1,12 +1,12 @@
-import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import {Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {distinctUntilChanged, Subject, switchMap, takeUntil} from 'rxjs';
 import { Maybe } from 'src/schema/schema';
 import { LabelService } from '../services/label.service';
 
 @Directive({
   selector: '[appLabel]'
 })
-export class AppLabelDirective implements OnInit, OnDestroy {
+export class AppLabelDirective implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   public appLabel?: Maybe<string>;
@@ -19,18 +19,33 @@ export class AppLabelDirective implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
+  private labels = new Subject<string>();
+
   constructor(
     private el: ElementRef,
     private labelService: LabelService) { }
 
   public ngOnInit(): void {
-    this.labelService.lookup(this.appLabel)
-      .subscribe(label => this.el.nativeElement.innerHTML = `${this.preFix ?? ''} ${label ?? ''} ${this.postFix ?? ''}`);
+    this.labels.pipe(
+      distinctUntilChanged(),
+      takeUntil(this.destroy),
+      switchMap((label) => this.labelService.lookup(label))
+    ).subscribe(label => this.el.nativeElement.innerHTML = `${this.preFix ?? ''} ${label ?? ''} ${this.postFix ?? ''}`);
+
+    if (this.appLabel) {
+      this.labels.next(this.appLabel);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes && changes['appLabel']) {
+      this.labels.next(changes['appLabel'].currentValue);
+    }
   }
 
   ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
+    this.labels.complete();
   }
-
 }
