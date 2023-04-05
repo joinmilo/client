@@ -1,3 +1,5 @@
+@import 'src/styles/mixins.scss';
+
 /* BUTTON */
 
 //TODO: Necessary to set text color to contrast because of
@@ -18,6 +20,13 @@
   --mdc-protected-button-label-text-color: var(--color-accent-contrast-500) !important;
 }
 
+/* Card */
+
+mat-card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  border-radius: var(--mdc-shape-medium) !important;
+}
+
 /* Form Fields*/
 .mdc-text-field {
   background-color: var(--color-lightest) !important;
@@ -25,9 +34,15 @@
   border-bottom-left-radius: var(--mdc-shape-small) !important;
 }
 
-/* Card */
+/* Menu */
+.cdk-overlay-connected-position-bounding-box {
+  top: 5rem !important;
 
-mat-card {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
-  border-radius: var(--mdc-shape-medium) !important;
+  @include responsive(tablet) {
+      top: 4rem !important;
+    }
+}
+
+.mdc-menu-surface {
+  border-radius: 0 0 1rem 1rem !important;
 }

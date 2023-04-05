@@ -1,21 +1,4 @@
-@import 'src/styles/mixins.scss';
 
 button {
   color: var(--color-primary-500) !important;
-}
-
-::ng-deep .cdk-overlay-connected-position-bounding-box {
-  top: 5rem !important;
-
-  @include responsive(tablet) {
-      top: 4rem !important;
-    }
-}
-
-::ng-deep .mdc-menu-surface {
-  border-radius: 0 0 1rem 1rem !important;
-}
-
-::ng-deep .mat-expansion-panel-header {
-  padding: 0 1rem !important;
 }

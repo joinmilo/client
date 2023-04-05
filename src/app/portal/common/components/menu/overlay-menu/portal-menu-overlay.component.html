@@ -13,7 +13,7 @@
 </button>
 </ng-template>
 
-<mat-menu class="test" #menu="matMenu">
+<mat-menu #menu="matMenu">
   <ng-container *ngFor="let subItem of subMenuItems | async">
     
     <app-portal-menu-overlay
