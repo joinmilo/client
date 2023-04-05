@@ -1,5 +1,5 @@
 <mat-accordion multi>
-  <mat-expansion-panel *ngFor="let menuItem of menu | async">
+  <mat-expansion-panel (click)="$event.stopPropagation();" *ngFor="let menuItem of menu | async">
     <mat-expansion-panel-header>
       <mat-panel-title>
         <strong>{{menuItem | translatable: 'name' | async}}</strong>

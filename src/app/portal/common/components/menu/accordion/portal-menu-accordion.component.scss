@@ -1,5 +1,6 @@
 mat-expansion-panel {
   box-shadow: none !important;
+  margin: 0;
 
   .submenu {
     display: flex;
@@ -9,6 +10,5 @@ mat-expansion-panel {
 }
 
 .mat-expansion-panel-header {
-  padding: 2px;
-  height: 3.25rem;
+  padding: 0 2px;
 }
