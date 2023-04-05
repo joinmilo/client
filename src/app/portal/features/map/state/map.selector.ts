@@ -45,3 +45,7 @@ export const selectMapFilters = createSelector(
     dealFilter: state.dealFilter
   })
 );
+
+export const selectResults = createSelector(
+  selectMapState, (state) => state.searchResults
+)

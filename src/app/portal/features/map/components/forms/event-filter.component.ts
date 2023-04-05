@@ -33,7 +33,6 @@ export class MapEventFilterComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log("init")
     this.store.select(selectEventFilter).pipe(
       take(1),
     ).subscribe((value) => {

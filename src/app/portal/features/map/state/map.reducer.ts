@@ -10,6 +10,7 @@ import {
 } from 'src/schema/schema';
 import {MapFeatureActions} from './map.actions';
 import {FilterKey} from '../constants/map.constants'
+import {CardData, CardEntity} from '../../../../shared/card/typings/card';
 
 export interface MapState {
   activeFilter: FilterKey;
@@ -52,6 +53,14 @@ export interface MapState {
     isOffer?: boolean
   }
   deals?: DealEntity[]
+
+  searchResults?: {
+    count: number,
+    label: string,
+    labelPlural: string,
+    entity: CardEntity,
+    data: CardData[]
+  }
 }
 
 export const initialState: MapState = {
@@ -88,10 +97,7 @@ export const mapReducer = createReducer(
 
   on(MapFeatureActions.setEventFilter, (state, action): MapState => ({
     ...state,
-    eventFilter: {
-      categoryId: action.categoryId,
-      targetGroupId: action.targetGroupId
-    }
+    eventFilter: { ...action }
   })),
 
   on(MapFeatureActions.setEvents, (state, action): MapState => ({
@@ -101,10 +107,7 @@ export const mapReducer = createReducer(
 
   on(MapFeatureActions.setOrganisationFilter, (state, action): MapState => ({
     ...state,
-    organisationFilter: {
-      suburbId: action.suburbId,
-      rating: action.rating
-    }
+    organisationFilter: { ...action }
   })),
 
   on(MapFeatureActions.setOrganisations, (state, action): MapState => ({
@@ -114,15 +117,16 @@ export const mapReducer = createReducer(
 
   on(MapFeatureActions.setDealFilter, (state, action): MapState => ({
     ...state,
-    dealFilter: {
-      categoryId: action.categoryId,
-      suburbId: action.suburbId,
-      isOffer: action.isOffer
-    }
+    dealFilter: { ...action }
   })),
 
   on(MapFeatureActions.setDeals, (state, action): MapState => ({
     ...state,
     deals: action.deals
+  })),
+
+  on(MapFeatureActions.setResults, (state, action): MapState => ({
+    ...state,
+    searchResults: { ...action }
   }))
 )
