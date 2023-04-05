@@ -9,10 +9,10 @@
     <fa-icon [icon]="['fas', 'bars']"></fa-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <div>
-      <app-portal-menu-accordion></app-portal-menu-accordion>
+    <div class="mobile-menu">
+      <app-portal-menu-accordion></app-portal-menu-accordion> 
+      <mat-divider></mat-divider>
+      <app-portal-header-user></app-portal-header-user>
     </div>
-    <mat-divider></mat-divider>
-    <app-portal-header-user></app-portal-header-user>
   </mat-menu>
 </header>

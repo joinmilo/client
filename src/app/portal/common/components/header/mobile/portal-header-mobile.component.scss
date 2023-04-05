@@ -7,15 +7,16 @@ header {
 
 ::ng-deep {
 
-  app-portal-menu-accordion {
-    mat-expansion-panel-header {
-      padding: 0 1rem !important;
+  .mobile-menu {
+    app-portal-menu-accordion {
+      mat-expansion-panel-header {
+        padding: 0 1rem !important;
+      }
     }
-  }
-  
-  app-portal-header-user {
-    button {
-      padding: 0 1rem !important;
+    app-portal-header-user {
+      button {
+        padding: 0 1rem !important;
+      }
     }
   }
 }
