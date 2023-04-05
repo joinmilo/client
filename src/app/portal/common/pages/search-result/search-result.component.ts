@@ -11,13 +11,13 @@ import { selectFoundArticles, selectFoundAuthors, selectFoundContests, selectFou
 })
 export class PortalSearchResultComponent implements OnInit, OnDestroy {
 
-  public events?= this.store.select(selectFoundEvents);
-  public articles?= this.store.select(selectFoundArticles);
-  public organisations?= this.store.select(selectFoundOrganisations);
-  public authors?= this.store.select(selectFoundAuthors);
-  public deals?= this.store.select(selectFoundDeals);
-  public contests?= this.store.select(selectFoundContests);
-  public surveys?= this.store.select(selectFoundSurveys);
+  public events = this.store.select(selectFoundEvents);
+  public articles = this.store.select(selectFoundArticles);
+  public organisations = this.store.select(selectFoundOrganisations);
+  public authors = this.store.select(selectFoundAuthors);
+  public deals = this.store.select(selectFoundDeals);
+  public contests = this.store.select(selectFoundContests);
+  public surveys = this.store.select(selectFoundSurveys);
 
   private destroy = new Subject<void>();
 
@@ -25,10 +25,9 @@ export class PortalSearchResultComponent implements OnInit, OnDestroy {
     private store: Store,
   ) { }
 
-
   ngOnInit(): void {
     this.store.select(selectSearchQuery).pipe(takeUntil(this.destroy)).subscribe((query => {
-      this.store.dispatch(CommonActions.searchQuerySet({ query }));
+      this.store.dispatch(CommonActions.searchQuerySet(query));
     }))
   }
 

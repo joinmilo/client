@@ -14,7 +14,7 @@ import { selectSearchQuery, selectSearchResult } from '../../../state/common.sel
 })
 export class PortalHeaderSearchComponent {
 
-  searchControl = new FormControl();
+  searchControl = new FormControl('' as Maybe<string> | undefined);
   searchResult = this.store.select(selectSearchResult);
   private destroy = new Subject<void>();
 
@@ -50,6 +50,4 @@ export class PortalHeaderSearchComponent {
     this.destroy.next();
     this.destroy.complete();
   }
-}
-
 }

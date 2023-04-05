@@ -36,7 +36,6 @@ export const commonReducer = createReducer(
     { ...state, socialMedia: action.socialMedia }
   )),
 
-
   on(CommonActions.setSearchResult, (state, action): CommonState => (
     { ...state, searchResult: action.searchResult }
   )),
