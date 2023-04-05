@@ -15,7 +15,7 @@ import {
 } from 'src/schema/schema';
 import {QueryExpressionService} from 'src/app/core/services/query-expression.service';
 import {Store} from '@ngrx/store';
-import {selectMapFilters} from './map.selector';
+import {selectEventFilter, selectMapFilters} from './map.selector';
 import {FilterKey} from '../constants/map.constants';
 
 @Injectable()
@@ -38,8 +38,8 @@ export class MapEffects {
       return {
         params: {
           expression: this.queryExpressionService.builder()
-            .maybeAdd("category.id", action.categoryId)
-            .maybeAdd("targetGroup.id", action.targetGroupId)
+            .addIfNotNull("category.id", action.categoryId)
+            .addIfNotNull("targetGroup.id", action.targetGroupId)
             .build(ConjunctionOperator.And)
         }
       }
@@ -61,9 +61,9 @@ export class MapEffects {
       return {
         params: {
           expression: this.queryExpressionService.builder()
-            .maybeAdd("address.suburb.id", action.suburbId)
+            .addIfNotNull("address.suburb.id", action.suburbId)
             // Todo: Real score filter needs average on backend
-            .maybeAdd("rating.score", action?.rating?.toString(), QueryOperator.GreaterThan)
+            .addIfNotNull("rating.score", action?.rating?.toString(), QueryOperator.GreaterThan)
             .build(ConjunctionOperator.And)
         }
       }
@@ -92,6 +92,29 @@ export class MapEffects {
           return MapFeatureActions.setDealFilter(filters.dealFilter || {});
       }
     })
+  ));
+
+  setResultsFromEvents = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setEvents),
+    withLatestFrom(this.store.select(selectEventFilter)),
+    map(([{events}, eventsFilter]) => MapFeatureActions.setResults({
+      count: events.length,
+      label: "event",
+      labelPlural: "events",
+      entity: 'EventEntity',
+      data: events
+    })),
+  ));
+
+  setResultsFromOrganisations = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setOrganisations),
+    map(({organisations}) => MapFeatureActions.setResults({
+      count: organisations.length,
+      label: "organisation",
+      labelPlural: "organisations",
+      entity: "OrganisationEntity",
+      data: organisations
+    }))
   ));
 
   constructor(

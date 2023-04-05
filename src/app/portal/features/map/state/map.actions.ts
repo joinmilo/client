@@ -8,6 +8,7 @@ import {
   SuburbEntity
 } from 'src/schema/schema';
 import {FilterKey} from '../constants/map.constants';
+import {CardData, CardEntity} from '../../../../shared/card/typings/card';
 
 export const MapFeatureActions = createActionGroup({
   source: 'Map Feature',
@@ -42,6 +43,14 @@ export const MapFeatureActions = createActionGroup({
       isOffer?: boolean
     }>(),
     'get deals': props<{params: FilterSortPaginateInput}>(),
-    'set deals': props<{deals: DealEntity[]}>()
+    'set deals': props<{deals: DealEntity[]}>(),
+
+    'set results': props<{
+      count: number,
+      label: string,
+      labelPlural: string,
+      entity: CardEntity,
+      data: CardData[]
+    }>()
   }
 })

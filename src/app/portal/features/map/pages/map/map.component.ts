@@ -2,7 +2,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MapFeatureActions} from '../../state/map.actions';
-import {selectActiveFilter, selectEvents, selectOrganisations} from '../../state/map.selector';
+import {selectActiveFilter, selectResults} from '../../state/map.selector';
 import {FilterKey} from '../../constants/map.constants';
 
 @Component({
@@ -16,8 +16,7 @@ export class MapPageComponent implements OnInit {
 
   public activeFilter = this.store.select(selectActiveFilter);
 
-  public events = this.store.select(selectEvents);
-  public organisations = this.store.select(selectOrganisations)
+  public results = this.store.select(selectResults)
 
   constructor(
     private route: ActivatedRoute,
