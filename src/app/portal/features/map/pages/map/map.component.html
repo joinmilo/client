@@ -3,42 +3,39 @@
   <div *ngIf="(activeFilter | async) as filter">
 
     <div style="display: flex;">
-      <button mat-stroked-button appI18n="events"
+      <button mat-stroked-button appLabel="events"
               [disabled]="filter === FilterKey.events"
               (click)="setFilter(FilterKey.events)">
       </button>
-      <button mat-stroked-button appI18n="organisations"
+      <button mat-stroked-button appLabel="organisations"
               [disabled]="filter === FilterKey.organisations"
               (click)="setFilter(FilterKey.organisations)">
       </button>
-      <button mat-stroked-button
+      <!--
+      <button mat-stroked-button appLabel="deals"
               [disabled]="filter === FilterKey.deals"
               (click)="setFilter(FilterKey.deals)">
-        Deals*
       </button>
+      -->
     </div>
 
     <div *ngIf="filter === FilterKey.events">
       <app-portal-map-event-filter></app-portal-map-event-filter>
-
-      <div *ngFor="let item of (events | async)">
-        <p>E: {{ item | translatable: 'name' | async }}</p>
-      </div>
     </div>
-
     <div *ngIf="filter === FilterKey.organisations">
       <app-portal-map-organisations-filter></app-portal-map-organisations-filter>
-
-      <div *ngFor="let item of (organisations | async)">
-        <p>E: {{ item.name }}</p>
-      </div>
     </div>
-
     <div *ngIf="filter === FilterKey.deals">
-      deals
     </div>
+  </div>
 
-
+  <div *ngIf="(results | async) as results">
+    <div>
+      {{ results.count }}
+      <span *ngIf="results.count !== 1" [appLabel]="results.labelPlural"></span>
+      <span *ngIf="results.count === 1" [appLabel]="results.label"></span>
+    </div>
+    <app-content-card *ngFor="let card of results.data" [entity]="results.entity" [data]="card"></app-content-card>
   </div>
 
 

@@ -11,7 +11,7 @@ import {
 class QueryExpressionBuilder {
   expressions: QueryExpressionInput[] = []
 
-  public maybeAdd(path: string, value: string | null | undefined, operator: QueryOperator = QueryOperator.Equal) {
+  public addIfNotNull(path: string, value: string | null | undefined, operator: QueryOperator = QueryOperator.Equal) {
     if (value) {
       this.add(path, value, operator)
     }

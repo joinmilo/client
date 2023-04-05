@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MapEventFilterComponent} from './components/forms/event-filter.component';
 import {MapOrganisationsFilterComponent} from './components/forms/organisation-filter.component';
+import {CardModule} from '../../../shared/card/card.module';
 
 const components: Type<any>[] = [
   MapEventFilterComponent,
@@ -40,6 +41,7 @@ const materials: Type<any>[] = [
 ];
 
 const modules: Type<any>[] =[
+  CardModule,
   CoreModule,
   MapPortalRoutingModule,
   PortalCommonModule

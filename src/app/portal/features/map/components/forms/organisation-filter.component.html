@@ -1,6 +1,6 @@
 <form *ngIf="(options | async) as options" [formGroup]="form">
   <mat-form-field>
-    <label>Rating*</label>
+    <label appLabel="ratings"></label>
     <mat-select formControlName="rating">
       <mat-option *ngFor="let rating of options.ratings" [value]="rating">
         {{ rating }}+
@@ -8,7 +8,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <label appI18n="suburbs"></label>
+    <label appLabel="suburbs"></label>
     <mat-select formControlName="suburbId">
       <mat-option *ngFor="let suburb of options.suburbs" [value]="suburb.id">
         {{ suburb.name }}
