@@ -9,7 +9,7 @@ import { PortalCommonModule } from '../common/common.module';
 import { EventPortalPageFeatureModule } from '../features/event/page-feature/event-page-feature.module';
 import { PageFeaturesComponent } from './components/features/page-features.component';
 import { pageStateKey } from './constants/page.constants';
-import { PagePortalRoutingModule } from './page-routing.module';
+import { PagePortalRoutingModule as PortalPageRoutingModule } from './page-routing.module';
 import { PageLandingComponent } from './pages/landing/page-landing.component';
 import { PageComponent } from './pages/page/page.component';
 import { PageEffects } from './state/page.effects';
@@ -39,8 +39,8 @@ const materials = [
 
 const modules = [
   CoreModule,
-  PagePortalRoutingModule,
   PortalCommonModule,
+  PortalPageRoutingModule,
 ];
 
 const libs = [
@@ -64,4 +64,4 @@ const libs = [
     ...libs,
   ],
 })
-export class PagePortalModule { }
+export class PortalPageModule { }

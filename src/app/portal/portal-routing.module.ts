@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./page/page.module')
-      .then((imported) => imported.PagePortalModule),
+      .then((imported) => imported.PortalPageModule),
   },
   {
     path: '**',
