@@ -5,9 +5,12 @@
       [root]="true"
       [parent]="menuItem">
     </app-portal-menu-overlay>
-  </section>
-  <section>
+  </section> 
+  <section *ngIf="isSearching" [@inOutAnimSearch] #search>
     <app-portal-header-search></app-portal-header-search>
+  </section>
+  <section *ngIf="!isSearching"
+   [@inOutAnim]>
     <button mat-raised-button color="primary"
       [routerLink]="['/portal', 'register']">
         <span appLabel="register"></span>
@@ -17,6 +20,11 @@
         <span appLabel="login"></span>
     </button>
     <div>
+      <button mat-icon-button (click)="setSearching()"
+       (click)="$event.stopPropagation()">
+        <fa-icon [icon]="['fas', 'magnifying-glass']"
+        ></fa-icon>
+      </button>
       <app-portal-header-language></app-portal-header-language>
       <button mat-icon-button>
         <fa-icon [icon]="['far', 'bell']"></fa-icon>

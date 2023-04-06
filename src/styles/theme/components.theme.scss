@@ -21,7 +21,6 @@
 }
 
 /* Card */
-
 mat-card {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
   border-radius: var(--mdc-shape-medium) !important;
@@ -63,14 +62,6 @@ mat-card {
 }
 
 /* Menu */
-.cdk-overlay-connected-position-bounding-box {
-  top: 5rem !important;
-
-  @include responsive(tablet) {
-    top: 4rem !important;
-  }
-}
-
 .mdc-menu-surface {
   border-radius: 0 0 1rem 1rem !important;
 }

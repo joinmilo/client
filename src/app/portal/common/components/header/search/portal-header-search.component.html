@@ -1,7 +1,7 @@
 <form>
   <mat-form-field appearance="outline">
     <input type="text" placeholder="Suche" aria-label="text" matInput [formControl]="searchControl"
-      [matAutocomplete]="auto">
+      [matAutocomplete]="auto" (click)="$event.stopPropagation()">
     <mat-autocomplete #auto="matAutocomplete">
       <ng-container *ngIf="searchResult | async as entities">
         <mat-option (click)="showOneEntity(entity.id)" *ngFor="let entity of entities.slice(0, 4)" [value]="entity">

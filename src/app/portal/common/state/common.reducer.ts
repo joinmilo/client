@@ -15,10 +15,12 @@ export interface CommonState {
   authors?: Maybe<UserContextEntity[]>,
   deals?: Maybe<DealEntity[]>,
   surveys?: Maybe<SurveyEntity[]>,
-  contests?: Maybe<ContestEntity[]>
+  contests?: Maybe<ContestEntity[]>,
+  isSearching: boolean,
 }
 
 export const initialState: CommonState = {
+  isSearching: false
 };
 
 export const commonReducer = createReducer(
@@ -70,5 +72,9 @@ export const commonReducer = createReducer(
 
   on(CommonActions.setFoundContests, (state, action): CommonState => (
     { ...state, contests: action.contests }
+  )),
+
+  on(CommonActions.setSearchState, (state, action): CommonState => (
+    { ...state, isSearching: action.isSearching }
   )),
 );

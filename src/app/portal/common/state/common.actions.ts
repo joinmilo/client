@@ -26,5 +26,6 @@ export const CommonActions = createActionGroup({
     'set found Deals': (deals: DealEntity[]) => ({ deals }),
     'set found Surveys': (surveys: SurveyEntity[]) => ({ surveys }),
     'set found Authors': (authors: UserContextEntity[]) => ({ authors }),
+    'set search state': (isSearching: boolean) => ({ isSearching }),
   },
 });

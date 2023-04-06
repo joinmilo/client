@@ -1,18 +1,25 @@
 <header>
   <app-portal-header-back></app-portal-header-back>
-  <app-portal-header-language></app-portal-header-language>
-  <app-logo></app-logo>
-  <button mat-icon-button>
-    <fa-icon [icon]="['far', 'bell']"></fa-icon>
-  </button>
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <fa-icon [icon]="['fas', 'bars']"></fa-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <div class="mobile-menu">
-      <app-portal-menu-accordion></app-portal-menu-accordion> 
-      <mat-divider></mat-divider>
-      <app-portal-header-user></app-portal-header-user>
+    <section *ngIf="!isSearching" [@inOutAnim]>
+      <app-portal-header-language></app-portal-header-language>
+      <app-logo></app-logo>
+      <button mat-icon-button (click)="setSearching()" (click)="$event.stopPropagation()">
+        <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+      </button>
+    </section>
+    <section *ngIf="isSearching" #search [@inOutAnimSearch]>
+      <app-portal-header-search></app-portal-header-search>
+    </section>
+    <div>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div class="mobile-menu">
+          <app-portal-menu-accordion></app-portal-menu-accordion> 
+          <mat-divider></mat-divider>
+          <app-portal-header-user></app-portal-header-user>
+        </div>
+      </mat-menu>
     </div>
-  </mat-menu>
 </header>

@@ -66,3 +66,7 @@ export const selectFoundContests = createSelector(
   state => transformContestsToCards(state.contests)
 );
 
+export const selectIsSearching = createSelector(
+  selectCommonState,
+  state => state.isSearching
+);
