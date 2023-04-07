@@ -1,12 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CardInput } from 'src/app/core/typings/card';
 import { articlePageFeatureStateKey } from '../constants/article-page-feature.constant';
-import { ArticlePageFeatureState } from './article.reducer';
+import { ArticlePageFeatureState } from './article-page-feature.reducer';
 
-export const selectEventPageFeatureState = createFeatureSelector<ArticlePageFeatureState>(articlePageFeatureStateKey);
+export const selectArticlePageFeatureState = createFeatureSelector<ArticlePageFeatureState>(articlePageFeatureStateKey);
 
 export const selectRecentArticles = createSelector(
-  selectEventPageFeatureState,
+  selectArticlePageFeatureState,
   state => state.recentArticles
 );
 

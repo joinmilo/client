@@ -1,0 +1,11 @@
+mat-card {
+  width: 40rem;
+  max-width: calc(100% - var(--gap));
+  margin: auto;
+}
+
+section {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}

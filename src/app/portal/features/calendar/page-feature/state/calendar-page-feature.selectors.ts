@@ -1,18 +1,14 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CardInput } from 'src/app/core/typings/card';
-import { calendarStateKey } from '../constants/calendar.constant';
-import { CalendarState } from './calendar.reducer';
+import { distinctStartDates } from 'src/app/core/utils/schedule.utils';
+import { calendarPageFeatureStateKey } from '../constants/calendar-page-feature.constant';
+import { CalendarPageFeatureState } from './calendar-page-feature.reducer';
 
-export const selectCalendarState = createFeatureSelector<CalendarState>(calendarStateKey);
+export const selectCalendarPageFeatureState = createFeatureSelector<CalendarPageFeatureState>(calendarPageFeatureStateKey);
 
 export const selectSelectedEvents = createSelector(
-  selectCalendarState,
+  selectCalendarPageFeatureState,
   state => state.events
-);
-
-export const selectSelectedDay = createSelector(
-  selectCalendarState,
-  state => state.selectedDay
 );
 
 //TODO
@@ -34,19 +30,11 @@ export const selectEventCards = createSelector(
 );
 
 export const selectSchedules = createSelector(
-  selectCalendarState,
+  selectCalendarPageFeatureState,
   state => state.schedules
 );
 
 export const selectDistinctSchedules = createSelector(
   selectSchedules,
-  schedules => schedules?.reduce((result, current) => {
-    const startDate = new Date(current?.startDate);
-
-    const existing = result.find(date => date.toDateString() === startDate.toDateString());
-
-    !existing && result.push(startDate);
-
-    return result;
-  }, [] as Date[])
+  schedules => distinctStartDates(schedules)
 );

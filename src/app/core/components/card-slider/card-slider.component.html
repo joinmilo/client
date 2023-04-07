@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="title || link">
   <h1 class="mat-headline-4 title-gradient" [appLabel]="title"></h1>
   <section *ngIf="link">
     <a [routerLink]="link" [appLabel]="linkLabel" postFix="»"></a>

@@ -1,0 +1,13 @@
+<h1 class="mat-headline-4 title-gradient" appLabel="activ"></h1>
+<mat-card>
+  <app-calendar
+    [dates]="startDates"
+    (daySelected)="daySelected($event)"
+    (monthSelected)="monthSelected($event)">
+  </app-calendar>
+
+  <section *ngIf="(cards | async)?.length">
+    <app-card-slider [cards]="cards | async">
+    </app-card-slider>
+  </section>
+</mat-card>

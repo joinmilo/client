@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ArticleEntity, Maybe } from 'src/schema/schema';
-import { ArticlePageFeatureActions } from './article.actions';
+import { ArticlePageFeatureActions } from './article-page-feature.actions';
 
 export interface ArticlePageFeatureState {
   recentArticles?: Maybe<ArticleEntity[]>,

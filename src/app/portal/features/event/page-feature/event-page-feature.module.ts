@@ -6,8 +6,8 @@ import { CoreModule } from 'src/app/core/core.module';
 import { PortalCommonModule } from 'src/app/portal/common/common.module';
 import { EventPageFeatureComponent } from './component/event-page-feature.component';
 import { eventPageFeatureStateKey } from './constants/event-page-feature.constant';
-import { EventPageFeatureEffects } from './state/event.effects';
-import { eventPageFeatureReducer } from './state/event.reducer';
+import { EventPageFeatureEffects } from './state/event-page-feature.effects';
+import { eventPageFeatureReducer } from './state/event-page-feature.reducer';
 
 const components = [
   EventPageFeatureComponent

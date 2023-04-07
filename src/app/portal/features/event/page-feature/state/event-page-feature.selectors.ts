@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CardInput } from 'src/app/core/typings/card';
 import { eventPageFeatureStateKey } from '../constants/event-page-feature.constant';
-import { EventPageFeatureState } from './event.reducer';
+import { EventPageFeatureState } from './event-page-feature.reducer';
 
 export const selectEventPageFeatureState = createFeatureSelector<EventPageFeatureState>(eventPageFeatureStateKey);
 

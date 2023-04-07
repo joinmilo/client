@@ -6,8 +6,8 @@ import { CoreModule } from 'src/app/core/core.module';
 import { PortalCommonModule } from 'src/app/portal/common/common.module';
 import { ArticlePageFeatureComponent } from './component/article-page-feature.component';
 import { articlePageFeatureStateKey } from './constants/article-page-feature.constant';
-import { ArticlePageFeatureEffects } from './state/article.effects';
-import { articlePageFeatureReducer } from './state/article.reducer';
+import { ArticlePageFeatureEffects } from './state/article-page-feature.effects';
+import { articlePageFeatureReducer } from './state/article-page-feature.reducer';
 
 const components = [
   ArticlePageFeatureComponent

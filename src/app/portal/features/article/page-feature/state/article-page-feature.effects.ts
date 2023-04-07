@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { ArticleEntity, GetArticlesGQL } from 'src/schema/schema';
-import { ArticlePageFeatureActions } from './article.actions';
+import { ArticlePageFeatureActions } from './article-page-feature.actions';
 
 @Injectable()
 export class ArticlePageFeatureEffects {

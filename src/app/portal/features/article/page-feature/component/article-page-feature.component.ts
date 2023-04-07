@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
-import { ArticlePageFeatureActions } from '../state/article.actions';
-import { selectRecentArticleCards } from '../state/article.selectors';
+import { ArticlePageFeatureActions } from '../state/article-page-feature.actions';
+import { selectRecentArticleCards } from '../state/article-page-feature.selectors';
 
 @Component({
   selector: 'app-article-page-feature',

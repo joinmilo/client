@@ -7,8 +7,8 @@ import { selectDistinctSchedules, selectEventCards } from '../state/calendar.sel
 
 @Component({
   selector: 'app-portal-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  templateUrl: './portal-calendar.component.html',
+  styleUrls: ['./portal-calendar.component.scss']
 })
 export class PortalCalendarComponent {
 

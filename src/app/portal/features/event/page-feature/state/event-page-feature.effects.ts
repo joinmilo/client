@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { EventEntity, GetEventsGQL } from 'src/schema/schema';
-import { EventPageFeatureActions } from './event.actions';
+import { EventPageFeatureActions } from './event-page-feature.actions';
 
 @Injectable()
 export class EventPageFeatureEffects {

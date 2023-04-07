@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
-import { EventPageFeatureActions } from '../state/event.actions';
-import { selectRecentEventsCards } from '../state/event.selectors';
+import { EventPageFeatureActions } from '../state/event-page-feature.actions';
+import { selectRecentEventsCards } from '../state/event-page-feature.selectors';
 
 @Component({
   selector: 'app-event-page-feature',

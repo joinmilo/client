@@ -11,5 +11,5 @@
   </section>
 </header>
 <div class="main">
-  <app-page-features [pageFeatures]="(page | async)?.pageFeatures"></app-page-features>
+  <app-page-features *ngIf="(page | async)?.pageFeatures?.length" [pageFeatures]="(page | async)?.pageFeatures"></app-page-features>
 </div>

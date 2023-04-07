@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { EventEntity, Maybe } from 'src/schema/schema';
-import { EventPageFeatureActions } from './event.actions';
+import { EventPageFeatureActions } from './event-page-feature.actions';
 
 export interface EventPageFeatureState {
   recentEvents?: Maybe<EventEntity[]>,

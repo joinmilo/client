@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: calendarFeatureKey,
-    loadChildren: () => import('./features/calendar/calendar.module')
+    loadChildren: () => import('./features/calendar/main/calendar.module')
       .then((imported) => imported.CalendarPortalModule),
   },
   {
