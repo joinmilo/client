@@ -1,0 +1,7 @@
+query getSchedules($params: FilterSortPaginateInput) {
+  getSchedules(params: $params) {
+    result {
+      ...CalendarSchedule
+    }
+  }
+}

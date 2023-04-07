@@ -12,8 +12,8 @@ import { selectRecentEventsCards } from '../state/event.selectors';
 export class EventPageFeatureComponent {
   
   public events = this.store.select(selectRecentEventsCards).pipe(
-      tap(result => !result?.length
-        && this.store.dispatch(EventPageFeatureActions.getRecentEvents())));
+    tap(result => !result?.length
+      && this.store.dispatch(EventPageFeatureActions.getRecentEvents())));
 
   constructor(
     private store: Store, 

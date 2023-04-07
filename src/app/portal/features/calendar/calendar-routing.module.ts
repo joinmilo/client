@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { PortalCalendarComponent } from './components/calendar.component';
 
 const routes: Routes = [
-
   {
     path: '',
     component: PortalCalendarComponent

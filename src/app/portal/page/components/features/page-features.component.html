@@ -2,13 +2,7 @@
   <ng-container *ngFor="let pageFeature of pageFeatures">
     <ng-container [ngSwitch]="pageFeature?.feature?.key">
       <app-event-page-feature *ngSwitchCase="eventFeatureKey"></app-event-page-feature>
-      <app-card-slider
-        *ngSwitchCase="articlesFeatureKey"
-        [cards]="articles | async"
-        title="newBlogposts"
-        linkLabel="more"
-        [link]="['/articles']">
-      </app-card-slider>
+      <app-article-page-feature *ngSwitchCase="articlesFeatureKey"></app-article-page-feature>
     </ng-container>
   </ng-container>
 </div>

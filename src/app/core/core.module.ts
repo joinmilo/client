@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +18,8 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 import { CardSliderComponent } from './components/card-slider/card-slider.component';
 import { ContactCardComponent } from './components/cards/contact-card/contact-card.component';
 import { ContentCardComponent } from './components/cards/content-card/content-card.component';
@@ -39,6 +43,8 @@ import { coreReducer } from './state/core.reducer';
 const components = [
   AddressPieceComponent,
   ContentCardComponent,
+  CalendarComponent,
+  CalendarHeaderComponent,
   CardSliderComponent,
   ContactCardComponent,
   DatePieceComponent,
@@ -73,12 +79,14 @@ const materials = [
   FontAwesomeModule,
   MatButtonModule,
   MatCardModule,
-  MatSnackBarModule,
   MatChipsModule,
-  MatSelectModule,
+  MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatNativeDateModule,
+  MatSnackBarModule,
+  MatSelectModule,
 ];
 
 const libs = [

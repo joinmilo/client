@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CoreModule } from 'src/app/core/core.module';
-import { ArticlePortalRoutingModule } from './article-routing.module';
+import { PortalArticleRoutingModule } from './article-routing.module';
 
 const framework = [
   CommonModule,
@@ -13,7 +13,7 @@ const materials = [
 ];
 
 const modules = [
-  ArticlePortalRoutingModule,
+  PortalArticleRoutingModule,
   CoreModule,
 ];
 
@@ -25,4 +25,4 @@ const modules = [
     ...modules,
   ],
 })
-export class ArticlePortalModule { }
+export class PortalArticleModule { }

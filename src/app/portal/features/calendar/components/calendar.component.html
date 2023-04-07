@@ -1,11 +1,10 @@
-<mat-card>
-  <mat-calendar 
-    (selectedChange)="test($event)" 
-    [dateFilter]="dateFilter">
-  </mat-calendar>
-  <div *ngIf="cards?.length">
+<mat-card class="main">
+  <app-calendar
+   [dates]="startDates"
+   (selectedMonth)="monthChanged($event)"></app-calendar>
+  <!-- <div *ngIf="cards?.length">
     <app-card-slider>
         <app-content-card *ngFor="let card of cards" [data]="card"></app-content-card>
     </app-card-slider>
-  </div>
+  </div> -->
 </mat-card>

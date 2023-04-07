@@ -6,6 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalCommonModule } from '../common/common.module';
+import { ArticlePortalPageFeatureModule } from '../features/article/page-feature/article-page-feature.module';
 import { EventPortalPageFeatureModule } from '../features/event/page-feature/event-page-feature.module';
 import { PageFeaturesComponent } from './components/features/page-features.component';
 import { pageStateKey } from './constants/page.constants';
@@ -25,6 +26,7 @@ const pages = [
 ];
 
 const features = [
+  ArticlePortalPageFeatureModule,
   EventPortalPageFeatureModule,
 ]
 
