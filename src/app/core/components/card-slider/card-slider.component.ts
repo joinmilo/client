@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CardInput } from 'src/app/core/typings/card';
+import { CardInput, CardType } from 'src/app/core/typings/card';
 import { Maybe } from 'src/schema/schema';
 
 @Component({
@@ -22,6 +22,11 @@ export class CardSliderComponent {
   public titleLabel?: string;
 
   @Input()
-  public cardType?: string;
+  public cardType = CardType.Content;
 
+  public types = {
+    contact: CardType.Contact,
+    content: CardType.Content,
+    sponsored: CardType.Sponsored
+  };
 }

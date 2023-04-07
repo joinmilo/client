@@ -4,9 +4,12 @@
     <a [routerLink]="link" [appLabel]="linkLabel" postFix="»"></a>
   </section>
 </div>
-<app-slider *ngIf="cardType == 'content'">
+<app-slider *ngIf="cardType === types.contact">
+  <app-contact-card *ngFor="let card of cards" [data]="card"></app-contact-card>
+</app-slider>
+<app-slider *ngIf="cardType === types.content">
   <app-content-card *ngFor="let card of cards" [data]="card"></app-content-card>
 </app-slider>
-<app-slider *ngIf="cardType == 'contact'">
-  <app-contact-card *ngFor="let card of cards" [data]="card"></app-contact-card>
+<app-slider *ngIf="cardType === types.sponsored">
+  <app-sponsored-card *ngFor="let card of cards" [data]="card"></app-sponsored-card>
 </app-slider>

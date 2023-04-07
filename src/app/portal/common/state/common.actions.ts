@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { AppEntity, ArticleEntity, EventEntity, Maybe, MenuItemEntity, OrganisationEntity, SocialMediaEntity, UserContextEntity } from 'src/schema/schema';
+import { AppEntity, ArticleEntity, EventEntity, FeatureEntity, Maybe, MenuItemEntity, OrganisationEntity, SocialMediaEntity, UserContextEntity } from 'src/schema/schema';
 import { ContestEntity, DealEntity, SearchDto, SurveyEntity } from './../../../../schema/schema';
 
 export const CommonActions = createActionGroup({
@@ -14,7 +14,8 @@ export const CommonActions = createActionGroup({
     'set menu': (menuItems: MenuItemEntity[]) => ({ menuItems }),
 
 
-    'navigate': (item: Maybe<MenuItemEntity>) => ({ item }),
+    'navigate menu': (item: Maybe<MenuItemEntity>) => ({ item }),
+    'navigate details': (entityId?: Maybe<string>, feature?: Maybe<FeatureEntity>) => ({ entityId, feature }),
     'not found': emptyProps(),
 
     'search query set': (query?: Maybe<string>) => ({ query }),

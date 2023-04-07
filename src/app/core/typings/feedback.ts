@@ -1,8 +1,8 @@
 export enum FeedbackType {
-  Error = 'ERROR',
-  Critical = 'CRITICAL',
-  Info = 'INFO',
-  Success = 'SUCCESS',
+  Error = 'error',
+  Critical = 'critical',
+  Info = 'info',
+  Success = 'success',
 }
 
 export interface Feedback {

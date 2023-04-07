@@ -18,7 +18,6 @@ export class PageFeaturesComponent implements OnInit {
 
   public ngOnInit(): void {
     this.pageFeatures = [...(this.pageFeatures || [])].sort((f1, f2) => (f1?.order || 0) - (f2?.order || 0));
-    console.log(this.pageFeatures);
   }
   
 }

@@ -2,6 +2,11 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 import { AddressEntity, ContactEntity, MediaEntity } from 'src/schema/schema';
 import { Translatable } from './translatable';
 
+export enum CardType {
+  Contact = 'contact',
+  Content = 'content',
+  Sponsored = 'sponsored',
+}
 
 export type CardInput = {
   address?: Maybe<AddressEntity>,

@@ -6,8 +6,18 @@
   }
 }
 
-
 mat-form-field{
+  width: 16rem;
+}
+
+span {
+  display: block !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   width: 14rem;
 }
 
+mat-divider {
+  margin-top: -1px;
+}

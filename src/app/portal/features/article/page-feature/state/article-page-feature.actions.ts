@@ -8,7 +8,3 @@ export const ArticlePageFeatureActions = createActionGroup({
     'set recent articles': (articles?: ArticleEntity[]) => ({ articles }),
   }
 });
-
-
-
-

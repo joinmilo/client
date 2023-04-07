@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { distinctUntilChanged, Subject, takeUntil } from 'rxjs';
+import { Subject, distinctUntilChanged, takeUntil } from 'rxjs';
+import { SearchDto } from 'src/schema/schema';
 import { CommonActions } from '../../../state/common.actions';
 import { selectSearchQuery, selectSearchResult } from '../../../state/common.selectors';
 
@@ -12,10 +13,12 @@ import { selectSearchQuery, selectSearchResult } from '../../../state/common.sel
   templateUrl: './portal-header-search.component.html',
   styleUrls: ['./portal-header-search.component.scss']
 })
-export class PortalHeaderSearchComponent {
+export class PortalHeaderSearchComponent implements OnInit, OnDestroy{
 
-  searchControl = new FormControl('' as Maybe<string> | undefined);
-  searchResult = this.store.select(selectSearchResult);
+  public control = new FormControl('' as Maybe<string> | undefined);
+  
+  public result = this.store.select(selectSearchResult);
+
   private destroy = new Subject<void>();
 
   constructor(
@@ -23,30 +26,36 @@ export class PortalHeaderSearchComponent {
     private router: Router) {
   }
 
-  ngOnInit(): void {
-    this.searchControl.valueChanges
+  public ngOnInit(): void {
+    this.store.select(selectSearchQuery)
+      .pipe(takeUntil(this.destroy))
+      .subscribe((query => {
+        this.control.setValue(query);
+      }))
+
+    this.control.valueChanges
       .pipe(
         distinctUntilChanged(),
         takeUntil(this.destroy)
-      )
-      .subscribe((query) => {
+      ).subscribe((query) => {
         query !== undefined && this.store.dispatch(CommonActions.searchQuerySet(query));
       });
   }
 
-  showOneEntity(id: Maybe<string>) {
-    this.router.navigate(['/portal/' + id]);
+  public navigateDetails(entity: Maybe<SearchDto>) {
+    this.store.dispatch(CommonActions.navigateDetails(entity?.id, entity?.feature))
   }
 
-  showAllEntities() {
-    this.store.select(selectSearchQuery).pipe(takeUntil(this.destroy))
+  public navigateSearchPage() {
+    this.store.select(selectSearchQuery)
+      .pipe(takeUntil(this.destroy))
       .subscribe((query => {
-        this.searchControl.setValue(query);
+        this.control.setValue(query);
       }))
-    this.router.navigate(['/portal/search'])
+    this.router.navigate(['/portal', 'search'])
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

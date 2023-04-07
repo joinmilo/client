@@ -24,7 +24,6 @@ export class PortalCalendarComponent implements OnDestroy {
 
   public daySelected(day: Period) {
     this.store.dispatch(CalendarActions.daySelected(day));
-    console.log('test', day);
     this.title = day.startDate.toLocaleDateString();
   }
 

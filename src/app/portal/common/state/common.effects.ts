@@ -37,8 +37,13 @@ export class CommonEffects {
     map(response => CommonActions.setSocialMedia(response.data.getSocialMedias?.result as SocialMediaEntity[]))
   ));
 
-  navigate = createEffect(() => this.actions.pipe(
-    ofType(CommonActions.navigate),
+  navigateDetails = createEffect(() => this.actions.pipe(
+    ofType(CommonActions.navigateDetails),
+    tap(action => this.router.navigate(['portal', action.feature?.key, action.feature?.id])),
+  ), { dispatch: false });
+
+  navigateMenu = createEffect(() => this.actions.pipe(
+    ofType(CommonActions.navigateMenu),
     tap(action => {
       if (action?.item?.feature?.key) {
         this.router.navigate(['portal', action.item.feature.key]);
@@ -62,7 +67,7 @@ export class CommonEffects {
         search: action.query,
         sort: 'modified',
         dir: 'desc',
-        size: 5,
+        size: 4,
       }
     }).valueChanges),
     map(response => CommonActions.setSearchResult(response.data.search as SearchDto[]))

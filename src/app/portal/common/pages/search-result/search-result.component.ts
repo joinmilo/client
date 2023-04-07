@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { CardType } from 'src/app/core/typings/card';
 import { CommonActions } from '../../state/common.actions';
 import { selectFoundArticles, selectFoundAuthors, selectFoundContests, selectFoundDeals, selectFoundEvents, selectFoundOrganisations, selectFoundSurveys, selectSearchQuery } from './../../state/common.selectors';
 
@@ -19,6 +20,12 @@ export class PortalSearchResultComponent implements OnInit, OnDestroy {
   public contests = this.store.select(selectFoundContests);
   public surveys = this.store.select(selectFoundSurveys);
 
+  public types = {
+    contact: CardType.Contact,
+    content: CardType.Content,
+    sponsored: CardType.Sponsored
+  };
+
   private destroy = new Subject<void>();
 
   constructor(
@@ -26,7 +33,9 @@ export class PortalSearchResultComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.store.select(selectSearchQuery).pipe(takeUntil(this.destroy)).subscribe((query => {
+    this.store.select(selectSearchQuery)
+    .pipe(takeUntil(this.destroy))
+    .subscribe((query => {
       this.store.dispatch(CommonActions.searchQuerySet(query));
     }))
   }

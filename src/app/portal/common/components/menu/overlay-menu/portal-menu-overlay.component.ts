@@ -42,6 +42,6 @@ export class PortalMenuOverlayComponent implements OnInit {
   }
 
   public route(item: Maybe<MenuItemEntity>) {
-    this.store.dispatch(CommonActions.navigate(item));
+    this.store.dispatch(CommonActions.navigateMenu(item));
   }
 }

@@ -18,7 +18,7 @@ export class PortalFooterDesktopComponent {
   ) { }
   
   public navigate(item: Maybe<MenuItemEntity>) {
-    this.store.dispatch(CommonActions.navigate(item));
+    this.store.dispatch(CommonActions.navigateMenu(item));
   }
 
 }
