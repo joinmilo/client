@@ -7,7 +7,6 @@
   </app-calendar>
 
   <section *ngIf="(cards | async)?.length">
-    <app-card-slider [cards]="cards | async">
-    </app-card-slider>
+    <app-card-slider [cards]="cards | async"></app-card-slider>
   </section>
 </mat-card>
