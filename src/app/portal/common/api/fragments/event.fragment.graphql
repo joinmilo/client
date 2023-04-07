@@ -23,8 +23,7 @@ fragment Event on EventEntity {
   category {
     ...EventCategory
   }
-
-  schedules {
+  schedule(begin: $scheduleBegin, end: $scheduleEnd) {
     ...Schedules
   }
 }

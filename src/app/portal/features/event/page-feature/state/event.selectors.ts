@@ -10,6 +10,7 @@ export const selectRecentEvents = createSelector(
   state => state.recentEvents
 );
 
+//TODO
 export const selectRecentEventsCards = createSelector(
   selectRecentEvents,
   recentEvents => recentEvents?.map(event => ({
@@ -18,11 +19,7 @@ export const selectRecentEventsCards = createSelector(
     categoryTranslatableField: 'name',
     creator: event.contact?.name,
     creatorImage: event.creator?.titleImage,
-    date: event.schedules
-      ?.filter(a => new Date(a?.startDate).toLocaleDateString() > Date.now().toLocaleString()
-       || new Date(a?.endDate).toLocaleDateString() > Date.now().toLocaleString())
-      ?.sort((a, b) => b?.startDate.localeCompare(a?.startDate))
-      ?.shift()?.startDate,
+    date: event?.schedule?.startDate,
     dateTime: true,
     image: event.cardImage,
     textTranslatableField: 'shortDescription',

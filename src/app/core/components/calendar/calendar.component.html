@@ -1,5 +1,6 @@
   <mat-calendar
     [dateFilter]="dateFilter"
     [headerComponent]="header"
-    [startAt]="startAt">
+    [startAt]="startAt"
+    (selectedChange)="selectedChange($event)">
   </mat-calendar>

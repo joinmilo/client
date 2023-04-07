@@ -1,3 +1,14 @@
+div {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
 mat-card {
   width: 40rem;
+  max-width: calc(100% - var(--gap));
+}
+
+section {
+  width: 100%;
 }

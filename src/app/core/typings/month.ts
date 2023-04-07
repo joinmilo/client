@@ -1,4 +1,4 @@
-export interface Month {
+export interface Period {
   startDate: Date;
   endDate: Date;
 }

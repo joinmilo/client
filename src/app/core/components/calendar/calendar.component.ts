@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Observable, Subject, takeUntil } from 'rxjs';
+import { Maybe } from 'src/schema/schema';
 import { CalendarService } from '../../services/calendar.service';
-import { Month } from '../../typings/month';
-import { dateToMonth } from '../../utils/date.utils';
+import { Period } from '../../typings/month';
+import { dayPeriod, monthPeriod } from '../../utils/date.utils';
 import { CalendarHeaderComponent } from './calendar-header/calendar-header.component';
 
 @Component({
@@ -20,7 +20,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   //Make Observable out of it
   @Input()
-  public dates?: Observable<Maybe<Date[]>>;
+  public dates?: Observable<Maybe<Date[]> | undefined>;
  
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public dateFilter = (_: Date): boolean => { return false; }
@@ -28,10 +28,10 @@ export class CalendarComponent implements OnInit, OnDestroy {
   public startAt = new Date();
 
   @Output()
-  public selectedDate = new EventEmitter<Date>();
+  public daySelected = new EventEmitter<Period>();
 
   @Output()
-  public selectedMonth = new EventEmitter<Month>();
+  public monthSelected = new EventEmitter<Period>();
   
   constructor(
     private calendarService: CalendarService,
@@ -39,16 +39,20 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
 
-    this.selectedMonth.emit(dateToMonth(this.startAt));
+    this.monthSelected.emit(monthPeriod(this.startAt) as Period);
     this.calendarService.selectedMonth()
       .pipe(takeUntil(this.destroy))
-      .subscribe(month => this.selectedMonth.emit(month));
+      .subscribe(month => this.monthSelected.emit(month));
 
     // This overrrides the dateFilter to refresh date filter async
     // see: https://stackoverflow.com/questions/59762201/how-to-have-material-calenders-date-picker-filter-method-work-with-observables
     this.dates?.pipe(takeUntil(this.destroy))
       .subscribe(dates => this.dateFilter = (calendarDate: Date) =>
         !!dates?.some(date => date.toDateString() === calendarDate.toDateString()))
+  }
+
+  public selectedChange(date: Maybe<Date>): void {
+    this.daySelected.emit(dayPeriod(date) as Period);
   }
   
   public ngOnDestroy(): void {

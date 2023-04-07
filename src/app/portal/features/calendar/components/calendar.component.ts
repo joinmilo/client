@@ -1,10 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map } from 'rxjs';
-import { Month } from 'src/app/core/typings/month';
-import { EventEntity, Maybe } from 'src/schema/schema';
+import { Period } from 'src/app/core/typings/month';
 import { CalendarActions } from '../state/calendar.actions';
-import { selectDistinctSchedules } from '../state/calendar.selectors';
+import { selectDistinctSchedules, selectEventCards } from '../state/calendar.selectors';
 
 
 @Component({
@@ -14,18 +12,20 @@ import { selectDistinctSchedules } from '../state/calendar.selectors';
 })
 export class PortalCalendarComponent {
 
-  @Input()
-  public events?: Maybe<EventEntity[]>;
+  public cards = this.store.select(selectEventCards);
 
-  public startDates = this.store.select(selectDistinctSchedules)
-    .pipe(map(schedules => schedules?.map(schedule => schedule.startDate)))
+  public startDates = this.store.select(selectDistinctSchedules);
 
   constructor(
     private store: Store,
   ) {}
 
-  public monthChanged(month: Month) {
-    this.store.dispatch(CalendarActions.monthChanged(month));
+  public daySelected(day: Period) {
+    this.store.dispatch(CalendarActions.daySelected(day));
+  }
+
+  public monthSelected(month: Period) {
+    this.store.dispatch(CalendarActions.monthSelected(month));
   }
 
 

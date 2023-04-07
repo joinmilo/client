@@ -1,4 +1,7 @@
-query getEvents($params: FilterSortPaginateInput) {
+query getEvents(
+  $params: FilterSortPaginateInput,
+  $scheduleBegin: OffsetDateTime,
+  $scheduleEnd: OffsetDateTime) {
   getEvents(params: $params) {
     result {
       ...Event
