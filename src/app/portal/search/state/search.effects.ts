@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { filter, map, switchMap, tap } from 'rxjs';
 import { ArticleEntity, ConjunctionOperator, ContestEntity, DealEntity, EventEntity, GetArticlesGQL, GetEventsGQL, OrganisationEntity, QueryOperator, SearchDto, SurveyEntity, UserContextEntity } from 'src/schema/schema';
 import { GetContestsGQL, GetDealsGQL, GetOrganisationsGQL, GetSurveysGQL, GetUserContextsGQL, SearchGQL } from '../../../../schema/schema';
 import { SearchActions } from './search.actions';
+import { selectResultsPageActive, selectSearchQuery } from './search.selectors';
 
 @Injectable()
 export class SearchEffects {
-
-  navigateSearchPage = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.navigateSearchPage),
-    tap(() => this.router.navigate(['/portal', 'search'])),
-  ), { dispatch: false });
 
   getSearchResult = createEffect(() => this.actions.pipe(
     ofType(SearchActions.searchQuerySet),
@@ -27,11 +24,31 @@ export class SearchEffects {
     map(response => SearchActions.setSearchResult(response.data.search as SearchDto[]))
   ));
 
+  navigateResultPage = createEffect(() => this.actions.pipe(
+    ofType(SearchActions.navigateResultPage),
+    tap(() => this.router.navigate(['/portal', 'search'])),
+  ), { dispatch: false });
+
+  searchDetails = createEffect(() => this.actions.pipe(
+    ofType(
+      SearchActions.navigateResultPage,
+      SearchActions.searchQuerySet
+    ),
+    concatLatestFrom(() => 
+      this.store.select(selectResultsPageActive)
+    ),
+    filter(([, resultPageActive]) => resultPageActive),
+    map(() => SearchActions.searchDetails()),
+  ));
+
   getEvents = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.searchQuerySet),
-    switchMap((action) => this.getEventsService.watch({
+    ofType(SearchActions.searchDetails),
+    concatLatestFrom(() => 
+      this.store.select(selectSearchQuery)
+    ),
+    switchMap(([, query]) => this.getEventsService.watch({
       params: {
-        search: action.query,
+        search: query,
         sort: 'modified',
         dir: 'desc',
         size: 5,
@@ -41,10 +58,13 @@ export class SearchEffects {
   ));
 
   getArticles = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.searchQuerySet),
-    switchMap((action) => this.getArticlesService.watch({
+    ofType(SearchActions.searchDetails),
+    concatLatestFrom(() => 
+      this.store.select(selectSearchQuery)
+    ),
+    switchMap(([, query]) => this.getArticlesService.watch({
       params: {
-        search: action.query,
+        search: query,
         sort: 'modified',
         dir: 'desc',
         size: 5,
@@ -54,10 +74,13 @@ export class SearchEffects {
   ));
 
   getOrganisations = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.searchQuerySet),
-    switchMap((action) => this.getOrganisationsService.watch({
+    ofType(SearchActions.searchDetails),
+    concatLatestFrom(() => 
+      this.store.select(selectSearchQuery)
+    ),
+    switchMap(([, query]) => this.getOrganisationsService.watch({
       params: {
-        search: action.query,
+        search: query,
         sort: 'modified',
         dir: 'desc',
         size: 5,
@@ -67,8 +90,11 @@ export class SearchEffects {
   ));
 
   getAuthors = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.searchQuerySet),
-    switchMap((action) => this.getUserContextsService.watch({
+    ofType(SearchActions.searchDetails),
+    concatLatestFrom(() => 
+      this.store.select(selectSearchQuery)
+    ),
+    switchMap(([, query]) => this.getUserContextsService.watch({
       params: {
         expression: {
           conjunction: {
@@ -81,21 +107,21 @@ export class SearchEffects {
                       entity: {
                         operator: QueryOperator.Like,
                         path: 'user.firstName',
-                        value: action.query
+                        value: query
                       }
                     },
                     {
                       entity: {
                         operator: QueryOperator.Like,
                         path: 'user.lastName',
-                        value: action.query
+                        value: query
                       }
                     },
                     {
                       entity: {
                         operator: QueryOperator.Like,
                         path: 'user.email',
-                        value: action.query
+                        value: query
                       }
                     }
                   ]
@@ -114,10 +140,13 @@ export class SearchEffects {
   ));
 
   getDeals = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.searchQuerySet),
-    switchMap((action) => this.getDealsService.watch({
+    ofType(SearchActions.searchDetails),
+    concatLatestFrom(() => 
+      this.store.select(selectSearchQuery)
+    ),
+    switchMap(([, query]) => this.getDealsService.watch({
       params: {
-        search: action.query,
+        search: query,
         sort: 'modified',
         dir: 'desc',
         size: 5,
@@ -127,10 +156,13 @@ export class SearchEffects {
   ));
 
   getSurveys = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.searchQuerySet),
-    switchMap((action) => this.getSurveysService.watch({
+    ofType(SearchActions.searchDetails),
+    concatLatestFrom(() => 
+      this.store.select(selectSearchQuery)
+    ),
+    switchMap(([, query]) => this.getSurveysService.watch({
       params: {
-        search: action.query,
+        search: query,
         sort: 'modified',
         dir: 'desc',
         size: 5,
@@ -140,10 +172,13 @@ export class SearchEffects {
   ));
 
   getContest = createEffect(() => this.actions.pipe(
-    ofType(SearchActions.searchQuerySet),
-    switchMap((action) => this.getContestsService.watch({
+    ofType(SearchActions.searchDetails),
+    concatLatestFrom(() => 
+      this.store.select(selectSearchQuery)
+    ),
+    switchMap(([, query]) => this.getContestsService.watch({
       params: {
-        search: action.query,
+        search: query,
         sort: 'modified',
         dir: 'desc',
         size: 5,
@@ -163,5 +198,6 @@ export class SearchEffects {
     private getSurveysService: GetSurveysGQL,
     private getContestsService: GetContestsGQL,
     private router: Router,
+    private store: Store,
   ) { }
 }

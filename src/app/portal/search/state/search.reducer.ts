@@ -6,6 +6,7 @@ import { SearchActions } from './search.actions';
 export interface SearchState {
   searchResult?: Maybe<SearchDto[]>,
   searchQuery?: Maybe<string>,
+
   events?: Maybe<EventEntity[]>,
   articles?: Maybe<ArticleEntity[]>,
   organisations?: Maybe<OrganisationEntity[]>,
@@ -13,11 +14,14 @@ export interface SearchState {
   deals?: Maybe<DealEntity[]>,
   surveys?: Maybe<SurveyEntity[]>,
   contests?: Maybe<ContestEntity[]>,
+  
   isSearching: boolean,
+  resultPageActive: boolean,
 }
 
 export const initialState: SearchState = {
-  isSearching: false
+  isSearching: false,
+  resultPageActive: false
 };
 
 export const searchReducer = createReducer(
@@ -29,6 +33,14 @@ export const searchReducer = createReducer(
 
   on(SearchActions.searchQuerySet, (state, action): SearchState => (
     { ...state, searchQuery: action.query }
+  )),
+
+  on(SearchActions.navigateResultPage, (state): SearchState => (
+    { ...state, resultPageActive: true }
+  )),
+
+  on(SearchActions.navigateFromResultPage, (state): SearchState => (
+    { ...state, resultPageActive: false }
   )),
 
   on(SearchActions.setFoundEvents, (state, action): SearchState => (

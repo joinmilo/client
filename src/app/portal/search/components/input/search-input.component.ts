@@ -48,12 +48,12 @@ export class SearchInputComponent implements AfterViewInit, OnDestroy {
 
   public navigateDetails(event: MouseEvent,  entity: Maybe<SearchDto>): void {
     event.stopPropagation();
-    this.store.dispatch(CommonActions.navigateDetails(entity?.id, entity?.feature))
+    this.store.dispatch(CommonActions.navigateDetails(entity?.id, entity?.feature));
   }
 
-  public navigateSearchPage(event: MouseEvent): void {
+  public navigateResultPage(event: MouseEvent): void {
     event.stopPropagation();
-    this.store.dispatch(SearchActions.navigateSearchPage())
+    this.store.dispatch(SearchActions.navigateResultPage());
   }
 
   public ngOnDestroy(): void {

@@ -15,6 +15,11 @@ export const selectSearchQuery = createSelector(
   state => state.searchQuery
 );
 
+export const selectResultsPageActive = createSelector(
+  selectSearchState,
+  state => state.resultPageActive
+);
+
 export const selectFoundEvents = createSelector(
   selectSearchState,
   state => transformEventsToCards(state.events)

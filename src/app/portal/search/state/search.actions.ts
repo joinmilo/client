@@ -5,9 +5,15 @@ import { ContestEntity, DealEntity, SearchDto, SurveyEntity } from '../../../../
 export const SearchActions = createActionGroup({
   source: 'Search',
   events: {
-    'navigate search page': emptyProps(),
+    'navigate result page': emptyProps(),
+    'navigate from result page': emptyProps(),
+
+    'set search state': (isSearching: boolean) => ({ isSearching }),
+    
     'search query set': (query?: Maybe<string>) => ({ query }),
     'set search result': (searchResult: SearchDto[]) => ({ searchResult }),
+
+    'search details': emptyProps(),
     'set found Events': (events?: EventEntity[]) => ({ events }),
     'set found Organisations': (organisations?: OrganisationEntity[]) => ({ organisations }),
     'set found Articles': (articles: ArticleEntity[]) => ({ articles }),
@@ -15,6 +21,5 @@ export const SearchActions = createActionGroup({
     'set found Deals': (deals: DealEntity[]) => ({ deals }),
     'set found Surveys': (surveys: SurveyEntity[]) => ({ surveys }),
     'set found Authors': (authors: UserContextEntity[]) => ({ authors }),
-    'set search state': (isSearching: boolean) => ({ isSearching }),
   },
 });

@@ -13,7 +13,7 @@
 
     <ng-container *ngIf="(result | async)?.length">
       <mat-divider></mat-divider>
-      <mat-option (click)="navigateSearchPage($event)">
+      <mat-option (click)="navigateResultPage($event)">
         <span appLabel="allResults"></span>
       </mat-option>
     </ng-container>
