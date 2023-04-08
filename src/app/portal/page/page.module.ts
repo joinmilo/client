@@ -10,10 +10,10 @@ import { ArticlePortalPageFeatureModule } from '../features/article/page-feature
 import { CalendarPortalPageFeatureModule } from '../features/calendar/page-feature/calendar-page-feature.module';
 import { EventPortalPageFeatureModule } from '../features/event/page-feature/event-page-feature.module';
 import { PageFeaturesComponent } from './components/features/page-features.component';
+import { PageLandingComponent } from './components/landing/page-landing.component';
+import { PageComponent } from './components/page/page.component';
 import { pageStateKey } from './constants/page.constants';
 import { PagePortalRoutingModule as PortalPageRoutingModule } from './page-routing.module';
-import { PageLandingComponent } from './pages/landing/page-landing.component';
-import { PageComponent } from './pages/page/page.component';
 import { PageEffects } from './state/page.effects';
 import { pageReducer } from './state/page.reducer';
 

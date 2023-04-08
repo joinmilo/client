@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { transformEventsToCards } from 'src/app/portal/common/components/common.utils/card-input.utils';
+import { transformEventsToCards } from 'src/app/core/utils/card.utils';
 import { eventPageFeatureStateKey } from '../constants/event-page-feature.constant';
 import { EventPageFeatureState } from './event-page-feature.reducer';
 

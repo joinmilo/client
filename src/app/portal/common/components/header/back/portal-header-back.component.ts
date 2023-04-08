@@ -12,7 +12,7 @@ export class PortalHeaderBackComponent {
     private navigationService: NavigationService,
   ) { }
 
-  public back() {
+  public back(): void {
     this.navigationService.back();
   }
 

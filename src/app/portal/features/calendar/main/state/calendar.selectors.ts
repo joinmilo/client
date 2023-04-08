@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { transformEventsToCards } from 'src/app/core/utils/card.utils';
 import { distinctStartDates } from 'src/app/core/utils/schedule.utils';
-import { transformEventsToCards } from 'src/app/portal/common/components/common.utils/card-input.utils';
 import { calendarStateKey } from '../constants/calendar.constant';
 import { CalendarState } from './calendar.reducer';
 

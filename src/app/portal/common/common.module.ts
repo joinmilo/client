@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { SearchModule } from '../search/search.module';
 import { PortalFooterAppStoreComponent } from './components/footer/appstore/portal-footer-appstore.component';
 import { PortalFooterDesktopComponent } from './components/footer/desktop/portal-footer-desktop.component';
 import { PortalFooterMobileComponent } from './components/footer/mobile/portal-footer-mobile.component';
@@ -26,13 +27,11 @@ import { PortalHeaderDesktopComponent } from './components/header/desktop/portal
 import { PortalHeaderLanguageComponent } from './components/header/language/portal-header-language.component';
 import { PortalHeaderMobileComponent } from './components/header/mobile/portal-header-mobile.component';
 import { PortalHeaderComponent } from './components/header/portal-header.component';
-import { PortalHeaderSearchComponent } from './components/header/search/portal-header-search.component';
 import { PortalHeaderUserComponent } from './components/header/user/portal-header-user.component';
 import { PortalMenuAccordionComponent } from './components/menu/accordion/portal-menu-accordion.component';
 import { PortalMenuOverlayComponent } from './components/menu/overlay-menu/portal-menu-overlay.component';
 import { commonFeatureKey } from './constants/common.constants';
 import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
-import { PortalSearchResultComponent } from './pages/search-result/search-result.component';
 import { CommonEffects } from './state/common.effects';
 import { commonReducer } from './state/common.reducer';
 
@@ -47,7 +46,6 @@ const components = [
   PortalHeaderDesktopComponent,
   PortalHeaderMobileComponent,
   PortalHeaderLanguageComponent,
-  PortalHeaderSearchComponent,
   PortalHeaderUserComponent,
   
   PortalMenuAccordionComponent,
@@ -56,7 +54,6 @@ const components = [
 
 const pages = [
   PortalNotFoundComponent,
-  PortalSearchResultComponent
 ];
 
 const framework = [
@@ -82,6 +79,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  SearchModule,
 ];
 
 const libs = [

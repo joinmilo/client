@@ -2,15 +2,15 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { CardType } from 'src/app/core/typings/card';
-import { CommonActions } from '../../state/common.actions';
-import { selectFoundArticles, selectFoundAuthors, selectFoundContests, selectFoundDeals, selectFoundEvents, selectFoundOrganisations, selectFoundSurveys, selectSearchQuery } from './../../state/common.selectors';
+import { SearchActions } from '../../state/search.actions';
+import { selectFoundArticles, selectFoundAuthors, selectFoundContests, selectFoundDeals, selectFoundEvents, selectFoundOrganisations, selectFoundSurveys, selectSearchQuery } from '../../state/search.selectors';
 
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
   styleUrls: ['./search-result.component.scss']
 })
-export class PortalSearchResultComponent implements OnInit, OnDestroy {
+export class SearchResultComponent implements OnInit, OnDestroy {
 
   public events = this.store.select(selectFoundEvents);
   public articles = this.store.select(selectFoundArticles);
@@ -36,7 +36,7 @@ export class PortalSearchResultComponent implements OnInit, OnDestroy {
     this.store.select(selectSearchQuery)
     .pipe(takeUntil(this.destroy))
     .subscribe((query => {
-      this.store.dispatch(CommonActions.searchQuerySet(query));
+      this.store.dispatch(SearchActions.searchQuerySet(query));
     }))
   }
 

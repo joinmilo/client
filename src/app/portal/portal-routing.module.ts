@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeatureKey } from './common/constants/common.constants';
 import { PortalNotFoundComponent } from './common/pages/not-found/not-found.component';
-import { PortalSearchResultComponent } from './common/pages/search-result/search-result.component';
+import { SearchResultComponent } from './search/components/result/search-result.component';
 
 const routes: Routes = [
   {
@@ -25,10 +25,9 @@ const routes: Routes = [
     loadChildren: () => import('./features/report/report.module')
       .then((imported) => imported.ReportPortalModule),
   },
-
   {
     path: 'search',
-    component: PortalSearchResultComponent
+    component: SearchResultComponent,
   },
   {
     path: '404',

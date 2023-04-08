@@ -1,4 +1,4 @@
-import { CardInput } from "src/app/core/typings/card";
+import { CardInput } from 'src/app/core/typings/card';
 import { ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, OrganisationEntity, SurveyEntity, UserContextEntity } from "src/schema/schema";
 
 export const transformEventsToCards = (events?: Maybe<Maybe<EventEntity>[]>): CardInput[] => {

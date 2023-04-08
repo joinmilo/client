@@ -6,35 +6,30 @@
       [parent]="menuItem">
     </app-portal-menu-overlay>
   </section> 
-  <section *ngIf="isSearching" [@inOutAnimSearch] #search>
-    <app-portal-header-search></app-portal-header-search>
-  </section>
-  <section *ngIf="!isSearching"
-   [@inOutAnim]>
-    <button mat-raised-button color="primary"
-      [routerLink]="['/portal', 'register']">
-        <span appLabel="register"></span>
-    </button>
-    <button mat-raised-button color="primary"
-      [routerLink]="['/portal', 'login']">
-        <span appLabel="login"></span>
-    </button>
-    <div>
-      <button mat-icon-button (click)="setSearching()"
-       (click)="$event.stopPropagation()">
-        <fa-icon [icon]="['fas', 'magnifying-glass']"
-        ></fa-icon>
-      </button>
-      <app-portal-header-language></app-portal-header-language>
-      <button mat-icon-button>
-        <fa-icon [icon]="['far', 'bell']"></fa-icon>
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="userMenu">
-        <fa-icon [icon]="['far', 'circle-user']"></fa-icon>
-      </button>
-      <mat-menu #userMenu="matMenu">
-        <app-portal-header-user></app-portal-header-user>
-      </mat-menu>
-    </div>
+  <section>
+
+      <div *ngIf="(isSearching | async) === false" [@fadeIn]>
+        <button mat-raised-button color="primary" [routerLink]="['/portal', 'register']">
+          <span appLabel="register"></span>
+        </button>
+        <button mat-raised-button color="primary" [routerLink]="['/portal', 'login']">
+            <span appLabel="login"></span>
+        </button>
+      </div>
+
+      <app-search></app-search>
+
+      <div *ngIf="(isSearching | async) === false" [@fadeIn]>
+        <app-portal-header-language></app-portal-header-language>
+        
+        <button mat-icon-button [matMenuTriggerFor]="userMenu">
+          <fa-icon [icon]="['far', 'circle-user']"></fa-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <app-portal-header-user></app-portal-header-user>
+        </mat-menu>
+        
+      </div>
+
   </section>
 </header>

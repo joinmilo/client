@@ -9,10 +9,15 @@ header {
   section {
     display: flex;
     align-items: center;
-    gap: 1rem;
   }
 
   section:last-of-type {
     margin-left: auto;
+
+    div:first-of-type {
+      button {
+        margin: 0 0.5rem;
+      }
+    }
   } 
 }
