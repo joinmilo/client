@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { map, switchMap, tap } from 'rxjs';
-import { AppEntity, GetAppsGQL, GetMenuGQL, GetSocialMediaGQL, MenuItemEntity, SocialMediaEntity } from './../../../../schema/schema';
+import { CoreActions } from 'src/app/core/state/core.actions';
+import { FeedbackType } from 'src/app/core/typings/feedback';
+import { AppEntity, GetAppsGQL, GetMenuGQL, GetSocialMediaGQL, MenuItemEntity, SaveUserGQL, SocialMediaEntity, UserEntity } from 'src/schema/schema';
 import { CommonActions } from './common.actions';
 
 @Injectable()
@@ -59,11 +61,27 @@ export class CommonEffects {
     tap(() => this.router.navigate(['/portal', '404'])),
   ), { dispatch: false });
 
+  saveReport = createEffect(() => this.actions.pipe(
+    ofType(CommonActions.saveUser),
+    switchMap((action) => this.saveUserService.mutate({
+      entity: action.entity
+    })),
+    map(response => CommonActions.userSaved(response.data?.saveUser as UserEntity))
+  ));
+
+  reportSaved = createEffect(() => this.actions.pipe(
+    ofType(CommonActions.userSaved),
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'registrationReceived'
+    }))
+  ));
+
   constructor(
     private actions: Actions,
     private getAppsService: GetAppsGQL,
     private getMenuService: GetMenuGQL,
     private getSocialMediaService: GetSocialMediaGQL,
-    private router: Router,
-  ) { }
+    private saveUserService: SaveUserGQL,
+    private router: Router) { }
 }

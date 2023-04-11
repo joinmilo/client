@@ -1,0 +1,5 @@
+mutation saveUser($entity: UserEntityInput!) {
+  saveUser(entity: $entity) {
+    ...User
+  }
+}

@@ -1,0 +1,60 @@
+<main class="main">
+  <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+    <a [routerLink]="['/']">
+      <app-image
+        [image]="(logoConfig | async)?.media"
+        alt="logo">
+      </app-image>
+      <app-image
+        *ngIf="(logoTextConfig | async)?.media?.id"
+        [image]="(logoTextConfig | async)?.media"
+        alt="logo">
+      </app-image>
+    </a>
+    <section>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="firstName"></mat-label>
+          <input matInput id="firstName" formControlName="firstName" placeholder="Max">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="lastName"></mat-label>
+          <input matInput id="lastName" formControlName="lastName" placeholder="Mustermann">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="email"></mat-label>
+          <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="password"></mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"  id="password" formControlName="password">
+          <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <fa-icon [icon]="hide ? ['far', 'eye-slash']: ['far', 'eye']"></fa-icon>
+          </button>
+        </mat-form-field> 
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="passwordConfirm"></mat-label>
+          <input matInput [type]="hideConfirm ? 'password' : 'text'" id="confirm" formControlName="confirm"> 
+          <button mat-icon-button type="button" matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password passwordConfirm'" [attr.aria-pressed]="hideConfirm">
+            <fa-icon [icon]="hideConfirm ? ['far', 'eye-slash']: ['far', 'eye']"></fa-icon>
+          </button>
+          <mat-error *ngIf="form.get('confirm')!.touched && form.get('confirm')!.errors?.['notSame']">Passwörter stimmen nicht überein</mat-error>
+        </mat-form-field>
+      </div>
+      <div *ngIf="sitekey | async">
+        <ng-hcaptcha class="mobile" formControlName="captchaToken" [siteKey]="(sitekey | async)!" size="compact"></ng-hcaptcha>
+        <ng-hcaptcha class="desktop" formControlName="captchaToken" [siteKey]="(sitekey | async)!"></ng-hcaptcha>
+      </div>
+      <div>
+        <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
+          <fa-icon [icon]=" ['far', 'envelope']"></fa-icon>
+          <label appLabel="send"></label>
+        </button>
+        </div>
+        <div>
+          <p appLabel="haveAcc?"></p> 
+          <a [routerLink]="['/login']" appLabel="login" postFix=""></a>
+        </div>
+    </section>
+  </form>
+</main>

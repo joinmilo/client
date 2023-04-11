@@ -18,3 +18,8 @@ export const selectSocialMedia = createSelector(
   selectCommonState,
   state => state.socialMedia
 );
+
+export const selectSavedUser = createSelector(
+  selectCommonState,
+  state => state.user
+);

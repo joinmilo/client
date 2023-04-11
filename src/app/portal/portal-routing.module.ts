@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, reportFeatureKey } from './common/constants/common.constants';
 import { PortalNotFoundComponent } from './common/pages/not-found/not-found.component';
+import { RegistrationComponent } from './common/pages/registration/registration.component';
 import { SearchResultComponent } from './search/components/result/search-result.component';
 
 const routes: Routes = [
@@ -36,14 +37,21 @@ const routes: Routes = [
   },
 
   {
+    path: 'register',
+    component: RegistrationComponent
+  },
+
+  {
     path: '404',
     component: PortalNotFoundComponent,
   },
+
   {
     path: '',
     loadChildren: () => import('./page/page.module')
       .then((imported) => imported.PortalPageModule),
   },
+  
   {
     path: '**',
     pathMatch: 'full',
