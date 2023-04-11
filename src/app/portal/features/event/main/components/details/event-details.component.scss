@@ -1,0 +1,12 @@
+app-image{
+  display: inline-block;
+  width: 50rem;
+  height: 25rem;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

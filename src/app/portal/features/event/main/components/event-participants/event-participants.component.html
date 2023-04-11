@@ -1,0 +1,11 @@
+<mat-card class="mat-mdc-card">
+  <mat-card-title>Teilnehmende Freunde</mat-card-title>
+  <mat-card-content class="card-images">
+    <div *ngFor="let item of [1,2,3]" class="circle" [style.z-index]="4 - item">
+      <app-image [src]="'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'" [circle]="true"></app-image>
+    </div>
+    <div class="description">
+      +3 weitere
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,8 @@
+<mat-card class="mat-mdc-card">
+  <mat-card-content [innerHtml]="eventDetails | translatable: 'description' | async">
+  </mat-card-content>
+  <button mat-stroked-button extended color="warn">
+    <fa-icon size="1x" [icon]="['fas', 'download']"></fa-icon>
+    Flyer
+  </button>
+</mat-card>

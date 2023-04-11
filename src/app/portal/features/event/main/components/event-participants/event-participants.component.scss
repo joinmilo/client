@@ -1,0 +1,43 @@
+mat-card {
+  border-radius: 0 !important;
+  border: none !important;
+  max-width: 35rem;
+  width: 35rem;
+  box-shadow: none !important;
+  background-color: transparent;
+  padding: 1.5rem 0.8rem;
+  margin: 1rem 0.5rem;
+
+  .card-images {
+    display: flex;
+
+    .description {
+      font-weight: 600;
+      margin: 3rem 3.5rem;
+    }
+
+
+
+    .circle {
+      line-height: 0;
+      display: inline-block;
+      margin: 1rem;
+      border: 0.3rem solid var(--color-primary-contrast-300);
+      color: transparent;
+      border-radius: 50%;
+      transition: linear 0.25s;
+      height: 5rem;
+      width: 5rem;
+      margin-right: -2.5rem;
+      box-shadow: 10px 3px 47px 0px rgba(110, 110, 110, 0.2);
+    }
+
+    .circle img {
+      border-radius: 50%;
+    }
+
+    .circle {
+      color: transparent;
+    }
+  }
+}

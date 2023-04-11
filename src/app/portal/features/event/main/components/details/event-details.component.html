@@ -1,2 +1,29 @@
-<p>{{(eventDetails | async)?.id}}</p>
-<p>sadad</p>
+<div class="main">
+  <app-page-title [title]="(eventDetails | translatable: 'name' | async)"></app-page-title>
+
+  <div class="container">
+    <app-image [image]="(eventDetails | async)?.cardImage"></app-image>
+    <section>
+      <app-event-card-detail></app-event-card-detail>
+    </section>
+    <section>
+      <app-event-description></app-event-description>
+    </section>
+    <section>
+      <app-event-participants></app-event-participants>
+    </section>
+  </div>
+
+  <!-- TODO: Add Filter area -->
+  <!-- <mat-card>
+    <app-calendar
+     [dates]="startDates"
+     (daySelected)="daySelected($event)"
+     (monthSelected)="monthSelected($event)">
+    </app-calendar>
+  </mat-card>
+  <section *ngIf="(cards | async)?.length">
+    <app-card-slider [cards]="cards | async" [titleLabel]="title">
+    </app-card-slider>
+  </section> -->
+</div>

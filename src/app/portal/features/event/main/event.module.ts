@@ -13,6 +13,11 @@ import { eventFeatureKey } from './constants/event.constant';
 import { EventPortalRoutingModule } from './event-routing.module';
 import { EventEffects } from './state/event.effects';
 import { eventReducer } from './state/event.reducer';
+import { EventCardDetailComponent } from './components/event-card-detail/event-card-detail.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { EventDescriptionComponent } from './components/event-description/event-description.component';
+import { EventParticipantsComponent } from './components/event-participants/event-participants.component';
 
 const components = [
   EventDetailsComponent,
@@ -28,17 +33,19 @@ const framework = [
 const modules = [
   CoreModule,
   EventPortalRoutingModule,
-  PortalCommonModule,
+  PortalCommonModule
 ];
 
 const libs = [
   FontAwesomeModule,
+  MatButtonModule,
+  MatCardModule,
   StoreModule.forFeature(eventFeatureKey, eventReducer),
   EffectsModule.forFeature([EventEffects]),
 ]
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, EventCardDetailComponent, EventDescriptionComponent, EventParticipantsComponent],
   imports: [
     ...framework,
     ...modules,
