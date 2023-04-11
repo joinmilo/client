@@ -18,8 +18,11 @@ import { EditorConfig } from '@ckeditor/ckeditor5-core';
 
 export class CkEditorFormComponent implements ControlValueAccessor {
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public Editor: any = ClassicEditor;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public editorInstance: any;
+  
   public model = {
     editorData: ''
   }
@@ -32,7 +35,6 @@ export class CkEditorFormComponent implements ControlValueAccessor {
   };
 
   public onChange?: (value: string) => void;
-  public onTouched?: () => void;
 
   writeValue(value: string): void {
     this.model.editorData = value;
@@ -42,11 +44,11 @@ export class CkEditorFormComponent implements ControlValueAccessor {
     this.onChange = onChange;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(): void {
     return;
   }
 
-  handleEditorReady(editor: any): void {
+  handleEditorReady(editor: unknown): void {
     this.editorInstance = editor;
   }
 
