@@ -11,7 +11,7 @@
           <mat-label appLabel="title"></mat-label>
           <input matInput id="name" formControlName="title" placeholder="Wooportal">
         </mat-form-field>
-        <app-form-ck-editor formControlName="content"></app-form-ck-editor>
+        <app-ck-editor-form formControlName="content"></app-ck-editor-form>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -44,7 +44,7 @@
         </mat-expansion-panel-header>
       </mat-expansion-panel>
     </mat-accordion>
-      <app-form-hcaptcha formControlName="captchaToken"></app-form-hcaptcha>
+      <app-hcaptcha-form formControlName="captchaToken"></app-hcaptcha-form>
     <div>
       <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
         <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>

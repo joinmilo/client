@@ -1,4 +1,4 @@
-import { Component, QueryList, ViewChildren } from '@angular/core';
+import { Component, QueryList, ViewChildren, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NgHcaptchaComponent } from 'ng-hcaptcha';
@@ -15,7 +15,7 @@ import { selectConfiguration } from '../../../state/core.selectors';
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: HcaptchaFormComponent
+      useExisting: forwardRef(() => HcaptchaFormComponent),
     }
   ],
 })
