@@ -36,7 +36,6 @@ export class GuestArticleInputComponent implements OnDestroy {
   }
 
   onSubmit(formDirective: FormGroupDirective) {
-    console.log(this.form.value.content);
     this.store.dispatch(GuestArticleActions.saveArticle({
       //TODO translatables content and title
       publicAuthor: {
