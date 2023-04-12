@@ -105,7 +105,7 @@ const materials = [
   MatRadioModule,
 ];
 
-const libs: any = [
+const libs = [
   StoreModule.forFeature(coreStateKey, coreReducer),
   EffectsModule.forFeature([CoreEffects]),
   NgHcaptchaModule.forRoot({

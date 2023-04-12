@@ -24,7 +24,8 @@ const components: Type<any>[] = [
 
 const framework: any[] = [
   CommonModule,
-  CoreModule,
+  ReactiveFormsModule,
+  FormsModule,
   StoreModule.forFeature(guestArticleStateKey, reportReducer),
   EffectsModule.forFeature([ReportEffects]),
 ];
@@ -37,8 +38,6 @@ const materials: Type<any>[] = [
   MatSelectModule,
   MatInputModule,
   MatExpansionModule,
-  ReactiveFormsModule,
-  FormsModule
 ];
 
 const modules: Type<any>[] = [
