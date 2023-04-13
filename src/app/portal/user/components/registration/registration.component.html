@@ -1,16 +1,6 @@
 <main class="main">
   <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
-    <a [routerLink]="['/']">
-      <app-image
-        [image]="(logoConfig | async)?.media"
-        alt="logo">
-      </app-image>
-      <app-image
-        *ngIf="(logoTextConfig | async)?.media?.id"
-        [image]="(logoTextConfig | async)?.media"
-        alt="logo">
-      </app-image>
-    </a>
+    <h2 class="mat-headline-4">Registrierung</h2>
     <section>
       <div>
         <mat-form-field appearance="outline">
@@ -41,10 +31,8 @@
           <mat-error *ngIf="form.get('confirm')!.touched && form.get('confirm')!.errors?.['notSame']">Passwörter stimmen nicht überein</mat-error>
         </mat-form-field>
       </div>
-      <div *ngIf="sitekey | async">
-        <ng-hcaptcha class="mobile" formControlName="captchaToken" [siteKey]="(sitekey | async)!" size="compact"></ng-hcaptcha>
-        <ng-hcaptcha class="desktop" formControlName="captchaToken" [siteKey]="(sitekey | async)!"></ng-hcaptcha>
-      </div>
+        <ng-hcaptcha *ngIf="sitekey | async" class="mobile" formControlName="captchaToken" [siteKey]="(sitekey | async)!" size="compact"></ng-hcaptcha>
+        <ng-hcaptcha *ngIf="sitekey | async" class="desktop" formControlName="captchaToken" [siteKey]="(sitekey | async)!"></ng-hcaptcha>
       <div>
         <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
           <fa-icon [icon]=" ['far', 'envelope']"></fa-icon>
@@ -53,7 +41,7 @@
         </div>
         <div>
           <p appLabel="haveAcc?"></p> 
-          <a [routerLink]="['/login']" appLabel="login" postFix=""></a>
+          <a [routerLink]="['/login']" appLabel="login" postFix="»"></a>
         </div>
     </section>
   </form>

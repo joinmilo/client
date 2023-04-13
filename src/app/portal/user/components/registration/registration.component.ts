@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { filter, map, Subject, takeUntil } from 'rxjs';
 import { hCaptchaSitekeyConfig, logoConfig, logoTextConfig } from 'src/app/core/constants/core.constants';
 import { selectConfiguration } from 'src/app/core/state/core.selectors';
-import { CommonActions } from '../../state/common.actions';
-import { selectSavedUser } from './../../state/common.selectors';
+import { CommonActions } from '../../../common/state/common.actions';
+import { selectSavedUser } from '../../../common/state/common.selectors';
 
 @Component({
   selector: 'app-registration',

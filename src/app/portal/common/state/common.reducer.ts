@@ -7,7 +7,7 @@ export interface CommonState {
   apps?: Maybe<AppEntity[]>,
   menu?: Maybe<MenuItemEntity[]>,
   socialMedia?: Maybe<SocialMediaEntity[]>,
-  user?: Maybe<UserEntity>
+  user?: Maybe<UserEntity>,
 }
 
 export const initialState: CommonState = {

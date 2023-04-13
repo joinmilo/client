@@ -34,7 +34,6 @@ import { PortalMenuAccordionComponent } from './components/menu/accordion/portal
 import { PortalMenuOverlayComponent } from './components/menu/overlay-menu/portal-menu-overlay.component';
 import { commonStateKey } from './constants/common.constants';
 import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
-import { RegistrationComponent } from './pages/registration/registration.component';
 import { CommonEffects } from './state/common.effects';
 import { commonReducer } from './state/common.reducer';
 
@@ -57,7 +56,6 @@ const components = [
 
 const pages = [
   PortalNotFoundComponent,
-  RegistrationComponent,
 ];
 
 const framework = [
@@ -111,4 +109,5 @@ const libs = [
     ...components,
   ],
 })
-export class PortalCommonModule { }
+
+export class PortalCommonModule {}

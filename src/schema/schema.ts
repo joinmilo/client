@@ -4971,6 +4971,13 @@ export type GetPageQueryVariables = Exact<{
 
 export type GetPageQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
 
+export type VerifyUserMutationVariables = Exact<{
+  token?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type VerifyUserMutation = { __typename?: 'Mutation', verify?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, password?: string | null, verified?: boolean | null, captchaToken?: string | null } | null };
+
 export const MediaFragmentDoc = gql`
     fragment Media on MediaEntity {
   id
@@ -5927,6 +5934,24 @@ export const GetPageDocument = gql`
   })
   export class GetPageGQL extends Apollo.Query<GetPageQuery, GetPageQueryVariables> {
     override document = GetPageDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const VerifyUserDocument = gql`
+    mutation verifyUser($token: String) {
+  verify(token: $token) {
+    ...User
+  }
+}
+    ${UserFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class VerifyUserGQL extends Apollo.Mutation<VerifyUserMutation, VerifyUserMutationVariables> {
+    override document = VerifyUserDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

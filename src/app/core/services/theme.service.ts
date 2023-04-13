@@ -13,5 +13,4 @@ export class ThemeService {
         document.documentElement.style.setProperty(
           variable?.key as string, variable?.value as string)));
   }
-
 }

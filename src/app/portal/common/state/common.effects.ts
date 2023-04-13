@@ -76,7 +76,7 @@ export class CommonEffects {
       labelMessage: 'registrationReceived'
     }))
   ));
-
+  
   constructor(
     private actions: Actions,
     private getAppsService: GetAppsGQL,
