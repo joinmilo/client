@@ -1,0 +1,18 @@
+<div *ngIf="titleLabel || link || title">
+  <app-sub-title *ngIf="titleLabel" [titleLabel]="titleLabel"></app-sub-title>
+  <app-sub-title *ngIf="title" [title]="title"></app-sub-title>
+  <section *ngIf="link">
+    <a [routerLink]="link" [appLabel]="linkLabel" postFix="»"></a>
+  </section>
+</div>
+<ng-container [ngSwitch]="cardType">
+  <app-slider *ngSwitchCase="types.contact">
+    <app-contact-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-contact-card>
+  </app-slider>
+  <app-slider *ngSwitchCase="types.content">
+    <app-content-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-content-card>
+  </app-slider>
+  <app-slider *ngSwitchCase="types.sponsored">
+    <app-sponsored-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-sponsored-card>
+  </app-slider>
+</ng-container>

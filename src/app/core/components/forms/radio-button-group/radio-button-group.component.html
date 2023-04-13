@@ -1,0 +1,8 @@
+<div>
+  <app-radio-button *ngFor="let input of inputs"
+    [input]="input"
+    [value]="value"
+    [initValue]="initValue"
+    (valueChanged)="next($event)">
+  </app-radio-button>
+</div>

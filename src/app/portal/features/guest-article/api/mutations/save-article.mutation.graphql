@@ -1,5 +1,0 @@
-mutation saveArticle($entity: ArticleEntityInput!) {
-  saveArticle(entity: $entity) {
-    ...Article
-  }
-}

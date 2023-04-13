@@ -1,12 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { DisplayType } from 'src/app/core/typings/display-type';
+import { EventDisplayType } from 'src/app/core/typings/display-type';
 import { EventEntity, Maybe } from 'src/schema/schema';
 import { EventActions } from './event.actions';
 
 export interface EventState {
   eventDetails?: Maybe<EventEntity>,
   sponsoredEvent?: Maybe<EventEntity>,
-  overviewDisplayType?: DisplayType,
+  overviewDisplayType?: EventDisplayType,
   overviewData?: EventEntity[],
 }
 

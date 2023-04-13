@@ -1,12 +1,12 @@
-import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Subject, distinctUntilChanged, switchMap, takeUntil } from 'rxjs';
+import {Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {distinctUntilChanged, Subject, switchMap, takeUntil} from 'rxjs';
 import { Maybe } from 'src/schema/schema';
 import { LabelService } from '../services/label.service';
 
 @Directive({
   selector: '[appLabel]'
 })
-export class LabelDirective implements OnInit, OnChanges, OnDestroy {
+export class AppLabelDirective implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   public appLabel?: Maybe<string>;
@@ -15,7 +15,7 @@ export class LabelDirective implements OnInit, OnChanges, OnDestroy {
   public preFix?: string;
 
   @Input()
-  public suffix?: string;
+  public postFix?: string;
 
   private destroy = new Subject<void>();
 
@@ -30,7 +30,7 @@ export class LabelDirective implements OnInit, OnChanges, OnDestroy {
       distinctUntilChanged(),
       takeUntil(this.destroy),
       switchMap((label) => this.labelService.lookup(label))
-    ).subscribe(label => this.el.nativeElement.innerHTML = `${this.preFix ?? ''} ${label ?? ''} ${this.suffix ?? ''}`);
+    ).subscribe(label => this.el.nativeElement.innerHTML = `${this.preFix ?? ''} ${label ?? ''} ${this.postFix ?? ''}`);
 
     if (this.appLabel) {
       this.labels.next(this.appLabel);
