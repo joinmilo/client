@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EventDescriptionComponent } from './components/event-description/event-description.component';
 import { EventParticipantsComponent } from './components/event-participants/event-participants.component';
+import { EventEvaluationComponent } from './components/event-evaluation/event-evaluation.component';
 
 const components = [
   EventDetailsComponent,
@@ -45,7 +46,7 @@ const libs = [
 ]
 
 @NgModule({
-  declarations: [...components, EventCardDetailComponent, EventDescriptionComponent, EventParticipantsComponent],
+  declarations: [...components, EventCardDetailComponent, EventDescriptionComponent, EventParticipantsComponent, EventEvaluationComponent],
   imports: [
     ...framework,
     ...modules,

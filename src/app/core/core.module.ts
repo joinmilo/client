@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -43,6 +44,9 @@ import { AddressPipe } from './pipes/address.pipe';
 import { TranslatablePipe } from './pipes/translatable.pipe';
 import { CoreEffects } from './state/core.effects';
 import { coreReducer } from './state/core.reducer';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const components = [
   AddressPieceComponent,
@@ -62,6 +66,8 @@ const components = [
   SliderComponent,
   SponsoredCardComponent,
   SubTitleComponent,
+  StarRatingComponent,
+  ProgressBarComponent
 ];
 
 const directives = [
@@ -94,6 +100,8 @@ const materials = [
   MatSnackBarModule,
   MatSelectModule,
   MatRadioModule,
+  MatTooltipModule, 
+  MatProgressBarModule,
 ];
 
 const libs = [
@@ -106,6 +114,8 @@ const libs = [
     ...components,
     ...directives,
     ...pipes,
+    StarRatingComponent,
+    ProgressBarComponent,
   ],
   imports: [
     ...framework,

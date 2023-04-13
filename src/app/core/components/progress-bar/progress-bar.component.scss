@@ -1,0 +1,30 @@
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  .reviews{
+    display: flex;
+  }
+  .mdc-linear-progress {
+    position: relative;
+    width: 3rem;
+    transform: translateZ(0);
+    outline: 1rem solid rgba(0,0,0,0);
+    overflow: hidden;
+    transition: opacity 250ms 0ms cubic-bezier(0.4, 0, 0.6, 1);
+  }
+  .mat-mdc-progress-bar {
+    display: inline-block;
+  }
+
+  .mdc-linear-progress{
+    height: 1.5rem;
+  }
+
+  .mat-mdc-card-content{
+    display: flex;
+    flex: 1;
+    margin-right: 5rem;
+  }
