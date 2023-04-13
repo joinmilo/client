@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Period } from 'src/app/core/typings/month';
+import { Period } from 'src/app/shared/calendar/typings/month';
 import { CalendarPageFeatureActions } from '../state/calendar-page-feature.actions';
 import { selectDistinctSchedules, selectSelectedEvents } from '../state/calendar-page-feature.selectors';
 

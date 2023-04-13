@@ -1,5 +1,6 @@
 <app-radio-button-group
   [inputs]="inputs"
-  [initValue]="initValue"
-  (valueChanged)="valueChanged($event)">
+  [initValue]="value"
+  [link]="['/portal', eventsFeatureKey]"
+  [queryParamKey]="displayQueryParam">
 </app-radio-button-group>

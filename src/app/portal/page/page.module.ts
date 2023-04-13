@@ -9,6 +9,7 @@ import { PortalCommonModule } from '../common/common.module';
 import { ArticlePortalPageFeatureModule } from '../features/article/page-feature/article-page-feature.module';
 import { CalendarPortalPageFeatureModule } from '../features/calendar/page-feature/calendar-page-feature.module';
 import { EventPortalPageFeatureModule } from '../features/event/page-feature/event-page-feature.module';
+import { ReportPortalPageFeatureModule } from '../features/report/page-feature/report-page-feature.module';
 import { PageFeaturesComponent } from './components/features/page-features.component';
 import { PageLandingComponent } from './components/landing/page-landing.component';
 import { PageComponent } from './components/page/page.component';
@@ -30,6 +31,7 @@ const features = [
   ArticlePortalPageFeatureModule,
   CalendarPortalPageFeatureModule,
   EventPortalPageFeatureModule,
+  ReportPortalPageFeatureModule,
 ]
 
 const framework = [

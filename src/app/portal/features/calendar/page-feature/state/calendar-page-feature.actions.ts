@@ -1,5 +1,5 @@
 import { createActionGroup } from '@ngrx/store';
-import { Period } from 'src/app/core/typings/month';
+import { Period } from 'src/app/shared/calendar/typings/month';
 import { EventEntity, Maybe, ScheduleEntity } from 'src/schema/schema';
 
 export const CalendarPageFeatureActions = createActionGroup({

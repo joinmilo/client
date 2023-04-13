@@ -1,7 +1,8 @@
 import { environment } from 'src/environments/environment';
 import { MediaEntity } from 'src/schema/schema';
 
-export const coreFeatureKey = 'coreState';
+export const coreStateKey = 'coreState';
+export const refreshKey = 'refresh';
 
 /**
  * URLs
@@ -12,8 +13,6 @@ export const mediaBaseApi = `${baseApi}/media`;
 export const mediaDownloadApi = `${mediaBaseApi}/download`;
 export const mediaExportApi = `${mediaBaseApi}/export`;
 export const mediaApi = (media: MediaEntity): string => `${mediaBaseApi}/${media?.id}`
-
-export const refreshKey = 'refresh';
 
 /**
  * Configuration keys

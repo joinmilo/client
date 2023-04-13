@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Period } from 'src/app/core/typings/month';
+import { Period } from 'src/app/shared/calendar/typings/month';
 import { CalendarActions } from '../state/calendar.actions';
 import { selectDistinctSchedules, selectSelectedEvents } from '../state/calendar.selectors';
 

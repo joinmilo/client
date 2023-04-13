@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { EventDisplayType } from 'src/app/core/typings/display-type';
+import { DisplayType } from 'src/app/core/typings/display-type';
 import { EventActions } from '../../state/event.actions';
 import { selectOverviewData, selectOverviewDisplayType, selectSponsoredEvent } from '../../state/event.selectors';
 
@@ -20,10 +20,10 @@ export class EventOverviewComponent implements OnDestroy {
   public data = this.store.select(selectOverviewData);
 
   public types = {
-    category: EventDisplayType.Category,
-    calendar: EventDisplayType.Calendar,
-    list: EventDisplayType.List,
-    map: EventDisplayType.Map,
+    category: DisplayType.Category,
+    calendar: DisplayType.Calendar,
+    list: DisplayType.List,
+    map: DisplayType.Map,
   };
 
   private destroy = new Subject<void>();
@@ -38,7 +38,6 @@ export class EventOverviewComponent implements OnDestroy {
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.destroy))
       .subscribe(queryParams => {
-        // console.log(queryParams);
         this.store.dispatch(EventActions.setParams({
           page: 0,
           size: 5,

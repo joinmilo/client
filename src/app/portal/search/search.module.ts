@@ -11,6 +11,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { CardModule } from 'src/app/shared/card/card.module';
+import { TitleModule } from 'src/app/shared/title/title.module';
 import { SearchButtonComponent } from './components/button/search-button.component';
 import { SearchInputComponent } from './components/input/search-input.component';
 import { SearchResultComponent } from './components/result/search-result.component';
@@ -33,7 +35,6 @@ const framework = [
 ];
 
 const materials = [
-  FontAwesomeModule,
   MatAutocompleteModule,
   MatButtonModule,
   MatDividerModule,
@@ -43,9 +44,12 @@ const materials = [
 
 const modules = [
   CoreModule,
+  CardModule,
+  TitleModule,
 ];
 
 const libs = [
+  FontAwesomeModule,
   StoreModule.forFeature(searchStateKey, searchReducer),
   EffectsModule.forFeature([SearchEffects]),
 ]

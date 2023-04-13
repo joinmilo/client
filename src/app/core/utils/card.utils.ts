@@ -1,4 +1,4 @@
-import { CardData, CardElement, CardEntity } from 'src/app/core/typings/card';
+import { CardData, CardElement, CardEntity } from 'src/app/shared/card/typings/card';
 import { ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, OrganisationEntity, SurveyEntity, UserContextEntity } from "src/schema/schema";
 
 export const dataToElement = (entity: CardEntity, data: CardData): CardElement | undefined => {

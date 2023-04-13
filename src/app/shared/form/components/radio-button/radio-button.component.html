@@ -1,0 +1,8 @@
+<button
+  mat-raised-button
+  [class.active]="checked"
+  (click)="changeSelect($event)">
+    <fa-icon [icon]="input!.icon"></fa-icon>
+    <span [appLabel]="input?.label"></span>
+    <fa-icon *ngIf="checked" class="checked" [icon]="['fas', 'check']"></fa-icon>
+</button>

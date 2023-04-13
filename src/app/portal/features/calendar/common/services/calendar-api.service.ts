@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Period } from 'src/app/core/typings/month';
+import { Period } from 'src/app/shared/calendar/typings/month';
 import { EventEntity, GetEventsGQL, GetSchedulesGQL, QueryOperator, ScheduleEntity } from 'src/schema/schema';
 
 @Injectable()

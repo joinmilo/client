@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey } from 'src/app/portal/common/constants/common.constants';
+import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeatureKey } from 'src/app/portal/common/constants/common.constants';
 import { Maybe, PageFeatureEntity } from 'src/schema/schema';
 
 @Component({
@@ -12,9 +12,12 @@ export class PageFeaturesComponent implements OnInit {
   @Input()
   public pageFeatures?: Maybe<Maybe<PageFeatureEntity>[]>;
 
-  public articlesFeatureKey = articlesFeatureKey;
-  public calendarFeatureKey = calendarFeatureKey;
-  public eventFeatureKey = eventsFeatureKey;
+  public features = {
+    article: articlesFeatureKey,
+    calendar: calendarFeatureKey,
+    event: eventsFeatureKey,
+    report: reportFeatureKey,
+  }
 
   public ngOnInit(): void {
     this.pageFeatures = [...(this.pageFeatures || [])].sort((f1, f2) => (f1?.order || 0) - (f2?.order || 0));

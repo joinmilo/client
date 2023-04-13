@@ -1,4 +1,4 @@
-export enum EventDisplayType {
+export enum DisplayType {
   Calendar = 'calendar',
   Category = 'category',
   List = 'list',

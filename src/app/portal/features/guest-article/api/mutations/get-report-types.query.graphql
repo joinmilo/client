@@ -1,0 +1,16 @@
+query getArticleCategories($params: FilterSortPaginateInput) {
+  getArticleCategories(params: $params) {
+    result {
+      id
+      translatables{
+        id
+        name
+        language{
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}

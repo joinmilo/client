@@ -4,6 +4,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalCommonModule } from 'src/app/portal/common/common.module';
+import { CardModule } from 'src/app/shared/card/card.module';
+import { FormModule } from 'src/app/shared/form/form.module';
 import { ArticlePageFeatureComponent } from './component/article-page-feature.component';
 import { articlePageFeatureStateKey } from './constants/article-page-feature.constant';
 import { ArticlePageFeatureEffects } from './state/article-page-feature.effects';
@@ -19,6 +21,8 @@ const framework = [
 
 const modules = [
   CoreModule,
+  CardModule,
+  FormModule,
   PortalCommonModule,
 ];
 

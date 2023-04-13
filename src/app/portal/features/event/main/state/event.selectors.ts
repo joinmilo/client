@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EventCategoryEntity } from 'src/schema/schema';
-import { eventFeatureKey } from '../constants/event.constant';
+import { eventStateKey } from '../constants/event.constant';
 import { EventState } from './event.reducer';
 
-export const selectEventState = createFeatureSelector<EventState>(eventFeatureKey);
+export const selectEventState = createFeatureSelector<EventState>(eventStateKey);
 
 export const selectSponsoredEvent = createSelector(
   selectEventState,

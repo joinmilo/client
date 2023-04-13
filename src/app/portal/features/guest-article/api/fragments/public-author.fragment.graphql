@@ -1,0 +1,6 @@
+fragment PublicAuthor on PublicAuthorEntity {
+  id
+  name
+  email
+  phone
+}

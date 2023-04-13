@@ -4,6 +4,9 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
+import { CardModule } from 'src/app/shared/card/card.module';
+import { TitleModule } from 'src/app/shared/title/title.module';
 import { CalendarApiService } from '../common/services/calendar-api.service';
 import { CalendarPortalRoutingModule } from './calendar-routing.module';
 import { PortalCalendarComponent } from './components/portal-calendar.component';
@@ -25,7 +28,10 @@ const materials = [
 
 const modules = [
   CoreModule,
+  CalendarModule,
+  CardModule,
   CalendarPortalRoutingModule,
+  TitleModule,
 ];
 
 const libs = [

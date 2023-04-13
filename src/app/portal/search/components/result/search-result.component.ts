@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CardType } from 'src/app/core/typings/card';
+import { CardType } from 'src/app/shared/card/typings/card';
 import { SearchActions } from '../../state/search.actions';
 import { selectFoundArticles, selectFoundAuthors, selectFoundContests, selectFoundDeals, selectFoundEvents, selectFoundOrganisations, selectFoundSurveys } from '../../state/search.selectors';
 

@@ -30,7 +30,7 @@ import { PortalHeaderComponent } from './components/header/portal-header.compone
 import { PortalHeaderUserComponent } from './components/header/user/portal-header-user.component';
 import { PortalMenuAccordionComponent } from './components/menu/accordion/portal-menu-accordion.component';
 import { PortalMenuOverlayComponent } from './components/menu/overlay-menu/portal-menu-overlay.component';
-import { commonFeatureKey } from './constants/common.constants';
+import { commonStateKey } from './constants/common.constants';
 import { PortalNotFoundComponent } from './pages/not-found/not-found.component';
 import { CommonEffects } from './state/common.effects';
 import { commonReducer } from './state/common.reducer';
@@ -64,7 +64,6 @@ const framework = [
 ];
 
 const materials = [
-  FontAwesomeModule,
   MatAutocompleteModule,
   MatButtonModule,
   MatDatepickerModule,
@@ -83,7 +82,8 @@ const modules = [
 ];
 
 const libs = [
-  StoreModule.forFeature(commonFeatureKey, commonReducer),
+  FontAwesomeModule,
+  StoreModule.forFeature(commonStateKey, commonReducer),
   EffectsModule.forFeature([CommonEffects]),
 ]
 
