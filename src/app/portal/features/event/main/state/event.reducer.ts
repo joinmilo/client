@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { DisplayType } from 'src/app/core/typings/display-type';
+import { DisplayType } from 'src/app/core/typings/overview-display';
 import { EventEntity, Maybe } from 'src/schema/schema';
 import { EventActions } from './event.actions';
 

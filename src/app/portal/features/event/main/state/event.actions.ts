@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { DisplayType } from 'src/app/core/typings/display-type';
+import { DisplayType } from 'src/app/core/typings/overview-display';
 import { EventEntity, FilterSortPaginateInput, Maybe } from 'src/schema/schema';
 
 export const EventActions = createActionGroup({

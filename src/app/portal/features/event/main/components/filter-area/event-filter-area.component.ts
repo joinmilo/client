@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { DisplayType } from 'src/app/core/typings/display-type';
+import { DisplayType } from 'src/app/core/typings/overview-display';
 import { eventsFeatureKey } from 'src/app/portal/common/constants/common.constants';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
 import { displayQueryParam } from '../../constants/event.constant';

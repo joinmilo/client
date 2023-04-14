@@ -18,12 +18,13 @@ export class EventListViewComponent {
   public columns: Column<EventEntity>[] = [
     {
       field: 'id',
-      label: 'name',
+      label: 'title',
+      type: row => `row.translatables | translatable: 'name' | async`
     },
     {
       field: 'schedule.startDate',
       label: 'test',
-      type: 'DATE'
+      type: 'DATETIME'
     },
   ];
 
