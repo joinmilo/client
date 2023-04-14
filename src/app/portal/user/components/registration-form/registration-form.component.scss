@@ -1,0 +1,46 @@
+@import 'src/styles/mixins.scss';
+
+main {
+  width: 30rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: var(--gap);
+  background-color: white;
+  border-radius: var(--mdc-shape-small);
+  border: 1px solid var(--color-border);
+  gap: var(--gap);
+  align-items: center;
+
+  :nth-last-child(2){
+      button{
+        width: 100%;
+      }
+    }
+
+  div {
+    display: flex;
+    width: 100%;
+    gap: .5rem;
+    flex-flow: row wrap;
+
+    mat-form-field {
+      flex: 2 1 auto;
+    }
+  }
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all;
+}
+
+p{
+  margin: 0;
+}
+
+fa-icon, label{
+  pointer-events: none;
+}

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -11,6 +12,8 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { PortalCommonModule } from './../common/common.module';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { RegistrationSliderComponent } from './components/registration-slider/registration-slider.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { userFeatureKey } from './constants/user.constants';
@@ -20,7 +23,9 @@ import { UserPortalRoutingModule } from './user-routing.module';
 
 const components = [
   VerificationComponent,
-  RegistrationComponent
+  RegistrationComponent,
+  RegistrationSliderComponent,
+  RegistrationFormComponent
 ];
 
 const framework = [
@@ -31,6 +36,7 @@ const framework = [
 const materials = [
   FontAwesomeModule,
   MatFormFieldModule,
+  MatCardModule,
   MatInputModule,
   MatButtonModule,
 ];
