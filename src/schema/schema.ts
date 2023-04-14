@@ -1,6 +1,6 @@
+import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
-import { gql } from 'apollo-angular';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -149,16 +149,13 @@ export type ArticleCategoryTranslatableEntity = {
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
-  parent?: Maybe<ArticleCategoryEntity>;
 };
 
 export type ArticleCategoryTranslatableEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
-  parent?: InputMaybe<ArticleCategoryEntityInput>;
 };
 
 export type ArticleCommentEntity = {
@@ -2907,16 +2904,13 @@ export type OrganisationTranslatableEntity = {
   id?: Maybe<Scalars['String']>;
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
-  parent?: Maybe<OrganisationEntity>;
 };
 
 export type OrganisationTranslatableEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  parent?: InputMaybe<OrganisationEntityInput>;
 };
 
 export type OrganisationVisitorEntity = {
@@ -4319,6 +4313,7 @@ export type SearchDto = {
   __typename?: 'SearchDto';
   feature?: Maybe<FeatureEntity>;
   id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type SocialMediaEntity = {
@@ -4488,17 +4483,14 @@ export type SurveyTranslatableEntity = {
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
-  parent?: Maybe<SurveyEntity>;
 };
 
 export type SurveyTranslatableEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
-  parent?: InputMaybe<SurveyEntityInput>;
 };
 
 export type SurveyVisitorEntity = {

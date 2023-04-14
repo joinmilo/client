@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { CoreModule } from 'src/app/core/core.module';
+import { FormModule } from 'src/app/shared/form/form.module';
 import { PortalCommonModule } from './../common/common.module';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VerificationComponent } from './components/verification/verification.component';
@@ -36,6 +37,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  FormModule,
   PortalCommonModule,
   UserPortalRoutingModule,
 ];
