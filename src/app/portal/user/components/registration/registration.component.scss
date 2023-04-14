@@ -1,7 +1,7 @@
 @import 'src/styles/mixins.scss';
 
 main {
-  width: 30rem;
+  width: 60rem;
 }
 
 h2{
@@ -10,12 +10,11 @@ h2{
 
 form {
   display: flex;
-  gap: 1rem;
-  flex-direction: column;
   padding: var(--gap);
   background-color: white;
   border-radius: var(--mdc-shape-small);
   border: 1px solid var(--color-border);
+  gap: 10rem;
 }
 
 a {
@@ -59,7 +58,6 @@ section {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    gap: 1rem;
     width: 100%;
 
     mat-form-field {
@@ -97,4 +95,8 @@ p{
 
 fa-icon, label{
   pointer-events: none;
+}
+
+img{
+  width: 15rem;
 }

@@ -1,7 +1,7 @@
-<main class="main">
+<main class="main"> 
   <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
-    <h2 class="mat-headline-4">Registrierung</h2>
-    <section>
+   <section>
+     <h2 class="mat-headline-4" appLabel="register"></h2>
       <div>
         <mat-form-field appearance="outline">
           <mat-label appLabel="firstName"></mat-label>
@@ -40,8 +40,11 @@
         </div>
         <div>
           <p appLabel="haveAcc?"></p> 
-          <a [routerLink]="['/login']" appLabel="login" postFix="»"></a>
+          <a [routerLink]="['user','/login']" appLabel="login" postFix="»"></a>
         </div>
-    </section>
-  </form>
+       </section>
+    <section>
+    <img src="assets/features/Dashboard.svg" alt="SVG IMAGE">
+  </section>
+ </form>
 </main>
