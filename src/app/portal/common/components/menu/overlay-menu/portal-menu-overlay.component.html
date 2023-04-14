@@ -10,7 +10,7 @@
     [matMenuTriggerFor]="menu"
     (menuOpened)="retrieveSubmenu()">
       {{ parent | translatable: 'name' | async }}
-</button>
+  </button>
 </ng-template>
 
 <mat-menu #menu="matMenu">
