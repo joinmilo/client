@@ -47,6 +47,7 @@ import { coreReducer } from './state/core.reducer';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommentCardComponent } from './components/cards/comment-card/comment-card.component';
 
 const components = [
   AddressPieceComponent,
@@ -67,7 +68,8 @@ const components = [
   SponsoredCardComponent,
   SubTitleComponent,
   StarRatingComponent,
-  ProgressBarComponent
+  ProgressBarComponent,
+  CommentCardComponent
 ];
 
 const directives = [
@@ -100,7 +102,7 @@ const materials = [
   MatSnackBarModule,
   MatSelectModule,
   MatRadioModule,
-  MatTooltipModule, 
+  MatTooltipModule,
   MatProgressBarModule,
 ];
 
@@ -113,9 +115,7 @@ const libs = [
   declarations: [
     ...components,
     ...directives,
-    ...pipes,
-    StarRatingComponent,
-    ProgressBarComponent,
+    ...pipes
   ],
   imports: [
     ...framework,
