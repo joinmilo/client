@@ -7,16 +7,16 @@ $typography: (
   mat.define-typography-config($font-family: 'Inter, "Helvetica Neue", sans-serif',
   $headline-1: mat.define-typography-level(6rem, 7rem, 600, $letter-spacing: 0.005em),
   $headline-2: mat.define-typography-level(3.75rem, 5.625rem, 600, $letter-spacing: 0.005em),
-  $headline-3: mat.define-typography-level(3rem, 4.5rem, 400, $letter-spacing: 0em),
+  $headline-3: mat.define-typography-level(3rem, 4.5rem, 600, $letter-spacing: 0em),
   $headline-4: mat.define-typography-level(2.125rem, 3.1875rem, 600, $letter-spacing: 0.015625em),
   $headline-5: mat.define-typography-level(1.5rem, 2.25rem, 500, $letter-spacing: 0em),
   $headline-6: mat.define-typography-level(1.25rem, 1.875rem, 600, $letter-spacing: 0.009375em),
   $subtitle-1: mat.define-typography-level(1rem, 1.5rem, 600, $letter-spacing: 0.009375em),
-  $body-1: mat.define-typography-level(1rem, 1.4rem, 400, $letter-spacing: 0.03125em),
+  $body-1: mat.define-typography-level(1rem, 1.4rem, 400, $letter-spacing: 0.015625em),
   $subtitle-2: mat.define-typography-level(0.875rem, 1.3125rem, 500, $letter-spacing: 0.00625em),
-  $body-2: mat.define-typography-level(0.875rem, 1.225rem, 400, $letter-spacing: 0.015625em),
+  $body-2: mat.define-typography-level(1rem, 1.225rem, 400, $letter-spacing: 0.015625em),
   $caption: mat.define-typography-level(0.75rem, 1.125rem, 400, $letter-spacing: 0.025em),
-  $button: mat.define-typography-level(0.875rem, 1.3125rem, 600, $letter-spacing: 0.078125em))
+  $button: mat.define-typography-level(1rem, 1.3125rem, 600, $letter-spacing: 0.078125em))
 );
 
 $theme: mat-light-theme((

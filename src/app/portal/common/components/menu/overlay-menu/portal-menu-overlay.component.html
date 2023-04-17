@@ -1,7 +1,7 @@
 <button mat-button
   *ngIf="root; else child"
   [matMenuTriggerFor]="menu">
-    <strong>{{ parent | translatable: 'name' | async }}</strong>
+    {{ parent | translatable: 'name' | async }}
 </button>
 
 <ng-template #child>

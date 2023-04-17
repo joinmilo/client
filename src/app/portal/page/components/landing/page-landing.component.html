@@ -3,7 +3,7 @@
   <section>
     <div>
       <div class="title title-gradient">{{page | translatable: "name" | async}}</div>
-      <p class="mat-body-1">{{page | translatable: "shortDescription" | async}}</p>
+      <p>{{page | translatable: "shortDescription" | async}}</p>
       <button mat-raised-button color="primary" *ngIf="(page | async)?.callUrl" [routerLink]="(page | async)?.callUrl">
         {{page | translatable: "callText" | async}}
       </button>
