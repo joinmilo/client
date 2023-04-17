@@ -1,12 +1,41 @@
-app-image{
-  display: inline-block;
-  width: 50rem;
-  height: 25rem;
+.main {
+  width: 100%;
+  max-width: initial;
+
+  app-page-title {
+    width: 90rem;
+    max-width: calc(100% - var(--gap));
+    margin: var(--gap) auto;
+    display: block;
+  }
+
+  app-image {
+    display: inline-block;
+    width: 50rem;
+    height: 25rem;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    section {
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .grey-section {
+      background: var(--color-background);
+      clip-path: polygon(0 8%, 100% 0%, 100% 92%, 0 100%);
+    }
+  }
+
 }
 
-.container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+::ng-deep main {
+ background-color: var(--color-primary-contrast-300);
 }
