@@ -7,47 +7,43 @@ import { IconPrefix } from '@fortawesome/fontawesome-svg-core';
 @Component({
   selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.scss']
+  styleUrls: ['./star-rating.component.scss'],
 })
 export class StarRatingComponent implements OnInit {
-
-  @Input('canDoRating') public canDoRating = false; 
+  @Input('canDoRating') public canDoRating = false;
   @Input('rating') public rating: number = 0;
   @Input('starCount') public starCount: number = 5;
   @Input('color') public color: string = 'accent';
   @Output() public ratingUpdated = new EventEmitter();
+  hoverIndex = 0;
 
+  public ratingArr: number[] = [];
 
-  public snackBarDuration: number = 2000;
-  public ratingArr : number[] = [];
-
-  constructor(public snackBar: MatSnackBar) {
-  }
-
+  constructor(public snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    console.log("a "+this.starCount)
-    for (let index : number = 0; index < this.starCount; index++) {
+    this.initIcons();
+  }
+
+  initIcons() {
+    for (let index: number = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
   }
-  onClick(rating:number) {
-    console.log(rating)
-    this.snackBar.open('You rated ' + rating + ' / ' + this.starCount, '', {
-      duration: this.snackBarDuration
-    });
+
+  onClick(rating: number) {
     this.ratingUpdated.emit(rating);
-    return false;
   }
 
-  showIcon(index:number) : IconPrefix {
-    return (this.rating >= index + 1 ? 'fas' : 'far') as IconPrefix;
+  onHover(index: number) {
+    this.hoverIndex = index;
+    this.ratingArr = [];
+    this.initIcons();
   }
 
+  showIcon(index: number, hoverEffect: boolean = false): IconPrefix {
+    return (
+      (hoverEffect ? this.hoverIndex : this.rating) >= index + 1 ? 'fas' : 'far'
+    ) as IconPrefix;
+  }
 }
-export enum StarRatingColor {
-  primary = "primary",
-  accent = "accent",
-  warn = "warn"
-}
-

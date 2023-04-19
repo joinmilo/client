@@ -1,16 +1,19 @@
 <mat-card class="mat-mdc-card">
-    <mat-card-title>Bewertung abgeben</mat-card-title>
-    <app-star-rating *ngIf="showRating"  [canDoRating]="true" [color]="'primary'"
+  <app-star-rating
+    *ngIf="showRating"
+    [canDoRating]="true"
+    [color]="'primary'"
     (ratingUpdated)="onRatingChanged($event)"
-    ></app-star-rating>
+  ></app-star-rating>
 
-    <p *ngIf="!showRating"
-    >Thank you for rating this event</p>
-    <app-star-rating [rating]="3" [color]="'primary'"
-    ></app-star-rating>
-    <app-progress-bar></app-progress-bar>
-    <app-comment-card></app-comment-card>
+  <p *ngIf="!showRating">Thank you for rating this event</p>
+  <app-star-rating [rating]="3" [color]="'primary'"></app-star-rating>
+  <h3 class="title-rating">75 Bewertungen</h3>
+  <div *ngFor="let item of ratingsResult">
+    <app-progress-bar
+      [value]="item.percentage"
+      [star]="item.star"
+    ></app-progress-bar>
+  </div>
+  <app-comment-card></app-comment-card>
 </mat-card>
-
-   <!-- (ratingUpdated)="onRatingChanged($event)" -->
-

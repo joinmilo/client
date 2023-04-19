@@ -1,5 +1,8 @@
-<app-card-slider *ngFor="let category of categories | async"
+<app-card-slider
+  *ngFor="let category of categories | async"
   entity="EventEntity"
   [data]="category.events"
-  [title]="category | translatable: 'name' | async">
+  [title]="category | translatable : 'name' | async"
+>
 </app-card-slider>
+

@@ -1,26 +1,31 @@
 <mat-card class="mat-mdc-card">
   <mat-card-header>
-    <mat-card-title class="title">{{(eventDetails | async)?.category | translatable: 'name' | async}}</mat-card-title>
+    <mat-card-title class="title">{{
+      (eventDetails | async)?.category | translatable : "name" | async
+    }}</mat-card-title>
 
     <mat-card-actions>
       <button
         mat-icon-button
         align="end"
-        aria-label="Example icon button with a vertical three dot icon"
+        aria-label="Share button"
       >
         <fa-icon size="1x" [icon]="['fas', 'share-nodes']"></fa-icon>
       </button>
       <button
         mat-icon-button
         align="end"
-        aria-label="Example icon button with a vertical three dot icon"
+        aria-label="Like button"
       >
         <fa-icon size="1x" [icon]="['far', 'heart']"></fa-icon>
       </button>
     </mat-card-actions>
   </mat-card-header>
   <mat-card-content>
-    <div class="description" [innerHtml]="eventDetails | translatable: 'shortDescription' | async"></div>
+    <div
+      class="description"
+      [innerHtml]="eventDetails | translatable : 'shortDescription' | async"
+    ></div>
 
     <div class="event-detail-contact">
       <div class="event-detail-contact-info">
@@ -33,7 +38,7 @@
       </div>
       <div class="ticket">
         <fa-icon size="1x" [icon]="['fas', 'ticket']"></fa-icon>
-        {{(eventDetails | async)?.entryFee ?? "Kostenlos" }}
+        {{ (eventDetails | async)?.entryFee ?? "Kostenlos" }}
       </div>
       <div class="attender">
         <span>

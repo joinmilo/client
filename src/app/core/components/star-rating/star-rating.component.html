@@ -1,17 +1,30 @@
-<button
-  mat-icon-button
-  [color]="color"
-  *ngFor="let ratingId of ratingArr; index as i"
-  [id]="'star_' + i"
-  (click)="onClick(i + 1)"
-  [matTooltip]="(ratingId + 1).toString()"
-  matTooltipPosition="above"
-  [disabled]="!canDoRating"
->
-  <fa-icon *ngIf="!canDoRating" size="1x" [icon]="[showIcon(i), 'star']"></fa-icon>  
-  <fa-icon *ngIf="canDoRating" size="1x" [icon]="['far', 'star']"></fa-icon>
-</button>
-<p class="body-2">
-  Your rated <span class="body-2">{{ rating }}</span> /
-  <span class="body-2">{{ starCount }}</span>
-</p>
+<mat-label>Bewertung {{ canDoRating ? "abgeben" : "des Events" }}</mat-label>
+<div class="main">
+  <button
+    mat-icon-button
+    matTooltipPosition="above"
+    [color]="color"
+    [disabled]="!canDoRating"
+    [id]="'star_' + i"
+    [matTooltip]="(ratingId + 1).toString()"
+    (click)="onClick(i + 1)"
+    (mouseenter)="onHover(i + 1)"
+    (mouseleave)="onHover(0)"
+    *ngFor="let ratingId of ratingArr; index as i"
+  >
+    <fa-icon
+      *ngIf="!canDoRating"
+      size="1x"
+      [icon]="[showIcon(i), 'star']"
+    ></fa-icon>
+    <fa-icon
+      *ngIf="canDoRating"
+      size="1x"
+      [icon]="[showIcon(i, true), 'star']"
+    ></fa-icon>
+  </button>
+  <p class="rating" *ngIf="!canDoRating">
+    <span>{{ rating }}</span> von
+    <span>{{ starCount }}</span>
+  </p>
+</div>

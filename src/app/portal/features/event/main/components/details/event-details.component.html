@@ -1,10 +1,11 @@
 <div class="main">
-  <app-page-title [title]="(eventDetails | translatable: 'name' | async)"></app-page-title>
+  <app-page-title
+    [title]="eventDetails | translatable : 'name' | async"
+  ></app-page-title>
 
   <div class="container">
     <section>
       <app-image [image]="(eventDetails | async)?.cardImage"></app-image>
-
     </section>
     <section class="grey-section">
       <app-event-card-detail></app-event-card-detail>
@@ -12,28 +13,18 @@
     <section>
       <app-event-description></app-event-description>
     </section>
-    <section  class="grey-section">
+    <section class="grey-section">
       <app-event-participants></app-event-participants>
     </section>
     <section>
       <mat-card-title>Einrichtung</mat-card-title>
       <app-contact-card></app-contact-card>
     </section>
-    <section  class="grey-section">
+    <section class="grey-section">
+      <app-card-slider></app-card-slider>
+    </section>
+    <section>
       <app-event-evaluation></app-event-evaluation>
     </section>
   </div>
-
-  <!-- TODO: Add Filter area -->
-  <!-- <mat-card>
-    <app-calendar
-     [dates]="startDates"
-     (daySelected)="daySelected($event)"
-     (monthSelected)="monthSelected($event)">
-    </app-calendar>
-  </mat-card>
-  <section *ngIf="(cards | async)?.length">
-    <app-card-slider [cards]="cards | async" [titleLabel]="title">
-    </app-card-slider>
-  </section> -->
 </div>
