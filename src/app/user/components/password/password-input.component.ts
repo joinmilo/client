@@ -21,7 +21,7 @@ import { selectSetEntropy } from './../../state/user.selectors';
   ]
 })
 export class PasswordInputComponent implements OnInit, OnDestroy {
-  @Input() parentForm!: FormGroup;
+  @Input() parentForm?: FormGroup;
   @Input() showConfirm: boolean = true;
   form: FormGroup;
   hide = true;
@@ -54,12 +54,12 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.parentForm.addControl('password', this.form.get('password')!);
+    this.parentForm?.addControl('password', this.form.get('password')!);
     this.form.get('password')?.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.destroy)).subscribe(() => {
       this.onPasswordInput();
     });
     if(this.showConfirm){
-    this.parentForm.addControl('confirm', this.form.get('confirm')!);
+    this.parentForm?.addControl('confirm', this.form.get('confirm')!);
     this.form.get('confirm')?.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.destroy)).subscribe(() => {
       this.onConfirmInput();
     });
