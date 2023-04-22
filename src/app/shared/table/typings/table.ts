@@ -8,7 +8,18 @@ export type ColumnType = 'BOOLEAN'
   | 'TIME';
 
 export type Column<T> = {
-  label: string,
+  label?: string,
   field: string,
-  type?: ColumnType | ((row: T) => Observable<Maybe<string>> | Maybe<string> | undefined),
+  type?: ColumnType | ((row: T) => Observable<Maybe<string> | undefined> | Maybe<string> | undefined),
+};
+
+export type RowActionType = 'EDIT'
+  | 'DELETE'
+  | 'DETAILS'
+  | 'LIKE'
+  | 'SHARE';
+
+export type RowAction<T> = {
+  callback?: (row: T) => void
+  type?: RowActionType,
 };

@@ -2,7 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Store } from '@ngrx/store';
-import { Column } from 'src/app/shared/table/typings/table';
+import { TranslationService } from 'src/app/core/services/translation.service';
+import { Column, RowAction } from 'src/app/shared/table/typings/table';
 import { EventEntity } from 'src/schema/schema';
 import { selectOverviewData } from '../../state/event.selectors';
 
@@ -15,15 +16,25 @@ export class EventListViewComponent {
 
   public events = this.store.select(selectOverviewData);
 
+  public actions: RowAction<EventEntity>[] = [
+    {
+      type: 'LIKE'
+    }
+  ];
+
   public columns: Column<EventEntity>[] = [
     {
-      field: 'id',
+      field: 'name',
       label: 'title',
-      type: row => `row.translatables | translatable: 'name' | async`
+      type: row => this.translationService.translatable(row.translatables, 'name')
+    },
+    {
+      field: 'contact.name',
+      label: 'organizer',
     },
     {
       field: 'schedule.startDate',
-      label: 'test',
+      label: 'date',
       type: 'DATETIME'
     },
   ];
@@ -36,6 +47,7 @@ export class EventListViewComponent {
   
   constructor(
     private store: Store,
+    private translationService: TranslationService,
   ) { }
 
 }

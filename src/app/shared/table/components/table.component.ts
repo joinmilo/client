@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Column } from '../typings/table';
+import { Column, RowAction } from '../typings/table';
 
 @Component({
   selector: 'app-table',
@@ -14,5 +14,8 @@ export class TableComponent<T> {
 
   @Input()
   public columns?: Column<T>[];
+
+  @Input()
+  public actions?: RowAction<T>[];
 
 }

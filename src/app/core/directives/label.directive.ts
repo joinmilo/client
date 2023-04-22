@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Subject, distinctUntilChanged, switchMap, takeUntil } from 'rxjs';
 import { Maybe } from 'src/schema/schema';
-import { LabelService } from '../services/label.service';
+import { TranslationService } from '../services/translation.service';
 
 @Directive({
   selector: '[appLabel]'
@@ -23,13 +23,13 @@ export class LabelDirective implements OnInit, OnChanges, OnDestroy {
 
   constructor(
     private el: ElementRef,
-    private labelService: LabelService) { }
+    private labelService: TranslationService) { }
 
   public ngOnInit(): void {
     this.labels.pipe(
       distinctUntilChanged(),
       takeUntil(this.destroy),
-      switchMap((label) => this.labelService.lookup(label))
+      switchMap((label) => this.labelService.label(label))
     ).subscribe(label => this.el.nativeElement.innerHTML = `${this.preFix ?? ''} ${label ?? ''} ${this.suffix ?? ''}`);
 
     if (this.appLabel) {
