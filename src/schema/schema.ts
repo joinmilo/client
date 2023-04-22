@@ -1283,6 +1283,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addUploads?: Maybe<UserEntity>;
   changePassword?: Maybe<Scalars['Boolean']>;
+  checkPassword?: Maybe<Scalars['Float']>;
   createToken?: Maybe<TokenDto>;
   deleteAddress?: Maybe<Scalars['Boolean']>;
   deleteAddresses?: Maybe<Scalars['Boolean']>;
@@ -1502,6 +1503,12 @@ export type MutationAddUploadsArgs = {
 /** Mutation root */
 export type MutationChangePasswordArgs = {
   newPassword?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationCheckPasswordArgs = {
+  password?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2120,8 +2127,8 @@ export type MutationRefreshTokenArgs = {
 
 /** Mutation root */
 export type MutationResetPasswordArgs = {
-  key?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2733,13 +2740,13 @@ export type MutationSendGlobalPushArgs = {
 
 /** Mutation root */
 export type MutationSendPasswordResetArgs = {
-  mailAddress?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
 };
 
 
 /** Mutation root */
 export type MutationSendVerificationArgs = {
-  mailAddress?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -4650,6 +4657,7 @@ export type UserEntity = {
   phone?: Maybe<Scalars['String']>;
   roles?: Maybe<Array<Maybe<RoleEntity>>>;
   subscriptions?: Maybe<Array<Maybe<SubscriptionEntity>>>;
+  termsAccepted?: Maybe<Scalars['Boolean']>;
   userContext?: Maybe<UserContextEntity>;
   verifications?: Maybe<Array<Maybe<VerificationEntity>>>;
   verified?: Maybe<Scalars['Boolean']>;
@@ -4669,6 +4677,7 @@ export type UserEntityInput = {
   phone?: InputMaybe<Scalars['String']>;
   roles?: InputMaybe<Array<InputMaybe<RoleEntityInput>>>;
   subscriptions?: InputMaybe<Array<InputMaybe<SubscriptionEntityInput>>>;
+  termsAccepted?: InputMaybe<Scalars['Boolean']>;
   userContext?: InputMaybe<UserContextEntityInput>;
   verifications?: InputMaybe<Array<InputMaybe<VerificationEntityInput>>>;
   verified?: InputMaybe<Scalars['Boolean']>;
@@ -4962,6 +4971,28 @@ export type GetPageQueryVariables = Exact<{
 
 
 export type GetPageQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
+export type CheckPasswordMutationVariables = Exact<{
+  password?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type CheckPasswordMutation = { __typename?: 'Mutation', checkPassword?: number | null };
+
+export type ResetPasswordMutationVariables = Exact<{
+  token?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword?: boolean | null };
+
+export type SendPasswordResetMutationVariables = Exact<{
+  email?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type SendPasswordResetMutation = { __typename?: 'Mutation', sendPasswordReset?: boolean | null };
 
 export type VerifyUserMutationVariables = Exact<{
   token?: InputMaybe<Scalars['String']>;
@@ -5926,6 +5957,54 @@ export const GetPageDocument = gql`
   })
   export class GetPageGQL extends Apollo.Query<GetPageQuery, GetPageQueryVariables> {
     override document = GetPageDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const CheckPasswordDocument = gql`
+    mutation checkPassword($password: String) {
+  checkPassword(password: $password)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CheckPasswordGQL extends Apollo.Mutation<CheckPasswordMutation, CheckPasswordMutationVariables> {
+    override document = CheckPasswordDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ResetPasswordDocument = gql`
+    mutation resetPassword($token: String, $password: String) {
+  resetPassword(token: $token, password: $password)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ResetPasswordGQL extends Apollo.Mutation<ResetPasswordMutation, ResetPasswordMutationVariables> {
+    override document = ResetPasswordDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SendPasswordResetDocument = gql`
+    mutation sendPasswordReset($email: String) {
+  sendPasswordReset(email: $email)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SendPasswordResetGQL extends Apollo.Mutation<SendPasswordResetMutation, SendPasswordResetMutationVariables> {
+    override document = SendPasswordResetDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

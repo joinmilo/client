@@ -34,24 +34,15 @@ const routes: Routes = [
     path: 'search',
     component: SearchResultComponent,
   },
-
-  {
-    path: userFeatureKey,
-    loadChildren: () => import('./user/user.module')
-      .then((imported) => imported.UserPortalModule),
-  },
-  
   {
     path: '404',
     component: PortalNotFoundComponent,
   },
-
   {
     path: '',
     loadChildren: () => import('./page/page.module')
       .then((imported) => imported.PortalPageModule),
   },
-  
   {
     path: '**',
     pathMatch: 'full',

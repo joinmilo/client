@@ -30,3 +30,4 @@ export const mapLongitudeConfig = 'mapLongitude';
 export const mapLatitudeConfig = 'mapLatitude';
 export const mapZoomfactor = 'mapZoomfactor';
 export const portalNameConfig = 'portalName';
+export const pwBitStrengthConfig = 'pwBitStrength';

@@ -11,6 +11,7 @@ import { selectCurrentPage } from '../../state/page.selectors';
 export class PageLandingComponent {
 
   public page = this.store.select(selectCurrentPage);
+  public value = 100;
 
   constructor(
     private store: Store,
