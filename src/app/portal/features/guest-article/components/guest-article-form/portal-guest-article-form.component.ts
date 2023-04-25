@@ -2,15 +2,15 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { GuestArticleActions } from './../../state/guest-article.actions';
-import { selectArticleCategories, selectSavedArticle } from './../../state/guest-article.selectors';
+import { PortalGuestArticleActions } from '../../state/portal-guest-article.actions';
+import { selectArticleCategories, selectSavedArticle } from '../../state/portal-guest-article.selectors';
 
 @Component({
-  selector: 'app-guest-article-input',
-  templateUrl: './guest-article-input.component.html',
-  styleUrls: ['./guest-article-input.component.scss'],
+  selector: 'app-portal-guest-article-form',
+  templateUrl: './portal-guest-article-form.component.html',
+  styleUrls: ['./portal-guest-article-form.component.scss'],
 })
-export class GuestArticleInputComponent implements OnDestroy {
+export class PortalGuestArticleFormComponent implements OnDestroy {
 
   public form = this.fb.group({
     name: ['', [Validators.required]],
@@ -32,11 +32,11 @@ export class GuestArticleInputComponent implements OnDestroy {
     private fb: FormBuilder,
   ) {
 
-    this.store.dispatch(GuestArticleActions.setArticleCategories());
+    this.store.dispatch(PortalGuestArticleActions.setArticleCategories());
   }
 
   onSubmit(formDirective: FormGroupDirective) {
-    this.store.dispatch(GuestArticleActions.saveArticle({
+    this.store.dispatch(PortalGuestArticleActions.saveArticle({
       //TODO translatables content and title
       publicAuthor: {
         name: this.form.value.name,

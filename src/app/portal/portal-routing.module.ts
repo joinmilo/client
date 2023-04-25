@@ -25,12 +25,12 @@ const routes: Routes = [
   },
   {
     path: guestArticlesFeatureKey,
-    loadChildren: () => import('./features/guest-article/guest-article.module')
+    loadChildren: () => import('./features/guest-article/portal-guest-article.module')
       .then((imported) => imported.PortalGuestArticleModule),
   },
   {
     path: reportFeatureKey,
-    loadChildren: () => import('./features/report/main/report.module')
+    loadChildren: () => import('./features/report/main/portal-report.module')
       .then((imported) => imported.PortalReportModule),
   },
   {

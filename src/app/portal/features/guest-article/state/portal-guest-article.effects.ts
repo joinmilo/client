@@ -3,23 +3,23 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ArticleCategoryEntity, ArticleEntity, SaveArticleGQL } from 'src/schema/schema';
+import { GetArticleCategoriesGQL } from '../../../../../schema/schema';
 import { CoreActions } from '../../../../core/state/core.actions';
-import { GetArticleCategoriesGQL } from './../../../../../schema/schema';
-import { GuestArticleActions } from './guest-article.actions';
+import { PortalGuestArticleActions } from './portal-guest-article.actions';
 
 @Injectable()
-export class ReportEffects {
+export class PortalGuestArticleEffects {
 
   saveReport = createEffect(() => this.actions.pipe(
-    ofType(GuestArticleActions.saveArticle),
+    ofType(PortalGuestArticleActions.saveArticle),
     switchMap((action) => this.saveArticleService.mutate({
       entity: action.entity
     })),
-    map(response => GuestArticleActions.articleSaved(response.data?.saveArticle as ArticleEntity))
+    map(response => PortalGuestArticleActions.articleSaved(response.data?.saveArticle as ArticleEntity))
   ));
 
   articleSaved = createEffect(() => this.actions.pipe(
-    ofType(GuestArticleActions.articleSaved),
+    ofType(PortalGuestArticleActions.articleSaved),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'articleReceived'
@@ -27,9 +27,9 @@ export class ReportEffects {
   ));
 
   getCurrentCategories = createEffect(() => this.actions.pipe(
-    ofType(GuestArticleActions.getArticleCategories),
+    ofType(PortalGuestArticleActions.getArticleCategories),
     switchMap(() => this.getArticleCategoriesService.watch().valueChanges),
-    map(response => GuestArticleActions.setArticleCategories(response.data.getArticleCategories?.result as ArticleCategoryEntity[]))
+    map(response => PortalGuestArticleActions.setArticleCategories(response.data.getArticleCategories?.result as ArticleCategoryEntity[]))
   ));
 
   constructor(

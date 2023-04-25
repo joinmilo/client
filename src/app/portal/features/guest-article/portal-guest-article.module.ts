@@ -13,14 +13,14 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { guestArticleStateKey } from './constants/guest-article.constant';
-import { GuestArticlePortalRoutingModule } from './guest-article-routing.module';
-import { GuestArticleInputComponent } from './pages/guest-article-input/guest-article-input.component';
-import { ReportEffects } from './state/guest-article.effects';
-import { reportReducer } from './state/guest-article.reducer';
+import { PortalGuestArticleFormComponent } from './components/guest-article-form/portal-guest-article-form.component';
+import { portalGuestArticleStateKey } from './constants/portal-guest-article.constant';
+import { PortalGuestArticleRoutingModule } from './portal-guest-article-routing.module';
+import { PortalGuestArticleEffects } from './state/portal-guest-article.effects';
+import { portalGuestArticleReducer } from './state/portal-guest-article.reducer';
 
 const components = [
-  GuestArticleInputComponent
+  PortalGuestArticleFormComponent
 ];
 
 const framework = [
@@ -41,14 +41,14 @@ const materials = [
 const modules = [
   CoreModule,
   FormModule,
-  GuestArticlePortalRoutingModule,
+  PortalGuestArticleRoutingModule,
   TitleModule,
 ];
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(guestArticleStateKey, reportReducer),
-  EffectsModule.forFeature([ReportEffects]),
+  StoreModule.forFeature(portalGuestArticleStateKey, portalGuestArticleReducer),
+  EffectsModule.forFeature([PortalGuestArticleEffects]),
 ]
 
 @NgModule({

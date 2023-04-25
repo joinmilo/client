@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GuestArticleInputComponent } from './pages/guest-article-input/guest-article-input.component';
+import { PortalGuestArticleFormComponent } from './components/guest-article-form/portal-guest-article-form.component';
 
 const routes: Routes = [
 
   {
     path: '',
-    component: GuestArticleInputComponent
+    component: PortalGuestArticleFormComponent
   },
 
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GuestArticlePortalRoutingModule { }
+export class PortalGuestArticleRoutingModule { }

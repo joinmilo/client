@@ -11,14 +11,14 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { ReportFormComponent } from './components/report-form.component';
+import { PortalReportFormComponent } from './components/portal-report-form.component';
 import { reportStateKey } from './constants/report.constant';
-import { ReportPortalRoutingModule } from './report-routing.module';
+import { PortalReportRoutingModule } from './portal-report-routing.module';
 import { ReportEffects } from './state/report.effects';
 import { reportReducer } from './state/report.reducer';
 
 const components = [
-  ReportFormComponent
+  PortalReportFormComponent
 ];
 
 const framework = [
@@ -37,7 +37,7 @@ const materials = [
 const modules = [
   CoreModule,
   FormModule,
-  ReportPortalRoutingModule,
+  PortalReportRoutingModule,
   TitleModule,
 ];
 

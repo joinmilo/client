@@ -9,11 +9,11 @@ import { ReportActions } from '../state/report.actions';
 import { selectReportTypes, selectSavedReport } from '../state/report.selectors';
 
 @Component({
-  selector: 'app-report-form',
-  templateUrl: './report-form.component.html',
-  styleUrls: ['./report-form.component.scss'],
+  selector: 'app-portal-report-form',
+  templateUrl: './portal-report-form.component.html',
+  styleUrls: ['./portal-report-form.component.scss'],
 })
-export class ReportFormComponent implements OnDestroy {
+export class PortalReportFormComponent implements OnDestroy {
 
   public form = this.fb.group({
     type: [{} as ReportTypeEntity, [Validators.required]],
