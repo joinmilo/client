@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -10,6 +12,7 @@ import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventCategoryViewComponent } from './components/category-view/portal-event-category-view.component';
 import { PortalEventFilterAreaComponent } from './components/filter-area/portal-event-filter-area.component';
+import { PortalEventFiltersComponent } from './components/filters/portal-event-filters.component';
 import { PortalEventOverviewComponent } from './components/overview/portal-event-overview.component';
 import { PortalEventTableViewComponent } from './components/table-view/portal-event-table-view.component';
 import { portalEventOverviewStateKey } from './constants/portal-event-overview.constant';
@@ -20,6 +23,7 @@ import { portalEventOverviewReducer } from './state/portal-event-overview.reduce
 const components = [
   PortalEventCategoryViewComponent,
   PortalEventFilterAreaComponent,
+  PortalEventFiltersComponent,
   PortalEventTableViewComponent,
   PortalEventOverviewComponent,
 ];
@@ -27,6 +31,11 @@ const components = [
 const framework = [
   CommonModule,
 ];
+
+const materials = [
+  MatButtonModule,
+  MatCardModule,
+]
 
 const modules = [
   CoreModule,
@@ -47,6 +56,7 @@ const libs = [
   declarations: [...components],
   imports: [
     ...framework,
+    ...materials,
     ...modules,
     ...libs,
   ],

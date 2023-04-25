@@ -1,0 +1,20 @@
+div {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+
+  section {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+
+button {
+
+  span {
+    margin-left: 1rem;
+  }
+
+  margin-left: auto;
+}

@@ -1,6 +1,15 @@
-<app-radio-button-group
-  [inputs]="inputs"
-  [initValue]="value"
-  [link]="['/portal', eventsFeatureKey]"
-  [queryParamKey]="displayQueryParam">
-</app-radio-button-group>
+<div>
+  <section>
+    <app-radio-button-group
+      [inputs]="inputs"
+      [initValue]="display"
+      [link]="['/portal', eventsFeatureKey]"
+      [queryParamKey]="displayQueryParam">
+    </app-radio-button-group>
+    <button mat-raised-button (click)="filtersActive = !filtersActive">
+      <fa-icon [icon]="['fas', 'filter']"></fa-icon>
+      <span appLabel="filter"></span>
+    </button>
+  </section>
+  <app-portal-event-filters *ngIf="filtersActive"></app-portal-event-filters>
+</div>

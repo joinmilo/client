@@ -41,7 +41,9 @@ export class PortalEventFilterAreaComponent implements OnDestroy {
     },
   ];
 
-  public value?: DisplayType;
+  public display?: DisplayType;
+
+  public filtersActive = false;
 
   public eventsFeatureKey = eventsFeatureKey;
   public displayQueryParam = displayQueryParam;
@@ -57,8 +59,8 @@ export class PortalEventFilterAreaComponent implements OnDestroy {
     this.activatedRoute.queryParams
       .pipe(takeUntil(this.destroy))
       .subscribe(queryParams => {
-        this.value = queryParams[this.displayQueryParam] || DisplayType.Category;
-        this.store.dispatch(PortalEventOverviewActions.displayChanged(this.value));
+        this.display = queryParams[this.displayQueryParam] || DisplayType.Category;
+        this.store.dispatch(PortalEventOverviewActions.displayChanged(this.display));
       });
   }
 
