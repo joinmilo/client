@@ -7,11 +7,12 @@ export const refreshKey = 'refresh';
 /**
  * Features
  */
-export const eventsFeatureKey = 'events';
 export const articlesFeatureKey = 'articles';
+export const authorFeatureKey = 'authors';
 export const calendarFeatureKey = 'calendar';
-export const reportFeatureKey = 'reports';
+export const eventsFeatureKey = 'events';
 export const guestArticlesFeatureKey = 'guestarticle';
+export const reportFeatureKey = 'reports';
 
 /**
  * URLs
