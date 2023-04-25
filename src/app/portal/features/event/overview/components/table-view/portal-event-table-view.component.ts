@@ -3,7 +3,8 @@ import { Store } from '@ngrx/store';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction, SortPaginate } from 'src/app/shared/table/typings/table';
 import { EventEntity } from 'src/schema/schema';
-import { selectOverviewData } from '../../state/portal-event-overview.selectors';
+import { PortalEventOverviewActions } from '../../state/portal-event-overview.actions';
+import { selectTableData } from '../../state/portal-event-overview.selectors';
 
 @Component({
   selector: 'app-portal-event-table-view',
@@ -12,7 +13,7 @@ import { selectOverviewData } from '../../state/portal-event-overview.selectors'
 })
 export class PortalEventTableViewComponent {
 
-  public events = this.store.select(selectOverviewData);
+  public events = this.store.select(selectTableData);
 
   public actions: RowAction<EventEntity>[] = [
     { type: 'LIKE' },
@@ -21,7 +22,7 @@ export class PortalEventTableViewComponent {
 
   public columns: Column<EventEntity>[] = [
     {
-      field: 'name',
+      field: 'translatables.name',
       label: 'title',
       type: row => this.translationService.translatable(row.translatables, 'name')
     },
@@ -30,7 +31,7 @@ export class PortalEventTableViewComponent {
       label: 'organizer',
     },
     {
-      field: 'schedule.startDate',
+      field: 'schedules.startDate',
       label: 'date',
       type: 'DATETIME'
     },
@@ -47,7 +48,7 @@ export class PortalEventTableViewComponent {
   ) { }
 
   public sortPaginate($event: SortPaginate) {
-    
+    this.store.dispatch(PortalEventOverviewActions.setTableParams($event))
   }
 
 }

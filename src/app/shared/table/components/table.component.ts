@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Column, RowAction, SortPaginate } from '../typings/table';
+import { Column, PageableList, RowAction, SortPaginate } from '../typings/table';
 
 @Component({
   selector: 'app-table',
@@ -10,7 +10,7 @@ import { Column, RowAction, SortPaginate } from '../typings/table';
 export class TableComponent<T> {
 
   @Input()
-  public data?: Observable<T[] | undefined>;
+  public data?: Observable<PageableList<T> | undefined>;
 
   @Input()
   public columns?: Column<T>[];

@@ -13,6 +13,11 @@ export type Column<T> = {
   type?: ColumnType | ((row: T) => Observable<Maybe<string> | undefined> | Maybe<string> | undefined),
 };
 
+export type PageableList<T> = {
+  result?: Maybe<Array<Maybe<T>>>;
+  total?: number;
+};
+
 export type RowActionType = 'EDIT'
   | 'DELETE'
   | 'DETAILS'

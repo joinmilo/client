@@ -1,6 +1,6 @@
+import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
-import { gql } from 'apollo-angular';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -4789,6 +4789,57 @@ export type GetServerVersionQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetServerVersionQuery = { __typename?: 'Query', getInformation?: { __typename?: 'InformationDto', version?: string | null } | null };
 
+export type CalendarScheduleFragment = { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null };
+
+export type GetSchedulesQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type GetSchedulesQuery = { __typename?: 'Query', getSchedules?: { __typename?: 'PageableList_ScheduleEntity', result?: Array<{ __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null } | null> | null } | null };
+
+export type PublicAuthorFragment = { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null };
+
+export type GetArticleCategoriesQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type GetArticleCategoriesQuery = { __typename?: 'Query', getArticleCategories?: { __typename?: 'PageableList_ArticleCategoryEntity', result?: Array<{ __typename?: 'ArticleCategoryEntity', id?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, name?: string | null, locale?: string | null } | null } | null> | null } | null> | null } | null };
+
+export type SaveArticleMutationVariables = Exact<{
+  entity: ArticleEntityInput;
+}>;
+
+
+export type SaveArticleMutation = { __typename?: 'Mutation', saveArticle?: { __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
+export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
+
+export type GetReportTypesQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type GetReportTypesQuery = { __typename?: 'Query', getReportTypes?: { __typename?: 'PageableList_ReportTypeEntity', result?: Array<{ __typename?: 'ReportTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ReportTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, name?: string | null, locale?: string | null } | null } | null> | null } | null> | null } | null };
+
+export type SaveReportMutationVariables = Exact<{
+  entity: ReportEntityInput;
+}>;
+
+
+export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
+
+export type PageFragment = { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+
+export type GetPageQueryVariables = Exact<{
+  isLanding?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetPageQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
 export type AppFragment = { __typename?: 'AppEntity', id?: string | null, url?: string | null, platform?: { __typename?: 'AppPlatformEntity', id?: string | null, key?: string | null, name?: string | null } | null };
 
 export type ArticleCategoryFragment = { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
@@ -4859,7 +4910,7 @@ export type GetEventsQueryVariables = Exact<{
 }>;
 
 
-export type GetEventsQuery = { __typename?: 'Query', getEvents?: { __typename?: 'PageableList_EventEntity', result?: Array<{ __typename?: 'EventEntity', id?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, translatables?: Array<{ __typename?: 'EventTranslatableEntity', id?: string | null, name?: string | null, description?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, category?: { __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, schedule?: { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null } | null } | null> | null } | null };
+export type GetEventsQuery = { __typename?: 'Query', getEvents?: { __typename?: 'PageableList_EventEntity', total: any, result?: Array<{ __typename?: 'EventEntity', id?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, translatables?: Array<{ __typename?: 'EventTranslatableEntity', id?: string | null, name?: string | null, description?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, category?: { __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, schedule?: { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null } | null } | null> | null } | null };
 
 export type GetMenuQueryVariables = Exact<{
   parent?: InputMaybe<Scalars['String']>;
@@ -4900,57 +4951,6 @@ export type SearchQueryVariables = Exact<{
 
 
 export type SearchQuery = { __typename?: 'Query', search?: Array<{ __typename?: 'SearchDto', id?: string | null } | null> | null };
-
-export type CalendarScheduleFragment = { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null };
-
-export type GetSchedulesQueryVariables = Exact<{
-  params?: InputMaybe<FilterSortPaginateInput>;
-}>;
-
-
-export type GetSchedulesQuery = { __typename?: 'Query', getSchedules?: { __typename?: 'PageableList_ScheduleEntity', result?: Array<{ __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null } | null> | null } | null };
-
-export type PublicAuthorFragment = { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null };
-
-export type GetArticleCategoriesQueryVariables = Exact<{
-  params?: InputMaybe<FilterSortPaginateInput>;
-}>;
-
-
-export type GetArticleCategoriesQuery = { __typename?: 'Query', getArticleCategories?: { __typename?: 'PageableList_ArticleCategoryEntity', result?: Array<{ __typename?: 'ArticleCategoryEntity', id?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, name?: string | null, locale?: string | null } | null } | null> | null } | null> | null } | null };
-
-export type SaveArticleMutationVariables = Exact<{
-  entity: ArticleEntityInput;
-}>;
-
-
-export type SaveArticleMutation = { __typename?: 'Mutation', saveArticle?: { __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
-
-export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
-
-export type GetReportTypesQueryVariables = Exact<{
-  params?: InputMaybe<FilterSortPaginateInput>;
-}>;
-
-
-export type GetReportTypesQuery = { __typename?: 'Query', getReportTypes?: { __typename?: 'PageableList_ReportTypeEntity', result?: Array<{ __typename?: 'ReportTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ReportTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, name?: string | null, locale?: string | null } | null } | null> | null } | null> | null } | null };
-
-export type SaveReportMutationVariables = Exact<{
-  entity: ReportEntityInput;
-}>;
-
-
-export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
-
-export type PageFragment = { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
-
-export type GetPageQueryVariables = Exact<{
-  isLanding?: InputMaybe<Scalars['Boolean']>;
-  slug?: InputMaybe<Scalars['String']>;
-}>;
-
-
-export type GetPageQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, media?: Array<{ __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
 
 export const MediaFragmentDoc = gql`
     fragment Media on MediaEntity {
@@ -4997,6 +4997,61 @@ export const ThemeFragmentDoc = gql`
   }
 }
     `;
+export const CalendarScheduleFragmentDoc = gql`
+    fragment CalendarSchedule on ScheduleEntity {
+  id
+  startDate
+  endDate
+}
+    `;
+export const ReportFragmentDoc = gql`
+    fragment Report on ReportEntity {
+  id
+  name
+  email
+  captchaToken
+  translatables {
+    id
+    content
+  }
+  type {
+    id
+  }
+}
+    `;
+export const PageFragmentDoc = gql`
+    fragment Page on PageEntity {
+  id
+  callUrl
+  media {
+    ...Media
+  }
+  pageFeatures {
+    id
+    order
+    feature {
+      id
+      key
+    }
+  }
+  slug
+  titleImage {
+    ...Media
+  }
+  translatables {
+    id
+    callText
+    content
+    shortDescription
+    name
+    language {
+      id
+      locale
+      name
+    }
+  }
+}
+    ${MediaFragmentDoc}`;
 export const AppFragmentDoc = gql`
     fragment App on AppEntity {
   id
@@ -5323,61 +5378,6 @@ export const UserContextFragmentDoc = gql`
   }
 }
     ${ArticleFragmentDoc}`;
-export const CalendarScheduleFragmentDoc = gql`
-    fragment CalendarSchedule on ScheduleEntity {
-  id
-  startDate
-  endDate
-}
-    `;
-export const ReportFragmentDoc = gql`
-    fragment Report on ReportEntity {
-  id
-  name
-  email
-  captchaToken
-  translatables {
-    id
-    content
-  }
-  type {
-    id
-  }
-}
-    `;
-export const PageFragmentDoc = gql`
-    fragment Page on PageEntity {
-  id
-  callUrl
-  media {
-    ...Media
-  }
-  pageFeatures {
-    id
-    order
-    feature {
-      id
-      key
-    }
-  }
-  slug
-  titleImage {
-    ...Media
-  }
-  translatables {
-    id
-    callText
-    content
-    shortDescription
-    name
-    language {
-      id
-      locale
-      name
-    }
-  }
-}
-    ${MediaFragmentDoc}`;
 export const LoginDocument = gql`
     mutation login($username: String!, $password: String!) {
   createToken(username: $username, password: $password) {
@@ -5514,6 +5514,138 @@ export const GetServerVersionDocument = gql`
       super(apollo);
     }
   }
+export const GetSchedulesDocument = gql`
+    query getSchedules($params: FilterSortPaginateInput) {
+  getSchedules(params: $params) {
+    result {
+      ...CalendarSchedule
+    }
+  }
+}
+    ${CalendarScheduleFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetSchedulesGQL extends Apollo.Query<GetSchedulesQuery, GetSchedulesQueryVariables> {
+    override document = GetSchedulesDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetArticleCategoriesDocument = gql`
+    query getArticleCategories($params: FilterSortPaginateInput) {
+  getArticleCategories(params: $params) {
+    result {
+      id
+      translatables {
+        id
+        name
+        language {
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetArticleCategoriesGQL extends Apollo.Query<GetArticleCategoriesQuery, GetArticleCategoriesQueryVariables> {
+    override document = GetArticleCategoriesDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SaveArticleDocument = gql`
+    mutation saveArticle($entity: ArticleEntityInput!) {
+  saveArticle(entity: $entity) {
+    ...Article
+  }
+}
+    ${ArticleFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SaveArticleGQL extends Apollo.Mutation<SaveArticleMutation, SaveArticleMutationVariables> {
+    override document = SaveArticleDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetReportTypesDocument = gql`
+    query getReportTypes($params: FilterSortPaginateInput) {
+  getReportTypes(params: $params) {
+    result {
+      id
+      translatables {
+        id
+        name
+        language {
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetReportTypesGQL extends Apollo.Query<GetReportTypesQuery, GetReportTypesQueryVariables> {
+    override document = GetReportTypesDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SaveReportDocument = gql`
+    mutation saveReport($entity: ReportEntityInput!) {
+  saveReport(entity: $entity) {
+    ...Report
+  }
+}
+    ${ReportFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SaveReportGQL extends Apollo.Mutation<SaveReportMutation, SaveReportMutationVariables> {
+    override document = SaveReportDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetPageDocument = gql`
+    query getPage($isLanding: Boolean, $slug: String) {
+  getPage(entity: {isLanding: $isLanding, slug: $slug}) {
+    ...Page
+  }
+}
+    ${PageFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetPageGQL extends Apollo.Query<GetPageQuery, GetPageQueryVariables> {
+    override document = GetPageDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const GetAppsDocument = gql`
     query getApps {
   getApps {
@@ -5618,6 +5750,7 @@ export const GetEventsDocument = gql`
     result {
       ...Event
     }
+    total
   }
 }
     ${EventFragmentDoc}`;
@@ -5747,138 +5880,6 @@ export const SearchDocument = gql`
   })
   export class SearchGQL extends Apollo.Query<SearchQuery, SearchQueryVariables> {
     override document = SearchDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const GetSchedulesDocument = gql`
-    query getSchedules($params: FilterSortPaginateInput) {
-  getSchedules(params: $params) {
-    result {
-      ...CalendarSchedule
-    }
-  }
-}
-    ${CalendarScheduleFragmentDoc}`;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetSchedulesGQL extends Apollo.Query<GetSchedulesQuery, GetSchedulesQueryVariables> {
-    override document = GetSchedulesDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const GetArticleCategoriesDocument = gql`
-    query getArticleCategories($params: FilterSortPaginateInput) {
-  getArticleCategories(params: $params) {
-    result {
-      id
-      translatables {
-        id
-        name
-        language {
-          id
-          name
-          locale
-        }
-      }
-    }
-  }
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetArticleCategoriesGQL extends Apollo.Query<GetArticleCategoriesQuery, GetArticleCategoriesQueryVariables> {
-    override document = GetArticleCategoriesDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const SaveArticleDocument = gql`
-    mutation saveArticle($entity: ArticleEntityInput!) {
-  saveArticle(entity: $entity) {
-    ...Article
-  }
-}
-    ${ArticleFragmentDoc}`;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class SaveArticleGQL extends Apollo.Mutation<SaveArticleMutation, SaveArticleMutationVariables> {
-    override document = SaveArticleDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const GetReportTypesDocument = gql`
-    query getReportTypes($params: FilterSortPaginateInput) {
-  getReportTypes(params: $params) {
-    result {
-      id
-      translatables {
-        id
-        name
-        language {
-          id
-          name
-          locale
-        }
-      }
-    }
-  }
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetReportTypesGQL extends Apollo.Query<GetReportTypesQuery, GetReportTypesQueryVariables> {
-    override document = GetReportTypesDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const SaveReportDocument = gql`
-    mutation saveReport($entity: ReportEntityInput!) {
-  saveReport(entity: $entity) {
-    ...Report
-  }
-}
-    ${ReportFragmentDoc}`;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class SaveReportGQL extends Apollo.Mutation<SaveReportMutation, SaveReportMutationVariables> {
-    override document = SaveReportDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const GetPageDocument = gql`
-    query getPage($isLanding: Boolean, $slug: String) {
-  getPage(entity: {isLanding: $isLanding, slug: $slug}) {
-    ...Page
-  }
-}
-    ${PageFragmentDoc}`;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetPageGQL extends Apollo.Query<GetPageQuery, GetPageQueryVariables> {
-    override document = GetPageDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

@@ -1,4 +1,7 @@
 span {
   padding: 0.5rem;
   border-radius: var(--mdc-shape-small);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

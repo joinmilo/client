@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { PortalEventOverviewActions } from '../../state/portal-event-overview.actions';
-import { selectOverviewData, selectOverviewDisplayType, selectSponsoredEvent } from '../../state/portal-event-overview.selectors';
+import { selectDisplayType, selectOverviewData, selectSponsoredEvent } from '../../state/portal-event-overview.selectors';
 
 @Component({
   selector: 'app-portal-event-overview',
@@ -14,7 +14,7 @@ export class PortalEventOverviewComponent implements OnDestroy {
 
   public sponsored = this.store.select(selectSponsoredEvent);
 
-  public displayType = this.store.select(selectOverviewDisplayType);
+  public displayType = this.store.select(selectDisplayType);
 
   public data = this.store.select(selectOverviewData);
 

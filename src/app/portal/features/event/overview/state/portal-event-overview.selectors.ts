@@ -10,9 +10,9 @@ export const selectSponsoredEvent = createSelector(
   state => state.sponsoredEvent
 );
 
-export const selectOverviewDisplayType = createSelector(
+export const selectDisplayType = createSelector(
   selectEventState,
-  state => state.overviewDisplayType
+  state => state.displayType
 );
 
 export const selectOverviewData = createSelector(
@@ -35,7 +35,12 @@ export const selectOverviewDataCategories = createSelector(
   }
 );
 
-export const selectOverviewTable = createSelector(
+export const selectTableData = createSelector(
   selectEventState,
-  state => state.overviewDataTable
+  state => state.tableData
+);
+
+export const selectTableParams = createSelector(
+  selectEventState,
+  state => state.tableParams
 );

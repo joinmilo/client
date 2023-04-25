@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Observable, Subject, merge, startWith, takeUntil, tap } from 'rxjs';
 import { Maybe } from 'src/schema/schema';
-import { Column, RowAction, SortPaginate } from '../../typings/table';
+import { Column, PageableList, RowAction, SortPaginate } from '../../typings/table';
 
 @Component({
   selector: 'app-table-desktop',
@@ -20,7 +20,7 @@ export class TableDesktopComponent<T> implements AfterViewInit, OnDestroy {
   public actions?: RowAction<T>[];
 
   @Input()
-  public data?: Observable<T[] | undefined>;
+  public data?: Observable<PageableList<T> | undefined>;
 
   @Input()
   public set columns(columns: Column<T>[] | undefined) {
@@ -46,19 +46,20 @@ export class TableDesktopComponent<T> implements AfterViewInit, OnDestroy {
   public ngAfterViewInit(): void {
 
     this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-
+    
     merge(this.sort.sortChange, this.paginator.page).pipe(
       startWith({}),
       tap(() => this.emitSortPaginate()),
       takeUntil(this.destroy),
-    );
+    ).subscribe();
   }
 
   private emitSortPaginate(): void {
     this.sortPaginate.emit({
       dir: this.sort.direction,
       sort: this.sort.active,
-      page: this.paginator.pageIndex
+      page: this.paginator.pageIndex,
+      size: this.paginator.pageSize,
     });
   }
 

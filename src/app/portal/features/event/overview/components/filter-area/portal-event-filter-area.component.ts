@@ -58,7 +58,7 @@ export class PortalEventFilterAreaComponent implements OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(queryParams => {
         this.value = queryParams[this.displayQueryParam] || DisplayType.Category;
-        this.store.dispatch(PortalEventOverviewActions.overviewDisplayChanged(this.value));
+        this.store.dispatch(PortalEventOverviewActions.displayChanged(this.value));
       });
   }
 

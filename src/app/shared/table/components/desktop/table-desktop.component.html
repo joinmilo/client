@@ -1,6 +1,6 @@
 <div>
   <mat-card>
-    <table mat-table [dataSource]="((data | async) || [])" matSort matSortDisableClear>
+    <table mat-table [dataSource]="((data | async)?.result || [])" matSort matSortDisableClear>
 
       <ng-container *ngFor="let column of columns" [matColumnDef]="column.field">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -28,7 +28,7 @@
   </mat-card>
 
   <mat-card>
-    <mat-paginator [length]="(data | async)?.length" [pageSize]="10"
+    <mat-paginator [length]="(data | async)?.total" [pageSize]="10"
       [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </mat-card>
 </div>
