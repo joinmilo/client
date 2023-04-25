@@ -29,7 +29,11 @@
     </div>
   </div>
 
-  <div *ngIf="(results | async) as results">
+  <div leaflet [leafletOptions]="leafletOptions" [leafletFitBounds]="(mapBounds | async) ?? defaultBounds" >
+    <div *ngIf="(markerGroup | async) as markers" [leafletLayer]="markers"></div>
+  </div>
+
+  <div id="results" *ngIf="(results | async) as results">
     <div>
       {{ results.count }}
       <span *ngIf="results.count !== 1" [appLabel]="results.labelPlural"></span>
@@ -37,7 +41,5 @@
     </div>
     <app-content-card *ngFor="let card of results.data" [entity]="results.entity" [data]="card"></app-content-card>
   </div>
-
-
 </div>
 

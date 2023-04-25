@@ -10,7 +10,7 @@ import {
 } from 'src/schema/schema';
 import {MapFeatureActions} from './map.actions';
 import {FilterKey} from '../constants/map.constants'
-import {CardData, CardEntity} from '../../../../shared/card/typings/card';
+import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
 
 export interface MapState {
   activeFilter: FilterKey;
@@ -128,5 +128,5 @@ export const mapReducer = createReducer(
   on(MapFeatureActions.setResults, (state, action): MapState => ({
     ...state,
     searchResults: { ...action }
-  }))
+  })),
 )

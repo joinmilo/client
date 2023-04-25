@@ -1,0 +1,21 @@
+
+.leaflet-popup-content {
+  margin: 0;
+  line-height: revert;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  color: revert;
+  text-align: revert;
+}
+
+.leaflet-popup {
+  text-align: revert;
+}
+
+.leaflet-container {
+  font-family: revert;
+}
