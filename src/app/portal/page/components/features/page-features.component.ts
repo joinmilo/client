@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeatureKey } from 'src/app/portal/common/constants/common.constants';
+import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeatureKey } from 'src/app/core/constants/core.constants';
 import { Maybe, PageFeatureEntity } from 'src/schema/schema';
 
 @Component({

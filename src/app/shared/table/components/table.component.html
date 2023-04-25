@@ -1,7 +1,8 @@
 <app-table-desktop
   [actions]="actions"
   [columns]="columns"
-  [data]="data">
+  [data]="data"
+  (sortPaginate)="emitSortPaginate($event)">
 </app-table-desktop>
 
 <app-table-mobile>

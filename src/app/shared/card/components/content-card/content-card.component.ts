@@ -5,7 +5,10 @@ import { CardData, CardElement, CardEntity } from 'src/app/shared/card/typings/c
 @Component({
   selector: 'app-content-card',
   templateUrl: './content-card.component.html',
-  styleUrls: ['./content-card.component.scss']
+  styleUrls: [
+    './content-card.component.scss',
+    '../card.scss',
+  ],
 })
 export class ContentCardComponent implements OnInit {
 

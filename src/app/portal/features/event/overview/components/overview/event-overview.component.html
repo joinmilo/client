@@ -1,0 +1,14 @@
+<div class="main">
+  <app-page-title title="activities"></app-page-title>
+  <app-sponsored-card *ngIf="(sponsored | async)?.id"
+    entity="EventEntity"
+    [data]="sponsored | async">
+  </app-sponsored-card>
+  <app-event-filter-area></app-event-filter-area>
+  <ng-container [ngSwitch]="displayType | async">
+    <span *ngSwitchCase="'calendar'">Kalender</span>
+    <app-event-category-view *ngSwitchCase="'category'"></app-event-category-view>
+    <span *ngSwitchCase="'map'">Karte</span>
+    <app-event-table-view *ngSwitchCase="'list'">Liste</app-event-table-view>
+  </ng-container>
+</div>

@@ -52,4 +52,4 @@ const libs = [
     CalendarApiService,
   ]
 })
-export class CalendarPortalModule { }
+export class PortalCalendarModule { }

@@ -4,7 +4,10 @@ import { CardData, CardElement, CardEntity } from '../../typings/card';
 @Component({
   selector: 'app-contact-card',
   templateUrl: './contact-card.component.html',
-  styleUrls: ['./contact-card.component.scss']
+  styleUrls: [
+    './contact-card.component.scss',
+    '../card.scss'
+  ]
 })
 export class ContactCardComponent implements OnInit {
 

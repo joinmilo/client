@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { articlesFeatureKey, authorFeatureKey, calendarFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, reportFeatureKey } from './common/constants/common.constants';
-import { PortalNotFoundComponent } from './common/pages/not-found/not-found.component';
-import { SearchResultComponent } from './search/components/result/search-result.component';
 
 const routes: Routes = [
   {
@@ -17,32 +15,33 @@ const routes: Routes = [
   },
   {
     path: eventsFeatureKey,
-    loadChildren: () => import('./features/event/main/event.module')
-      .then((imported) => imported.EventPortalModule),
+    loadChildren: () => import('./features/event/overview/event-overview.module')
+      .then((imported) => imported.PortalEventOverviewModule),
   },
   {
     path: calendarFeatureKey,
     loadChildren: () => import('./features/calendar/main/calendar.module')
-      .then((imported) => imported.CalendarPortalModule),
+      .then((imported) => imported.PortalCalendarModule),
   },
   {
     path: guestArticlesFeatureKey,
     loadChildren: () => import('./features/guest-article/guest-article.module')
-      .then((imported) => imported.GuestArticlePortalModule),
+      .then((imported) => imported.PortalGuestArticleModule),
   },
   {
     path: reportFeatureKey,
     loadChildren: () => import('./features/report/main/report.module')
-      .then((imported) => imported.ReportPortalModule),
+      .then((imported) => imported.PortalReportModule),
   },
   {
     path: 'search',
-    component: SearchResultComponent,
+    loadChildren: () => import('./shared/search/search.module')
+      .then((imported) => imported.PortalSearchModule),
   },
-
   {
     path: '404',
-    component: PortalNotFoundComponent,
+    loadChildren: () => import('../shared/not-found/not-found.module')
+      .then((imported) => imported.NotFoundModule),
   },
   {
     path: '',

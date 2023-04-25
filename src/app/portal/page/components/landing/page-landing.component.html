@@ -11,12 +11,5 @@
   </section>
 </header>
 <div class="main">
-  <mat-progress-bar
-    class="example-margin"
-    [color]="'accent'"
-    [mode]="mode"
-    [value]="value"
-    [bufferValue]="bufferValue">
-  </mat-progress-bar>
   <app-page-features *ngIf="(page | async)?.pageFeatures?.length" [pageFeatures]="(page | async)?.pageFeatures"></app-page-features>
 </div>

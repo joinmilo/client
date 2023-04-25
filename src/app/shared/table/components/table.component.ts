@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Column, RowAction } from '../typings/table';
+import { Column, RowAction, SortPaginate } from '../typings/table';
 
 @Component({
   selector: 'app-table',
@@ -17,5 +17,12 @@ export class TableComponent<T> {
 
   @Input()
   public actions?: RowAction<T>[];
+
+  @Output()
+  public sortPaginate = new EventEmitter<SortPaginate>();
+
+  public emitSortPaginate(sortPage: SortPaginate): void {
+    this.sortPaginate.emit(sortPage);
+  }
 
 }

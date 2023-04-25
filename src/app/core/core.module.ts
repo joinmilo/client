@@ -15,8 +15,10 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { ImageComponent } from './components/image/image.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AddressPieceComponent } from './components/pieces/adress/address-piece.component';
+import { CategoryPieceComponent } from './components/pieces/category/category-piece.component';
 import { DatePieceComponent } from './components/pieces/date/date-piece.component';
 import { FavoritePieceComponent } from './components/pieces/favorite/favorite-piece.component';
+import { SharePieceComponent } from './components/pieces/share/share-piece.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { coreStateKey } from './constants/core.constants';
 import { HtmlDirective } from './directives/html.directive';
@@ -28,11 +30,13 @@ import { coreReducer } from './state/core.reducer';
 
 const components = [
   AddressPieceComponent,
+  CategoryPieceComponent,
   DatePieceComponent,
   FavoritePieceComponent,
   FeedbackComponent,
   ImageComponent,
   LogoComponent,
+  SharePieceComponent,
   SliderComponent,
   SliderComponent,
 ];

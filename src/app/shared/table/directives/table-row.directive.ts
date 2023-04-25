@@ -1,5 +1,7 @@
 import { Directive, Input, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { Observable, Subject, isObservable, takeUntil } from 'rxjs';
+import { CategoryPieceComponent } from 'src/app/core/components/pieces/category/category-piece.component';
+import { Category } from 'src/app/core/typings/category';
 import { Maybe } from 'src/schema/schema';
 import { TableBooleanRowComponent } from '../components/rows/table-boolean-row.component';
 import { Column } from '../typings/table';
@@ -37,6 +39,9 @@ export class RowDirective<T> implements OnInit, OnDestroy {
     const value = this.column?.field?.split('.').reduce((obj, field) => (obj as never)?.[field], this.appRow);
     if (value !== undefined && value !== null) {
       switch(this.column?.type) {
+        case 'CATEGORY':
+          this.category(value as Category);
+          break;
         case 'BOOLEAN':
           this.boolean(value as boolean);
           break;
@@ -53,6 +58,12 @@ export class RowDirective<T> implements OnInit, OnDestroy {
           this.display = value as string;
       }
     }
+  }
+
+  private category(category: Category) {
+    this.viewContainer
+      .createComponent(CategoryPieceComponent)
+      .instance.category = category;
   }
 
   private boolean(value: boolean): void {

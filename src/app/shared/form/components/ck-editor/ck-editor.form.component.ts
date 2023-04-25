@@ -48,7 +48,6 @@ export class CkEditorFormComponent implements ControlValueAccessor {
   }
 
   handleEditorReady(editor: unknown): void {
-    console.log(editor);
     this.editorInstance = editor;
   }
 

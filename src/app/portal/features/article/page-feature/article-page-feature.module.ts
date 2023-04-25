@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { PortalCommonModule } from 'src/app/portal/common/common.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { ArticlePageFeatureComponent } from './component/article-page-feature.component';
@@ -23,7 +22,6 @@ const modules = [
   CoreModule,
   CardModule,
   FormModule,
-  PortalCommonModule,
 ];
 
 const libs = [
@@ -40,4 +38,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class ArticlePortalPageFeatureModule { }
+export class PortalArticlePageFeatureModule { }

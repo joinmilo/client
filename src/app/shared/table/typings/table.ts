@@ -23,3 +23,10 @@ export type RowAction<T> = {
   callback?: (row: T) => void
   type?: RowActionType,
 };
+
+export type SortPaginate = {
+  dir?: Maybe<string>,
+  page?: Maybe<number>,
+  size?: Maybe<number>,
+  sort?: Maybe<string>,
+}

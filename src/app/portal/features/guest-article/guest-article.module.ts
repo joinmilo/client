@@ -61,4 +61,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class GuestArticlePortalModule { }
+export class PortalGuestArticleModule { }

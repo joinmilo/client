@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { PortalCommonModule } from 'src/app/portal/common/common.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { EventPageFeatureComponent } from './component/event-page-feature.component';
 import { eventPageFeatureStateKey } from './constants/event-page-feature.constant';
@@ -21,7 +20,6 @@ const framework = [
 const modules = [
   CoreModule,
   CardModule,
-  PortalCommonModule,
 ];
 
 const libs = [
@@ -38,4 +36,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class EventPortalPageFeatureModule { }
+export class PortalEventPageFeatureModule { }

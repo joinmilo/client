@@ -1,16 +1,8 @@
 button {
-  position: absolute;
-  z-index: 2;
-  top: .5rem;
-  right: 1rem;
 
   &.favorite {
     color: var(--color-warn-400);
   }
-  
-  perspective: 150rem;
-  transition: transform .2s ease-in-out;
-  background-color: white;
 
   &:active {
     animation: pulse .2s ease-in-out;

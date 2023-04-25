@@ -57,4 +57,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class ReportPortalModule { }
+export class PortalReportModule { }

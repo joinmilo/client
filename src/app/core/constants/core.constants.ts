@@ -5,6 +5,15 @@ export const coreStateKey = 'coreState';
 export const refreshKey = 'refresh';
 
 /**
+ * Features
+ */
+export const eventsFeatureKey = 'events';
+export const articlesFeatureKey = 'articles';
+export const calendarFeatureKey = 'calendar';
+export const reportFeatureKey = 'reports';
+export const guestArticlesFeatureKey = 'guestarticle';
+
+/**
  * URLs
  */
 export const baseApi = `${environment.base}api`;
