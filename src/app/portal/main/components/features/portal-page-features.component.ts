@@ -3,11 +3,11 @@ import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeature
 import { Maybe, PageFeatureEntity } from 'src/schema/schema';
 
 @Component({
-  selector: 'app-page-features',
-  templateUrl: './page-features.component.html',
-  styleUrls: ['./page-features.component.scss']
+  selector: 'app-portal-page-features',
+  templateUrl: './portal-page-features.component.html',
+  styleUrls: ['./portal-page-features.component.scss']
 })
-export class PageFeaturesComponent implements OnInit {
+export class PortalPageFeaturesComponent implements OnInit {
 
   @Input()
   public pageFeatures?: Maybe<Maybe<PageFeatureEntity>[]>;

@@ -10,21 +10,18 @@ import { PortalArticlePageFeatureModule } from '../features/article/page-feature
 import { PortalCalendarPageFeatureModule } from '../features/calendar/page-feature/portal-calendar-page-feature.module';
 import { PortalEventPageFeatureModule } from '../features/event/page-feature/portal-event-page-feature.module';
 import { PortalReportPageFeatureModule } from '../features/report/page-feature/portal-report-page-feature.module';
-import { PageFeaturesComponent } from './components/features/page-features.component';
-import { PageLandingComponent } from './components/landing/page-landing.component';
-import { PageComponent } from './components/page/page.component';
-import { pageStateKey } from './constants/page.constants';
-import { PortalPageRoutingModule } from './page-routing.module';
-import { PageEffects } from './state/page.effects';
-import { pageReducer } from './state/page.reducer';
+import { PortalPageFeaturesComponent } from './components/features/portal-page-features.component';
+import { PortalLandingComponent } from './components/landing/portal-landing.component';
+import { PortalPageComponent } from './components/page/portal-page.component';
+import { portalMainStateKey } from './constants/portal-main.constants';
+import { PortalMainRoutingModule } from './portal-main-routing.module';
+import { PortalMainEffects } from './state/portal-main.effects';
+import { portalMainReducer } from './state/portal-main.reducer';
 
 const components = [
-  PageFeaturesComponent
-];
-
-const pages = [
-  PageComponent,
-  PageLandingComponent,
+  PortalLandingComponent,
+  PortalPageComponent,
+  PortalPageFeaturesComponent,
 ];
 
 const features = [
@@ -46,18 +43,17 @@ const materials = [
 
 const modules = [
   CoreModule,
-  PortalPageRoutingModule,
+  PortalMainRoutingModule,
 ];
 
 const libs = [
-  StoreModule.forFeature(pageStateKey, pageReducer),
-  EffectsModule.forFeature([PageEffects]),
+  StoreModule.forFeature(portalMainStateKey, portalMainReducer),
+  EffectsModule.forFeature([PortalMainEffects]),
 ]
 
 @NgModule({
   declarations: [
     ...components,
-    ...pages
   ],
   exports: [
     ...components,
@@ -70,4 +66,4 @@ const libs = [
     ...libs,
   ],
 })
-export class PortalPageModule { }
+export class PortalMainModule { }

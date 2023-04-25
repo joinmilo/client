@@ -45,8 +45,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./page/page.module')
-      .then((imported) => imported.PortalPageModule),
+    loadChildren: () => import('./main/portal-main.module')
+      .then((imported) => imported.PortalMainModule),
   },
   {
     path: '**',

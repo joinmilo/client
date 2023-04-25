@@ -3,23 +3,23 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { GetPageGQL, PageEntity } from 'src/schema/schema';
 import { PortalMenuActions } from '../../shared/menu/state/portal-menu.actions';
-import { PageActions } from './page.actions';
+import { PortalMainActions } from './portal-main.actions';
 
 @Injectable()
-export class PageEffects {
+export class PortalMainEffects {
 
   getPage = createEffect(() => this.actions.pipe(
-    ofType(PageActions.getPage),
+    ofType(PortalMainActions.getPage),
     switchMap((action) => this.getPageService.watch({ slug: action.slug }).valueChanges),
     map(response => response.data.getPage?.id
-      ? PageActions.setCurrentPage(response.data.getPage as PageEntity)
+      ? PortalMainActions.setCurrentPage(response.data.getPage as PageEntity)
       : PortalMenuActions.notFound())
   ));
 
   getLandingPage = createEffect(() => this.actions.pipe(
-    ofType(PageActions.getLandingPage),
+    ofType(PortalMainActions.getLandingPage),
     switchMap(() => this.getPageService.watch({ isLanding: true }).valueChanges),
-    map(response => PageActions.setCurrentPage(response.data.getPage as PageEntity))
+    map(response => PortalMainActions.setCurrentPage(response.data.getPage as PageEntity))
   ));
 
   constructor(
