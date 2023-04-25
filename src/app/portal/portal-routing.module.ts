@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { articlesFeatureKey, authorFeatureKey, calendarFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, reportFeatureKey } from './common/constants/common.constants';
+import { articlesFeatureKey, authorFeatureKey, calendarFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, reportFeatureKey } from '../core/constants/core.constants';
 
 const routes: Routes = [
   {
