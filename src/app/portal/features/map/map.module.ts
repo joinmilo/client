@@ -17,11 +17,17 @@ import {MatButtonModule} from '@angular/material/button';
 import {MapEventFilterComponent} from './components/forms/event-filter.component';
 import {MapOrganisationsFilterComponent} from './components/forms/organisation-filter.component';
 import {CardModule} from '../../../shared/card/card.module';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+import {MarkerComponent} from './components/marker.component';
 
 const components: Type<any>[] = [
-  MapEventFilterComponent,
-  MapOrganisationsFilterComponent
 ];
+
+const internal: Type<any>[] = [
+  MapEventFilterComponent,
+  MapOrganisationsFilterComponent,
+  MarkerComponent,
+]
 
 const pages: Type<any>[] = [
   MapPageComponent,
@@ -50,12 +56,14 @@ const modules: Type<any>[] =[
 @NgModule({
   declarations: [
     ...components,
+    ...internal,
     ...pages
   ],
     imports: [
         ...framework,
         ...materials,
         ...modules,
+        LeafletModule,
     ],
   exports: [
     ...components

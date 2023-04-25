@@ -1,4 +1,4 @@
-import {createFeatureSelector, createSelector, select} from '@ngrx/store';
+import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {MapState} from './map.reducer';
 import {mapFeatureKey} from '../constants/map.constants';
 

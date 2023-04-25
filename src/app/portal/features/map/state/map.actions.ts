@@ -8,7 +8,7 @@ import {
   SuburbEntity
 } from 'src/schema/schema';
 import {FilterKey} from '../constants/map.constants';
-import {CardData, CardEntity} from '../../../../shared/card/typings/card';
+import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
 
 export const MapFeatureActions = createActionGroup({
   source: 'Map Feature',
@@ -51,6 +51,6 @@ export const MapFeatureActions = createActionGroup({
       labelPlural: string,
       entity: CardEntity,
       data: CardData[]
-    }>()
+    }>(),
   }
 })

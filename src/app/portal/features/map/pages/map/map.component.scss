@@ -1,0 +1,13 @@
+
+div[leaflet] {
+  height: 70vh;
+  z-index: 0;
+}
+
+#results {
+  position: relative;
+  top: -1rem;
+  background-color: white;
+  border-radius: 1rem 1rem 0 0;
+  padding: 0.5rem;
+}

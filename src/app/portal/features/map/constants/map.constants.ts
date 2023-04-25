@@ -5,3 +5,12 @@ export enum FilterKey {
   organisations,
   deals
 }
+
+export const defaultMarkerColor = '#54A6CB';
+
+export enum MarkerIconKeys {
+  fitness = "fitness",
+  music = "music",
+  school = "school",
+  restaurant = "restaurant",
+}
