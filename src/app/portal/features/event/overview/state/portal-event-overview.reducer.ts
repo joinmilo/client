@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { DisplayType } from 'src/app/core/typings/overview-display';
 import { EventEntity, Maybe, PageableList_EventEntity } from 'src/schema/schema';
-import { PortalEventOverviewActions } from './event-overview.actions';
+import { PortalEventOverviewActions } from './portal-event-overview.actions';
 
 export interface PortalEventOverviewState {
   sponsoredEvent?: Maybe<EventEntity>,

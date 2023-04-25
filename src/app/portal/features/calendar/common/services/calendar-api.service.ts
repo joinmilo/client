@@ -4,7 +4,7 @@ import { Period } from 'src/app/shared/calendar/typings/month';
 import { EventEntity, GetEventsGQL, GetSchedulesGQL, QueryOperator, ScheduleEntity } from 'src/schema/schema';
 
 @Injectable()
-export class CalendarApiService {
+export class PortalCalendarApiService {
 
   constructor(
     private getEventsService: GetEventsGQL,

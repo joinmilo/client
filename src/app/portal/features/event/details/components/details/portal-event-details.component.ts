@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectEventDetails } from '../../state/event-details.selectors';
+import { selectEventDetails } from '../../state/portal-event-details.selectors';
 
 @Component({
-  selector: 'app-event-details',
-  templateUrl: './event-details.component.html',
-  styleUrls: ['./event-details.component.scss']
+  selector: 'app-portal-event-details',
+  templateUrl: './portal-event-details.component.html',
+  styleUrls: ['./portal-event-details.component.scss']
 })
-export class EventDetailsComponent implements OnInit {
+export class PortalEventDetailsComponent implements OnInit {
 
   public eventDetails = this.store.select(selectEventDetails);
 

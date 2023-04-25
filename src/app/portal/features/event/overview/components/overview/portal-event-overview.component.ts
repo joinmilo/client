@@ -2,15 +2,15 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { PortalEventOverviewActions } from '../../state/event-overview.actions';
-import { selectOverviewData, selectOverviewDisplayType, selectSponsoredEvent } from '../../state/event-overview.selectors';
+import { PortalEventOverviewActions } from '../../state/portal-event-overview.actions';
+import { selectOverviewData, selectOverviewDisplayType, selectSponsoredEvent } from '../../state/portal-event-overview.selectors';
 
 @Component({
-  selector: 'app-event-overview',
-  templateUrl: './event-overview.component.html',
-  styleUrls: ['./event-overview.component.scss']
+  selector: 'app-portal-event-overview',
+  templateUrl: './portal-event-overview.component.html',
+  styleUrls: ['./portal-event-overview.component.scss']
 })
-export class EventOverviewComponent implements OnDestroy {
+export class PortalEventOverviewComponent implements OnDestroy {
 
   public sponsored = this.store.select(selectSponsoredEvent);
 

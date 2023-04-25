@@ -8,20 +8,20 @@ import { CardModule } from 'src/app/shared/card/card.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { EventCategoryViewComponent } from './components/category-view/event-category-view.component';
-import { EventFilterAreaComponent } from './components/filter-area/event-filter-area.component';
-import { EventOverviewComponent } from './components/overview/event-overview.component';
-import { EventTableViewComponent } from './components/table-view/event-table-view.component';
-import { portalEventOverviewStateKey } from './constants/event-overview.constant';
-import { PortalEventOverviewRoutingModule } from './event-overview-routing.module';
-import { PortalEventOverviewEffects } from './state/event-overview.effects';
-import { portalEventOverviewReducer } from './state/event-overview.reducer';
+import { PortalEventCategoryViewComponent } from './components/category-view/portal-event-category-view.component';
+import { PortalEventFilterAreaComponent } from './components/filter-area/portal-event-filter-area.component';
+import { PortalEventOverviewComponent } from './components/overview/portal-event-overview.component';
+import { PortalEventTableViewComponent } from './components/table-view/portal-event-table-view.component';
+import { portalEventOverviewStateKey } from './constants/portal-event-overview.constant';
+import { PortalEventOverviewRoutingModule } from './portal-event-overview-routing.module';
+import { PortalEventOverviewEffects } from './state/portal-event-overview.effects';
+import { portalEventOverviewReducer } from './state/portal-event-overview.reducer';
 
 const components = [
-  EventCategoryViewComponent,
-  EventFilterAreaComponent,
-  EventTableViewComponent,
-  EventOverviewComponent,
+  PortalEventCategoryViewComponent,
+  PortalEventFilterAreaComponent,
+  PortalEventTableViewComponent,
+  PortalEventOverviewComponent,
 ];
 
 const framework = [

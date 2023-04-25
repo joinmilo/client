@@ -8,14 +8,14 @@ import { CardModule } from 'src/app/shared/card/card.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { EventDetailsComponent } from './components/details/event-details.component';
+import { PortalEventDetailsComponent } from './components/details/portal-event-details.component';
 import { portalEventDetailsStateKey } from './constants/event-details.constant';
-import { EventPortalRoutingModule } from './event-details-routing.module';
-import { PortalEventDetailsEffects } from './state/event-details.effects';
-import { portalEventDetailsReducer } from './state/event-details.reducer';
+import { EventPortalRoutingModule } from './portal-event-details-routing.module';
+import { PortalEventDetailsEffects } from './state/portal-event-details.effects';
+import { portalEventDetailsReducer } from './state/portal-event-details.reducer';
 
 const components = [
-  EventDetailsComponent,
+  PortalEventDetailsComponent,
 ];
 
 const framework = [

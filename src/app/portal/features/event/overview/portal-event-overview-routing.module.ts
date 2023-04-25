@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { eventSlug } from '../details/constants/event-details.constant';
-import { EventOverviewComponent } from './components/overview/event-overview.component';
+import { PortalEventOverviewComponent } from './components/overview/portal-event-overview.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: EventOverviewComponent,
+    component: PortalEventOverviewComponent,
   },
   {
     path: `:${eventSlug}`,
-    loadChildren: () => import('../details/event-details.module')
+    loadChildren: () => import('../details/portal-event-details.module')
       .then((imported) => imported.PortalEventDetailsModule),
   },
 ];

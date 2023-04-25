@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { PortalMenuActions } from 'src/app/portal/shared/menu/state/portal-menu.actions';
 import { EventEntity, GetEventGQL } from 'src/schema/schema';
-import { PortalEventDetailsActions } from './event-details.actions';
+import { PortalEventDetailsActions } from './portal-event-details.actions';
 
 @Injectable()
 export class PortalEventDetailsEffects {

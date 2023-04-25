@@ -5,16 +5,16 @@ import { Subject, takeUntil } from 'rxjs';
 import { eventsFeatureKey } from 'src/app/core/constants/core.constants';
 import { DisplayType } from 'src/app/core/typings/overview-display';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
-import { displayQueryParam } from '../../constants/event-overview.constant';
-import { PortalEventOverviewActions } from '../../state/event-overview.actions';
-import { selectSponsoredEvent } from '../../state/event-overview.selectors';
+import { displayQueryParam } from '../../constants/portal-event-overview.constant';
+import { PortalEventOverviewActions } from '../../state/portal-event-overview.actions';
+import { selectSponsoredEvent } from '../../state/portal-event-overview.selectors';
 
 @Component({
-  selector: 'app-event-filter-area',
-  templateUrl: './event-filter-area.component.html',
-  styleUrls: ['./event-filter-area.component.scss']
+  selector: 'app-portal-event-filter-area',
+  templateUrl: './portal-event-filter-area.component.html',
+  styleUrls: ['./portal-event-filter-area.component.scss']
 })
-export class EventFilterAreaComponent implements OnDestroy {
+export class PortalEventFilterAreaComponent implements OnDestroy {
 
   public sponsored = this.store.select(selectSponsoredEvent);
 

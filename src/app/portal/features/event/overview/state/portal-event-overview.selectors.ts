@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EventCategoryEntity } from 'src/schema/schema';
-import { portalEventOverviewStateKey } from '../constants/event-overview.constant';
-import { PortalEventOverviewState } from './event-overview.reducer';
+import { portalEventOverviewStateKey } from '../constants/portal-event-overview.constant';
+import { PortalEventOverviewState } from './portal-event-overview.reducer';
 
 export const selectEventState = createFeatureSelector<PortalEventOverviewState>(portalEventOverviewStateKey);
 

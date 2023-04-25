@@ -10,17 +10,17 @@ const routes: Routes = [
   },
   {
     path: articlesFeatureKey,
-    loadChildren: () => import('./features/article/main/article.module')
+    loadChildren: () => import('./features/article/main/portal-article.module')
       .then((imported) => imported.PortalArticleModule),
   },
   {
     path: eventsFeatureKey,
-    loadChildren: () => import('./features/event/overview/event-overview.module')
+    loadChildren: () => import('./features/event/overview/portal-event-overview.module')
       .then((imported) => imported.PortalEventOverviewModule),
   },
   {
     path: calendarFeatureKey,
-    loadChildren: () => import('./features/calendar/main/calendar.module')
+    loadChildren: () => import('./features/calendar/main/portal-calendar.module')
       .then((imported) => imported.PortalCalendarModule),
   },
   {

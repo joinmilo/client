@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { EventEntity, GetEventGQL, GetEventsGQL } from 'src/schema/schema';
-import { PortalEventOverviewActions } from './event-overview.actions';
+import { PortalEventOverviewActions } from './portal-event-overview.actions';
 
 @Injectable()
 export class PortalEventOverviewEffects {

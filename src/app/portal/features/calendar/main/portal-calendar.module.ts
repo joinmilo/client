@@ -7,7 +7,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { CalendarApiService } from '../common/services/calendar-api.service';
+import { PortalCalendarApiService } from '../common/services/calendar-api.service';
 import { PortalCalendarComponent } from './components/portal-calendar.component';
 import { portalCalendarStateKey } from './constants/portal-calendar.constant';
 import { PortalCalendarRoutingModule } from './portal-calendar-routing.module';
@@ -49,7 +49,7 @@ const libs = [
   ],
   exports: [...components],
   providers: [
-    CalendarApiService,
+    PortalCalendarApiService,
   ]
 })
 export class PortalCalendarModule { }

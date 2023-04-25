@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EventDetailsComponent } from './components/details/event-details.component';
+import { PortalEventDetailsComponent } from './components/details/portal-event-details.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: EventDetailsComponent
+    component: PortalEventDetailsComponent
   },
 ];
 

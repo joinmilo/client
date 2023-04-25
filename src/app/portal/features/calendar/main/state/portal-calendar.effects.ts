@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { Period } from 'src/app/shared/calendar/typings/month';
-import { CalendarApiService } from '../../common/services/calendar-api.service';
+import { PortalCalendarApiService } from '../../common/services/calendar-api.service';
 import { PortalCalendarActions } from './portal-calendar.actions';
 
 @Injectable()
@@ -22,6 +22,6 @@ export class PortalCalendarEffects {
 
   constructor(
     private actions: Actions,
-    private calendarApiService: CalendarApiService,
+    private calendarApiService: PortalCalendarApiService,
   ) {}
 }

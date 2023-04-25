@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CoreModule } from 'src/app/core/core.module';
-import { PortalArticleRoutingModule } from './article-routing.module';
+import { PortalArticleRoutingModule } from './portal-article-routing.module';
 
 const framework = [
   CommonModule,
