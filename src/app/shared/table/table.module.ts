@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
@@ -13,6 +13,7 @@ import { TableMobileComponent } from './components/mobile/table-mobile.component
 import { TableBooleanRowComponent } from './components/rows/table-boolean-row.component';
 import { TableComponent } from './components/table.component';
 import { RowDirective } from './directives/table-row.directive';
+import { TablePaginatorService } from './services/table-paginator.service';
 
 const components = [
   TableComponent,
@@ -46,6 +47,13 @@ const libs = [
   FontAwesomeModule,
 ];
 
+const providers = [
+  {
+    provide: MatPaginatorIntl,
+    useClass: TablePaginatorService,
+  }
+]
+
 @NgModule({
   declarations: [
     ...components,
@@ -61,5 +69,8 @@ const libs = [
     ...components,
     ...directives,
   ],
+  providers: [
+    ...providers
+  ]
 })
 export class TableModule { }
