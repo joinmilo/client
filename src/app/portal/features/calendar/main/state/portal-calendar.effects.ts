@@ -3,21 +3,21 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { Period } from 'src/app/shared/calendar/typings/month';
 import { CalendarApiService } from '../../common/services/calendar-api.service';
-import { CalendarActions } from './calendar.actions';
+import { PortalCalendarActions } from './portal-calendar.actions';
 
 @Injectable()
-export class CalendarEffects {
+export class PortalCalendarEffects {
 
   getEvents = createEffect(() => this.actions.pipe(
-    ofType(CalendarActions.daySelected),
+    ofType(PortalCalendarActions.daySelected),
     switchMap((action) => this.calendarApiService.getEventsByDate(action.day as Period)),
-    map(events => CalendarActions.setEvents(events))
+    map(events => PortalCalendarActions.setEvents(events))
   ));
 
   getSchedules = createEffect(() => this.actions.pipe(
-    ofType(CalendarActions.monthSelected),
+    ofType(PortalCalendarActions.monthSelected),
     switchMap(action => this.calendarApiService.getMonthlySchedules(action.month as Period)),
-    map(schedules => CalendarActions.setSchedules(schedules))
+    map(schedules => PortalCalendarActions.setSchedules(schedules))
   ));
 
   constructor(

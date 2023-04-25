@@ -8,11 +8,11 @@ import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { CalendarApiService } from '../common/services/calendar-api.service';
-import { CalendarPortalRoutingModule } from './calendar-routing.module';
 import { PortalCalendarComponent } from './components/portal-calendar.component';
-import { calendarStateKey } from './constants/calendar.constant';
-import { CalendarEffects } from './state/calendar.effects';
-import { calendarReducer } from './state/calendar.reducer';
+import { portalCalendarStateKey } from './constants/portal-calendar.constant';
+import { PortalCalendarRoutingModule } from './portal-calendar-routing.module';
+import { PortalCalendarEffects } from './state/portal-calendar.effects';
+import { portalCalendarReducer } from './state/portal-calendar.reducer';
 
 const components = [
   PortalCalendarComponent
@@ -30,13 +30,13 @@ const modules = [
   CoreModule,
   CalendarModule,
   CardModule,
-  CalendarPortalRoutingModule,
+  PortalCalendarRoutingModule,
   TitleModule,
 ];
 
 const libs = [
-  StoreModule.forFeature(calendarStateKey, calendarReducer),
-  EffectsModule.forFeature([CalendarEffects]),
+  StoreModule.forFeature(portalCalendarStateKey, portalCalendarReducer),
+  EffectsModule.forFeature([PortalCalendarEffects]),
 ]
 
 @NgModule({

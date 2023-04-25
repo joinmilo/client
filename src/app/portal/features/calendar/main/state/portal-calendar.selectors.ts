@@ -1,17 +1,17 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { distinctStartDates } from 'src/app/core/utils/schedule.utils';
-import { calendarStateKey } from '../constants/calendar.constant';
-import { CalendarState } from './calendar.reducer';
+import { portalCalendarStateKey } from '../constants/portal-calendar.constant';
+import { PortalCalendarState } from './portal-calendar.reducer';
 
-export const selectCalendarState = createFeatureSelector<CalendarState>(calendarStateKey);
+export const selectPortalCalendarState = createFeatureSelector<PortalCalendarState>(portalCalendarStateKey);
 
 export const selectSelectedEvents = createSelector(
-  selectCalendarState,
+  selectPortalCalendarState,
   state => state.events
 );
 
 export const selectSchedules = createSelector(
-  selectCalendarState,
+  selectPortalCalendarState,
   state => state.schedules
 );
 

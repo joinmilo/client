@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Period } from 'src/app/shared/calendar/typings/month';
-import { CalendarActions } from '../state/calendar.actions';
-import { selectDistinctSchedules, selectSelectedEvents } from '../state/calendar.selectors';
+import { PortalCalendarActions } from '../state/portal-calendar.actions';
+import { selectDistinctSchedules, selectSelectedEvents } from '../state/portal-calendar.selectors';
 
 
 @Component({
@@ -23,16 +23,16 @@ export class PortalCalendarComponent implements OnDestroy {
   ) {}
 
   public daySelected(day: Period) {
-    this.store.dispatch(CalendarActions.daySelected(day));
+    this.store.dispatch(PortalCalendarActions.daySelected(day));
     this.title = day.startDate.toLocaleDateString();
   }
 
   public monthSelected(month: Period) {
-    this.store.dispatch(CalendarActions.monthSelected(month));
+    this.store.dispatch(PortalCalendarActions.monthSelected(month));
   }
 
   public ngOnDestroy(): void {
-    this.store.dispatch(CalendarActions.setEvents([]));
+    this.store.dispatch(PortalCalendarActions.setEvents([]));
   }
 
 }

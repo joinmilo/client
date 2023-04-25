@@ -2,8 +2,8 @@ import { createActionGroup } from '@ngrx/store';
 import { Period } from 'src/app/shared/calendar/typings/month';
 import { EventEntity, Maybe, ScheduleEntity } from 'src/schema/schema';
 
-export const CalendarActions = createActionGroup({
-  source: 'Calendar',
+export const PortalCalendarActions = createActionGroup({
+  source: 'Portal Calendar',
   events: {
     'day selected': (day: Period) => ({ day }),
     'month selected': (month?: Period) => ({ month }),
