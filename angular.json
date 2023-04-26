@@ -34,7 +34,8 @@
               "src/styles/theme/colors.theme.scss",
               "src/styles/theme/theme.scss",
               "src/styles/theme/components.theme.scss",
-              "src/styles/styles.scss"
+              "src/styles/styles.scss",
+              "node_modules/ngx-sharebuttons/themes/default.scss"
             ],
             "scripts": []
           },

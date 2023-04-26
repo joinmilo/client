@@ -13,10 +13,19 @@ export class ImageComponent {
   public alt?: string;
 
   @Input()
+  public maxWidth?: string;
+
+  @Input()
+  public maxHeight?: string;
+
+  @Input()
   public image?: Maybe<MediaEntity>;
 
   @Input()
   public circle = false;
+
+  @Input()
+  public border = false;
 
   @Input()
   public rounded = false;

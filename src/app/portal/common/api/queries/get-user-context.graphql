@@ -1,0 +1,6 @@
+query getUserContext(
+  $entity: UserContextEntityInput) {
+  getUserContext(entity: $entity) {
+    ...UserContext
+  }
+}

@@ -58,6 +58,7 @@ export class EventFilterAreaComponent implements OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(queryParams => {
         this.value = queryParams[this.displayQueryParam] || DisplayType.Category;
+        console.log('here', queryParams);
         this.store.dispatch(EventActions.overviewDisplayChanged(this.value));
       });
   }
