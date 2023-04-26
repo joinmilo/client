@@ -1,8 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { EventQueryParams } from 'src/app/shared/event-filter/typings/query-param';
+import { QueryRouterService } from '../../services/query-router.service';
 import { PortalEventOverviewActions } from '../../state/portal-event-overview.actions';
 import { selectDisplayType, selectOverviewData, selectSponsoredEvent } from '../../state/portal-event-overview.selectors';
 
@@ -22,25 +21,15 @@ export class PortalEventOverviewComponent implements OnDestroy {
   private destroy = new Subject<void>();
   
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private queryRouterService: QueryRouterService,
     private store: Store,
   ) {
     this.store.dispatch(PortalEventOverviewActions.getSponsoredEvent());
 
-    this.activatedRoute.queryParams
+    this.queryRouterService.watch()
       .pipe(takeUntil(this.destroy))
-      .subscribe((queryParams: EventQueryParams) => {
+      .subscribe();
 
-        // let params: FilterSortPaginateInput = {
-        //   expression: {}
-        // };
-
-        // if (queryParams.categories) {
-        //   params.expression.
-        // }
-
-        this.store.dispatch(PortalEventOverviewActions.setParams({}));
-      })
   }
 
   public ngOnDestroy(): void {

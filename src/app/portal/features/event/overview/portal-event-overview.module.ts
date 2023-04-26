@@ -19,6 +19,7 @@ import { PortalEventOverviewComponent } from './components/overview/portal-event
 import { PortalEventTableViewComponent } from './components/table-view/portal-event-table-view.component';
 import { portalEventOverviewStateKey } from './constants/portal-event-overview.constant';
 import { PortalEventOverviewRoutingModule } from './portal-event-overview-routing.module';
+import { QueryRouterService } from './services/query-router.service';
 import { PortalEventOverviewEffects } from './state/portal-event-overview.effects';
 import { portalEventOverviewReducer } from './state/portal-event-overview.reducer';
 
@@ -54,7 +55,11 @@ const libs = [
   FontAwesomeModule,
   StoreModule.forFeature(portalEventOverviewStateKey, portalEventOverviewReducer),
   EffectsModule.forFeature([PortalEventOverviewEffects]),
-]
+];
+
+const providers = [
+  QueryRouterService
+];
 
 @NgModule({
   declarations: [...components],
@@ -65,5 +70,8 @@ const libs = [
     ...libs,
   ],
   exports: [...components],
+  providers: [
+    ...providers
+  ]
 })
 export class PortalEventOverviewModule { }

@@ -35,7 +35,6 @@ export class EventTargetgroupFilterComponent {
 
   public changeSelect(value: Maybe<EventTargetGroupEntity[]>) {
     this.valueChanged.emit(value);
-    
     if (this.queryParamKey) {
       this.router.navigate([], {
         relativeTo: this.activatedRoute,
