@@ -1,5 +1,0 @@
-fragment Schedules on ScheduleEntity {
-  id
-  startDate
-  endDate
-}

@@ -13,7 +13,7 @@ import { selectSearchQuery, selectSearchResult } from '../../state/search.select
   templateUrl: './search-input.component.html',
   styleUrls: ['./search-input.component.scss'],
   animations: [
-    growOnSidesAnimation,
+    growOnSidesAnimation(),
   ]
 })
 export class SearchInputComponent implements AfterViewInit, OnDestroy {

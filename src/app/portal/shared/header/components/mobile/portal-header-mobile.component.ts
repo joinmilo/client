@@ -8,7 +8,7 @@ import { selectIsSearching } from 'src/app/portal/shared/search/state/search.sel
   templateUrl: './portal-header-mobile.component.html',
   styleUrls: ['./portal-header-mobile.component.scss'],
   animations: [
-    fadeInAnimation,
+    fadeInAnimation(),
   ]
 })
 export class PortalHeaderMobileComponent {

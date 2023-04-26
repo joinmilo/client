@@ -2,17 +2,18 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
+import { EventFilterModule } from 'src/app/shared/event-filter/event-filter.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventCategoryViewComponent } from './components/category-view/portal-event-category-view.component';
 import { PortalEventFilterAreaComponent } from './components/filter-area/portal-event-filter-area.component';
-import { PortalEventFiltersComponent } from './components/filters/portal-event-filters.component';
 import { PortalEventOverviewComponent } from './components/overview/portal-event-overview.component';
 import { PortalEventTableViewComponent } from './components/table-view/portal-event-table-view.component';
 import { portalEventOverviewStateKey } from './constants/portal-event-overview.constant';
@@ -23,7 +24,6 @@ import { portalEventOverviewReducer } from './state/portal-event-overview.reduce
 const components = [
   PortalEventCategoryViewComponent,
   PortalEventFilterAreaComponent,
-  PortalEventFiltersComponent,
   PortalEventTableViewComponent,
   PortalEventOverviewComponent,
 ];
@@ -35,11 +35,13 @@ const framework = [
 const materials = [
   MatButtonModule,
   MatCardModule,
+  MatSelectModule,
 ]
 
 const modules = [
   CoreModule,
   CardModule,
+  EventFilterModule,
   PortalEventOverviewRoutingModule,
   FormModule,
   TableModule,

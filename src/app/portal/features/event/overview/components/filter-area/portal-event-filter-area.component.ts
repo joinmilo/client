@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { collapse } from 'src/app/core/animations/animations';
 import { eventsFeatureKey } from 'src/app/core/constants/core.constants';
 import { DisplayType } from 'src/app/core/typings/overview-display';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
@@ -12,7 +13,10 @@ import { selectSponsoredEvent } from '../../state/portal-event-overview.selector
 @Component({
   selector: 'app-portal-event-filter-area',
   templateUrl: './portal-event-filter-area.component.html',
-  styleUrls: ['./portal-event-filter-area.component.scss']
+  styleUrls: ['./portal-event-filter-area.component.scss'],
+  animations: [
+     collapse()
+  ],
 })
 export class PortalEventFilterAreaComponent implements OnDestroy {
 
@@ -41,9 +45,9 @@ export class PortalEventFilterAreaComponent implements OnDestroy {
     },
   ];
 
-  public display?: DisplayType;
-
   public filtersActive = false;
+
+  public display?: DisplayType;
 
   public eventsFeatureKey = eventsFeatureKey;
   public displayQueryParam = displayQueryParam;
@@ -63,6 +67,7 @@ export class PortalEventFilterAreaComponent implements OnDestroy {
         this.store.dispatch(PortalEventOverviewActions.displayChanged(this.display));
       });
   }
+
 
   public ngOnDestroy(): void {
     this.destroy.next();

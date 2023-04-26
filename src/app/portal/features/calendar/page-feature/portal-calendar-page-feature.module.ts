@@ -7,7 +7,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { PortalCalendarApiService } from '../common/services/calendar-api.service';
+import { PortalCalendarApiService } from '../main/services/calendar-api.service';
 import { CalendarPageFeatureComponent } from './component/calendar-page-feature.component';
 import { calendarPageFeatureStateKey } from './constants/calendar-page-feature.constant';
 import { CalendarPageFeatureEffects } from './state/calendar-page-feature.effects';

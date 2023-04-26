@@ -5,6 +5,11 @@ export const coreStateKey = 'coreState';
 export const refreshKey = 'refresh';
 
 /**
+ * Animations
+ */
+export const defaultAnimationDuration = 400;
+
+/**
  * Features
  */
 export const articlesFeatureKey = 'articles';

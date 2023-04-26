@@ -9,7 +9,7 @@ import { selectIsSearching } from 'src/app/portal/shared/search/state/search.sel
   templateUrl: './portal-header-desktop.component.html',
   styleUrls: ['./portal-header-desktop.component.scss'],
   animations: [
-    fadeInAnimation,
+    fadeInAnimation(),
   ]
 })
 export class PortalHeaderDesktopComponent {

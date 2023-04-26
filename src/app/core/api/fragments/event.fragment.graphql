@@ -24,6 +24,6 @@ fragment Event on EventEntity {
     ...EventCategory
   }
   schedule(begin: $scheduleBegin, end: $scheduleEnd) {
-    ...Schedules
+    ...Schedule
   }
 }

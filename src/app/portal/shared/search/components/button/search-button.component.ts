@@ -8,7 +8,7 @@ import { SearchActions } from '../../state/search.actions';
   templateUrl: './search-button.component.html',
   styleUrls: ['./search-button.component.scss'],
   animations: [
-    fadeInAnimation,
+    fadeInAnimation(),
   ]
 })
 export class PortalSearchButtonComponent {

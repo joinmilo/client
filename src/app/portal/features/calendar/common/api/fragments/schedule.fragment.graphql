@@ -1,5 +1,0 @@
-fragment CalendarSchedule on ScheduleEntity {
-  id
-  startDate
-  endDate
-}

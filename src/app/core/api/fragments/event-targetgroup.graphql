@@ -1,0 +1,12 @@
+fragment EventTargetGroup on EventTargetGroupEntity {
+  id
+  translatables {
+    id
+    name
+    language {
+      id
+      locale
+      name
+    }
+  }
+}

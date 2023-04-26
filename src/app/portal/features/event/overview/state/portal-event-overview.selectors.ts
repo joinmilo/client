@@ -3,20 +3,20 @@ import { EventCategoryEntity } from 'src/schema/schema';
 import { portalEventOverviewStateKey } from '../constants/portal-event-overview.constant';
 import { PortalEventOverviewState } from './portal-event-overview.reducer';
 
-export const selectEventState = createFeatureSelector<PortalEventOverviewState>(portalEventOverviewStateKey);
+export const selectPortalEventOverviewState = createFeatureSelector<PortalEventOverviewState>(portalEventOverviewStateKey);
 
 export const selectSponsoredEvent = createSelector(
-  selectEventState,
+  selectPortalEventOverviewState,
   state => state.sponsoredEvent
 );
 
 export const selectDisplayType = createSelector(
-  selectEventState,
+  selectPortalEventOverviewState,
   state => state.displayType
 );
 
 export const selectOverviewData = createSelector(
-  selectEventState,
+  selectPortalEventOverviewState,
   state => state.overviewData
 );
 
@@ -36,11 +36,11 @@ export const selectOverviewDataCategories = createSelector(
 );
 
 export const selectTableData = createSelector(
-  selectEventState,
+  selectPortalEventOverviewState,
   state => state.tableData
 );
 
 export const selectTableParams = createSelector(
-  selectEventState,
+  selectPortalEventOverviewState,
   state => state.tableParams
 );

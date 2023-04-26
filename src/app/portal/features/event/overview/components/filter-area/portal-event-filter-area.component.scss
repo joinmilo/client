@@ -12,9 +12,13 @@ div {
 
 button {
 
+  margin-left: auto;
+
   span {
     margin-left: 1rem;
   }
+}
 
-  margin-left: auto;
+mat-card {
+  overflow: hidden;
 }

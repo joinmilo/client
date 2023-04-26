@@ -1,17 +1,29 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
+import { defaultAnimationDuration } from '../constants/core.constants';
 
-export const fadeInAnimation = trigger('fadeIn', [
-  transition(':enter', 
-  [
-    style({ opacity: 0, transform: 'scale(0.5)' }),
-    animate('400ms ease-out', style({ opacity: 1, transform: 'scale(1)' }))
-  ]),
-]);
+export const fadeInAnimation = (duration: number = defaultAnimationDuration) => 
+  trigger('fadeIn', [
+    transition(':enter', 
+    [
+      style({ opacity: 0, transform: 'scale(0.5)' }),
+      animate(`${duration}ms ease-out`, style({ opacity: 1, transform: 'scale(1)' }))
+    ]),
+  ]);
 
-export const growOnSidesAnimation = trigger('growOnSides', [
-  transition(':enter', 
-  [
-    style({ opacity: 0, transform: 'scaleX(0)'}),
-    animate('400ms ease-out', style({ opacity: 1, transform: 'scaleX(1)'}))
-  ]),
-]);
+export const growOnSidesAnimation = (duration: number = defaultAnimationDuration) => 
+  trigger('growOnSides', [
+    transition(':enter', 
+    [
+      style({ opacity: 0, transform: 'scaleX(0)'}),
+      animate(`${duration}ms ease-out`, style({ opacity: 1, transform: 'scaleX(1)'}))
+    ]),
+  ]);
+
+
+export const collapse = (duration: number = defaultAnimationDuration) =>
+  trigger('collapse', [
+    state('true', style({ height: AUTO_STYLE, visibility: AUTO_STYLE })),
+    state('false', style({ height: '0', visibility: 'hidden' })),
+    transition('false => true', animate(`${duration}ms ease-in`)),
+    transition('true => false', animate(`${duration}ms ease-out`))
+  ]);

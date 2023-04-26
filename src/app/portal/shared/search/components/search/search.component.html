@@ -1,5 +1,5 @@
-<app-search-button *ngIf="(isSearching | async) === false">
+<app-search-button *ngIf="!isSearching">
 </app-search-button>
 
-<app-search-input *ngIf="(isSearching | async)">
+<app-search-input *ngIf="isSearching">
 </app-search-input>

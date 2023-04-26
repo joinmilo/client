@@ -11,5 +11,9 @@
       <span appLabel="filter"></span>
     </button>
   </section>
-  <app-portal-event-filters *ngIf="filtersActive"></app-portal-event-filters>
+  <mat-card [@collapse]="filtersActive">
+    <mat-card-content>
+      <app-event-targetgroup-filter></app-event-targetgroup-filter>
+    </mat-card-content>
+  </mat-card>
 </div>
