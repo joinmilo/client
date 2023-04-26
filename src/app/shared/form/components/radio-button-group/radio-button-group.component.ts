@@ -24,9 +24,6 @@ export class RadioButtonGroupComponent<T> implements ControlValueAccessor {
   public inputs?: RadioInput[];
 
   @Input()
-  public link?: string[];
-
-  @Input()
   public queryParamKey?: string;
 
   @Output()
@@ -42,10 +39,10 @@ export class RadioButtonGroupComponent<T> implements ControlValueAccessor {
     this.next(value);
   }
 
-  public next($event: T) {
-    this.currentValue.next($event);
-    this.valueChanged.emit($event);
-    this.onChange && this.onChange($event);
+  public next(event: T) {
+    this.currentValue.next(event);
+    this.valueChanged.emit(event);
+    this.onChange && this.onChange(event);
   }
 
   public registerOnChange(onChange: (value: T) => void): void {

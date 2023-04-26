@@ -1,24 +1,35 @@
-div {
+.container {
   display: flex;
   flex-flow: column;
   gap: var(--gap);
 
-  section {
+  > section {
     display: flex;
     gap: 1rem;
-  }
-}
 
+    button {
 
-button {
+      &.active {
+        border: 1px solid var(--color-primary-500) !important;
+      }
 
-  margin-left: auto;
+      margin-left: auto;
 
-  span {
-    margin-left: 1rem;
+      span {
+        margin: 0 1rem;
+      }
+
+      .active-icon {
+        color: var(--color-success-500);
+      }
+    }
   }
 }
 
 mat-card {
   overflow: hidden;
+}
+
+mat-card-actions > section {
+  width: 100%;
 }

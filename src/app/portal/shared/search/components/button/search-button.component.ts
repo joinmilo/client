@@ -17,8 +17,8 @@ export class PortalSearchButtonComponent {
     private store: Store
   ) { }
 
-  public setSearching($event: MouseEvent) :void {
-    $event.stopPropagation();
+  public setSearching(event: MouseEvent) :void {
+    event.stopPropagation();
     this.store.dispatch(SearchActions.setSearchState(true));
   }
 }

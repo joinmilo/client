@@ -1,19 +1,28 @@
-<div>
+<div class="container">
   <section>
     <app-radio-button-group
       [inputs]="inputs"
       [initValue]="display"
-      [link]="['/portal', eventsFeatureKey]"
       [queryParamKey]="displayQueryParam">
     </app-radio-button-group>
-    <button mat-raised-button (click)="filtersActive = !filtersActive">
+    <button mat-raised-button
+      (click)="filterCollapsed = !filterCollapsed"
+      [class.active] = "!filterCollapsed">
       <fa-icon [icon]="['fas', 'filter']"></fa-icon>
       <span appLabel="filter"></span>
+      <fa-icon *ngIf="!filterCollapsed" class="active-icon" [icon]="['fas', 'check']"></fa-icon>
     </button>
   </section>
-  <mat-card [@collapse]="filtersActive">
+  <mat-card [@collapse]="!filterCollapsed">
     <mat-card-content>
-      <app-event-targetgroup-filter></app-event-targetgroup-filter>
+
+      <app-event-targetgroup-filter
+        [queryParamKey]="targetGroupQueryParam">
+      </app-event-targetgroup-filter>
+
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>Alle Filter löschen</button>
+    </mat-card-actions>
   </mat-card>
 </div>

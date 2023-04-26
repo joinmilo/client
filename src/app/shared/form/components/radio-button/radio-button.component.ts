@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { RadioInput } from '../../typings/radio-input';
 
@@ -22,16 +22,14 @@ export class RadioButtonComponent<T> implements OnInit {
   public initValue?: T;
 
   @Input()
-  public link?: string[];
-
-  @Input()
   public queryParamKey?: string;
 
   @Output()
   public valueChanged = new EventEmitter<T>();
 
   constructor(
-    private router: Router
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) {}
 
   public ngOnInit(): void {
@@ -44,8 +42,9 @@ export class RadioButtonComponent<T> implements OnInit {
     event.stopPropagation();
     this.valueChanged.emit(this.input?.value as T);
 
-    if (this.link) {
-      this.router.navigate((this.link || ['']), {
+    if (this.queryParamKey) {
+      this.router.navigate([], {
+        relativeTo: this.activatedRoute,
         queryParams: {
           [this.queryParamKey || '']: this.input?.value
         },

@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
-import { eventsFeatureKey } from 'src/app/core/constants/core.constants';
 import { DisplayType } from 'src/app/core/typings/overview-display';
+import { categoryGroupQueryParam, currentOnlyQueryParam, freeOnlyQueryParam, suburbGroupQueryParam, targetGroupQueryParam } from 'src/app/shared/event-filter/constants/event-filter.constants';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
 import { displayQueryParam } from '../../constants/portal-event-overview.constant';
 import { PortalEventOverviewActions } from '../../state/portal-event-overview.actions';
@@ -45,12 +45,16 @@ export class PortalEventFilterAreaComponent implements OnDestroy {
     },
   ];
 
-  public filtersActive = false;
+  public filterCollapsed = true;
 
   public display?: DisplayType;
 
-  public eventsFeatureKey = eventsFeatureKey;
   public displayQueryParam = displayQueryParam;
+  public targetGroupQueryParam = targetGroupQueryParam;
+  public suburbGroupQueryParam = suburbGroupQueryParam;
+  public categoryGroupQueryParam = categoryGroupQueryParam;
+  public freeOnlyQueryParam = freeOnlyQueryParam;
+  public currentOnlyQueryParam = currentOnlyQueryParam;
 
   private destroy = new Subject<void>();
   
@@ -67,7 +71,6 @@ export class PortalEventFilterAreaComponent implements OnDestroy {
         this.store.dispatch(PortalEventOverviewActions.displayChanged(this.display));
       });
   }
-
 
   public ngOnDestroy(): void {
     this.destroy.next();

@@ -1,3 +1,3 @@
 export const portalEventOverviewStateKey = 'portalEventOverviewState';
 
-export const displayQueryParam = 'd'
+export const displayQueryParam = 'display';

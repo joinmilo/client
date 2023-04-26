@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline">
   <mat-label appLabel="targetGroups"></mat-label>
-  <mat-select [formControl]="control" multiple>
+  <mat-select [formControl]="control" (selectionChange)="changeSelect($event.value)" multiple>
     <mat-option *ngFor="let targetGroup of targetGroups | async" [value]="targetGroup">
       {{targetGroup | translatable: 'name' | async}}
     </mat-option>

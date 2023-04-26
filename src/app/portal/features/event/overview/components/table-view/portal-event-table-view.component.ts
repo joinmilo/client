@@ -47,8 +47,8 @@ export class PortalEventTableViewComponent {
     private translationService: TranslationService,
   ) { }
 
-  public sortPaginate($event: SortPaginate) {
-    this.store.dispatch(PortalEventOverviewActions.setTableParams($event))
+  public sortPaginate(event: SortPaginate) {
+    this.store.dispatch(PortalEventOverviewActions.setTableParams(event))
   }
 
 }
