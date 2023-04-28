@@ -1,4 +1,4 @@
-import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
 import { defaultAnimationDuration } from '../constants/core.constants';
 
 export const fadeInAnimation = (duration: number = defaultAnimationDuration) => 
@@ -19,11 +19,17 @@ export const growOnSidesAnimation = (duration: number = defaultAnimationDuration
     ]),
   ]);
 
-
 export const collapse = (duration: number = defaultAnimationDuration) =>
   trigger('collapse', [
     state('true', style({ height: AUTO_STYLE, visibility: AUTO_STYLE })),
     state('false', style({ height: '0', visibility: 'hidden' })),
     transition('false => true', animate(`${duration}ms ease-in`)),
     transition('true => false', animate(`${duration}ms ease-out`))
+  ]);
+
+  export const fadeInFromRightAnimation = trigger('fadeInFromRight', [
+    transition(':enter', [
+      style({ opacity: 0, transform: 'translateX(150px)' }),
+      animate('500ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
+    ])
   ]);
