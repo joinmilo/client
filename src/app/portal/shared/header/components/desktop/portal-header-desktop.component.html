@@ -9,10 +9,10 @@
   <section>
 
     <div *ngIf="(isSearching | async) === false" [@fadeIn]>
-      <button mat-raised-button color="primary" [routerLink]="['/portal', 'register']">
+      <button mat-raised-button color="primary" [routerLink]="['/user', 'register']">
         <span appLabel="register"></span>
       </button>
-      <button mat-raised-button color="primary" [routerLink]="['/portal', 'login']">
+      <button mat-raised-button color="primary" [routerLink]="['/user', 'login']">
           <span appLabel="login"></span>
       </button>
     </div>

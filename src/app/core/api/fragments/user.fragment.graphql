@@ -1,0 +1,9 @@
+fragment User on UserEntity {
+  id
+  firstName
+  lastName
+  email
+  password
+  verified
+  captchaToken
+}

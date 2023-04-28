@@ -1,0 +1,13 @@
+<main class="main">
+  <section>
+    <h2 class="mat-headline-4" [appLabel]="verified? ('congratulations') : ('failure')" ></h2>
+    <div>
+        <fa-icon [style]="verified? ('color: var(--color-success-500)') : ('color: var(--color-warn-500)') " size="5x" [icon]="verified?  ['fas', 'check'] : ['fas', 'xmark']"></fa-icon>
+        <p [appLabel]="verified? ('verificationSuccess') : ('verificationFailure')"></p>
+      <button mat-raised-button color="primary"
+      [routerLink]="['/user', 'login']">
+        <span appLabel="login"></span>
+    </button>
+    </div>
+  </section>
+</main>

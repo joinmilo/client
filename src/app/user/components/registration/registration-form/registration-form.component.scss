@@ -1,0 +1,40 @@
+.main {
+  width: 30rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+
+  div {
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    gap: .5rem;
+    mat-form-field {
+      flex: 2 1 auto;
+    }
+  }
+
+  div:last-of-type{
+    gap: 0.5rem;
+  }
+}
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all;
+}
+
+p{
+  margin: 0;
+}
+
+fa-icon, label{
+  pointer-events: none;
+}
+
+.send-button {
+  width: 100%;
+}
