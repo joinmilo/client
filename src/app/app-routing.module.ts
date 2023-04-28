@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { PortalComponent } from './portal/portal.component';
 import { UserComponent } from './user/user.component';
 

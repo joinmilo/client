@@ -5,8 +5,8 @@ import { articlesFeatureKey, authorFeatureKey, calendarFeatureKey, eventsFeature
 const routes: Routes = [
   {
     path: authorFeatureKey,
-    loadChildren: () => import('./features/author/main/author.module')
-      .then((imported) => imported.AuthorPortalModule),
+    loadChildren: () => import('./features/author/details/portal-author-details.module')
+      .then((imported) => imported.PortalAuthorDetailsModule),
   },
   {
     path: articlesFeatureKey,

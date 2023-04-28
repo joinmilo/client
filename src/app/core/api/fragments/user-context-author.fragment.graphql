@@ -1,0 +1,18 @@
+fragment UserContextAuthor on UserContextEntity {
+  id
+  description
+  titleImage{
+    id
+  }
+  avatar{
+    id
+  }
+  articles{
+    ...Article
+  }
+  user{
+    firstName
+    lastName
+    email
+  }
+}

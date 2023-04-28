@@ -4849,6 +4849,8 @@ export type SurveyFragment = { __typename?: 'SurveyEntity', id?: string | null, 
 
 export type ThemeFragment = { __typename?: 'ThemeEntity', id?: string | null, isDefault?: boolean | null, name?: string | null, variables?: Array<{ __typename?: 'ThemeVariableEntity', id?: string | null, key?: string | null, value?: string | null } | null> | null };
 
+export type UserContextAuthorFragment = { __typename?: 'UserContextEntity', id?: string | null, description?: string | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null } | null, avatar?: { __typename?: 'MediaEntity', id?: string | null } | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null };
+
 export type UserContextFragment = { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null };
 
 export type UserFragment = { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, password?: string | null, verified?: boolean | null, captchaToken?: string | null };
@@ -5048,6 +5050,20 @@ export type GetThemeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetThemeQuery = { __typename?: 'Query', getThemes?: { __typename?: 'PageableList_ThemeEntity', result?: Array<{ __typename?: 'ThemeEntity', id?: string | null, isDefault?: boolean | null, name?: string | null, variables?: Array<{ __typename?: 'ThemeVariableEntity', id?: string | null, key?: string | null, value?: string | null } | null> | null } | null> | null } | null };
+
+export type GetUserContextAuthorQueryVariables = Exact<{
+  entity?: InputMaybe<UserContextEntityInput>;
+}>;
+
+
+export type GetUserContextAuthorQuery = { __typename?: 'Query', getUserContext?: { __typename?: 'UserContextEntity', id?: string | null, description?: string | null, titleImage?: { __typename?: 'MediaEntity', id?: string | null } | null, avatar?: { __typename?: 'MediaEntity', id?: string | null } | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null };
+
+export type GetUserContextQueryVariables = Exact<{
+  entity?: InputMaybe<UserContextEntityInput>;
+}>;
+
+
+export type GetUserContextQuery = { __typename?: 'Query', getUserContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null };
 
 export type GetUserContextsQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
@@ -5526,6 +5542,26 @@ export const ThemeFragmentDoc = gql`
   }
 }
     `;
+export const UserContextAuthorFragmentDoc = gql`
+    fragment UserContextAuthor on UserContextEntity {
+  id
+  description
+  titleImage {
+    id
+  }
+  avatar {
+    id
+  }
+  articles {
+    ...Article
+  }
+  user {
+    firstName
+    lastName
+    email
+  }
+}
+    ${ArticleFragmentDoc}`;
 export const UserFragmentDoc = gql`
     fragment User on UserEntity {
   id
@@ -6105,6 +6141,42 @@ export const GetThemeDocument = gql`
   })
   export class GetThemeGQL extends Apollo.Query<GetThemeQuery, GetThemeQueryVariables> {
     override document = GetThemeDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetUserContextAuthorDocument = gql`
+    query getUserContextAuthor($entity: UserContextEntityInput) {
+  getUserContext(entity: $entity) {
+    ...UserContextAuthor
+  }
+}
+    ${UserContextAuthorFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetUserContextAuthorGQL extends Apollo.Query<GetUserContextAuthorQuery, GetUserContextAuthorQueryVariables> {
+    override document = GetUserContextAuthorDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetUserContextDocument = gql`
+    query getUserContext($entity: UserContextEntityInput) {
+  getUserContext(entity: $entity) {
+    ...UserContext
+  }
+}
+    ${UserContextFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetUserContextGQL extends Apollo.Query<GetUserContextQuery, GetUserContextQueryVariables> {
+    override document = GetUserContextDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

@@ -1,0 +1,44 @@
+<div class="main" *ngIf="author | async as author">
+  <app-page-title title="author"></app-page-title>
+  <div class="user">
+    <div *ngIf="!author.titleImage" class="gradientImage"></div>
+    <!-- <app-image *ngIf="author.titleImage"
+      mat-card-image
+      [image]="author.titleImage"
+      maxHeight="15rem"
+      [roundedTopLeft]="true"
+      [roundedTopRight]="true"
+      style="width: 100%;">
+    </app-image>
+    <app-image mat-card-image
+      [image]="author.avatar"
+      [circle]="true"
+      [maxHeight]="'10rem'"
+      [maxWidth]="'10rem'"
+      [border]="true"
+      style="margin-top: -7rem;"></app-image> -->
+    <div>
+      <section>
+      <h4 class="mat-headline-5">{{author.user?.firstName}}</h4>
+      <h4 class="mat-headline-5">{{author.user?.lastName}}</h4>
+    </section>
+    <section>
+      <a href="mailto:{{author.user?.email}}">
+        <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+      </a>      
+      <app-social-share-button></app-social-share-button>
+      <app-favorite-piece></app-favorite-piece>
+    </section>
+    </div>
+    <span>{{author.description}}</span>
+  </div>
+  <div>
+    <app-sub-title titleLabel="blogposts"></app-sub-title>
+    <section>
+    <app-content-card 
+    *ngFor="let card of author.articles"
+     [entity]="'ArticleEntity'" [data]="card">
+    </app-content-card>
+  </section>
+</div>
+</div>

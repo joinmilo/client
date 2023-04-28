@@ -1,0 +1,6 @@
+query getUserContextAuthor(
+  $entity: UserContextEntityInput) {
+  getUserContext(entity: $entity) {
+    ...UserContextAuthor
+  }
+}
