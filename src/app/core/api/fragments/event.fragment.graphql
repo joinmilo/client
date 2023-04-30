@@ -1,5 +1,6 @@
 fragment Event on EventEntity {
   id
+  entryFee
   address {
     ...Address
   }
