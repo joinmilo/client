@@ -1,0 +1,10 @@
+<mat-card class="reviews">
+  <mat-card-content>
+    <section class="bar-section">
+      <mat-label>{{ star }} Sterne</mat-label>
+      <mat-progress-bar mode="determinate" [value]="value" [bufferValue]="0">
+      </mat-progress-bar>
+      <mat-label>{{ value }}%</mat-label>
+    </section>
+  </mat-card-content>
+</mat-card>

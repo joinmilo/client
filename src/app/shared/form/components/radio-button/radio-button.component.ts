@@ -52,5 +52,4 @@ export class RadioButtonComponent<T> implements OnInit {
       });
     }
   }
-
 }
