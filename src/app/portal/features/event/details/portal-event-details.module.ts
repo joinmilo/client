@@ -1,7 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+<<<<<<< Upstream, based on main
 import { MatDividerModule } from '@angular/material/divider';
+=======
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+>>>>>>> 3ce9e26 added event details
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -13,6 +18,10 @@ import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventCommentsComponent } from './components/comments/portal-event-comments.component';
 import { PortalEventDetailsComponent } from './components/details/portal-event-details.component';
+import { EventCardDetailComponent } from './components/event-card-detail/event-card-detail.component';
+import { EventDescriptionComponent } from './components/event-description/event-description.component';
+import { EventEvaluationComponent } from './components/event-evaluation/event-evaluation.component';
+import { EventParticipantsComponent } from './components/event-participants/event-participants.component';
 import { portalEventDetailsStateKey } from './constants/event-details.constant';
 import { PortalEventDetailsRoutingModule } from './portal-event-details-routing.module';
 import { PortalEventDetailsEffects } from './state/portal-event-details.effects';

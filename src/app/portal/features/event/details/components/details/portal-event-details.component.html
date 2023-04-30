@@ -1,2 +1,31 @@
-<p>{{(eventDetails | async)?.id}}</p>
-<p>sadad</p>
+<div class="main">
+  <app-page-title
+  *ngIf="(eventDetails | translatable : 'name' | async) as eventName"
+    [title]="eventName"
+  ></app-page-title>
+
+  <div class="container">
+    <section>
+      <app-image [image]="(eventDetails | async)?.cardImage"></app-image>
+    </section>
+    <section class="grey-section">
+      <app-event-card-detail></app-event-card-detail>
+    </section>
+    <section>
+      <app-event-description></app-event-description>
+    </section>
+    <section class="grey-section">
+      <app-event-participants></app-event-participants>
+    </section>
+    <section>
+      <mat-card-title>Einrichtung</mat-card-title>
+      <app-contact-card></app-contact-card>
+    </section>
+    <section class="grey-section">
+      <app-card-slider></app-card-slider>
+    </section>
+    <section>
+      <app-event-evaluation></app-event-evaluation>
+    </section>
+  </div>
+</div>
