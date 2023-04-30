@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { eventSlug } from '../../constants/event-details.constant';
+import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
 import { selectEventDetails } from '../../state/portal-event-details.selectors';
 
 @Component({
@@ -12,17 +14,11 @@ export class PortalEventDetailsComponent implements OnInit {
 
   public eventDetails = this.store.select(selectEventDetails);
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private store: Store) { }
+  constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
 
   ngOnInit() {
-    // Note: Below 'queryParams' can be replaced with 'params' depending on your requirements
-    this.activatedRoute.paramMap.subscribe(params => {
-      // const slug = params[eventSlug];
-      console.log('slug', params);
-      // this.store.dispatch(PortalEventDetailsActions.getEventDetails(slug));
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.store.dispatch(PortalEventDetailsActions.getEventDetails(params[eventSlug]));
     });
   }
-
 }

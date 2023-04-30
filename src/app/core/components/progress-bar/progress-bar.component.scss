@@ -1,0 +1,40 @@
+.reviews {
+  display: inline-flex;
+  margin-left: 0;
+  width: 100%;
+  box-shadow: none !important;
+  background: transparent;
+
+  .bar-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 2rem;
+  }
+
+  .mdc-linear-progress {
+    width: 50%;
+    margin-right: 4rem !important;
+    margin-left: 4rem !important;
+  }
+
+  ::ng-deep .mat-mdc-progress-bar .mdc-linear-progress__buffer-bar {
+    background-color: transparent;
+  }
+
+  ::ng-deep .mdc-linear-progress__bar-inner {
+    border-top-width: var(--mdc-linear-progress-track-height, 1rem);
+  }
+
+  ::ng-deep .mdc-linear-progress {
+    height: var(--mdc-linear-progress-track-height, 1rem);
+  }
+
+  ::ng-deep .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: var(--color-evaluation);
+  }
+
+  ::ng-deep .mat-mdc-card-content:first-child {
+    padding-top: 0.1rem;
+  }
+}
