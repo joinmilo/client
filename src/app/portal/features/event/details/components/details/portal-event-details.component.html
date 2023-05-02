@@ -3,11 +3,10 @@
   *ngIf="(eventDetails | translatable : 'name' | async) as eventName"
     [title]="eventName"
   ></app-page-title>
-
+  <section>
+    <app-image [image]="(eventDetails | async)?.cardImage" [rounded]="true"></app-image> 
+  </section>
   <div class="container">
-    <section>
-      <app-image [image]="(eventDetails | async)?.cardImage"></app-image>
-    </section>
     <section class="grey-section">
       <app-event-card-detail></app-event-card-detail>
     </section>
