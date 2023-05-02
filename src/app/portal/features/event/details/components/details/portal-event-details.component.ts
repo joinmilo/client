@@ -17,8 +17,9 @@ export class PortalEventDetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.store.dispatch(PortalEventDetailsActions.getEventDetails(params[eventSlug]));
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const event = params.get(eventSlug) || '';
+      this.store.dispatch(PortalEventDetailsActions.getEventDetails(event));
     });
   }
 }
