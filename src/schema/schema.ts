@@ -4757,6 +4757,8 @@ export type DealFragment = { __typename?: 'DealEntity', id?: string | null, pric
 
 export type EventCategoryFragment = { __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
+export type EventCommentsFragment = { __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, approved?: boolean | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null };
+
 export type EventTargetGroupFragment = { __typename?: 'EventTargetGroupEntity', id?: string | null, translatables?: Array<{ __typename?: 'EventTargetGroupTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
 export type EventFragment = { __typename?: 'EventEntity', id?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude: number, longitude: number } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, translatables?: Array<{ __typename?: 'EventTranslatableEntity', id?: string | null, name?: string | null, description?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, category?: { __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, schedule?: { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null } | null };
@@ -4853,6 +4855,13 @@ export type GetDealsQueryVariables = Exact<{
 
 
 export type GetDealsQuery = { __typename?: 'Query', getDeals?: { __typename?: 'PageableList_DealEntity', result?: Array<{ __typename?: 'DealEntity', id?: string | null, price: number, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, description?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+
+export type GetEventCommentsQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type GetEventCommentsQuery = { __typename?: 'Query', getEventComments?: { __typename?: 'PageableList_EventCommentEntity', result?: Array<{ __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, approved?: boolean | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null } | null> | null } | null };
 
 export type GetEventTargetGroupsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4958,15 +4967,6 @@ export type GetServerVersionQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetServerVersionQuery = { __typename?: 'Query', getInformation?: { __typename?: 'InformationDto', version?: string | null } | null };
-
-export type EventCommentsFragment = { __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, approved?: boolean | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null };
-
-export type GetEventCommentsQueryVariables = Exact<{
-  params?: InputMaybe<FilterSortPaginateInput>;
-}>;
-
-
-export type GetEventCommentsQuery = { __typename?: 'Query', getEventComments?: { __typename?: 'PageableList_EventCommentEntity', result?: Array<{ __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, approved?: boolean | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null } | null> | null } | null };
 
 export const AppFragmentDoc = gql`
     fragment App on AppEntity {
@@ -5074,6 +5074,99 @@ export const DealFragmentDoc = gql`
     ${MediaFragmentDoc}
 ${ContactFragmentDoc}
 ${DealCategoryFragmentDoc}`;
+export const PublicAuthorFragmentDoc = gql`
+    fragment PublicAuthor on PublicAuthorEntity {
+  id
+  name
+  email
+  phone
+}
+    `;
+export const ArticleCategoryFragmentDoc = gql`
+    fragment ArticleCategory on ArticleCategoryEntity {
+  id
+  icon
+  color
+  translatables {
+    id
+    name
+    language {
+      ...Language
+    }
+  }
+}
+    ${LanguageFragmentDoc}`;
+export const ArticleFragmentDoc = gql`
+    fragment Article on ArticleEntity {
+  id
+  approved
+  slug
+  modified
+  created
+  publicAuthor {
+    ...PublicAuthor
+  }
+  author {
+    user {
+      firstName
+      lastName
+    }
+  }
+  cardImage {
+    ...Media
+  }
+  category {
+    ...ArticleCategory
+  }
+  publicAuthor {
+    name
+  }
+  translatables {
+    id
+    content
+    shortDescription
+    title
+    language {
+      ...Language
+    }
+  }
+}
+    ${PublicAuthorFragmentDoc}
+${MediaFragmentDoc}
+${ArticleCategoryFragmentDoc}
+${LanguageFragmentDoc}`;
+export const UserContextFragmentDoc = gql`
+    fragment UserContext on UserContextEntity {
+  id
+  articles {
+    ...Article
+  }
+  user {
+    firstName
+    lastName
+    email
+  }
+}
+    ${ArticleFragmentDoc}`;
+export const EventCommentsFragmentDoc = gql`
+    fragment EventComments on EventCommentEntity {
+  id
+  created
+  approved
+  translatables {
+    id
+    content
+    language {
+      id
+      locale
+      name
+    }
+  }
+  userContext {
+    ...UserContext
+  }
+}
+    ${UserContextFragmentDoc}`;
 export const EventTargetGroupFragmentDoc = gql`
     fragment EventTargetGroup on EventTargetGroupEntity {
   id
@@ -5327,99 +5420,6 @@ export const ThemeFragmentDoc = gql`
   }
 }
     `;
-export const PublicAuthorFragmentDoc = gql`
-    fragment PublicAuthor on PublicAuthorEntity {
-  id
-  name
-  email
-  phone
-}
-    `;
-export const ArticleCategoryFragmentDoc = gql`
-    fragment ArticleCategory on ArticleCategoryEntity {
-  id
-  icon
-  color
-  translatables {
-    id
-    name
-    language {
-      ...Language
-    }
-  }
-}
-    ${LanguageFragmentDoc}`;
-export const ArticleFragmentDoc = gql`
-    fragment Article on ArticleEntity {
-  id
-  approved
-  slug
-  modified
-  created
-  publicAuthor {
-    ...PublicAuthor
-  }
-  author {
-    user {
-      firstName
-      lastName
-    }
-  }
-  cardImage {
-    ...Media
-  }
-  category {
-    ...ArticleCategory
-  }
-  publicAuthor {
-    name
-  }
-  translatables {
-    id
-    content
-    shortDescription
-    title
-    language {
-      ...Language
-    }
-  }
-}
-    ${PublicAuthorFragmentDoc}
-${MediaFragmentDoc}
-${ArticleCategoryFragmentDoc}
-${LanguageFragmentDoc}`;
-export const UserContextFragmentDoc = gql`
-    fragment UserContext on UserContextEntity {
-  id
-  articles {
-    ...Article
-  }
-  user {
-    firstName
-    lastName
-    email
-  }
-}
-    ${ArticleFragmentDoc}`;
-export const EventCommentsFragmentDoc = gql`
-    fragment EventComments on EventCommentEntity {
-  id
-  created
-  approved
-  translatables {
-    id
-    content
-    language {
-      id
-      locale
-      name
-    }
-  }
-  userContext {
-    ...UserContext
-  }
-}
-    ${UserContextFragmentDoc}`;
 export const LoginDocument = gql`
     mutation login($username: String!, $password: String!) {
   createToken(username: $username, password: $password) {
@@ -5618,6 +5618,26 @@ export const GetDealsDocument = gql`
   })
   export class GetDealsGQL extends Apollo.Query<GetDealsQuery, GetDealsQueryVariables> {
     override document = GetDealsDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetEventCommentsDocument = gql`
+    query getEventComments($params: FilterSortPaginateInput) {
+  getEventComments(params: $params) {
+    result {
+      ...EventComments
+    }
+  }
+}
+    ${EventCommentsFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetEventCommentsGQL extends Apollo.Query<GetEventCommentsQuery, GetEventCommentsQueryVariables> {
+    override document = GetEventCommentsDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -5942,26 +5962,6 @@ export const GetServerVersionDocument = gql`
   })
   export class GetServerVersionGQL extends Apollo.Query<GetServerVersionQuery, GetServerVersionQueryVariables> {
     override document = GetServerVersionDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const GetEventCommentsDocument = gql`
-    query getEventComments($params: FilterSortPaginateInput) {
-  getEventComments(params: $params) {
-    result {
-      ...EventComments
-    }
-  }
-}
-    ${EventCommentsFragmentDoc}`;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetEventCommentsGQL extends Apollo.Query<GetEventCommentsQuery, GetEventCommentsQueryVariables> {
-    override document = GetEventCommentsDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
