@@ -6,7 +6,7 @@
   <section>
     <app-image [image]="(eventDetails | async)?.cardImage" [rounded]="true"></app-image> 
   </section>
-  <div class="container">
+  <div>
     <section class="grey-section">
       <app-event-card-detail></app-event-card-detail>
     </section>
@@ -17,8 +17,10 @@
       <app-event-participants></app-event-participants>
     </section>
     <section>
+      <div>
       <mat-card-title>Einrichtung</mat-card-title>
       <app-contact-card></app-contact-card>
+    </div>
     </section>
     <section class="grey-section">
       <app-card-slider></app-card-slider>
