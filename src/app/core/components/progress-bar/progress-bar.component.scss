@@ -6,6 +6,9 @@
   background: transparent;
   flex-wrap: wrap;
 
+  mat-card-content{
+    padding: none;
+  }
 
   .bar-section {
     display: flex;
@@ -14,10 +17,14 @@
     height: 2rem;
   }
 
+  mat-label:last-of-type{
+    margin-left: auto;
+  }
+
   .mdc-linear-progress {
     width: 50%;
-    margin-right: 4rem !important;
-    margin-left: 4rem !important;
+    margin-left: 2rem !important; 
+    margin-right: 2rem !important;
   }
 
   ::ng-deep .mat-mdc-progress-bar .mdc-linear-progress__buffer-bar {
@@ -34,9 +41,5 @@
 
   ::ng-deep .mat-mdc-progress-bar {
     --mdc-linear-progress-active-indicator-color: var(--color-evaluation);
-  }
-
-  ::ng-deep .mat-mdc-card-content:first-child {
-    padding-top: 0.1rem;
   }
 }
