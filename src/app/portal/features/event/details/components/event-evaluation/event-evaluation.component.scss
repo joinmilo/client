@@ -1,28 +1,13 @@
-mat-card {
-  border-radius: 0 !important;
-  border: none !important;
-  max-width: 35rem;
-  width: 35rem;
-  box-shadow: none !important;
-  background-color: transparent;
-  padding: 2.5rem 0.8rem;
-  margin: 1rem 0.5rem;
-
-  button {
-    max-width: 8rem;
-    margin: 0rem 1rem;
-    border-color: var(--mdc-outlined-button-label-text-color, inherit);
-
-    fa-icon {
-      margin-right: 0.5rem;
-    }
-  }
-
-  .title-rating {
-    margin-top: 1rem;
-  }
-
-  app-star-rating {
-    margin-top: 1rem;
-  }
+.main{
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
 }
+
+section:first-of-type{
+display: flex;
+gap: var(--gap);
+flex-direction: column;
+}
+
+

@@ -1,27 +1,24 @@
-.main {
-  display: inline-flex;
-  margin: 0.5rem auto;
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
-  .button {
+  button {
     color: var(--color-evaluation);
-  }
-
-  .rating {
-    margin-left: 12.5rem;
-    margin-top: 1rem;
-    font-weight: bold;
-  }
-
-  .mat-mdc-icon-button.mat-primary {
-    --mdc-icon-button-icon-color: var(--color-evaluation);
-    border-color: none;
-  }
-
-  .mat-mdc-icon-button[disabled][disabled] {
-    --mdc-icon-button-disabled-icon-color: var(--color-evaluation);
   }
 }
 
 mat-label {
   font-weight: bold;
+}
+
+section{
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  p {
+    margin-left: auto;
+    font-weight: bold;
+  }
 }
