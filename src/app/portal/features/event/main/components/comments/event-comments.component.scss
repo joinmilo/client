@@ -1,0 +1,15 @@
+div {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+section {
+  background-color: white;
+  border-radius: var(--mdc-shape-small);
+  border: 1px solid var(--color-border)
+}
+
+mat-divider {
+  margin: 0 var(--gap);
+}

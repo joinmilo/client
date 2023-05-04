@@ -1,0 +1,8 @@
+<div>
+  <section>
+    <app-image [image]="element?.userContext?.avatar" [circle]="true"></app-image>
+    <span>{{element?.userContext?.user?.firstName}} {{element?.userContext?.user?.lastName}}</span>
+  </section>
+  <app-date-piece *ngIf="element?.created" [date]="element?.created"></app-date-piece>
+  <p>{{element?.translatables | translatable: 'content' | async}}</p>
+</div>

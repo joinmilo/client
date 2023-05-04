@@ -1,0 +1,17 @@
+fragment EventComments on EventCommentEntity {
+  id
+  created
+  approved
+  translatables {
+    id
+    content
+    language {
+      id
+      locale
+      name
+    }
+  }
+  userContext{
+  ...UserContext
+  }
+}
