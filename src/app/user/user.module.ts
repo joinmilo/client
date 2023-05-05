@@ -6,12 +6,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatRadioModule } from '@angular/material/radio';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { PortalFooterModule } from './../portal/shared/footer/portal-footer.module';
@@ -31,16 +28,16 @@ import { UserPortalRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 
 const components = [
-  UserComponent,
-  VerificationComponent,
+  LoginFormComponent,
+  LoginComponent,
+  PasswordInputComponent,
   RegistrationComponent,
   RegistrationFormComponent,
-  LoginFormComponent,
   SendPasswordResetComponent,
   SetNewPasswordComponent,
-  PasswordInputComponent,
   ImageSliderComponent,
-  LoginComponent
+  UserComponent,
+  VerificationComponent,
 ];
 
 const framework = [
@@ -50,14 +47,11 @@ const framework = [
 
 const materials = [
   FontAwesomeModule,
-  MatFormFieldModule,
-  MatCardModule,
-  MatInputModule,
   MatButtonModule,
-  MatRadioModule,
-  MatCardModule,
-  MatProgressBarModule,
   MatButtonToggleModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
 ];
 
 const modules = [
@@ -70,9 +64,6 @@ const modules = [
 const libs = [
   StoreModule.forFeature(userFeatureKey, userReducer),
   EffectsModule.forFeature([UserEffects]),
-  NgHcaptchaModule.forRoot({
-    languageCode: 'de' //TODO
-  }),
 ]
 
 @NgModule({

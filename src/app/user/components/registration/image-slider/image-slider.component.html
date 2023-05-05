@@ -1,16 +1,16 @@
   <div>
     <section *ngFor="let img of images">
-      <img [src]="img.path" *ngIf="selectedImage == img.path" [@fadeInFromRight]>
-       <p [appLabel]="img.description" *ngIf="selectedImage == img.path" [@fadeInFromRight]></p>
+      <img [src]="img.path" *ngIf="selectedImage === img.path" [@fadeInFromRight]>
+       <p [appLabel]="img.description" *ngIf="selectedImage === img.path" [@fadeInFromRight]></p>
     </section> 
     <div>
       <ng-container *ngFor="let img of images">
         <button mat-button (click)="onImageChange(img.path)">
           <fa-icon
           size="xs"
-          [icon]="selectedImage === img.path ? 
-          ['fas', 'circle'] : 
-          ['far', 'circle']">
+          [icon]="selectedImage === img.path
+            ? ['fas', 'circle']
+            : ['far', 'circle']">
         </fa-icon>
         </button>
       </ng-container>
