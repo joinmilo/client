@@ -18,3 +18,8 @@ export const selectSavedUser = createSelector(
   selectUserState,
   state => state.user
 );
+
+export const selectUserToken = createSelector(
+  selectUserState,
+  state => state.token
+);

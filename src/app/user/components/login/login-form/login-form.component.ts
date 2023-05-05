@@ -11,7 +11,7 @@ import { selectSavedUser } from 'src/app/user/state/user.selectors';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnDestroy, OnInit {
-  
+
   onConfirmInput() {
     if (this.form.get('password')?.value !== this.form.get('confirm')?.value) {
       this.form.get('confirm')?.setErrors({ notSame: true });
@@ -34,7 +34,7 @@ export class LoginFormComponent implements OnDestroy, OnInit {
     private fb: FormBuilder,
   ) {
   }
-  
+
   ngOnInit(): void {
     this.form.get('confirm')?.valueChanges.subscribe(() => {
       this.onConfirmInput();
@@ -42,10 +42,10 @@ export class LoginFormComponent implements OnDestroy, OnInit {
   }
 
   onSubmit(formDirective: FormGroupDirective) {
-    this.store.dispatch(UserActions.saveUser({
-      email: this.form.value.email,
-      password: this.form.value.password,
-    }));
+    this.store.dispatch(UserActions.userLogin(
+      this.form.value.email,
+      this.form.value.password
+    ))
 
     this.store.select(selectSavedUser)
       .pipe(takeUntil(this.destroy))

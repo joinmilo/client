@@ -22,8 +22,17 @@ form {
       flex: 2 1 auto;
     }
   }
+
+  div:last-of-type{
+    flex-direction: row;
+    gap: 0.5rem;
+  }
 }
 
 fa-icon, label{
   pointer-events: none;
+}
+
+button{
+  width: 100%;
 }

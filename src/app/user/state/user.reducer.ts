@@ -7,6 +7,7 @@ export interface UserState {
   user?: Maybe<UserEntity>,
   verified?: Maybe<boolean>,
   entropy?: Maybe<number>,
+  token?: Maybe<string>,
 }
 
 export const initialState: UserState = {
@@ -25,5 +26,9 @@ export const userReducer = createReducer(
 
   on(UserActions.userSaved, (state, action): UserState => (
     { ...state, user: action.entity }
+  )),
+
+  on(UserActions.userLoggedIn, (state, action): UserState => (
+    { ...state, token: action.token }
   )),
 );

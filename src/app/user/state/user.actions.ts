@@ -12,6 +12,8 @@ export const UserActions = createActionGroup({
     'reset password': (token: Maybe<string>, password: Maybe<string>) => ({ token, password }),
     'save user': (entity: UserEntityInput) => ({ entity }),
     'user saved': (entity: UserEntity) => ({ entity }),
+    'user login': (email: Maybe<string> | undefined, password: Maybe<string>| undefined) => ({ email, password }),
+    'user logged in': (token: Maybe<string>) => ({ token }),
   },
 });
 

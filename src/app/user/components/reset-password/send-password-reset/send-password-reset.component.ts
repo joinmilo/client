@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { UserActions } from './../../../../state/user.actions';
+import { UserActions } from 'src/app/user/state/user.actions';
 
 
 @Component({

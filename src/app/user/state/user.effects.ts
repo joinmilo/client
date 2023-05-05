@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { filter, map, switchMap } from 'rxjs';
+import { filter, map, switchMap, tap } from 'rxjs';
 import { FeedbackType } from 'src/app/core/typings/feedback';
+import { LoginGQL, Maybe } from 'src/schema/schema';
 import { UserEntity, VerifyUserGQL } from '../../../schema/schema';
 import { CheckPasswordGQL, ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL } from './../../../schema/schema';
 import { CoreActions } from './../../core/state/core.actions';
@@ -20,6 +22,9 @@ export class UserEffects {
 
   userSaved = createEffect(() => this.actions.pipe(
     ofType(UserActions.userSaved),
+    tap(() => {
+      this.router.navigateByUrl('/user/login')
+    }),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'registrationReceived'
@@ -72,14 +77,33 @@ this.actions.pipe(
       type: FeedbackType.Success,
       labelMessage: 'resetPasswordSuccess'
   }))
-)
-);
+));
+
+userLogin = createEffect(() => this.actions.pipe(
+  ofType(UserActions.userLogin),
+  filter(action => !!action.email && !!action.password),
+  switchMap((action) => this.loginService.mutate({
+    email: action.email!,
+    password: action.password!
+  })),
+  filter(response => !!response.data?.createToken?.access),
+  map(response => UserActions.userLoggedIn(response.data?.createToken?.access as Maybe<string>))
+));
+
+userLoggedIn = createEffect(() => this.actions.pipe(
+  ofType(UserActions.userLoggedIn),
+  tap(() => {
+    this.router.navigateByUrl('/portal/landing')
+  })
+), {dispatch: false});
 
   constructor(
+    private router: Router,
     private actions: Actions,
     private verifyUserService: VerifyUserGQL,
     private checkPasswordService: CheckPasswordGQL,
     private sendPasswordResetService: SendPasswordResetGQL,
     private resetPasswordService: ResetPasswordGQL,
-    private saveUserService: SaveUserGQL) { }
+    private saveUserService: SaveUserGQL,
+    private loginService: LoginGQL) { }
 }

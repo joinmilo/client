@@ -1,26 +1,31 @@
-<div class="main"> 
+<div class="main">
   <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
-     <h2 class="mat-headline-5" appLabel="login"></h2>
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label appLabel="email"></mat-label>
-          <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label appLabel="password"></mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'"  id="password" formControlName="password">
-          <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <fa-icon [icon]="hide ? ['far', 'eye-slash']: ['far', 'eye']"></fa-icon>
-          </button>
-        </mat-form-field> 
-        <div>
-          <a [routerLink]="['/user', 'sendPasswordReset']" appLabel="forgotpassword?"></a>
-        </div>
-      </div>
-        <div>
-        <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
-          <label appLabel="login"></label>
+    <h2 class="mat-headline-5" appLabel="login"></h2>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="email"></mat-label>
+        <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="password"></mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password">
+        <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <fa-icon [icon]="hide ? ['far', 'eye-slash']: ['far', 'eye']"></fa-icon>
         </button>
+      </mat-form-field>
+      <div>
+        <a [routerLink]="['/user', 'sendPasswordReset']" appLabel="forgotpassword?"></a>
       </div>
-      </form>
     </div>
+    <div>
+      <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
+        <label appLabel="login"></label>
+      </button>
+    </div>
+    <div>
+      <p appLabel="notRegistered?"></p>
+      <a [routerLink]="['/user', 'register']" appLabel="register"></a>
+    </div>
+  </form>
+</div>

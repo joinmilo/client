@@ -30,8 +30,8 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
   pwBitStrength: Maybe<number>;
   public adjustedEntropy?: number;
 
-  private onChange: (value: any) => void = () => {};
-  private onTouched: () => void = () => {};
+  private onChange: (value: any) => void = () => { };
+  private onTouched: () => void = () => { };
   private destroy = new Subject<void>();
 
   constructor(private fb: FormBuilder, private store: Store) {
@@ -48,22 +48,23 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.select(selectConfiguration(pwBitStrengthConfig)).pipe(takeUntil(this.destroy))
-    .subscribe(config =>{
-      if(config?.value){
-      this.pwBitStrength = parseFloat(config?.value)
-      }
-    });
+      .subscribe(config => {
+        if (config?.value) {
+          this.pwBitStrength = parseFloat(config?.value)
+        }
+      });
 
     this.parentForm?.addControl('password', this.form.get('password')!);
     this.form.get('password')?.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.destroy)).subscribe(() => {
-      this.onPasswordInput();
-    });
-    if(this.showConfirm){
-    this.parentForm?.addControl('confirm', this.form.get('confirm')!);
-    this.form.get('confirm')?.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.destroy)).subscribe(() => {
+      this.onPasswordInput()
       this.onConfirmInput();
     });
-  }
+    if (this.showConfirm) {
+      this.parentForm?.addControl('confirm', this.form.get('confirm')!);
+      this.form.get('confirm')?.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.destroy)).subscribe(() => {
+        this.onConfirmInput();
+      });
+    }
   }
 
   writeValue(value: any): void {
@@ -83,7 +84,7 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
   onPasswordInput() {
     const password = this.form.get('password')?.value as string;
     this.store.dispatch(UserActions.checkPassword(password));
-  
+
     this.store.select(selectSetEntropy).pipe(
       distinctUntilChanged(),
       tap(entropy => {
@@ -93,24 +94,24 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
   }
 
   onConfirmInput() {
-    if(this.showConfirm){
-    if (this.form.get('password')?.value !== this.form.get('confirm')?.value) {
-      this.form.get('confirm')?.setErrors({ notSame: true });
-    } else {
-      this.form.get('confirm')?.setErrors(null);
+    if (this.showConfirm) {
+      if (this.form.get('password')?.value !== this.form.get('confirm')?.value) {
+        this.form.get('confirm')?.setErrors({ notSame: true });
+      } else {
+        this.form.get('confirm')?.setErrors(null);
       }
     }
   }
 
-  checkPwSuccess(entropy: number){
-    this.adjustedEntropy = entropy / (this.pwBitStrength?? 1) * 50; 
-  if((this.adjustedEntropy)  > 50){
-   this.pwSuccess = true; 
-   this.form.get('password')?.setErrors(null);
-  }else {
-  this.pwSuccess = false;
-  this.form.get('password')?.setErrors({ pwWeak: true });
-  }
+  checkPwSuccess(entropy: number) {
+    this.adjustedEntropy = entropy / (this.pwBitStrength ?? 1) * 50;
+    if ((this.adjustedEntropy) > 50) {
+      this.pwSuccess = true;
+      this.form.get('password')?.setErrors(null);
+    } else {
+      this.pwSuccess = false;
+      this.form.get('password')?.setErrors({ pwWeak: true });
+    }
   }
 
   ngOnDestroy(): void {
