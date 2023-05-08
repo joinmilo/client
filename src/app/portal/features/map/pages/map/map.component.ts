@@ -3,17 +3,23 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MapFeatureActions} from '../../state/map.actions';
 import {selectActiveFilter, selectResults} from '../../state/map.selector';
-import {FilterKey} from '../../constants/map.constants';
+import {defaultMarkerColor, FilterKey} from '../../constants/map.constants';
 import {
   divIcon,
+  DivIconOptions,
+  FeatureGroup,
+  FitBoundsOptions,
   latLng,
   LatLngBounds,
-  FeatureGroup,
+  Layer,
+  Map,
   MapOptions,
   Marker,
   marker,
-  tileLayer,
-  DivIconOptions, PopupOptions
+  MarkerClusterGroup,
+  MarkerClusterGroupOptions,
+  PopupOptions,
+  tileLayer
 } from 'leaflet';
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
 import {map, Observable} from 'rxjs';
@@ -34,7 +40,7 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   public results = this.store.select(selectResults);
 
-  public markerGroup: Observable<FeatureGroup>;
+  public markers: Observable<Layer[]>;
 
   public mapBounds: Observable<LatLngBounds>;
 
@@ -51,13 +57,24 @@ export class MapPageComponent implements OnInit, OnDestroy {
       maxZoom: 19,
       detectRetina: true,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+
     })],
     zoom:14,
-    center:latLng(51.256214, 7.150764)
+    center:latLng(51.256214, 7.150764),
+  };
+
+  public readonly markerClusterOptions: MarkerClusterGroupOptions = {
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: false,
+    spiderLegPolylineOptions: {
+      weight: 2,
+      color: defaultMarkerColor,
+      opacity: 0.8
+    }
   };
 
   private readonly iconOptions: DivIconOptions = {
-    className: "marker",
+    className: 'marker',
     iconSize: [28, 40],
     popupAnchor: [0, 20]
   }
@@ -68,19 +85,25 @@ export class MapPageComponent implements OnInit, OnDestroy {
     maxWidth: 320
   }
 
+  private readonly zoomFitOptions: FitBoundsOptions = {
+    paddingTopLeft: [0, 32],
+    paddingBottomRight: [0, 16]
+  }
+
   constructor(
     private route: ActivatedRoute,
     private store: Store,
     private components: MapComponentsService,
   ) {
-    this.markerGroup = this.results.pipe(
+    const markerGroup = this.results.pipe(
       map((results) => results?.data
         .map((cardData) => this.cardToMarker(results.entity, cardData))
         .filter(Boolean) as Marker[]
       ),
       map((markers) => new FeatureGroup(markers)),
     );
-    this.mapBounds = this.markerGroup.pipe(
+    this.markers = markerGroup.pipe(map((group) => group.getLayers()))
+    this.mapBounds = markerGroup.pipe(
       map((group) => group.getLayers().length > 0
         ? group.getBounds()
         : this.defaultBounds
@@ -118,5 +141,16 @@ export class MapPageComponent implements OnInit, OnDestroy {
     } else {
       return null;
     }
+  }
+
+  mapReady(map: Map) {
+    map.attributionControl.setPosition('topright');
+  }
+
+  markerClusterReady(markerCluster: MarkerClusterGroup) {
+    // replace the standard zoom to cluster (toggled in options) to have a padding
+    markerCluster.on('clusterclick', (event) => {
+      event.propagatedFrom.zoomToBounds(this.zoomFitOptions)
+    });
   }
 }

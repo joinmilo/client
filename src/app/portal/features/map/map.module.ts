@@ -19,6 +19,7 @@ import {MapOrganisationsFilterComponent} from './components/forms/organisation-f
 import {CardModule} from '../../../shared/card/card.module';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MarkerComponent} from './components/marker.component';
+import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 
 const components: Type<any>[] = [
 ];
@@ -59,12 +60,13 @@ const modules: Type<any>[] =[
     ...internal,
     ...pages
   ],
-    imports: [
-        ...framework,
-        ...materials,
-        ...modules,
-        LeafletModule,
-    ],
+  imports: [
+    ...framework,
+    ...materials,
+    ...modules,
+    LeafletModule,
+    LeafletMarkerClusterModule
+  ],
   exports: [
     ...components
   ]

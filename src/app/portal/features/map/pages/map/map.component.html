@@ -29,8 +29,14 @@
     </div>
   </div>
 
-  <div leaflet [leafletOptions]="leafletOptions" [leafletFitBounds]="(mapBounds | async) ?? defaultBounds" >
-    <div *ngIf="(markerGroup | async) as markers" [leafletLayer]="markers"></div>
+  <div leaflet
+       [leafletOptions]="leafletOptions"
+       [leafletFitBounds]="(mapBounds | async) ?? defaultBounds"
+       (leafletMapReady)="mapReady($event)">
+    <div *ngIf="(markers | async) as markers"
+         [leafletMarkerCluster]="markers"
+         [leafletMarkerClusterOptions]="markerClusterOptions"
+         (leafletMarkerClusterReady)="markerClusterReady($event)"></div>
   </div>
 
   <div id="results" *ngIf="(results | async) as results">
