@@ -35,8 +35,7 @@
        (leafletMapReady)="mapReady($event)">
     <div *ngIf="(markers | async) as markers"
          [leafletMarkerCluster]="markers"
-         [leafletMarkerClusterOptions]="markerClusterOptions"
-         (leafletMarkerClusterReady)="markerClusterReady($event)"></div>
+         [leafletMarkerClusterOptions]="markerClusterOptions"></div>
   </div>
 
   <div id="results" *ngIf="(results | async) as results">

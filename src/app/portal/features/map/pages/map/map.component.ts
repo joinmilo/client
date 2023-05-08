@@ -52,7 +52,7 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   public readonly leafletOptions: MapOptions = {
     layers:[tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      opacity: 0.7,
+      opacity: 0.7,  // TODO: Adjust when adding final map
       minZoom: 8,
       maxZoom: 19,
       detectRetina: true,
@@ -66,6 +66,7 @@ export class MapPageComponent implements OnInit, OnDestroy {
   public readonly markerClusterOptions: MarkerClusterGroupOptions = {
     showCoverageOnHover: false,
     zoomToBoundsOnClick: false,
+    spiderfyOnEveryZoom: true,
     spiderLegPolylineOptions: {
       weight: 2,
       color: defaultMarkerColor,
@@ -83,11 +84,6 @@ export class MapPageComponent implements OnInit, OnDestroy {
     closeButton: false,
     offset: [0, -24],
     maxWidth: 320
-  }
-
-  private readonly zoomFitOptions: FitBoundsOptions = {
-    paddingTopLeft: [0, 32],
-    paddingBottomRight: [0, 16]
   }
 
   constructor(
@@ -145,12 +141,5 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   mapReady(map: Map) {
     map.attributionControl.setPosition('topright');
-  }
-
-  markerClusterReady(markerCluster: MarkerClusterGroup) {
-    // replace the standard zoom to cluster (toggled in options) to have a padding
-    markerCluster.on('clusterclick', (event) => {
-      event.propagatedFrom.zoomToBounds(this.zoomFitOptions)
-    });
   }
 }
