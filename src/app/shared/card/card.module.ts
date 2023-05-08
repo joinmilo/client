@@ -1,5 +1,5 @@
 
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -32,10 +32,12 @@ const materials = [
 const modules = [
   CoreModule,
   TitleModule,
+  
 ];
 
 const libs = [
   FontAwesomeModule,
+  NgOptimizedImage,
 ]
 
 @NgModule({

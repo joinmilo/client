@@ -1,5 +1,7 @@
 <header> 
-  <app-image [image]="(page | async)?.titleImage"></app-image>
+  <figure *ngIf="(page | async)?.titleImage">
+  <img ngSrc="media" alt="media" [loaderParams]="{media: (page | async)?.titleImage}" fill priority="true">
+  </figure>
   <section>
     <div>
       <div class="title title-gradient">{{page | translatable: "name" | async}}</div>

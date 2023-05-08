@@ -1,10 +1,9 @@
+import { IMAGE_LOADER, NgOptimizedImage } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
-import { PortalModule } from './portal/portal.module';
-
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,6 +13,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { mediaApi } from './core/constants/core.constants';
 import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
@@ -22,7 +22,9 @@ import { AuthService } from './core/services/auth.service';
 import { FavIconService } from './core/services/favicon.service';
 import { ThemeService } from './core/services/theme.service';
 import { BrowserTitleService } from './core/services/title.service';
+import { CustomImageLoader } from './core/typings/customImageLoader';
 import { GraphQLModule } from './graphql.module';
+import { PortalModule } from './portal/portal.module';
 
 function init(authService: AuthService): () => Observable<unknown> {
   return () => authService.refresh();
@@ -37,7 +39,8 @@ const framework = [
   BrowserModule,
   BrowserAnimationsModule,
   HttpClientModule,
-  RouterModule
+  RouterModule,
+  NgOptimizedImage,
 ];
 
 const libs = [
@@ -84,8 +87,17 @@ const providers = [
     useClass: ErrorInterceptor,
     multi: true,
   },
+  {
+    provide: IMAGE_LOADER,
+    useValue: (config: CustomImageLoader) => {
+      return config.loaderParams?.src
+        ? config.loaderParams.src
+        : config.loaderParams && config.loaderParams.media && config.loaderParams.media.id
+          ? mediaApi(config.loaderParams.media)
+          : '/assets/placeholder.webp';
+  }
+  }
 ];
-
 
 @NgModule({
   declarations: [

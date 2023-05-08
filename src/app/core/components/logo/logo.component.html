@@ -1,11 +1,12 @@
 <a [routerLink]="['/']">
-  <app-image
-    [image]="(logoConfig | async)?.media"
-    alt="logo">
-  </app-image>
-  <app-image class="logoText"
+  <img
+    ngSrc="media" [loaderParams]="{media: (logoConfig | async)?.media}" 
+    alt="logo" height="48" width="48">
+  <img class="logoText"
+    ngSrc="media"
     *ngIf="(logoTextConfig | async)?.media?.id"
-    [image]="(logoTextConfig | async)?.media"
-    alt="logo">
-  </app-image>
+    [loaderParams]="{media: (logoTextConfig | async)?.media}"
+    alt="logo"
+    height="30"
+    width="160">
 </a>

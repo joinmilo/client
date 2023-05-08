@@ -2,9 +2,9 @@
   <a *ngFor="let app of apps | async"
     [href]="app.url"
     [title]="app.platform?.name">
-    <app-image
+    <img
       [src]="app.platform?.key === 'google'
         ? 'assets/google-play.svg'
-        : 'assets/app-store.svg'"></app-image>
+        : 'assets/app-store.svg'">
   </a>
 </nav>

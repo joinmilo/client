@@ -1,6 +1,6 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -12,7 +12,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FeedbackComponent } from './components/feedback/feedback.component';
-import { ImageComponent } from './components/image/image.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AddressPieceComponent } from './components/pieces/adress/address-piece.component';
 import { CategoryPieceComponent } from './components/pieces/category/category-piece.component';
@@ -34,7 +33,6 @@ const components = [
   DatePieceComponent,
   FavoritePieceComponent,
   FeedbackComponent,
-  ImageComponent,
   LogoComponent,
   SharePieceComponent,
   SliderComponent,
@@ -67,6 +65,7 @@ const libs = [
   FontAwesomeModule,
   StoreModule.forFeature(coreStateKey, coreReducer),
   EffectsModule.forFeature([CoreEffects]),
+  NgOptimizedImage,
 ];
 
 @NgModule({

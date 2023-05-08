@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card>
     <figure>
-      <app-image [image]="element?.creatorImage" [circle]="true"></app-image>
+      <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill priority="true">
     </figure>
     <mat-card-content>
       <h3>

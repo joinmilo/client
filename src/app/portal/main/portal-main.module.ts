@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -49,6 +49,7 @@ const modules = [
 const libs = [
   StoreModule.forFeature(portalMainStateKey, portalMainReducer),
   EffectsModule.forFeature([PortalMainEffects]),
+  NgOptimizedImage,
 ]
 
 @NgModule({

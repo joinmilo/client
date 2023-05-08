@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card>
       <figure>
-        <app-image mat-card-image [image]="element?.image" [roundedTopLeft]="true" [roundedBottomLeft]="true"></app-image>
+        <img ngSrc="media" mat-card-image [loaderParams]="{media: element?.image}">
       </figure>
       <div class="wrapper">
       <mat-card-header>
@@ -32,7 +32,7 @@
           }}
         </span>
         <mat-card-actions>
-          <app-image [image]="element?.creatorImage" [rounded]="true"></app-image>
+          <img ngSrc="media" [loaderParams]="{media: element?.creatorImage}">
           <span>{{element?.creator}}</span>
         </mat-card-actions>
       </mat-card-content>
