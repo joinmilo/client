@@ -1,3 +1,4 @@
+@import 'src/styles/mixins.scss';
 
 :host {
   display: block;
@@ -7,15 +8,16 @@
   --map-bg: white;
   --map-gap: 1rem;
   --map-z: 0;
+  --map-height: calc(100vh - 2*var(--mat-toolbar-height) - 2rem);
 
   --mat-toolbar-height: 56px; // TODO: Fix for main toolbar
 
-  .map-top {
+  .map-menu {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    z-index: calc(var(--map-z) + 1);
+    z-index: calc(var(--map-z) + 10);
 
     min-height: var(--mat-toolbar-height);
     box-sizing: border-box;
@@ -29,18 +31,18 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: baseline;
+      font-weight: bold;
     }
   }
 
   .map-container {
     position: relative;
     top: var(--mat-toolbar-height);
-    height: calc(100vh - 2*var(--mat-toolbar-height) - 2rem);
+    height: var(--map-height);
 
     div[leaflet] {
       z-index: var(--map-z);
       height: 100%;
-
       border-radius: 0 0 var(--map-gap) var(--map-gap);
     }
 
@@ -50,14 +52,12 @@
       bottom: calc(2 * var(--map-gap));
     }
 
-    .map-attribution {
+    app-map-attribution {
       position: absolute;
       left: calc(1 * var(--map-gap));
       bottom: calc(var(--map-gap));
-      background-color: rgba(255,255,255,0.5);
-      padding: 0 1em;
       font-size: xx-small;
-      opacity: 0.7;
+      opacity: 0.5;
     }
   }
 
@@ -69,6 +69,51 @@
     padding: var(--map-gap);
     box-sizing: border-box;
     background-color: var(--map-bg);
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px; // TODO Define in variables? (from mat-card)
+    box-shadow: var(--map-box-shadow); // TODO Define in variables? (from mat-card)
+  }
+
+  @include responsive(desktop) {
+
+    --map-desktop-menu-width: 30vw;
+
+    .map-menu {
+      width: var(--map-desktop-menu-width);
+    }
+
+    .map-container {
+      top: 0;
+      left: var(--map-desktop-menu-width);
+      width: calc(100vw - var(--map-desktop-menu-width));
+
+      div[leaflet] {
+        border-radius: 0;
+      }
+
+      mat-button-toggle-group {
+        left: var(--map-gap);
+        bottom: var(--map-gap);
+      }
+
+      app-map-attribution {
+        position: absolute;
+        left: unset;
+        right: 0;
+        bottom: 0;
+        font-size: small;
+        opacity: 1;
+      }
+    }
+
+    app-map-card-list {
+      position: absolute;
+      top: var(--mat-toolbar-height);
+      left: 0;
+      width: var(--map-desktop-menu-width);
+      height: calc(var(--map-height) - var(--mat-toolbar-height));
+      overflow-y: scroll;
+      margin: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
   }
 }

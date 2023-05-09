@@ -20,9 +20,10 @@ import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MarkerComponent} from './components/marker.component';
 import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MapCardListComponent} from './components/map-card-list.component';
+import {MapCardListComponent} from './components/map-card-list/map-card-list.component';
 import {MatIconModule} from '@angular/material/icon';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {MapAttributionComponent} from './components/map-attribution.component';
 
 
 const components = [
@@ -30,6 +31,7 @@ const components = [
   MapOrganisationsFilterComponent,
   MarkerComponent,
   MapCardListComponent,
+  MapAttributionComponent,
 ]
 
 const pages = [

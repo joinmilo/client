@@ -65,8 +65,7 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   public readonly markerClusterOptions: MarkerClusterGroupOptions = {
     showCoverageOnHover: false,
-    zoomToBoundsOnClick: false,
-    spiderfyOnEveryZoom: true,
+    zoomToBoundsOnClick: true,
     spiderLegPolylineOptions: {
       weight: 2,
       color: defaultMarkerColor,
