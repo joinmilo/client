@@ -15,10 +15,10 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { PortalFooterModule } from './../portal/shared/footer/portal-footer.module';
+import { PasswordModule } from './../shared/password/password.module';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { LoginComponent } from './components/login/login.component';
-import { PasswordInputComponent } from './components/password/password-input.component';
 import { RegistrationFormComponent } from './components/registration/registration-form/registration-form.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SendPasswordResetComponent } from './components/reset-password/send-password-reset/send-password-reset.component';
@@ -38,7 +38,6 @@ const components = [
   LoginFormComponent,
   SendPasswordResetComponent,
   SetNewPasswordComponent,
-  PasswordInputComponent,
   ImageSliderComponent,
   LoginComponent
 ];
@@ -63,6 +62,7 @@ const materials = [
 const modules = [
   CoreModule,
   FormModule,
+  PasswordModule,
   PortalFooterModule,
   UserPortalRoutingModule,
 ];

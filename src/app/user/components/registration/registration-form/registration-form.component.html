@@ -15,7 +15,7 @@
         <mat-label appLabel="email"></mat-label>
         <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
       </mat-form-field>
-      <app-password-input [parentForm]="form"></app-password-input>
+      <app-password-input formControlName="password"></app-password-input>
       <app-privacy-policy-form formControlName="termsAccepted"></app-privacy-policy-form>
     </div>
     <app-hcaptcha-form formControlName="captchaToken"></app-hcaptcha-form>

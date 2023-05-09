@@ -19,6 +19,7 @@ export class RegistrationFormComponent implements OnDestroy {
     email: ['', [Validators.required, Validators.email]],
     captchaToken: ['', [Validators.required]],
     termsAccepted: [false, [Validators.requiredTrue]],
+    password: ['', [Validators.required]]
   });
 
   private destroy = new Subject<void>();
@@ -34,7 +35,7 @@ export class RegistrationFormComponent implements OnDestroy {
       firstName: this.form.value.firstName,
       lastName: this.form.value.lastName,
       email: this.form.value.email,
-      password: this.form.get('password')?.value,
+      password: this.form.value.password,
       captchaToken: this.form.value.captchaToken,
       termsAccepted: this.form.value.termsAccepted,
     }));
