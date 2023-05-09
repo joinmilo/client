@@ -4,7 +4,6 @@ import {MapPageComponent} from './pages/map/map.component';
 import {CommonModule} from '@angular/common';
 import {CoreModule} from '../../../core/core.module';
 import {MapPortalRoutingModule} from './map-routing.module';
-import {PortalCommonModule} from '../../common/common.module';
 import {StoreModule} from '@ngrx/store';
 import {mapFeatureKey} from './constants/map.constants';
 import {mapReducer} from './state/map.reducer';
@@ -20,21 +19,24 @@ import {CardModule} from '../../../shared/card/card.module';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MarkerComponent} from './components/marker.component';
 import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MapCardListComponent} from './components/map-card-list.component';
+import {MatIconModule} from '@angular/material/icon';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
-const components: Type<any>[] = [
-];
 
-const internal: Type<any>[] = [
+const components = [
   MapEventFilterComponent,
   MapOrganisationsFilterComponent,
   MarkerComponent,
+  MapCardListComponent,
 ]
 
-const pages: Type<any>[] = [
+const pages = [
   MapPageComponent,
 ];
 
-const framework: any[] = [
+const framework = [
   CommonModule,
   ReactiveFormsModule,
   StoreModule.forFeature(mapFeatureKey, mapReducer),
@@ -43,29 +45,34 @@ const framework: any[] = [
 
 const materials: Type<any>[] = [
   MatButtonModule,
+  MatButtonToggleModule,
+  MatIconModule,
   MatInputModule,
   MatSelectModule,
 ];
 
-const modules: Type<any>[] =[
+const modules = [
   CardModule,
   CoreModule,
   MapPortalRoutingModule,
-  PortalCommonModule
+]
+
+const libs = [
+  FontAwesomeModule,
+  LeafletModule,
+  LeafletMarkerClusterModule
 ]
 
 @NgModule({
   declarations: [
     ...components,
-    ...internal,
     ...pages
   ],
   imports: [
     ...framework,
     ...materials,
     ...modules,
-    LeafletModule,
-    LeafletMarkerClusterModule
+    ...libs
   ],
   exports: [
     ...components

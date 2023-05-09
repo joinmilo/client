@@ -8,7 +8,6 @@ import {
   divIcon,
   DivIconOptions,
   FeatureGroup,
-  FitBoundsOptions,
   latLng,
   LatLngBounds,
   Layer,
@@ -16,7 +15,6 @@ import {
   MapOptions,
   Marker,
   marker,
-  MarkerClusterGroup,
   MarkerClusterGroupOptions,
   PopupOptions,
   tileLayer
@@ -46,6 +44,8 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   public readonly defaultBounds = new LatLngBounds([[51.246938, 7.121244], [51.273150, 7.186175]]);
 
+  public showFilter = false;
+
   // TODO: Get colors/icons from API
   private markerColors = ["#54A6CB", "#A1C062", "#CB9F47", "#A6463D", ""]
   private markerIcons = ["fitness", "school", "music", "restaurant", "invalid"]
@@ -56,11 +56,11 @@ export class MapPageComponent implements OnInit, OnDestroy {
       minZoom: 8,
       maxZoom: 19,
       detectRetina: true,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-
     })],
     zoom:14,
     center:latLng(51.256214, 7.150764),
+    zoomControl: false,
+    attributionControl: false,
   };
 
   public readonly markerClusterOptions: MarkerClusterGroupOptions = {
@@ -109,6 +109,7 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(MapFeatureActions.getFilterOptions())
+    this.setFilter(FilterKey.events);
   }
 
   ngOnDestroy() {

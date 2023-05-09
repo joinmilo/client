@@ -1,24 +1,20 @@
-<div class="main">
-
-  <div *ngIf="(activeFilter | async) as filter">
-
-    <div style="display: flex;">
-      <button mat-stroked-button appLabel="events"
-              [disabled]="filter === FilterKey.events"
-              (click)="setFilter(FilterKey.events)">
-      </button>
-      <button mat-stroked-button appLabel="organisations"
-              [disabled]="filter === FilterKey.organisations"
-              (click)="setFilter(FilterKey.organisations)">
-      </button>
-      <!--
-      <button mat-stroked-button appLabel="deals"
-              [disabled]="filter === FilterKey.deals"
-              (click)="setFilter(FilterKey.deals)">
-      </button>
-      -->
+<div class="map-top">
+  <div class="map-nav">
+    <div>
+      <div *ngIf="(results | async) as results">
+        {{ results.count }}
+        <span *ngIf="results.count !== 1" [appLabel]="results.labelPlural"></span>
+        <span *ngIf="results.count === 1" [appLabel]="results.label"></span>
+      </div>
     </div>
 
+    <button mat-raised-button (click)="showFilter = !showFilter">
+      <fa-icon [icon]="['fas', 'filter']"></fa-icon>
+      <span appLabel="Filter"></span>
+    </button>
+  </div>
+
+  <div class="map-filter" *ngIf="showFilter && (activeFilter | async) as filter">
     <div *ngIf="filter === FilterKey.events">
       <app-portal-map-event-filter></app-portal-map-event-filter>
     </div>
@@ -28,7 +24,10 @@
     <div *ngIf="filter === FilterKey.deals">
     </div>
   </div>
+</div>
 
+
+<div class="map-container">
   <div leaflet
        [leafletOptions]="leafletOptions"
        [leafletFitBounds]="(mapBounds | async) ?? defaultBounds"
@@ -38,13 +37,15 @@
          [leafletMarkerClusterOptions]="markerClusterOptions"></div>
   </div>
 
-  <div id="results" *ngIf="(results | async) as results">
-    <div>
-      {{ results.count }}
-      <span *ngIf="results.count !== 1" [appLabel]="results.labelPlural"></span>
-      <span *ngIf="results.count === 1" [appLabel]="results.label"></span>
-    </div>
-    <app-content-card *ngFor="let card of results.data" [entity]="results.entity" [data]="card"></app-content-card>
+  <mat-button-toggle-group (change)="setFilter($event.value)" [value]="activeFilter | async" name="filter">
+    <mat-button-toggle [value]="FilterKey.events"><span appLabel="events"></span></mat-button-toggle>
+    <mat-button-toggle [value]="FilterKey.organisations"><span appLabel="organisations"></span></mat-button-toggle>
+    <mat-button-toggle [value]="FilterKey.deals"><span appLabel="deals"></span></mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <div class="map-attribution">
+    <a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors
   </div>
 </div>
 
+<app-map-card-list *ngIf="(results | async) as results" [entity]="results.entity" [cards]="results.data"></app-map-card-list>
