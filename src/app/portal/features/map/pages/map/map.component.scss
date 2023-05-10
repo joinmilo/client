@@ -1,5 +1,9 @@
 @import 'src/styles/mixins.scss';
 
+.landscape {
+  --map-height: calc(100vh - var(--map-above) - 3rem);
+}
+
 :host {
   display: block;
   position: relative;
@@ -8,9 +12,11 @@
   --map-bg: white;
   --map-gap: 1rem;
   --map-z: 0;
-  --map-height: calc(100vh - 2*var(--mat-toolbar-height) - 2rem);
+  --map-height: calc(100vh - var(--map-above) - 6rem); // 6rem needed at bottom in Safari/Chrome mobile
 
   --mat-toolbar-height: 56px; // TODO: Fix for main toolbar
+  --map-toolbar-height: 3rem;
+  --map-above: calc(var(--mat-toolbar-height) + var(--map-toolbar-height));
 
   .map-menu {
     position: absolute;
@@ -19,7 +25,7 @@
     right: 0;
     z-index: calc(var(--map-z) + 10);
 
-    min-height: var(--mat-toolbar-height);
+    min-height: var(--map-toolbar-height);
     box-sizing: border-box;
     padding: var(--map-gap);
 
@@ -37,7 +43,7 @@
 
   .map-container {
     position: relative;
-    top: var(--mat-toolbar-height);
+    top: var(--map-toolbar-height);
     height: var(--map-height);
 
     div[leaflet] {
@@ -63,13 +69,13 @@
 
   app-map-card-list {
     position: relative;
-    top: calc(var(--mat-toolbar-height) - var(--map-gap));
+    top: calc(var(--map-toolbar-height) - var(--map-gap));
     margin: 0 calc(0.5 * var(--map-gap));
     border-radius: var(--map-gap);
     padding: var(--map-gap);
     box-sizing: border-box;
     background-color: var(--map-bg);
-    box-shadow: var(--map-box-shadow); // TODO Define in variables? (from mat-card)
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px; // TODO Define in variables? (from mat-card)
   }
 
   @include responsive(desktop) {
@@ -78,6 +84,7 @@
 
     .map-menu {
       width: var(--map-desktop-menu-width);
+      border-radius: 0;
     }
 
     .map-container {
@@ -106,10 +113,10 @@
 
     app-map-card-list {
       position: absolute;
-      top: var(--mat-toolbar-height);
+      top: var(--map-toolbar-height);
       left: 0;
       width: var(--map-desktop-menu-width);
-      height: calc(var(--map-height) - var(--mat-toolbar-height));
+      height: calc(var(--map-height) - var(--map-toolbar-height));
       overflow-y: scroll;
       margin: 0;
       box-shadow: none;

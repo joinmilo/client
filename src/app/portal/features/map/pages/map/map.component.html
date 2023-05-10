@@ -27,11 +27,10 @@
 </div>
 
 
-<div class="map-container">
+<div [attr.class]="(isLandscape | async) ? 'map-container landscape' : 'map-container'">
   <div leaflet
        [leafletOptions]="leafletOptions"
-       [leafletFitBounds]="(mapBounds | async) ?? defaultBounds"
-       (leafletMapReady)="mapReady($event)">
+       [leafletFitBounds]="(mapBounds | async) ?? defaultBounds">
     <div *ngIf="(markers | async) as markers"
          [leafletMarkerCluster]="markers"
          [leafletMarkerClusterOptions]="markerClusterOptions"></div>
@@ -46,4 +45,9 @@
   </mat-button-toggle-group>
 </div>
 
-<app-map-card-list *ngIf="(results | async) as results" [entity]="results.entity" [cards]="results.data"></app-map-card-list>
+<app-map-card-list
+  *ngIf="(results | async) as results"
+  [entity]="results.entity"
+  [cards]="results.data"
+  [attr.class]="(isLandscape | async) ? 'landscape' : ''">
+</app-map-card-list>
