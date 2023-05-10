@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
@@ -10,23 +10,14 @@ import { selectSavedUser } from 'src/app/user/state/user.selectors';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
 })
-export class LoginFormComponent implements OnDestroy, OnInit {
-
-  onConfirmInput() {
-    if (this.form.get('password')?.value !== this.form.get('confirm')?.value) {
-      this.form.get('confirm')?.setErrors({ notSame: true });
-    } else {
-      this.form.get('confirm')?.setErrors(null);
-    }
-  }
+export class LoginFormComponent implements OnDestroy{
 
   public form = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
   });
 
-  hide: boolean = true;
-
+  hide = true;
   private destroy = new Subject<void>();
 
   constructor(
@@ -34,13 +25,7 @@ export class LoginFormComponent implements OnDestroy, OnInit {
     private fb: FormBuilder,
   ) {
   }
-
-  ngOnInit(): void {
-    this.form.get('confirm')?.valueChanges.subscribe(() => {
-      this.onConfirmInput();
-    });
-  }
-
+  
   onSubmit(formDirective: FormGroupDirective) {
     this.store.dispatch(UserActions.userLogin(
       this.form.value.email,

@@ -1,26 +1,28 @@
 @import 'src/styles/mixins.scss';
 
-main{
+main {
   background-color: white;
 }
 
-section{
+section {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4rem;
 }
 
-app-image-slider{
+app-image-slider {
   width: 30%;
-@include responsive(tablet){
-  display: none;
+
+  @include responsive(tablet) {
+    display: none;
   }
 }
 
-app-login-form{
+app-login-form {
   width: 30%;
-  @include responsive(tablet){
+
+  @include responsive(tablet) {
     width: 100%;
-    }
+  }
 }
