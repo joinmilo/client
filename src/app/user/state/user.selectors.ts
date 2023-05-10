@@ -9,11 +9,6 @@ export const selectUserVerified = createSelector(
   state => state.verified
 );
 
-export const selectSetEntropy = createSelector(
-  selectUserState,
-  state => state.entropy
-);
-
 export const selectSavedUser = createSelector(
   selectUserState,
   state => state.user

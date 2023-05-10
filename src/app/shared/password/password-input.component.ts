@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
@@ -15,14 +15,15 @@ import { selectSetEntropy } from './state/password.selectors';
 
 })
 export class PasswordInputComponent implements OnInit, OnDestroy {
+  @Output() passwordChanged = new EventEmitter<string>();
   @Input() showConfirm = true;
-  form: FormGroup;
-  hideIcon = true;
+  public form: FormGroup;
+  hidePassword = true;
   hideConfirm = true;
   pwSuccess = false;
   pwBitStrength: Maybe<number>;
   public adjustedEntropy?: number;
-  
+
   private destroy = new Subject<void>();
 
   constructor(private fb: FormBuilder, private store: Store) {
@@ -33,20 +34,30 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.store.select(selectConfiguration(pwBitStrengthConfig)).pipe(takeUntil(this.destroy))
+    this.store.select(selectConfiguration(pwBitStrengthConfig)).pipe(
+      takeUntil(this.destroy))
       .subscribe(config => {
         if (config?.value) {
           this.pwBitStrength = parseFloat(config?.value)
         }
       });
-        this.form.get('password')?.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.destroy)).subscribe(() => {
-          this.onPasswordInput();
-        });
+      
+    this.form.get('password')?.valueChanges.pipe(
+      distinctUntilChanged(),
+      takeUntil(this.destroy)).subscribe((value) => {
+      this.form.value.confirm = value;
+      this.passwordChanged.emit(value);
+      this.onPasswordInput();
+    });
 
-      this.form.get('confirm')?.valueChanges.pipe(distinctUntilChanged(), takeUntil(this.destroy)).subscribe(() => {
-        this.onConfirmInput();
-      });
-    }
+    this.form.get('confirm')?.valueChanges.pipe(
+      distinctUntilChanged(),
+      takeUntil(this.destroy)).subscribe((value) => {
+      this.form.value.confirm = value;
+      this.onConfirmInput();
+    });
+
+  }
 
   onPasswordInput() {
     const password = this.form.get('password')?.value as string;
@@ -54,8 +65,8 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
 
     this.store.select(selectSetEntropy).pipe(
       distinctUntilChanged(),
+      takeUntil(this.destroy),
       tap(entropy => {
-        console.log(entropy);
         this.checkPwSuccess(entropy);
       })
     ).subscribe();
@@ -63,7 +74,7 @@ export class PasswordInputComponent implements OnInit, OnDestroy {
 
   onConfirmInput() {
     if (this.showConfirm) {
-      if (this.form.get('password') !== this.form.get('confirm')) {
+      if (this.form.value.password !== this.form.value.confirm) {
         this.form.get('confirm')?.setErrors({ notSame: true });
       } else {
         this.form.get('confirm')?.setErrors(null);

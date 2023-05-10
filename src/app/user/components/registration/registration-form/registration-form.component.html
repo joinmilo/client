@@ -1,30 +1,40 @@
 <div class="main">
   <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+
     <h2 class="mat-headline-5" appLabel="register"></h2>
-    <p class="mat-subtitle-2" appLabel="registerInfotext"></p>
+    <p class="mat-subtitle-2">Erstelle deinen Account jetzt, um in deiner Umgebung auf dem Laufenden zu bleiben!</p>
+
     <div>
       <mat-form-field appearance="outline">
         <mat-label appLabel="firstName"></mat-label>
         <input matInput id="firstName" formControlName="firstName" placeholder="Max">
       </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label appLabel="lastName"></mat-label>
         <input matInput id="lastName" formControlName="lastName" placeholder="Mustermann">
       </mat-form-field>
+
       <mat-form-field appearance="outline">
         <mat-label appLabel="email"></mat-label>
         <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
       </mat-form-field>
-      <app-password-input formControlName="password"></app-password-input>
+
+      <app-password-input (passwordChanged)="onPasswordChanged($event)"></app-password-input>
+
       <app-privacy-policy-form formControlName="termsAccepted"></app-privacy-policy-form>
     </div>
+
     <app-hcaptcha-form formControlName="captchaToken"></app-hcaptcha-form>
+
     <div>
-      <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
+      <button class="send-button" mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button
+        color="primary">
         <fa-icon [icon]=" ['far', 'envelope']"></fa-icon>
         <label appLabel="send"></label>
       </button>
     </div>
+    
     <div>
       <p appLabel="haveAcc?"></p>
       <a [routerLink]="['/user', 'login']" appLabel="login"></a>

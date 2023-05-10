@@ -6,7 +6,6 @@ import { UserActions } from './user.actions';
 export interface UserState {
   user?: Maybe<UserEntity>,
   verified?: Maybe<boolean>,
-  entropy?: Maybe<number>,
   token?: Maybe<string>,
 }
 
@@ -18,10 +17,6 @@ export const userReducer = createReducer(
 
   on(UserActions.userVerified, (state, action): UserState => (
     { ...state, verified: action.verified}
-  )),
-
-  on(UserActions.setEntropy, (state, action): UserState => (
-    { ...state, entropy: action.entropy}
   )),
 
   on(UserActions.userSaved, (state, action): UserState => (
