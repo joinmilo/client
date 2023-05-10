@@ -20,9 +20,11 @@ import {
   tileLayer
 } from 'leaflet';
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
-import {map, Observable} from 'rxjs';
+import {map, Observable, Subject, takeUntil} from 'rxjs';
 import {dataToElement} from 'src/app/core/utils/card.utils';
 import {MapComponentsService} from '../../service/map-components.service';
+import {BreakpointObserver, BreakpointState} from '@angular/cdk/layout';
+import {tap} from 'rxjs/operators';
 
 
 @Component({
@@ -42,9 +44,11 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   public mapBounds: Observable<LatLngBounds>;
 
-  public readonly defaultBounds = new LatLngBounds([[51.246938, 7.121244], [51.273150, 7.186175]]);
+  public isLandscape: Observable<Boolean>;
 
   public showFilter = false;
+
+  public readonly defaultBounds = new LatLngBounds([[51.246938, 7.121244], [51.273150, 7.186175]]);
 
   // TODO: Get colors/icons from API
   private markerColors = ["#54A6CB", "#A1C062", "#CB9F47", "#A6463D", ""]
@@ -85,10 +89,16 @@ export class MapPageComponent implements OnInit, OnDestroy {
     maxWidth: 320
   }
 
+  private readonly orientations = {
+    portrait: '(orientation: portrait)',
+    landscape: '(orientation: landscape)'
+  };
+
   constructor(
     private route: ActivatedRoute,
     private store: Store,
     private components: MapComponentsService,
+    private breakpointObserver: BreakpointObserver
   ) {
     const markerGroup = this.results.pipe(
       map((results) => results?.data
@@ -103,7 +113,13 @@ export class MapPageComponent implements OnInit, OnDestroy {
         ? group.getBounds()
         : this.defaultBounds
       ),
-    )
+    );
+    this.isLandscape = breakpointObserver.observe([
+      this.orientations.portrait,
+      this.orientations.landscape,
+    ]).pipe(
+      map((result) => result.matches && result.breakpoints[this.orientations.landscape]),
+    );
   }
 
   ngOnInit() {
@@ -137,9 +153,5 @@ export class MapPageComponent implements OnInit, OnDestroy {
     } else {
       return null;
     }
-  }
-
-  mapReady(map: Map) {
-    map.attributionControl.setPosition('topright');
   }
 }
