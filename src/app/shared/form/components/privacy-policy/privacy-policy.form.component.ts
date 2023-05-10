@@ -14,6 +14,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
     }
   ],
 })
+
 export class PrivacyPolicyFormComponent {
   public value = false;
 

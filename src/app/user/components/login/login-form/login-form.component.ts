@@ -23,13 +23,13 @@ export class LoginFormComponent implements OnDestroy{
   constructor(
     private store: Store,
     private fb: FormBuilder,
-  ) {
-  }
+  ) {}
   
   onSubmit(formDirective: FormGroupDirective) {
+    
     this.store.dispatch(UserActions.userLogin(
       this.form.value.email,
-      this.form.value.password
+      this.form.value.password,
     ))
 
     this.store.select(selectSavedUser)

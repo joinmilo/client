@@ -1,4 +1,4 @@
-mutation login($email: String!, $password: String!) {
+mutation createToken($email: String!, $password: String!) {
   createToken(email: $email, password: $password) {
     access
     refresh

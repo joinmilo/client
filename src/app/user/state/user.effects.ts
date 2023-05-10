@@ -74,7 +74,7 @@ export class UserEffects {
   userLogin = createEffect(() => this.actions.pipe(
     ofType(UserActions.userLogin),
     filter(action => !!action.email && !!action.password),
-    switchMap((action) => this.loginService.mutate({
+    switchMap((action) => this.createTokenService.mutate({
       email: action.email!,
       password: action.password!
     })),
@@ -96,5 +96,5 @@ export class UserEffects {
     private sendPasswordResetService: SendPasswordResetGQL,
     private resetPasswordService: ResetPasswordGQL,
     private saveUserService: SaveUserGQL,
-    private loginService: LoginGQL) { }
+    private createTokenService: LoginGQL) { }
 }

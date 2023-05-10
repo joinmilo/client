@@ -4,11 +4,11 @@
     <div>
       <mat-form-field appearance="outline">
         <mat-label appLabel="email"></mat-label>
-        <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
+        <input matInput formControlName="email" placeholder="m.mustermann@example.com">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label appLabel="password"></mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
         <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide">
           <fa-icon [icon]="hide ? ['far', 'eye-slash']: ['far', 'eye']"></fa-icon>
