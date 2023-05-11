@@ -1,6 +1,6 @@
 import { Injectable, Injector } from '@angular/core';
 import { FetchResult } from '@apollo/client/core';
-import { EMPTY, Observable, of, Subscription, timer } from 'rxjs';
+import { EMPTY, Observable, Subscription, of, timer } from 'rxjs';
 import { delay, map, switchMap, tap } from 'rxjs/operators';
 import { LoginGQL, LoginMutation, Maybe, RefreshGQL, RefreshMutation, TokenDto } from 'src/schema/schema';
 import { refreshKey } from '../constants/core.constants';
@@ -48,9 +48,9 @@ export class AuthService {
     return !!(!exp || (exp * 1000 - Date.now()) < 0);
   }
 
-  public login(username?: Maybe<string>, password?: Maybe<string>): Observable<boolean> {
-    return username && password
-      ? this.injector.get<LoginGQL>(LoginGQL).mutate({ username, password }).pipe(
+  public login(email?: Maybe<string>, password?: Maybe<string>): Observable<boolean> {
+    return email && password
+      ? this.injector.get<LoginGQL>(LoginGQL).mutate({ email, password }).pipe(
           map((response: FetchResult<LoginMutation>) => response.data?.createToken as TokenDto),
           tap((tokens: TokenDto) => this.timers(tokens)),
           switchMap((tokens: TokenDto) => this.store(tokens)),

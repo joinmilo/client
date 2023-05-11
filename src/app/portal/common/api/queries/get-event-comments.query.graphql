@@ -1,7 +1,0 @@
-query getEventComments($params: FilterSortPaginateInput) {
-  getEventComments(params: $params) {
-    result {
-      ...EventComments
-    }
-  }
-}

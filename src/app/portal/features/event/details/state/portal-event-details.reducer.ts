@@ -1,9 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { EventEntity, Maybe } from 'src/schema/schema';
+import { EventCommentEntity, EventEntity, Maybe } from 'src/schema/schema';
 import { PortalEventDetailsActions } from './portal-event-details.actions';
 
 export interface PortalEventDetailsState {
-  eventDetails?: Maybe<EventEntity>,
+  comments?: Maybe<EventCommentEntity[]>,
+  details?: Maybe<EventEntity>,
 }
 
 export const initialState: PortalEventDetailsState = {
@@ -12,8 +13,12 @@ export const initialState: PortalEventDetailsState = {
 export const portalEventDetailsReducer = createReducer(
   initialState,
 
-  on(PortalEventDetailsActions.setEventDetails, (state, action): PortalEventDetailsState => (
-    { ...state, eventDetails: action.event }
+  on(PortalEventDetailsActions.setDetails, (state, action): PortalEventDetailsState => (
+    { ...state, details: action.event }
   )),
+
+  on(PortalEventDetailsActions.setComments, (state, action): PortalEventDetailsState => (
+    { ...state, comments: action.comments}
+  ))
 
 );

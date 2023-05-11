@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CommentsElement } from '../typings/comment';
+import { Comment } from '../typings/comment';
 
 @Component({
   selector: 'app-comment',
@@ -9,6 +9,5 @@ import { CommentsElement } from '../typings/comment';
 export class CommentComponent {
 
   @Input()
-  
-  public element?: CommentsElement;
+  public comment?: Comment;
 }

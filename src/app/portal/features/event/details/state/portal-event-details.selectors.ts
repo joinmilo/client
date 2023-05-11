@@ -6,5 +6,10 @@ export const selectPortalEventDetailsState = createFeatureSelector<PortalEventDe
 
 export const selectEventDetails = createSelector(
   selectPortalEventDetailsState,
-  state => state.eventDetails
+  state => state.details
 );
+
+export const selectEventsComments = createSelector(
+  selectPortalEventDetailsState,
+  state => state.comments
+)

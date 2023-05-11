@@ -1,7 +1,6 @@
 fragment EventComments on EventCommentEntity {
   id
   created
-  approved
   translatables {
     id
     content
@@ -12,6 +11,6 @@ fragment EventComments on EventCommentEntity {
     }
   }
   userContext{
-  ...UserContext
+    ...UserContext
   }
 }

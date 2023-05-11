@@ -52,6 +52,7 @@ export type AddressEntityInput = {
 
 export type AnswerEntity = {
   __typename?: 'AnswerEntity';
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
@@ -62,6 +63,7 @@ export type AnswerEntity = {
 };
 
 export type AnswerEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
@@ -73,18 +75,18 @@ export type AnswerEntityInput = {
 
 export type AnswerTranslatableEntity = {
   __typename?: 'AnswerTranslatableEntity';
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
-  result?: Maybe<Scalars['String']>;
 };
 
 export type AnswerTranslatableEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  result?: InputMaybe<Scalars['String']>;
 };
 
 export type AppEntity = {
@@ -129,6 +131,7 @@ export type ArticleCategoryEntity = {
   icon?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<ArticleCategoryTranslatableEntity>>>;
 };
 
@@ -139,6 +142,7 @@ export type ArticleCategoryEntityInput = {
   icon?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<ArticleCategoryTranslatableEntityInput>>>;
 };
 
@@ -160,8 +164,8 @@ export type ArticleCategoryTranslatableEntityInput = {
 
 export type ArticleCommentEntity = {
   __typename?: 'ArticleCommentEntity';
-  approved?: Maybe<Scalars['Boolean']>;
   article?: Maybe<ArticleEntity>;
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
@@ -170,8 +174,8 @@ export type ArticleCommentEntity = {
 };
 
 export type ArticleCommentEntityInput = {
-  approved?: InputMaybe<Scalars['Boolean']>;
   article?: InputMaybe<ArticleEntityInput>;
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
@@ -186,16 +190,13 @@ export type ArticleCommentTranslatableEntity = {
   id?: Maybe<Scalars['String']>;
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
-  parent?: Maybe<ArticleCommentEntity>;
 };
 
 export type ArticleCommentTranslatableEntityInput = {
   content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  parent?: InputMaybe<ArticleCommentEntityInput>;
 };
 
 export type ArticleEntity = {
@@ -206,6 +207,7 @@ export type ArticleEntity = {
   cardImage?: Maybe<MediaEntity>;
   category?: Maybe<ArticleCategoryEntity>;
   comments?: Maybe<Array<Maybe<ArticleCommentEntity>>>;
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   media?: Maybe<Array<Maybe<MediaEntity>>>;
@@ -213,8 +215,10 @@ export type ArticleEntity = {
   publicAuthor?: Maybe<PublicAuthorEntity>;
   ratings?: Maybe<Array<Maybe<ArticleRatingEntity>>>;
   seoDescription?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
+  title?: Maybe<Scalars['String']>;
   titleImage?: Maybe<MediaEntity>;
   translatables?: Maybe<Array<Maybe<ArticleTranslatableEntity>>>;
   visitors?: Maybe<Array<Maybe<ArticleVisitorEntity>>>;
@@ -227,6 +231,7 @@ export type ArticleEntityInput = {
   cardImage?: InputMaybe<MediaEntityInput>;
   category?: InputMaybe<ArticleCategoryEntityInput>;
   comments?: InputMaybe<Array<InputMaybe<ArticleCommentEntityInput>>>;
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   media?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
@@ -234,8 +239,10 @@ export type ArticleEntityInput = {
   publicAuthor?: InputMaybe<PublicAuthorEntityInput>;
   ratings?: InputMaybe<Array<InputMaybe<ArticleRatingEntityInput>>>;
   seoDescription?: InputMaybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['String']>;
   titleImage?: InputMaybe<MediaEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<ArticleTranslatableEntityInput>>>;
   visitors?: InputMaybe<Array<InputMaybe<ArticleVisitorEntityInput>>>;
@@ -420,14 +427,17 @@ export type ContestEntity = {
   __typename?: 'ContestEntity';
   cardImage?: Maybe<MediaEntity>;
   created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
   dueDate?: Maybe<Scalars['Date']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   multiSubmission?: Maybe<Scalars['Boolean']>;
   multiVote?: Maybe<Scalars['Boolean']>;
+  name?: Maybe<Scalars['String']>;
   offer?: Maybe<Scalars['Boolean']>;
   participation?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
   seoDescription?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
   state?: Maybe<ContestStateEntity>;
@@ -439,14 +449,17 @@ export type ContestEntity = {
 export type ContestEntityInput = {
   cardImage?: InputMaybe<MediaEntityInput>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
   dueDate?: InputMaybe<Scalars['Date']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   multiSubmission?: InputMaybe<Scalars['Boolean']>;
   multiVote?: InputMaybe<Scalars['Boolean']>;
+  name?: InputMaybe<Scalars['String']>;
   offer?: InputMaybe<Scalars['Boolean']>;
   participation?: InputMaybe<Array<InputMaybe<ContestParticipationEntityInput>>>;
   seoDescription?: InputMaybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
   state?: InputMaybe<ContestStateEntityInput>;
@@ -463,6 +476,7 @@ export type ContestParticipationEntity = {
   id?: Maybe<Scalars['String']>;
   media_submissions?: Maybe<Array<Maybe<MediaEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  textSubmission?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<ContestParticipationTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
   winner?: Maybe<Scalars['Boolean']>;
@@ -475,6 +489,7 @@ export type ContestParticipationEntityInput = {
   id?: InputMaybe<Scalars['String']>;
   media_submissions?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  textSubmission?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestParticipationTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
   winner?: InputMaybe<Scalars['Boolean']>;
@@ -540,6 +555,7 @@ export type ContestTypeEntity = {
   id?: Maybe<Scalars['String']>;
   key?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<ContestTypeTranslatableEntity>>>;
 };
 
@@ -549,6 +565,7 @@ export type ContestTypeEntityInput = {
   id?: InputMaybe<Scalars['String']>;
   key?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestTypeTranslatableEntityInput>>>;
 };
 
@@ -593,6 +610,7 @@ export type DealCategoryEntity = {
   icon?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<DealCategoryTranslatableEntity>>>;
 };
 
@@ -603,6 +621,7 @@ export type DealCategoryEntityInput = {
   icon?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<DealCategoryTranslatableEntityInput>>>;
 };
 
@@ -630,12 +649,15 @@ export type DealEntity = {
   contact?: Maybe<ContactEntity>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   creator?: Maybe<UserContextEntity>;
+  description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   media?: Maybe<Array<Maybe<MediaEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   offer?: Maybe<Scalars['Boolean']>;
   price: Scalars['Float'];
   seoDescription?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
   titleImage?: Maybe<MediaEntity>;
@@ -650,12 +672,15 @@ export type DealEntityInput = {
   contact?: InputMaybe<ContactEntityInput>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   creator?: InputMaybe<UserContextEntityInput>;
+  description?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   media?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   offer?: InputMaybe<Scalars['Boolean']>;
   price: Scalars['Float'];
   seoDescription?: InputMaybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
   titleImage?: InputMaybe<MediaEntityInput>;
@@ -727,6 +752,7 @@ export type EventCategoryEntity = {
   icon?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<EventCategoryTranslatableEntity>>>;
 };
 
@@ -737,6 +763,7 @@ export type EventCategoryEntityInput = {
   icon?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<EventCategoryTranslatableEntityInput>>>;
 };
 
@@ -758,7 +785,7 @@ export type EventCategoryTranslatableEntityInput = {
 
 export type EventCommentEntity = {
   __typename?: 'EventCommentEntity';
-  approved?: Maybe<Scalars['Boolean']>;
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   event?: Maybe<EventEntity>;
   id?: Maybe<Scalars['String']>;
@@ -768,7 +795,7 @@ export type EventCommentEntity = {
 };
 
 export type EventCommentEntityInput = {
-  approved?: InputMaybe<Scalars['Boolean']>;
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   event?: InputMaybe<EventEntityInput>;
   id?: InputMaybe<Scalars['String']>;
@@ -885,6 +912,7 @@ export type EventTargetGroupEntity = {
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<EventTargetGroupTranslatableEntity>>>;
 };
 
@@ -892,6 +920,7 @@ export type EventTargetGroupEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<EventTargetGroupTranslatableEntityInput>>>;
 };
 
@@ -955,6 +984,7 @@ export type FeatureEntity = {
   key?: Maybe<Scalars['String']>;
   menuItem?: Maybe<Array<Maybe<MenuItemEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   pageFeatures?: Maybe<Array<Maybe<PageFeatureEntity>>>;
   translatables?: Maybe<Array<Maybe<FeatureTranslatableEntity>>>;
 };
@@ -965,6 +995,7 @@ export type FeatureEntityInput = {
   key?: InputMaybe<Scalars['String']>;
   menuItem?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   pageFeatures?: InputMaybe<Array<InputMaybe<PageFeatureEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<FeatureTranslatableEntityInput>>>;
 };
@@ -999,6 +1030,7 @@ export type FormTemplateTypeEntity = {
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<FormTemplateTypeTranslatableEntity>>>;
 };
 
@@ -1006,6 +1038,7 @@ export type FormTemplateTypeEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<FormTemplateTypeTranslatableEntityInput>>>;
 };
 
@@ -1016,16 +1049,13 @@ export type FormTemplateTypeTranslatableEntity = {
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
-  parent?: Maybe<FormTemplateTypeEntity>;
 };
 
 export type FormTemplateTypeTranslatableEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
-  parent?: InputMaybe<FormTemplateTypeEntityInput>;
 };
 
 export type FriendEntity = {
@@ -1151,6 +1181,7 @@ export type MenuItemEntity = {
   header?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   order?: Maybe<Scalars['Int']>;
   page?: Maybe<PageEntity>;
   parent?: Maybe<MenuItemEntity>;
@@ -1164,6 +1195,7 @@ export type MenuItemEntityInput = {
   header?: InputMaybe<Scalars['Boolean']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   order?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<PageEntityInput>;
   parent?: InputMaybe<MenuItemEntityInput>;
@@ -1285,6 +1317,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   addUploads?: Maybe<UserEntity>;
   changePassword?: Maybe<Scalars['Boolean']>;
+  checkPassword?: Maybe<Scalars['Float']>;
   createToken?: Maybe<TokenDto>;
   deleteAddress?: Maybe<Scalars['Boolean']>;
   deleteAddresses?: Maybe<Scalars['Boolean']>;
@@ -1508,9 +1541,15 @@ export type MutationChangePasswordArgs = {
 
 
 /** Mutation root */
-export type MutationCreateTokenArgs = {
+export type MutationCheckPasswordArgs = {
   password?: InputMaybe<Scalars['String']>;
-  username?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationCreateTokenArgs = {
+  email?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2122,8 +2161,8 @@ export type MutationRefreshTokenArgs = {
 
 /** Mutation root */
 export type MutationResetPasswordArgs = {
-  key?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2735,19 +2774,19 @@ export type MutationSendGlobalPushArgs = {
 
 /** Mutation root */
 export type MutationSendPasswordResetArgs = {
-  mailAddress?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
 };
 
 
 /** Mutation root */
 export type MutationSendVerificationArgs = {
-  mailAddress?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
 };
 
 
 /** Mutation root */
 export type MutationVerifyArgs = {
-  key?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']>;
 };
 
 export type NotificationEntity = {
@@ -2801,7 +2840,7 @@ export enum NotificationType {
 
 export type OrganisationCommentEntity = {
   __typename?: 'OrganisationCommentEntity';
-  approved?: Maybe<Scalars['Boolean']>;
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
@@ -2810,7 +2849,7 @@ export type OrganisationCommentEntity = {
 };
 
 export type OrganisationCommentEntityInput = {
-  approved?: InputMaybe<Scalars['Boolean']>;
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
@@ -2825,16 +2864,13 @@ export type OrganisationCommentTranslatableEntity = {
   id?: Maybe<Scalars['String']>;
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
-  parent?: Maybe<OrganisationCommentEntity>;
 };
 
 export type OrganisationCommentTranslatableEntityInput = {
   content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  parent?: InputMaybe<OrganisationCommentEntityInput>;
 };
 
 export type OrganisationEntity = {
@@ -2845,6 +2881,7 @@ export type OrganisationEntity = {
   comments?: Maybe<Array<Maybe<OrganisationCommentEntity>>>;
   contact?: Maybe<ContactEntity>;
   created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
   events?: Maybe<Array<Maybe<EventEntity>>>;
   id?: Maybe<Scalars['String']>;
   media?: Maybe<Array<Maybe<MediaEntity>>>;
@@ -2866,6 +2903,7 @@ export type OrganisationEntityInput = {
   comments?: InputMaybe<Array<InputMaybe<OrganisationCommentEntityInput>>>;
   contact?: InputMaybe<ContactEntityInput>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
   events?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
   id?: InputMaybe<Scalars['String']>;
   media?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
@@ -2934,15 +2972,19 @@ export type OrganisationVisitorEntityInput = {
 
 export type PageEntity = {
   __typename?: 'PageEntity';
+  callText?: Maybe<Scalars['String']>;
   callUrl?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   isLanding?: Maybe<Scalars['Boolean']>;
   media?: Maybe<Array<Maybe<MediaEntity>>>;
   menuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   pageFeatures?: Maybe<Array<Maybe<PageFeatureEntity>>>;
   seoDescription?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   titleImage?: Maybe<MediaEntity>;
   translatables?: Maybe<Array<Maybe<PageTranslatableEntity>>>;
@@ -2950,15 +2992,19 @@ export type PageEntity = {
 };
 
 export type PageEntityInput = {
+  callText?: InputMaybe<Scalars['String']>;
   callUrl?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   isLanding?: InputMaybe<Scalars['Boolean']>;
   media?: InputMaybe<Array<InputMaybe<MediaEntityInput>>>;
   menuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   pageFeatures?: InputMaybe<Array<InputMaybe<PageFeatureEntityInput>>>;
   seoDescription?: InputMaybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   titleImage?: InputMaybe<MediaEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<PageTranslatableEntityInput>>>;
@@ -3321,16 +3367,16 @@ export type PasswordResetEntity = {
   __typename?: 'PasswordResetEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
-  key?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  token?: Maybe<Scalars['String']>;
   user?: Maybe<UserEntity>;
 };
 
 export type PasswordResetEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  key?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  token?: InputMaybe<Scalars['String']>;
   user?: InputMaybe<UserEntityInput>;
 };
 
@@ -4089,6 +4135,7 @@ export type QuestionEntity = {
   modified?: Maybe<Scalars['OffsetDateTime']>;
   order?: Maybe<Scalars['Int']>;
   questionOptions?: Maybe<Array<Maybe<QuestionOptionEntity>>>;
+  subject?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<QuestionTranslatableEntity>>>;
   type?: Maybe<QuestionTypeEntity>;
 };
@@ -4100,6 +4147,7 @@ export type QuestionEntityInput = {
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   order?: InputMaybe<Scalars['Int']>;
   questionOptions?: InputMaybe<Array<InputMaybe<QuestionOptionEntityInput>>>;
+  subject?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<QuestionTranslatableEntityInput>>>;
   type?: InputMaybe<QuestionTypeEntityInput>;
 };
@@ -4108,6 +4156,7 @@ export type QuestionOptionEntity = {
   __typename?: 'QuestionOptionEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   order?: Maybe<Scalars['Int']>;
   question?: Maybe<QuestionEntity>;
@@ -4117,6 +4166,7 @@ export type QuestionOptionEntity = {
 export type QuestionOptionEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
+  label?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   order?: InputMaybe<Scalars['Int']>;
   question?: InputMaybe<QuestionEntityInput>;
@@ -4130,16 +4180,13 @@ export type QuestionOptionTranslatableEntity = {
   label?: Maybe<Scalars['String']>;
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
-  parent?: Maybe<QuestionOptionEntity>;
 };
 
 export type QuestionOptionTranslatableEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   label?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  parent?: InputMaybe<QuestionOptionEntityInput>;
 };
 
 export type QuestionTranslatableEntity = {
@@ -4148,16 +4195,13 @@ export type QuestionTranslatableEntity = {
   id?: Maybe<Scalars['String']>;
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
-  parent?: Maybe<QuestionEntity>;
   subject?: Maybe<Scalars['String']>;
 };
 
 export type QuestionTranslatableEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  parent?: InputMaybe<QuestionEntityInput>;
   subject?: InputMaybe<Scalars['String']>;
 };
 
@@ -4181,6 +4225,7 @@ export type QuestionTypeEntityInput = {
 export type ReportEntity = {
   __typename?: 'ReportEntity';
   captchaToken?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
@@ -4193,6 +4238,7 @@ export type ReportEntity = {
 
 export type ReportEntityInput = {
   captchaToken?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   email?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
@@ -4224,6 +4270,7 @@ export type ReportTypeEntity = {
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   reports?: Maybe<Array<Maybe<ReportEntity>>>;
   translatables?: Maybe<Array<Maybe<ReportTypeTranslatableEntity>>>;
 };
@@ -4232,6 +4279,7 @@ export type ReportTypeEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   reports?: InputMaybe<Array<InputMaybe<ReportEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<ReportTypeTranslatableEntityInput>>>;
 };
@@ -4395,10 +4443,12 @@ export type SurveyEntity = {
   assignments?: Maybe<Array<Maybe<AssignmentEntity>>>;
   cardImage?: Maybe<MediaEntity>;
   created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
   due_date?: Maybe<Scalars['Date']>;
   id?: Maybe<Scalars['String']>;
   mandatory?: Maybe<Scalars['Boolean']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
   seoDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
@@ -4411,10 +4461,12 @@ export type SurveyEntityInput = {
   assignments?: InputMaybe<Array<InputMaybe<AssignmentEntityInput>>>;
   cardImage?: InputMaybe<MediaEntityInput>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
   due_date?: InputMaybe<Scalars['Date']>;
   id?: InputMaybe<Scalars['String']>;
   mandatory?: InputMaybe<Scalars['Boolean']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
   seoDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
@@ -4426,6 +4478,7 @@ export type SurveyEntityInput = {
 export type SurveyResultEntity = {
   __typename?: 'SurveyResultEntity';
   answer?: Maybe<Array<Maybe<AnswerEntity>>>;
+  comment?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
@@ -4436,6 +4489,7 @@ export type SurveyResultEntity = {
 
 export type SurveyResultEntityInput = {
   answer?: InputMaybe<Array<InputMaybe<AnswerEntityInput>>>;
+  comment?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
@@ -4569,6 +4623,7 @@ export type UserContextEntity = {
   contestVotes?: Maybe<Array<Maybe<ContestVoteEntity>>>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   deals?: Maybe<Array<Maybe<DealEntity>>>;
+  description?: Maybe<Scalars['String']>;
   eventComment?: Maybe<Array<Maybe<EventCommentEntity>>>;
   eventRating?: Maybe<Array<Maybe<EventRatingEntity>>>;
   events?: Maybe<Array<Maybe<EventEntity>>>;
@@ -4601,6 +4656,7 @@ export type UserContextEntityInput = {
   contestVotes?: InputMaybe<Array<InputMaybe<ContestVoteEntityInput>>>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   deals?: InputMaybe<Array<InputMaybe<DealEntityInput>>>;
+  description?: InputMaybe<Scalars['String']>;
   eventComment?: InputMaybe<Array<InputMaybe<EventCommentEntityInput>>>;
   eventRating?: InputMaybe<Array<InputMaybe<EventRatingEntityInput>>>;
   events?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
@@ -4639,6 +4695,7 @@ export type UserContextTranslatableEntityInput = {
 
 export type UserEntity = {
   __typename?: 'UserEntity';
+  captchaToken?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   email?: Maybe<Scalars['String']>;
   firstName?: Maybe<Scalars['String']>;
@@ -4651,12 +4708,14 @@ export type UserEntity = {
   phone?: Maybe<Scalars['String']>;
   roles?: Maybe<Array<Maybe<RoleEntity>>>;
   subscriptions?: Maybe<Array<Maybe<SubscriptionEntity>>>;
+  termsAccepted?: Maybe<Scalars['Boolean']>;
   userContext?: Maybe<UserContextEntity>;
   verifications?: Maybe<Array<Maybe<VerificationEntity>>>;
   verified?: Maybe<Scalars['Boolean']>;
 };
 
 export type UserEntityInput = {
+  captchaToken?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   email?: InputMaybe<Scalars['String']>;
   firstName?: InputMaybe<Scalars['String']>;
@@ -4669,6 +4728,7 @@ export type UserEntityInput = {
   phone?: InputMaybe<Scalars['String']>;
   roles?: InputMaybe<Array<InputMaybe<RoleEntityInput>>>;
   subscriptions?: InputMaybe<Array<InputMaybe<SubscriptionEntityInput>>>;
+  termsAccepted?: InputMaybe<Scalars['Boolean']>;
   userContext?: InputMaybe<UserContextEntityInput>;
   verifications?: InputMaybe<Array<InputMaybe<VerificationEntityInput>>>;
   verified?: InputMaybe<Scalars['Boolean']>;
@@ -4676,6 +4736,7 @@ export type UserEntityInput = {
 
 export type UserFormTemplateEntity = {
   __typename?: 'UserFormTemplateEntity';
+  content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
@@ -4686,6 +4747,7 @@ export type UserFormTemplateEntity = {
 };
 
 export type UserFormTemplateEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
@@ -4715,16 +4777,16 @@ export type VerificationEntity = {
   __typename?: 'VerificationEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
-  key?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+  token?: Maybe<Scalars['String']>;
   user?: Maybe<UserEntity>;
 };
 
 export type VerificationEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
-  key?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  token?: InputMaybe<Scalars['String']>;
   user?: InputMaybe<UserEntityInput>;
 };
 
@@ -4757,7 +4819,7 @@ export type DealFragment = { __typename?: 'DealEntity', id?: string | null, pric
 
 export type EventCategoryFragment = { __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
-export type EventCommentsFragment = { __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, approved?: boolean | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null };
+export type EventCommentsFragment = { __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null };
 
 export type EventTargetGroupFragment = { __typename?: 'EventTargetGroupEntity', id?: string | null, translatables?: Array<{ __typename?: 'EventTargetGroupTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
@@ -4790,7 +4852,7 @@ export type ThemeFragment = { __typename?: 'ThemeEntity', id?: string | null, is
 export type UserContextFragment = { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null };
 
 export type LoginMutationVariables = Exact<{
-  username: Scalars['String'];
+  email: Scalars['String'];
   password: Scalars['String'];
 }>;
 
@@ -4861,7 +4923,7 @@ export type GetEventCommentsQueryVariables = Exact<{
 }>;
 
 
-export type GetEventCommentsQuery = { __typename?: 'Query', getEventComments?: { __typename?: 'PageableList_EventCommentEntity', result?: Array<{ __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, approved?: boolean | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null } | null> | null } | null };
+export type GetEventCommentsQuery = { __typename?: 'Query', getEventComments?: { __typename?: 'PageableList_EventCommentEntity', result?: Array<{ __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null } | null> | null } | null };
 
 export type GetEventTargetGroupsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5152,7 +5214,6 @@ export const EventCommentsFragmentDoc = gql`
     fragment EventComments on EventCommentEntity {
   id
   created
-  approved
   translatables {
     id
     content
@@ -5421,8 +5482,8 @@ export const ThemeFragmentDoc = gql`
 }
     `;
 export const LoginDocument = gql`
-    mutation login($username: String!, $password: String!) {
-  createToken(username: $username, password: $password) {
+    mutation login($email: String!, $password: String!) {
+  createToken(email: $email, password: $password) {
     access
     refresh
   }

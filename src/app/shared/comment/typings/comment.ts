@@ -1,10 +1,9 @@
-import { Maybe } from "graphql/jsutils/Maybe";
-import { EventCommentTranslatableEntity, UserContextEntityInput } from "src/schema/schema";
+import { EventCommentTranslatableEntity, Maybe, UserContextEntityInput } from 'src/schema/schema';
 
-export type CommentsElement = {
-  created?: Maybe<string>;
+export type Comment = {
   id?: Maybe<string>;
-  modified?: Maybe<string>;
+  created?: Maybe<string>;
+  content?: Maybe<string>,
   translatables?: Maybe<Array<Maybe<EventCommentTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntityInput>;
 }
