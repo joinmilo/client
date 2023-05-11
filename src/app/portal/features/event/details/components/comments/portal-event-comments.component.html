@@ -1,9 +1,18 @@
 <div class="main">
   <app-page-title title="comments"></app-page-title>
   <section>
-    <ng-container *ngFor="let comment of (eventComments | async); let last = last">
+    <button mat-raised-button color="accent"
+        [routerLink]="['../']">
+      <span appLabel="toEvent" preFix="←"></span>
+    </button>
+    <button mat-raised-button color="primary">
+      <span appLabel="writeComment"></span>
+    </button>
+  </section>
+  <article>
+    <ng-container *ngFor="let comment of (comments | async); let last = last">
       <app-comment [comment]="comment"></app-comment>
       <mat-divider *ngIf="!last"></mat-divider>
     </ng-container>
-  </section>
+  </article>
 </div>

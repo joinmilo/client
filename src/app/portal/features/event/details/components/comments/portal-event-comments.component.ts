@@ -13,7 +13,7 @@ import { selectEventsComments } from '../../state/portal-event-details.selectors
 })
 export class PortalEventCommentsComponent implements OnInit, OnDestroy {
   
-  public eventComments = this.store.select(selectEventsComments);
+  public comments = this.store.select(selectEventsComments);
 
   private destroy = new Subject<void>();
 
@@ -25,10 +25,8 @@ export class PortalEventCommentsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy))
-      .subscribe(params => {
-        const event = params.get(eventSlug) || '';
-        this.store.dispatch(PortalEventDetailsActions.getComments(event));
-      });
+      .subscribe(params => this.store.dispatch(
+        PortalEventDetailsActions.getComments(params.get(eventSlug) || '')));
   }
 
   ngOnDestroy(): void {
