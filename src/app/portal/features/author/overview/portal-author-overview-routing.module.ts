@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PortalEventOverviewComponent } from './components/overview/portal-event-overview.component';
+import { PortalAuthorOverviewComponent } from './components/portal-author-overview.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PortalEventOverviewComponent,
+    component: PortalAuthorOverviewComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PortalEventOverviewRoutingModule { }
+export class PortalAuthorOverviewRoutingModule { }
