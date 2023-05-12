@@ -1,23 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { articlesFeatureKey, authorFeatureKey, calendarFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, reportFeatureKey } from '../core/constants/core.constants';
+import { authorId } from './features/author/details/constants/portal-author-details.constant';
+import { eventSlug } from './features/event/details/constants/event-details.constant';
 
 const routes: Routes = [
   {
     path: authorFeatureKey,
+    loadChildren: () => import('./features/author/overview/portal-author-overview.module')
+      .then((imported) => imported.AuthorPortalModule),
+  },
+  {
+    path: `${authorFeatureKey}/:${authorId}`,
     loadChildren: () => import('./features/author/details/portal-author-details.module')
       .then((imported) => imported.PortalAuthorDetailsModule),
   },
+
   {
     path: articlesFeatureKey,
     loadChildren: () => import('./features/article/main/portal-article.module')
       .then((imported) => imported.PortalArticleModule),
   },
+  
   {
     path: eventsFeatureKey,
     loadChildren: () => import('./features/event/overview/portal-event-overview.module')
       .then((imported) => imported.PortalEventOverviewModule),
   },
+  {
+    path: `${eventsFeatureKey}/:${eventSlug}`,
+    loadChildren: () => import('./features/event/details/portal-event-details.module')
+      .then((imported) => imported.PortalEventDetailsModule),
+  },
+
   {
     path: calendarFeatureKey,
     loadChildren: () => import('./features/calendar/main/portal-calendar.module')

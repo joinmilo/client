@@ -1,0 +1,10 @@
+<div class="main">
+  <app-page-title title="blogger"></app-page-title>
+  <!-- TODO: Add Sort button -->
+  <section>
+    <app-contact-card *ngFor="let author of (authors | async)" 
+      entity="UserContextEntity" 
+      [data]="author">
+    </app-contact-card>
+  </section>
+</div>

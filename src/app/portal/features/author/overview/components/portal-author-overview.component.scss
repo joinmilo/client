@@ -1,0 +1,12 @@
+div {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
