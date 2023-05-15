@@ -11,6 +11,7 @@ import { CardModule } from 'src/app/shared/card/card.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
+import { UserCommentModule } from './../../../../shared/comment-card/user-comment.module';
 import { PortalEventDetailsComponent } from './components/details/portal-event-details.component';
 import { EventCardDetailComponent } from './components/event-card-detail/event-card-detail.component';
 import { EventDescriptionComponent } from './components/event-description/event-description.component';
@@ -48,6 +49,7 @@ const modules = [
   FormModule,
   TableModule,
   TitleModule,
+  UserCommentModule,
 ];
 
 const libs = [
