@@ -17,21 +17,23 @@ import {MapEventFilterComponent} from './components/forms/event-filter.component
 import {MapOrganisationsFilterComponent} from './components/forms/organisation-filter.component';
 import {CardModule} from '../../../shared/card/card.module';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
-import {MarkerComponent} from './components/marker.component';
+import {MapMarkerComponent} from './components/map-marker.component';
 import {LeafletMarkerClusterModule} from '@asymmetrik/ngx-leaflet-markercluster';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MapCardListComponent} from './components/map-card-list/map-card-list.component';
 import {MatIconModule} from '@angular/material/icon';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MapAttributionComponent} from './components/map-attribution.component';
+import {MapPopupComponent} from './components/map-popup.component';
 
 
 const components = [
+  MapAttributionComponent,
+  MapCardListComponent,
   MapEventFilterComponent,
   MapOrganisationsFilterComponent,
-  MarkerComponent,
-  MapCardListComponent,
-  MapAttributionComponent,
+  MapPopupComponent,
+  MapMarkerComponent,
 ]
 
 const pages = [

@@ -30,7 +30,7 @@
 <div [attr.class]="(isLandscape | async) ? 'map-container landscape' : 'map-container'">
   <div leaflet
        [leafletOptions]="leafletOptions"
-       [leafletFitBounds]="(mapBounds | async) ?? defaultBounds">
+       [leafletFitBounds]="(mapBounds | async)!">
     <div *ngIf="(markers | async) as markers"
          [leafletMarkerCluster]="markers"
          [leafletMarkerClusterOptions]="markerClusterOptions"></div>

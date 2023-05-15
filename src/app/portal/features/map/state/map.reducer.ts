@@ -11,6 +11,7 @@ import {
 import {MapFeatureActions} from './map.actions';
 import {FilterKey} from '../constants/map.constants'
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
+import {PointOfInterest} from '../typings/point-of-interest';
 
 export interface MapState {
   activeFilter: FilterKey;
@@ -59,15 +60,18 @@ export interface MapState {
     label: string,
     labelPlural: string,
     entity: CardEntity,
-    data: CardData[]
+    data: CardData[],
   }
+
+  pois: PointOfInterest[],
 }
 
 export const initialState: MapState = {
   activeFilter: FilterKey.events,
   organisationFilterOptions: {
     ratings: [1, 2, 3, 4, 5],
-  }
+  },
+  pois: []
 };
 
 export const mapReducer = createReducer(
@@ -129,4 +133,9 @@ export const mapReducer = createReducer(
     ...state,
     searchResults: { ...action }
   })),
+
+  on(MapFeatureActions.setPois, (state, action): MapState => ({
+    ...state,
+    pois: action.pois
+  }))
 )

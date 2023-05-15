@@ -9,6 +9,7 @@ import {
 } from 'src/schema/schema';
 import {FilterKey} from '../constants/map.constants';
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
+import {PointOfInterest} from '../typings/point-of-interest';
 
 export const MapFeatureActions = createActionGroup({
   source: 'Map Feature',
@@ -52,5 +53,7 @@ export const MapFeatureActions = createActionGroup({
       entity: CardEntity,
       data: CardData[]
     }>(),
+
+    'set pois': props<{pois: PointOfInterest[]}>(),
   }
 })
