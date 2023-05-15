@@ -5,18 +5,22 @@ import {map, switchMap, withLatestFrom} from 'rxjs';
 import {
   ConjunctionOperator,
   DealCategoryEntity,
+  DealEntity,
   EventCategoryEntity,
   EventEntity,
   EventTargetGroupEntity,
+  GetDealsGQL,
   GetEventsGQL,
-  GetMapFilterOptionsGQL, GetOrganisationsGQL, OrganisationEntity,
+  GetMapFilterOptionsGQL,
+  GetOrganisationsGQL,
+  OrganisationEntity,
   QueryOperator,
   SuburbEntity
 } from 'src/schema/schema';
 import {QueryExpressionService} from 'src/app/core/services/query-expression.service';
 import {Store} from '@ngrx/store';
-import {selectEventFilter, selectMapFilters} from './map.selector';
-import {FilterKey} from '../constants/map.constants';
+import {selectMapFilters} from './map.selector';
+import {DealOfferStatus, FilterKey} from '../constants/map.constants';
 import {dealsToPois, eventsToPois, organisationsToPois} from '../utils/point-of-interest.util';
 
 @Injectable()
@@ -36,11 +40,21 @@ export class MapEffects {
   filterEvents = createEffect(() => this.actions.pipe(
     ofType(MapFeatureActions.setEventFilter),
     map((action) => {
+      const builder = this.queryExpressionService.builder();
+      if (!action.showPastEvents) {
+        builder.add("schedules.endDate", new Date().toISOString(), QueryOperator.GreaterOrEqual);
+      }
+      if (action.showOnlyAdmissionFree) {
+        builder.add("entryFee", null);
+      }
       return {
         params: {
-          expression: this.queryExpressionService.builder()
-            .addIfNotNull('category.id', action.categoryId)
-            .addIfNotNull('targetGroup.id', action.targetGroupId)
+          expression: builder
+            .addIfNotEmpty('category.id', action.categoryId)
+            .addIfNotEmpty('targetGroups.id', action.targetGroupId)
+            .addIfNotEmpty('address.suburb.id', action.suburbId)
+            .addIfNotEmpty("schedules.startDate", action.dateRange?.start?.toISOString(), QueryOperator.GreaterOrEqual)
+            .addIfNotEmpty("schedules.endDate", action.dateRange?.end?.toISOString(), QueryOperator.LessOrEqual)
             .build(ConjunctionOperator.And)
         }
       }
@@ -62,9 +76,9 @@ export class MapEffects {
       return {
         params: {
           expression: this.queryExpressionService.builder()
-            .addIfNotNull('address.suburb.id', action.suburbId)
-            // Todo: Real score filter needs average on backend
-            .addIfNotNull('rating.score', action?.rating?.toString(), QueryOperator.GreaterThan)
+            .addIfNotEmpty('address.suburb.id', action.suburbId)
+            // TODO: Comparison with int does not work (probably needs average on backend anyway)
+            .addIfNotEmpty('ratings.score', action?.rating?.toString(), QueryOperator.GreaterThan)
             .build(ConjunctionOperator.And)
         }
       }
@@ -79,6 +93,33 @@ export class MapEffects {
       organisations: response.data.getOrganisations?.result as OrganisationEntity[]
     }))
   ));
+
+  filterDeals = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setDealFilter),
+    map((action) => {
+      const builder = this.queryExpressionService.builder();
+      if (action.offerStatus != DealOfferStatus.both) {
+        builder.add('offer', String(action.offerStatus == DealOfferStatus.offer))
+      }
+      return {
+        params: {
+          expression: builder
+            .addIfNotEmpty('address.suburb.id', action.suburbId)
+            .addIfNotEmpty('category.id', action.categoryId)
+            .build(ConjunctionOperator.And)
+        }
+      }
+    }),
+    map((filter) => MapFeatureActions.getDeals(filter))
+  ))
+
+  getDeals = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.getDeals),
+    switchMap((action) => this.getDealsService.watch({params: action.params}).valueChanges),
+    map((response) => MapFeatureActions.setDeals({
+      deals: response.data.getDeals?.result as DealEntity[]
+    }))
+  ))
 
   setActiveFilter = createEffect(() => this.actions.pipe(
     ofType(MapFeatureActions.setActiveFilter),
@@ -146,6 +187,7 @@ export class MapEffects {
   constructor(
     private actions: Actions,
     private getMapFilterOptions: GetMapFilterOptionsGQL,
+    private getDealsService: GetDealsGQL,
     private getEventsService: GetEventsGQL,
     private getOrganisationsService: GetOrganisationsGQL,
     private queryExpressionService: QueryExpressionService,

@@ -7,7 +7,7 @@ import {
   OrganisationEntity,
   SuburbEntity
 } from 'src/schema/schema';
-import {FilterKey} from '../constants/map.constants';
+import {DealOfferStatus, FilterKey} from '../constants/map.constants';
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
 import {PointOfInterest} from '../typings/point-of-interest';
 
@@ -26,13 +26,19 @@ export const MapFeatureActions = createActionGroup({
     'set event filter': props<{
       categoryId?: string
       targetGroupId?: string
-      // todo: further attributes
+      suburbId?: string
+      dateRange?: {
+        start: Date | null,
+        end: Date | null,
+      }
+      showOnlyAdmissionFree?: boolean
+      showPastEvents?: boolean
     }>(),
     'get events': props<{params: FilterSortPaginateInput}>(),
     'set events': props<{events: EventEntity[]}>(),
 
     'set organisation filter': props<{
-      rating?: number
+      rating?: string
       suburbId?: string
     }>(),
     'get organisations': props<{params: FilterSortPaginateInput}>(),
@@ -41,7 +47,7 @@ export const MapFeatureActions = createActionGroup({
     'set deal filter': props<{
       categoryId?: string
       suburbId?: string,
-      isOffer?: boolean
+      offerStatus?: DealOfferStatus
     }>(),
     'get deals': props<{params: FilterSortPaginateInput}>(),
     'set deals': props<{deals: DealEntity[]}>(),

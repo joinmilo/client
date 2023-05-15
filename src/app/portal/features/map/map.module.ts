@@ -1,5 +1,4 @@
-/* eslint-disable  @typescript-eslint/no-explicit-any */
-import {NgModule, Type} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {MapPageComponent} from './pages/map/map.component';
 import {CommonModule} from '@angular/common';
 import {CoreModule} from '../../../core/core.module';
@@ -13,8 +12,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import {MapEventFilterComponent} from './components/forms/event-filter.component';
-import {MapOrganisationsFilterComponent} from './components/forms/organisation-filter.component';
+import {MapEventFilterComponent} from './components/filters/event-filter.component';
+import {MapOrganisationsFilterComponent} from './components/filters/organisation-filter.component';
 import {CardModule} from '../../../shared/card/card.module';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MapMarkerComponent} from './components/map-marker.component';
@@ -25,11 +24,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MapAttributionComponent} from './components/map-attribution.component';
 import {MapPopupComponent} from './components/map-popup.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MapDealFilterComponent} from './components/filters/deal-filter.component';
 
 
 const components = [
   MapAttributionComponent,
   MapCardListComponent,
+  MapDealFilterComponent,
   MapEventFilterComponent,
   MapOrganisationsFilterComponent,
   MapPopupComponent,
@@ -47,11 +51,14 @@ const framework = [
   EffectsModule.forFeature([MapEffects])
 ];
 
-const materials: Type<any>[] = [
+const materials = [
   MatButtonModule,
   MatButtonToggleModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
   MatIconModule,
   MatInputModule,
+  MatNativeDateModule,
   MatSelectModule,
 ];
 
@@ -76,7 +83,7 @@ const libs = [
     ...framework,
     ...materials,
     ...modules,
-    ...libs
+    ...libs,
   ],
   exports: [
     ...components

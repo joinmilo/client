@@ -1,0 +1,25 @@
+@import 'src/styles/mixins.scss';
+
+form {
+  --spacing: var(--gap);
+  --half-spacing: calc(0.5 * var(--spacing));
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  column-gap: var(--half-spacing);
+  padding: var(--spacing) var(--half-spacing);
+
+  .span-line {
+    grid-column: span 2;
+  }
+
+  @include responsive(phone) {
+    grid-template-columns: 1fr;
+    --spacing: calc(0.5 * var(--gap));
+
+    .span-line {
+      grid-column: span 1;
+    }
+  }
+}

@@ -3,33 +3,38 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {take, takeUntil, tap} from 'rxjs/operators';
 import {Store} from '@ngrx/store';
 import {MapFeatureActions} from '../../state/map.actions';
-import {selectOrganisationFilter, selectOrganisationFilterOptions} from '../../state/map.selector';
-import {FormControl, FormGroup} from '@angular/forms';
+import {selectDealFilter, selectDealFilterOptions} from '../../state/map.selector';
+import {FormBuilder} from '@angular/forms';
 import {Subject} from 'rxjs';
+import {DealOfferStatus} from '../../constants/map.constants';
 
 @Component({
-  selector: 'app-portal-map-organisations-filter',
-  templateUrl: './organisation-filter.component.html',
+  selector: 'app-portal-map-deal-filter',
+  templateUrl: './deal-filter.component.html',
   styleUrls: ['./filters.scss']
 })
-export class MapOrganisationsFilterComponent implements OnInit, OnDestroy {
+export class MapDealFilterComponent implements OnInit, OnDestroy {
+
+  public readonly OfferStatus = DealOfferStatus;
 
   public destroy = new Subject<boolean>();
 
-  public options = this.store.select(selectOrganisationFilterOptions);
+  public options = this.store.select(selectDealFilterOptions);
 
-  public form = new FormGroup({
-    suburbId: new FormControl<string|null>(null),
-    rating: new FormControl<number|null>(null),
+  public form = this.fb.group({
+    categoryId: [''],
+    suburbId: [''],
+    offerStatus: [DealOfferStatus.both]
   });
 
   constructor(
     private route: ActivatedRoute,
     private store: Store,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit() {
-    this.store.select(selectOrganisationFilter).pipe(
+    this.store.select(selectDealFilter).pipe(
       take(1)
     ).subscribe((value) => {
       if (value) {
@@ -40,18 +45,16 @@ export class MapOrganisationsFilterComponent implements OnInit, OnDestroy {
     this.form.valueChanges.pipe(
       takeUntil(this.destroy),
       tap((value) => {
-        this.store.dispatch(MapFeatureActions.setOrganisationFilter({
-          suburbId: value.suburbId || "",
-          // TODO: Add rating when backend is ready
-        }));
+        this.store.dispatch(MapFeatureActions.setDealFilter(this.defaults(value)));
       })
     ).subscribe();
   }
 
   defaults(input: typeof this.form.value) {
     return {
-      suburbId: input.suburbId || "",
-      rating: input.rating || null
+      categoryId: input.categoryId || '',
+      suburbId: input.suburbId || '',
+      offerStatus: input.offerStatus || DealOfferStatus.both
     }
   }
 
