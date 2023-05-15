@@ -7,18 +7,19 @@ import {
   QueryOperator
 } from 'src/schema/schema';
 
+type StringOrEmpty = string | null | undefined;
 
 class QueryExpressionBuilder {
   expressions: QueryExpressionInput[] = []
 
-  public addIfNotNull(path: string, value: string | null | undefined, operator: QueryOperator = QueryOperator.Equal) {
+  public addIfNotEmpty(path: string, value: StringOrEmpty, operator: QueryOperator = QueryOperator.Equal) {
     if (value) {
-      this.add(path, value, operator)
+      this.add(path, value, operator);
     }
-    return this
+    return this;
   }
 
-  public add(path: string, value: string, operator: QueryOperator = QueryOperator.Equal) {
+  public add(path: string, value: string | null, operator: QueryOperator = QueryOperator.Equal) {
     return this.addEntity({path, value, operator});
   }
 
@@ -47,9 +48,9 @@ class QueryExpressionBuilder {
 
   public build(operator: ConjunctionOperator = ConjunctionOperator.And): QueryExpressionInput {
     if (this.expressions.length > 1) {
-      this.wrap(operator)
+      this.wrap(operator);
     }
-    return this.expressions[0]
+    return this.expressions[0];
   }
 }
 

@@ -9,7 +9,7 @@ import {
   SuburbEntity
 } from 'src/schema/schema';
 import {MapFeatureActions} from './map.actions';
-import {FilterKey} from '../constants/map.constants'
+import {DealOfferStatus, FilterKey} from '../constants/map.constants'
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
 import {PointOfInterest} from '../typings/point-of-interest';
 
@@ -25,21 +25,21 @@ export interface MapState {
     categoryId?: string,
     targetGroupId?: string,
     suburbId?: string
-    daterange?: {
-      start: Date
-      end: Date
+    dateRange?: {
+      start: Date | null
+      end: Date | null
     },
-    showOnlyFreeOfCharge?: boolean,
+    showOnlyAdmissionFree?: boolean,
     showPastEvents?: boolean
   }
   events?: EventEntity[]
 
   organisationFilterOptions: {
-    ratings: number[]
+    ratings: string[]
     suburbs?: SuburbEntity[]
   }
   organisationFilter?: {
-    rating?: number
+    rating?: string
     suburbId?: string
   }
   organisations?: OrganisationEntity[]
@@ -50,8 +50,8 @@ export interface MapState {
   }
   dealFilter?: {
     categoryId?: string
-    suburbId?: string,
-    isOffer?: boolean
+    suburbId?: string
+    offerStatus?: DealOfferStatus
   }
   deals?: DealEntity[]
 
@@ -69,7 +69,7 @@ export interface MapState {
 export const initialState: MapState = {
   activeFilter: FilterKey.events,
   organisationFilterOptions: {
-    ratings: [1, 2, 3, 4, 5],
+    ratings: ['1', '2', '3', '4', '5'],
   },
   pois: []
 };

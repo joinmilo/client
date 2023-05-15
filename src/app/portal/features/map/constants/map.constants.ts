@@ -14,6 +14,12 @@ export enum FilterKey {
   deals
 }
 
+export enum DealOfferStatus {
+  both,
+  offer,
+  request,
+}
+
 export const wuppertalBounds = [[51.246938, 7.121244], [51.273150, 7.186175]] as LatLngExpression[];
 
 export const wuppertalCenter = [51.256214, 7.150764] as LatLngExpression;

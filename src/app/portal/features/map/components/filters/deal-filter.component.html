@@ -1,0 +1,28 @@
+<form *ngIf="(options | async) as options" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label appLabel="category"></mat-label>
+    <mat-select formControlName="categoryId">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let category of options.categories" [value]="category.id">
+        {{ category | translatable: 'name' | async }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label appLabel="suburb"></mat-label>
+    <mat-select formControlName="suburbId">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let suburb of options.suburbs" [value]="suburb.id">
+        {{ suburb.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field  appearance="outline">
+    <mat-label appLabel="dealOfferStatus"></mat-label>
+    <mat-select formControlName="offerStatus">
+      <mat-option [value]="OfferStatus.both"><span appLabel="dealOffersOrRequests"></span></mat-option>
+      <mat-option [value]="OfferStatus.offer"><span appLabel="dealOffers"></span></mat-option>
+      <mat-option [value]="OfferStatus.request"><span appLabel="dealRequests"></span></mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

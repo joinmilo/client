@@ -21,13 +21,11 @@ import {
   marker,
   tileLayer
 } from 'leaflet';
-import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
-import {map, Observable} from 'rxjs';
-import {dataToElement} from 'src/app/core/utils/card.utils';
+import {map, Observable, startWith} from 'rxjs';
 import {MapComponentsService} from '../../service/map-components.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {PointOfInterest} from '../../typings/point-of-interest';
-import {tap} from 'rxjs/operators';
+import {filter} from 'rxjs/operators';
 
 
 @Component({
@@ -77,10 +75,9 @@ export class MapPageComponent implements OnInit, OnDestroy {
       map((pois) => pois.map((poi) => this.poiToMarker(poi))),
     );
     this.mapBounds = this.markers.pipe(
-      map((markers) => markers.length > 0
-        ? new FeatureGroup(markers).getBounds()
-        : latLngBounds(wuppertalBounds)
-      ),
+      filter((markers) => markers.length > 0),
+      map((markers) => new FeatureGroup(markers).getBounds()),
+      startWith(latLngBounds(wuppertalBounds))
     );
 
     this.isLandscape = breakpointObserver.observe([

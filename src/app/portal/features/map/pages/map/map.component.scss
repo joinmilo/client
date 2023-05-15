@@ -17,6 +17,7 @@
   --mat-toolbar-height: 56px; // TODO: Fix for main toolbar
   --map-toolbar-height: 3rem;
   --map-above: calc(var(--mat-toolbar-height) + var(--map-toolbar-height));
+  --map-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px; // TODO: Define in styles? (from mat-card)
 
   .map-menu {
     position: absolute;
@@ -38,6 +39,12 @@
       justify-content: space-between;
       align-items: baseline;
       font-weight: bold;
+    }
+
+    .map-filter {
+      margin-top: var(--map-gap);
+      box-shadow: var(--map-box-shadow);
+      border-radius: var(--map-gap);
     }
   }
 
@@ -75,7 +82,7 @@
     padding: var(--map-gap);
     box-sizing: border-box;
     background-color: var(--map-bg);
-    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px; // TODO Define in variables? (from mat-card)
+    box-shadow: var(--map-box-shadow)
   }
 
   @include responsive(desktop) {
@@ -113,7 +120,7 @@
 
     app-map-card-list {
       position: absolute;
-      top: var(--map-toolbar-height);
+      top: calc(var(--map-toolbar-height) + var(--map-gap));
       left: 0;
       width: var(--map-desktop-menu-width);
       height: calc(var(--map-height) - var(--map-toolbar-height));
