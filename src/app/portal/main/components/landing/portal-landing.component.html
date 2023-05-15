@@ -1,6 +1,6 @@
-<header> 
+<header>
   <figure *ngIf="(page | async)?.titleImage">
-  <img ngSrc="media" alt="media" [loaderParams]="{media: (page | async)?.titleImage}" fill priority="true">
+    <img ngSrc="media" alt="media" [loaderParams]="{media: (page | async)?.titleImage}" fill priority="true">
   </figure>
   <section>
     <div>
@@ -13,5 +13,6 @@
   </section>
 </header>
 <div class="main">
-  <app-portal-page-features *ngIf="(page | async)?.pageFeatures?.length" [pageFeatures]="(page | async)?.pageFeatures"></app-portal-page-features>
+  <app-portal-page-features *ngIf="(page | async)?.pageFeatures?.length"
+    [pageFeatures]="(page | async)?.pageFeatures"></app-portal-page-features>
 </div>
