@@ -11,6 +11,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { AvatarPlaceholderComponent } from './components/avatar-placeholder/avatar-placeholder.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AddressPieceComponent } from './components/pieces/adress/address-piece.component';
@@ -30,6 +31,7 @@ import { coreReducer } from './state/core.reducer';
 
 const components = [
   AddressPieceComponent,
+  AvatarPlaceholderComponent,
   CategoryPieceComponent,
   DatePieceComponent,
   FavoritePieceComponent,
