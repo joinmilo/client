@@ -28,6 +28,8 @@ import { AddressPipe } from './pipes/address.pipe';
 import { TranslatablePipe } from './pipes/translatable.pipe';
 import { CoreEffects } from './state/core.effects';
 import { coreReducer } from './state/core.reducer';
+import {TruncateWordsPipe} from './pipes/truncate-words.pipe';
+import {StripTagsPipe} from './pipes/strip-tags.pipe';
 
 const components = [
   AddressPieceComponent,
@@ -50,7 +52,9 @@ const directives = [
 
 const pipes = [
   AddressPipe,
+  StripTagsPipe,
   TranslatablePipe,
+  TruncateWordsPipe,
 ];
 
 const framework = [

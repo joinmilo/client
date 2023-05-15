@@ -17,6 +17,7 @@ import {QueryExpressionService} from 'src/app/core/services/query-expression.ser
 import {Store} from '@ngrx/store';
 import {selectEventFilter, selectMapFilters} from './map.selector';
 import {FilterKey} from '../constants/map.constants';
+import {dealsToPois, eventsToPois, organisationsToPois} from '../utils/point-of-interest.util';
 
 @Injectable()
 export class MapEffects {
@@ -38,8 +39,8 @@ export class MapEffects {
       return {
         params: {
           expression: this.queryExpressionService.builder()
-            .addIfNotNull("category.id", action.categoryId)
-            .addIfNotNull("targetGroup.id", action.targetGroupId)
+            .addIfNotNull('category.id', action.categoryId)
+            .addIfNotNull('targetGroup.id', action.targetGroupId)
             .build(ConjunctionOperator.And)
         }
       }
@@ -61,9 +62,9 @@ export class MapEffects {
       return {
         params: {
           expression: this.queryExpressionService.builder()
-            .addIfNotNull("address.suburb.id", action.suburbId)
+            .addIfNotNull('address.suburb.id', action.suburbId)
             // Todo: Real score filter needs average on backend
-            .addIfNotNull("rating.score", action?.rating?.toString(), QueryOperator.GreaterThan)
+            .addIfNotNull('rating.score', action?.rating?.toString(), QueryOperator.GreaterThan)
             .build(ConjunctionOperator.And)
         }
       }
@@ -94,15 +95,25 @@ export class MapEffects {
     })
   ));
 
+  setResultsFromDeals = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setDeals),
+    map(({deals}) => MapFeatureActions.setResults({
+      count: deals.length,
+      label: 'deal',
+      labelPlural: 'deals',
+      entity: 'DealEntity',
+      data: deals
+    }))
+  ))
+
   setResultsFromEvents = createEffect(() => this.actions.pipe(
     ofType(MapFeatureActions.setEvents),
-    withLatestFrom(this.store.select(selectEventFilter)),
-    map(([{events}, eventsFilter]) => MapFeatureActions.setResults({
+    map(({events}) => MapFeatureActions.setResults({
       count: events.length,
-      label: "event",
-      labelPlural: "events",
+      label: 'event',
+      labelPlural: 'events',
       entity: 'EventEntity',
-      data: events
+      data: events,
     })),
   ));
 
@@ -110,11 +121,26 @@ export class MapEffects {
     ofType(MapFeatureActions.setOrganisations),
     map(({organisations}) => MapFeatureActions.setResults({
       count: organisations.length,
-      label: "organisation",
-      labelPlural: "organisations",
-      entity: "OrganisationEntity",
-      data: organisations
+      label: 'organisation',
+      labelPlural: 'organisations',
+      entity: 'OrganisationEntity',
+      data: organisations,
     }))
+  ));
+
+  setPoisFromDeals = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setDeals),
+    map(({deals}) => MapFeatureActions.setPois({pois: dealsToPois(deals)}))
+  ));
+
+  setPoisFromEvents = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setEvents),
+    map(({events}) => MapFeatureActions.setPois({pois: eventsToPois(events)}))
+  ));
+
+  setPoisFromOrganisations = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setOrganisations),
+    map(({organisations}) => MapFeatureActions.setPois({pois: organisationsToPois(organisations)}))
   ));
 
   constructor(

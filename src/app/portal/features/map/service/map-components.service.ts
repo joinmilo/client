@@ -1,13 +1,13 @@
 import {
-  ApplicationRef, Component, ComponentRef,
+  ApplicationRef, ComponentRef,
   createComponent,
   EnvironmentInjector,
   Injectable,
   Injector, Type
 } from '@angular/core';
-import {MarkerComponent} from '../components/marker.component';
-import {CardData, CardEntity} from '../../../../shared/card/typings/card';
-import {ContentCardComponent} from '../../../../shared/card/components/content-card/content-card.component';
+import {MapMarkerComponent} from '../components/map-marker.component';
+import {PointOfInterest} from '../typings/point-of-interest';
+import {MapPopupComponent} from '../components/map-popup.component';
 
 /**
  * This programmatically creates Components bound to Html Elements
@@ -28,17 +28,16 @@ export class MapComponentsService {
     private applicationRef: ApplicationRef
   ) { }
 
-  createMarkerElement(color: string, icon: string): HTMLElement {
-    const [element, component] = this.createElementWithComponent(MarkerComponent);
-    component.instance.color = color;
-    component.instance.icon = icon;
+  createMarkerElement(poi: PointOfInterest): HTMLElement {
+    const [element, component] = this.createElementWithComponent(MapMarkerComponent);
+    component.instance.color = poi.color;
+    component.instance.icon = poi.icon;
     return element;
   }
 
-  createPopupElement(entity: CardEntity, data: CardData): HTMLElement {
-    const [element, component] = this.createElementWithComponent(ContentCardComponent);
-    component.instance.entity = entity;
-    component.instance.data = data;
+  createPopupElement(poi: PointOfInterest): HTMLElement {
+    const [element, component] = this.createElementWithComponent(MapPopupComponent);
+    component.instance.poi = poi;
     return element;
   }
 

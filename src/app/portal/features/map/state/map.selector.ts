@@ -48,4 +48,8 @@ export const selectMapFilters = createSelector(
 
 export const selectResults = createSelector(
   selectMapState, (state) => state.searchResults
-)
+);
+
+export const selectPois = createSelector(
+  selectMapState, (state) => state.pois
+);
