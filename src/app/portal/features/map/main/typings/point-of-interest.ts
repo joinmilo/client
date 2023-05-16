@@ -1,5 +1,5 @@
 import {DealEntity, EventEntity, Maybe, OrganisationEntity} from 'src/schema/schema';
-import {Translatable} from '../../../../core/typings/translatable';
+import {Translatable} from 'src/app/core/typings/translatable';
 
 export type PoiEntity =  'DealEntity'
   | 'EventEntity'

@@ -1,0 +1,16 @@
+<h3>
+  {{
+    poi?.title
+      ? poi?.title
+      : poi?.translatables | translatable: poi?.titleTranslatableField | async
+  }}
+</h3>
+<app-date-piece *ngIf="poi?.date" [date]="poi?.date" [dateTime]="true">Date</app-date-piece>
+<span>
+  {{
+    (poi?.text
+      ? poi?.text
+      : poi?.translatables | translatable: poi?.textTranslatableField | async)
+      | stripTags | truncateWords:20
+  }}
+</span>

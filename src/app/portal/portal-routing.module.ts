@@ -70,7 +70,7 @@ const routes: Routes = [
   },
   {
     path: mapFeatureKey,
-    loadChildren: () => import('./features/map/map.module')
+    loadChildren: () => import('./features/map/main/map.module')
       .then((imported) => imported.MapPortalModule),
   },
   {

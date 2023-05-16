@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
 
 
