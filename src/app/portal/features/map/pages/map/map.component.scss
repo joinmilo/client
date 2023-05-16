@@ -1,4 +1,3 @@
-@import 'src/styles/mixins.scss';
 
 .landscape {
   --map-height: calc(100vh - var(--map-above) - 3rem);
@@ -17,7 +16,7 @@
   --mat-toolbar-height: 56px; // TODO: Fix for main toolbar
   --map-toolbar-height: 3rem;
   --map-above: calc(var(--mat-toolbar-height) + var(--map-toolbar-height));
-  --map-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px; // TODO: Define in styles? (from mat-card)
+  --map-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
 
   .map-menu {
     position: absolute;
@@ -85,13 +84,24 @@
     box-shadow: var(--map-box-shadow)
   }
 
-  @include responsive(desktop) {
-
+  // Use this class instead of responsive() mixin to make sure styles
+  // are in sync with elements positioned via breakpoint observer
+  .desktop {
     --map-desktop-menu-width: 30vw;
 
     .map-menu {
+      position: absolute;
       width: var(--map-desktop-menu-width);
+      height: var(--map-height);
+      overflow-y: scroll;
       border-radius: 0;
+
+      app-map-card-list {
+        position: static;
+        padding: unset;
+        margin: var(--map-gap) 0;
+        box-shadow: unset;
+      }
     }
 
     .map-container {
@@ -116,18 +126,6 @@
         font-size: small;
         opacity: 1;
       }
-    }
-
-    app-map-card-list {
-      position: absolute;
-      top: calc(var(--map-toolbar-height) + var(--map-gap));
-      left: 0;
-      width: var(--map-desktop-menu-width);
-      height: calc(var(--map-height) - var(--map-toolbar-height));
-      overflow-y: scroll;
-      margin: 0;
-      box-shadow: none;
-      border-radius: 0;
     }
   }
 }

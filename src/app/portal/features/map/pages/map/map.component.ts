@@ -47,6 +47,8 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
   public isLandscape: Observable<boolean>;
 
+  public isDesktop: Observable<boolean>;
+
   public showFilter = false;
 
   public readonly leafletOptions: MapOptions;
@@ -80,12 +82,12 @@ export class MapPageComponent implements OnInit, OnDestroy {
       startWith(latLngBounds(wuppertalBounds))
     );
 
-    this.isLandscape = breakpointObserver.observe([
-      this.orientations.portrait,
-      this.orientations.landscape,
-    ]).pipe(
-      map((result) => result.matches && result.breakpoints[this.orientations.landscape]),
-    );
+    this.isLandscape = breakpointObserver
+      .observe([this.orientations.portrait, this.orientations.landscape,])
+      .pipe(map((result) => result.matches && result.breakpoints[this.orientations.landscape]));
+    this.isDesktop = breakpointObserver
+      .observe('(min-width: 1024px)')
+      .pipe(map((result) => result.matches));
   }
 
   ngOnInit() {
