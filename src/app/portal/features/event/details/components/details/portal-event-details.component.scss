@@ -17,6 +17,12 @@
     justify-content: center;
     flex-direction: column;
 
+    div:last-of-type{
+      flex-direction: row;
+      justify-content: space-between;
+      width: 45rem;
+    }
+
     section {
       width: 100vw;
       justify-content: center;
@@ -34,10 +40,7 @@
         max-width: 45rem;
         align-items: baseline;
       }
-
     }
-
-
 
     .grey-section {
       background: var(--color-background);
@@ -49,4 +52,7 @@
 ::ng-deep main {
   background-color: var(--color-primary-contrast-300);  //TODO: differentMain classes 
 }
+
+
+
 

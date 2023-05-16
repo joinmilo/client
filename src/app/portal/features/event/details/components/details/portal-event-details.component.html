@@ -1,10 +1,8 @@
 <div class="main">
-  <app-page-title
-  *ngIf="(eventDetails | translatable : 'name' | async) as eventName"
-    [title]="eventName"
-  ></app-page-title>
+  <app-page-title *ngIf="(eventDetails | translatable : 'name' | async) as eventName"
+    [title]="eventName"></app-page-title>
   <section>
-    <app-image [image]="(eventDetails | async)?.cardImage" [rounded]="true"></app-image> 
+    <app-image [image]="(eventDetails | async)?.cardImage" [rounded]="true"></app-image>
   </section>
   <div>
     <section class="grey-section">
@@ -18,9 +16,9 @@
     </section>
     <section>
       <div>
-      <mat-card-title>Einrichtung</mat-card-title>
-      <app-contact-card></app-contact-card>
-    </div>
+        <mat-card-title>Einrichtung</mat-card-title>
+        <app-contact-card></app-contact-card>
+      </div>
     </section>
     <section class="grey-section">
       <app-card-slider></app-card-slider>
@@ -28,5 +26,12 @@
     <section>
       <app-event-evaluation></app-event-evaluation>
     </section>
+    <section>
+      <app-user-comment></app-user-comment>
+    </section>
+    <div>
+      <app-comment-button [entity]="(eventDetails |async)"></app-comment-button>
+      <a [routerLink]="['/comments']" appLabel="allComments" suffix="»"></a>
+    </div>
   </div>
 </div>

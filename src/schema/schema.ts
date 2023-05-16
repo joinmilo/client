@@ -164,6 +164,7 @@ export type ArticleCategoryTranslatableEntityInput = {
 
 export type ArticleCommentEntity = {
   __typename?: 'ArticleCommentEntity';
+  approved?: Maybe<Scalars['Boolean']>;
   article?: Maybe<ArticleEntity>;
   content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
@@ -174,6 +175,7 @@ export type ArticleCommentEntity = {
 };
 
 export type ArticleCommentEntityInput = {
+  approved?: InputMaybe<Scalars['Boolean']>;
   article?: InputMaybe<ArticleEntityInput>;
   content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
@@ -785,6 +787,7 @@ export type EventCategoryTranslatableEntityInput = {
 
 export type EventCommentEntity = {
   __typename?: 'EventCommentEntity';
+  approved?: Maybe<Scalars['Boolean']>;
   content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   event?: Maybe<EventEntity>;
@@ -795,6 +798,7 @@ export type EventCommentEntity = {
 };
 
 export type EventCommentEntityInput = {
+  approved?: InputMaybe<Scalars['Boolean']>;
   content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   event?: InputMaybe<EventEntityInput>;
@@ -2840,6 +2844,7 @@ export enum NotificationType {
 
 export type OrganisationCommentEntity = {
   __typename?: 'OrganisationCommentEntity';
+  approved?: Maybe<Scalars['Boolean']>;
   content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
@@ -2849,6 +2854,7 @@ export type OrganisationCommentEntity = {
 };
 
 export type OrganisationCommentEntityInput = {
+  approved?: InputMaybe<Scalars['Boolean']>;
   content?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -4819,6 +4825,8 @@ export type DealFragment = { __typename?: 'DealEntity', id?: string | null, pric
 
 export type EventCategoryFragment = { __typename?: 'EventCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
+export type EventCommentFragment = { __typename?: 'EventCommentEntity', id?: string | null, event?: { __typename?: 'EventEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null } | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+
 export type EventCommentsFragment = { __typename?: 'EventCommentEntity', id?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null };
 
 export type EventTargetGroupFragment = { __typename?: 'EventTargetGroupEntity', id?: string | null, translatables?: Array<{ __typename?: 'EventTargetGroupTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
@@ -4872,6 +4880,13 @@ export type SaveArticleMutationVariables = Exact<{
 
 
 export type SaveArticleMutation = { __typename?: 'Mutation', saveArticle?: { __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
+export type SaveEventCommentMutationVariables = Exact<{
+  entity: EventCommentEntityInput;
+}>;
+
+
+export type SaveEventCommentMutation = { __typename?: 'Mutation', saveEventComment?: { __typename?: 'EventCommentEntity', id?: string | null, event?: { __typename?: 'EventEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null } | null, translatables?: Array<{ __typename?: 'EventCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
 
 export type SaveReportMutationVariables = Exact<{
   entity: ReportEntityInput;
@@ -5136,6 +5151,26 @@ export const DealFragmentDoc = gql`
     ${MediaFragmentDoc}
 ${ContactFragmentDoc}
 ${DealCategoryFragmentDoc}`;
+export const EventCommentFragmentDoc = gql`
+    fragment EventComment on EventCommentEntity {
+  id
+  event {
+    id
+  }
+  userContext {
+    id
+  }
+  translatables {
+    id
+    content
+    language {
+      id
+      locale
+      name
+    }
+  }
+}
+    `;
 export const PublicAuthorFragmentDoc = gql`
     fragment PublicAuthor on PublicAuthorEntity {
   id
@@ -5533,6 +5568,24 @@ export const SaveArticleDocument = gql`
   })
   export class SaveArticleGQL extends Apollo.Mutation<SaveArticleMutation, SaveArticleMutationVariables> {
     override document = SaveArticleDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SaveEventCommentDocument = gql`
+    mutation saveEventComment($entity: EventCommentEntityInput!) {
+  saveEventComment(entity: $entity) {
+    ...EventComment
+  }
+}
+    ${EventCommentFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SaveEventCommentGQL extends Apollo.Mutation<SaveEventCommentMutation, SaveEventCommentMutationVariables> {
+    override document = SaveEventCommentDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
