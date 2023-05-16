@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<mat-dialog-content class="mat-typography">
+  <p  class="mat-subtitle-1" appLabel="addAComment"></p>
+  <mat-form-field appearance="outline">
+    <mat-label appLabel="feedbackComment"></mat-label>
+    <textarea matInput formControlName="content" rows="5" cols="50"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button color="primary" mat-flat-button mat-dialog-close type="submit" [disabled]="form.invalid" appLabel="send"></button>
+  <button color="accent" mat-flat-button mat-dialog-close appLabel="cancel"></button>
+</mat-dialog-actions>
+</form>

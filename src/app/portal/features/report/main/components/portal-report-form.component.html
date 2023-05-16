@@ -39,6 +39,10 @@
           [disabled]="form.invalid"
           (verified)="onSubmit($event, formDirective)">
         </app-captcha-submit>
+        <button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
+          <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>
+          <label appLabel="send"></label>
+        </button>
       </div>
     </section>
   </form>
