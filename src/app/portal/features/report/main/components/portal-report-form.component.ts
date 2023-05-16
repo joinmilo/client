@@ -20,7 +20,6 @@ export class PortalReportFormComponent implements OnDestroy {
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     content: ['', [Validators.required]],
-    captchaToken: ['', [Validators.required]]
   });
 
   private destroy = new Subject<void>();
@@ -40,7 +39,7 @@ export class PortalReportFormComponent implements OnDestroy {
     this.store.dispatch(ReportActions.getReportTypes());
   }
 
-  public onSubmit(formDirective: FormGroupDirective) {
+  public onSubmit(captchaToken: string, formDirective: FormGroupDirective) {
     this.store.dispatch(ReportActions.saveReport({
       //TODO translatables content
       name: this.form.value.name,
@@ -48,7 +47,7 @@ export class PortalReportFormComponent implements OnDestroy {
       type: {
         id: this.form.value.type?.id
       },
-      captchaToken: this.form.value.captchaToken
+      captchaToken
     }));
     
     this.store.select(selectSavedReport)

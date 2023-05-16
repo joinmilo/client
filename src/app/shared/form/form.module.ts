@@ -7,10 +7,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { CoreModule } from 'src/app/core/core.module';
 import { CkEditorFormComponent } from './components/ck-editor/ck-editor.form.component';
-import { HcaptchaFormComponent } from './components/hcaptcha/hcaptcha.form.component';
 import { PrivacyPolicyFormComponent } from './components/privacy-policy/privacy-policy.form.component';
 import { RadioButtonGroupComponent } from './components/radio-button-group/radio-button-group.component';
 import { RadioButtonComponent } from './components/radio-button/radio-button.component';
@@ -18,7 +16,6 @@ import { RadioButtonComponent } from './components/radio-button/radio-button.com
 
 const components = [
   CkEditorFormComponent,
-  HcaptchaFormComponent,
   RadioButtonComponent,
   RadioButtonGroupComponent,
   PrivacyPolicyFormComponent,
@@ -43,9 +40,6 @@ const modules = [
 const libs = [
   CKEditorModule,
   FontAwesomeModule,
-  NgHcaptchaModule.forRoot({
-    languageCode: 'de' //TODO
-  }),
 ];
 
 @NgModule({

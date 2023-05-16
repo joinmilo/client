@@ -1,20 +1,8 @@
 <div class="main">
-  <form class="border-box" [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+  <form class="border-box" [formGroup]="form" #formDirective="ngForm">
   
     <h2 class="mat-headline-5" appLabel="register"></h2>
     <p class="mat-subtitle-2"></p>
-  
-    <fieldset>
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="firstName"></mat-label>
-        <input matInput formControlName="firstName" placeholder="Max">
-      </mat-form-field>
-  
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="lastName"></mat-label>
-        <input matInput formControlName="lastName" placeholder="Mustermann">
-      </mat-form-field>
-    </fieldset>
   
     <mat-form-field appearance="outline">
       <mat-label appLabel="email"></mat-label>
@@ -24,9 +12,10 @@
     <app-password-confirm formControlName="password"></app-password-confirm>
     <app-privacy-policy-form formControlName="termsAccepted"></app-privacy-policy-form>
   
-    <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
-      <label appLabel="send"></label>
-    </button>
+    <app-captcha-submit
+      [disabled]="form.invalid"
+      (verified)="onSubmit($event, formDirective)">
+    </app-captcha-submit>
   
     <section>
       <p appLabel="haveAcc?" suffix="&nbsp;"></p>

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { ReportTypeEntity } from 'src/schema/schema';
-import { ReportPageFeatureActions } from '../../state/report-page-feature.actions';
-import { selectReportTypes, selectSavedReport } from '../../state/report-page-feature.selectors';
+import { ReportPageFeatureActions } from '../state/report-page-feature.actions';
+import { selectReportTypes, selectSavedReport } from '../state/report-page-feature.selectors';
 
 @Component({
   selector: 'app-report-page-feature',
@@ -31,7 +31,7 @@ export class ReportPageFeatureComponent implements OnDestroy {
     this.store.dispatch(ReportPageFeatureActions.getReportTypes());
   }
 
-  public onSubmit(formDirective: FormGroupDirective) {
+  public onSubmit(captchaToken: string, formDirective: FormGroupDirective) {
     this.store.dispatch(ReportPageFeatureActions.saveReport({
       //TODO translatables content
       name: this.form.value.name,
@@ -39,6 +39,7 @@ export class ReportPageFeatureComponent implements OnDestroy {
       type: {
         id: this.form.value.type?.id
       },
+      captchaToken
     }));
 
     this.store.select(selectSavedReport)

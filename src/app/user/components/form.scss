@@ -12,16 +12,6 @@ form {
   width: 30rem;
 }
 
-fieldset {
-  display: flex;
-  flex-flow: column;
-
-  @include responsive(desktop) {
-    flex-flow: row;
-    gap: 1rem;
-  }
-}
-
 button {
   margin-bottom: 1rem;
 }

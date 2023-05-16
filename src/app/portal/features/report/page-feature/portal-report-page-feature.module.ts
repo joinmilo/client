@@ -10,15 +10,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { CaptchaModule } from 'src/app/shared/captcha/captcha.module';
 import { FormModule } from 'src/app/shared/form/form.module';
-import { ReportPageFeatureCaptchaComponent } from './components/captcha/report-page-feature-captcha.component';
-import { ReportPageFeatureComponent } from './components/page-feature/report-page-feature.component';
+import { ReportPageFeatureComponent } from './component/report-page-feature.component';
 import { reportPageFeatureStateKey } from './constants/report-page-feature.constant';
 import { ReportPageFeatureEffects } from './state/report-page-feature.effects';
 import { reportPageFeatureReducer } from './state/report-page-feature.reducer';
 
 const components = [
-  ReportPageFeatureCaptchaComponent,
   ReportPageFeatureComponent,
 ];
 
@@ -37,6 +36,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  CaptchaModule,
   FormModule,
 ];
 

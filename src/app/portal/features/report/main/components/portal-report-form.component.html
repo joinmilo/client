@@ -1,6 +1,6 @@
 <div class="main">
   <app-page-title title="feedback"></app-page-title>
-  <form class="border-box" [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+  <form class="border-box" [formGroup]="form" #formDirective="ngForm">
     <h2 class="mat-headline-6" appLabel="giveUsFeedback"></h2>
     <div>
       <p appLabel="needYourFeedback"></p>
@@ -33,12 +33,11 @@
           <textarea formControlName="content" matInput rows="5"></textarea>
         </mat-form-field>
       </div>
-      <app-hcaptcha-form formControlName="captchaToken"></app-hcaptcha-form>
       <div>
-        <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
-          <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>
-          <label appLabel="send"></label>
-        </button>
+        <app-captcha-submit
+          [disabled]="form.invalid"
+          (verified)="onSubmit($event, formDirective)">
+        </app-captcha-submit>
       </div>
     </section>
   </form>

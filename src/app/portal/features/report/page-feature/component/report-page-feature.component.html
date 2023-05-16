@@ -1,5 +1,5 @@
 <mat-card>
-  <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+  <form [formGroup]="form" #formDirective="ngForm">
     <h2 class="mat-headline-6" appLabel="youWantToWriteUs?"></h2>
     <div>
       <mat-form-field appearance="outline">
@@ -18,7 +18,7 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label appLabel="email"></mat-label>
-        <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
+        <input matInput id="email" formControlName="email" placeholder="mail@example.com">
       </mat-form-field>
     </div>
     <div>
@@ -28,10 +28,10 @@
       </mat-form-field>
     </div>
     <div>
-      <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
-        <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>
-        <label appLabel="send"></label>
-      </button>
+      <app-captcha-submit
+          [disabled]="form.invalid"
+          (verified)="onSubmit($event, formDirective)">
+        </app-captcha-submit>
     </div>
   </form>
 </mat-card>

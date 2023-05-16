@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Observable, combineLatest, filter, map, of, switchMap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
 import { CoreActions } from 'src/app/core/state/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { GetReportTypesGQL, Maybe, ReportEntity, ReportTypeEntity, SaveReportGQL } from 'src/schema/schema';
-import { ReportPageFeatureCaptchaComponent } from '../components/captcha/report-page-feature-captcha.component';
+import { GetReportTypesGQL, ReportEntity, ReportTypeEntity, SaveReportGQL } from 'src/schema/schema';
 import { ReportPageFeatureActions } from './report-page-feature.actions';
 
 @Injectable()
@@ -13,20 +11,6 @@ export class ReportPageFeatureEffects {
 
   saveReport = createEffect(() => this.actions.pipe(
     ofType(ReportPageFeatureActions.saveReport),
-    switchMap(action =>
-      combineLatest([
-        of(action.entity),
-        this.dialog.open(ReportPageFeatureCaptchaComponent).afterClosed() as Observable<Maybe<string> | undefined>,
-      ])
-    ),
-    filter(([, captchaToken]) => !!captchaToken),
-    map(([entity, captchaToken]) => ReportPageFeatureActions.confirmedSaveReport({
-      ...entity, captchaToken
-    }))
-  ));
-
-  confirmedSavedReport = createEffect(() => this.actions.pipe(
-    ofType(ReportPageFeatureActions.confirmedSaveReport),
     switchMap((action) => this.saveReportService.mutate({
       entity: action.entity
     })),
@@ -50,7 +34,6 @@ export class ReportPageFeatureEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
     private saveReportService: SaveReportGQL,
     private getReportTypeService: GetReportTypesGQL
   ) { }

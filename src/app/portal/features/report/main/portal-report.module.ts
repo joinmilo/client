@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { CaptchaModule } from 'src/app/shared/captcha/captcha.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalReportFormComponent } from './components/portal-report-form.component';
@@ -36,6 +37,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  CaptchaModule,
   FormModule,
   PortalReportRoutingModule,
   TitleModule,

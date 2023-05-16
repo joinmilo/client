@@ -3,23 +3,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NgHcaptchaComponent } from 'ng-hcaptcha';
 import { filter, map } from 'rxjs';
+import { hCaptchaSitekeyConfig } from 'src/app/core/constants/core.constants';
+import { selectConfiguration } from 'src/app/core/state/core.selectors';
 import { Maybe } from 'src/schema/schema';
-import { hCaptchaSitekeyConfig } from '../../../../core/constants/core.constants';
-import { selectConfiguration } from '../../../../core/state/core.selectors';
 
 @Component({
-  selector: 'app-hcaptcha-form',
-  templateUrl: './hcaptcha.form.component.html',
-  styleUrls: ['./hcaptcha.form.component.scss'],
+  selector: 'app-captcha-form',
+  templateUrl: './captcha-form.component.html',
+  styleUrls: ['./captcha-form.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: HcaptchaFormComponent
+      useExisting: CaptchaFormComponent
     }
   ],
 })
-export class HcaptchaFormComponent implements ControlValueAccessor {
+export class CaptchaFormComponent implements ControlValueAccessor {
 
   @ViewChildren(NgHcaptchaComponent)
   public captchaComponents?: QueryList<NgHcaptchaComponent>;

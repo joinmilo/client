@@ -16,11 +16,8 @@ import { selectSavedUser } from '../../state/user.selectors';
 export class RegistrationComponent implements OnDestroy {
 
   public form = this.fb.group({
-    firstName: ['', [Validators.required]],
-    lastName: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
-    captchaToken: [''],
     termsAccepted: [false, [Validators.requiredTrue]],
   });
 
@@ -31,14 +28,12 @@ export class RegistrationComponent implements OnDestroy {
     private fb: FormBuilder,
   ) { }
 
-  onSubmit(formDirective: FormGroupDirective) {
+  onSubmit(captchaToken: string, formDirective: FormGroupDirective) {
     this.store.dispatch(UserActions.register({
-      firstName: this.form.value.firstName,
-      lastName: this.form.value.lastName,
       email: this.form.value.email,
       password: this.form.value.password,
-      captchaToken: this.form.value.captchaToken,
       termsAccepted: this.form.value.termsAccepted,
+      captchaToken,
     }));
 
     this.store.select(selectSavedUser)

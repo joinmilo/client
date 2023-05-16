@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormModule } from 'src/app/shared/form/form.module';
+import { CaptchaModule } from '../shared/captcha/captcha.module';
 import { PortalFooterModule } from './../portal/shared/footer/portal-footer.module';
 import { PasswordModule } from './../shared/password/password.module';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
@@ -40,7 +41,6 @@ const framework = [
 ];
 
 const materials = [
-  FontAwesomeModule,
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,
@@ -48,6 +48,7 @@ const materials = [
 ];
 
 const modules = [
+  CaptchaModule,
   CoreModule,
   FormModule,
   PasswordModule,
@@ -56,6 +57,7 @@ const modules = [
 ];
 
 const libs = [
+  FontAwesomeModule,
   StoreModule.forFeature(userFeatureKey, userReducer),
   EffectsModule.forFeature([UserEffects]),
 ]
