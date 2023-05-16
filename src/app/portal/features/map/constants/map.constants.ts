@@ -30,7 +30,7 @@ export const markerColorOrganisations = defaultMarkerColor;
 export const markerIconOrganisations = 'people-group';
 
 export const mapOptions: MapOptions = {
-  zoom:14,
+  zoom: 14,
   center: wuppertalCenter,
   zoomControl: false,
   attributionControl: false,

@@ -62,6 +62,9 @@
       position: absolute;
       left: calc(0.5 * var(--map-gap));
       bottom: calc(2 * var(--map-gap));
+
+      font-weight: bolder;
+      border-radius: var(--map-gap);
     }
 
     app-map-attribution {
