@@ -1,0 +1,28 @@
+<h2 class="mat-headline-6">Benachrichtigungen</h2>
+<mat-divider></mat-divider>
+  <button mat-menu-item [routerLink]="['/']">
+    <section>
+      <img src="../../../../../../assets/placeholder.webp" alt="test">
+      <span>Notification test test test</span>
+      <p class="mat-caption">10:50</p>
+    </section>
+  </button>
+  <button mat-menu-item [routerLink]="['/']">
+    <section>
+      <img src="../../../../../../assets/placeholder.webp" alt="test">
+      <span>Notification</span>
+      <p class="mat-caption">23/11/22</p>
+    </section>
+  </button>
+  <button mat-menu-item [routerLink]="['/']">
+    <section>
+      <img src="../../../../../../assets/placeholder.webp" alt="test">
+      <span>Notification</span>
+      <p class="mat-caption">23/11/22</p>
+    </section>
+  </button>
+<mat-divider></mat-divider>
+<div>
+  <a [routerLink]="link" appLabel="allNotifications" suffix="»"></a>
+  <a [routerLink]="link" appLabel="readAll"></a>
+</div>

@@ -1,0 +1,42 @@
+h2 {
+  display: flex;
+  justify-content: center;  
+  margin: 0 !important;
+  padding-bottom: .5rem;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem 0;
+}
+
+img {
+  height: 2rem;
+  width: 2rem;
+}
+
+span {
+  width: 9rem;
+}
+
+p {
+  display: flex;
+  justify-content: end;
+  margin-top: auto;
+  margin-bottom: 0;
+  width: 3rem;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding-top: .5rem;
+
+  a {
+    display: flex;
+    justify-content: center;
+  }
+}

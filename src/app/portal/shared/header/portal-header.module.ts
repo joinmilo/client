@@ -14,14 +14,16 @@ import { PortalHeaderDesktopComponent } from './components/desktop/portal-header
 import { PortalHeaderComponent } from './components/header/portal-header.component';
 import { PortalHeaderLanguageComponent } from './components/language/portal-header-language.component';
 import { PortalHeaderMobileComponent } from './components/mobile/portal-header-mobile.component';
+import { PortalHeaderNotificationComponent } from './components/notifications/portal-header-notification.component';
 import { PortalHeaderUserComponent } from './components/user/portal-header-user.component';
 
 const components = [
   PortalHeaderComponent,
   PortalHeaderBackComponent,
   PortalHeaderDesktopComponent,
-  PortalHeaderMobileComponent,
   PortalHeaderLanguageComponent,
+  PortalHeaderMobileComponent,
+  PortalHeaderNotificationComponent,
   PortalHeaderUserComponent,
 ];
 
