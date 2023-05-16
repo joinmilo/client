@@ -79,7 +79,7 @@
   app-map-card-list {
     position: relative;
     top: calc(var(--map-toolbar-height) - var(--map-gap));
-    margin: 0 calc(0.5 * var(--map-gap));
+    margin: 0 calc(0.5 * var(--map-gap)) var(--map-toolbar-height);
     border-radius: var(--map-gap);
     padding: var(--map-gap);
     box-sizing: border-box;

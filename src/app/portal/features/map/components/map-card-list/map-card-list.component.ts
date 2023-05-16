@@ -1,18 +1,13 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
 
 
 @Component({
   selector: 'app-map-card-list',
-  template: `
-    <hr>
-    <div>
-      <app-content-card *ngFor="let card of cards" [entity]="entity" [data]="card"></app-content-card>
-    </div>
-  `,
-  styleUrls: ["map-card-list.component.scss"]
+  templateUrl: 'map-card-list.component.html',
+  styleUrls: ['map-card-list.component.scss']
 })
-export class MapCardListComponent {
+export class MapCardListComponent implements OnChanges {
 
   @Input()
   public entity!: CardEntity;
@@ -20,5 +15,34 @@ export class MapCardListComponent {
   @Input()
   public cards: CardData[] = [];
 
+  @Input()
+  public pageSize = 4;
 
+  start = 0;
+  end = this.pageSize;
+
+  ngOnChanges() {
+    this.paginate(this.start);
+  }
+
+  previous() {
+    this.paginate(this.start - this.size());
+  }
+
+  next() {
+    this.paginate(this.end);
+  }
+
+  private paginate(nextStart: number) {
+    this.start = Math.max(0, Math.min(nextStart, this.maxStart()));
+    this.end = this.start + this.size();
+  }
+
+  maxStart() {
+    return this.cards.length - (this.cards.length % this.size());
+  }
+
+  private size() {
+    return Math.max(this.pageSize, 1);
+  }
 }

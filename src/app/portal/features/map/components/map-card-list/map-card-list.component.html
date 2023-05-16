@@ -1,0 +1,17 @@
+<hr>
+<div>
+  <app-content-card *ngFor="let card of cards | slice:start:end"
+    [entity]="entity"
+    [data]="card">
+  </app-content-card>
+</div>
+<nav *ngIf="cards.length > pageSize">
+  <button mat-raised-button (click)="previous()" [disabled]="start === 0">
+    <fa-icon icon="angle-left"></fa-icon>
+    <span appLabel="previousPage"></span>
+  </button>
+  <button mat-raised-button (click)="next()" [disabled]="start === maxStart()">
+    <span appLabel="nextPage"></span>
+    <fa-icon icon="angle-right"></fa-icon>
+  </button>
+</nav>
