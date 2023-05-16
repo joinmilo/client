@@ -1,11 +1,10 @@
-import { createActionGroup } from '@ngrx/store';
-import { Maybe } from 'src/schema/schema';
+import { createActionGroup, emptyProps } from '@ngrx/store';
 
 export const PasswordActions = createActionGroup({
   source: 'Password',
   events: {
-    'check password': (password: Maybe<string>) => ({ password }),
-    'set entropy': (entropy: number | null | undefined) => ({entropy}),
+    'set password strength': (rate: number) => ({ rate }),
+    'reset password strength': emptyProps(),
   },
 });
 

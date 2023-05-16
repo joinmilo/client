@@ -1,10 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { passwordStateKey } from '../password.constants';
+import { passwordStateKey } from '../constants/password.constants';
 import { PasswordState } from './password.reducer';
 
-export const selectUserState = createFeatureSelector<PasswordState>(passwordStateKey);
+export const selectPasswordState = createFeatureSelector<PasswordState>(passwordStateKey);
 
-export const selectSetEntropy = createSelector(
-  selectUserState,
-  state => state.entropy
+export const selectPasswordStrength = createSelector(
+  selectPasswordState,
+  state => state.strengthRate
 );
+
