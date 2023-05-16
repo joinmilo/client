@@ -12,31 +12,29 @@ import { UserActions } from './user.actions';
 @Injectable()
 export class UserEffects {
 
-  saveUser = createEffect(() => this.actions.pipe(
-    ofType(UserActions.saveUser),
+  register = createEffect(() => this.actions.pipe(
+    ofType(UserActions.register),
     switchMap((action) => this.saveUserService.mutate({
       entity: action.entity
     })),
-    map(response => UserActions.userSaved(response.data?.saveUser as UserEntity))
+    map(response => UserActions.registered(response.data?.saveUser as UserEntity))
   ));
 
-  userSaved = createEffect(() => this.actions.pipe(
-    ofType(UserActions.userSaved),
-    tap(() => {
-      this.router.navigateByUrl('/user/login')
-    }),
+  registered = createEffect(() => this.actions.pipe(
+    ofType(UserActions.registered),
+    tap(() => this.router.navigate(['login'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'registrationReceived'
     }))
   ));
 
-  verifyUser = createEffect(() => this.actions.pipe(
-    ofType(UserActions.verifyUser),
+  verify = createEffect(() => this.actions.pipe(
+    ofType(UserActions.verify),
     switchMap((action) => this.verifyUserService.mutate({
       token: action.token
     })),
-    map(response => UserActions.userVerified(response.data?.verify?.verified))
+    map(response => UserActions.verified(response.data?.verify?.verified))
   ));
 
   sendPasswordReset = createEffect(() =>
@@ -71,23 +69,25 @@ export class UserEffects {
       }))
     ));
 
-  userLogin = createEffect(() => this.actions.pipe(
-    ofType(UserActions.userLogin),
+  login = createEffect(() => this.actions.pipe(
+    ofType(UserActions.login),
     filter(action => !!action.email && !!action.password),
     switchMap((action) => this.createTokenService.mutate({
-      email: action.email!,
-      password: action.password!
+      email: action.email,
+      password: action.password
     })),
     filter(response => !!response.data?.createToken?.access),
-    map(response => UserActions.userLoggedIn(response.data?.createToken?.access as Maybe<string>))
+    map(response => UserActions.loggedIn(response.data?.createToken?.access as Maybe<string>))
   ));
 
-  userLoggedIn = createEffect(() => this.actions.pipe(
-    ofType(UserActions.userLoggedIn),
-    tap(() => {
-      this.router.navigateByUrl('/portal/landing')
-    })
-  ), { dispatch: false });
+  loggedIn = createEffect(() => this.actions.pipe(
+    ofType(UserActions.loggedIn),
+    tap(() => this.router.navigate([''])),
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'youreLoggedIn'
+    }))
+  ));
 
   constructor(
     private router: Router,

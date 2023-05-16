@@ -15,15 +15,15 @@ export const initialState: UserState = {
 export const userReducer = createReducer(
   initialState,
 
-  on(UserActions.userVerified, (state, action): UserState => (
+  on(UserActions.verified, (state, action): UserState => (
     { ...state, verified: action.verified}
   )),
 
-  on(UserActions.userSaved, (state, action): UserState => (
+  on(UserActions.registered, (state, action): UserState => (
     { ...state, user: action.entity }
   )),
 
-  on(UserActions.userLoggedIn, (state, action): UserState => (
+  on(UserActions.loggedIn, (state, action): UserState => (
     { ...state, token: action.token }
   )),
 );

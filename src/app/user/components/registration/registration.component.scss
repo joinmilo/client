@@ -1,26 +1,3 @@
-@import 'src/styles/mixins.scss';
-
-main{
-  background-color: white;
-}
-
-section{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4rem;
-}
-
-app-image-slider{
-  width: 30%;
-@include responsive(tablet){
-  display: none;
-  }
-}
-
-app-registration-form{
-  width: 30%;
-  @include responsive(tablet){
-    width: 100%;
-    }
+app-privacy-policy-form {
+  margin-bottom: 1rem;
 }

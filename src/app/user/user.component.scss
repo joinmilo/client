@@ -1,14 +1,14 @@
 div {
   display: flex;
   flex-flow: column;
-  background-color: white;
-  min-height: 100vh;
+  // background-color: white;
 }
 
-app-logo{
- padding-left: 1rem;
+app-logo {
+  padding-left: 1rem;
+  flex: 2 1 10vh;
 }
 
-main{
-  flex: 2 1 auto;
+main {
+  flex: 2 1 90vh;
 }

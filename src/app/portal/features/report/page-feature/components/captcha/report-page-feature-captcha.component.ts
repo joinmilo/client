@@ -4,7 +4,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { Subject, takeUntil } from "rxjs";
 
 @Component({
-  selector: 'app-report-page-feature-captcha.component',
+  selector: 'app-report-page-feature-captcha',
   templateUrl: 'report-page-feature-captcha.component.html',
 })
 export class ReportPageFeatureCaptchaComponent implements OnDestroy {

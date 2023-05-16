@@ -1,30 +1,33 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { CoreModule } from 'src/app/core/core.module';
 import { FormModule } from 'src/app/shared/form/form.module';
-import { PasswordInputComponent } from './password-input.component';
-import { passwordStateKey } from './password.constants';
-import { PasswordEffects } from './state/password.effects';
+import { PasswordConfirmComponent } from './components/password-confirm/password-confirm.component';
+import { PasswordFormComponent } from './components/password/password-field.component';
+import { PasswordStrengthComponent } from './components/strength/password-strength.component';
+import { passwordStateKey } from './constants/password.constants';
+import { PasswordValidator } from './services/password-validator.service';
 import { passwordReducer } from './state/password.reducer';
 
 
 const components = [
-  PasswordInputComponent,
+  PasswordConfirmComponent,
+  PasswordFormComponent,
+  PasswordStrengthComponent,
 ];
 
 const framework = [
   CommonModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  FormsModule,
 ];
 
 const materials = [
@@ -43,10 +46,6 @@ const modules = [
 
 const libs = [
   StoreModule.forFeature(passwordStateKey, passwordReducer),
-  EffectsModule.forFeature([PasswordEffects]),
-  NgHcaptchaModule.forRoot({
-    languageCode: 'de' //TODO
-  }),
 ]
 
 @NgModule({
@@ -58,5 +57,8 @@ const libs = [
     ...libs,
   ],
   exports: [...components],
+  providers: [
+    PasswordValidator
+  ]
 })
 export class PasswordModule { }

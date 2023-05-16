@@ -24,7 +24,7 @@ export class VerificationComponent implements OnInit{
   ngOnInit(): void {
     this.route.paramMap.pipe(
       tap(params => {
-        this.store.dispatch(UserActions.verifyUser(params.get(verificationToken)));
+        this.store.dispatch(UserActions.verify(params.get(verificationToken)));
       }),
       switchMap(() => this.store.select(selectUserVerified))
     ).subscribe(verified => {

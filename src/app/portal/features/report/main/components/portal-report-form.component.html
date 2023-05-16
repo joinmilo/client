@@ -1,11 +1,10 @@
 <div class="main">
   <app-page-title title="feedback"></app-page-title>
-  <form [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+  <form class="border-box" [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
     <h2 class="mat-headline-6" appLabel="giveUsFeedback"></h2>
     <div>
       <p appLabel="needYourFeedback"></p>
-      <p appLabel="featureRequest">
-      </p>
+      <p appLabel="featureRequest"></p>
     </div>
     <section>
       <div>

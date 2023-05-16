@@ -19,6 +19,14 @@ body {
   margin: var(--gap) auto;
 }
 
+.border-box {
+  padding: var(--gap);
+  background-color: white;
+  border-radius: var(--mdc-shape-small);
+  border: 1px solid var(--color-border);
+  box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
+}
+
 a {
   cursor: pointer;
   text-decoration: none;
@@ -27,6 +35,11 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+fieldset {
+  border: unset;
+  padding: unset;
 }
 
 .title-gradient {

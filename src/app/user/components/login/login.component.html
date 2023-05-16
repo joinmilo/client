@@ -1,6 +1,28 @@
-<main>
-  <section>
-  <app-login-form></app-login-form>
+<div class="main">
+  <form class="border-box" [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit()">
+    <h2 class="mat-headline-5" appLabel="login"></h2>
+
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="email"></mat-label>
+      <input matInput formControlName="email" placeholder="email@example.com">
+    </mat-form-field>
+    
+    <app-password-field formControlName="password"></app-password-field>
+
+    <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
+      <label appLabel="login"></label>
+    </button>
+
+    <section>
+      <p appLabel="notRegistered?" suffix="&nbsp;"></p>
+      <a [routerLink]="['/user', 'register']" appLabel="register"></a>
+    </section>
+
+    <section>
+      <p appLabel="forgotpassword?" suffix="&nbsp;"></p>
+      <a [routerLink]="['/user', 'register']" appLabel="resetPassword"></a>
+    </section>
+
+  </form>
   <app-image-slider></app-image-slider>
-  </section>
-</main>
+</div>

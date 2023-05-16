@@ -11,7 +11,6 @@ import { fadeInFromRightAnimation } from 'src/app/core/animations/animations';
 })
 export class ImageSliderComponent implements OnInit {
 
-  
   public images = [
     { path: 'assets/features/calendar.svg', description: 'calendarDescription' },
     { path: 'assets/features/dashboard.svg', description: 'dashboardDescription' },

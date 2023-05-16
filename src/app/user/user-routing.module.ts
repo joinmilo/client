@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { SendPasswordResetComponent } from './components/password-reset/send-password-reset.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { SendPasswordResetComponent } from './components/reset-password/send-password-reset/send-password-reset.component';
-import { SetNewPasswordComponent } from './components/reset-password/set-new-password/set-new-password.component';
+import { SetNewPasswordComponent } from './components/set-new-password/set-new-password.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { resetToken, verificationToken } from './constants/user.constants';
 
@@ -12,19 +12,16 @@ const routes: Routes = [
     path: 'register',
     component: RegistrationComponent
   },
-
   {
     path: 'login',
     component: LoginComponent
   },
-
   {
-    path: 'sendPasswordReset',
+    path: 'password-reset',
     component: SendPasswordResetComponent
   },
-
   {
-    path: `setNewPassword/:${resetToken}`,
+    path: `new-password/:${resetToken}`,
     component: SetNewPasswordComponent
   },
 
