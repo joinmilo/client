@@ -60,6 +60,7 @@
   <app-map-card-list
     *ngIf="(results | async) as results"
     [entity]="results.entity"
-    [cards]="results.data">
+    [cards]="results.data"
+    [pageSize]="(isDesktop | async) ? 8 : 4">
   </app-map-card-list>
 </ng-template>
