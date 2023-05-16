@@ -32,7 +32,7 @@
     border-radius: 0 0 var(--map-gap) var(--map-gap);
     background-color: var(--map-bg);
 
-    .map-nav {
+    .map-menu-head {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -113,6 +113,13 @@
         border-radius: 0;
       }
 
+      button[mat-mini-fab] {
+        position: absolute;
+        top: var(--map-gap);
+        left: var(--map-gap);
+        background: var(--map-bg);
+      }
+
       mat-button-toggle-group {
         left: var(--map-gap);
         bottom: var(--map-gap);
@@ -126,6 +133,14 @@
         font-size: small;
         opacity: 1;
       }
+    }
+  }
+
+  .desktop.hide-menu {
+    --map-desktop-menu-width: 0vw;
+
+    .map-menu {
+      display: none;
     }
   }
 }

@@ -16,6 +16,7 @@ import {
   latLng, latLngBounds,
   LatLngBounds,
   Layer,
+  Map,
   MapOptions,
   Marker,
   marker,
@@ -38,24 +39,22 @@ export class MapPageComponent implements OnInit, OnDestroy {
   public FilterKey: typeof FilterKey = FilterKey;
 
   public activeFilter = this.store.select(selectActiveFilter);
-
   public results = this.store.select(selectResults);
+  private pois = this.store.select(selectPois);
 
   public markers: Observable<Layer[]>;
-
   public mapBounds: Observable<LatLngBounds>;
 
   public isLandscape: Observable<boolean>;
-
   public isDesktop: Observable<boolean>;
 
   public showFilter = false;
+  public showMenuInDesktop = true;
+
+  private map?: Map;
 
   public readonly leafletOptions: MapOptions;
-
   public readonly markerClusterOptions = markerClusterOptions;
-
-  private pois = this.store.select(selectPois);
 
   private readonly orientations = {
     portrait: '(orientation: portrait)',
@@ -111,5 +110,14 @@ export class MapPageComponent implements OnInit, OnDestroy {
     const popup = this.components.createPopupElement(poi);
     return marker(latLng(poi.latitude, poi.longitude), { icon })
       .bindPopup(popup, popupOptions);
+  }
+
+  onMapReady(map: Map) {
+    this.map = map;
+  }
+
+  toggleMenu() {
+    this.showMenuInDesktop = !this.showMenuInDesktop;
+    setTimeout(() => this.map?.invalidateSize(true), 100)
   }
 }
