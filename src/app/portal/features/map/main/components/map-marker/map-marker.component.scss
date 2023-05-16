@@ -1,0 +1,19 @@
+:host {
+  position: relative;
+  width: 28px;
+  height: 40px;
+
+  svg {
+    display: block;
+  }
+
+  fa-icon {
+    position: absolute;
+    top: 8px;
+    font-size: 14px;
+    color: #eee;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -5,9 +5,9 @@ import {
   Injectable,
   Injector, Type
 } from '@angular/core';
-import {MapMarkerComponent} from '../components/map-marker.component';
+import {MapMarkerComponent} from '../components/map-marker/map-marker.component';
 import {PointOfInterest} from '../typings/point-of-interest';
-import {MapPopupComponent} from '../components/map-popup.component';
+import {MapPopupComponent} from '../components/map-popup/map-popup.component';
 
 /**
  * This programmatically creates Components bound to Html Elements
