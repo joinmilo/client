@@ -20,6 +20,11 @@
   --mdc-protected-button-label-text-color: var(--color-accent-contrast-500) !important;
 }
 
+/* Size Button Toggle Group to match other button's size */
+.mat-button-toggle-label-content {
+  line-height: 36px !important;
+}
+
 /* Card */
 mat-card {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
