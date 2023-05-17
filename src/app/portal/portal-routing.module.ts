@@ -22,8 +22,10 @@ const routes: Routes = [
   },
   {
     path: calendarFeatureKey,
-    loadChildren: () => import('./features/calendar/main/portal-calendar.module')
-      .then((imported) => imported.PortalCalendarModule),
+    loadChildren: () =>
+      import('./features/calendar/main/portal-calendar.module').then(
+        (imported) => imported.PortalCalendarModule
+      ),
   },
   {
     path: dealsFeatureKey,
@@ -42,8 +44,10 @@ const routes: Routes = [
   },
   {
     path: guestArticlesFeatureKey,
-    loadChildren: () => import('./features/guest-article/portal-guest-article.module')
-      .then((imported) => imported.PortalGuestArticleModule),
+    loadChildren: () =>
+      import('./features/guest-article/portal-guest-article.module').then(
+        (imported) => imported.PortalGuestArticleModule
+      ),
   },
   {
     path: 'notifications',
@@ -62,18 +66,24 @@ const routes: Routes = [
   },
   {
     path: 'search',
-    loadChildren: () => import('./shared/search/search.module')
-      .then((imported) => imported.PortalSearchModule),
+    loadChildren: () =>
+      import('./shared/search/search.module').then(
+        (imported) => imported.PortalSearchModule
+      ),
   },
   {
     path: '404',
-    loadChildren: () => import('../shared/not-found/not-found.module')
-      .then((imported) => imported.NotFoundModule),
+    loadChildren: () =>
+      import('../shared/not-found/not-found.module').then(
+        (imported) => imported.NotFoundModule
+      ),
   },
   {
     path: '',
-    loadChildren: () => import('./main/portal-main.module')
-      .then((imported) => imported.PortalMainModule),
+    loadChildren: () =>
+      import('./main/portal-main.module').then(
+        (imported) => imported.PortalMainModule
+      ),
   },
   {
     path: '**',
