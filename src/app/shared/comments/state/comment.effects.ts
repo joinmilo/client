@@ -7,9 +7,9 @@ import { EventCommentEntity, SaveEventCommentGQL } from 'src/schema/schema';
 import { CommentActions } from './comment.actions';
 
 @Injectable()
-export class ReportEffects {
+export class CommentEffects {
 
-  saveReport = createEffect(() => this.actions.pipe(
+  saveEventComment = createEffect(() => this.actions.pipe(
     ofType(CommentActions.saveEventComment),
     switchMap((action) => this.saveEventCommentService.mutate({
       entity: action.entity
@@ -28,5 +28,5 @@ export class ReportEffects {
   constructor(
     private actions: Actions,
     private saveEventCommentService: SaveEventCommentGQL,
-  ) { }
+  ) {}
 }

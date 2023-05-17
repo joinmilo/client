@@ -4,9 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { UserCommentComponent } from './comment/user-comment.component';
 import { CommentButtonComponent, CommentDialogComponent } from './comment-button/comment-button.component';
+import { commentStateKey } from './comment.constant';
+import { UserCommentComponent } from './comment/user-comment.component';
+import { CommentEffects } from './state/comment.effects';
+import { commentReducer } from './state/comment.reducer';
 
 const components = [
   UserCommentComponent,
@@ -29,9 +34,15 @@ const modules = [
   CoreModule,
 ];
 
+const libs = [
+  StoreModule.forFeature(commentStateKey, commentReducer),
+  EffectsModule.forFeature([CommentEffects]),
+]
+
 @NgModule({
   declarations: [...components],
   imports: [
+    ...libs,
     ...framework,
     ...materials,
     ...modules,
