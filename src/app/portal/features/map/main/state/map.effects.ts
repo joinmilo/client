@@ -53,8 +53,8 @@ export class MapEffects {
             .addIfNotEmpty('category.id', action.categoryId)
             .addIfNotEmpty('targetGroups.id', action.targetGroupId)
             .addIfNotEmpty('address.suburb.id', action.suburbId)
-            .addIfNotEmpty("schedules.startDate", action.dateRange?.start?.toISOString(), QueryOperator.GreaterOrEqual)
-            .addIfNotEmpty("schedules.endDate", action.dateRange?.end?.toISOString(), QueryOperator.LessOrEqual)
+            .addIfNotEmpty("schedules.startDate", action.dateRange?.start, QueryOperator.GreaterOrEqual)
+            .addIfNotEmpty("schedules.endDate", action.dateRange?.end, QueryOperator.LessOrEqual)
             .build(ConjunctionOperator.And)
         }
       }

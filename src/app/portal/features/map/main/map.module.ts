@@ -26,8 +26,13 @@ import {MapAttributionComponent} from './components/map-attribution/map-attribut
 import {MapPopupComponent} from './components/map-popup/map-popup.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {MapDealFilterComponent} from './components/filters/deal-filter.component';
+import {
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS,
+  MatMomentDateModule,
+  MomentDateAdapter
+} from '@angular/material-moment-adapter';
 
 
 const components = [
@@ -58,7 +63,7 @@ const materials = [
   MatDatepickerModule,
   MatIconModule,
   MatInputModule,
-  MatNativeDateModule,
+  MatMomentDateModule,
   MatSelectModule,
 ];
 
@@ -87,6 +92,14 @@ const libs = [
   ],
   exports: [
     ...components
+  ],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
   ]
 })
 export class MapPortalModule {}

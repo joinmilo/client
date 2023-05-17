@@ -38,33 +38,43 @@ export class MapEventFilterComponent implements OnInit, OnDestroy {
     this.store.select(selectEventFilter).pipe(
       take(1),
     ).subscribe((value) => {
-      if (value) {
-        this.form.setValue(this.defaults(value))
-      }
+      this.form.setValue({
+        ...this.defaults(value),
+        dateRange: {
+          start: this.dateOrNull(value?.dateRange?.start),
+          end: this.dateOrNull(value?.dateRange?.end),
+        }
+      })
     });
 
     this.form.valueChanges.pipe(
       takeUntil(this.destroy),
-      tap((value) => this.store.dispatch(MapFeatureActions.setEventFilter(this.defaults(value))))
+      tap((value) => this.store.dispatch(MapFeatureActions.setEventFilter({
+        ...this.defaults(value),
+        dateRange: {
+          start: value?.dateRange?.start?.toISOString(),
+          end: value?.dateRange?.end?.toISOString(),
+        }
+      })))
     ).subscribe();
   }
 
-  defaults(input: typeof this.form.value) {
+  defaults(input?: Omit<typeof this.form.value, 'dateRange'>) {
     return {
       categoryId: input?.categoryId || "",
       targetGroupId: input?.targetGroupId || "",
       suburbId: input?.suburbId || "",
       showOnlyAdmissionFree: input?.showOnlyAdmissionFree || false,
       showPastEvents: input?.showPastEvents || false,
-      dateRange: {
-        start: input?.dateRange?.start || null,
-        end: input?.dateRange?.end || null
-      }
     }
   }
 
   ngOnDestroy() {
     this.destroy.next(true);
     this.destroy.complete()
+  }
+
+  private dateOrNull(isoString?: string | null) {
+    return isoString ? new Date(isoString) : null;
   }
 }
