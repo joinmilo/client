@@ -26,8 +26,8 @@ export interface MapState {
     targetGroupId?: string,
     suburbId?: string
     dateRange?: {
-      start: Date | null
-      end: Date | null
+      start?: string
+      end?: string
     },
     showOnlyAdmissionFree?: boolean,
     showPastEvents?: boolean
