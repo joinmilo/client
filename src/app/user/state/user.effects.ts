@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, switchMap, tap } from 'rxjs';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { UserEntity, VerifyUserGQL } from '../../../schema/schema';
+import { SendVerificationGQL, UserEntity, VerifyUserGQL } from '../../../schema/schema';
 import { ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL } from './../../../schema/schema';
 import { CoreActions } from './../../core/state/core.actions';
 import { UserActions } from './user.actions';
@@ -28,14 +28,6 @@ export class UserEffects {
     }))
   ));
 
-  verify = createEffect(() => this.actions.pipe(
-    ofType(UserActions.verify),
-    switchMap((action) => this.verifyUserService.mutate({
-      token: action.token
-    })),
-    map(response => UserActions.verified(response.data?.verify?.verified))
-  ));
-
   sendPasswordReset = createEffect(() =>
     this.actions.pipe(
       ofType(UserActions.sendPasswordReset),
@@ -48,7 +40,7 @@ export class UserEffects {
       tap(() => this.router.navigate(['/user', 'login'])),
       map(() => CoreActions.setFeedback({
         type: FeedbackType.Success,
-        labelMessage: 'passwordResetSend'
+        labelMessage: 'mailSentSucessfully'
       }))
     )
   );
@@ -67,13 +59,40 @@ export class UserEffects {
         type: FeedbackType.Success,
         labelMessage: 'resetPasswordSuccess'
       }))
-    ));
+    )
+  );
+
+  verify = createEffect(() => this.actions.pipe(
+    ofType(UserActions.verify),
+    switchMap((action) => this.verifyUserService.mutate({
+      token: action.token
+    })),
+    map(response => UserActions.verified(response.data?.verify?.verified))
+  ));
+
+  sendMailVerification = createEffect(() =>
+    this.actions.pipe(
+      ofType(UserActions.sendMailVerification),
+      switchMap((action) =>
+        this.sendVerificationService.mutate({
+          email: action.email
+        })
+      ),
+      filter(response => !!response.data?.sendVerification),
+      tap(() => this.router.navigate(['/user', 'login'])),
+      map(() => CoreActions.setFeedback({
+        type: FeedbackType.Success,
+        labelMessage: 'mailSentSucessfully'
+      }))
+    )
+  );
 
   constructor(
     private router: Router,
     private actions: Actions,
     private verifyUserService: VerifyUserGQL,
     private sendPasswordResetService: SendPasswordResetGQL,
+    private sendVerificationService: SendVerificationGQL,
     private resetPasswordService: ResetPasswordGQL,
     private saveUserService: SaveUserGQL) { }
 }

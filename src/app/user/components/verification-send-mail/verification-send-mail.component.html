@@ -1,7 +1,7 @@
 <div class="main">
-  <form class="border-box" [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit()">
-    <h2 class="mat-headline-5" appLabel="troubleLogin"></h2>
-    <p appLabel="mailWithPasswordReset"></p>
+  <form class="border-box" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2 class="mat-headline-5" appLabel="noVerification?"></h2>
+    <p appLabel="newMailWithVerification"></p>
     <mat-form-field appearance="outline">
       <mat-label appLabel="email"></mat-label>
       <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">

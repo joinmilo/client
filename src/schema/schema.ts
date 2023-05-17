@@ -4853,6 +4853,13 @@ export type UserContextFragment = { __typename?: 'UserContextEntity', id?: strin
 
 export type UserFragment = { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, password?: string | null, verified?: boolean | null, captchaToken?: string | null };
 
+export type CheckPasswordMutationVariables = Exact<{
+  password?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type CheckPasswordMutation = { __typename?: 'Mutation', checkPassword?: number | null };
+
 export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
@@ -4867,6 +4874,14 @@ export type RefreshMutationVariables = Exact<{
 
 
 export type RefreshMutation = { __typename?: 'Mutation', refreshToken?: { __typename?: 'TokenDto', access?: string | null, refresh?: string | null } | null };
+
+export type ResetPasswordMutationVariables = Exact<{
+  token?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword?: boolean | null };
 
 export type SaveArticleMutationVariables = Exact<{
   entity: ArticleEntityInput;
@@ -4889,12 +4904,19 @@ export type SaveUserMutationVariables = Exact<{
 
 export type SaveUserMutation = { __typename?: 'Mutation', saveUser?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, password?: string | null, verified?: boolean | null, captchaToken?: string | null } | null };
 
-export type CheckPasswordMutationVariables = Exact<{
-  password?: InputMaybe<Scalars['String']>;
+export type SendPasswordResetMutationVariables = Exact<{
+  email?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type CheckPasswordMutation = { __typename?: 'Mutation', checkPassword?: number | null };
+export type SendPasswordResetMutation = { __typename?: 'Mutation', sendPasswordReset?: boolean | null };
+
+export type SendVerificationMutationVariables = Exact<{
+  email?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type SendVerificationMutation = { __typename?: 'Mutation', sendVerification?: boolean | null };
 
 export type GetAppsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5034,27 +5056,12 @@ export type GetUserContextsQueryVariables = Exact<{
 
 export type GetUserContextsQuery = { __typename?: 'Query', getUserContexts?: { __typename?: 'PageableList_UserContextEntity', result?: Array<{ __typename?: 'UserContextEntity', id?: string | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, slug?: string | null, modified?: any | null, created?: any | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', name?: string | null, id?: string | null, email?: string | null, phone?: string | null } | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, cardImage?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null> | null } | null };
 
-export type ResetPasswordMutationVariables = Exact<{
-  token?: InputMaybe<Scalars['String']>;
-  password?: InputMaybe<Scalars['String']>;
-}>;
-
-
-export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword?: boolean | null };
-
 export type SearchQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
 }>;
 
 
 export type SearchQuery = { __typename?: 'Query', search?: Array<{ __typename?: 'SearchDto', id?: string | null } | null> | null };
-
-export type SendPasswordResetMutationVariables = Exact<{
-  email?: InputMaybe<Scalars['String']>;
-}>;
-
-
-export type SendPasswordResetMutation = { __typename?: 'Mutation', sendPasswordReset?: boolean | null };
 
 export type GetServerVersionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5530,6 +5537,22 @@ export const UserFragmentDoc = gql`
   captchaToken
 }
     `;
+export const CheckPasswordDocument = gql`
+    mutation checkPassword($password: String) {
+  checkPassword(password: $password)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CheckPasswordGQL extends Apollo.Mutation<CheckPasswordMutation, CheckPasswordMutationVariables> {
+    override document = CheckPasswordDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const LoginDocument = gql`
     mutation login($email: String!, $password: String!) {
   createToken(email: $email, password: $password) {
@@ -5563,6 +5586,22 @@ export const RefreshDocument = gql`
   })
   export class RefreshGQL extends Apollo.Mutation<RefreshMutation, RefreshMutationVariables> {
     override document = RefreshDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ResetPasswordDocument = gql`
+    mutation resetPassword($token: String, $password: String) {
+  resetPassword(token: $token, password: $password)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ResetPasswordGQL extends Apollo.Mutation<ResetPasswordMutation, ResetPasswordMutationVariables> {
+    override document = ResetPasswordDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -5622,17 +5661,33 @@ export const SaveUserDocument = gql`
       super(apollo);
     }
   }
-export const CheckPasswordDocument = gql`
-    mutation checkPassword($password: String) {
-  checkPassword(password: $password)
+export const SendPasswordResetDocument = gql`
+    mutation sendPasswordReset($email: String) {
+  sendPasswordReset(email: $email)
 }
     `;
 
   @Injectable({
     providedIn: 'root'
   })
-  export class CheckPasswordGQL extends Apollo.Mutation<CheckPasswordMutation, CheckPasswordMutationVariables> {
-    override document = CheckPasswordDocument;
+  export class SendPasswordResetGQL extends Apollo.Mutation<SendPasswordResetMutation, SendPasswordResetMutationVariables> {
+    override document = SendPasswordResetDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SendVerificationDocument = gql`
+    mutation sendVerification($email: String) {
+  sendVerification(email: $email)
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SendVerificationGQL extends Apollo.Mutation<SendVerificationMutation, SendVerificationMutationVariables> {
+    override document = SendVerificationDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -6075,22 +6130,6 @@ export const GetUserContextsDocument = gql`
       super(apollo);
     }
   }
-export const ResetPasswordDocument = gql`
-    mutation resetPassword($token: String, $password: String) {
-  resetPassword(token: $token, password: $password)
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class ResetPasswordGQL extends Apollo.Mutation<ResetPasswordMutation, ResetPasswordMutationVariables> {
-    override document = ResetPasswordDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
 export const SearchDocument = gql`
     query search($params: FilterSortPaginateInput) {
   search(params: $params) {
@@ -6104,22 +6143,6 @@ export const SearchDocument = gql`
   })
   export class SearchGQL extends Apollo.Query<SearchQuery, SearchQueryVariables> {
     override document = SearchDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
-export const SendPasswordResetDocument = gql`
-    mutation sendPasswordReset($email: String) {
-  sendPasswordReset(email: $email)
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class SendPasswordResetGQL extends Apollo.Mutation<SendPasswordResetMutation, SendPasswordResetMutationVariables> {
-    override document = SendPasswordResetDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

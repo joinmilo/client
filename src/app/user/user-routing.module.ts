@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { VerificationSendMailComponent } from './components/verification-send-mail/verification-send-mail.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { tokenSlug } from './constants/user.constants';
 
@@ -26,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: `verification`,
-    component: VerificationComponent
+    component: VerificationSendMailComponent
   },
   {
     path: `verification/:${tokenSlug}`,

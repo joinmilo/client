@@ -25,7 +25,7 @@ export class VerificationSendMailComponent {
   }
 
   public onSubmit(): void {
-    this.store.dispatch(UserActions.sendPasswordReset(
+    this.store.dispatch(UserActions.sendMailVerification(
        this.form.value.email
     ));
   }
