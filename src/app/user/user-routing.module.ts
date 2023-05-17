@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
-import { SendPasswordResetComponent } from './components/password-reset/send-password-reset.component';
+import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
+import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { SetNewPasswordComponent } from './components/set-new-password/set-new-password.component';
 import { VerificationComponent } from './components/verification/verification.component';
-import { resetToken, verificationToken } from './constants/user.constants';
+import { tokenSlug } from './constants/user.constants';
 
 const routes: Routes = [
   {
@@ -17,16 +17,19 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'password-reset',
-    component: SendPasswordResetComponent
+    path: 'password',
+    component: PasswordSendMailComponent
   },
   {
-    path: `new-password/:${resetToken}`,
-    component: SetNewPasswordComponent
+    path: `password/:${tokenSlug}`,
+    component: PasswordSetNewComponent
   },
-
   {
-    path: `verification/:${verificationToken}`,
+    path: `verification`,
+    component: VerificationComponent
+  },
+  {
+    path: `verification/:${tokenSlug}`,
     component: VerificationComponent
   },
 ];

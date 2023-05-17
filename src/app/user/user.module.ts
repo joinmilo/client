@@ -15,9 +15,10 @@ import { PortalFooterModule } from './../portal/shared/footer/portal-footer.modu
 import { PasswordModule } from './../shared/password/password.module';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { LoginComponent } from './components/login/login.component';
-import { SendPasswordResetComponent } from './components/password-reset/send-password-reset.component';
+import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
+import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { SetNewPasswordComponent } from './components/set-new-password/set-new-password.component';
+import { VerificationSendMailComponent } from './components/verification-send-mail/verification-send-mail.component';
 import { VerificationComponent } from './components/verification/verification.component';
 import { userFeatureKey } from './constants/user.constants';
 import { UserEffects } from './state/user.effects';
@@ -26,13 +27,14 @@ import { UserPortalRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 
 const components = [
-  UserComponent,
-  VerificationComponent,
-  RegistrationComponent,
-  SendPasswordResetComponent,
-  SetNewPasswordComponent,
   ImageSliderComponent,
   LoginComponent,
+  PasswordSetNewComponent,
+  PasswordSendMailComponent,
+  RegistrationComponent,
+  UserComponent,
+  VerificationComponent,
+  VerificationSendMailComponent,
 ];
 
 const framework = [

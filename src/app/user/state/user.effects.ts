@@ -21,7 +21,7 @@ export class UserEffects {
 
   registered = createEffect(() => this.actions.pipe(
     ofType(UserActions.registered),
-    tap(() => this.router.navigate(['login'])),
+    tap(() => this.router.navigate(['/user', 'login'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'registrationReceived'
@@ -45,6 +45,7 @@ export class UserEffects {
         })
       ),
       filter(response => !!response.data?.sendPasswordReset),
+      tap(() => this.router.navigate(['/user', 'login'])),
       map(() => CoreActions.setFeedback({
         type: FeedbackType.Success,
         labelMessage: 'passwordResetSend'

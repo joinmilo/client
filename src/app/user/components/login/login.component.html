@@ -14,13 +14,14 @@
     </button>
 
     <section>
-      <p appLabel="notRegistered?" suffix="&nbsp;"></p>
-      <a [routerLink]="['/user', 'register']" appLabel="register"></a>
-    </section>
-
-    <section>
-      <p appLabel="forgotpassword?" suffix="&nbsp;"></p>
-      <a [routerLink]="['/user', 'register']" appLabel="resetPassword"></a>
+      <small>
+        <span appLabel="notRegistered?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'register']" appLabel="register"></a>
+      </small>
+      <small>
+        <span appLabel="forgotpassword?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'password']" appLabel="resetPassword"></a>
+      </small>
     </section>
 
   </form>

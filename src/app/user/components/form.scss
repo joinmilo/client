@@ -19,7 +19,15 @@ button, app-captcha-submit {
 
 section {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
+
+  small {
+    display: flex;
+  }
+}
+
+a {
+  align-self: flex-start;
 }
 
 :host ::ng-deep {

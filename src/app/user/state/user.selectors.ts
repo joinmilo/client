@@ -6,7 +6,7 @@ export const selectUserState = createFeatureSelector<UserState>(userFeatureKey);
 
 export const selectUserVerified = createSelector(
   selectUserState,
-  state => state.verified
+  state => !!state.verified
 );
 
 export const selectSavedUser = createSelector(

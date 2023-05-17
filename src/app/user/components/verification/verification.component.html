@@ -1,13 +1,31 @@
-<main class="main">
-  <section>
-    <h2 class="mat-headline-4" [appLabel]="verified? ('congratulations') : ('failure')"></h2>
-    <div>
-      <fa-icon [style]="verified? ('color: var(--color-success-500)') : ('color: var(--color-warn-500)') " size="5x"
-        [icon]="verified?  ['fas', 'check'] : ['fas', 'xmark']"></fa-icon>
-      <p [appLabel]="verified? ('verificationSuccess') : ('verificationFailure')"></p>
-      <button mat-raised-button color="primary" [routerLink]="['/user', 'login']">
+<div class="main">
+  <section class="border-box">
+    <h2 class="mat-headline-5"
+      [appLabel]="(verified | async)
+        ? 'congratulations'
+        : 'failure'"></h2>
+    <fa-icon
+      [style]="(verified | async)
+        ? ('color: var(--color-success-500)')
+        : ('color: var(--color-warn-500)') " size="5x"
+      [icon]="(verified | async)
+        ? ['fas', 'check']
+        : ['fas', 'xmark']">
+    </fa-icon>
+    <p [appLabel]="(verified | async)
+        ? 'verificationSuccess'
+        : 'verificationFailure'"></p>
+    <button *ngIf="(verified | async)"
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/user', 'login']">
         <span appLabel="login"></span>
-      </button>
-    </div>
+    </button>
+    <button *ngIf="(verified | async) === false"
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/user', 'verification']">
+        <span appLabel="sendNewMail"></span>
+    </button>
   </section>
-</main>
+</div>

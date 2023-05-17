@@ -18,9 +18,16 @@
     </app-captcha-submit>
   
     <section>
-      <p appLabel="haveAcc?" suffix="&nbsp;"></p>
-      <a [routerLink]="['/user', 'login']" appLabel="login"></a>
+      <small>
+        <span appLabel="haveAcc?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'login']" appLabel="login"></a>
+      </small>
+      <small>
+        <span appLabel="noVerification?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'verification']" appLabel="sendNewMail"></a>
+      </small>
     </section>
+
   </form>
   <app-image-slider></app-image-slider>
 </div>
