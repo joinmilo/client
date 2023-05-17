@@ -3,7 +3,13 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { ArticleEntity, EventEntity, OrganisationEntity } from 'src/schema/schema';
+import { CommentActions } from './../state/comment.actions';
+
+interface DialogData {
+  eventId: Maybe<string>;
+  organisationId: Maybe<string>;
+  articleId: Maybe<string>;
+}
 
 @Component({
   selector: 'app-comment-button',
@@ -13,9 +19,15 @@ import { ArticleEntity, EventEntity, OrganisationEntity } from 'src/schema/schem
 export class CommentButtonComponent {
 
   @Input()
-  entity: Maybe<EventEntity | OrganisationEntity | ArticleEntity>;
+  eventId?: Maybe<string>;
 
-  constructor(public dialog: MatDialog){}
+  @Input()
+  organisationId?: Maybe<string>;
+
+  @Input()
+  articleId?: Maybe<string>;
+
+  constructor(public dialog: MatDialog) { }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(CommentDialogComponent, {
@@ -23,7 +35,9 @@ export class CommentButtonComponent {
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
-        entity: this.entity
+        eventId: this.eventId,
+        organisationId: this.organisationId,
+        articleId: this.articleId
       }
     });
   }
@@ -40,18 +54,35 @@ export class CommentDialogComponent {
     content: ['', [Validators.required]],
   });
 
+
   constructor(
     public dialogRef: MatDialogRef<CommentDialogComponent>,
     private fb: FormBuilder,
     private Store: Store,
-    @Inject(MAT_DIALOG_DATA) public data: Maybe<string>) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
-    onSubmit(){
-      console.log('hello')
-      const entity = this.data;
+  onSubmit() {
 
-      if (entity === 'event'){
-        //todo
-      }
+    switch (true) {
+      case !!this.data.eventId:
+        this.Store.dispatch(CommentActions.saveEventComment({
+          content: this.form.value.content,
+          approved: false,
+          event: { id: this.data.eventId }
+          // TODO: add content to translatable, add usercontext
+        }));
+        break;
+
+      case !!this.data.organisationId:
+        // TODO: add orga Actions
+        break;
+
+      case !!this.data.articleId:
+        // TODO: add article Actions
+        break;
+
+      default:
+        break;
     }
+  }
 }

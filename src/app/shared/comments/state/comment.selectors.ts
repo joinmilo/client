@@ -4,7 +4,7 @@ import { CommentState } from './comment.reducer';
 
 export const selectCommentState = createFeatureSelector<CommentState>(commentStateKey);
 
-export const selectReportTypes = createSelector(
+export const selectComment = createSelector(
   selectCommentState,
   state => state.savedEventComment
 );

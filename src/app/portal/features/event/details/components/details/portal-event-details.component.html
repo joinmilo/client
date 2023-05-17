@@ -30,7 +30,7 @@
       <app-user-comment></app-user-comment>
     </section>
     <div>
-      <app-comment-button [entity]="(eventDetails |async)"></app-comment-button>
+      <app-comment-button [organisationId]="(eventDetails |async)?.id"></app-comment-button>
       <a [routerLink]="['/comments']" appLabel="allComments" suffix="»"></a>
     </div>
   </div>
