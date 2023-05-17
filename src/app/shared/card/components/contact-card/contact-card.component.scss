@@ -8,35 +8,29 @@
 }
 
 mat-card {
+  padding: 1.5rem;
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  width: 30rem;
-  max-width: calc(100% - 2rem);
-  height: 10rem;
-}
-
-mat-card-content {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: unset;
-  max-width: 16rem;
-}
+  width: 22rem;
+  max-width: calc(100% - 2rem);
+  gap: var(--gap);
 
-figure {
-  position: relative;
-  width: 5%;
-}
-
-mat-card-content {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 2;
-
-  * {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  *{
+    text-align: center;
   }
 }
+
+img {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+figure{
+  align-self: center;
+  position: relative;
+  height: 13rem;
+  width: 13rem;
+  margin: unset;
+}
+
+

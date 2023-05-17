@@ -1,16 +1,16 @@
 <div class="container">
-  <mat-card>
-    <figure>
-      <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill priority="true">
-    </figure>
-    <mat-card-content>
-      <h3>
-        {{element?.creator}}
-      </h3>
-      <span>
-        {{element?.email}}
-      </span>
-    </mat-card-content>
-    <app-favorite-piece></app-favorite-piece>
-  </mat-card>
+<mat-card>
+  <figure>
+    <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill priority="true">
+  </figure>
+  <section>
+    <h5 class="mat-headline-5">
+      {{element?.creator ? element?.creator: 'Organisation-Name-Wuppertal'}}
+    </h5>
+    <p class="mat-body-1">
+      {{element?.email ? element?.email : 'organisation-stadt-wuppertal@web.de'}}
+    </p>
+  </section>
+  <app-favorite-piece></app-favorite-piece>
+</mat-card>
 </div>
