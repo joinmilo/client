@@ -3,5 +3,6 @@ export interface Token {
   id: string,
   roles: Array<string>,
   scopes: Array<string>,
-  sub: string, 
+  sub: string,
+  verified?: boolean, 
 }
