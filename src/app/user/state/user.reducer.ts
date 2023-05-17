@@ -23,7 +23,4 @@ export const userReducer = createReducer(
     { ...state, user: action.entity }
   )),
 
-  on(UserActions.loggedIn, (state, action): UserState => (
-    { ...state, token: action.token }
-  )),
 );

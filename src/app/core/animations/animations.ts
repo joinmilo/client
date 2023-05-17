@@ -27,9 +27,9 @@ export const collapse = (duration: number = defaultAnimationDuration) =>
     transition('true => false', animate(`${duration}ms ease-out`))
   ]);
 
-  export const fadeInFromRightAnimation = trigger('fadeInFromRight', [
-    transition(':enter', [
-      style({ opacity: 0, transform: 'translateX(150px)' }),
-      animate('500ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
-    ])
-  ]);
+export const fadeInFromRightAnimation = trigger('fadeInFromRight', [
+  transition(':enter', [
+    style({ opacity: 0, transform: 'translateX(150px)' }),
+    animate('500ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
+  ])
+]);

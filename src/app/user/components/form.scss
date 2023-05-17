@@ -12,8 +12,9 @@ form {
   width: 30rem;
 }
 
-button {
+button, app-captcha-submit {
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 section {

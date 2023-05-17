@@ -47,7 +47,8 @@ export const coreReducer = createReducer(
     }
   )),
 
-    on(CoreActions.changeLanguage, (state, action): CoreState => (
+  on(CoreActions.changeLanguage, (state, action): CoreState => (
     { ...state, language: action.language }
   )),
+
 );

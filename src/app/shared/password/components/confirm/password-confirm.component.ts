@@ -43,10 +43,6 @@ export class PasswordConfirmComponent implements ControlValueAccessor, OnDestroy
     return this.form.valid;
   }
 
-  pwSuccess = false;
-  pwBitStrength: Maybe<number>;
-  public adjustedEntropy?: number;
-
   private destroy = new Subject<void>();
 
   constructor(
@@ -59,7 +55,6 @@ export class PasswordConfirmComponent implements ControlValueAccessor, OnDestroy
   }  
 
   public writeValue(value: Maybe<string>): void {
-
     this.form.patchValue({
       password: value
     });

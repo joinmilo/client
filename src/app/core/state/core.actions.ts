@@ -10,10 +10,16 @@ export const CoreActions = createActionGroup({
     'set feedback': (feedback: Feedback) => ({ feedback }),
     'set labels': (labels: LabelEntity[]) => ({ labels }),
     'set languages': (languages: LanguageEntity[]) => ({ languages }),
+    'set loading': (isLoading: boolean) => ({ isLoading }),
     'set server version': (version?: Maybe<InformationDto>) => ({ version }),
     'set themes': (themes: ThemeEntity[]) => ({ themes }),
 
     'change language': (language: LanguageEntity) => ({ language }),
+
+    'login': (email: string, password: string) => ({ email, password }),
+    'logged in': emptyProps(),
+    'refresh expired': emptyProps(),
+    'logout': emptyProps(),
   },
 });
 

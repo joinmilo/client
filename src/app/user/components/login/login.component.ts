@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { UserActions } from '../../state/user.actions';
+import { CoreActions } from 'src/app/core/state/core.actions';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginComponent {
   ) {}
   
   public onSubmit() {
-    this.store.dispatch(UserActions.login(
+    this.store.dispatch(CoreActions.login(
       this.form.value.email ?? '',
       this.form.value.password ?? '',
     ));

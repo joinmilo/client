@@ -7,6 +7,8 @@ import { CaptchaDialogComponent } from '../dialog/captcha-dialog.component';
 @Component({
   selector: 'app-captcha-submit',
   templateUrl: 'captcha-submit.component.html',
+  styleUrls: ['./captcha-submit.component.scss']
+  
 })
 export class CaptchaSubmitComponent implements OnDestroy {
 
@@ -20,7 +22,6 @@ export class CaptchaSubmitComponent implements OnDestroy {
   public verified = new EventEmitter<string>();
 
   public form = new FormGroup({});
-
 
   private destroy = new Subject<void>();
 

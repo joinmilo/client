@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -24,13 +25,14 @@ const components = [
 const framework = [
   CommonModule,
   RouterModule,
-  MatSlideToggleModule
+  ReactiveFormsModule
 ];
 
 const materials = [
-  MatCardModule,
   MatButtonModule,
+  MatCardModule,
   MatChipsModule,
+  MatSlideToggleModule
 ];
 
 const modules = [

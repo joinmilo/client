@@ -1,6 +1,6 @@
-import { Component, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { Component, OnDestroy } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-privacy-policy-form',
@@ -10,38 +10,42 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => PrivacyPolicyFormComponent),
+      useExisting: PrivacyPolicyFormComponent,
     }
   ],
 })
+export class PrivacyPolicyFormComponent implements ControlValueAccessor, OnDestroy {
+  
+  public control = new FormControl(false);
 
-export class PrivacyPolicyFormComponent {
-  public value = false;
+  private onChange?: (value?: boolean) => void;
+  private onTouched?: () => void;
 
-  private onChange: any = () => {};
+  private destroy = new Subject<void>();
 
-  get termsAccepted(): boolean {
-    return this.value;
+  constructor() {
+    this.control.valueChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe(value => {
+        this.onChange && this.onChange(!!value);
+        this.onTouched && this.onTouched();
+      })
   }
 
-  set termsAccepted(value: boolean) {
-    this.value = value;
-    this.onChange(this.value);
+  public writeValue(value: boolean): void {
+    this.control.setValue(value);
   }
 
-  onToggleChange(event: MatSlideToggleChange): void {
-    this.termsAccepted = event.checked;
+  public registerOnChange(onChange: (value?: boolean) => void): void {
+    this.onChange = onChange;
   }
 
-  writeValue(value: boolean): void {
-    this.termsAccepted = value;
+  public registerOnTouched(onTouched?: () => void): void {
+    this.onTouched = onTouched;
   }
 
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(): void {
-    return;
+  public ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

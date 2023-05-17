@@ -9,11 +9,11 @@ import { Maybe } from 'src/schema/schema';
   styleUrls: ['./password-field.component.scss'],
 })
 export class PasswordFormComponent implements ControlValueAccessor, OnInit, OnDestroy {
+  
+    public control = new FormControl('');
 
   private onChange?: (value?: Maybe<string>) => void;
   private onTouched?: () => void;
-
-  public control = new FormControl('');
 
   @Input()
   public label = 'password';
@@ -42,7 +42,7 @@ export class PasswordFormComponent implements ControlValueAccessor, OnInit, OnDe
   }
 
   public writeValue(value: Maybe<string>): void {
-    this.control?.setValue(value);
+    this.control.setValue(value);
     this.mark(value);
   }
 

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, switchMap, tap } from 'rxjs';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { LoginGQL, Maybe } from 'src/schema/schema';
 import { UserEntity, VerifyUserGQL } from '../../../schema/schema';
 import { ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL } from './../../../schema/schema';
 import { CoreActions } from './../../core/state/core.actions';
@@ -69,32 +68,11 @@ export class UserEffects {
       }))
     ));
 
-  login = createEffect(() => this.actions.pipe(
-    ofType(UserActions.login),
-    filter(action => !!action.email && !!action.password),
-    switchMap((action) => this.createTokenService.mutate({
-      email: action.email,
-      password: action.password
-    })),
-    filter(response => !!response.data?.createToken?.access),
-    map(response => UserActions.loggedIn(response.data?.createToken?.access as Maybe<string>))
-  ));
-
-  loggedIn = createEffect(() => this.actions.pipe(
-    ofType(UserActions.loggedIn),
-    tap(() => this.router.navigate([''])),
-    map(() => CoreActions.setFeedback({
-      type: FeedbackType.Success,
-      labelMessage: 'youreLoggedIn'
-    }))
-  ));
-
   constructor(
     private router: Router,
     private actions: Actions,
     private verifyUserService: VerifyUserGQL,
     private sendPasswordResetService: SendPasswordResetGQL,
     private resetPasswordService: ResetPasswordGQL,
-    private saveUserService: SaveUserGQL,
-    private createTokenService: LoginGQL) { }
+    private saveUserService: SaveUserGQL) { }
 }

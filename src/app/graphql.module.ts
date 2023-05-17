@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { ApolloLink, DefaultOptions, InMemoryCache } from '@apollo/client/core';
-import { setContext } from '@apollo/client/link/context';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { graphqlApi } from './core/constants/core.constants';
 
-import { AuthService } from './core/services/auth.service';
 
 @NgModule({
   exports: [ApolloModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,
-      useFactory: (httpLink: HttpLink, authService: AuthService) => {
-        const auth = setContext(() => ({ headers: { Authorization: `Bearer ${authService.tokens?.access ?? ''}` } }));
+      useFactory: (httpLink: HttpLink) => {
 
-        const link = ApolloLink.from([auth, httpLink.create({ uri: new URL(graphqlApi).href })]);
+        const link = ApolloLink.from([httpLink.create({ uri: new URL(graphqlApi).href })]);
         const cache = new InMemoryCache({
           addTypename: false
         });
@@ -40,7 +37,7 @@ import { AuthService } from './core/services/auth.service';
           defaultOptions
         };
       },
-      deps: [HttpLink, AuthService],
+      deps: [HttpLink],
     },
   ],
 })

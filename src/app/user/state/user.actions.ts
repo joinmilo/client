@@ -10,8 +10,6 @@ export const UserActions = createActionGroup({
     'reset password': (token: Maybe<string>, password: Maybe<string>) => ({ token, password }),
     'register': (entity: UserEntityInput) => ({ entity }),
     'registered': (entity: UserEntity) => ({ entity }),
-    'login': (email: string, password: string) => ({ email, password }),
-    'logged in': (token: Maybe<string>) => ({ token }),
   },
 });
 

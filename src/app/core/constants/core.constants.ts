@@ -46,3 +46,9 @@ export const mapLatitudeConfig = 'mapLatitude';
 export const mapZoomfactor = 'mapZoomfactor';
 export const portalNameConfig = 'portalName';
 export const pwBitStrengthConfig = 'pwBitStrength';
+
+/**
+ * API errors
+ */
+export const accessDeniedError = 'AccessDeniedException'
+export const tokenExpiredError = 'TokenExpiredException'

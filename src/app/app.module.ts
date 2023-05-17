@@ -15,8 +15,10 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { AuthService } from './core/services/auth.service';
-import { ErrorInterceptor } from './core/services/error.interceptor';
 import { FavIconService } from './core/services/favicon.service';
 import { ThemeService } from './core/services/theme.service';
 import { BrowserTitleService } from './core/services/title.service';
@@ -65,6 +67,16 @@ const providers = [
     provide: APP_INITIALIZER,
     useFactory: init,
     deps: [AuthService, BrowserTitleService, ThemeService, FavIconService],
+    multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingInterceptor,
+    multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
     multi: true,
   },
   {
