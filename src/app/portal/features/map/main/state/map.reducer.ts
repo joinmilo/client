@@ -16,7 +16,7 @@ import {PointOfInterest} from '../typings/point-of-interest';
 export interface MapState {
   activeFilter: FilterKey;
 
-  eventsFilterOptions?: {
+  eventFilterOptions?: {
     categories: EventCategoryEntity[]
     targetGroups: EventTargetGroupEntity[]
     suburbs: SuburbEntity[]
@@ -84,7 +84,7 @@ export const mapReducer = createReducer(
 
   on(MapFeatureActions.setFilterOptions, (state, action): MapState => ({
     ...state,
-    eventsFilterOptions: {
+    eventFilterOptions: {
       categories: action.eventCategories,
       targetGroups: action.targetGroups,
       suburbs: action.suburbs

@@ -9,7 +9,7 @@ export const selectActiveFilter = createSelector(
 );
 
 export const selectEventFilterOptions = createSelector(
-  selectMapState, (state) => state.eventsFilterOptions
+  selectMapState, (state) => state.eventFilterOptions
 );
 export const selectEvents = createSelector(
   selectMapState, (state) => state.events

@@ -22,6 +22,8 @@ import {Store} from '@ngrx/store';
 import {selectMapFilters} from './map.selector';
 import {DealOfferStatus, FilterKey} from '../constants/map.constants';
 import {dealsToPois, eventsToPois, organisationsToPois} from '../utils/point-of-interest.util';
+import {MapRouteService} from '../service/map-route-service';
+import {tap} from 'rxjs/operators';
 
 @Injectable()
 export class MapEffects {
@@ -184,12 +186,28 @@ export class MapEffects {
     map(({organisations}) => MapFeatureActions.setPois({pois: organisationsToPois(organisations)}))
   ));
 
+  setDealFilterRouteParams = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setDealFilter),
+    tap((dealFilter) => this.mapRouteService.setDealFilterParams(dealFilter))
+  ), {dispatch: false});
+
+  setEventFilterRouteParams = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setEventFilter),
+    tap((eventFilter) => this.mapRouteService.setEventFilterParams(eventFilter))
+  ), {dispatch: false});
+
+  setOrganisationFilterRouteParams = createEffect(() => this.actions.pipe(
+    ofType(MapFeatureActions.setOrganisationFilter),
+    tap((organisationFilter) => this.mapRouteService.setOrganisationFilterParams(organisationFilter))
+  ), {dispatch: false});
+
   constructor(
     private actions: Actions,
     private getMapFilterOptions: GetMapFilterOptionsGQL,
     private getDealsService: GetDealsGQL,
     private getEventsService: GetEventsGQL,
     private getOrganisationsService: GetOrganisationsGQL,
+    private mapRouteService: MapRouteService,
     private queryExpressionService: QueryExpressionService,
     private store: Store
   ) {}
