@@ -1,4 +1,3 @@
-import {ActivatedRoute} from '@angular/router';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MapFeatureActions} from '../../state/map.actions';
@@ -6,14 +5,18 @@ import {selectActiveFilter, selectPois, selectResults} from '../../state/map.sel
 import {
   FilterKey,
   iconOptions,
-  mapOptions, markerClusterOptions,
-  popupOptions, tileLayerOptions,
-  tileLayerURL, wuppertalBounds
+  mapOptions,
+  markerClusterOptions,
+  popupOptions,
+  tileLayerOptions,
+  tileLayerURL,
+  defaultBounds
 } from '../../constants/map.constants';
 import {
   divIcon,
   FeatureGroup,
-  latLng, latLngBounds,
+  latLng,
+  latLngBounds,
   LatLngBounds,
   Layer,
   Map,
@@ -22,11 +25,11 @@ import {
   marker,
   tileLayer
 } from 'leaflet';
-import {map, Observable, startWith} from 'rxjs';
+import {concat, combineLatest, filter, map, Observable, of, startWith, take, combineAll, first} from 'rxjs';
 import {MapComponentsService} from '../../service/map-components.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {PointOfInterest} from '../../typings/point-of-interest';
-import {filter} from 'rxjs/operators';
+import {MapRouteService} from '../../service/map-route-service';
 
 
 @Component({
@@ -62,10 +65,10 @@ export class MapPageComponent implements OnInit, OnDestroy {
   };
 
   constructor(
-    private route: ActivatedRoute,
     private store: Store,
     private components: MapComponentsService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private mapRouteService: MapRouteService
   ) {
     this.leafletOptions = {
       ...mapOptions,
@@ -75,11 +78,6 @@ export class MapPageComponent implements OnInit, OnDestroy {
     this.markers = this.pois.pipe(
       map((pois) => pois.map((poi) => this.poiToMarker(poi))),
     );
-    this.mapBounds = this.markers.pipe(
-      filter((markers) => markers.length > 0),
-      map((markers) => new FeatureGroup(markers).getBounds()),
-      startWith(latLngBounds(wuppertalBounds))
-    );
 
     this.isLandscape = breakpointObserver
       .observe([this.orientations.portrait, this.orientations.landscape,])
@@ -87,11 +85,26 @@ export class MapPageComponent implements OnInit, OnDestroy {
     this.isDesktop = breakpointObserver
       .observe('(min-width: 1024px)')
       .pipe(map((result) => result.matches));
+
+    this.mapBounds = this.setupBoundsSource();
+
+    this.mapRouteService.filterQueryParams(FilterKey.events).pipe(
+      take(1),
+    ).subscribe(([key, choices]) => {
+      this.store.dispatch(MapFeatureActions.setActiveFilter({key}))
+      switch(key) {
+        case FilterKey.deals:
+          return this.store.dispatch(MapFeatureActions.setDealFilter(choices || {}));
+        case FilterKey.events:
+          return this.store.dispatch(MapFeatureActions.setEventFilter(choices || {}));
+        case FilterKey.organisations:
+          return this.store.dispatch(MapFeatureActions.setOrganisationFilter(choices || {}));
+      }
+    });
   }
 
   ngOnInit() {
-    this.store.dispatch(MapFeatureActions.getFilterOptions())
-    this.setFilter(FilterKey.events);
+    this.store.dispatch(MapFeatureActions.getFilterOptions());
   }
 
   ngOnDestroy() {
@@ -99,7 +112,7 @@ export class MapPageComponent implements OnInit, OnDestroy {
   }
 
   setFilter(key: FilterKey) {
-    this.store.dispatch(MapFeatureActions.setActiveFilter({key}))
+    this.store.dispatch(MapFeatureActions.setActiveFilter({key}));
   }
 
   poiToMarker(poi: PointOfInterest): Marker {
@@ -116,8 +129,35 @@ export class MapPageComponent implements OnInit, OnDestroy {
     this.map = map;
   }
 
+  onMapPositionChange() {
+    this.mapRouteService.setMapBoundsParams(this.map?.getBounds());
+  }
+
   toggleMenu() {
     this.showMenuInDesktop = !this.showMenuInDesktop;
-    setTimeout(() => this.map?.invalidateSize(true), 100)
+    setTimeout(() => this.map?.invalidateSize(true), 100);
+  }
+
+  private setupBoundsSource(): Observable<LatLngBounds> {
+    const boundsFromMarkers = this.markers.pipe(
+      filter((markers) => markers.length > 0),
+      map((markers) => new FeatureGroup(markers).getBounds()),
+    );
+    const boundsFromRoute = this.mapRouteService.mapBoundsQueryParams().pipe(
+      take(1)
+    );
+    const preferRouteOnFirstEmit = combineLatest([boundsFromMarkers, boundsFromRoute]).pipe(
+      map(([markerBounds, routeBounds], idx) => {
+        if (idx == 0 && routeBounds) {
+          return routeBounds;
+        }
+        return markerBounds;
+      })
+    );
+    return concat(
+      // we need to prepend the route bounds in case no markers are present and nothing emits
+      boundsFromRoute.pipe(map((bounds) => bounds ? bounds : latLngBounds(defaultBounds))),
+      preferRouteOnFirstEmit
+    );
   }
 }
