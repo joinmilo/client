@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, switchMap, tap } from 'rxjs';
+import { take, tap } from 'rxjs';
 import { tokenSlug } from '../../constants/user.constants';
 import { UserActions } from '../../state/user.actions';
 import { selectUserVerified } from '../../state/user.selectors';
@@ -13,19 +13,17 @@ import { selectUserVerified } from '../../state/user.selectors';
 })
 export class VerificationComponent implements OnInit {
   
-  public verified? : Observable<boolean>; 
+  public verified = this.store.select(selectUserVerified);
 
   constructor(
     private store: Store,
     private route: ActivatedRoute
   ) {}
   
-  ngOnInit(): void {
-    this.verified = this.route.paramMap.pipe(
-      tap(params => {
-        this.store.dispatch(UserActions.verify(params.get(tokenSlug)));
-      }),
-      switchMap(() => this.store.select(selectUserVerified))
-    );
+  public ngOnInit(): void {
+    this.route.paramMap.pipe(
+      take(1),
+      tap(params => this.store.dispatch(UserActions.verify(params.get(tokenSlug))))
+    ).subscribe();
   }
 }

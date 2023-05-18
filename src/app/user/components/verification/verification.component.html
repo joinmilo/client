@@ -27,5 +27,8 @@
       [routerLink]="['/user', 'verification']">
         <span appLabel="sendNewMail"></span>
     </button>
+    <small *ngIf="(verified | async) === false">
+      <a [routerLink]="['/user', 'login']" appLabel="backToLogin"></a>
+    </small>
   </section>
 </div>

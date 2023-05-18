@@ -55,6 +55,7 @@ export class UserEffects {
         })
       ),
       filter(response => !!response.data?.resetPassword),
+      tap(() => this.router.navigate(['/user', 'login'])),
       map(() => CoreActions.setFeedback({
         type: FeedbackType.Success,
         labelMessage: 'resetPasswordSuccess'

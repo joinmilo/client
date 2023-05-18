@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroupDirective } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
+import { take, tap } from 'rxjs';
 import { UserActions } from 'src/app/user/state/user.actions';
 import { tokenSlug } from '../../constants/user.constants';
 
@@ -17,8 +17,9 @@ import { tokenSlug } from '../../constants/user.constants';
 })
 export class PasswordSetNewComponent {
 
-  public form = this.fb.group({});
-  public token?: string | null;
+  public form = this.fb.group({
+    password: ['', [Validators.required]]
+  });
 
   constructor(
     private store: Store,
@@ -26,14 +27,14 @@ export class PasswordSetNewComponent {
     private route: ActivatedRoute,
   ) {}
 
-  public onSubmit(formDirective: FormGroupDirective) {
+  public onSubmit() {
    this.route.paramMap.pipe(
+    take(1),
     tap(params => {
       this.store.dispatch(UserActions.resetPassword(
         params.get(tokenSlug),
-        this.form.get('password')!.value))
+        this.form.value.password as string
+      ))
     })).subscribe();
-
-   formDirective.resetForm();
  }
 }
