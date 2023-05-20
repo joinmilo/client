@@ -5,7 +5,7 @@ import { UserContextEntity } from 'src/schema/schema';
 export const AuthorDetailsActions = createActionGroup({
   source: 'Author Details',
   events: {
-    'get details': (slug: string) => ({ slug }),
+    'get details': (slug?: Maybe<string>) => ({ slug }),
     'set details': (author: Maybe<UserContextEntity>) => ({ author }),
   }
 });

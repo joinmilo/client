@@ -1,9 +1,10 @@
 fragment UserContext on UserContextEntity {
   id
-  articles{
+  articles {
     ...Article
   }
-  user{
+  slug
+  user {
     firstName
     lastName
     email

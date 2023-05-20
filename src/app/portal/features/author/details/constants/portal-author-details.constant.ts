@@ -1,3 +1,3 @@
 export const authorDetailsStateKey = 'portalAuthorDetailsState';
 
-export const authorId = 'id';
+export const authorSlug = 'slug';

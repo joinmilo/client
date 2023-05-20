@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, reportsFeatureKey } from '../core/constants/core.constants';
-import { authorId } from './features/author/details/constants/portal-author-details.constant';
+import { authorSlug } from './features/author/details/constants/portal-author-details.constant';
 import { eventSlug } from './features/event/details/constants/event-details.constant';
 
 const routes: Routes = [
@@ -11,7 +11,7 @@ const routes: Routes = [
       .then((imported) => imported.PortalAuthorOverviewModule),
   },
   {
-    path: `${authorsFeatureKey}/:${authorId}`,
+    path: `${authorsFeatureKey}/:${authorSlug}`,
     loadChildren: () => import('./features/author/details/portal-author-details.module')
       .then((imported) => imported.PortalAuthorDetailsModule),
   },

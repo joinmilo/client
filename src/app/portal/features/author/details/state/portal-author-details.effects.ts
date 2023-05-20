@@ -12,7 +12,7 @@ export class AuthorDetailsEffects {
     ofType(AuthorDetailsActions.getDetails),
     switchMap((action) => this.getUserContextService.watch({ 
       entity: {
-        id: action.slug
+        slug: action.slug
       }
     }).valueChanges),
     map(response => response.data.getUserContext?.id
