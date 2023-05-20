@@ -1,7 +1,5 @@
 <header>
-  <figure *ngIf="(page | async)?.titleImage">
-    <img ngSrc="media" alt="media" [loaderParams]="{media: (page | async)?.titleImage}" fill priority="true">
-  </figure>
+  <img [appMedia]="(page | async)?.titleImage" alt="hero-section">
   <section>
     <div>
       <div class="title title-gradient">{{page | translatable: "name" | async}}</div>

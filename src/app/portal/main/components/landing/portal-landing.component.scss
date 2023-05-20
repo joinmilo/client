@@ -7,13 +7,11 @@ header {
   min-height: 80vh;
   padding-bottom: var(--gap);
 
-  figure{
+  img {
     flex: 2 1 25rem;
     position: relative;
     clip-path: polygon(0 0, 100% 0%, 100% 95%, 0 100%);
-    img{
-      object-fit: cover;
-    }
+    object-fit: cover;
   }
 
   section {
