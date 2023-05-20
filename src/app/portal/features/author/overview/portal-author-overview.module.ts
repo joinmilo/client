@@ -8,8 +8,8 @@ import { CardModule } from 'src/app/shared/card/card.module';
 import { FormModule } from 'src/app/shared/form/form.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { authorStateKey } from '../details/constants/portal-author-details.constant';
 import { PortalAuthorOverviewComponent } from './components/portal-author-overview.component';
+import { authorOverviewStateKey } from './constants/portal-author-overview.constant';
 import { PortalAuthorOverviewRoutingModule } from './portal-author-overview-routing.module';
 import { AuthorEffects } from './state/portal-author-overview.effects';
 import { authorReducer } from './state/portal-author-overview.reducer';
@@ -35,7 +35,7 @@ const modules = [
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(authorStateKey, authorReducer),
+  StoreModule.forFeature(authorOverviewStateKey, authorReducer),
   EffectsModule.forFeature([AuthorEffects]),
 ]
 

@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { authorStateKey } from '../../details/constants/portal-author-details.constant';
+import { authorOverviewStateKey } from '../constants/portal-author-overview.constant';
 import { PortalAuthorOverviewState } from './portal-author-overview.reducer';
 
 
-export const selectPortalAuthorOverviewState = createFeatureSelector<PortalAuthorOverviewState>(authorStateKey);
+export const selectPortalAuthorOverviewState = createFeatureSelector<PortalAuthorOverviewState>(authorOverviewStateKey);
 
 export const selectAuthors = createSelector (
   selectPortalAuthorOverviewState,
