@@ -1,15 +1,9 @@
 fragment Article on ArticleEntity {
   id
   approved
-  slug
-  modified
-  created
-  publicAuthor{
-    ...PublicAuthor
-    }
   author {
     user {
-      firstName 
+      firstName
       lastName
     }
   }
@@ -19,9 +13,12 @@ fragment Article on ArticleEntity {
   category {
     ...ArticleCategory
   }
+  created
+  modified
   publicAuthor {
-    name
+    ...PublicAuthor
   }
+  slug
   translatables {
     id
     content

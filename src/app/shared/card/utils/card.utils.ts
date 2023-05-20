@@ -1,5 +1,6 @@
 import { CardData, CardElement, CardEntity } from 'src/app/shared/card/typings/card';
 import { ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, OrganisationEntity, SurveyEntity, UserContextEntity } from "src/schema/schema";
+import { articlesFeatureKey, authorsFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, organisationsFeatureKey, surveysFeatureKey } from '../../../core/constants/core.constants';
 
 export const dataToElement = (entity: CardEntity, data: CardData): CardElement | undefined => {
   switch(entity) {
@@ -31,6 +32,7 @@ export const articleToCard = (entity?: Maybe<ArticleEntity>): CardElement => ({
   dateTime: false,
   creator: entity?.publicAuthor?.name ?? entity?.author?.user?.firstName,
   creatorImage: entity?.author?.titleImage,
+  url: ['/portal', articlesFeatureKey, entity?.slug],
   image: entity?.cardImage,
   textTranslatableField: 'shortDescription',
   titleTranslatableField: 'name',
@@ -45,6 +47,7 @@ export const contestToCard = (entity: Maybe<ContestEntity>): CardElement => ({
   image: entity?.cardImage,
   date: entity?.dueDate,
   dateTime: true,
+  url: ['/portal', contestsFeatureKey, entity?.slug],
   translatables: entity?.translatables,
   textTranslatableField: 'shortDescription',
   titleTranslatableField: 'name',
@@ -61,6 +64,7 @@ export const dealToCard = (entity: Maybe<DealEntity>): CardElement => ({
   dateTime: true,
   creatorImage: entity?.creator?.titleImage,
   image: entity?.cardImage,
+  url: ['/portal', dealsFeatureKey, entity?.slug],
   textTranslatableField: 'shortDescription',
   translatables: entity?.translatables,
   titleTranslatableField: 'name',
@@ -79,6 +83,7 @@ export const eventToCard = (entity?: Maybe<EventEntity>): CardElement => ({
   date: entity?.schedule?.startDate,
   dateTime: true,
   image: entity?.cardImage,
+  url: ['/portal', eventsFeatureKey, entity?.slug],
   textTranslatableField: 'shortDescription',
   titleTranslatableField: 'name',
   translatables: entity?.translatables,
@@ -94,6 +99,7 @@ export const organisationToCard = (entity?: Maybe<OrganisationEntity>): CardElem
   creatorImage: entity?.avatar,
   dateTime: true,
   translatables: entity?.translatables,
+  url: ['/portal', organisationsFeatureKey, entity?.slug],
 });
 
 export const surveysToCards = (entities?: Maybe<SurveyEntity[]>): CardElement[] | undefined => 
@@ -101,9 +107,10 @@ export const surveysToCards = (entities?: Maybe<SurveyEntity[]>): CardElement[] 
 
 export const surveyToCard = (entity: Maybe<SurveyEntity>): CardElement => ({
   id: entity?.id,
-  date: entity?.due_date,
+  date: entity?.dueDate,
   dateTime: true,
   image: entity?.cardImage,
+  url: ['/portal', surveysFeatureKey, entity?.slug],
   translatables: entity?.translatables,
   textTranslatableField: 'content',
   titleTranslatableField: 'name',
@@ -118,4 +125,5 @@ export const userToCard = (entity?: Maybe<UserContextEntity>): CardElement => ({
   creator: entity?.user?.lastName,
   creatorImage: entity?.avatar,
   dateTime: true,
+  url: ['/portal', authorsFeatureKey, entity?.slug],
 });

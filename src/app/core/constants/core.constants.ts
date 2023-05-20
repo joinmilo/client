@@ -13,11 +13,18 @@ export const defaultAnimationDuration = 400;
  * Features
  */
 export const articlesFeatureKey = 'articles';
-export const authorFeatureKey = 'authors';
+export const authorsFeatureKey = 'authors';
 export const calendarFeatureKey = 'calendar';
+export const contestsFeatureKey = 'contests';
+export const dealsFeatureKey = 'deals';
 export const eventsFeatureKey = 'events';
+export const formsFeatureKey = 'forms';
 export const guestArticlesFeatureKey = 'guestarticle';
-export const reportFeatureKey = 'reports';
+export const mapFeatureKey = 'map';
+export const mediaFeatureKey = 'media';
+export const organisationsFeatureKey = 'organisations';
+export const reportsFeatureKey = 'reports';
+export const surveysFeatureKey = 'surveys';
 
 /**
  * URLs

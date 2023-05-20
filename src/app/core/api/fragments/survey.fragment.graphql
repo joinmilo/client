@@ -1,9 +1,10 @@
 fragment Survey on SurveyEntity {
   id
-  due_date
   cardImage {
     ...Media
   }
+  dueDate
+  slug
   translatables {
     id
     name

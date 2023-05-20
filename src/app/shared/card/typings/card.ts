@@ -41,6 +41,8 @@ export type CardElement = {
   dateTime: boolean,
   image?: Maybe<MediaEntity>,
 
+  url?: Maybe<string | undefined>[],
+
   text?: Maybe<string>,
   textTranslatableField?: Maybe<string>,
 

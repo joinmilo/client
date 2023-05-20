@@ -15,7 +15,7 @@
         <img ngSrc="media" alt="media" [loaderParams]="{media: element?.image}" fill>
       </figure>
     </mat-card-header>
-    <mat-card-content>
+    <mat-card-content [routerLink]="element?.url">
       <h1>
         {{
           element?.title

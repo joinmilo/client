@@ -1,16 +1,16 @@
 <div class="container">
-<mat-card>
-  <figure>
-    <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill>
-  </figure>
-  <section>
-    <h5 class="mat-headline-5">
-      {{element?.creator ? element?.creator: ''}}
-    </h5>
-    <p class="mat-body-1">
-      {{element?.email ? element?.email : ''}}
-    </p>
-  </section>
-  <app-favorite-piece></app-favorite-piece>
-</mat-card>
+  <mat-card>
+    <figure>
+      <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill>
+    </figure>
+    <section [routerLink]="element?.url">
+      <h5 class="mat-headline-5">
+        {{element?.creator ? element?.creator: ''}}
+      </h5>
+      <p class="mat-body-1">
+        {{element?.email ? element?.email : ''}}
+      </p>
+    </section>
+    <app-favorite-piece></app-favorite-piece>
+  </mat-card>
 </div>

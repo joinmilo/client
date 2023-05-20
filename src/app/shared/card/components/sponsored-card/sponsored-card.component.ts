@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { dataToElement } from 'src/app/core/utils/card.utils';
+import { dataToElement } from 'src/app/shared/card/utils/card.utils';
 import { CardData, CardElement, CardEntity } from '../../typings/card';
 
 @Component({

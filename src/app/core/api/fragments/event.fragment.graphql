@@ -3,12 +3,19 @@ fragment Event on EventEntity {
   address {
     ...Address
   }
-  cardImage {
-    ...Media
-  }
   contact {
     ...Contact
   }
+  cardImage {
+    ...Media
+  }
+  category {
+    ...EventCategory
+  }
+  schedule(begin: $scheduleBegin, end: $scheduleEnd) {
+    ...Schedule
+  }
+  slug
   translatables {
     id
     name
@@ -19,11 +26,5 @@ fragment Event on EventEntity {
       locale
       name
     }
-  }
-  category {
-    ...EventCategory
-  }
-  schedule(begin: $scheduleBegin, end: $scheduleEnd) {
-    ...Schedule
   }
 }

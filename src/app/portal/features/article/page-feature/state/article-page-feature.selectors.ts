@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { articlesToCards } from 'src/app/core/utils/card.utils';
+import { articlesToCards } from 'src/app/shared/card/utils/card.utils';
 import { articlePageFeatureStateKey } from '../constants/article-page-feature.constant';
 import { ArticlePageFeatureState } from './article-page-feature.reducer';
 

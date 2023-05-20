@@ -1,9 +1,9 @@
 <div class="container">
   <mat-card>
-      <figure>
-        <img ngSrc="media" mat-card-image [loaderParams]="{media: element?.image}">
-      </figure>
-      <div class="wrapper">
+    <figure>
+      <img ngSrc="media" mat-card-image [loaderParams]="{media: element?.image}">
+    </figure>
+    <div class="wrapper">
       <mat-card-header>
         <mat-chip-option>
           <span>
@@ -15,7 +15,7 @@
         </mat-chip-option>
         <app-favorite-piece></app-favorite-piece>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content [routerLink]="element?.url">
         <h1>{{
           element?.title
             ? element?.title
@@ -37,5 +37,5 @@
         </mat-card-actions>
       </mat-card-content>
     </div>
-    </mat-card>
+  </mat-card>
 </div>

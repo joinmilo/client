@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportFeatureKey } from 'src/app/core/constants/core.constants';
+import { articlesFeatureKey, calendarFeatureKey, eventsFeatureKey, reportsFeatureKey } from 'src/app/core/constants/core.constants';
 import { Maybe, PageFeatureEntity } from 'src/schema/schema';
 
 @Component({
@@ -16,7 +16,7 @@ export class PortalPageFeaturesComponent implements OnInit {
     article: articlesFeatureKey,
     calendar: calendarFeatureKey,
     event: eventsFeatureKey,
-    report: reportFeatureKey,
+    report: reportsFeatureKey,
   }
 
   public ngOnInit(): void {

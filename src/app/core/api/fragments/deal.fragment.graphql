@@ -10,6 +10,7 @@ fragment Deal on DealEntity {
   category {
     ...DealCategory
   }
+  slug
   translatables {
     id
     content

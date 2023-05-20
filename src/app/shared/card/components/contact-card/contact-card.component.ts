@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { dataToElement } from 'src/app/core/utils/card.utils';
 import { CardData, CardElement, CardEntity } from '../../typings/card';
+import { dataToElement } from '../../utils/card.utils';
 @Component({
   selector: 'app-contact-card',
   templateUrl: './contact-card.component.html',

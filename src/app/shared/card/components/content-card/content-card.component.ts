@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { dataToElement } from 'src/app/core/utils/card.utils';
 import { CardData, CardElement, CardEntity } from 'src/app/shared/card/typings/card';
+import { dataToElement } from '../../utils/card.utils';
 
 @Component({
   selector: 'app-content-card',

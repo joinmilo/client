@@ -8,3 +8,8 @@ app-favorite-piece {
   background-color: white;
   border-radius: 50%;
 }
+
+mat-card-content {
+  cursor: pointer;
+  user-select: none;
+}

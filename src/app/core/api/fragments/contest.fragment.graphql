@@ -4,6 +4,7 @@ fragment Contest on ContestEntity {
   cardImage {
     ...Media
   }
+  slug
   translatables {
     id
     name
