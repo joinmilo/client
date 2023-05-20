@@ -8,14 +8,14 @@ const routes: Routes = [
   {
     path: authorFeatureKey,
     loadChildren: () => import('./features/author/overview/portal-author-overview.module')
-      .then((imported) => imported.AuthorPortalModule),
+      .then((imported) => imported.PortalAuthorOverviewModule),
   },
   {
     path: `${authorFeatureKey}/:${authorId}`,
     loadChildren: () => import('./features/author/details/portal-author-details.module')
       .then((imported) => imported.PortalAuthorDetailsModule),
   },
-
+  
   {
     path: articlesFeatureKey,
     loadChildren: () => import('./features/article/main/portal-article.module')

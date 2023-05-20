@@ -95,7 +95,7 @@ const providers = [
         : config.loaderParams && config.loaderParams.media && config.loaderParams.media.id
           ? mediaApi(config.loaderParams.media)
           : '/assets/placeholder.webp';
-  }
+    }
   }
 ];
 

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { ProgressBarMode } from '@angular/material/progress-bar';
 import { Store } from '@ngrx/store';
+import { tap } from 'rxjs';
 import { PortalMainActions } from '../../state/portal-main.actions';
 import { selectCurrentPage } from '../../state/portal-main.selectors';
 
@@ -12,16 +11,13 @@ import { selectCurrentPage } from '../../state/portal-main.selectors';
 })
 export class PortalLandingComponent {
 
-  public page = this.store.select(selectCurrentPage);
-
-  color: ThemePalette = 'primary';
-  mode: ProgressBarMode = 'determinate';
-  value = 60;
-  bufferValue = 75;
+  public page = this.store.select(selectCurrentPage)
+    .pipe(
+      tap(landing => !landing?.id
+        && this.store.dispatch(PortalMainActions.getLandingPage()))
+    );
 
   constructor(
     private store: Store,
-  ) {
-    this.store.dispatch(PortalMainActions.getLandingPage());
-  }
+  ) { }
 }

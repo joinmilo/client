@@ -14,5 +14,6 @@
 </header>
 <div class="main">
   <app-portal-page-features *ngIf="(page | async)?.pageFeatures?.length"
-    [pageFeatures]="(page | async)?.pageFeatures"></app-portal-page-features>
+    [pageFeatures]="(page | async)?.pageFeatures">
+  </app-portal-page-features>
 </div>

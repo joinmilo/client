@@ -49,4 +49,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class AuthorPortalModule { }
+export class PortalAuthorOverviewModule { }
