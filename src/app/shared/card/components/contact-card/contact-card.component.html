@@ -1,14 +1,14 @@
 <div class="container">
 <mat-card>
   <figure>
-    <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill priority="true">
+    <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill>
   </figure>
   <section>
     <h5 class="mat-headline-5">
-      {{element?.creator ? element?.creator: 'Organisation-Name-Wuppertal'}}
+      {{element?.creator ? element?.creator: ''}}
     </h5>
     <p class="mat-body-1">
-      {{element?.email ? element?.email : 'organisation-stadt-wuppertal@web.de'}}
+      {{element?.email ? element?.email : ''}}
     </p>
   </section>
   <app-favorite-piece></app-favorite-piece>

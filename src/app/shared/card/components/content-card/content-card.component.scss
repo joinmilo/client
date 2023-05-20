@@ -18,12 +18,16 @@ mat-card {
   }
 }
 
+img {
+  object-fit: cover;
+}
+
 mat-card-header {
   padding: unset;
   position: relative;
   height: 15rem;
 
-  img{
+  img {
     border-top-left-radius: var(--mdc-shape-small);
     border-top-right-radius: var(--mdc-shape-small);
   }

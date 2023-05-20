@@ -33,7 +33,7 @@ export const articleToCard = (entity?: Maybe<ArticleEntity>): CardElement => ({
   creatorImage: entity?.author?.titleImage,
   image: entity?.cardImage,
   textTranslatableField: 'shortDescription',
-  titleTranslatableField: 'title',
+  titleTranslatableField: 'name',
   translatables: entity?.translatables,
 });
 
@@ -105,7 +105,7 @@ export const surveyToCard = (entity: Maybe<SurveyEntity>): CardElement => ({
   dateTime: true,
   image: entity?.cardImage,
   translatables: entity?.translatables,
-  textTranslatableField: 'description',
+  textTranslatableField: 'content',
   titleTranslatableField: 'name',
 });
 

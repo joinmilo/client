@@ -11,7 +11,9 @@
         </span>
       </mat-chip-option>
       <app-favorite-piece></app-favorite-piece>
-        <img ngSrc="media" alt="media" [loaderParams]="{media: element?.image}" fill priority="true">
+      <figure>
+        <img ngSrc="media" alt="media" [loaderParams]="{media: element?.image}" fill>
+      </figure>
     </mat-card-header>
     <mat-card-content>
       <h1>
@@ -33,7 +35,7 @@
     </mat-card-content>
     <mat-card-actions *ngIf="element?.creatorImage">
          <figure>
-      <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill priority="true">
+      <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill>
     </figure>
       <span>{{element?.creator}}</span>
     </mat-card-actions>
