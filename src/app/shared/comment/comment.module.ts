@@ -16,7 +16,6 @@ const framework = [
 
 const modules = [
   CoreModule,
-
 ];
 
 const libs = [
@@ -25,11 +24,11 @@ const libs = [
 
 @NgModule({
     declarations: [...components],
-        imports: [
-        ...framework,
-        // ...materials,
-        ...modules,
-        ...libs,
+      imports: [
+      ...framework,
+      // ...materials,
+      ...modules,
+      ...libs,
     ],
     exports: [...components],
 })

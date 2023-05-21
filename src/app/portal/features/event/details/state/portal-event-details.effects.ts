@@ -27,7 +27,7 @@ export class PortalEventDetailsEffects {
         sort: 'created',
         expression: {
           entity: {
-            path: 'event.id',
+            path: 'event.slug',
             operator: QueryOperator.Equal,
             value: action.slug
           }

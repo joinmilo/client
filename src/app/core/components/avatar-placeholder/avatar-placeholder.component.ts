@@ -1,5 +1,5 @@
-import { Component, Input } from "@angular/core";
-import { Maybe } from "graphql/jsutils/Maybe";
+import { Component, Input } from '@angular/core';
+import { Maybe } from 'src/schema/schema';
 
 @Component({
   selector: 'app-avatar-placeholder',
@@ -10,4 +10,5 @@ export class AvatarPlaceholderComponent {
 
   @Input()
   public name?: Maybe<string>;
+
 }
