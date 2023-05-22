@@ -17,6 +17,10 @@
         <app-portal-menu-accordion (itemSelected)="trigger.closeMenu()"></app-portal-menu-accordion>
         <mat-divider></mat-divider>
         <app-portal-header-user></app-portal-header-user>
+        <section>
+          <mat-divider></mat-divider>
+          <span>{{ user?.user?.firstName }} {{ user?.user?.lastName }}</span>
+        </section>
       </div>
     </mat-menu>
   </div>
