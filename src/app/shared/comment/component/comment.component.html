@@ -1,7 +1,6 @@
 <article>
   <section>
-    <app-avatar-placeholder *ngIf="!comment?.userContext?.avatar" [name]="comment?.userContext?.user?.firstName"></app-avatar-placeholder>
-    <img *ngIf="comment?.userContext?.avatar" [appMedia]="comment?.userContext?.avatar">
+    <app-avatar [user]="comment?.userContext"></app-avatar>
     <span>{{comment?.userContext?.user?.firstName}} {{comment?.userContext?.user?.lastName}}</span>
   </section>
   <app-date-piece *ngIf="comment?.created" [date]="comment?.created"></app-date-piece>

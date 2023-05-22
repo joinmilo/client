@@ -9,17 +9,6 @@ section {
   align-items: center;
 }
 
-img {
-  height: 2rem;
-  width: 2rem;
-
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0px 2px 8px 0px #00000026;
-  
-  margin-right: .5rem;
-}
-
 :host ::ng-deep app-date-piece {
   fa-icon {
     display: none;

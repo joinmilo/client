@@ -1,0 +1,4 @@
+<img *ngIf="user?.avatar?.id" [appMedia]="user?.avatar">
+<span *ngIf="!user?.avatar?.id">
+  {{ user?.user?.firstName?.charAt(0) }}
+</span>
