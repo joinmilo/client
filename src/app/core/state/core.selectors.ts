@@ -4,7 +4,7 @@ import { CoreState } from './core.reducer';
 
 export const selectCoreState = createFeatureSelector<CoreState>(coreStateKey);
 
-export const selectCurrenUser = createSelector(
+export const selectCurrentUser = createSelector(
   selectCoreState,
   state => state?.currentUser
 );
