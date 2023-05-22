@@ -3,8 +3,12 @@ fragment UserContext on UserContextEntity {
   articles {
     ...Article
   }
+  avatar {
+    ...Media
+  }
   slug
   user {
+    id
     firstName
     lastName
     email
