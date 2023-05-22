@@ -1,0 +1,23 @@
+fragment Page on PageEntity {
+  id
+  callText
+  callUrl
+  content
+  media {
+    ...PageMedia
+  }
+  name
+  pageFeatures {
+    id
+    order
+    feature {
+      id
+      key
+    }
+  }
+  shortDescription
+  slug
+  titleImage {
+    ...PageMedia
+  }
+}

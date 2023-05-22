@@ -1,9 +1,8 @@
 fragment User on UserEntity {
   id
+  captchaToken
+  email
   firstName
   lastName
-  email
-  password
   verified
-  captchaToken
 }

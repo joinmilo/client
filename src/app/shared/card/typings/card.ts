@@ -1,4 +1,3 @@
-import { Translatable } from 'src/app/core/typings/translatable';
 import { AddressEntity, ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, MediaEntity, OrganisationEntity, SurveyEntity, UserContextEntity } from 'src/schema/schema';
 
 export enum CardType {
@@ -26,28 +25,15 @@ export type CardData = Maybe<ArticleEntity>
 
 export type CardElement = {
   id?: Maybe<string>,
-
   address?: Maybe<AddressEntity>,
-
-  // Either 
   category?: Maybe<string>,
-  categoryTranslatables?: Maybe<Maybe<Translatable>[]>,
-  categoryTranslatableField?: Maybe<string>,
-
   creator?: Maybe<string>,
   creatorImage?: Maybe<MediaEntity>,
-  email?: Maybe<string>,
   date?: Maybe<string>,
   dateTime: boolean,
+  email?: Maybe<string>,
   image?: Maybe<MediaEntity>,
-
   url?: Maybe<string | undefined>[],
-
   text?: Maybe<string>,
-  textTranslatableField?: Maybe<string>,
-
   title?: Maybe<string>,
-  titleTranslatableField?: Maybe<string>,
-
-  translatables?: Maybe<Maybe<Translatable>[]>,
 }

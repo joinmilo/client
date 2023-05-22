@@ -1,17 +1,18 @@
-<header>
-  <img [appMedia]="(page | async)?.titleImage" alt="hero-section">
-  <section>
-    <div>
-      <div class="title title-gradient">{{page | translatable: "name" | async}}</div>
-      <p>{{page | translatable: "shortDescription" | async}}</p>
-      <button mat-raised-button color="primary" *ngIf="(page | async)?.callUrl" [routerLink]="(page | async)?.callUrl">
-        {{page | translatable: "callText" | async}}
-      </button>
-    </div>
-  </section>
-</header>
-<div class="main">
-  <app-portal-page-features *ngIf="(page | async)?.pageFeatures?.length"
-    [pageFeatures]="(page | async)?.pageFeatures">
-  </app-portal-page-features>
-</div>
+<ng-container *ngIf="(page | async) as page">
+  <header>
+    <img [appMedia]="page?.titleImage" alt="hero-section">
+    <section>
+      <div>
+        <div class="title title-gradient">{{ page?.name }}</div>
+        <p>{{ page?.shortDescription }}</p>
+        <button mat-raised-button color="primary" *ngIf="page?.callUrl" [routerLink]="page?.callUrl">
+          {{ page?.callText }}
+        </button>
+      </div>
+    </section>
+  </header>
+  <div class="main">
+    <app-portal-page-features *ngIf="page?.pageFeatures?.length" [pageFeatures]="page?.pageFeatures">
+    </app-portal-page-features>
+  </div>
+</ng-container>

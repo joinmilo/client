@@ -1,43 +1,31 @@
 fragment MenuItem on MenuItemEntity {
   id
-  header
-  order
   feature {
     id
     key
   }
+  header
+  name
+  order
   parent {
     id
   }
   page {
     id
   }
-  translatables {
-    id
-    name
-    language {
-      ...Language
-    }
-  }
   subMenuItems {
     id
-    order
     feature {
       id
       key
     }
+    name
+    order
     page {
       id
     }
     subMenuItems {
       id
-    }
-    translatables {
-      id
-      name
-      language {
-        ...Language
-      }
     }
   }
 }

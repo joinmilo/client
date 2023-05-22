@@ -12,19 +12,11 @@ fragment Event on EventEntity {
   category {
     ...EventCategory
   }
+  content
+  name
   schedule(begin: $scheduleBegin, end: $scheduleEnd) {
     ...Schedule
   }
+  shortDescription
   slug
-  translatables {
-    id
-    name
-    content
-    shortDescription
-    language {
-      id
-      locale
-      name
-    }
-  }
 }

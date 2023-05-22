@@ -24,7 +24,6 @@ import { HtmlDirective } from './directives/html.directive';
 import { LabelDirective } from './directives/label.directive';
 import { MediaDirective } from './directives/media.directive';
 import { AddressPipe } from './pipes/address.pipe';
-import { TranslatablePipe } from './pipes/translatable.pipe';
 import { CoreEffects } from './state/core.effects';
 import { coreReducer } from './state/core.reducer';
 
@@ -48,7 +47,7 @@ const directives = [
 
 const pipes = [
   AddressPipe,
-  TranslatablePipe,
+  // TranslatablePipe,
 ];
 
 const framework = [

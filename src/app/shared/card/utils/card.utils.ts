@@ -26,17 +26,15 @@ export const articlesToCards = (entities?: Maybe<ArticleEntity[]>): CardElement[
 
 export const articleToCard = (entity?: Maybe<ArticleEntity>): CardElement => ({
   id: entity?.id,
-  categoryTranslatables: entity?.category?.translatables,
-  categoryTranslatableField: 'name',
+  category: entity?.category?.name,
+  creatorImage: entity?.author?.titleImage,
+  creator: entity?.publicAuthor?.name ?? entity?.author?.user?.firstName,
   date: entity?.created,
   dateTime: false,
-  creator: entity?.publicAuthor?.name ?? entity?.author?.user?.firstName,
-  creatorImage: entity?.author?.titleImage,
-  url: ['/portal', articlesFeatureKey, entity?.slug],
   image: entity?.cardImage,
-  textTranslatableField: 'shortDescription',
-  titleTranslatableField: 'name',
-  translatables: entity?.translatables,
+  text: entity?.shortDescription,
+  title: entity?.name,
+  url: ['/portal', articlesFeatureKey, entity?.slug],
 });
 
 export const contestsToCards = (entities?: Maybe<ContestEntity[]>): CardElement[] | undefined => 
@@ -47,10 +45,9 @@ export const contestToCard = (entity: Maybe<ContestEntity>): CardElement => ({
   image: entity?.cardImage,
   date: entity?.dueDate,
   dateTime: true,
+  text: entity?.shortDescription,
+  title: entity?.name,
   url: ['/portal', contestsFeatureKey, entity?.slug],
-  translatables: entity?.translatables,
-  textTranslatableField: 'shortDescription',
-  titleTranslatableField: 'name',
 });
 
 export const dealsToCards = (entities?: Maybe<DealEntity[]>): CardElement[] => {
@@ -60,14 +57,13 @@ export const dealsToCards = (entities?: Maybe<DealEntity[]>): CardElement[] => {
 export const dealToCard = (entity: Maybe<DealEntity>): CardElement => ({
   id: entity?.id,
   creator: entity?.contact?.name,
+  creatorImage: entity?.creator?.titleImage,
   date: entity?.created,
   dateTime: true,
-  creatorImage: entity?.creator?.titleImage,
   image: entity?.cardImage,
+  text: entity?.shortDescription,
+  title: entity?.name,
   url: ['/portal', dealsFeatureKey, entity?.slug],
-  textTranslatableField: 'shortDescription',
-  translatables: entity?.translatables,
-  titleTranslatableField: 'name',
 });
 
 export const eventsToCards = (entities?: Maybe<Maybe<EventEntity>[]>): CardElement[] | undefined =>
@@ -76,17 +72,15 @@ export const eventsToCards = (entities?: Maybe<Maybe<EventEntity>[]>): CardEleme
 export const eventToCard = (entity?: Maybe<EventEntity>): CardElement => ({
   id: entity?.id,
   address: entity?.address,
-  categoryTranslatables: entity?.category?.translatables,
-  categoryTranslatableField: 'name',
+  category: entity?.category?.name,
   creator: entity?.contact?.name,
   creatorImage: entity?.creator?.titleImage,
   date: entity?.schedule?.startDate,
   dateTime: true,
   image: entity?.cardImage,
+  text: entity?.shortDescription,
+  title: entity?.name,
   url: ['/portal', eventsFeatureKey, entity?.slug],
-  textTranslatableField: 'shortDescription',
-  titleTranslatableField: 'name',
-  translatables: entity?.translatables,
 });
 
 export const organisationsToCards = (entities?: Maybe<OrganisationEntity[]>): CardElement[] | undefined =>
@@ -94,11 +88,10 @@ export const organisationsToCards = (entities?: Maybe<OrganisationEntity[]>): Ca
 
 export const organisationToCard = (entity?: Maybe<OrganisationEntity>): CardElement => ({
   id: entity?.id,
-  email: entity?.contact?.email,
   creator: entity?.name,
   creatorImage: entity?.avatar,
   dateTime: true,
-  translatables: entity?.translatables,
+  email: entity?.contact?.email,
   url: ['/portal', organisationsFeatureKey, entity?.slug],
 });
 
@@ -110,10 +103,9 @@ export const surveyToCard = (entity: Maybe<SurveyEntity>): CardElement => ({
   date: entity?.dueDate,
   dateTime: true,
   image: entity?.cardImage,
+  text: entity?.description,
+  title: entity?.name,
   url: ['/portal', surveysFeatureKey, entity?.slug],
-  translatables: entity?.translatables,
-  textTranslatableField: 'content',
-  titleTranslatableField: 'name',
 });
 
 export const usersToCards = (entities?: Maybe<UserContextEntity[]>): CardElement[] | undefined => 

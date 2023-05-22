@@ -1,16 +1,8 @@
 fragment EventComments on EventCommentEntity {
   id
   created
-  translatables {
-    id
-    content
-    language {
-      id
-      locale
-      name
-    }
-  }
-  userContext{
+  content
+  userContext {
     ...UserContext
   }
 }

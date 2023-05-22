@@ -1,4 +1,5 @@
 fragment SocialMedia on SocialMediaEntity {
+  id
   icon
   name
   url

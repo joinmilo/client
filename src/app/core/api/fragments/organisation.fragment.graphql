@@ -1,6 +1,5 @@
 fragment Organisation on OrganisationEntity {
   id
-  name
   address {
     ...Address
   }
@@ -10,14 +9,7 @@ fragment Organisation on OrganisationEntity {
   contact {
     ...Contact
   }
+  description
+  name
   slug
-  translatables {
-    id
-    description
-    language {
-      id
-      locale
-      name
-    }
-  }
 }

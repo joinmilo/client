@@ -13,19 +13,13 @@ fragment Article on ArticleEntity {
   category {
     ...ArticleCategory
   }
+  content
   created
   modified
+  name
   publicAuthor {
     ...PublicAuthor
   }
+  shortDescription
   slug
-  translatables {
-    id
-    content
-    shortDescription
-    name
-    language {
-      ...Language
-    }
-  }
 }

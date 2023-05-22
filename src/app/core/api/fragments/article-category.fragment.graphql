@@ -1,12 +1,6 @@
 fragment ArticleCategory on ArticleCategoryEntity {
   id
-  icon
   color
-  translatables {
-    id 
-    name
-    language {
-      ...Language
-    }
-  }
+  icon
+  name
 }

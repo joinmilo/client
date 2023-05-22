@@ -1,0 +1,6 @@
+fragment PageMedia on PageMediaEntity {
+  id
+  credits
+  mimeType
+  name
+}

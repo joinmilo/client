@@ -1,7 +1,7 @@
 <div class="main">
   <section>
     <article>
-      <h1>{{page | translatable: 'name' | async}}</h1>
+      <h1>{{ (page | async)?.name }}</h1>
     </article>
   </section>
 </div>

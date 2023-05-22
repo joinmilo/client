@@ -4,5 +4,5 @@
     <span>{{comment?.userContext?.user?.firstName}} {{comment?.userContext?.user?.lastName}}</span>
   </section>
   <app-date-piece *ngIf="comment?.created" [date]="comment?.created"></app-date-piece>
-  <p>{{comment?.translatables | translatable: 'content' | async}}</p>
+  <p>{{comment?.content}}</p>
 </article>

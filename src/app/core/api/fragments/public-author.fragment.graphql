@@ -1,6 +1,6 @@
 fragment PublicAuthor on PublicAuthorEntity {
   id
-  name
   email
+  name
   phone
 }

@@ -1,11 +1,5 @@
 fragment DealCategory on DealCategoryEntity {
   id
   created
-  translatables {
-    id
-    name
-    language {
-      ...Language
-    }
-  }
+  name
 }

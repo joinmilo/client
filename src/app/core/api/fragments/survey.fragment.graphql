@@ -3,16 +3,8 @@ fragment Survey on SurveyEntity {
   cardImage {
     ...Media
   }
+  description
   dueDate
   slug
-  translatables {
-    id
-    name
-    description
-    language {
-      id
-      locale
-      name
-    }
-  }
+  name
 }

@@ -1,19 +1,11 @@
 fragment Contest on ContestEntity {
   id
+  content
   dueDate
   cardImage {
     ...Media
   }
+  name
   slug
-  translatables {
-    id
-    name
-    content
-    shortDescription
-    language {
-      id
-      locale
-      name
-    }
-  }
+  shortDescription
 }

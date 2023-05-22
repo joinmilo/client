@@ -13,7 +13,7 @@
           <mat-label appLabel="topic"></mat-label>
           <mat-select formControlName="type">
             <mat-option [value]="type" *ngFor="let type of types | async">
-              <p>{{type | translatable: "name" | async}}</p>
+              <p>{{type.name}}</p>
             </mat-option>
           </mat-select>
         </mat-form-field>
