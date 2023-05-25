@@ -1,8 +1,12 @@
 fragment Page on PageEntity {
   id
   callUrl
-  media {
-    ...Media
+  slug
+  uploads {
+    title
+    media{
+      ...Media
+    }
   }
   pageFeatures {
     id
@@ -11,10 +15,6 @@ fragment Page on PageEntity {
       id
       key
     }
-  }
-  slug
-  titleImage {
-    ...Media
   }
   translatables {
     id

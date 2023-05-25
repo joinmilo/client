@@ -6,8 +6,12 @@ fragment Event on EventEntity {
   contact {
     ...Contact
   }
-  cardImage {
-    ...Media
+  uploads {
+    title
+    card
+    media{
+      ...Media
+    }
   }
   category {
     ...EventCategory

@@ -4,8 +4,12 @@ fragment Organisation on OrganisationEntity {
   address {
     ...Address
   }
-  avatar {
-    ...Media
+  uploads {
+    title
+    card
+    media{
+      ...Media
+    }
   }
   contact {
     ...Contact

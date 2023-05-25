@@ -7,9 +7,13 @@ fragment Article on ArticleEntity {
       lastName
     }
   }
-  cardImage {
-    ...Media
-  }
+  uploads {
+    title
+    card
+    media{
+      ...Media
+    }
+  }  
   category {
     ...ArticleCategory
   }

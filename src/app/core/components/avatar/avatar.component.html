@@ -1,4 +1,3 @@
-<img *ngIf="user?.avatar?.id" [appMedia]="user?.avatar">
-<span *ngIf="!user?.avatar?.id">
-  {{ user?.user?.firstName?.charAt(0) }}
-</span>
+<img *ngIf="getMedia(user?.uploads) as media" [appMedia]="media" [ngStyle]="{'width': imageSize, 'height': imageSize}">
+<span *ngIf="!getMedia(user?.uploads)" [ngStyle]="{'width': imageSize, 'height': imageSize, 'font-size': fontSize}">
+  {{ user?.user?.firstName?.charAt(0) }}</span>

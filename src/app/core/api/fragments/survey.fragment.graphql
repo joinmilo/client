@@ -1,7 +1,11 @@
 fragment Survey on SurveyEntity {
   id
-  cardImage {
-    ...Media
+  uploads {
+    title
+    card
+    media{
+      ...Media
+    }
   }
   dueDate
   slug

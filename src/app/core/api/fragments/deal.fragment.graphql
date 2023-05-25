@@ -1,8 +1,12 @@
 fragment Deal on DealEntity {
   id
   price
-  cardImage {
-    ...Media
+  uploads {
+    title
+    card
+    media{
+      ...Media
+    }
   }
     contact {
     ...Contact

@@ -1,5 +1,5 @@
 <header>
-  <img [appMedia]="(page | async)?.titleImage" alt="hero-section">
+  <img [appMedia]="getMedia((page | async)?.uploads)" alt="hero-section">
   <section>
     <div>
       <div class="title title-gradient">{{page | translatable: "name" | async}}</div>

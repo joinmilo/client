@@ -1,15 +1,16 @@
 fragment UserContextAuthor on UserContextEntity {
   id
-  avatar {
-    id
-  }
-  articles {
-    ...Article
-  }
   description
   slug
-  titleImage {
-    id
+  uploads {
+    profilePicture
+    title
+    media{
+      ...Media
+    }
+  }  
+  articles {
+    ...Article
   }
   user {
     firstName

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
+import { Maybe, MediaEntity, PageMediaEntity } from '../../../../../schema/schema';
 import { PortalMainActions } from '../../state/portal-main.actions';
 import { selectCurrentPage } from '../../state/portal-main.selectors';
 
@@ -20,4 +21,8 @@ export class PortalLandingComponent {
   constructor(
     private store: Store,
   ) { }
+
+  public getMedia(arg0: Maybe<Maybe<PageMediaEntity>[]>|undefined): Maybe<MediaEntity> |undefined {
+    return arg0?.find(upload => upload?.title)?.media;
+  }
 }

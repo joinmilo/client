@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card>
     <figure>
-      <img ngSrc="media" mat-card-image [loaderParams]="{media: element?.image}">
+      <img alt="content-card" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.image">
     </figure>
     <div class="wrapper">
       <mat-card-header>
@@ -32,7 +32,7 @@
           }}
         </span>
         <mat-card-actions>
-          <img ngSrc="media" [loaderParams]="{media: element?.creatorImage}">
+          <img alt="content-card" [src]="element?.creatorImage ? '' : '/assets/placeholder.webp'" [appMedia]="element?.creatorImage">
           <span>{{element?.creator}}</span>
         </mat-card-actions>
       </mat-card-content>

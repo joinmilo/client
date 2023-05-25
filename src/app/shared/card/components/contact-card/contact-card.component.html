@@ -1,7 +1,7 @@
 <div class="container">
   <mat-card>
     <figure>
-      <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill>
+      <img [appMedia]="element?.creatorImage" alt="content-card">
     </figure>
     <section [routerLink]="element?.url">
       <h5 class="mat-headline-5">

@@ -4,39 +4,35 @@
       <mat-chip-option>
         <span>
           {{
-            element?.category
-              ? element?.category 
-              : element?.categoryTranslatables | translatable: element?.categoryTranslatableField | async
+          element?.category
+          ? element?.category
+          : element?.categoryTranslatables | translatable: element?.categoryTranslatableField | async
           }}
         </span>
       </mat-chip-option>
       <app-favorite-piece></app-favorite-piece>
-      <figure>
-        <img ngSrc="media" alt="media" [loaderParams]="{media: element?.image}" fill>
-      </figure>
+        <img alt="content-card" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.image">
     </mat-card-header>
     <mat-card-content [routerLink]="element?.url">
       <h1>
         {{
-          element?.title
-            ? element?.title
-            : element?.translatables | translatable: element?.titleTranslatableField | async
+        element?.title
+        ? element?.title
+        : element?.translatables | translatable: element?.titleTranslatableField | async
         }}
       </h1>
       <app-date-piece *ngIf="element?.date" [date]="element?.date" [dateTime]="element?.dateTime">Date</app-date-piece>
       <app-address-piece *ngIf="element?.address" [address]="element?.address"></app-address-piece>
       <span>
         {{
-          element?.text
-            ? element?.text
-            : element?.translatables | translatable: element?.textTranslatableField | async
+        element?.text
+        ? element?.text
+        : element?.translatables | translatable: element?.textTranslatableField | async
         }}
       </span>
     </mat-card-content>
-    <mat-card-actions *ngIf="element?.creatorImage">
-         <figure>
-      <img ngSrc="media" alt="media" [loaderParams]="{media: element?.creatorImage}" fill>
-    </figure>
+    <mat-card-actions *ngIf="element?.creator">
+        <img alt="content-card" [src]="element?.creatorImage ? '' : '/assets/placeholder.webp'" [appMedia]="element?.creatorImage">
       <span>{{element?.creator}}</span>
     </mat-card-actions>
   </mat-card>

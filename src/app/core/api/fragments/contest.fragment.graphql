@@ -1,8 +1,12 @@
 fragment Contest on ContestEntity {
   id
   dueDate
-  cardImage {
-    ...Media
+  uploads {
+    title
+    card
+    media{
+      ...Media
+    }
   }
   slug
   translatables {

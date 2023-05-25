@@ -1,11 +1,8 @@
 query GetMe {
   me {
     id
-    avatar {
-      ...Media
-    }
-    user {
-      ...User
+    userContext {
+      ...UserContext
     }
   }
 }
