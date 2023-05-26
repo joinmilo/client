@@ -6,4 +6,8 @@
 </app-table-desktop>
 
 <app-table-mobile>
+  [actions]="actions"
+  [columns]="columns"
+  [data]="data"
+  (sortPaginate)="emitSortPaginate($event)">
 </app-table-mobile>

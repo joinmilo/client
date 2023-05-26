@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+
+  label {
+    display: block;
+    color: white;
+    background-color: blue;
+    padding: .5rem 1rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+}
