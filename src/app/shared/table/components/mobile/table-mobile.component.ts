@@ -1,18 +1,16 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { Observable, Subject, merge, startWith, takeUntil, tap } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Maybe } from 'src/schema/schema';
-import { Column, PageableList, RowAction, SortPaginate } from '../../typings/table';
+import { PageableList, Row, RowAction } from '../../typings/table';
 
 @Component({
   selector: 'app-table-mobile',
   templateUrl: './table-mobile.component.html',
   styleUrls: ['./table-mobile.component.scss'],
 })
-export class TableMobileComponent<T> implements AfterViewInit, OnDestroy{
+export class TableMobileComponent<T>{
   
-  private _columns?: Column<T>[];
+  private _rows?: Row<T>[];
 
   public displayedColumns?: (Maybe<string> | undefined)[];
 
@@ -23,50 +21,50 @@ export class TableMobileComponent<T> implements AfterViewInit, OnDestroy{
   public data?: Observable<PageableList<T> | undefined>;
 
   @Input()
-  public set columns(columns: Column<T>[] | undefined) {
-    this._columns = columns;
-    this.displayedColumns = [...(columns?.map(c => c.field) || []), 'actions'];
+  public set rows(rows: Row<T>[] | undefined) {
+    this._rows = rows;
+    this.displayedColumns = [...(rows?.map(c => c.field) || []), 'actions'];
   }
 
-  public get columns(): Column<T>[] | undefined {
-    return this._columns;
+  public get rows(): Row<T>[] | undefined {
+    return this._rows;
   }
 
-  @Output()
-  public sortPaginate = new EventEmitter<SortPaginate>();
+  // @Output()
+  // public sortPaginate = new EventEmitter<SortPaginate>();
 
-  @ViewChild(MatPaginator)
-  public paginator!: MatPaginator;
+  // @ViewChild(MatPaginator)
+  // public paginator!: MatPaginator;
 
-  @ViewChild(MatSort)
-  public sort!: MatSort;
+  // @ViewChild(MatSort)
+  // public sort!: MatSort;
 
-  private destroy = new Subject<void>();
+  // private destroy = new Subject<void>();
 
-  public ngAfterViewInit(): void {
+  // public ngAfterViewInit(): void {
 
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+  //   this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
     
-    merge(this.sort.sortChange, this.paginator.page).pipe(
-      startWith({}),
-      tap(() => this.emitSortPaginate()),
-      takeUntil(this.destroy),
-    ).subscribe();  
-  }
+  //   merge(this.sort.sortChange, this.paginator.page).pipe(
+  //     startWith({}),
+  //     tap(() => this.emitSortPaginate()),
+  //     takeUntil(this.destroy),
+  //   ).subscribe();  
+  // }
 
-  private emitSortPaginate(): void {
-    this.sortPaginate.emit({
-      dir: this.sort.direction,
-      sort: this.sort.active,
-      page: this.paginator.pageIndex,
-      size: this.paginator.pageSize,
-    });
-  }
+  // private emitSortPaginate(): void {
+  //   this.sortPaginate.emit({
+  //     dir: this.sort.direction,
+  //     sort: this.sort.active,
+  //     page: this.paginator.pageIndex,
+  //     size: this.paginator.pageSize,
+  //   });
+  // }
 
-  public ngOnDestroy(): void {
-    this.destroy.next();
-    this.destroy.complete(); 
-  }
+  // public ngOnDestroy(): void {
+  //   this.destroy.next();
+  //   this.destroy.complete(); 
+  // }
 
 }
 

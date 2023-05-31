@@ -13,6 +13,18 @@ export type Column<T> = {
   type?: ColumnType | ((row: T) => Observable<Maybe<string> | undefined> | Maybe<string> | undefined),
 };
 
+export type RowType = 'BOOLEAN' 
+  | 'CATEGORY' 
+  | 'DATE' 
+  | 'DATETIME' 
+  | 'TIME';
+
+export type Row<T> = {
+  label?: string;
+  field: string;
+  type?: RowType | ((section: T) => Observable<Maybe<string> | undefined> | Maybe<string> | undefined);
+};
+
 export type PageableList<T> = {
   result?: Maybe<Array<Maybe<T>>>;
   total?: number;
