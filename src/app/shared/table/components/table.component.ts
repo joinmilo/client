@@ -8,7 +8,7 @@ import { Column, PageableList, RowAction, SortPaginate } from '../typings/table'
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
 })
 export class TableComponent<T> implements OnDestroy {
 
@@ -60,5 +60,4 @@ export class TableComponent<T> implements OnDestroy {
       queryParamsHandling: 'merge'
     });
   }
-
 }

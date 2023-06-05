@@ -1,21 +1,18 @@
-Test Mobile
-
 <div>
+  <mat-card *ngFor="let row of (data | async)?.result;">
+    <mat-card-title [appRow]="row" [column]="columns ? columns[0] : undefined"></mat-card-title>   
+    <ng-container *ngFor="let column of columns; let first = first">
+      <mat-card-content *ngIf="!first">
+        <small [appLabel]="column.label"></small>
+        <span [appRow]="row" [column]="column"></span>
+      </mat-card-content>
+    </ng-container>
+    <mat-divider></mat-divider>
+    <app-table-actions [actions]="actions"></app-table-actions>
+  </mat-card>
+
   <mat-card>
-    <table mat-table [dataSource]="((data | async)?.result || [])">
-
-      <ng-container *ngFor="let row of rows" [matColumnDef]="row.field">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          <strong [appLabel]="row.label"></strong>
-        </th>
-        <td mat-cell *matCellDef="let row">
-          <div [appRow]="row" [column]="row"></div>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="data;"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-    </table>
+    <mat-paginator [length]="(data | async)?.total" [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </mat-card>
 </div>

@@ -15,7 +15,7 @@ export class RowDirective<T> implements OnInit, OnDestroy {
   public appRow?: Maybe<T>;
 
   @Input()
-  public column?: Column<T>;
+  public column?: Maybe<Column<T>>;
 
   private destroy = new Subject<void>();
 

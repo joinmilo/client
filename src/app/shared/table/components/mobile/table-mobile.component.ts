@@ -1,16 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
 import { Maybe } from 'src/schema/schema';
-import { PageableList, Row, RowAction } from '../../typings/table';
+import { Column, PageableList, RowAction, SortPaginate } from '../../typings/table';
 
 @Component({
   selector: 'app-table-mobile',
   templateUrl: './table-mobile.component.html',
   styleUrls: ['./table-mobile.component.scss'],
 })
-export class TableMobileComponent<T>{
-  
-  private _rows?: Row<T>[];
+export class TableMobileComponent<T> implements OnInit, OnDestroy {
+  private _columns?: Column<T>[];
 
   public displayedColumns?: (Maybe<string> | undefined)[];
 
@@ -21,61 +22,35 @@ export class TableMobileComponent<T>{
   public data?: Observable<PageableList<T> | undefined>;
 
   @Input()
-  public set rows(rows: Row<T>[] | undefined) {
-    this._rows = rows;
-    this.displayedColumns = [...(rows?.map(c => c.field) || []), 'actions'];
+  public set columns(columns: Column<T>[] | undefined) {
+    this._columns = columns;
+    this.displayedColumns = [
+      ...(columns?.map((c) => c.field) || []),
+      'actions',
+    ];
   }
 
-  public get rows(): Row<T>[] | undefined {
-    return this._rows;
+  public get columns(): Column<T>[] | undefined {
+    return this._columns;
   }
 
-  // @Output()
-  // public sortPaginate = new EventEmitter<SortPaginate>();
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  // @ViewChild(MatPaginator)
-  // public paginator!: MatPaginator;
+  @Output()
+  public sortPaginate = new EventEmitter<SortPaginate>();
 
-  // @ViewChild(MatSort)
-  // public sort!: MatSort;
+  @ViewChild(MatPaginator)
+  public paginator!: MatPaginator;
+  dataSource: MatTableDataSource<T> = new MatTableDataSource<T>();
 
-  // private destroy = new Subject<void>();
+  ngOnInit() {
+    this.changeDetectorRef.detectChanges();
+    this.dataSource.paginator = this.paginator;
+  }
 
-  // public ngAfterViewInit(): void {
-
-  //   this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
-    
-  //   merge(this.sort.sortChange, this.paginator.page).pipe(
-  //     startWith({}),
-  //     tap(() => this.emitSortPaginate()),
-  //     takeUntil(this.destroy),
-  //   ).subscribe();  
-  // }
-
-  // private emitSortPaginate(): void {
-  //   this.sortPaginate.emit({
-  //     dir: this.sort.direction,
-  //     sort: this.sort.active,
-  //     page: this.paginator.pageIndex,
-  //     size: this.paginator.pageSize,
-  //   });
-  // }
-
-  // public ngOnDestroy(): void {
-  //   this.destroy.next();
-  //   this.destroy.complete(); 
-  // }
-
+  ngOnDestroy() {
+    if (this.dataSource) {
+      this.dataSource.disconnect();
+    }
+  }
 }
-
-  //   @Input()
-  //   public data?: Observable<T[]>;
-
-  //   @Input()
-  //   public columns?: Column<T>[];
-
-  //   @ViewChild(MatPaginator)
-  //   public paginator!: MatPaginator;
-
-  //   @ViewChild(MatSort)
-  //   public sort!: MatSort;
