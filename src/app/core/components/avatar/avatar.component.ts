@@ -13,7 +13,6 @@ export class AvatarComponent implements OnInit{
 
   public media?: Maybe<MediaEntity> | undefined;
 
-  
   ngOnInit(): void {
     this.media = this.user?.uploads?.find(upload => upload?.profilePicture)?.media ?? null;
   }

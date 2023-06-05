@@ -3,8 +3,8 @@
   
   <section>
     <app-card-slider *ngIf="(articles | async)?.length"
-      entity="ArticleEntity"  
-      [data]="articles | async" 
+      entity="ArticleEntity"
+      [data]="articles | async"
       titleLabel="blogposts"
       [cardType]="types.content"
       [link]="['/articles']"
