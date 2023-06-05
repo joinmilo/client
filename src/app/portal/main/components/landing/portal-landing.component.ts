@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { Maybe, MediaEntity } from '../../../../../schema/schema';
+import { Maybe, MediaEntity, PageEntity } from '../../../../../schema/schema';
 import { PortalMainActions } from '../../state/portal-main.actions';
 import { selectCurrentPage } from '../../state/portal-main.selectors';
 
@@ -14,11 +14,7 @@ export class PortalLandingComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
-  public page = this.store.select(selectCurrentPage)
-    .pipe(
-      tap(landing => !landing?.id
-        && this.store.dispatch(PortalMainActions.getLandingPage()))
-    );
+  public page?: Maybe<PageEntity>;
 
   public media?: Maybe<MediaEntity> | undefined;
 
@@ -27,9 +23,13 @@ export class PortalLandingComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.page.pipe(
+    this.store.select(selectCurrentPage)
+    .pipe(
+      tap(landing => !landing?.id
+        && this.store.dispatch(PortalMainActions.getLandingPage())),
       takeUntil(this.destroy)
     ).subscribe(page => {
+      this.page = page;
       this.media = page?.uploads?.find(upload => upload?.title)?.media;
     });
   }

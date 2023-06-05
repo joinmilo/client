@@ -32,7 +32,7 @@
       </span>
     </mat-card-content>
     <mat-card-actions *ngIf="element?.creator">
-        <img alt="content-card" [src]="element?.creatorImage ? '' : '/assets/placeholder.webp'" [appMedia]="element?.creatorImage">
+        <img class="border-image" alt="content-card" [src]="element?.creatorImage ? '' : '/assets/placeholder.webp'" [appMedia]="element?.creatorImage">
       <span>{{element?.creator}}</span>
     </mat-card-actions>
   </mat-card>
