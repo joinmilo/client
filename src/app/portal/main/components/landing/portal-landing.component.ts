@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
-import { Maybe, MediaEntity, PageMediaEntity } from '../../../../../schema/schema';
+import { Subject, takeUntil, tap } from 'rxjs';
+import { Maybe, MediaEntity } from '../../../../../schema/schema';
 import { PortalMainActions } from '../../state/portal-main.actions';
 import { selectCurrentPage } from '../../state/portal-main.selectors';
 
@@ -10,7 +10,9 @@ import { selectCurrentPage } from '../../state/portal-main.selectors';
   templateUrl: './portal-landing.component.html',
   styleUrls: ['./portal-landing.component.scss']
 })
-export class PortalLandingComponent {
+export class PortalLandingComponent implements OnInit, OnDestroy {
+
+  private destroy = new Subject<void>();
 
   public page = this.store.select(selectCurrentPage)
     .pipe(
@@ -18,11 +20,22 @@ export class PortalLandingComponent {
         && this.store.dispatch(PortalMainActions.getLandingPage()))
     );
 
+  public media?: Maybe<MediaEntity> | undefined;
+
   constructor(
     private store: Store,
   ) { }
 
-  public getMedia(arg0: Maybe<Maybe<PageMediaEntity>[]>|undefined): Maybe<MediaEntity> |undefined {
-    return arg0?.find(upload => upload?.title)?.media;
+  ngOnInit(): void {
+    this.page.pipe(
+      takeUntil(this.destroy)
+    ).subscribe(page => {
+      this.media = page?.uploads?.find(upload => upload?.title)?.media;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

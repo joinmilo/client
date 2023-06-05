@@ -24,5 +24,4 @@ export class ContactCardComponent implements OnInit {
       this.element = dataToElement(this.entity, this.data);
     }
   }
-
 }

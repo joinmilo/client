@@ -1,16 +1,15 @@
 <div class="container">
-  <mat-card>
+  <mat-card [routerLink]="element?.url">
     <figure>
-      <img [appMedia]="element?.creatorImage" alt="content-card">
+      <img [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.creatorImage"
+        alt="contact-card">
     </figure>
-    <section [routerLink]="element?.url">
-      <h5 class="mat-headline-5">
-        {{element?.creator ? element?.creator: ''}}
-      </h5>
-      <p class="mat-body-1">
-        {{element?.email ? element?.email : ''}}
-      </p>
-    </section>
+    <span class="mat-headline-5">
+      {{element?.creator ? element?.creator: ''}}
+    </span>
+    <span class="mat-body-1">
+      {{element?.email ? element?.email : ''}}
+    </span>
     <app-favorite-piece></app-favorite-piece>
   </mat-card>
 </div>

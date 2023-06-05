@@ -1,9 +1,9 @@
 <div class="main" *ngIf="author | async as author">
   <app-page-title title="author"></app-page-title>
   <div class="user">
-      <div *ngIf="!getTitleImage(author.uploads)" class="gradientImage"></div>
-      <img *ngIf="getTitleImage(author.uploads) as titleImage" [appMedia]="titleImage" alt="author-titleImage">
-    <app-avatar [user]="author" imageSize="10rem" fontSize="4.5rem"></app-avatar>
+    <div *ngIf="!media" class="gradientImage"></div>
+    <img *ngIf="media" [appMedia]="media" alt="author-titleImage">
+    <app-avatar [user]="author"></app-avatar>
     <div>
       <section>
         <h4 class="mat-headline-5">{{author.user?.firstName}}</h4>

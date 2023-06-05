@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
-import { MediaEntity, UserContextMediaEntity } from '../../../../../../schema/schema';
+import { MediaEntity } from '../../../../../../schema/schema';
 import { authorSlug } from '../constants/portal-author-details.constant';
 import { AuthorDetailsActions } from '../state/portal-author-details.actions';
 import { selectAuthorDetails } from '../state/portal-author-details.selectors';
@@ -19,19 +19,20 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
+  public media?: Maybe<MediaEntity> | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store) {}
+    private store: Store) { }
 
   public ngOnInit(): void {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy))
       .subscribe(params =>
         this.store.dispatch(AuthorDetailsActions.getDetails(params.get(authorSlug))));
-  }
 
-  public getTitleImage(arg0: Maybe<Maybe<UserContextMediaEntity>[]> | undefined): Maybe<MediaEntity> | undefined {
-    return arg0?.find(upload => upload?.title)?.media ?? null;
+    this.author.pipe(takeUntil(this.destroy))
+      .subscribe(author => this.media = author?.uploads?.find(upload => upload?.title)?.media);
   }
 
   public ngOnDestroy(): void {
