@@ -4366,8 +4366,8 @@ export type ScheduleEntityInput = {
 export type SearchDto = {
   __typename?: 'SearchDto';
   feature?: Maybe<FeatureEntity>;
-  id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']>;
 };
 
 export type SocialMediaEntity = {
@@ -5088,7 +5088,7 @@ export type SearchQueryVariables = Exact<{
 }>;
 
 
-export type SearchQuery = { __typename?: 'Query', search?: Array<{ __typename?: 'SearchDto', id?: string | null } | null> | null };
+export type SearchQuery = { __typename?: 'Query', search?: Array<{ __typename?: 'SearchDto', slug?: string | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null };
 
 export type GetServerVersionQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6250,7 +6250,11 @@ export const GetUserContextsDocument = gql`
 export const SearchDocument = gql`
     query search($params: FilterSortPaginateInput) {
   search(params: $params) {
-    id
+    slug
+    feature {
+      id
+      key
+    }
   }
 }
     `;

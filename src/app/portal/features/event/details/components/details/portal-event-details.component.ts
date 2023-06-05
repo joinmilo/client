@@ -20,7 +20,6 @@ export class PortalEventDetailsComponent implements OnInit {
     // Note: Below 'queryParams' can be replaced with 'params' depending on your requirements
     this.activatedRoute.paramMap.subscribe(params => {
       // const slug = params[eventSlug];
-      console.log('slug', params);
       // this.store.dispatch(PortalEventDetailsActions.getEventDetails(slug));
     });
   }

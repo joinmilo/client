@@ -25,5 +25,4 @@ export class ContentCardComponent implements OnInit {
       this.element = dataToElement(this.entity, this.data);
     }
   }
-
 }

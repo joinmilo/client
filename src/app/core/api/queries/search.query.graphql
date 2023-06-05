@@ -1,5 +1,9 @@
 query search($params: FilterSortPaginateInput) {
   search(params: $params) {
+    slug
+    feature {
       id
+      key
+    }
   }
 }

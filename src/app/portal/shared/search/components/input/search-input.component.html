@@ -7,8 +7,8 @@
 
   <mat-autocomplete #auto="matAutocomplete">
 
-    <mat-option *ngFor="let entity of result | async" (click)="navigateDetails($event, entity)" [value]="entity">
-      <span>{{entity.id}}</span>
+    <mat-option *ngFor="let entity of result | async" (click)="navigateDetails($event, entity)" [value]="entity.slug">
+      <span>{{entity.slug}}</span>
     </mat-option>
 
     <ng-container *ngIf="(result | async)?.length">

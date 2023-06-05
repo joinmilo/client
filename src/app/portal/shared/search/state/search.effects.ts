@@ -26,7 +26,7 @@ export class SearchEffects {
 
   navigateResultPage = createEffect(() => this.actions.pipe(
     ofType(SearchActions.navigateResultPage),
-    tap(() => this.router.navigate(['/portal', 'search'])),
+    tap(() => this.router.navigate(['/portal', 'search', 'result'])),
   ), { dispatch: false });
 
   searchDetails = createEffect(() => this.actions.pipe(

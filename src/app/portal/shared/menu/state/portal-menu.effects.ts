@@ -25,7 +25,7 @@ export class PortalMenuEffects {
 
   navigateDetails = createEffect(() => this.actions.pipe(
     ofType(PortalMenuActions.navigateDetails),
-    tap(action => this.router.navigate(['portal', action.feature?.key, action.feature?.id])),
+    tap(action => this.router.navigate(['portal', action.feature?.key, action.slug ])),
   ), { dispatch: false });
 
   navigateMenu = createEffect(() => this.actions.pipe(

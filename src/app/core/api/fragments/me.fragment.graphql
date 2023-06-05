@@ -1,7 +1,0 @@
-fragment User on UserContextEntity {
-  id
-  firstName
-  lastName
-  email
-  
-}
