@@ -31,6 +31,12 @@ mat-card {
   overflow: hidden;
 }
 
+mat-card-content {
+  display: flex;
+  flex-flow: wrap;
+  gap: 1rem;
+}
+
 mat-card-actions > section {
   width: 100%;
 }

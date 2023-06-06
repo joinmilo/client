@@ -57,6 +57,8 @@ export class RowDirective<T> implements OnInit, OnDestroy {
         default:
           this.display = value as string;
       }
+    } else {
+      this.display = ' - ';
     }
   }
 

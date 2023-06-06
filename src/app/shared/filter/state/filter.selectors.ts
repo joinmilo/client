@@ -11,12 +11,22 @@ export const selectFiltersActive = createSelector(
     && Object.values(state.params).some((value) => !!value?.length)
 );
 
+export const selectEventCategories = createSelector(
+  selectFilterState,
+  state => state.eventCategories
+);
+
 export const selectTargetGroups = createSelector(
   selectFilterState,
   state => state.targetGroups
 );
 
-export const selectFilterParams = createSelector(
+export const selectParams = createSelector(
   selectFilterState,
-  state => createParams(state?.params)
+  state => state?.params
+);
+
+export const selectFilterParams = createSelector(
+  selectParams,
+  params => createParams(params)
 );

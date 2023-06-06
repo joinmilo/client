@@ -11,6 +11,7 @@ export type Column<T> = {
   label?: string,
   field: string,
   type?: ColumnType | ((row: T) => Observable<Maybe<string> | undefined> | Maybe<string> | undefined),
+  sort?: boolean,
 };
 
 export type PageableList<T> = {

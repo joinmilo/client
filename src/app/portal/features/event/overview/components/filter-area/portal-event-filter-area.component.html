@@ -21,9 +21,17 @@
       <app-filter-targetgroup>
       </app-filter-targetgroup>
 
+      <app-filter-event-category>
+      </app-filter-event-category>
+
+      <app-filter-free-only>
+      </app-filter-free-only>
+
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="clearFilters()">Alle Filter löschen</button>
+      <button mat-button (click)="clearFilters()">
+        <span appLabel="clearAllFilters"></span>
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>

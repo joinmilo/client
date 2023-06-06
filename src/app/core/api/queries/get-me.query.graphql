@@ -1,8 +1,5 @@
 query GetMe {
   me {
-    id
-    userContext {
-      ...UserContext
-    }
+    ...UserContext
   }
 }

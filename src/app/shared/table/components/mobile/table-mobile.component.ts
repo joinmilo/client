@@ -1,8 +1,6 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs';
-import { Maybe } from 'src/schema/schema';
+import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { Column, PageableList, RowAction, SortPaginate } from '../../typings/table';
 
 @Component({
@@ -10,47 +8,42 @@ import { Column, PageableList, RowAction, SortPaginate } from '../../typings/tab
   templateUrl: './table-mobile.component.html',
   styleUrls: ['./table-mobile.component.scss'],
 })
-export class TableMobileComponent<T> implements OnInit, OnDestroy {
-  private _columns?: Column<T>[];
-
-  public displayedColumns?: (Maybe<string> | undefined)[];
-
+export class TableMobileComponent<T> implements AfterViewInit, OnDestroy {
+  
   @Input()
   public actions?: RowAction<T>[];
 
   @Input()
-  public data?: Observable<PageableList<T> | undefined>;
+  public columns?: Column<T>[];
 
   @Input()
-  public set columns(columns: Column<T>[] | undefined) {
-    this._columns = columns;
-    this.displayedColumns = [
-      ...(columns?.map((c) => c.field) || []),
-      'actions',
-    ];
-  }
-
-  public get columns(): Column<T>[] | undefined {
-    return this._columns;
-  }
-
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  public data?: Observable<PageableList<T> | undefined>;
 
   @Output()
   public sortPaginate = new EventEmitter<SortPaginate>();
 
+  @ViewChild('container')
+  private container?: ElementRef;
+
+  private destroy = new Subject<void>();
+
   @ViewChild(MatPaginator)
   public paginator!: MatPaginator;
-  dataSource: MatTableDataSource<T> = new MatTableDataSource<T>();
 
-  ngOnInit() {
-    this.changeDetectorRef.detectChanges();
-    this.dataSource.paginator = this.paginator;
+  public ngAfterViewInit(): void {
+    this.paginator.page.pipe(
+      tap(() => this.sortPaginate.emit({
+        page: this.paginator.pageIndex,
+        size: this.paginator.pageSize,
+      })),
+      tap(() => this.container?.nativeElement?.scrollIntoView()),
+      takeUntil(this.destroy),
+    ).subscribe();
   }
 
-  ngOnDestroy() {
-    if (this.dataSource) {
-      this.dataSource.disconnect();
-    }
+  public ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
+
 }

@@ -28,6 +28,7 @@ export class PortalEventTableViewComponent {
     {
       field: 'contact.name',
       label: 'organizer',
+      sort: true,
     },
     {
       field: 'schedules.startDate',

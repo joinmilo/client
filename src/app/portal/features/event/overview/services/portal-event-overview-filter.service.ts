@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, combineLatestWith, map, tap } from 'rxjs';
+import { FilterActions } from 'src/app/shared/filter/state/filter.actions';
 import { selectFilterParams } from 'src/app/shared/filter/state/filter.selectors';
 import { selectTableParams } from 'src/app/shared/table/state/table.selectors';
 import { PortalEventOverviewActions } from '../state/portal-event-overview.actions';
@@ -10,7 +11,9 @@ export class PortalEventOverviewFilterService {
 
   constructor(
     private store: Store,
-  ) { }
+  ) {
+    this.store.dispatch(FilterActions.init());
+  }
 
   public watchFilters(): Observable<unknown> {
     return this.store.select(selectFilterParams)
