@@ -17,10 +17,17 @@
         <app-portal-menu-accordion (itemSelected)="trigger.closeMenu()"></app-portal-menu-accordion>
         <mat-divider></mat-divider>
         <app-portal-header-user></app-portal-header-user>
-        <section>
-          <mat-divider></mat-divider>
-          <span>{{ user?.user?.firstName }} {{ user?.user?.lastName }}</span>
+        <mat-divider></mat-divider>
+        <section>          
+          <button mat-stroked-button color="primary" [routerLink]="['/user', 'register']">
+            <span appLabel="register"></span>
+          </button>
+          <button mat-stroked-button color="primary" [routerLink]="['/user', 'login']">
+            <span appLabel="login"></span>
+          </button>
+          
         </section>
+        <span>{{ user?.user?.firstName }} {{ user?.user?.lastName }}</span>
       </div>
     </mat-menu>
   </div>

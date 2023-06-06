@@ -10,10 +10,10 @@
 
     <ng-container *ngIf="!(currentUser | async)?.id">
       <div *ngIf="(isSearching | async) === false" [@fadeIn]>
-        <button mat-raised-button color="primary" [routerLink]="['/user', 'register']">
+        <button mat-stroked-button color="primary" [routerLink]="['/user', 'register']">
           <span appLabel="register"></span>
         </button>
-        <button mat-raised-button color="primary" [routerLink]="['/user', 'login']">
+        <button mat-stroked-button color="primary" [routerLink]="['/user', 'login']">
             <span appLabel="login"></span>
         </button>
       </div>
@@ -22,20 +22,16 @@
     <app-search></app-search>
 
     <ng-container *ngIf="(isSearching | async) === false">
-      <app-portal-header-language [@fadeIn]></app-portal-header-language>
       
+      <app-portal-header-language *ngIf="!(currentUser | async)?.id" [@fadeIn]></app-portal-header-language>
+      
+      <app-portal-header-notifications *ngIf="(currentUser | async)?.id" [@fadeIn]></app-portal-header-notifications>
+
       <button mat-icon-button [matMenuTriggerFor]="userMenu" [@fadeIn]>
         <fa-icon [icon]="['far', 'circle-user']"></fa-icon>
       </button>
       <mat-menu #userMenu="matMenu">
         <app-portal-header-user></app-portal-header-user>
-      </mat-menu>
-
-      <button mat-icon-button [matMenuTriggerFor]="userNotification" [@fadeIn]>
-        <fa-icon [icon]="['far', 'bell']"></fa-icon>
-      </button>
-      <mat-menu #userNotification="matMenu">
-        <app-portal-header-notification></app-portal-header-notification>
       </mat-menu>
       
     </ng-container>

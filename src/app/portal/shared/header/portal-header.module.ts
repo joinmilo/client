@@ -14,7 +14,8 @@ import { PortalHeaderDesktopComponent } from './components/desktop/portal-header
 import { PortalHeaderComponent } from './components/header/portal-header.component';
 import { PortalHeaderLanguageComponent } from './components/language/portal-header-language.component';
 import { PortalHeaderMobileComponent } from './components/mobile/portal-header-mobile.component';
-import { PortalHeaderNotificationComponent } from './components/notifications/portal-header-notification.component';
+import { PortalHeaderNotificationsDropdownComponent } from './components/notifications/notifications-dropdown/portal-header-notifications-dropdown.component';
+import { PortalHeaderNotificationsComponent } from './components/notifications/notifications/portal-header-notifications.component';
 import { PortalHeaderUserComponent } from './components/user/portal-header-user.component';
 
 const components = [
@@ -23,7 +24,8 @@ const components = [
   PortalHeaderDesktopComponent,
   PortalHeaderLanguageComponent,
   PortalHeaderMobileComponent,
-  PortalHeaderNotificationComponent,
+  PortalHeaderNotificationsComponent,
+  PortalHeaderNotificationsDropdownComponent,
   PortalHeaderUserComponent,
 ];
 

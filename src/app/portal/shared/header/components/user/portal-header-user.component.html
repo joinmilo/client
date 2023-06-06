@@ -40,7 +40,7 @@
     <span appLabel="becomeContentCreator"></span>
   </section>
 </button>
-<button mat-menu-item [routerLink]="['/']">
+<button *ngIf="(currentUser | async)?.id" (click)="logout()" mat-menu-item [routerLink]="['/']">
   <section>
     <fa-icon [icon]="['fas', 'right-from-bracket']"></fa-icon>
     <span appLabel="logout"></span>
