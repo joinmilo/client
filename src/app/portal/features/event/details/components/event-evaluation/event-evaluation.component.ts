@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./event-evaluation.component.scss'],
 })
 export class EventEvaluationComponent {
-  showRating: boolean = true;
+  showRating = true;
   ratingsResult = [
     { star: 5, percentage: 72 },
     { star: 4, percentage: 10 },
