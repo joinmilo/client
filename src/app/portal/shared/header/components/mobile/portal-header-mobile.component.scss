@@ -21,3 +21,20 @@ header {
   }
 }
 
+section {
+  display: flex;
+  gap: .25rem;
+  padding: .5rem 1rem 0;
+  align-items: center;
+}
+
+app-avatar {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
+}
+
+.currentUser {
+  display: flex;
+  flex-direction: column;
+}

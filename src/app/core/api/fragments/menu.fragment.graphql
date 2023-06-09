@@ -2,6 +2,7 @@ fragment MenuItem on MenuItemEntity {
   id
   header
   order
+  icon
   feature {
     id
     key

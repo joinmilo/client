@@ -22,10 +22,16 @@
     </app-portal-menu-overlay>
     
     <ng-template #entries>
-      <button
+      <button class="subItem"
         mat-menu-item
         (click)="route(subItem)">
+        <fa-icon class="menu-icon" [icon]="['fas', 'people-group']"></fa-icon>
+        <section>
           {{ subItem | translatable: 'name' | async }}
+          <!-- <small>{{ subItem | translatable: 'shortDescription' | async }}</small> -->
+          <small>Deine lokalen Veranstalter</small>
+        </section>
+        <fa-icon class="arrow-right" [icon]="['fas', 'arrow-right']"></fa-icon>
       </button>
     </ng-template>
 

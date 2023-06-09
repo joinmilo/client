@@ -2,3 +2,42 @@ button {
   color: var(--color-primary-500) !important;
   font-weight: 600;
 }
+
+::ng-deep .mdc-list-item__primary-text {
+  display: flex;
+  width: inherit;
+  padding: .5rem 0;
+}
+
+fa-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-icon {
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+
+.subItem {
+  width: 17.5rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+  gap: .25rem;
+}
+
+.arrow-right {
+  color: transparent;
+  transform: translateX(-.5rem);
+}
+
+.subItem:hover .arrow-right {
+  color: inherit;
+  transform: translateX(0rem);
+  transition: color 0.4s, transform 0.4s;
+}

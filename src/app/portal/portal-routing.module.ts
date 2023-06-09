@@ -5,15 +5,16 @@ import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, dealsFeature
 const routes: Routes = [
   {
     path: authorsFeatureKey,
-    loadChildren: () => import('./features/author/overview/portal-author-overview.module')
-      .then((imported) => imported.PortalAuthorOverviewModule),
+    loadChildren: () =>
+      import('./features/author/overview/portal-author-overview.module').then(
+        (imported) => imported.PortalAuthorOverviewModule
+      ),
   },
   {
     path: `${authorsFeatureKey}/:${slug}`,
     loadChildren: () => import('./features/author/details/portal-author-details.module')
       .then((imported) => imported.PortalAuthorDetailsModule),
   },
-  
   {
     path: articlesFeatureKey,
     loadChildren: () => import('./features/article/overview/portal-article-overview.module')
@@ -25,7 +26,6 @@ const routes: Routes = [
     loadChildren: () => import('./features/deal/overview/portal-deal-overview.module')
       .then((imported) => imported.PortalDealOverviewModule),
   },
-  
   {
     path: eventsFeatureKey,
     loadChildren: () => import('./features/event/overview/portal-event-overview.module')
@@ -36,7 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./features/event/details/portal-event-details.module')
       .then((imported) => imported.PortalEventDetailsModule),
   },
-
   {
     path: calendarFeatureKey,
     loadChildren: () => import('./features/calendar/main/portal-calendar.module')

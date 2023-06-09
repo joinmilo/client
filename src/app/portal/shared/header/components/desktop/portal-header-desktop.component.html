@@ -8,7 +8,7 @@
   </section>
   <section>
 
-    <ng-container *ngIf="!(currentUser | async)?.id">
+    <ng-container *ngIf="!currentUser?.id">
       <div *ngIf="(isSearching | async) === false" [@fadeIn]>
         <button mat-stroked-button color="primary" [routerLink]="['/user', 'register']">
           <span appLabel="register"></span>
@@ -23,12 +23,14 @@
 
     <ng-container *ngIf="(isSearching | async) === false">
       
-      <app-portal-header-language *ngIf="!(currentUser | async)?.id" [@fadeIn]></app-portal-header-language>
+      <app-portal-header-language *ngIf="!currentUser?.id" [@fadeIn]></app-portal-header-language>
       
-      <app-portal-header-notifications *ngIf="(currentUser | async)?.id" [@fadeIn]></app-portal-header-notifications>
+      <app-portal-header-notifications *ngIf="currentUser?.id" [@fadeIn]></app-portal-header-notifications>
 
       <button mat-icon-button [matMenuTriggerFor]="userMenu" [@fadeIn]>
-        <fa-icon [icon]="['far', 'circle-user']"></fa-icon>
+        <fa-icon *ngIf="!currentUser?.id" [icon]="['far', 'circle-user']"></fa-icon>
+        <app-avatar *ngIf="currentUser?.id" [user]="currentUser"></app-avatar>
+        
       </button>
       <mat-menu #userMenu="matMenu">
         <app-portal-header-user></app-portal-header-user>
