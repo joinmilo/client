@@ -1,42 +1,40 @@
-h2 {
+* {
   display: flex;
-  justify-content: center;  
-  margin: 0 !important;
-  padding-bottom: .5rem;
-}
-
-section {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  padding: 1rem 0;
-}
-
-img {
-  height: 2rem;
-  width: 2rem;
-}
-
-span {
-  width: 9rem;
-}
-
-p {
-  display: flex;
-  justify-content: end;
-  margin-top: auto;
-  margin-bottom: 0;
-  width: 3rem;
 }
 
 div {
-  display: flex;
+  width: 17.5rem;
   flex-direction: column;
   gap: .5rem;
   padding-top: .5rem;
+}
 
-  a {
-    display: flex;
-    justify-content: center;
+h2 {
+  padding: 0 1rem;
+  margin: 0 !important;
+}
+
+a {
+  padding: 0 1rem;
+}
+
+a:first-of-type{
+  justify-content: end;
+  font-size: small;
+}
+
+:host ::ng-deep .mdc-list-item__primary-text {
+  flex-direction: column;
+}
+
+:host ::ng-deep app-date-piece {
+  margin-left: auto;
+
+  fa-icon {
+    display: none;
+  }
+
+  time {
+    color: gray;
   }
 }

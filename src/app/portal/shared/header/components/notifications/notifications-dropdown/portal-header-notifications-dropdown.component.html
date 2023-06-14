@@ -1,13 +1,16 @@
-<h2 class="mat-headline-6">Benachrichtigungen</h2>
-<mat-divider></mat-divider>
-  <button mat-menu-item [routerLink]="['/']">
-    <section>
-      <img src="../../../../../../assets/placeholder.webp" alt="test">
-      <span>Notification test test test</span>
-    </section>
-  </button>
-<mat-divider></mat-divider>
 <div>
+  <a [routerLink]="link" (click)="saveNotifications()" appLabel="readAll"></a>
+  <h2 class="mat-subtitle-1" appLabel="notifications"></h2>
+  <mat-divider></mat-divider>
+  <ng-container *ngFor="let notification of notifications">
+    <button *ngIf="!notification.read" mat-menu-item>
+      <small>{{ notification | translatable: 'title' | async }}</small> 
+      <app-date-piece class="mat-caption" [date]="notification.modified"></app-date-piece>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="(notifications)?.length === 0">
+    <small>Keine neuen Benachrichtigungen</small>
+  </ng-container>
+  <mat-divider></mat-divider>
   <a [routerLink]="link" appLabel="allNotifications" suffix="»"></a>
-  <a [routerLink]="link" appLabel="readAll"></a>
 </div>

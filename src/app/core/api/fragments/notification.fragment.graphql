@@ -1,0 +1,14 @@
+fragment Notification on NotificationEntity {
+  id
+  read
+  modified
+  translatables {
+    id
+    title
+    language {
+      id
+      locale
+      name
+    }
+  }
+}

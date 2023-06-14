@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { ConfigurationEntity, InformationDto, LabelEntity, LanguageEntity, Maybe, ThemeEntity, UserContextEntity } from 'src/schema/schema';
+import { ConfigurationEntity, InformationDto, LabelEntity, LanguageEntity, Maybe, NotificationEntity, NotificationEntityInput, ThemeEntity, UserContextEntity } from 'src/schema/schema';
 import { Feedback } from '../typings/feedback';
 
 export const CoreActions = createActionGroup({
@@ -10,8 +10,13 @@ export const CoreActions = createActionGroup({
     'set feedback': (feedback: Feedback) => ({ feedback }),
     'set labels': (labels: LabelEntity[]) => ({ labels }),
     'set languages': (languages: LanguageEntity[]) => ({ languages }),
+    'set notifications': (notifications: NotificationEntity[]) => ({ notifications }),
     'set server version': (version?: Maybe<InformationDto>) => ({ version }),
     'set themes': (themes: ThemeEntity[]) => ({ themes }),
+
+    'all read': emptyProps(),
+    'save notifications': (entities?: Maybe<NotificationEntityInput[]>) => ({ entities }),
+    'notification saved': (entities: NotificationEntity[]) => ({ entities }),
 
     'add request': emptyProps(),
     'remove request': emptyProps(),

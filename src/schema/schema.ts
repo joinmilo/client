@@ -5025,6 +5025,8 @@ export type MediaFragment = { __typename?: 'MediaEntity', id?: string | null, cr
 
 export type MenuItemFragment = { __typename?: 'MenuItemEntity', id?: string | null, header?: boolean | null, order?: number | null, icon?: string | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null, parent?: { __typename?: 'MenuItemEntity', id?: string | null } | null, page?: { __typename?: 'PageEntity', id?: string | null } | null, translatables?: Array<{ __typename?: 'MenuItemTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, subMenuItems?: Array<{ __typename?: 'MenuItemEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null, page?: { __typename?: 'PageEntity', id?: string | null } | null, subMenuItems?: Array<{ __typename?: 'MenuItemEntity', id?: string | null } | null> | null, translatables?: Array<{ __typename?: 'MenuItemTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null };
 
+export type NotificationFragment = { __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+
 export type OrganisationFragment = { __typename?: 'OrganisationEntity', id?: string | null, name?: string | null, slug?: string | null, address?: { __typename?: 'AddressEntity', id?: string | null, houseNumber?: string | null, place?: string | null, postalCode?: string | null, street?: string | null, latitude?: number | null, longitude?: number | null, suburb?: { __typename?: 'SuburbEntity', id?: string | null, name?: string | null } | null } | null, uploads?: Array<{ __typename?: 'OrganisationMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, translatables?: Array<{ __typename?: 'OrganisationTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
 export type PageFragment = { __typename?: 'PageEntity', id?: string | null, callUrl?: string | null, slug?: string | null, uploads?: Array<{ __typename?: 'PageMediaEntity', title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, pageFeatures?: Array<{ __typename?: 'PageFeatureEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null } | null> | null, translatables?: Array<{ __typename?: 'PageTranslatableEntity', id?: string | null, callText?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
@@ -5085,6 +5087,13 @@ export type SaveArticleMutationVariables = Exact<{
 
 
 export type SaveArticleMutation = { __typename?: 'Mutation', saveArticle?: { __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, created?: any | null, modified?: any | null, slug?: string | null, author?: { __typename?: 'UserContextEntity', user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, uploads?: Array<{ __typename?: 'ArticleMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
+export type SaveNotificationsMutationVariables = Exact<{
+  entities?: InputMaybe<Array<NotificationEntityInput> | NotificationEntityInput>;
+}>;
+
+
+export type SaveNotificationsMutation = { __typename?: 'Mutation', saveNotifications?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null };
 
 export type SaveReportMutationVariables = Exact<{
   entity: ReportEntityInput;
@@ -5227,6 +5236,11 @@ export type GetMenuQueryVariables = Exact<{
 
 
 export type GetMenuQuery = { __typename?: 'Query', getMenuItems?: { __typename?: 'PageableList_MenuItemEntity', result?: Array<{ __typename?: 'MenuItemEntity', id?: string | null, header?: boolean | null, order?: number | null, icon?: string | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null, parent?: { __typename?: 'MenuItemEntity', id?: string | null } | null, page?: { __typename?: 'PageEntity', id?: string | null } | null, translatables?: Array<{ __typename?: 'MenuItemTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, subMenuItems?: Array<{ __typename?: 'MenuItemEntity', id?: string | null, order?: number | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, key?: string | null } | null, page?: { __typename?: 'PageEntity', id?: string | null } | null, subMenuItems?: Array<{ __typename?: 'MenuItemEntity', id?: string | null } | null> | null, translatables?: Array<{ __typename?: 'MenuItemTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null> | null } | null };
+
+export type GetNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetNotificationsQuery = { __typename?: 'Query', getNotifications?: { __typename?: 'PageableList_NotificationEntity', result?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export type GetOrganisationQueryVariables = Exact<{
   entity?: InputMaybe<OrganisationEntityInput>;
@@ -5703,6 +5717,22 @@ export const MenuItemFragmentDoc = gql`
   }
 }
     ${LanguageFragmentDoc}`;
+export const NotificationFragmentDoc = gql`
+    fragment Notification on NotificationEntity {
+  id
+  read
+  modified
+  translatables {
+    id
+    title
+    language {
+      id
+      locale
+      name
+    }
+  }
+}
+    `;
 export const OrganisationFragmentDoc = gql`
     fragment Organisation on OrganisationEntity {
   id
@@ -5940,6 +5970,24 @@ export const SaveArticleDocument = gql`
   })
   export class SaveArticleGQL extends Apollo.Mutation<SaveArticleMutation, SaveArticleMutationVariables> {
     override document = SaveArticleDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const SaveNotificationsDocument = gql`
+    mutation saveNotifications($entities: [NotificationEntityInput!]) {
+  saveNotifications(entities: $entities) {
+    ...Notification
+  }
+}
+    ${NotificationFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SaveNotificationsGQL extends Apollo.Mutation<SaveNotificationsMutation, SaveNotificationsMutationVariables> {
+    override document = SaveNotificationsDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -6377,6 +6425,26 @@ export const GetMenuDocument = gql`
   })
   export class GetMenuGQL extends Apollo.Query<GetMenuQuery, GetMenuQueryVariables> {
     override document = GetMenuDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetNotificationsDocument = gql`
+    query getNotifications {
+  getNotifications {
+    result {
+      ...Notification
+    }
+  }
+}
+    ${NotificationFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetNotificationsGQL extends Apollo.Query<GetNotificationsQuery, GetNotificationsQueryVariables> {
+    override document = GetNotificationsDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

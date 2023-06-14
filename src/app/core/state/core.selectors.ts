@@ -40,6 +40,16 @@ export const selectLanguages = createSelector(
   state => state?.languages
 );
 
+export const selectNotifications = createSelector(
+  selectCoreState,
+  state => state?.notifications
+)
+
+export const selectSavedNotification = createSelector(
+  selectCoreState,
+  state => state.savedNotification
+);
+
 export const selectTheme = createSelector(
   selectCoreState,
   state => state?.currentTheme
