@@ -52,7 +52,6 @@ const routes: Routes = [
     loadChildren: () => import('./features/organisation/overview/portal-organisation-overview.module')
       .then((imported) => imported.PortalOrganisationOverviewModule),
   },
-
   {
     path: reportsFeatureKey,
     loadChildren: () => import('./features/report/main/portal-report.module')

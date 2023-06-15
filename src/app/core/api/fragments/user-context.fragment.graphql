@@ -6,7 +6,7 @@ fragment UserContext on UserContextEntity {
   uploads {
     profilePicture
     title
-    media{
+    media {
       ...Media
     }
   }
@@ -16,5 +16,8 @@ fragment UserContext on UserContextEntity {
     firstName
     lastName
     email
+    notifications {
+      ...Notification  
+    }
   }
 }

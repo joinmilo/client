@@ -1,5 +1,6 @@
-<button mat-icon-button [matMenuTriggerFor]="userNotification" *ngIf="(currentUser | async)?.id">
+<button mat-icon-button [matMenuTriggerFor]="userNotification" *ngIf="currentUser?.id">
   <fa-icon [icon]="['fas', 'bell']"></fa-icon>
+  <span *ngIf="currentUser?.user?.notifications" [matBadge]="currentUser?.user?.notifications?.length" matBadgePosition="after" matBadgeColor="primary" matBadgeSize="small"></span>
 </button>
 <mat-menu #userNotification="matMenu">
   <app-portal-header-notifications-dropdown></app-portal-header-notifications-dropdown>

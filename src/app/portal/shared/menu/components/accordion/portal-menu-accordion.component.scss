@@ -12,3 +12,11 @@ mat-expansion-panel {
 .mat-expansion-panel-header {
   padding: 0 0.25rem;
 }
+
+span, strong {
+  font-size: 1rem;
+}
+
+a {
+  color: var(--color-primary-900);
+}

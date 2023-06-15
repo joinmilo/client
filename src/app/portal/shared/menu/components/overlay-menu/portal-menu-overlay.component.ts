@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
 import { Observable, map, of } from 'rxjs';
 import { GetMenuGQL, Maybe, MenuItemEntity } from 'src/schema/schema';
@@ -39,6 +40,10 @@ export class PortalMenuOverlayComponent implements OnInit {
 
   private sort(items: Maybe<MenuItemEntity>[]): Maybe<MenuItemEntity>[] {
     return [...items]?.sort((i1, i2) => (i1?.order || 0) - (i2?.order || 0));
+  }
+
+  public icon(icon: Maybe<string>|undefined): IconName {
+    return icon as IconName;
   }
 
   public route(item: Maybe<MenuItemEntity>) {

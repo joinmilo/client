@@ -6,21 +6,24 @@ div {
   width: 17.5rem;
   flex-direction: column;
   gap: .5rem;
-  padding-top: .5rem;
+  padding: .5rem 0;
 }
 
-h2 {
+span {
   padding: 0 1rem;
-  margin: 0 !important;
+
+  h2 {
+    margin: 0 !important;
+    color: var(--color-dark-gray);
+  }
+  a {
+    margin-left: auto;
+    padding: 0;
+  }
 }
 
-a {
+a:last-of-type{
   padding: 0 1rem;
-}
-
-a:first-of-type{
-  justify-content: end;
-  font-size: small;
 }
 
 :host ::ng-deep .mdc-list-item__primary-text {

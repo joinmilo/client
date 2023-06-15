@@ -23,6 +23,7 @@ fragment MenuItem on MenuItemEntity {
   subMenuItems {
     id
     order
+    icon
     feature {
       id
       key
@@ -36,6 +37,7 @@ fragment MenuItem on MenuItemEntity {
     translatables {
       id
       name
+      shortDescription
       language {
         ...Language
       }

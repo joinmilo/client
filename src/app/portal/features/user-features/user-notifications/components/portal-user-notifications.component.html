@@ -1,0 +1,20 @@
+<div class="main">
+  <app-page-title title="notifications"></app-page-title>
+  <section class="border-box">
+    <a [routerLink]="" appLabel="readAll"></a>
+    <mat-divider></mat-divider>
+    <div *ngFor="let notification of currentUser?.user?.notifications?.slice()?.reverse(); let last = last"
+    [ngClass]="{'unread-notification': !notification?.read}">
+      <span>
+        <p class="mat-subtitle-1">{{ notification | translatable: 'title' | async }}</p>
+        <div class="text">
+          <p>{{ notification | translatable: 'content' | async }}</p>
+          <app-date-piece class="mat-caption" [date]="notification?.modified"></app-date-piece>
+        </div>
+      </span>
+      <mat-divider *ngIf="!last"></mat-divider>
+    </div>
+    <mat-divider></mat-divider>
+    <a [routerLink]="" appLabel="deleteAll"></a>
+  </section>
+</div>

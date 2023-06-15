@@ -3,6 +3,7 @@ fragment Notification on NotificationEntity {
   read
   modified
   translatables {
+    content
     id
     title
     language {
