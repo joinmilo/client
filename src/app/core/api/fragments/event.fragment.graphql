@@ -21,6 +21,13 @@ fragment Event on EventEntity {
     ...Schedule
   }
   slug
+
+  attendees {
+    approved
+    userContext{
+    ...UserContext
+    }
+  }
   translatables {
     id
     name

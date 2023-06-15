@@ -9,15 +9,13 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { CommentModule } from 'src/app/shared/comment/comment.module';
-import { UserCommentModule } from 'src/app/shared/comments/user-comment.module';
 import { FormModule } from 'src/app/shared/form/form.module';
-import { SocialShareModule } from 'src/app/shared/share-button/social-share.module';
+import { SocialShareModule } from 'src/app/shared/social-share/social-share.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventCommentsComponent } from './components/comments/portal-event-comments.component';
 import { PortalEventDetailsComponent } from './components/details/portal-event-details.component';
 import { EventCardDetailComponent } from './components/event-card-detail/event-card-detail.component';
-import { EventDescriptionComponent } from './components/event-description/event-description.component';
 import { EventEvaluationComponent } from './components/event-evaluation/event-evaluation.component';
 import { EventParticipantsComponent } from './components/event-participants/event-participants.component';
 import { portalEventDetailsStateKey } from './constants/event-details.constant';
@@ -29,7 +27,6 @@ const components = [
   PortalEventDetailsComponent,
   PortalEventCommentsComponent,
   EventCardDetailComponent,
-  EventDescriptionComponent,
   EventParticipantsComponent,
   EventEvaluationComponent
 
@@ -54,7 +51,6 @@ const modules = [
   TableModule,
   TitleModule,
   SocialShareModule,
-  UserCommentModule,
 ];
 
 const libs = [

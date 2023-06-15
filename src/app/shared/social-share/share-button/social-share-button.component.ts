@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { SocialShareDialog } from 'src/app/core/components/pieces/share-button/social-share-button.component';
 
 @Component({
   selector: 'app-social-share-button',
@@ -7,7 +8,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./social-share-button.component.scss'],
 })
 
-export class SocialShareComponent  {
+export class SocialShareButtonComponent  {
 
   constructor(public dialog: MatDialog) {}
 
@@ -19,12 +20,3 @@ export class SocialShareComponent  {
     });
   }
 }
-
-@Component({
-  selector: 'app-social-share-dialog',
-  templateUrl: 'social-share-dialog.component.html',
-})
-export class SocialShareDialog {
-  constructor(public dialogRef: MatDialogRef<SocialShareDialog>) {}
-}
-

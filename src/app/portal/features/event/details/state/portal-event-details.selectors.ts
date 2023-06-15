@@ -9,7 +9,7 @@ export const selectEventDetails = createSelector(
   state => state.details
 );
 
-export const selectEventsComments = createSelector(
+export const selectEventComments = createSelector(
   selectPortalEventDetailsState,
   state => state.comments
 )

@@ -6,11 +6,20 @@ fragment UserContext on UserContextEntity {
   uploads {
     profilePicture
     title
-    media{
+    media {
       ...Media
     }
   }
   slug
+
+  friendRequester {
+    ...Friend
+  }
+
+  friendAddressee {
+    ...Friend
+  }
+
   user {
     id
     firstName

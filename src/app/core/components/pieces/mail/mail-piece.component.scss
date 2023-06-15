@@ -1,0 +1,19 @@
+div {
+  display: flex;
+  gap: 1rem;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  a{
+    color: black;
+  }
+}
+
+fa-icon {
+  color: gray;
+  align-self: center;
+}

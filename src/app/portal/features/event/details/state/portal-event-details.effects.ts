@@ -12,7 +12,7 @@ export class PortalEventDetailsEffects {
     ofType(PortalEventDetailsActions.getDetails),
     switchMap((action) => this.getEvent.watch({ 
       entity: {
-        id: action.slug
+        slug: action.slug
       }
     }).valueChanges),
     map(response => response.data.getEvent?.id

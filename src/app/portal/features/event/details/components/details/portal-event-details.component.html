@@ -1,36 +1,26 @@
 <div class="main">
-  <app-page-title *ngIf="(eventDetails | translatable : 'name' | async) as eventName"
-    [title]="eventName"></app-page-title>
-  <section>
-    <app-image [image]="(eventDetails | async)?.cardImage" [rounded]="true"></app-image>
-  </section>
-  <div>
-    <section class="grey-section">
-      <app-event-card-detail></app-event-card-detail>
-    </section>
-    <section>
-      <app-event-description></app-event-description>
-    </section>
-    <section class="grey-section">
-      <app-event-participants></app-event-participants>
-    </section>
-    <section>
-      <div>
-        <mat-card-title>Einrichtung</mat-card-title>
-        <app-contact-card></app-contact-card>
-      </div>
-    </section>
-    <section class="grey-section">
-      <app-card-slider></app-card-slider>
-    </section>
-    <section>
-      <app-event-evaluation></app-event-evaluation>
-    </section>
-    <section>
-      <app-user-comment></app-user-comment>
-    </section>
+  <div class="event">
+
+    <div *ngIf="!media" class="gradientImage"></div>
+    <img *ngIf="media" [appMedia]="media" alt="author-titleImage">
+
+    <app-event-card-detail></app-event-card-detail>
+
+    <app-event-participants></app-event-participants>
+
     <div>
-      <app-comment-button [organisationId]="(eventDetails |async)?.id"></app-comment-button>
+      <mat-card-title>Einrichtung</mat-card-title>
+      <app-contact-card></app-contact-card>
+    </div>
+
+    <app-card-slider></app-card-slider>
+
+    <app-event-evaluation></app-event-evaluation>
+
+    <app-comment *ngIf="latestComment" [comment]="latestComment"></app-comment>
+
+    <div>
+      <app-comment-button [organisationId]="event?.organisation?.id"></app-comment-button>
       <a [routerLink]="['/comments']" appLabel="allComments" suffix="»"></a>
     </div>
   </div>

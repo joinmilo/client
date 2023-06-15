@@ -1,6 +1,6 @@
 fragment EventComment on EventCommentEntity {
   id
-  approved
+  modified
   event{
     id
   }

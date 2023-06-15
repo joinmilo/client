@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { eventSlug } from '../../constants/event-details.constant';
 import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
-import { selectEventsComments } from '../../state/portal-event-details.selectors';
+import { selectEventComments } from '../../state/portal-event-details.selectors';
 
 @Component({
   selector: 'app-portal-event-comments',
@@ -13,7 +13,7 @@ import { selectEventsComments } from '../../state/portal-event-details.selectors
 })
 export class PortalEventCommentsComponent implements OnInit, OnDestroy {
   
-  public comments = this.store.select(selectEventsComments);
+  public comments = this.store.select(selectEventComments);
 
   private destroy = new Subject<void>();
 

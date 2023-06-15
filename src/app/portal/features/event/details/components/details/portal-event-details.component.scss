@@ -1,58 +1,38 @@
-.main {
+.event {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
+  background-color: white;
+  border-radius: var(--mdc-shape-small);
+  border: 1px solid var(--color-border);
+  justify-content: center;
+  padding-bottom: var(--gap);
   gap: var(--gap);
+  align-items: center;
+}
 
-  section:first-of-type{
-   max-height: 30rem;
-   display: flex;
-   app-image{
-    flex: 2 1 auto;
-   }
-  }
+.gradientImage,
+img {
+  border-top-left-radius: var(--mdc-shape-small);
+  border-top-right-radius: var(--mdc-shape-small);
+  height: 30rem;
+  width: 100%;
+}
 
-  div {
+.gradientImage {
+  background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-primary-50) 30%, var(--color-accent-50)70%, var(--color-accent-100) 100%);
+}
+
+img {
+  object-fit: cover;
+}
+
+
+.main {
+  div:last-of-type {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-
-    div:last-of-type{
-      flex-direction: row;
-      justify-content: space-between;
-      width: 45rem;
-    }
-
-    section {
-      width: 100vw;
-      justify-content: center;
-      display: flex;
-
-      div{
-        max-width: 45rem;
-      }
-
-      *{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        flex: 2 1 auto;
-        padding: 2.5%;
-        max-width: 45rem;
-        align-items: baseline;
-      }
-    }
-
-    .grey-section {
-      background: var(--color-background);
-      clip-path: polygon(0 8%, 100% 0%, 100% 92%, 0 100%);
-    }
+    gap: var(--gap);
   }
 }
-
-::ng-deep main {
-  background-color: var(--color-primary-contrast-300);  //TODO: differentMain classes 
-}
-
-
-
-

@@ -1,46 +1,14 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { CommentActions } from './../state/comment.actions';
+import { CommentActions } from '../state/comment.actions';
 
 interface DialogData {
   eventId: Maybe<string>;
   organisationId: Maybe<string>;
   articleId: Maybe<string>;
-}
-
-@Component({
-  selector: 'app-comment-button',
-  templateUrl: './comment-button.component.html',
-  styleUrls: ['./comment-button.component.scss']
-})
-export class CommentButtonComponent {
-
-  @Input()
-  eventId?: Maybe<string>;
-
-  @Input()
-  organisationId?: Maybe<string>;
-
-  @Input()
-  articleId?: Maybe<string>;
-
-  constructor(public dialog: MatDialog) { }
-
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(CommentDialogComponent, {
-      width: '32rem',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      data: {
-        eventId: this.eventId,
-        organisationId: this.organisationId,
-        articleId: this.articleId
-      }
-    });
-  }
 }
 
 @Component({
@@ -67,7 +35,6 @@ export class CommentDialogComponent {
       case !!this.data.eventId:
         this.Store.dispatch(CommentActions.saveEventComment({
           content: this.form.value.content,
-          approved: false,
           event: { id: this.data.eventId }
           // TODO: add content to translatable, add usercontext
         }));

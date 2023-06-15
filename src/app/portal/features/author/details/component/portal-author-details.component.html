@@ -1,5 +1,5 @@
 <div class="main" *ngIf="author | async as author">
-  <app-page-title title="author"></app-page-title>
+  <app-page-title titleLabel="author"></app-page-title>
   <div class="user">
     <div *ngIf="!media" class="gradientImage"></div>
     <img *ngIf="media" [appMedia]="media" alt="author-titleImage">

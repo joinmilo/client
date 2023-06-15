@@ -1,0 +1,12 @@
+fragment Friend on FriendEntity {
+  id
+  accepted
+  
+  addressee {
+    id
+  }
+
+  requester {
+    id
+  }
+}

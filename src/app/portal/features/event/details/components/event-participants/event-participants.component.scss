@@ -1,41 +1,45 @@
-mat-card {
-  border-radius: 0 !important;
-  border: none !important;
-  max-width: 35rem;
-  width: 35rem;
-  box-shadow: none !important;
-  background-color: transparent;
-  padding: 1.5rem 0.8rem;
-  margin: 1rem 0.5rem;
+.container {
+  width: 50rem;
 
-  .card-images {
+  div {
     display: flex;
+    flex-direction: column;
+    gap: var(--gap);
 
-    .description {
-      font-weight: 600;
-      margin: 3rem 3.5rem;
+    section {
+      display: flex;
+      margin-left: -1rem;
+
+      app-avatar {
+        width: 6rem;
+        height: 6rem;
+      }
+
+      app-avatar:first-of-type {
+        position: relative;
+        z-index: 3;
+      }
+
+      app-avatar:nth-of-type(2) {
+        left: -1.25rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      app-avatar:nth-of-type(3) {
+        left: -2.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      a {
+        align-self: center;
+        color: black;
+      }
     }
 
-    .circle {
-      line-height: 0;
-      display: inline-block;
-      margin: 1rem;
-      border: 0.3rem solid var(--color-primary-contrast-300);
-      color: transparent;
-      border-radius: 50%;
-      transition: linear 0.25s;
-      height: 5rem;
-      width: 5rem;
-      margin-right: -2.5rem;
-      box-shadow: 10px 3px 47px 0px rgba(110, 110, 110, 0.2);
-    }
-
-    .circle img {
-      border-radius: 50%;
-    }
-
-    .circle {
-      color: transparent;
+    button {
+      max-width: max-content;
     }
   }
 }

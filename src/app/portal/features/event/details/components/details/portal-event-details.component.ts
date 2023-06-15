@@ -1,25 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subject, switchMap, takeUntil } from 'rxjs';
+import { EventCommentEntity, EventEntity, Maybe, MediaEntity } from 'src/schema/schema';
 import { eventSlug } from '../../constants/event-details.constant';
-import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
-import { selectEventDetails } from '../../state/portal-event-details.selectors';
+import { selectEventComments, selectEventDetails } from '../../state/portal-event-details.selectors';
+import { PortalEventDetailsActions } from './../../state/portal-event-details.actions';
 
 @Component({
   selector: 'app-portal-event-details',
   templateUrl: './portal-event-details.component.html',
   styleUrls: ['./portal-event-details.component.scss']
 })
-export class PortalEventDetailsComponent implements OnInit {
+export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
-  public eventDetails = this.store.select(selectEventDetails);
+  public event?: Maybe<EventEntity> | undefined;
 
-  constructor(private activatedRoute: ActivatedRoute, private store: Store) {}
+  public latestComment?: Maybe<EventCommentEntity> | undefined;
+
+  public media?: Maybe<MediaEntity> | undefined;
+
+  private destroy = new Subject<void>();
+
+  constructor(private activatedRoute: ActivatedRoute, private store: Store) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      const event = params.get(eventSlug) || '';
-      this.store.dispatch(PortalEventDetailsActions.getDetails(event));
+
+    this.activatedRoute.paramMap.pipe(
+      switchMap(params => {
+        const eventParam = params.get(eventSlug) || '';
+        this.store.dispatch(PortalEventDetailsActions.getDetails(eventParam));
+        this.store.dispatch(PortalEventDetailsActions.getComments(eventParam));
+        return this.store.select(selectEventDetails);
+      }),
+      takeUntil(this.destroy)
+    ).subscribe(event => {
+      this.event = event;
+      this.media = event?.uploads?.find(upload => upload?.title)?.media;
     });
+
+    this.store.select(selectEventComments).pipe(
+      takeUntil(this.destroy)
+    ).subscribe(comments => {
+      this.latestComment = comments?.[0];
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }
