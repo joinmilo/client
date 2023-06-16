@@ -1,0 +1,8 @@
+<app-card-slider 
+  [cardType]="cardType"
+  entity="OrganisationEntity" 
+  [data]="organisations | async" 
+  titleLabel="organisations" 
+  linkLabel="more"
+  [link]="['/organisations']">
+</app-card-slider>

@@ -1,0 +1,8 @@
+<app-card-slider 
+  [cardType]="cardType"
+  entity="SurveyEntity" 
+  [data]="surveys | async" 
+  titleLabel="surveys" 
+  linkLabel="more"
+  [link]="['/surveys']">
+</app-card-slider>

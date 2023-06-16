@@ -7,7 +7,7 @@ import { EventPageFeatureActions } from './event-page-feature.actions';
 @Injectable()
 export class EventPageFeatureEffects {
 
-  getReventEvents = createEffect(() => this.actions.pipe(
+  getRecentEvents = createEffect(() => this.actions.pipe(
     ofType(EventPageFeatureActions.getRecentEvents),
     switchMap(() => this.getEventsService.watch({
       params: {

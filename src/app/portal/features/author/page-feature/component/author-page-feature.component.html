@@ -1,0 +1,8 @@
+<app-card-slider
+  [cardType]="cardType"
+  entity="UserContextEntity" 
+  [data]="authors | async" 
+  titleLabel="authors" 
+  linkLabel="more"
+  [link]="['/authors']">
+</app-card-slider>
