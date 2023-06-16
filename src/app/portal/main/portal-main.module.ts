@@ -10,6 +10,7 @@ import { PortalArticlePageFeatureModule } from '../features/article/page-feature
 import { PortalCalendarPageFeatureModule } from '../features/calendar/page-feature/portal-calendar-page-feature.module';
 import { PortalEventPageFeatureModule } from '../features/event/page-feature/portal-event-page-feature.module';
 import { PortalReportPageFeatureModule } from '../features/report/page-feature/portal-report-page-feature.module';
+import { PortalCookieBannerModule } from '../shared/cookie-banner/portal-cookie-banner.module';
 import { PortalPageFeaturesComponent } from './components/features/portal-page-features.component';
 import { PortalLandingComponent } from './components/landing/portal-landing.component';
 import { PortalPageComponent } from './components/page/portal-page.component';
@@ -44,6 +45,7 @@ const materials = [
 const modules = [
   CoreModule,
   PortalMainRoutingModule,
+  PortalCookieBannerModule
 ];
 
 const libs = [

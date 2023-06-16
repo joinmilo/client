@@ -1,0 +1,19 @@
+fa-icon {
+  color: var(--color-primary-contrast-900);
+  padding: var(--gap);
+}
+
+div {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.headline {
+  font-size: 1.25rem;
+  font-weight: 600;
+}

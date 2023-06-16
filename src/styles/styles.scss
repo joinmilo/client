@@ -76,3 +76,11 @@ figure {
     @include mat.typography-level($typography, 'headline-2');
   }
 }
+
+.mat-mdc-snack-bar-container {
+  &.cookie-banner {
+    --mdc-snackbar-container-color: var(--color-primary-900);
+    --mat-mdc-snack-bar-button-color: var(--color-primary-contrast-900);
+    --mdc-snackbar-supporting-text-color: var(--color-primary-contrast-900);
+  }
+}
