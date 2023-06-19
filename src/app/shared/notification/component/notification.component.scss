@@ -1,0 +1,27 @@
+div {
+  display: flex;
+  flex-flow: column;
+
+  button:first-of-type {
+    margin-left: auto;
+  }
+
+  button:last-of-type {
+    margin-right: auto;
+  }
+}
+
+article {
+  padding: 1rem;
+
+  display: flex;
+  flex-flow: column wrap;
+
+  small {
+    align-self: flex-end;
+  }
+}
+
+.unread-notification {
+  background-color: var(--color-primary-50);
+}

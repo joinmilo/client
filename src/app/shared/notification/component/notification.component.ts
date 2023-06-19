@@ -1,16 +1,17 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
 import { selectCurrentUser } from 'src/app/core/state/core.selectors';
-import { Maybe, UserContextEntity } from 'src/schema/schema';
+import { UserContextEntity } from 'src/schema/schema';
 
 @Component({
-  selector: 'app-portal-header-notifications',
-  templateUrl: './portal-header-notifications.component.html',
-  styleUrls: ['./portal-header-notifications.component.scss'],
+  selector: 'app-notification',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.scss'],
 })
-export class PortalHeaderNotificationsComponent implements OnInit, OnDestroy {
-  
+export class NotificationComponent implements OnInit, OnDestroy {
+
   public currentUser?: Maybe<UserContextEntity> | undefined;
 
   private destroy = new Subject<void>(); 

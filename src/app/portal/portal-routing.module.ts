@@ -4,6 +4,11 @@ import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, dealsFeature
 
 const routes: Routes = [
   {
+    path: articlesFeatureKey,
+    loadChildren: () => import('./features/article/overview/portal-article-overview.module')
+      .then((imported) => imported.PortalArticleOverviewModule),
+  },
+  {
     path: authorsFeatureKey,
     loadChildren: () =>
       import('./features/author/overview/portal-author-overview.module').then(
@@ -16,11 +21,10 @@ const routes: Routes = [
       .then((imported) => imported.PortalAuthorDetailsModule),
   },
   {
-    path: articlesFeatureKey,
-    loadChildren: () => import('./features/article/overview/portal-article-overview.module')
-      .then((imported) => imported.PortalArticleOverviewModule),
+    path: calendarFeatureKey,
+    loadChildren: () => import('./features/calendar/main/portal-calendar.module')
+      .then((imported) => imported.PortalCalendarModule),
   },
-
   {
     path: dealsFeatureKey,
     loadChildren: () => import('./features/deal/overview/portal-deal-overview.module')
@@ -37,16 +41,15 @@ const routes: Routes = [
       .then((imported) => imported.PortalEventDetailsModule),
   },
   {
-    path: calendarFeatureKey,
-    loadChildren: () => import('./features/calendar/main/portal-calendar.module')
-      .then((imported) => imported.PortalCalendarModule),
-  },
-  {
     path: guestArticlesFeatureKey,
     loadChildren: () => import('./features/guest-article/portal-guest-article.module')
       .then((imported) => imported.PortalGuestArticleModule),
   },
-
+  {
+    path: 'notifications',
+    loadChildren: () => import('../shared/notification/notification.module')
+      .then((imported) => imported.NotificationModule),
+  },
   {
     path: organisationsFeatureKey,
     loadChildren: () => import('./features/organisation/overview/portal-organisation-overview.module')

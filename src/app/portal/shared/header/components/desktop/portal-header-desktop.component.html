@@ -25,7 +25,7 @@
       
       <app-portal-header-language *ngIf="!currentUser?.id" [@fadeIn]></app-portal-header-language>
       
-      <app-portal-header-notifications *ngIf="currentUser?.id" [@fadeIn]></app-portal-header-notifications>
+      <app-portal-header-notification *ngIf="currentUser?.id" [@fadeIn]></app-portal-header-notification>
 
       <button mat-icon-button [matMenuTriggerFor]="userMenu" [@fadeIn]>
         <fa-icon *ngIf="!currentUser?.id" [icon]="['far', 'circle-user']"></fa-icon>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { slug } from '../core/constants/core.constants';
 import { LoginComponent } from './components/login/login.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -25,10 +24,6 @@ const routes: Routes = [
   {
     path: `password/:${slug}`,
     component: PasswordSetNewComponent
-  },
-  {
-    path: 'notifications',
-    component: NotificationsComponent,
   },
   {
     path: `verification`,

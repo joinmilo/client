@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -18,7 +17,6 @@ import { PortalFooterModule } from './../portal/shared/footer/portal-footer.modu
 import { PasswordModule } from './../shared/password/password.module';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { LoginComponent } from './components/login/login.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -33,7 +31,6 @@ import { UserComponent } from './user.component';
 const components = [
   ImageSliderComponent,
   LoginComponent,
-  NotificationsComponent,
   PasswordSetNewComponent,
   PasswordSendMailComponent,
   RegistrationComponent,
@@ -48,7 +45,6 @@ const framework = [
 ];
 
 const materials = [
-  MatDividerModule,
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,

@@ -3,7 +3,7 @@
 
   <ng-container *ngIf="(isSearching | async) === false">
     <app-portal-header-language *ngIf="!currentUser?.id" [@fadeIn]></app-portal-header-language>
-    <app-portal-header-notifications *ngIf="currentUser?.id" [@fadeIn]></app-portal-header-notifications>
+    <app-portal-header-notification *ngIf="currentUser?.id" [@fadeIn]></app-portal-header-notification>
     <app-logo [@fadeIn]></app-logo>
   </ng-container>
   

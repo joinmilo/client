@@ -1,7 +1,7 @@
-<button mat-icon-button [matMenuTriggerFor]="userNotification" *ngIf="currentUser?.id">
+<button mat-icon-button [matMenuTriggerFor]="userNotification">
   <fa-icon [icon]="['fas', 'bell']"></fa-icon>
-  <span *ngIf="currentUser?.user?.notifications"
-    [matBadge]="currentUser?.user?.notifications?.length"
+  <span *ngIf="notifications"
+    [matBadge]="notifications.length"
     matBadgePosition="after"
     matBadgeColor="primary"
     matBadgeSize="small">
@@ -11,12 +11,13 @@
   <div class="container">
     <strong class="padding" appLabel="notifications"></strong>
     <mat-divider></mat-divider>
+    <!-- TODO: Save Notifications -->
     <button mat-button class="padding align-end">
       <small appLabel="markAsRead"></small>
     </button>
     <section>
-      <ng-container *ngFor="let notification of currentUser?.user?.notifications">
-        <button *ngIf="!notification?.read" mat-menu-item>
+      <ng-container *ngFor="let notification of notifications">
+        <button mat-menu-item>
           <div class="entry">
             <span>{{ notification | translatable: 'title' | async }}</span>
             <small>{{ notification?.modified | date: 'short' }}</small>
@@ -24,11 +25,11 @@
         </button>
       </ng-container>
     </section>
-    <section *ngIf="!currentUser?.user?.notifications">
+    <section *ngIf="!notifications?.length">
       <small appLabel="noNewNotifications"></small>
     </section>
     <mat-divider></mat-divider>
-    <a class="padding" [routerLink]="['./notifications']"
+    <a class="padding" [routerLink]="['/portal', 'notifications']"
       appLabel="allNotifications" suffix="»"></a>
   </div>
 </mat-menu>

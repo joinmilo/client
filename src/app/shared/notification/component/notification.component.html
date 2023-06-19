@@ -1,0 +1,22 @@
+<div class="main">
+  <app-page-title title="notifications"></app-page-title>
+  <div class="border-box">
+    <!-- TODO: Mark as read -->
+    <button mat-button>
+      <label appLabel="markAsRead"></label>
+    </button>
+    <section *ngFor="let notification of currentUser?.user?.notifications?.slice()?.reverse(); let last = last"
+      [ngClass]="{'unread-notification': !notification?.read}">
+      <article>
+        <strong>{{ notification | translatable: 'title' | async }}</strong>
+        <p>{{ notification | translatable: 'content' | async }}</p>
+        <small>{{ notification?.modified | date: 'short' }}</small>
+      </article>
+      <mat-divider *ngIf="!last"></mat-divider>
+    </section>
+    <!-- TODO: Delete All -->
+    <button mat-flat-button color="primary">
+      <label appLabel="deleteAll"></label>
+    </button>
+  </div>
+</div>
