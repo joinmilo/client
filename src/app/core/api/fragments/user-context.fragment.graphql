@@ -20,4 +20,7 @@ fragment UserContext on UserContextEntity {
       ...Notification  
     }
   }
+  userFormTemplate {
+      ...Form
+  }
 }

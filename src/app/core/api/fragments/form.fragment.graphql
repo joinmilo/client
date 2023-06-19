@@ -1,0 +1,26 @@
+fragment Form on UserFormTemplateEntity {
+  id
+  modified
+  name
+  type {
+    id
+    translatables {
+      id 
+      name
+      language {
+        id
+        locale
+        name
+      }
+    }
+  }
+  translatables {
+    id
+    content
+    language {
+      id
+      locale
+      name  
+    }
+  }
+}

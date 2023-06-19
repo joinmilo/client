@@ -12,6 +12,7 @@ import { PortalCalendarPageFeatureModule } from '../features/calendar/page-featu
 import { PortalContestPageFeatureModule } from '../features/contest/page-feature/portal-contest-page-feature.module';
 import { PortalDealPageFeatureModule } from '../features/deal/page-feature/portal-deal-page-feature.module';
 import { PortalEventPageFeatureModule } from '../features/event/page-feature/portal-event-page-feature.module';
+import { PortalFormPageFeatureModule } from '../features/form/page-feature/portal-form-page-feature.module';
 import { PortalOrganisationPageFeatureModule } from '../features/organisation/page-feature/portal-organisation-page-feature.module';
 import { PortalReportPageFeatureModule } from '../features/report/page-feature/portal-report-page-feature.module';
 import { PortalSurveyPageFeatureModule } from '../features/survey/page-feature/portal-survey-page-feature.module';
@@ -36,6 +37,7 @@ const features = [
   PortalContestPageFeatureModule,
   PortalDealPageFeatureModule,
   PortalEventPageFeatureModule,
+  PortalFormPageFeatureModule,
   PortalOrganisationPageFeatureModule,
   PortalReportPageFeatureModule,
   PortalSurveyPageFeatureModule,
