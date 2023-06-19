@@ -1,11 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { LanguageEntity, Maybe, NotificationEntity, ThemeEntity, UserContextEntity } from 'src/schema/schema';
+import { LanguageEntity, Maybe, ThemeEntity, UserContextEntity } from 'src/schema/schema';
 import { Translatable } from '../typings/translatable';
 import { ConfigurationEntity } from './../../../schema/schema';
 import { CoreActions } from './core.actions';
 
 export interface CoreState {
-  allRead?: NotificationEntity,
   configurations?: ConfigurationEntity[]
   currentTheme?: Maybe<ThemeEntity>,
   currentUser?: UserContextEntity,
@@ -13,8 +12,6 @@ export interface CoreState {
   language?: LanguageEntity,
   languages?: LanguageEntity[],
   labels?: Map<string, Maybe<Translatable>[]>,
-  notifications?: Maybe<NotificationEntity[]>,
-  savedNotification?: Maybe<NotificationEntity>
   themes?: ThemeEntity[],
 }
 
@@ -49,20 +46,12 @@ export const coreReducer = createReducer(
     { ...state, languages: action.languages }
   )),
 
-  on(CoreActions.setNotifications, (state, action): CoreState => (
-    { ...state, notifications: action.notifications}
-  )),
-
   on(CoreActions.setThemes, (state, action): CoreState => (
     {
       ...state,
       currentTheme: action.themes?.find(theme => theme.isDefault),
       themes: action.themes
     }
-  )),
-
-  on(CoreActions.allRead, (state): CoreState => (
-    { ...state, notifications: state.notifications?.map((notification) => ({...notification, read: true}))}
   )),
 
   on(CoreActions.removeRequest, (state): CoreState => (

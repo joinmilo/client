@@ -59,6 +59,10 @@ figure {
   margin: unset;
 }
 
+fa-icon {
+  color: var(--color-dark-gray);
+}
+
 .title-gradient {
   display: inline-block;
   background-image: linear-gradient(to right, var(--color-primary-900), var(--color-primary-400));

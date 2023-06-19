@@ -55,14 +55,6 @@ export class CoreEffects implements OnInitEffects {
     map(response => CoreActions.setNotifications(response.data.getNotifications?.result as NotificationEntity[]))
   ));
 
-  saveNotification = createEffect(() => this.actions.pipe(
-    ofType(CoreActions.saveNotifications),
-    switchMap((action) => this.saveNotificationsService.mutate({
-      entities: action.entities
-    })),
-    map(response => CoreActions.notificationSaved(response.data?.saveNotifications as NotificationEntity[]))
-  ));
-
   getServerVersion = createEffect(() => this.actions.pipe(
     ofType(CoreActions.init),
     switchMap(() => this.getServerVersionService.watch().valueChanges),
