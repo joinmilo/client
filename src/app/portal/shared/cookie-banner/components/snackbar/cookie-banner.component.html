@@ -1,7 +1,7 @@
 <div>
   <fa-icon size="10x" [icon]="['fas', 'cookie-bite']"></fa-icon>
   <div class="content">
-    <span class="headline" matSnackBarLabel>
+    <span class="headline" matSnackBarLabel appLabel="privacySettings">
       Datenschutzeinstellungen
     </span>
     <span matSnackBarLabel>
@@ -10,8 +10,8 @@
     </span>
   </div>
 </div>
-<span matSnackBarActions>
+<section matSnackBarActions>
   <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()" appLabel="cookieSettings"></button>
   <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()" appLabel="onlyNecessaryCookies"></button>
   <button mat-flat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()" appLabel="acceptAll"></button>
-</span>
+</section>

@@ -1,10 +1,10 @@
 fa-icon {
   color: var(--color-primary-contrast-900);
-  padding: var(--gap);
 }
 
 div {
   display: flex;
+  padding: var(--gap);
 }
 
 .content {
@@ -17,3 +17,14 @@ div {
   font-size: 1.25rem;
   font-weight: 600;
 }
+
+section {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--gap) var(--gap)
+}
+
+.mdc-snackbar__label {
+  padding: 0;
+}
+
