@@ -54,6 +54,10 @@ export const coreReducer = createReducer(
     }
   )),
 
+  on(CoreActions.addRequest, (state): CoreState => (
+    { ...state, ongoingRequests: state.ongoingRequests + 1 }
+  )),
+
   on(CoreActions.removeRequest, (state): CoreState => (
     { ...state, ongoingRequests: state.ongoingRequests - 1 }
   )),

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 
 import { filter, map, switchMap, tap } from 'rxjs/operators';
-import { ConfigurationEntity, GetConfigurationsGQL, GetLabelsGQL, GetLanguagesGQL, GetMeGQL, GetNotificationsGQL, GetServerVersionGQL, GetThemeGQL, LabelEntity, LanguageEntity, NotificationEntity, SaveNotificationsGQL, ThemeEntity, UserContextEntity } from 'src/schema/schema';
+import { ConfigurationEntity, GetConfigurationsGQL, GetLabelsGQL, GetLanguagesGQL, GetMeGQL, GetServerVersionGQL, GetThemeGQL, LabelEntity, LanguageEntity, ThemeEntity, UserContextEntity } from 'src/schema/schema';
 import { FeedbackService } from '../services/feedback.service';
 import { CoreActions } from './core.actions';
 
 import { Router } from '@angular/router';
-import { Action, Store } from '@ngrx/store';
+import { Action } from '@ngrx/store';
 import { refreshKey } from '../constants/core.constants';
 import { AuthService } from '../services/auth.service';
 import { FeedbackType } from '../typings/feedback';
@@ -46,13 +46,6 @@ export class CoreEffects implements OnInitEffects {
     switchMap(() => this.getLanguagesService.watch().valueChanges),
     filter(response => !!response?.data?.getLanguages?.result?.length),
     map(response => CoreActions.setLanguages(response.data.getLanguages?.result as LanguageEntity[]))
-  ));
-
-  getNotifications = createEffect(() => this.actions.pipe(
-    ofType(CoreActions.init),
-    switchMap(() => this.getNotificationsService.watch().valueChanges),
-    filter(response =>!!response?.data?.getNotifications?.result?.length),
-    map(response => CoreActions.setNotifications(response.data.getNotifications?.result as NotificationEntity[]))
   ));
 
   getServerVersion = createEffect(() => this.actions.pipe(
@@ -115,7 +108,6 @@ export class CoreEffects implements OnInitEffects {
   ), { dispatch: false });
 
   constructor(
-    private store: Store,
     private actions: Actions,
     private authService: AuthService,
     private feedbackService: FeedbackService,
@@ -123,10 +115,8 @@ export class CoreEffects implements OnInitEffects {
     private getLabelsService: GetLabelsGQL,
     private getLanguagesService: GetLanguagesGQL,
     private getMeService: GetMeGQL,
-    private getNotificationsService: GetNotificationsGQL,
     private getServerVersionService: GetServerVersionGQL,
     private getThemeService: GetThemeGQL,
     private router: Router,
-    private saveNotificationsService: SaveNotificationsGQL,
     ) { }
 }
