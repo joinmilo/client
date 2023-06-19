@@ -60,6 +60,10 @@ mat-card {
   border-radius: 0 0 1rem 1rem !important;
 }
 
+.mat-mdc-menu-panel.mat-mdc-menu-panel {
+  max-width: fit-content !important;
+}
+
 /* Progress Bar */
 .mdc-linear-progress__buffer-bar {
   background-color: var(--color-primary-100) !important;

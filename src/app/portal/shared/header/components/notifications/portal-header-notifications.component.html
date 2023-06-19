@@ -1,0 +1,34 @@
+<button mat-icon-button [matMenuTriggerFor]="userNotification" *ngIf="currentUser?.id">
+  <fa-icon [icon]="['fas', 'bell']"></fa-icon>
+  <span *ngIf="currentUser?.user?.notifications"
+    [matBadge]="currentUser?.user?.notifications?.length"
+    matBadgePosition="after"
+    matBadgeColor="primary"
+    matBadgeSize="small">
+  </span>
+</button>
+<mat-menu #userNotification="matMenu">
+  <div class="container">
+    <strong class="padding" appLabel="notifications"></strong>
+    <mat-divider></mat-divider>
+    <button mat-button class="padding align-end">
+      <small appLabel="markAsRead"></small>
+    </button>
+    <section>
+      <ng-container *ngFor="let notification of currentUser?.user?.notifications">
+        <button *ngIf="!notification?.read" mat-menu-item>
+          <div class="entry">
+            <span>{{ notification | translatable: 'title' | async }}</span>
+            <small>{{ notification?.modified | date: 'short' }}</small>
+          </div>
+        </button>
+      </ng-container>
+    </section>
+    <section *ngIf="!currentUser?.user?.notifications">
+      <small appLabel="noNewNotifications"></small>
+    </section>
+    <mat-divider></mat-divider>
+    <a class="padding" [routerLink]="['./notifications']"
+      appLabel="allNotifications" suffix="»"></a>
+  </div>
+</mat-menu>

@@ -14,25 +14,27 @@
 </ng-template>
 
 <mat-menu #menu="matMenu">
-  <ng-container *ngFor="let subItem of subMenuItems | async">
-    
-    <app-portal-menu-overlay
-      *ngIf="(subItem?.subMenuItems?.length || 0) > 0; else entries"
-      [parent]="subItem">
-    </app-portal-menu-overlay>
-    
-    <ng-template #entries>
-      <button class="subItem"
-        mat-menu-item
-        (click)="route(subItem)">
-        <fa-icon [icon]="['fas', icon(subItem?.icon)]"></fa-icon>
-        <section>
-          <span>{{ subItem | translatable: 'name' | async }}</span>
-          <small>{{ subItem | translatable: 'shortDescription' | async }}</small>
-        </section>
-        <fa-icon [icon]="['fas', 'arrow-right']"></fa-icon>
-      </button>
-    </ng-template>
-
-  </ng-container>
+  <div class="container">
+    <ng-container *ngFor="let subItem of subMenuItems | async">
+      
+      <app-portal-menu-overlay
+        *ngIf="(subItem?.subMenuItems?.length || 0) > 0; else entries"
+        [parent]="subItem">
+      </app-portal-menu-overlay>
+      
+      <ng-template #entries>
+        <button class="subItem"
+          mat-menu-item
+          (click)="route(subItem)">
+          <fa-icon [icon]="['fas', icon(subItem?.icon)]"></fa-icon>
+          <section>
+            <span>{{ subItem | translatable: 'name' | async }}</span>
+            <small>{{ subItem | translatable: 'shortDescription' | async }}</small>
+          </section>
+          <fa-icon [icon]="['fas', 'arrow-right']"></fa-icon>
+        </button>
+      </ng-template>
+  
+    </ng-container>
+  </div>
 </mat-menu>

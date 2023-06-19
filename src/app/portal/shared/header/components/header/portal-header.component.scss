@@ -3,7 +3,6 @@
 mat-toolbar {
   background-color: white;
   border-bottom: 1px solid var(--color-border);
-  // min-height: 5rem;
 }
 
 app-portal-header-desktop,
@@ -18,9 +17,6 @@ app-portal-header-mobile {
 }
 
 @include responsive(desktop) {
-  // mat-toolbar {
-  //   height: 5rem;
-  // }
   app-portal-header-mobile {
     display: none;
   }

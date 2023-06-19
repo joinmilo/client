@@ -3,6 +3,10 @@ button {
   font-weight: 600;
 }
 
+.container {
+  width: 20rem;
+}
+
 ::ng-deep .mdc-list-item__primary-text {
   display: flex;
   width: inherit;
@@ -17,7 +21,6 @@ fa-icon {
 }
 
 .subItem {
-  width: 17.5rem;
 
   section {
     display: flex;
