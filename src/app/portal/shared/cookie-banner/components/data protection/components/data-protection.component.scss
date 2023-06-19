@@ -1,0 +1,9 @@
+.main {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+button {
+  margin-bottom: var(--gap);
+}

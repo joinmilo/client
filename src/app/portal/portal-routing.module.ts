@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug } from '../core/constants/core.constants';
+import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, dataProtectionFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug } from '../core/constants/core.constants';
 
 const routes: Routes = [
   {
@@ -52,6 +52,11 @@ const routes: Routes = [
     path: reportsFeatureKey,
     loadChildren: () => import('./features/report/main/portal-report.module')
       .then((imported) => imported.PortalReportModule),
+  },
+  {
+  path: dataProtectionFeatureKey,
+  loadChildren: () => import('./shared/cookie-banner/components/data protection/data-protection.module')
+    .then((imported) => imported.DataProtectionModule),
   },
   {
     path: 'search',

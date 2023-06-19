@@ -29,6 +29,7 @@ export const mediaFeatureKey = 'media';
 export const organisationsFeatureKey = 'organisations';
 export const reportsFeatureKey = 'reports';
 export const surveysFeatureKey = 'surveys';
+export const dataProtectionFeatureKey = 'data-protection'
 
 /**
  * URLs

@@ -1,0 +1,19 @@
+<div>
+  <fa-icon size="10x" [icon]="['fas', 'cookie-bite']"></fa-icon>
+  <section class="content">
+    <span class="headline" matSnackBarLabel appLabel="privacySettings"></span>
+    <span matSnackBarLabel>
+      Wir verwenden Cookies, um Ihnen die bestmögliche Nutzungserfahrung zu bieten. Sie stimmen der Nutzung von Cookies und
+      unseren Datenschutzbestimmungen zu.
+    </span>
+    <span matSnackBarLabel>
+      Hier gehts zur<a (click)="dismiss()" [routerLink]="['/portal', 'data-protection']" appLabel="dataProtection"></a>
+    </span>
+    
+  </section>
+</div>
+<section class="buttons" matSnackBarActions>
+  <button mat-button matSnackBarAction (click)="openDialog(); dismiss()" appLabel="cookieSettings"></button>
+  <button mat-button matSnackBarAction (click)="dismiss()" appLabel="onlyNecessaryCookies"></button>
+  <button mat-flat-button matSnackBarAction (click)="dismiss()" appLabel="acceptAll"></button>
+</section>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CookieBannerComponent } from './snackbar/cookie-banner.component';
+import { CookieBannerComponent } from './banner/cookie-banner.component';
 
 @Component({
   selector: 'app-portal-cookie-banner',

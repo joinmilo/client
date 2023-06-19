@@ -1,16 +1,24 @@
+* {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 fa-icon {
+  align-content: center;
+
   color: var(--color-primary-contrast-900);
 }
 
 div {
-  display: flex;
+  flex-direction: row;
   padding: var(--gap);
+  gap: var(--gap);
 }
 
 .content {
-  display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: center;
+  gap: var(--gap);
 }
 
 .headline {
@@ -18,13 +26,12 @@ div {
   font-weight: 600;
 }
 
-section {
-  display: flex;
+.buttons {
   justify-content: space-between;
   padding: 0 var(--gap) var(--gap)
 }
 
 .mdc-snackbar__label {
   padding: 0;
+  gap: .25rem;
 }
-

@@ -1,0 +1,59 @@
+<h2 mat-dialog-title appLabel="cookieSettings"></h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <p>Wir und bestimmte Drittanbieter verwenden cookies auf www.wooportal.com. Die Einzelheiten zu den Arten von cookies, ihrem
+    Zweck und den beteiligten Dritten sind unten und in unserer Datenschutzerklärung beschrieben. Bitte klicken Sie auf „Alle
+    zulassen“, um unserer Verwendung von cookies , um die bestmögliche Erfahrung auf unseren Websites zu haben. Sie können
+    auch Ihre Präferenzen festlegen oder cookies ablehnen (mit Ausnahme von unbedingt erforderlichen cookies).</p>
+    <a (click)="dismiss()" [routerLink]="['/portal', 'data-protection']" appLabel="dataProtection"></a>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+    <h3>Unbedingt erforderlich</h3>
+    <section>
+      <span class="mat-caption">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+      magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+      gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+      <mat-slide-toggle class="custom-disabled-toggle" color="primary" checked="true" disabled="true"></mat-slide-toggle>
+    </section>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+    <h3>Performance</h3>
+    <section>
+      <span class="mat-caption">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+        invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+      <mat-slide-toggle color="primary"></mat-slide-toggle>
+    </section>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+    <h3>Funktional</h3>
+    <section>
+      <span class="mat-caption">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+        invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+      <mat-slide-toggle color="primary"></mat-slide-toggle>
+    </section>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+    <h3>Marketing</h3>
+    <section>
+      <span class="mat-caption">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+        invidunt ut labore et dolore
+        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</span>
+      <mat-slide-toggle color="primary"></mat-slide-toggle>
+    </section>
+  </div>
+  <mat-divider></mat-divider>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial appLabel="confirmMyChoice"></button>
+  <button mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial appLabel="rejectAll"></button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial appLabel="acceptAll"></button>
+</mat-dialog-actions>

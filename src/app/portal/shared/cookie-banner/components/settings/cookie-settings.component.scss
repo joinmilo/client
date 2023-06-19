@@ -1,0 +1,23 @@
+div {
+  padding: 1.5rem 0;
+}
+
+div:first-child {
+  padding-top: 0;
+  padding-bottom: 1.5rem;
+}
+
+h3 {
+  margin: 0;
+}
+
+section {
+  display: flex;
+  gap: var(--gap);
+}
+
+.mat-mdc-dialog-actions.mat-mdc-dialog-actions-align-center{
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+}
