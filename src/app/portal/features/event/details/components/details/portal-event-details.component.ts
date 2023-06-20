@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil } from 'rxjs';
-import { EventCommentEntity, EventEntity, Maybe, MediaEntity } from 'src/schema/schema';
+import { EventCommentEntity, EventEntity, EventMediaEntity, Maybe, MediaEntity } from 'src/schema/schema';
 import { eventSlug } from '../../constants/event-details.constant';
 import { selectEventComments, selectEventDetails } from '../../state/portal-event-details.selectors';
 import { PortalEventDetailsActions } from './../../state/portal-event-details.actions';
@@ -18,7 +18,9 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
   public latestComment?: Maybe<EventCommentEntity> | undefined;
 
-  public media?: Maybe<MediaEntity> | undefined;
+  public titleImage?: Maybe<MediaEntity> | undefined;
+
+  public media?: Maybe<EventMediaEntity> [] | undefined;
 
   private destroy = new Subject<void>();
 
@@ -36,7 +38,8 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy)
     ).subscribe(event => {
       this.event = event;
-      this.media = event?.uploads?.find(upload => upload?.title)?.media;
+      this.titleImage = event?.uploads?.find(upload => upload?.title)?.media;
+      this.media = event?.uploads?.filter(upload => !upload?.card && !upload?.title);
     });
 
     this.store.select(selectEventComments).pipe(

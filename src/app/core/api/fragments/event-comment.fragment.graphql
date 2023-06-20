@@ -1,6 +1,7 @@
 fragment EventComment on EventCommentEntity {
   id
   modified
+  content
   event{
     id
   }

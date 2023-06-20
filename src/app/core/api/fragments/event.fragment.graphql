@@ -39,4 +39,11 @@ fragment Event on EventEntity {
       name
     }
   }
+  organisation{
+    ...Organisation
+  }
+
+  ratings {
+    score
+  }
 }

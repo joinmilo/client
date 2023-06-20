@@ -1,5 +1,4 @@
-<div class="container" *ngIf="event">
-
+<div *ngIf="event">
   <section>
     <div>
       <span class="mat-headline-4">{{event | translatable: 'name' | async}}</span>
@@ -12,18 +11,16 @@
   </section>
 
   <div>
-    <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
+    <span [innerHtml]="event | translatable: 'shortDescription' | async"></span>
     <section>
-      <app-date-piece [date]="event.schedule?.startDate"></app-date-piece>
+      <app-date-piece *ngIf="event.schedule?.startDate" [date]="event.schedule?.startDate"></app-date-piece>
 
-      <app-address-piece [address]="event.address"></app-address-piece>
+      <app-address-piece *ngIf="event.address" [address]="event.address"></app-address-piece>
 
-      <app-mail-piece [mail]="event.contact?.email"></app-mail-piece>
+      <app-mail-piece *ngIf="event.contact?.email" [mail]="event.contact?.email"></app-mail-piece>
 
-      <app-phone-piece [phone]="event.contact?.phone"></app-phone-piece>
-    </section>
+      <app-phone-piece *ngIf="event.contact?.phone" [phone]="event.contact?.phone"></app-phone-piece>
 
-    <section>
       <span>
         <fa-icon size="1x" [icon]="['fas', 'ticket']"></fa-icon>
         {{ event.entryFee || '' }}
@@ -35,17 +32,17 @@
         {{ (event.attendees?.length + "/" + event.attendeeConfiguration.maxAttendees) }}
       </span>
 
-      <button mat-flat-button color="primary" (click)="attendEvent()">
+      <button *ngIf="event.attendeeConfiguration" mat-flat-button color="primary" (click)="attendEvent()">
         <fa-icon size="1x" [icon]="['fas', 'child-reaching']"></fa-icon>
         <span appLabel="attend"></span>
       </button>
 
-      <button mat-flat-button color="primary">
+      <button mat-stroked-button color="primary">
         <fa-icon size="1x" [icon]="['fas', 'download']"></fa-icon>
         <span appLabel="download"></span>
       </button>
     </section>
 
-    <p [innerHtml]="event | translatable : 'content' | async"></p>
+    <span [innerHtml]="event | translatable : 'content' | async"></span>
   </div>
 </div>

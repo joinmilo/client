@@ -1,0 +1,29 @@
+div {
+  display: flex;
+  gap: var(--gap);
+  flex-flow: column wrap;
+
+  figure {
+    max-width: 15rem;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  section {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--gap);
+  }
+
+  section:first-of-type {
+    justify-content: space-between;
+  }
+
+  section:last-of-type {
+    justify-content: space-around;
+    align-items: center;
+  }
+
+}

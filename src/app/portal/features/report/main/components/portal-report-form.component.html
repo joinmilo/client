@@ -1,5 +1,4 @@
 <div class="main">
-  <app-contact-card></app-contact-card>
   <app-page-title title="feedback"></app-page-title>
   <form class="border-box" [formGroup]="form" #formDirective="ngForm">
     <h2 class="mat-headline-6" appLabel="giveUsFeedback"></h2>
@@ -39,10 +38,6 @@
           [disabled]="form.invalid"
           (verified)="onSubmit($event, formDirective)">
         </app-captcha-submit>
-        <button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
-          <fa-icon click [icon]=" ['far', 'envelope']"></fa-icon>
-          <label appLabel="send"></label>
-        </button>
       </div>
     </section>
   </form>

@@ -25,6 +25,7 @@ export class PortalEventDetailsEffects {
     switchMap(action => this.getCommentsService.watch({
       params: {
         sort: 'created',
+        dir: 'desc',
         expression: {
           entity: {
             path: 'event.slug',

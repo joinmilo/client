@@ -1,0 +1,11 @@
+<div *ngIf="media">
+  <section>
+    <h2 class="mat-headline-6" appLabel="media"></h2>
+    <a [routerLink]="['/media']" appLabel="allMedia" suffix="»"></a>
+  </section>
+  <section>
+    <figure *ngFor="let file of media.slice(0,3)">
+      <img [appMedia]="file?.media">
+    </figure>
+  </section>
+</div>

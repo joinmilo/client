@@ -1,5 +1,5 @@
-import { createActionGroup, emptyProps } from '@ngrx/store';
-import { EventCommentEntity, EventEntity, Maybe, UserContextEntity } from 'src/schema/schema';
+import { createActionGroup } from '@ngrx/store';
+import { EventCommentEntity, EventEntity, Maybe } from 'src/schema/schema';
 
 export const PortalEventDetailsActions = createActionGroup({
   source: 'Portal Event Details',
@@ -9,9 +9,6 @@ export const PortalEventDetailsActions = createActionGroup({
 
     'get comments': (slug: Maybe<string>) => ({ slug }),
     'set comments': (comments: Maybe<EventCommentEntity[]>) => ({ comments }),
-
-    'get attending friends': emptyProps(),
-    'set attending friends': (users: Maybe<UserContextEntity[]>) => ({users})
   }
 });
 

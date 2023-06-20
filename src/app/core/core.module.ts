@@ -5,8 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
-import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -50,11 +48,8 @@ const components = [
   SharePieceComponent,
   SliderComponent,
   SliderComponent,
-  StarRatingComponent,
-  ProgressBarComponent,
   MailPieceComponent,
   PhonePieceComponent,
-
 ];
 
 const directives = [

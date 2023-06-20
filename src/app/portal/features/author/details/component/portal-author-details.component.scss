@@ -1,5 +1,4 @@
 .user {
-  position: relative;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -11,10 +10,9 @@
   align-items: center;
 
   app-avatar {
-    position: absolute;
-    width: 10rem;
-    height: 10rem;
-    top: 10rem;
+    margin-top: -12rem;
+    max-width: 10rem;
+    max-height: 10rem;
   }
 
   section:first-of-type {

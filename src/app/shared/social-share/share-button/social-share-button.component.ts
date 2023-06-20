@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SocialShareDialog } from 'src/app/core/components/pieces/share-button/social-share-button.component';
+import { SocialShareDialogComponent } from '../share-dialog/social-share-dialog.component';
 
 @Component({
   selector: 'app-social-share-button',
@@ -13,7 +13,7 @@ export class SocialShareButtonComponent  {
   constructor(public dialog: MatDialog) {}
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(SocialShareDialog, {
+    this.dialog.open(SocialShareDialogComponent, {
       width: '18rem',
       enterAnimationDuration,
       exitAnimationDuration,

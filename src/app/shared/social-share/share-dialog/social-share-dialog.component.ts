@@ -6,6 +6,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: 'social-share-dialog.component.html',
 })
 export class SocialShareDialogComponent {
+
   constructor(public dialogRef: MatDialogRef<SocialShareDialogComponent>) {}
 }
 

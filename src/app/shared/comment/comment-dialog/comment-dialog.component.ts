@@ -22,7 +22,6 @@ export class CommentDialogComponent {
     content: ['', [Validators.required]],
   });
 
-
   constructor(
     public dialogRef: MatDialogRef<CommentDialogComponent>,
     private fb: FormBuilder,
@@ -30,12 +29,13 @@ export class CommentDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   onSubmit() {
-
     switch (true) {
       case !!this.data.eventId:
+        console.log(this.data.eventId)
         this.Store.dispatch(CommentActions.saveEventComment({
           content: this.form.value.content,
-          event: { id: this.data.eventId }
+          event: { id: this.data.eventId },
+          
           // TODO: add content to translatable, add usercontext
         }));
         break;
@@ -51,5 +51,6 @@ export class CommentDialogComponent {
       default:
         break;
     }
+
   }
 }

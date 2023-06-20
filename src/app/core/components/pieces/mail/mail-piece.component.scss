@@ -2,14 +2,11 @@ div {
   display: flex;
   gap: 1rem;
 
-  span {
+  a {
+    color: black;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-
-  a{
-    color: black;
   }
 }
 

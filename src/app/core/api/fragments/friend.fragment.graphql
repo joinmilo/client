@@ -4,9 +4,15 @@ fragment Friend on FriendEntity {
   
   addressee {
     id
+    user {
+    ...User
+    }
   }
 
   requester {
     id
+    user {
+    ...User
+    }
   }
 }

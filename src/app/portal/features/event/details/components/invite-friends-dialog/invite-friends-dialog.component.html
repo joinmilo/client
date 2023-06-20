@@ -1,0 +1,40 @@
+<mat-dialog-content class="mat-typography">
+  <section>
+    <h1 class="mat-headline-6" appLabel="inviteFriends"></h1>
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="search"></mat-label>
+      <input matInput type="text" [(ngModel)]="value" (input)="filterFriends(value)">
+      <button *ngIf="!value" matSuffix mat-icon-button>
+        <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+      </button>
+      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''"
+        (click)="filterFriends(value)">
+        <fa-icon [icon]="['fas', 'close']"></fa-icon>
+      </button>
+    </mat-form-field>
+    <div>
+      <span>
+        <span appLabel="friends"></span>
+        ({{ filteredFriends?.length }})
+      </span>
+      <mat-checkbox [checked]="data.friends?.length === selectedFriends?.length"
+        (change)="toggleAllFriends($event.checked)">
+      </mat-checkbox>
+    </div>
+  </section>
+  <hr>
+  <section *ngFor="let friend of filteredFriends">
+    <div>
+      <app-avatar [user]="friend"></app-avatar>
+      <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
+      <mat-checkbox [checked]="selectedFriends?.includes(friend)"
+        (change)="toggleSelectedFriend(friend, $event.checked)">
+      </mat-checkbox>
+    </div>
+  </section>
+  <hr>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close appLabel="cancel"></button>
+  <button mat-button mat-dialog-close appLabel="send" (click)="sendNotification()"></button>
+</mat-dialog-actions>

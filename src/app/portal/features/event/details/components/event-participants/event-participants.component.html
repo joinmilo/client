@@ -1,13 +1,18 @@
-<div class="container">
+<div>
   <h2 class="mat-headline-6" appLabel="attendingFriends"></h2>
   <div>
-    <section *ngIf="friends">
-      <app-avatar *ngFor="let friend of (friends.slice(0, 3))" [user]="friend"></app-avatar>
-      <a appLabel="showAllFriends"></a>
+    <section *ngIf="attendingFriends && attendingFriends.length > 0">
+      <app-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))" [user]="attendingFriend"></app-avatar>
+      <button mat-stroked-button color="primary" (click)="openAllFriendsDialog('300ms', '0ms')">
+        <fa-icon size="1x" [icon]="['fas', 'users']"></fa-icon>
+        <span appLabel="showAllFriends"></span>
+      </button>
     </section>
-    <button mat-flat-button color="primary" (click)="addFriends()">
-      <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
-      <span appLabel="addFriends"></span>
-    </button>
+    <section>
+      <button mat-flat-button color="primary" (click)="openInviteFriendsDialog('300ms', '0ms')">
+        <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
+        <span appLabel="inviteFriends"></span>
+      </button>
+    </section>
   </div>
 </div>

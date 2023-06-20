@@ -6,7 +6,8 @@ import { Subject, combineLatestWith, takeUntil } from 'rxjs';
 import { selectCurrenUser } from 'src/app/core/state/core.selectors';
 import { EventEntity, Maybe, UserContextEntity } from 'src/schema/schema';
 import { selectEventDetails } from '../../state/portal-event-details.selectors';
-import { ShowAllFriendsDialogComponent } from '../show-all-friends-dialog/show-all-friends-dialog-component';
+import { InviteFriendsDialogComponent } from '../invite-friends-dialog/invite-friends-dialog.component';
+import { ShowAllFriendsDialogComponent } from '../show-all-friends-dialog/show-all-friends-dialog.component';
 
 @Component({
   selector: 'app-event-participants',
@@ -22,6 +23,8 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
   private destroy = new Subject<void>();
 
   public friends?: (Maybe<UserContextEntity> | undefined)[] | undefined;
+
+  public attendingFriends?: (Maybe<UserContextEntity> | undefined)[] | undefined;
 
   constructor(private store: Store, private router: Router, public dialog: MatDialog) { }
 
@@ -43,40 +46,43 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
           const addressee = this.currentUser?.friendAddressee?.filter((addressee) => addressee?.accepted)
             .map((addressee) => addressee?.requester);
 
-          if (attendees && (requester || addressee)) {
-            const friends = (requester || []).concat(addressee || []);
-            this.findAttendingFriends(attendees, friends);
+          if (requester && requester?.length > 0 || addressee && addressee.length > 0) {
+            this.friends = requester?.concat(addressee);
+            if (attendees && attendees.length > 0) {
+              this.findAttendingFriends(attendees, this.friends);
+            }
           }
         }
       });
   }
 
-  addFriends() {
-    if (this.currentUser !== null && this.currentUser !== undefined) {
-      // TODO: add Friends logic
-    }
-    else {
-      this.router.navigate(['/user', 'register'])
-    }
-  }
-
   findAttendingFriends(
     attendees: (Maybe<UserContextEntity> | undefined)[] | undefined,
     friends: (Maybe<UserContextEntity> | undefined)[] | undefined) {
-    if (attendees && friends) {
-      this.friends = attendees.filter((attendee) =>
-        friends.some((friend) => friend?.id === attendee?.id)
+      this.attendingFriends = attendees?.filter((attendee) =>
+        friends?.some((friend) => friend?.id === attendee?.id)
       );
-    }
   }
 
   openAllFriendsDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(ShowAllFriendsDialogComponent, {
-      width: '32rem',
+      width: 'auto',
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
-        friends: this.friends 
+        friends: this.attendingFriends,
+      }
+    });
+  }
+
+  openInviteFriendsDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(InviteFriendsDialogComponent, {
+      width: 'auto',
+      enterAnimationDuration,
+      exitAnimationDuration,
+      data: {
+        friends: this.friends?.filter(friend => !this.attendingFriends
+          ?.some(attendingFriend => attendingFriend?.id === friend?.id)),
       }
     });
   }
