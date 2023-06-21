@@ -1,5 +1,6 @@
 fragment Event on EventEntity {
   id
+  entryFee
   address {
     ...Address
   }
@@ -23,6 +24,13 @@ fragment Event on EventEntity {
     ...Organisation
   }
   slug
+
+  attendees {
+    approved
+    userContext{
+    ...UserContext
+    }
+  }
   translatables {
     id
     name
@@ -33,5 +41,12 @@ fragment Event on EventEntity {
       locale
       name
     }
+  }
+  organisation{
+    ...Organisation
+  }
+
+  ratings {
+    score
   }
 }

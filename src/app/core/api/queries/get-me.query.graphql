@@ -2,4 +2,7 @@ query GetMe {
   me {
     ...UserContext
   }
+  user {
+  ...UserContext
+  }
 }

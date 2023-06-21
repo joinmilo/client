@@ -1,13 +1,14 @@
 * {
   width: calc(100% - 2px);
   height: calc(100% - 2px);
-  object-fit: cover;
+  object-fit: contain;
 }
 
 span {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 150%;
 
   color: var(--color-accent-contrast-900);
   background: linear-gradient(135deg, var(--color-accent-900), var(--color-accent-400));

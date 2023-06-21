@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { SocialShareButtonModule } from 'src/app/core/components/pieces/share-button/social-share.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { FormModule } from 'src/app/shared/form/form.module';
@@ -33,7 +32,7 @@ const modules = [
   CardModule,
   FormModule,
   PortalAuthorDetailsRoutingModule,
-  SocialShareButtonModule,
+  SocialSharModule,
   TableModule,
   TitleModule,
 ];

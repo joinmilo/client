@@ -18,6 +18,8 @@ import { AddressPieceComponent } from './components/pieces/adress/address-piece.
 import { CategoryPieceComponent } from './components/pieces/category/category-piece.component';
 import { DatePieceComponent } from './components/pieces/date/date-piece.component';
 import { FavoritePieceComponent } from './components/pieces/favorite/favorite-piece.component';
+import { MailPieceComponent } from './components/pieces/mail/mail-piece.component';
+import { PhonePieceComponent } from './components/pieces/phone/phone-piece.component';
 import { SharePieceComponent } from './components/pieces/share/share-piece.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { coreStateKey } from './constants/core.constants';
@@ -42,6 +44,8 @@ const components = [
   SharePieceComponent,
   SliderComponent,
   SliderComponent,
+  MailPieceComponent,
+  PhonePieceComponent,
 ];
 
 const directives = [

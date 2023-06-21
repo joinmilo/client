@@ -1,0 +1,16 @@
+div {
+  display: flex;
+  gap: 1rem;
+
+  a {
+    color: black;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+fa-icon {
+  color: gray;
+  align-self: center;
+}

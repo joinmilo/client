@@ -1,0 +1,5 @@
+mutation saveEventComment($entity: EventCommentEntityInput!) {
+  saveEventComment(entity: $entity) {
+    ...EventComment
+  }
+}

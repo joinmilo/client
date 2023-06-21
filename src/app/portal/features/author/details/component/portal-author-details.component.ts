@@ -32,7 +32,8 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
         this.store.dispatch(AuthorDetailsActions.getDetails(params.get(slug))));
 
     this.author.pipe(takeUntil(this.destroy))
-      .subscribe(author => this.media = author?.uploads?.find(upload => upload?.title)?.media);
+      .subscribe(author => 
+        this.media = author?.uploads?.find(upload => upload?.title)?.media);
   }
 
   public ngOnDestroy(): void {
