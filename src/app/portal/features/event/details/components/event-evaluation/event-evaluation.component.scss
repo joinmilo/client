@@ -1,0 +1,13 @@
+.main{
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+section:first-of-type{
+display: flex;
+gap: var(--gap);
+flex-direction: column;
+}
+
+

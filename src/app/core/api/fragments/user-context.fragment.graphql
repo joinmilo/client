@@ -1,5 +1,6 @@
 fragment UserContext on UserContextEntity {
   id
+  slug
   articles {
     ...Article
   }
@@ -10,7 +11,15 @@ fragment UserContext on UserContextEntity {
       ...Media
     }
   }
-  slug
+
+  friendRequester {
+    ...Friend
+  }
+
+  friendAddressee {
+    ...Friend
+  }
+  
   user {
     id
     firstName

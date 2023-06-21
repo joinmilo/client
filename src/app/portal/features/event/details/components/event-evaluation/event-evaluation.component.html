@@ -1,0 +1,22 @@
+<div class="main">
+  <section>
+  <app-star-rating
+    *ngIf="showRating"
+    [canDoRating]="true"
+    [color]="'primary'"
+    (ratingUpdated)="onRatingChanged($event)"
+  ></app-star-rating>
+
+  <p *ngIf="!showRating">Thank you for rating this event</p>
+  <app-star-rating [rating]="3" [color]="'primary'"></app-star-rating>
+  </section>
+  <section>
+  <h3 class="title-rating">75 Bewertungen</h3>
+  <div *ngFor="let item of ratingsResult">
+    <app-progress-bar
+      [value]="item.percentage"
+      [star]="item.star"
+    ></app-progress-bar>
+  </div>
+</section>
+</div>

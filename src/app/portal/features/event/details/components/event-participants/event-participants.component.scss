@@ -1,0 +1,32 @@
+div:first-of-type {
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+
+    section {
+      display: flex;
+
+      app-avatar {
+        max-height: 6rem;
+        max-width: 6rem;
+        margin-left: -1.25rem;
+        width: 100%;
+        aspect-ratio: 1/1;
+      }
+
+      app-avatar:first-child {
+        margin-left: 0;
+      }
+    }
+
+    button {
+      max-width: fit-content;
+      align-self: center;
+
+      &:first-of-type {
+        margin-left: 1rem;
+      }
+    }
+  }
+}

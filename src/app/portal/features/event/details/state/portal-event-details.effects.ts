@@ -12,7 +12,7 @@ export class PortalEventDetailsEffects {
     ofType(PortalEventDetailsActions.getDetails),
     switchMap((action) => this.getEvent.watch({ 
       entity: {
-        id: action.slug
+        slug: action.slug
       }
     }).valueChanges),
     map(response => response.data.getEvent?.id
@@ -25,6 +25,7 @@ export class PortalEventDetailsEffects {
     switchMap(action => this.getCommentsService.watch({
       params: {
         sort: 'created',
+        dir: 'desc',
         expression: {
           entity: {
             path: 'event.slug',
