@@ -16,7 +16,7 @@ import { SaveRatingDialogComponent } from '../save-rating-dialog/save-rating-dia
 export class SaveRatingComponent implements OnInit, OnDestroy {
   @Input() public rating = 0;
 
-  private currentUser?: Maybe<UserContextEntity> | undefined;
+  public currentUser?: Maybe<UserContextEntity> | undefined;
 
   hoverIndex = 0;
 

@@ -16,7 +16,7 @@ import { ShowAllFriendsDialogComponent } from '../show-all-friends-dialog/show-a
 })
 export class EventParticipantsComponent implements OnInit, OnDestroy {
 
-  private currentUser?: Maybe<UserContextEntity> | undefined;
+  public currentUser?: Maybe<UserContextEntity> | undefined;
 
   private event?: Maybe<EventEntity> | undefined;
 

@@ -9,7 +9,11 @@
       </button>
     </section>
     <section>
-      <button mat-flat-button color="primary" (click)="openInviteFriendsDialog('300ms', '0ms')">
+      <button mat-flat-button color="primary" *ngIf="currentUser" (click)="openInviteFriendsDialog('300ms', '0ms')">
+        <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
+        <span appLabel="inviteFriends"></span>
+      </button>
+      <button mat-flat-button color="primary" *ngIf="!currentUser" [routerLink]="['/user', 'register']">
         <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
         <span appLabel="inviteFriends"></span>
       </button>

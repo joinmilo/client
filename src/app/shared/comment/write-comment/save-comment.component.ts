@@ -1,14 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
 
 @Component({
-  selector: 'app-comment-button',
-  templateUrl: './comment-button.component.html',
-  styleUrls: ['./comment-button.component.scss']
+  selector: 'app-save-comment',
+  templateUrl: './save-comment.component.html',
+  styleUrls: ['./save-comment.component.scss']
 })
-export class CommentButtonComponent {
+export class SaveCommentComponent{
 
   @Input()
   eventId?: Maybe<string>;
@@ -19,7 +21,9 @@ export class CommentButtonComponent {
   @Input()
   articleId?: Maybe<string>;
 
-  constructor(public dialog: MatDialog) { }
+  public currentUser = this.store.select(selectCurrentUser);
+
+  constructor(public dialog: MatDialog, private store: Store) { }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(CommentDialogComponent, {
