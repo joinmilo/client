@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
 import { CardType } from 'src/app/shared/card/typings/card';
 import { OrganisationPageFeatureActions } from '../state/organisation-page-feature.actions';
 import { selectRecentOrganisations } from '../state/organisation-page-feature.selectors';
@@ -14,12 +13,12 @@ export class OrganisationPageFeatureComponent {
   
   public cardType = CardType.Contact;
 
-  public organisations = this.store.select(selectRecentOrganisations).pipe(
-    tap(result => !result?.length
-      && this.store.dispatch(OrganisationPageFeatureActions.getRecentOrganisations())));
+  public organisations = this.store.select(selectRecentOrganisations);
 
   constructor(
     private store: Store, 
-  ) { }
+  ) {
+    this.store.dispatch(OrganisationPageFeatureActions.getRecentOrganisations());
+  }
 
 }

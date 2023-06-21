@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
 import { CardType } from 'src/app/shared/card/typings/card';
 import { FormPageFeatureActions } from '../state/form-page-feature.actions';
 import { selectRecentForms } from '../state/form-page-feature.selectors';
@@ -15,12 +14,12 @@ export class FormPageFeatureComponent {
 
   public cardType = CardType.Content;
   
-  public forms = this.store.select(selectRecentForms).pipe(
-    tap(result => !result?.length
-      && this.store.dispatch(FormPageFeatureActions.getRecentForms())));
+  public forms = this.store.select(selectRecentForms);
 
   constructor(
     private store: Store, 
-  ) { }
+  ) {
+    this.store.dispatch(FormPageFeatureActions.getRecentForms())
+  }
 
 }

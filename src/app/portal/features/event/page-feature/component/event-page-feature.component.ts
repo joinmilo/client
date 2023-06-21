@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
 import { EventPageFeatureActions } from '../state/event-page-feature.actions';
 import { selectRecentEvents } from '../state/event-page-feature.selectors';
 
@@ -11,12 +10,12 @@ import { selectRecentEvents } from '../state/event-page-feature.selectors';
 })
 export class EventPageFeatureComponent {
   
-  public events = this.store.select(selectRecentEvents).pipe(
-    tap(result => !result?.length
-      && this.store.dispatch(EventPageFeatureActions.getRecentEvents())));
+  public events = this.store.select(selectRecentEvents);
 
   constructor(
     private store: Store, 
-  ) { }
+  ) {
+    this.store.dispatch(EventPageFeatureActions.getRecentEvents());
+  }
 
 }

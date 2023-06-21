@@ -11,7 +11,7 @@ export class AuthorPageFeatureEffects {
     ofType(AuthorPageFeatureActions.getRecentAuthors),
     switchMap(() => this.getAuthorsService.watch({
       params: {
-        sort: 'modified',
+        sort: 'created',
         dir: 'desc',
         size: 10,
       }

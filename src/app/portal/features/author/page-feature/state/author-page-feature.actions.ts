@@ -8,7 +8,3 @@ export const AuthorPageFeatureActions = createActionGroup({
     'set recent authors': (authors?: UserContextEntity[]) => ({ authors }),
   }
 });
-
-
-
-

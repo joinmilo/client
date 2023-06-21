@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
 import { ArticlePageFeatureActions } from '../state/article-page-feature.actions';
 import { selectRecentArticles } from '../state/article-page-feature.selectors';
 
@@ -11,12 +10,12 @@ import { selectRecentArticles } from '../state/article-page-feature.selectors';
 })
 export class ArticlePageFeatureComponent {
   
-  public articles = this.store.select(selectRecentArticles).pipe(
-    tap(result => !result?.length
-      && this.store.dispatch(ArticlePageFeatureActions.getRecentArticles())));
+  public articles = this.store.select(selectRecentArticles);
 
   constructor(
     private store: Store, 
-  ) { }
+  ) {
+    this.store.dispatch(ArticlePageFeatureActions.getRecentArticles());
+  }
 
 }

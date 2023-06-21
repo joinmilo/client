@@ -5,14 +5,19 @@
     <a [routerLink]="link" [appLabel]="linkLabel" suffix="»"></a>
   </section>
 </div>
-<ng-container [ngSwitch]="cardType">
-  <app-slider *ngSwitchCase="types.contact">
-    <app-contact-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-contact-card>
-  </app-slider>
-  <app-slider *ngSwitchCase="types.content">
-    <app-content-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-content-card>
-  </app-slider>
-  <app-slider *ngSwitchCase="types.sponsored">
-    <app-sponsored-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-sponsored-card>
-  </app-slider>
+<ng-container *ngIf="data?.length; else emptyResult;">
+  <ng-container [ngSwitch]="cardType">
+    <app-slider *ngSwitchCase="types.contact">
+      <app-contact-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-contact-card>
+    </app-slider>
+    <app-slider *ngSwitchCase="types.content">
+      <app-content-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-content-card>
+    </app-slider>
+    <app-slider *ngSwitchCase="types.sponsored">
+      <app-sponsored-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-sponsored-card>
+    </app-slider>
+  </ng-container>
 </ng-container>
+<ng-template #emptyResult>
+  <span appLabel="noRecentData"></span>
+</ng-template>

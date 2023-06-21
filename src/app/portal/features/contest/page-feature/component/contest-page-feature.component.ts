@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
 import { CardType } from 'src/app/shared/card/typings/card';
 import { ContestPageFeatureActions } from '../state/contest-page-feature.actions';
 import { selectRecentContests } from '../state/contest-page-feature.selectors';
@@ -14,12 +13,12 @@ export class ContestPageFeatureComponent {
   
   public cardType = CardType.Content;
 
-  public contests = this.store.select(selectRecentContests).pipe(
-    tap(result => !result?.length
-      && this.store.dispatch(ContestPageFeatureActions.getRecentContests())));
+  public contests = this.store.select(selectRecentContests);
 
   constructor(
     private store: Store, 
-  ) { }
+  ) { 
+    this.store.dispatch(ContestPageFeatureActions.getRecentContests());
+  }
 
 }
