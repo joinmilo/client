@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-content>
+    <section>
+      <mat-label>
+        <span>{{star}}</span>
+        <span appLabel="stars"></span>
+      </mat-label>
+      <mat-progress-bar mode="determinate" [value]="value" [bufferValue]="0">
+      </mat-progress-bar>
+      <mat-label>{{ value.toFixed() }}%</mat-label>
+    </section>
+  </mat-card-content>
+</mat-card>

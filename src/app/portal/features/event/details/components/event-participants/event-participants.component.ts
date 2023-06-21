@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, combineLatestWith, takeUntil } from 'rxjs';
-import { selectCurrenUser } from 'src/app/core/state/core.selectors';
+import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { EventEntity, Maybe, UserContextEntity } from 'src/schema/schema';
 import { selectEventDetails } from '../../state/portal-event-details.selectors';
 import { InviteFriendsDialogComponent } from '../invite-friends-dialog/invite-friends-dialog.component';
@@ -31,7 +31,7 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.select(selectEventDetails)
       .pipe(
-        combineLatestWith(this.store.select(selectCurrenUser)),
+        combineLatestWith(this.store.select(selectCurrentUser)),
         takeUntil(this.destroy)
       )
       .subscribe(([event, user]) => {

@@ -3,10 +3,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
-import { selectCurrenUser } from 'src/app/core/state/core.selectors';
+import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { EventEntity, UserContextEntity } from 'src/schema/schema';
 import { selectEventDetails } from '../../state/portal-event-details.selectors';
-
 
 @Component({
   selector: 'app-event-card-detail',
@@ -14,7 +13,6 @@ import { selectEventDetails } from '../../state/portal-event-details.selectors';
   styleUrls: ['./event-card-detail.component.scss'],
 })
 export class EventCardDetailComponent implements OnInit, OnDestroy {
-
 
   public event?: Maybe<EventEntity> | undefined;
 
@@ -29,7 +27,7 @@ export class EventCardDetailComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy))
       .subscribe(event => this.event = event);
 
-    this.store.select(selectCurrenUser)
+    this.store.select(selectCurrentUser)
       .pipe(takeUntil(this.destroy))
       .subscribe(user => this.currentUser = user);
   }

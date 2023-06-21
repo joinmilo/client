@@ -10,4 +10,7 @@ export class PageTitleComponent {
   @Input()
   public title?: string;
 
+  @Input()
+  public titleLabel?: string;
+
 }

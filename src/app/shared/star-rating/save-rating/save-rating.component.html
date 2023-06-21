@@ -1,0 +1,10 @@
+<div>
+  <span class="mat-headline-6" appLabel="submitReview"></span>
+  <section>
+    <button mat-icon-button matTooltipPosition="above" [id]="'star_' + i"
+      (click)="openDialog('300ms', '0ms')" (mouseenter)="onHover(i + 1)" (mouseleave)="onHover(0)"
+      *ngFor="let ratingId of [1, 2, 3, 4, 5]; index as i">
+      <fa-icon  size="1x" [icon]="[showIcon(i), 'star']"></fa-icon>
+    </button>
+  </section>
+</div>

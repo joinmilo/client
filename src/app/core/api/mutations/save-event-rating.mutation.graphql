@@ -1,7 +1,6 @@
 mutation saveEventRating($entity: EventRatingEntityInput!) {
   saveEventRating(entity: $entity) {
     score
-    captchaToken
     event {
       id
     }

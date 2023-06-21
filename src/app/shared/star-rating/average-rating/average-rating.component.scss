@@ -1,0 +1,20 @@
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  button {
+    color: var(--color-evaluation);
+  }
+}
+
+section {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+
+  p {
+    margin-left: auto;
+    font-weight: bold;
+  }
+}
