@@ -1,0 +1,43 @@
+mat-card {
+  width: 100%;
+  box-shadow: none !important;
+
+  .mdc-linear-progress {
+    min-width: 2rem;
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+
+  mat-label {
+    width: 25%;
+    min-width: fit-content;
+  }
+}
+
+section {
+  display: flex;
+
+  mat-label:last-of-type {
+    text-align: end;
+  }
+}
+
+:host ::ng-deep .mat-mdc-progress-bar .mdc-linear-progress__buffer-bar {
+  background-color: transparent;
+}
+
+:host ::ng-deep .mdc-linear-progress__bar-inner {
+  border-top-width: var(--mdc-linear-progress-track-height, 1rem);
+}
+
+:host ::ng-deep .mdc-linear-progress {
+  height: var(--mdc-linear-progress-track-height, 1rem);
+}
+
+:host ::ng-deep .mat-mdc-progress-bar {
+  --mdc-linear-progress-active-indicator-color: var(--color-evaluation);
+}
+
+:host ::ng-deep .mat-mdc-card-content {
+  padding: 0 !important;
+}

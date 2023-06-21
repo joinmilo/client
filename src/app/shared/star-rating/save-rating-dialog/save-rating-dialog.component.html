@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
+    <p class="mat-subtitle-1" appLabel="submitReview"></p>
+    <section>
+      <button *ngFor="let ratingId of [1, 2, 3 , 4, 5]; index as i" mat-icon-button disabled="true">
+        <fa-icon size="1x" [icon]="[showIcon(this.data.rating, i), 'star']"></fa-icon></button>
+    </section>
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="feedbackComment"></mat-label>
+      <textarea [(ngModel)]="content" matInput rows="5" cols="50"></textarea>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button color="accent" mat-flat-button mat-dialog-close appLabel="cancel"></button>
+    <button color="primary" mat-flat-button mat-dialog-close appLabel="send" type="submit"></button>
+  </mat-dialog-actions>
+</form>
