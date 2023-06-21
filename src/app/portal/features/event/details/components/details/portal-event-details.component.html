@@ -19,7 +19,7 @@
     <app-comment *ngIf="latestComment" [comment]="latestComment"></app-comment>
 
     <div>
-      <app-comment-button [eventId]="event?.id"></app-comment-button>
+      <app-save-comment [eventId]="event?.id"></app-save-comment>
       <a [routerLink]="['/comments']" appLabel="allComments" suffix="»"></a>
     </div>
   </section>

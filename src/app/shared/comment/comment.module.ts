@@ -11,16 +11,16 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from "../../core/core.module";
 import { CaptchaModule } from '../captcha/captcha.module';
-import { CommentButtonComponent } from './comment-button/comment-button.component';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 import { commentStateKey } from './comment.constant';
 import { CommentComponent } from './component/comment.component';
 import { CommentEffects } from './state/comment.effects';
 import { commentReducer } from './state/comment.reducer';
+import { SaveCommentComponent } from './write-comment/save-comment.component';
 
 const components = [
   CommentComponent,
-  CommentButtonComponent,
+  SaveCommentComponent,
   CommentDialogComponent
 ];
 
