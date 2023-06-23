@@ -1,16 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MapFeatureActions} from '../../state/map.actions';
 import {selectActiveFilter, selectPois, selectResults} from '../../state/map.selector';
 import {
+  defaultBounds,
   FilterKey,
   iconOptions,
   mapOptions,
   markerClusterOptions,
   popupOptions,
   tileLayerOptions,
-  tileLayerURL,
-  defaultBounds
+  tileLayerURL
 } from '../../constants/map.constants';
 import {
   divIcon,
@@ -25,11 +25,12 @@ import {
   marker,
   tileLayer
 } from 'leaflet';
-import {concat, combineLatest, filter, map, Observable, of, startWith, take, combineAll, first} from 'rxjs';
+import {combineLatest, concat, filter, map, Observable, take} from 'rxjs';
 import {MapComponentsService} from '../../service/map-components.service';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {PointOfInterest} from '../../typings/point-of-interest';
 import {MapRouteService} from '../../service/map-route-service';
+import {FilterSortPaginateInput} from 'src/schema/schema';
 
 
 @Component({
@@ -37,7 +38,7 @@ import {MapRouteService} from '../../service/map-route-service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapPageComponent implements OnInit, OnDestroy {
+export class MapPageComponent implements OnDestroy {
 
   public FilterKey: typeof FilterKey = FilterKey;
 
@@ -51,7 +52,6 @@ export class MapPageComponent implements OnInit, OnDestroy {
   public isLandscape: Observable<boolean>;
   public isDesktop: Observable<boolean>;
 
-  public showFilter = false;
   public showMenuInDesktop = true;
 
   private map?: Map;
@@ -88,23 +88,9 @@ export class MapPageComponent implements OnInit, OnDestroy {
 
     this.mapBounds = this.setupBoundsSource();
 
-    this.mapRouteService.filterQueryParams(FilterKey.events).pipe(
-      take(1),
-    ).subscribe(([key, choices]) => {
-      this.store.dispatch(MapFeatureActions.setActiveFilter({key}))
-      switch(key) {
-        case FilterKey.deals:
-          return this.store.dispatch(MapFeatureActions.setDealFilter(choices || {}));
-        case FilterKey.events:
-          return this.store.dispatch(MapFeatureActions.setEventFilter(choices || {}));
-        case FilterKey.organisations:
-          return this.store.dispatch(MapFeatureActions.setOrganisationFilter(choices || {}));
-      }
-    });
-  }
-
-  ngOnInit() {
-    this.store.dispatch(MapFeatureActions.getFilterOptions());
+    this.mapRouteService.filterKeyQueryParam()
+      .pipe(take(1))
+      .subscribe((key) => this.store.dispatch(MapFeatureActions.setActiveFilter({key})));
   }
 
   ngOnDestroy() {
@@ -112,7 +98,12 @@ export class MapPageComponent implements OnInit, OnDestroy {
   }
 
   setFilter(key: FilterKey) {
+    this.mapRouteService.changeFilterKeyQueryParams(key);
     this.store.dispatch(MapFeatureActions.setActiveFilter({key}));
+  }
+
+  updateParams(params: FilterSortPaginateInput) {
+    this.store.dispatch(MapFeatureActions.setFilterParams({params}));
   }
 
   poiToMarker(poi: PointOfInterest): Marker {

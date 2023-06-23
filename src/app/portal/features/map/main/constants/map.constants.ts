@@ -1,5 +1,5 @@
 import {
-  DivIconOptions, LatLngBoundsExpression, LatLngBoundsLiteral,
+  DivIconOptions, LatLngBoundsLiteral,
   LatLngExpression,
   MapOptions,
   MarkerClusterGroupOptions,
@@ -15,25 +15,9 @@ export enum FilterKey {
   deals = 3
 }
 
-export enum DealOfferStatus {
-  // NOTE: Values used in URLs, changes might break links
-  both = 1,
-  offer = 2,
-  request = 3,
-}
-
-export enum MapParam {
+export enum MapQueryParams {
   // NOTE: Values used in URLs, changes might break links
   filter = "filter",
-  rating = "r",
-  suburb = "s",
-  targetGroup = "g",
-  category = "c",
-  rangeStart = "rs",
-  rangeEnd = "re",
-  eventfree = "ef",
-  eventPast = "ep",
-  offerStatus = "os",
   southWestLat = "sw1",
   southWestLng = "sw2",
   northEastLat = "ne1",

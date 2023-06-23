@@ -1,33 +1,24 @@
 <div class="{{(isLandscape | async) ? 'landscape' : ''}} {{(isDesktop | async) ? 'desktop' : ''}} {{showMenuInDesktop ? '' : 'hide-menu' }}">
   <div class="map-menu">
-    <div class="map-menu-head">
-      <div>
-        <div *ngIf="(results | async) as results">
-          {{ results.count }}
-          <span *ngIf="results.count !== 1" [appLabel]="results.labelPlural"></span>
-          <span *ngIf="results.count === 1" [appLabel]="results.label"></span>
-        </div>
-      </div>
-
-      <button mat-raised-button (click)="showFilter = !showFilter">
-        <fa-icon [icon]="['fas', 'filter']"></fa-icon>
-        <span appLabel="Filter"></span>
-      </button>
-    </div>
-
-    <div class="map-filter" *ngIf="showFilter && (activeFilter | async) as filter">
+    <div *ngIf="activeFilter | async as filter">
       <div *ngIf="filter === FilterKey.events">
-        <app-portal-map-event-filter></app-portal-map-event-filter>
+        <app-event-filter (paramsUpdated)="updateParams($event)">
+          <app-map-result-count></app-map-result-count>
+        </app-event-filter>
       </div>
       <div *ngIf="filter === FilterKey.organisations">
-        <app-portal-map-organisation-filter></app-portal-map-organisation-filter>
+        <app-organisation-filter (paramsUpdated)="updateParams($event)">
+          <app-map-result-count></app-map-result-count>
+        </app-organisation-filter>
       </div>
       <div *ngIf="filter === FilterKey.deals">
-        <app-portal-map-deal-filter></app-portal-map-deal-filter>
+        <app-deal-filter  (paramsUpdated)="updateParams($event)">
+          <app-map-result-count></app-map-result-count>
+        </app-deal-filter>
       </div>
     </div>
 
-    <ng-template *ngIf="isDesktop | async; then resultList"></ng-template>
+    <div *ngIf="isDesktop | async"><ng-container *ngTemplateOutlet="resultList"></ng-container></div>
   </div>
 
   <div class="map-container">
@@ -55,7 +46,7 @@
     </mat-button-toggle-group>
   </div>
 
-  <ng-template *ngIf="(isDesktop | async) === false; then resultList"></ng-template>
+  <div *ngIf="(isDesktop | async) === false"><ng-container *ngTemplateOutlet="resultList"></ng-container></div>
 </div>
 
 <ng-template #resultList>

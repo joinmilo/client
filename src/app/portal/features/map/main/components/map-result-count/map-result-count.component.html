@@ -1,0 +1,5 @@
+<div *ngIf="(results | async) as results">
+  {{ results.count }}
+  <span *ngIf="results.count !== 1" [appLabel]="results.labelPlural"></span>
+  <span *ngIf="results.count === 1" [appLabel]="results.label"></span>
+</div>
