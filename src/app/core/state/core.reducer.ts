@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { LanguageEntity, Maybe, ThemeEntity, UserContextEntity } from 'src/schema/schema';
+import { ConfigurationEntity, LanguageEntity, Maybe, ThemeEntity, UserContextEntity } from 'src/schema/schema';
 import { Translatable } from '../typings/translatable';
-import { ConfigurationEntity } from './../../../schema/schema';
 import { CoreActions } from './core.actions';
 
 export interface CoreState {

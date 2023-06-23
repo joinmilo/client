@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { Maybe, MediaEntity, PageEntity } from '../../../../../schema/schema';
+import { MediaEntity, PageEntity } from 'src/schema/schema';
 import { PortalMainActions } from '../../state/portal-main.actions';
 import { selectCurrentPage } from '../../state/portal-main.selectors';
 

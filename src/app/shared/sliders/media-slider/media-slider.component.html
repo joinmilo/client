@@ -1,0 +1,12 @@
+<app-slider-header
+  [link]="link"
+  [linkLabel]="linkLabel"
+  [title]="title"
+  [titleLabel]="titleLabel">
+</app-slider-header>
+
+<app-slider>
+  <app-media *ngFor="let file of media"
+    [media]="file">
+  </app-media>
+</app-slider>

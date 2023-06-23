@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { displayQueryParam } from 'src/app/core/constants/core.constants';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { RadioInput } from 'src/app/shared/form/typings/radio-input';
+import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 import { PortalEventOverviewActions } from '../state/portal-event-overview.actions';
 import { selectOverviewData, selectSponsoredEvent } from '../state/portal-event-overview.selectors';

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Maybe } from 'src/schema/schema';
 import { Comment } from '../typings/comment';
 
 @Component({
@@ -9,5 +10,5 @@ import { Comment } from '../typings/comment';
 export class CommentComponent {
 
   @Input()
-  public comment?: Comment;
+  public comment?: Maybe<Comment>;
 }

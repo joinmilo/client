@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from "../../core/core.module";
 import { CaptchaModule } from '../captcha/captcha.module';
+import { AvatarComponent } from '../image/avatar/avatar.component';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
 import { commentStateKey } from './comment.constant';
 import { CommentComponent } from './component/comment.component';
@@ -32,6 +33,7 @@ const framework = [
 ];
 
 const modules = [
+  AvatarComponent,
   CoreModule,
 ];
 

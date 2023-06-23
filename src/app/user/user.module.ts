@@ -9,8 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormModule } from 'src/app/shared/form/form.module';
 import { CaptchaModule } from '../shared/captcha/captcha.module';
+import { PrivacyPolicyFormComponent } from '../shared/form/privacy-policy/privacy-policy-form.component';
 import { LoadingComponent } from '../shared/loading/loading.component';
 import { TitleModule } from '../shared/title/title.module';
 import { PortalFooterModule } from './../portal/shared/footer/portal-footer.module';
@@ -56,9 +56,9 @@ const materials = [
 const modules = [
   CaptchaModule,
   CoreModule,
-  FormModule,
   PasswordModule,
   PortalFooterModule,
+  PrivacyPolicyFormComponent,
   TitleModule,
   UserPortalRoutingModule,
 

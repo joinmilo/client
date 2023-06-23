@@ -1,5 +1,5 @@
 
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -7,14 +7,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from '../title/title.module';
-import { CardSliderComponent } from './components/card-slider/card-slider.component';
-import { ContactCardComponent } from './components/contact-card/contact-card.component';
-import { ContentCardComponent } from './components/content-card/content-card.component';
-import { SponsoredCardComponent } from './components/sponsored-card/sponsored-card.component';
+import { ContactCardComponent } from './components/contact/contact-card.component';
+import { ContentCardComponent } from './components/content/content-card.component';
+import { SponsoredCardComponent } from './components/sponsored/sponsored-card.component';
 
 const components = [
-  CardSliderComponent,
   ContactCardComponent,
   ContentCardComponent,
   SponsoredCardComponent,
@@ -33,13 +30,10 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TitleModule,
-  
 ];
 
 const libs = [
   FontAwesomeModule,
-  NgOptimizedImage,
 ]
 
 @NgModule({

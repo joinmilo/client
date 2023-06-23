@@ -1,0 +1,11 @@
+div {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  section {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+  }
+}

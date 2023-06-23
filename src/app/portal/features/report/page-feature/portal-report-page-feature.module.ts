@@ -11,7 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CaptchaModule } from 'src/app/shared/captcha/captcha.module';
-import { FormModule } from 'src/app/shared/form/form.module';
+import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { ReportPageFeatureComponent } from './component/report-page-feature.component';
 import { reportPageFeatureStateKey } from './constants/report-page-feature.constant';
 import { ReportPageFeatureEffects } from './state/report-page-feature.effects';
@@ -37,7 +37,7 @@ const materials = [
 const modules = [
   CoreModule,
   CaptchaModule,
-  FormModule,
+  RadioButtonFormModule,
 ];
 
 const libs = [

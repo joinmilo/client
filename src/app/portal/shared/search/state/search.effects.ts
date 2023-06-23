@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { filter, map, switchMap, tap } from 'rxjs';
-import { ArticleEntity, ConjunctionOperator, ContestEntity, DealEntity, EventEntity, GetArticlesGQL, GetEventsGQL, OrganisationEntity, QueryOperator, SearchDto, SurveyEntity, UserContextEntity } from 'src/schema/schema';
-import { GetContestsGQL, GetDealsGQL, GetOrganisationsGQL, GetSurveysGQL, GetUserContextsGQL, SearchGQL } from '../../../../../schema/schema';
+import { ArticleEntity, ConjunctionOperator, ContestEntity, DealEntity, EventEntity, GetArticlesGQL, GetContestsGQL, GetDealsGQL, GetEventsGQL, GetOrganisationsGQL, GetSurveysGQL, GetUserContextsGQL, OrganisationEntity, QueryOperator, SearchDto, SearchGQL, SurveyEntity, UserContextEntity } from 'src/schema/schema';
 import { SearchActions } from './search.actions';
 import { selectResultsPageActive, selectSearchQuery } from './search.selectors';
 

@@ -11,7 +11,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { AvatarComponent } from './components/avatar/avatar.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { AddressPieceComponent } from './components/pieces/adress/address-piece.component';
@@ -21,7 +20,6 @@ import { FavoritePieceComponent } from './components/pieces/favorite/favorite-pi
 import { MailPieceComponent } from './components/pieces/mail/mail-piece.component';
 import { PhonePieceComponent } from './components/pieces/phone/phone-piece.component';
 import { SharePieceComponent } from './components/pieces/share/share-piece.component';
-import { SliderComponent } from './components/slider/slider.component';
 import { coreStateKey } from './constants/core.constants';
 import { HtmlDirective } from './directives/html.directive';
 import { LabelDirective } from './directives/label.directive';
@@ -35,15 +33,12 @@ import {StripTagsPipe} from './pipes/strip-tags.pipe';
 
 const components = [
   AddressPieceComponent,
-  AvatarComponent,
   CategoryPieceComponent,
   DatePieceComponent,
   FavoritePieceComponent,
   FeedbackComponent,
   LogoComponent,
   SharePieceComponent,
-  SliderComponent,
-  SliderComponent,
   MailPieceComponent,
   PhonePieceComponent,
 ];

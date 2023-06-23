@@ -3,7 +3,7 @@ import { Maybe, MediaEntity } from 'src/schema/schema';
 import { mediaApi } from '../constants/core.constants';
 
 @Directive({
-  selector: 'img[appMedia]'
+  selector: '[appMedia]'
 })
 export class MediaDirective implements OnChanges {
 

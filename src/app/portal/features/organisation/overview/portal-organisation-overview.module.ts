@@ -10,7 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation-filter/organisation-filter.module';
-import { FormModule } from 'src/app/shared/form/form.module';
+import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
+import { CardSliderComponent } from 'src/app/shared/sliders/card-slider/card-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalOrganisationOverviewCardComponent } from './components/card/portal-organisation-overview-card.component';
@@ -29,7 +30,6 @@ const components = [
   PortalOrganisationOverviewEmptyComponent,
   PortalOrganisationOverviewTableComponent,
   PortalOrganisationOverviewSuburbComponent,
-  // PortalOrganisationOverviewTableComponent,
 ];
 
 const framework = [
@@ -46,9 +46,10 @@ const materials = [
 const modules = [
   CoreModule,
   CardModule,
+  CardSliderComponent,
   OrganisationFilterModule,
   PortalOrganisationOverviewRoutingModule,
-  FormModule,
+  RadioButtonFormModule,
   TableModule,
   TitleModule,
 ];

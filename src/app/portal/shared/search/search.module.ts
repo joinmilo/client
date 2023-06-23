@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { CardModule } from 'src/app/shared/card/card.module';
+import { CardSliderComponent } from 'src/app/shared/sliders/card-slider/card-slider.component';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalSearchButtonComponent } from './components/button/search-button.component';
 import { SearchInputComponent } from './components/input/search-input.component';
@@ -45,7 +45,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-  CardModule,
+  CardSliderComponent,
   PortalSearchRoutingModule,
   TitleModule,
 ];

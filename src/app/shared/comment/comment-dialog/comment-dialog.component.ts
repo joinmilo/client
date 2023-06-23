@@ -31,7 +31,6 @@ export class CommentDialogComponent {
   onSubmit() {
     switch (true) {
       case !!this.data.eventId:
-        console.log(this.data.eventId)
         this.Store.dispatch(CommentActions.saveEventComment({
           content: this.form.value.content,
           event: { id: this.data.eventId },

@@ -6,7 +6,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
-import { FormModule } from 'src/app/shared/form/form.module';
+import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
+import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
 import { SocialShareModule } from 'src/app/shared/social-share/social-share.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
@@ -29,9 +30,10 @@ const materials = [
 ];
 
 const modules = [
+  AvatarComponent,
   CoreModule,
   CardModule,
-  FormModule,
+  RadioButtonFormModule,
   PortalAuthorDetailsRoutingModule,
   SocialShareModule,
   TableModule,

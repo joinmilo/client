@@ -1,6 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { ArticleEntity, EventEntity, Maybe, OrganisationEntity } from 'src/schema/schema';
-import { ContestEntity, DealEntity, SearchDto, SurveyEntity, UserContextEntity } from '../../../../../schema/schema';
+import { ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, OrganisationEntity, SearchDto, SurveyEntity, UserContextEntity } from 'src/schema/schema';
 import { SearchActions } from './search.actions';
 
 export interface SearchState {
