@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {DealOfferStatus, FilterKey, MapParam} from '../constants/map.constants';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {MapState} from '../state/map.reducer';
+import {FilterKey, MapQueryParams} from '../constants/map.constants';
+import {distinctUntilChanged, Observable} from 'rxjs';
+import {filter, map} from 'rxjs/operators';
 import {latLngBounds, LatLngBounds} from 'leaflet';
-
-type FilterChoices = MapState['dealFilter']
-  | MapState['eventFilter']
-  | MapState['organisationFilter'];
+import {
+  DealFilterQueryDefinition,
+  EventFilterQueryDefinition, FilterQueryDefinition,
+  OrganisationFilterQueryDefinition
+} from 'src/app/core/typings/filter-param';
 
 
 @Injectable({
@@ -21,25 +21,12 @@ export class MapRouteService {
     private router: Router,
   ) {}
 
-  public readonly nulledFilterParams = {
-    [MapParam.filter]: null,
-    [MapParam.rating]: null,
-    [MapParam.suburb]: null,
-    [MapParam.targetGroup]: null,
-    [MapParam.category]: null,
-    [MapParam.rangeStart]: null,
-    [MapParam.rangeEnd]: null,
-    [MapParam.eventfree]: null,
-    [MapParam.eventPast]: null,
-    [MapParam.offerStatus]: null,
-  }
-
   public mapBoundsQueryParams(): Observable<LatLngBounds | null> {
     return this.route.queryParams.pipe(
       map((params) => {
           const nums = [
-            MapParam.southWestLat, MapParam.southWestLng,
-            MapParam.northEastLat, MapParam.northEastLng
+            MapQueryParams.southWestLat, MapQueryParams.southWestLng,
+            MapQueryParams.northEastLat, MapQueryParams.northEastLng
           ].map((key) => parseFloat(params[key]));
 
           if (nums.every((f) => !isNaN(f))) {
@@ -48,94 +35,44 @@ export class MapRouteService {
             return null;
           }
         }
-      )
-    );
-  }
-
-  public filterQueryParams(defaultKey: FilterKey): Observable<[FilterKey, FilterChoices]> {
-    return this.route.queryParams.pipe(
-      map((params) => {
-        const key = Number(params[MapParam.filter])
-        switch(key) {
-          case FilterKey.deals:
-            return [key, {
-              categoryId: params[MapParam.category],
-              suburbId: params[MapParam.suburb],
-              offerStatus: Object.values(DealOfferStatus).includes(Number(params[MapParam.offerStatus]))
-                ? Number(params[MapParam.offerStatus])
-                : undefined,
-            }];
-          case FilterKey.events:
-            return [key, {
-              categoryId: params[MapParam.category],
-              suburbId: params[MapParam.suburb],
-              targetGroupId: params[MapParam.targetGroup],
-              showPastEvents: params[MapParam.eventPast] === 'true',
-              showOnlyAdmissionFree: params[MapParam.eventfree] === 'true',
-              dateRange: {
-                start: params[MapParam.rangeStart],
-                end: params[MapParam.rangeEnd],
-              }
-            }];
-          case FilterKey.organisations:
-            return [key, {
-              rating: params[MapParam.rating],
-              suburbId: params[MapParam.suburb]
-            }]
-          default:
-            return [defaultKey, {}];
-        }
-      })
+      ),
+      distinctUntilChanged()
     );
   }
 
   public setMapBoundsParams(bounds?: LatLngBounds) {
     this.updateParams({
-      [MapParam.southWestLat]: bounds?.getSouthWest()?.lat?.toFixed(7),
-      [MapParam.southWestLng]: bounds?.getSouthWest()?.lng?.toFixed(7),
-      [MapParam.northEastLat]: bounds?.getNorthEast()?.lat?.toFixed(7),
-      [MapParam.northEastLng]: bounds?.getNorthEast()?.lng?.toFixed(7),
+      [MapQueryParams.southWestLat]: bounds?.getSouthWest()?.lat?.toFixed(7),
+      [MapQueryParams.southWestLng]: bounds?.getSouthWest()?.lng?.toFixed(7),
+      [MapQueryParams.northEastLat]: bounds?.getNorthEast()?.lat?.toFixed(7),
+      [MapQueryParams.northEastLng]: bounds?.getNorthEast()?.lng?.toFixed(7),
     });
   }
 
-  public setDealFilterParams(params: MapState['dealFilter']) {
-    this.updateFilterParams({
-      [MapParam.filter]: FilterKey.deals,
-      [MapParam.category]: params?.categoryId,
-      [MapParam.suburb]: params?.suburbId,
-      [MapParam.offerStatus]: params?.offerStatus
-    });
-  }
-
-  public setEventFilterParams(params: MapState['eventFilter']) {
-    this.updateFilterParams({
-      [MapParam.filter]: FilterKey.events,
-      [MapParam.category]: params?.categoryId,
-      [MapParam.suburb]: params?.suburbId,
-      [MapParam.targetGroup]: params?.targetGroupId,
-      [MapParam.eventPast]: params?.showPastEvents,
-      [MapParam.eventfree]: params?.showOnlyAdmissionFree,
-      [MapParam.rangeStart]: params?.dateRange?.start,
-      [MapParam.rangeEnd]: params?.dateRange?.end
-    });
-  }
-
-  public setOrganisationFilterParams(params: MapState['organisationFilter']) {
-    this.updateFilterParams({
-      [MapParam.filter]: FilterKey.organisations,
-      [MapParam.rating]: params?.rating,
-      [MapParam.suburb]: params?.suburbId
-    });
-  }
-
-  private updateFilterParams(params: Params) {
-    Object.keys(params)  // don't put '' or undefined in the URL
-      .filter((k) => !params[k] && params[k] !== false)
-      .forEach((k) => params[k] = null);
+  public changeFilterKeyQueryParams(filter: FilterKey) {
     this.updateParams({
-      ...this.nulledFilterParams,  // remove unused params from URL
-      ...params
-    });
+      ...this.clearFilterParams(),
+      [MapQueryParams.filter]: filter}
+    )
+  }
+
+  public filterKeyQueryParam(): Observable<FilterKey> {
+    return this.route.queryParams.pipe(
+      map((params) => parseInt(params[MapQueryParams.filter])),
+      filter((key) => !isNaN(key)),
+      distinctUntilChanged()
+    );
+  }
+
+  private clearFilterParams(): Record<string, null> {
+    const params: Record<string, null> = {};
+    [
+      ...Object.values(EventFilterQueryDefinition),
+      ...Object.values(DealFilterQueryDefinition),
+      ...Object.values(OrganisationFilterQueryDefinition),
+      ...Object.values(FilterQueryDefinition)
+    ].forEach((key) => params[key] = null);
+    return params;
   }
 
   private updateParams(params: Params) {

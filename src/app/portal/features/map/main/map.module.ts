@@ -12,8 +12,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import {MapEventFilterComponent} from './components/filters/event-filter.component';
-import {MapOrganisationsFilterComponent} from './components/filters/organisation-filter.component';
 import {CardModule} from 'src/app/shared/card/card.module';
 import {LeafletModule} from '@asymmetrik/ngx-leaflet';
 import {MapMarkerComponent} from './components/map-marker/map-marker.component';
@@ -26,23 +24,18 @@ import {MapAttributionComponent} from './components/map-attribution/map-attribut
 import {MapPopupComponent} from './components/map-popup/map-popup.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
-import {MapDealFilterComponent} from './components/filters/deal-filter.component';
-import {
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS,
-  MatMomentDateModule,
-  MomentDateAdapter
-} from '@angular/material-moment-adapter';
+import {DealFilterModule} from 'src/app/shared/filter/deal-filter/deal-filter.module';
+import {EventFilterModule} from 'src/app/shared/filter/event-filter/event-filter.module';
+import {OrganisationFilterModule} from 'src/app/shared/filter/organisation-filter/organisation-filter.module';
+import { MapResultCountComponent } from './components/map-result-count/map-result-count.component';
 
 
 const components = [
   MapAttributionComponent,
   MapCardListComponent,
-  MapDealFilterComponent,
-  MapEventFilterComponent,
-  MapOrganisationsFilterComponent,
   MapPopupComponent,
   MapMarkerComponent,
+  MapResultCountComponent
 ]
 
 const pages = [
@@ -63,13 +56,15 @@ const materials = [
   MatDatepickerModule,
   MatIconModule,
   MatInputModule,
-  MatMomentDateModule,
   MatSelectModule,
 ];
 
 const modules = [
   CardModule,
   CoreModule,
+  DealFilterModule,
+  EventFilterModule,
+  OrganisationFilterModule,
   MapPortalRoutingModule,
 ]
 
@@ -82,7 +77,7 @@ const libs = [
 @NgModule({
   declarations: [
     ...components,
-    ...pages
+    ...pages,
   ],
   imports: [
     ...framework,
@@ -93,13 +88,5 @@ const libs = [
   exports: [
     ...components
   ],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-    { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-  ]
 })
 export class MapPortalModule {}

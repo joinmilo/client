@@ -31,20 +31,6 @@
 
     border-radius: 0 0 var(--map-gap) var(--map-gap);
     background-color: var(--map-bg);
-
-    .map-menu-head {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: baseline;
-      font-weight: bold;
-    }
-
-    .map-filter {
-      margin-top: var(--map-gap);
-      box-shadow: var(--map-box-shadow);
-      border-radius: var(--map-gap);
-    }
   }
 
   .map-container {
