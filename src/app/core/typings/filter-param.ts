@@ -27,6 +27,10 @@ export enum OrganisationFilterQueryDefinition {
   activeEvents = 'active-events',
 }
 
+export enum SurveyFilterQueryDefinition {
+  past = 'past',
+}
+
 export type ArticleFilterQueryParams = {
   [ArticleFilterQueryDefinition.articleCategories]?: Maybe<string[]>,
   [FilterQueryDefinition.endDate]?: Maybe<string>,
@@ -53,3 +57,8 @@ export type OrganisationFilterQueryParams = {
   [OrganisationFilterQueryDefinition.activeEvents]?: Maybe<boolean | string>,
   [FilterQueryDefinition.suburbs]?: Maybe<string[]>,
 };
+
+export type SurveyFilterQueryParams = {
+  [SurveyFilterQueryDefinition.past]?: Maybe<boolean | string>,
+};
+

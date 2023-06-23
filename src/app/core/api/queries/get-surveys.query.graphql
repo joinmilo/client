@@ -3,5 +3,6 @@ query getSurveys($params: FilterSortPaginateInput) {
     result {
       ...Survey
     }
+    total
   }
 }

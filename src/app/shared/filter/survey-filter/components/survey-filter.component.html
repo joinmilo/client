@@ -1,0 +1,12 @@
+<app-filter-area [filtersActive]="filtersActive | async" (filtersCleared)="clearFilters()">
+
+  <!-- The parent content, e.g. display filters, etc. -->
+  <ng-content></ng-content>
+
+  <!-- The filters to use in this filter area -->
+  <ng-container filters>
+    <app-survey-filter-past>
+    </app-survey-filter-past>
+  </ng-container>
+
+</app-filter-area>

@@ -1,5 +1,6 @@
 fragment Survey on SurveyEntity {
   id
+  name
   uploads {
     title
     card
@@ -8,10 +9,8 @@ fragment Survey on SurveyEntity {
     }
   }
   dueDate
-  slug
   translatables {
     id
-    name
     description
     language {
       id

@@ -1,14 +1,29 @@
 <div class="main">
   <app-page-title title="surveys"></app-page-title>
-  <section *ngIf="(surveys | async) as surveys">
-    <app-content-card *ngFor="let survey of surveys"
-      [entity]="'SurveyEntity'"
-      [data]="survey">
-    </app-content-card>
-  </section>
 
-  <mat-card>
-    <mat-paginator [length]="(dataS | async)?.total" [pageSize]="10" 
-    [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-  </mat-card>
+  <app-sponsored-card *ngIf="(sponsored | async)?.id" 
+    entity="SurveyEntity" 
+    [data]="sponsored | async">
+  </app-sponsored-card>
+  
+  <app-survey-filter 
+    (paramsUpdated)="updateParams($event)"
+    (rawParamsUpdated)="updateRawParams($event)">
+  </app-survey-filter>
+
+  <ng-container *ngIf="(surveys | async)?.total; else emptyResult">
+    <app-table-card 
+      entity="SurveyEntity" 
+      [data]="surveys"
+      [cardType]="cardType" 
+      [sortOptions]="sortOptions"
+      (sortPaginate)="updateParams($event)">
+    </app-table-card>
+  </ng-container>
+  
+  <ng-template #emptyResult>
+    <app-portal-survey-overview-empty>
+    </app-portal-survey-overview-empty>
+  </ng-template>
+
 </div>

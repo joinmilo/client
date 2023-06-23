@@ -1,0 +1,5 @@
+query getSurvey($entity: SurveyEntityInput) {
+  getSurvey(entity: $entity) {
+    ...Survey
+  }
+}
