@@ -14,19 +14,21 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { CommentModule } from 'src/app/shared/comment/comment.module';
-import { FormModule } from 'src/app/shared/form/form.module';
+import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
+import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
+import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
+import { RatingModule } from 'src/app/shared/rating/rating.module';
+import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
 import { SocialShareModule } from 'src/app/shared/social-share/social-share.module';
-import { RatingModule } from 'src/app/shared/star-rating/rating.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventCommentsComponent } from './components/comments/portal-event-comments.component';
-import { PortalEventDetailsComponent } from './components/details/portal-event-details.component';
-import { EventCardDetailComponent } from './components/event-card-detail/event-card-detail.component';
-import { EventMediaComponent } from './components/event-media/event-media.component';
-import { EventOrganisationComponent } from './components/event-organisation/event-organisation.component';
-import { EventParticipantsComponent } from './components/event-participants/event-participants.component';
 import { InviteFriendsDialogComponent } from './components/invite-friends-dialog/invite-friends-dialog.component';
+import { EventDetailsOrganisationComponent } from './components/organisation/event-details-organisation.component';
+import { EventParticipantsComponent } from './components/participants/event-participants.component';
+import { PortalEventDetailsComponent } from './components/portal-event-details.component';
 import { ShowAllFriendsDialogComponent } from './components/show-all-friends-dialog/show-all-friends-dialog.component';
+import { EventDetailsSummrayComponent } from './components/summary/event-details-summary.component';
 import { portalEventDetailsStateKey } from './constants/event-details.constant';
 import { PortalEventDetailsRoutingModule } from './portal-event-details-routing.module';
 import { PortalEventDetailsEffects } from './state/portal-event-details.effects';
@@ -35,17 +37,17 @@ import { portalEventDetailsReducer } from './state/portal-event-details.reducer'
 const components = [
   PortalEventDetailsComponent,
   PortalEventCommentsComponent,
-  EventCardDetailComponent,
+  EventDetailsSummrayComponent,
   EventParticipantsComponent,
   ShowAllFriendsDialogComponent,
-  EventOrganisationComponent,
+  EventDetailsOrganisationComponent,
   InviteFriendsDialogComponent,
-  EventMediaComponent,
-
 ];
 
 const framework = [
   CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
 ];
 
 const materials = [
@@ -55,21 +57,22 @@ const materials = [
   MatDialogModule,
   MatCheckboxModule,
   MatFormFieldModule,
-  FormsModule,
   MatInputModule,
-  ReactiveFormsModule,
 ];
 
 const modules = [
+  AvatarComponent,
   CoreModule,
   CommentModule,
   CardModule,
+  MediaSliderComponent,
   PortalEventDetailsRoutingModule,
-  FormModule,
+  RadioButtonFormModule,
+  RatingModule,
+  SocialShareModule,
   TableModule,
   TitleModule,
-  SocialShareModule,
-  RatingModule
+  TitleImageComponent,
 ];
 
 const libs = [

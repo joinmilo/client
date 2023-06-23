@@ -50,7 +50,7 @@ const routes: Routes = [
   },
   {
     path: 'notifications',
-    loadChildren: () => import('../shared/notification/notification.module')
+    loadChildren: () => import('../shared/pages/notification/notification.module')
       .then((imported) => imported.NotificationModule),
   },
   {
@@ -75,7 +75,7 @@ const routes: Routes = [
   },
   {
     path: '404',
-    loadChildren: () => import('../shared/not-found/not-found.module')
+    loadChildren: () => import('../shared/pages/not-found/not-found.module')
       .then((imported) => imported.NotFoundModule),
   },
   {

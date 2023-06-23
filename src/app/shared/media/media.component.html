@@ -1,0 +1,23 @@
+<ng-container [ngSwitch]="mimeType">
+  
+  <audio *ngSwitchCase="'audio'" controls>
+    <source [appMedia]="media" [type]="media?.mimeType">
+  </audio>
+  
+  <img *ngSwitchCase="'image'"
+    [appMedia]="media"
+    (click)="open()"/>
+  
+  <img *ngSwitchCase="'pdf'"
+    src="/assets/pdf.svg"
+    (click)="download()"/>
+
+  <video *ngSwitchCase="'video'" width="400" controls>
+    <source [appMedia]="media" [type]="media?.mimeType">
+  </video>
+
+  <fa-icon *ngSwitchCase="'word'"
+    [icon]="['far', 'file-word']">
+  </fa-icon>
+
+</ng-container>

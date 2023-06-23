@@ -1,0 +1,53 @@
+<div class="details">
+  <app-title-image [image]="titleImage"></app-title-image>
+  <section>
+    <app-social-share-button>
+    </app-social-share-button>
+
+    <app-favorite-piece>
+    </app-favorite-piece>
+
+    <app-category-piece [category]="event?.category">
+    </app-category-piece>
+  </section>
+  <section>
+    <h2 class="mat-headline-4">
+      {{event | translatable: 'name' | async}}
+    </h2>
+
+    <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
+
+    <app-event-details-summary>
+    </app-event-details-summary>
+
+    <p [innerHtml]="event | translatable : 'content' | async"></p>
+
+    <app-event-details-organisation *ngIf="event?.organisation">
+    </app-event-details-organisation>
+
+    <app-event-participants>
+    </app-event-participants>
+
+    <app-media-slider *ngIf="media && media.length > 0"
+      [media]="media"
+      [link]="['./media']">
+    </app-media-slider>
+
+    <app-save-rating [eventId]="this.event?.id">
+    </app-save-rating>
+
+    <app-rating-average>
+    </app-rating-average>
+
+    <app-star-evaluation>
+    </app-star-evaluation>
+
+    <app-comment *ngIf="event?.lastComment?.id" [comment]="event?.lastComment">
+    </app-comment>
+
+    <div>
+      <app-save-comment [eventId]="event?.id"></app-save-comment>
+      <a [routerLink]="['./comments']" appLabel="allComments" suffix="»"></a>
+    </div>
+  </section>
+</div>

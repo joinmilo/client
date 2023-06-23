@@ -1,5 +1,5 @@
 <div class="main">
-  <app-page-title title="organisations"></app-page-title>
+  <app-page-title titleLabel="organisations"></app-page-title>
   <app-sponsored-card *ngIf="(sponsored | async)?.id"
     entity="OrganisationEntity"
     [data]="sponsored | async">

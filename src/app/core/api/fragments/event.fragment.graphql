@@ -1,21 +1,33 @@
 fragment Event on EventEntity {
   id
   entryFee
+  slug
+  
+  lastComment {
+    ...EventComment
+  }
+
   address {
     ...Address
+  }
+  attendees {
+    approved
+    userContext {
+      ...UserContext
+    }
   }
   contact {
     ...Contact
   }
-  uploads {
-    title
-    card
-    media{
-      ...Media
-    }
-  }
   category {
     ...EventCategory
+  }
+  organisation {
+    ...Organisation
+  }
+  ratings {
+    id
+    score
   }
   schedule(begin: $scheduleBegin, end: $scheduleEnd) {
     ...Schedule
@@ -23,14 +35,7 @@ fragment Event on EventEntity {
   organisation {
     ...Organisation
   }
-  slug
 
-  attendees {
-    approved
-    userContext{
-    ...UserContext
-    }
-  }
   translatables {
     id
     name
@@ -42,11 +47,11 @@ fragment Event on EventEntity {
       name
     }
   }
-  organisation{
-    ...Organisation
-  }
-
-  ratings {
-    score
+  uploads {
+    title
+    card
+    media {
+      ...Media
+    }
   }
 }

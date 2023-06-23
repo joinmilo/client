@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { dealsFeatureKey, displayQueryParam } from 'src/app/core/constants/core.constants';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { RadioInput } from 'src/app/shared/form/typings/radio-input';
+import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 import { PortalDealOverviewActions } from '../state/portal-deal-overview.actions';
 import { selectOverviewData, selectSponsoredDeal } from '../state/portal-deal-overview.selectors';

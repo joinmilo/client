@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { CardModule } from 'src/app/shared/card/card.module';
+import { CardSliderComponent } from 'src/app/shared/sliders/card-slider/card-slider.component';
 import { AuthorPageFeatureComponent } from './component/author-page-feature.component';
 import { authorPageFeatureStateKey } from './constants/author-page-feature.constants';
 import { AuthorPageFeatureEffects } from './state/author-page-feature.effects';
@@ -19,7 +19,7 @@ const framework = [
 
 const modules = [
   CoreModule,
-  CardModule,
+  CardSliderComponent,
 ];
 
 const libs = [

@@ -9,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormModule } from 'src/app/shared/form/form.module';
 import { PasswordConfirmComponent } from './components/confirm/password-confirm.component';
 import { PasswordFormComponent } from './components/field/password-field.component';
 import { PasswordStrengthComponent } from './components/strength/password-strength.component';
@@ -41,7 +40,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  FormModule,
 ];
 
 const libs = [

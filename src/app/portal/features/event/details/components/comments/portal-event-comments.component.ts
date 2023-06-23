@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { eventSlug } from '../../constants/event-details.constant';
+import { slug } from 'src/app/core/constants/core.constants';
 import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
 import { selectEventComments } from '../../state/portal-event-details.selectors';
 
@@ -22,14 +22,14 @@ export class PortalEventCommentsComponent implements OnInit, OnDestroy {
     private store: Store,
     ) { }
     
-  ngOnInit() {
+  public ngOnInit(): void {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy))
       .subscribe(params => this.store.dispatch(
-        PortalEventDetailsActions.getComments(params.get(eventSlug) || '')));
+        PortalEventDetailsActions.getComments(params.get(slug) || '')));
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

@@ -7,7 +7,8 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { EventCalendarModule } from 'src/app/shared/event-calendar/event-calendar.module';
 import { EventFilterModule } from 'src/app/shared/filter/event-filter/event-filter.module';
-import { FormModule } from 'src/app/shared/form/form.module';
+import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
+import { CardSliderComponent } from 'src/app/shared/sliders/card-slider/card-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventOverviewCalendarComponent } from './components/calendar/portal-event-overview-calendar.component';
@@ -39,10 +40,11 @@ const materials = [
 const modules = [
   CoreModule,
   CardModule,
+  CardSliderComponent,
   EventCalendarModule,
   EventFilterModule,
   PortalEventOverviewRoutingModule,
-  FormModule,
+  RadioButtonFormModule,
   TableModule,
   TitleModule,
 ];
