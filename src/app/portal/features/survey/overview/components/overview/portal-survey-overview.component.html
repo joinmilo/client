@@ -5,6 +5,11 @@
     entity="SurveyEntity" 
     [data]="sponsored | async">
   </app-sponsored-card>
+
+  <app-content-card *ngIf="(sponsored | async)?.id" 
+    entity="SurveyEntity" 
+    [data]="sponsored | async">
+  </app-content-card>
   
   <app-survey-filter 
     (paramsUpdated)="updateParams($event)"

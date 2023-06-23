@@ -1,9 +1,6 @@
 <div class="container">
   <section>
 
-    <!-- The grand-parent content, e.g. display filters, etc. -->
-    <ng-content></ng-content>
-    
     <button mat-raised-button
       (click)="filtersCollapsed = !filtersCollapsed"
       [class.active] = "!filtersCollapsed">
@@ -13,6 +10,10 @@
           <fa-icon *ngIf="filtersActive" class="active-icon" [icon]="['fas', 'check']"></fa-icon>
         </div>
     </button>
+
+    <!-- The grand-parent content, e.g. display filters, etc. -->
+    <ng-content></ng-content>
+
   </section>
   <mat-card [@collapse]="!filtersCollapsed">
     <mat-card-content>

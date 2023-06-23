@@ -711,7 +711,7 @@ export type DealEntity = {
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
   offer?: Maybe<Scalars['Boolean']>;
-  price: Scalars['Float'];
+  price?: Maybe<Scalars['Float']>;
   shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
@@ -732,7 +732,7 @@ export type DealEntityInput = {
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
   offer?: InputMaybe<Scalars['Boolean']>;
-  price: Scalars['Float'];
+  price?: InputMaybe<Scalars['Float']>;
   shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
@@ -4595,7 +4595,7 @@ export type SurveyEntity = {
   assignments?: Maybe<Array<Maybe<AssignmentEntity>>>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   description?: Maybe<Scalars['String']>;
-  dueDate?: Maybe<Scalars['Date']>;
+  dueDate?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   mandatory?: Maybe<Scalars['Boolean']>;
   metaDescription?: Maybe<Scalars['String']>;
@@ -4613,7 +4613,7 @@ export type SurveyEntityInput = {
   assignments?: InputMaybe<Array<InputMaybe<AssignmentEntityInput>>>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   description?: InputMaybe<Scalars['String']>;
-  dueDate?: InputMaybe<Scalars['Date']>;
+  dueDate?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   mandatory?: InputMaybe<Scalars['Boolean']>;
   metaDescription?: InputMaybe<Scalars['String']>;
@@ -5007,7 +5007,7 @@ export type ContestFragment = { __typename?: 'ContestEntity', id?: string | null
 
 export type DealCategoryFragment = { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
-export type DealFragment = { __typename?: 'DealEntity', id?: string | null, price: number, slug?: string | null, uploads?: Array<{ __typename?: 'DealMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+export type DealFragment = { __typename?: 'DealEntity', id?: string | null, price?: number | null, slug?: string | null, uploads?: Array<{ __typename?: 'DealMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
 export type EventCategoryFragment = { __typename?: 'EventCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
@@ -5173,14 +5173,14 @@ export type GetDealQueryVariables = Exact<{
 }>;
 
 
-export type GetDealQuery = { __typename?: 'Query', getDeal?: { __typename?: 'DealEntity', id?: string | null, price: number, slug?: string | null, uploads?: Array<{ __typename?: 'DealMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+export type GetDealQuery = { __typename?: 'Query', getDeal?: { __typename?: 'DealEntity', id?: string | null, price?: number | null, slug?: string | null, uploads?: Array<{ __typename?: 'DealMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
 
 export type GetDealsQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
 }>;
 
 
-export type GetDealsQuery = { __typename?: 'Query', getDeals?: { __typename?: 'PageableList_DealEntity', result?: Array<{ __typename?: 'DealEntity', id?: string | null, price: number, slug?: string | null, uploads?: Array<{ __typename?: 'DealMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetDealsQuery = { __typename?: 'Query', getDeals?: { __typename?: 'PageableList_DealEntity', result?: Array<{ __typename?: 'DealEntity', id?: string | null, price?: number | null, slug?: string | null, uploads?: Array<{ __typename?: 'DealMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, mimeType?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null, category?: { __typename?: 'DealCategoryEntity', id?: string | null, created?: any | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'DealTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export type GetEventCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -5,6 +5,12 @@
     }
   }
 
+  @if $breakpoint == tablet-desktop {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+
   @if $breakpoint == tablet {
     @media (max-width: 1023px) {
       @content;

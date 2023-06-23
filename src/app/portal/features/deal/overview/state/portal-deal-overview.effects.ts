@@ -12,9 +12,9 @@ export class PortalDealOverviewEffects {
   getSponsoredDeal = createEffect(() => this.actions.pipe(
     ofType(PortalDealOverviewActions.getSponsoredDeal),
     switchMap(() => this.getDealService.watch({ 
-      // entity: {
-      //   sponsored: true
-      // }
+      entity: {
+        sponsored: true
+      }
     }).valueChanges),
     map(response => PortalDealOverviewActions.setSponsoredDeal(response.data.getDeal as DealEntity))
   ));
