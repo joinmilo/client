@@ -1,7 +1,7 @@
 <mat-dialog-content class="mat-typography">
   <h1 class="mat-headline-6" appLabel="attendingFriends"></h1>
   <hr>
-  <section *ngFor="let friend of data.friends">
+  <section *ngFor="let friend of friends">
     <div>
       <app-avatar [user]="friend"></app-avatar>
       <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
@@ -10,5 +10,7 @@
   <hr>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close>
+    <span appLabel="cancel"></span>
+  </button>
 </mat-dialog-actions>

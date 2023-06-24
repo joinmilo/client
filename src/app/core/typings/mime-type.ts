@@ -1,7 +1,5 @@
-export const enum MimeTypeDefinition {
-  Audio = 'audio',
-  Image = 'image',
-  Pdf = 'pdf',
-  Video = 'video',
-  Word = 'word',
-}
+export type MimeTypeDefinition = 'AUDIO'
+| 'IMAGE'
+| 'PDF'
+| 'VIDEO'
+| 'WORD';

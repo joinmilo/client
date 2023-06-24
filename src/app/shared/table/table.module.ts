@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from '../card/card.module';
+import { ShareModule } from '../share/share.module';
 import { TableActionsComponent } from './components/actions/table-actions.component';
 import { TableCardComponent } from './components/card/table-card.component';
 import { TableDesktopComponent } from './components/desktop/table-desktop.component';
@@ -57,6 +58,7 @@ const materials = [
 const modules = [
   CoreModule,
   CardModule,
+  ShareModule,
 ];
 
 const libs = [

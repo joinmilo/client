@@ -11,7 +11,6 @@ import { BrowserTitleService } from './core/services/title.service';
 })
 export class AppComponent {
 
-
   //TODO: Find a place to init them properly
   constructor(
     public browserTitleService: BrowserTitleService,

@@ -9,11 +9,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContactCardComponent } from './components/contact/contact-card.component';
 import { ContentCardComponent } from './components/content/content-card.component';
+import { FileCardComponent } from './components/file/file-card.component';
 import { SponsoredCardComponent } from './components/sponsored/sponsored-card.component';
 
 const components = [
   ContactCardComponent,
   ContentCardComponent,
+  FileCardComponent,
   SponsoredCardComponent,
 ];
 

@@ -3,13 +3,13 @@
   <div>
     <section *ngIf="attendingFriends && attendingFriends.length > 0">
       <app-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))" [user]="attendingFriend"></app-avatar>
-      <button mat-stroked-button color="primary" (click)="openAllFriendsDialog('300ms', '0ms')">
+      <button mat-stroked-button color="primary" (click)="openAllFriendsDialog()">
         <fa-icon size="1x" [icon]="['fas', 'users']"></fa-icon>
         <span appLabel="showAllFriends"></span>
       </button>
     </section>
     <section>
-      <button mat-flat-button color="primary" *ngIf="currentUser" (click)="openInviteFriendsDialog('300ms', '0ms')">
+      <button mat-flat-button color="primary" *ngIf="currentUser" (click)="openInviteFriendsDialog()">
         <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
         <span appLabel="inviteFriends"></span>
       </button>
