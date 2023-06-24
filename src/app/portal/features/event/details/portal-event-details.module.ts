@@ -18,16 +18,16 @@ import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-bu
 import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
 import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
 import { RatingModule } from 'src/app/shared/rating/rating.module';
+import { ShareModule } from 'src/app/shared/share/share.module';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
-import { SocialShareModule } from 'src/app/shared/social-share/social-share.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventCommentsComponent } from './components/comments/portal-event-comments.component';
-import { InviteFriendsDialogComponent } from './components/invite-friends-dialog/invite-friends-dialog.component';
+import { InviteFriendsComponent } from './components/invite-friends/invite-friends.component';
 import { EventDetailsOrganisationComponent } from './components/organisation/event-details-organisation.component';
 import { EventParticipantsComponent } from './components/participants/event-participants.component';
 import { PortalEventDetailsComponent } from './components/portal-event-details.component';
-import { ShowAllFriendsDialogComponent } from './components/show-all-friends-dialog/show-all-friends-dialog.component';
+import { ShowFriendsComponent } from './components/show-friends/show-friends.component';
 import { EventDetailsSummrayComponent } from './components/summary/event-details-summary.component';
 import { portalEventDetailsStateKey } from './constants/event-details.constant';
 import { PortalEventDetailsRoutingModule } from './portal-event-details-routing.module';
@@ -39,9 +39,9 @@ const components = [
   PortalEventCommentsComponent,
   EventDetailsSummrayComponent,
   EventParticipantsComponent,
-  ShowAllFriendsDialogComponent,
+  ShowFriendsComponent,
   EventDetailsOrganisationComponent,
-  InviteFriendsDialogComponent,
+  InviteFriendsComponent,
 ];
 
 const framework = [
@@ -69,7 +69,7 @@ const modules = [
   PortalEventDetailsRoutingModule,
   RadioButtonFormModule,
   RatingModule,
-  SocialShareModule,
+  ShareModule,
   TableModule,
   TitleModule,
   TitleImageComponent,

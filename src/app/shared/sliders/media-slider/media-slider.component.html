@@ -6,7 +6,32 @@
 </app-slider-header>
 
 <app-slider>
-  <app-media *ngFor="let file of media"
-    [media]="file">
-  </app-media>
+  <ng-container *ngFor="let element of media">
+    <ng-container [ngSwitch]="mimeTypeDefinition(element)">
+    
+      <audio *ngSwitchCase="'AUDIO'" controls>
+        <source [appMedia]="element" [type]="element?.mimeType">
+      </audio>
+      
+      <img *ngSwitchCase="'IMAGE'"
+        [appMedia]="element"
+        (click)="openImage(element)"/>
+      
+      <app-file-card *ngSwitchCase="'PDF'"
+        [media]="element"
+        mimeType="PDF">
+      </app-file-card>
+  
+      <app-file-card *ngSwitchCase="'WORD'"
+        [media]="element"
+        mimeType="WORD">
+      </app-file-card>
+  
+      <video *ngSwitchCase="'VIDEO'" width="400" controls>
+        <source [appMedia]="element" [type]="element?.mimeType">
+      </video>
+  
+    </ng-container>
+  </ng-container>
+
 </app-slider>

@@ -6,8 +6,8 @@ import { Subject, combineLatestWith, takeUntil } from 'rxjs';
 import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { EventEntity, Maybe, UserContextEntity } from 'src/schema/schema';
 import { selectEventDetails } from '../../state/portal-event-details.selectors';
-import { InviteFriendsDialogComponent } from '../invite-friends-dialog/invite-friends-dialog.component';
-import { ShowAllFriendsDialogComponent } from '../show-all-friends-dialog/show-all-friends-dialog.component';
+import { InviteFriendsComponent } from '../invite-friends/invite-friends.component';
+import { ShowFriendsComponent } from '../show-friends/show-friends.component';
 
 @Component({
   selector: 'app-event-participants',
@@ -64,26 +64,17 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
       );
   }
 
-  openAllFriendsDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ShowAllFriendsDialogComponent, {
-      width: 'auto',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      data: {
-        friends: this.attendingFriends,
-      }
+  openAllFriendsDialog(): void {
+    this.dialog.open(ShowFriendsComponent, {
+      data: this.attendingFriends
     });
   }
 
-  openInviteFriendsDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(InviteFriendsDialogComponent, {
+  openInviteFriendsDialog(): void {
+    this.dialog.open(InviteFriendsComponent, {
       width: 'auto',
-      enterAnimationDuration,
-      exitAnimationDuration,
-      data: {
-        friends: this.friends?.filter(friend => !this.attendingFriends
-          ?.some(attendingFriend => attendingFriend?.id === friend?.id)),
-      }
+      data: this.friends?.filter(friend => !this.attendingFriends
+        ?.some(attendingFriend => attendingFriend?.id === friend?.id))
     });
   }
 

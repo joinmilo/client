@@ -6,7 +6,6 @@
   :first-child,
   :last-child {
     display: flex;
-    padding: 1rem;
 
     button {
       height: 100% !important;
@@ -20,7 +19,7 @@
   :nth-child(2) {
     display: flex;
     gap: var(--gap);
-    padding: 1rem;
+    padding: 0.5rem;
 
     overflow-x: auto;
     scroll-behavior: smooth;

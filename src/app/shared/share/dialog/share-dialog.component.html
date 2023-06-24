@@ -1,0 +1,15 @@
+<mat-dialog-content class="mat-typography">
+  <share-buttons 
+    [show]="6" 
+    [include]="['whatsapp', 'telegram', 'twitter', 'email', 'facebook','copy',
+    'linkedin','pinterest','reddit','tumblr','mix','viber','vk' ,'xing','line',
+    'sms','print', 'messenger']" 
+    [showText]="true"
+    [url]="url">
+  </share-buttons>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    <span appLabel="cancel"></span>
+  </button>
+</mat-dialog-actions>

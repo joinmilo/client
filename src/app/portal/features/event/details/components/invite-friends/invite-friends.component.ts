@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Maybe, UserContextEntity } from 'src/schema/schema';
 
 interface DialogData {
@@ -9,19 +8,18 @@ interface DialogData {
 
 @Component({
   selector: 'app-invite-friends',
-  templateUrl: 'invite-friends-dialog.component.html',
-  styleUrls: ['./invite-friends-dialog.component.scss'],
+  templateUrl: 'invite-friends.component.html',
+  styleUrls: ['./invite-friends.component.scss'],
 })
-export class InviteFriendsDialogComponent implements OnInit {
+export class InviteFriendsComponent implements OnInit {
 
-  filteredFriends?: (Maybe<UserContextEntity> | undefined)[] | undefined = [];
-  selectedFriends?: (Maybe<UserContextEntity> | undefined)[] | undefined = [];
+  filteredFriends?: (Maybe<UserContextEntity> | undefined)[] = [];
+  selectedFriends?: (Maybe<UserContextEntity> | undefined)[] = [];
   value = "";
 
   constructor(
-    public dialogRef: MatDialogRef<InviteFriendsDialogComponent>,
-    private Store: Store,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    @Inject(MAT_DIALOG_DATA)
+    public data: DialogData) { }
 
   ngOnInit(): void {
     this.filteredFriends = this.data.friends;

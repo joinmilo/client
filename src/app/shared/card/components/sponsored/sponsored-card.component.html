@@ -1,44 +1,41 @@
-<div class="container">
-  <mat-card>
-    <figure>
-      <img alt="content-card" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.image">
-    </figure>
-    <div class="wrapper">
-      <mat-card-header>
-        <mat-chip-option>
-          <span>
-            {{ element?.category
-              ? element?.category
-              : (element?.categoryTranslatables | translatable: element?.categoryTranslatableField | async) || 'Test' 
-            }}
-          </span>
-        </mat-chip-option>
-        <app-favorite-piece></app-favorite-piece>
-      </mat-card-header>
-      <mat-card-content [routerLink]="element?.url">
-        <h1>
+<mat-card>
+  <figure>
+    <img alt="content-card" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.image">
+  </figure>
+  <div class="wrapper">
+    <mat-card-header>
+      <mat-chip-option>
+        <span>
           {{
-            element?.title
-              ? element?.title
-              : element?.translatables | translatable: element?.titleTranslatableField | async
+            element?.category
+              ? element?.category
+              : (element?.categoryTranslatables | translatable: element?.categoryTranslatableField | async) || 'Test'
           }}
-        </h1>
-        <section>
-          <app-date-piece *ngIf="element?.date" [date]="element?.date" [dateTime]="element?.dateTime">Date</app-date-piece>
-          <app-address-piece *ngIf="element?.address?.id" [address]="element?.address"></app-address-piece>
-          <span>
-            {{
-              element?.text
-                ? element?.text
-                : element?.translatables | translatable: element?.textTranslatableField | async
-            }}
-          </span>
-        </section>
-        <mat-card-actions>
-          <img *ngIf="element?.creatorImage" class="border-image" alt="content-card" [appMedia]="element?.creatorImage">
-          <span>{{element?.creator}}</span>
-        </mat-card-actions>
-      </mat-card-content>
-    </div>
-  </mat-card>
-</div>
+        </span>
+      </mat-chip-option>
+      <app-favorite-piece></app-favorite-piece>
+    </mat-card-header>
+    <mat-card-content [routerLink]="element?.url">
+      <h1>
+        {{
+          element?.title
+            ? element?.title
+            : element?.translatables | translatable: element?.titleTranslatableField | async
+        }}
+      </h1>
+      <app-date-piece [date]="element?.date" [dateTime]="element?.dateTime">Date</app-date-piece>
+      <app-address-piece *ngIf="element?.address" [address]="element?.address"></app-address-piece>
+      <span>
+        {{
+          element?.text
+            ? element?.text
+            : element?.translatables | translatable: element?.textTranslatableField | async
+        }}
+      </span>
+      <mat-card-actions>
+        <img *ngIf="element?.creatorImage" class="border-image" alt="content-card" [appMedia]="element?.creatorImage">
+        <span>{{element?.creator}}</span>
+      </mat-card-actions>
+    </mat-card-content>
+  </div>
+</mat-card>

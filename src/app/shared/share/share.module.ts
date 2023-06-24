@@ -5,12 +5,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
-import { SocialShareComponent, SocialShareDialog } from './social-share-button.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { ShareButtonComponent } from './button/share-button.component';
+import { ShareDialogComponent } from './dialog/share-dialog.component';
 
 
 const components = [
-  SocialShareComponent,
-  SocialShareDialog,
+  ShareButtonComponent,
+  ShareDialogComponent,
 ];
 
 const framework = [
@@ -24,6 +26,10 @@ const materials = [
   MatDialogModule,
 ];
 
+const modules = [
+  CoreModule,
+];
+
 const libs = [
   FontAwesomeModule,
 ]
@@ -33,8 +39,9 @@ const libs = [
   imports: [
     ...framework,
     ...materials,
+    ...modules,
     ...libs,
   ],
   exports: [...components],
 })
-export class SocialShareButtonModule { }
+export class ShareModule { }

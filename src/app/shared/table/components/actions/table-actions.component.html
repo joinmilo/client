@@ -6,9 +6,8 @@
         [entity]="row">
       </app-favorite-piece>
 
-      <app-share-piece *ngSwitchCase="'SHARE'"
-        [entity]="row">
-      </app-share-piece>
+      <app-share-button *ngSwitchCase="'SHARE'">
+      </app-share-button>
       
     </ng-container>
   </ng-container>

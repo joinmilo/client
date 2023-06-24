@@ -19,17 +19,17 @@ import { DatePieceComponent } from './components/pieces/date/date-piece.componen
 import { FavoritePieceComponent } from './components/pieces/favorite/favorite-piece.component';
 import { MailPieceComponent } from './components/pieces/mail/mail-piece.component';
 import { PhonePieceComponent } from './components/pieces/phone/phone-piece.component';
-import { SharePieceComponent } from './components/pieces/share/share-piece.component';
 import { coreStateKey } from './constants/core.constants';
 import { HtmlDirective } from './directives/html.directive';
 import { LabelDirective } from './directives/label.directive';
 import { MediaDirective } from './directives/media.directive';
 import { AddressPipe } from './pipes/address.pipe';
+import { FileSizePipe } from './pipes/file-size.pipe';
+import { StripTagsPipe } from './pipes/strip-tags.pipe';
 import { TranslatablePipe } from './pipes/translatable.pipe';
+import { TruncateWordsPipe } from './pipes/truncate-words.pipe';
 import { CoreEffects } from './state/core.effects';
 import { coreReducer } from './state/core.reducer';
-import {TruncateWordsPipe} from './pipes/truncate-words.pipe';
-import {StripTagsPipe} from './pipes/strip-tags.pipe';
 
 const components = [
   AddressPieceComponent,
@@ -38,7 +38,6 @@ const components = [
   FavoritePieceComponent,
   FeedbackComponent,
   LogoComponent,
-  SharePieceComponent,
   MailPieceComponent,
   PhonePieceComponent,
 ];
@@ -52,6 +51,7 @@ const directives = [
 const pipes = [
   AddressPipe,
   StripTagsPipe,
+  FileSizePipe,
   TranslatablePipe,
   TruncateWordsPipe,
 ];

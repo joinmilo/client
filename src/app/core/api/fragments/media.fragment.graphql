@@ -1,6 +1,8 @@
 fragment Media on MediaEntity {
   id
   credits
+  extension
   mimeType
   name
+  size
 }

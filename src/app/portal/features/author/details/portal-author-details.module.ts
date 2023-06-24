@@ -8,7 +8,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
-import { SocialShareModule } from 'src/app/shared/social-share/social-share.module';
+import { ShareModule } from 'src/app/shared/share/share.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalAuthorDetailsComponent } from './component/portal-author-details.component';
@@ -35,7 +35,7 @@ const modules = [
   CardModule,
   RadioButtonFormModule,
   PortalAuthorDetailsRoutingModule,
-  SocialShareModule,
+  ShareModule,
   TableModule,
   TitleModule,
 ];
