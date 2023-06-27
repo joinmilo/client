@@ -5,7 +5,7 @@
         alt="contact-card">
     </figure>
     <span class="mat-headline-5" [routerLink]="element?.url">
-      {{element?.creator ? element?.creator: ''}}
+      {{element?.title ? element?.title: ''}}
     </span>
     <section>
       <button mat-button *ngIf="element?.email">

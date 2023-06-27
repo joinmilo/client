@@ -10,19 +10,14 @@ mat-card{
   flex-direction: row;
   height: 22rem;
   gap: var(--gap);
-  justify-content: space-between;
 
-  * {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
 }
 
 figure {
   width: 50%;
   border-top-left-radius: var(--mdc-shape-small);
   border-bottom-left-radius: var(--mdc-shape-small);
+  overflow: hidden;
 }
 
 img {
@@ -32,62 +27,47 @@ img {
 }
 
 .wrapper {
-  gap: 1rem;
-  padding: unset;
   width: 50%;
-  height: 100%;
 }
 
 mat-card-header {
-  display: flex;
-  align-items: center;
-  padding-top: 1rem;
-  padding-left: 0;
-  padding-right: var(--gap);
+  padding-left: .5rem;
   padding-bottom: 1rem;
 
-  mat-chip-option {
-    margin-right: auto;
+  app-favorite-piece {
+    padding-right: 1rem;
   } 
 }
 
 mat-card-content {
   display: flex;
-  flex-flow: column;
-  gap: 1rem;
-  padding-left: 0;
+  flex-flow: column wrap;
+
+  padding-left: .5rem; //for shadow of avatar
   padding-right: var(--gap);
+  padding-bottom: 0 !important;
 
-  h1 {
-    margin: 0;
-  }
+  section {
+    height: 11.5rem;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
 
-  span {
-    height: 2.5rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: initial;
+    span {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
   }
 }
 
 mat-card-actions {
-  padding: 0;
-  padding-left: .5rem; //necessary for avatar shadow
   gap: 1rem;
-  position: absolute;
-  top: 18rem;
+  padding: 0;
 
   img {
     width: 2rem;
     height: 2rem;
-  }
-
-  span {
-    display: flex;
-    align-items: center;
-    height: 3rem;
   }
 }

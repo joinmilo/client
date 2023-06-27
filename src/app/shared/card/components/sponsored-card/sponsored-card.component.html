@@ -22,15 +22,17 @@
             : element?.translatables | translatable: element?.titleTranslatableField | async
           }}
         </h1>
-        <app-date-piece *ngIf="element?.date" [date]="element?.date" [dateTime]="element?.dateTime">Date</app-date-piece>
-        <app-address-piece *ngIf="element?.address?.id" [address]="element?.address"></app-address-piece>
-        <span>
-          {{
-            element?.text
-              ? element?.text
-              : element?.translatables | translatable: element?.textTranslatableField | async
-          }}
-        </span>
+        <section>
+          <app-date-piece *ngIf="element?.date" [date]="element?.date" [dateTime]="element?.dateTime">Date</app-date-piece>
+          <app-address-piece *ngIf="element?.address?.id" [address]="element?.address"></app-address-piece>
+          <span>
+            {{
+              element?.text
+                ? element?.text
+                : element?.translatables | translatable: element?.textTranslatableField | async
+            }}
+          </span>
+        </section>
         <mat-card-actions>
           <img *ngIf="element?.creatorImage" class="border-image" alt="content-card" [appMedia]="element?.creatorImage">
           <span>{{element?.creator}}</span>
