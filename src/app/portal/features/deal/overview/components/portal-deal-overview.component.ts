@@ -51,5 +51,4 @@ export class PortalDealOverviewComponent {
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalDealOverviewActions.updateParams(params));
   }
-
 }

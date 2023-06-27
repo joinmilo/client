@@ -59,6 +59,7 @@ export const dealsToCards = (entities?: Maybe<DealEntity[]>): CardElement[] => {
 
 export const dealToCard = (entity: Maybe<DealEntity>): CardElement => ({
   id: entity?.id,
+  address: entity?.address,
   creator: entity?.contact?.name,
   date: entity?.created,
   dateTime: true,
@@ -78,8 +79,9 @@ export const eventToCard = (entity?: Maybe<EventEntity>): CardElement => ({
   address: entity?.address,
   categoryTranslatables: entity?.category?.translatables,
   categoryTranslatableField: 'name',
-  creator: entity?.contact?.name,
-  creatorImage: entity?.creator?.uploads?.find(upload => upload?.profilePicture)?.media,
+  creator: entity?.organisation?.name || entity?.contact?.name,
+  // creatorImage: entity?.creator?.uploads?.find(upload => upload?.profilePicture)?.media,
+  creatorImage: entity?.organisation?.uploads?.find(upload => upload?.media)?.media,
   date: entity?.schedule?.startDate,
   dateTime: true,
   image: entity?.uploads?.find(upload => upload?.card)?.media,
@@ -94,11 +96,13 @@ export const organisationsToCards = (entities?: Maybe<OrganisationEntity[]>): Ca
 
 export const organisationToCard = (entity?: Maybe<OrganisationEntity>): CardElement => ({
   id: entity?.id,
-  creator: entity?.name,
+  title: entity?.name,
+  address: entity?.address,
   dateTime: true,
   email: entity?.contact?.email,
   image: entity?.uploads?.find(upload => upload?.card)?.media,
   phone: entity?.contact?.phone,
+  textTranslatableField: 'description',
   translatables: entity?.translatables,
   url: ['/portal', organisationsFeatureKey, entity?.slug],
 });

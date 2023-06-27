@@ -1,7 +1,7 @@
 <div class="main">
   <app-page-title title="classifiedAds"></app-page-title>
   <app-sponsored-card *ngIf="(sponsored | async)?.id"
-    entity="EventEntity"
+    entity="DealEntity"
     [data]="sponsored | async">
   </app-sponsored-card>
 

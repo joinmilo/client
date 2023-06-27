@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { fadeInAnimation } from 'src/app/core/animations/animations';
@@ -15,7 +15,7 @@ import { UserContextEntity } from 'src/schema/schema';
     fadeInAnimation(),
   ]
 })
-export class PortalHeaderDesktopComponent {
+export class PortalHeaderDesktopComponent implements OnInit{
 
   public currentUser?: Maybe<UserContextEntity>;
 

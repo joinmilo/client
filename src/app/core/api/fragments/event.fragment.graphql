@@ -19,6 +19,9 @@ fragment Event on EventEntity {
   schedule(begin: $scheduleBegin, end: $scheduleEnd) {
     ...Schedule
   }
+  organisation {
+    ...Organisation
+  }
   slug
   translatables {
     id

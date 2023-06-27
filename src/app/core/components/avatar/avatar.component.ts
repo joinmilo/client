@@ -11,6 +11,7 @@ export class AvatarComponent implements OnInit{
   @Input()
   public user?: Maybe<UserContextEntity>;
 
+  @Input()
   public media?: Maybe<MediaEntity> | undefined;
 
   ngOnInit(): void {

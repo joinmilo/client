@@ -75,9 +75,15 @@ mat-card-content {
 
 mat-card-actions {
   padding: 0;
+  padding-left: .5rem; //necessary for avatar shadow
   gap: 1rem;
   position: absolute;
   top: 18rem;
+
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
 
   span {
     display: flex;
