@@ -53,8 +53,6 @@ const libs = [
   EffectsModule.forFeature([PortalSurveyOverviewEffects]),
 ];
 
-// const providers = [QueryRouterService];
-
 @NgModule({
   declarations: [...components],
   imports: [...framework, ...materials, ...modules, ...libs],
