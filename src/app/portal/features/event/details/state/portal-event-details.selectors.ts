@@ -12,4 +12,4 @@ export const selectEventDetails = createSelector(
 export const selectEventComments = createSelector(
   selectPortalEventDetailsState,
   state => state.comments
-)
+);

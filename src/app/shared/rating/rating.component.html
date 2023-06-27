@@ -1,0 +1,11 @@
+<div>
+  <app-save-rating [currentUser]="currentUser"
+   (content)="emitContent($event)" (rating)="emitRating($event)">
+  </app-save-rating>
+
+  <app-rating-average [averageRating]="ratingDto?.average">
+  </app-rating-average>
+
+  <app-star-evaluation [distribution]="ratingDto?.distribution" [reviewAmount]="ratingDto?.totalReviews ?? 0">
+  </app-star-evaluation>
+</div>

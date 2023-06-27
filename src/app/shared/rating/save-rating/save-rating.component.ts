@@ -1,10 +1,8 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { IconPrefix } from '@fortawesome/fontawesome-svg-core';
-import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, takeUntil } from 'rxjs';
-import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { UserContextEntity } from 'src/schema/schema';
 import { SaveRatingDialogComponent } from '../save-rating-dialog/save-rating-dialog.component';
 
@@ -13,30 +11,24 @@ import { SaveRatingDialogComponent } from '../save-rating-dialog/save-rating-dia
   templateUrl: './save-rating.component.html',
   styleUrls: ['./save-rating.component.scss'],
 })
-export class SaveRatingComponent implements OnInit, OnDestroy {
-  @Input() public rating = 0;
-
-  public currentUser?: Maybe<UserContextEntity> | undefined;
-
+export class SaveRatingComponent {
+  
   hoverIndex = 0;
 
-  private destroy = new Subject<void>();
+  @Output()
+  rating: EventEmitter<number> = new EventEmitter<number>();
 
-  @Input()
-  eventId?: Maybe<string>;
+  @Output()
+  content: EventEmitter<string> = new EventEmitter<string>();
 
-  @Input()
-  organisationId?: Maybe<string>;
+  @Input() currentUser?: Maybe<UserContextEntity> | undefined;
 
-  @Input()
-  articleId?: Maybe<string>;
+  public form = this.fb.group({
+    rating: [0, [Validators.required]],
+    content: ['']
+  })
 
-  constructor(public dialog: MatDialog, private store: Store) { }
-
-  ngOnInit(): void {
-    this.store.select(selectCurrentUser)
-    .pipe(takeUntil(this.destroy)).subscribe(user => this.currentUser = user);
-  }
+  constructor(public dialog: MatDialog, private fb: FormBuilder) { }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(SaveRatingDialogComponent, {
@@ -44,26 +36,23 @@ export class SaveRatingComponent implements OnInit, OnDestroy {
       enterAnimationDuration,
       exitAnimationDuration,
       data: {
-        rating: this.rating,
-        eventId: this.eventId,
-        organisationId: this.organisationId,
-        articleId: this.articleId,
-        user: this.currentUser,
+        rating: this.hoverIndex,
       }
-    });
+    }).afterClosed().subscribe((result) => {
+      if(result) {
+        this.rating.emit(result.rating);
+        if(result.content && result.content !== ''){
+          this.content.emit(result.content);
+        }
+      }
+    })
   }
 
   onHover(index: number) {
     this.hoverIndex = index;
-    this.rating = index;
   }
 
   showIcon(index: number): IconPrefix {
     return (this.hoverIndex >= index + 1 ? 'fas' : 'far') as IconPrefix;
-  }
-
-  ngOnDestroy(): void {
-    this.destroy.next();
-    this.destroy.complete();
   }
 }

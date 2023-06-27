@@ -3,7 +3,8 @@
     <section>
       <mat-label>
         <span>{{star}}</span>
-        <span appLabel="stars"></span>
+        <span *ngIf="star === '1'" appLabel="star"></span>
+        <span *ngIf="star !== '1'" appLabel="stars"></span>
       </mat-label>
       <mat-progress-bar mode="determinate" [value]="value" [bufferValue]="0">
       </mat-progress-bar>

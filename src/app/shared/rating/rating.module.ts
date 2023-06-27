@@ -9,20 +9,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 import { CoreModule } from "../../core/core.module";
 import { CaptchaModule } from '../captcha/captcha.module';
 import { RatingAverageComponent } from './average/rating-average.component';
 import { ProgressBarComponent } from './progress-bar/rating-progress-bar.component';
-import { ratingStateKey } from './rating.constant';
+import { RatingComponent } from './rating.component';
 import { SaveRatingDialogComponent } from './save-rating-dialog/save-rating-dialog.component';
 import { SaveRatingComponent } from './save-rating/save-rating.component';
 import { StarEvaluationComponent } from './star-evaluation/star-evaluation.component';
-import { RatingEffects } from './state/rating.effects';
-import { ratingReducer } from './state/rating.reducer';
 
 const components = [
+  RatingComponent,
   SaveRatingComponent,
   RatingAverageComponent,
   SaveRatingDialogComponent,
@@ -42,8 +39,6 @@ const modules = [
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(ratingStateKey, ratingReducer),
-  EffectsModule.forFeature([RatingEffects]),
 ];
 
 const materials = [

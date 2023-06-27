@@ -19,6 +19,5 @@ export const portalEventDetailsReducer = createReducer(
 
   on(PortalEventDetailsActions.setComments, (state, action): PortalEventDetailsState => (
     { ...state, comments: action.comments}
-  ))
-
+  )),
 );

@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { slug } from 'src/app/core/constants/core.constants';
-import { EventEntity, Maybe, MediaEntity } from 'src/schema/schema';
+import { selectCurrentUser } from 'src/app/core/state/core.selectors';
+import { CommentActions } from 'src/app/shared/comment/state/comment.actions';
+import { EventEntity, Maybe, MediaEntity, UserContextEntity } from 'src/schema/schema';
 import { PortalEventDetailsActions } from '../state/portal-event-details.actions';
 import { selectEventDetails } from '../state/portal-event-details.selectors';
 
@@ -22,6 +24,8 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
+  public currentUser?: Maybe<UserContextEntity> | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
@@ -38,6 +42,26 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(eventMedia => eventMedia?.media) as MediaEntity[];
     });
+
+    this.store.select(selectCurrentUser).pipe(takeUntil(this.destroy))
+    .subscribe(user => this.currentUser = user);
+  }
+
+  saveRating($event: number) {
+    this.store.dispatch(PortalEventDetailsActions.saveEventRating({
+      event: {id: this.event?.id},
+      userContext: {id: this.currentUser?.id, uploads: this.currentUser?.uploads},
+      score: $event,
+    }))
+    this.store.dispatch(PortalEventDetailsActions.getDetails(this.event?.slug || ''));
+  }
+
+  saveContent($event: string) {
+    this.store.dispatch(CommentActions.saveEventComment({
+      content: $event,
+      event: {id: this.event?.id},
+      userContext: {id: this.currentUser?.id}
+    }))
   }
 
   ngOnDestroy(): void {
