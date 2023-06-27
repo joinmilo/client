@@ -8,12 +8,7 @@ export const selectSurveyFilterState = createFeatureSelector<SurveyFilterState>(
 export const selectFiltersActive = createSelector(
   selectSurveyFilterState,
   state => state?.params
-    && Object.values(state.params).some((value) => {
-      switch(true) {
-        default:
-          return !!value;
-      }
-    })
+    && Object.values(state.params).some((value) => !!value)
 );
 
 export const selectRawFilterParams = createSelector(
