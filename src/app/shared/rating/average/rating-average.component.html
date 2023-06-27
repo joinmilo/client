@@ -3,7 +3,7 @@
   <section>
     <button *ngFor="let ratingId of [1, 2, 3, 4, 5]; index as i" mat-icon-button disabled="true">
       <fa-icon size="1x" [icon]="showIcon(i)"></fa-icon></button>
-    <p>
+    <p *ngIf="averageRating">
       <span>{{ averageRating | number:'1.0-1' }}</span> /
       <span>{{ 5 }}</span>
     </p>

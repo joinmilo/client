@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-dialog-content class="mat-typography">
     <p class="mat-subtitle-1" appLabel="submitReview"></p>
     <section>
@@ -7,7 +7,7 @@
     </section>
     <mat-form-field appearance="outline">
       <mat-label appLabel="feedbackComment"></mat-label>
-      <textarea [(ngModel)]="content" matInput rows="5" cols="50"></textarea>
+      <textarea formControlName="content" matInput rows="5" cols="50"></textarea>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">

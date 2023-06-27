@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
+import { CoreActions } from 'src/app/core/state/core.actions';
+import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalMenuActions } from 'src/app/portal/shared/menu/state/portal-menu.actions';
-import { EventCommentEntity, EventEntity, GetEventCommentsGQL, GetEventGQL, Maybe, QueryOperator } from 'src/schema/schema';
+import { EventCommentEntity, EventEntity, EventRatingEntity, GetEventCommentsGQL, GetEventGQL, Maybe, QueryOperator, SaveEventRatingGQL } from 'src/schema/schema';
 import { PortalEventDetailsActions } from './portal-event-details.actions';
 
 @Injectable()
@@ -38,9 +40,26 @@ export class PortalEventDetailsEffects {
     map(response => PortalEventDetailsActions.setComments(response.data.getEventComments?.result as Maybe<EventCommentEntity[]>))
   ));
 
+  saveEventRating = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.saveEventRating),
+    switchMap((action) => this.saveEventRatingService.mutate({
+      entity: action.entity
+    })),
+    map(response => PortalEventDetailsActions.eventRatingSaved(response.data?.saveEventRating as EventRatingEntity))
+  ));
+
+  eventRatingSaved = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.eventRatingSaved),
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'ratingSaved'
+    }))
+  ));
+
   constructor(
     private actions: Actions,
     private getEvent: GetEventGQL,
     private getCommentsService: GetEventCommentsGQL,
+    private saveEventRatingService: SaveEventRatingGQL,
   ) {}
 }

@@ -1,18 +1,11 @@
 import { Component, Inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IconPrefix } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { UserContextEntity } from 'src/schema/schema';
-import { CommentActions } from '../../comment/state/comment.actions';
-import { RatingActions } from '../state/rating.actions';
 
 interface DialogData {
   rating: number;
-  user: Maybe<UserContextEntity>;
-  eventId?: Maybe<string>;
-  organisationId?: Maybe<string>;
-  articleId?: Maybe<string>;
 }
 
 @Component({
@@ -22,9 +15,13 @@ interface DialogData {
 })
 export class SaveRatingDialogComponent {
 
-  public content?: string;
+  public form = this.fb.group({
+    rating: [0, [Validators.required]],
+    content: ['']
+  })
 
   constructor(
+    private fb: FormBuilder,
     private store: Store,
     public dialogRef: MatDialogRef<SaveRatingDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
@@ -34,36 +31,8 @@ export class SaveRatingDialogComponent {
   }
 
   onSubmit() {
-
-    switch (true) {
-      case !!this.data.eventId:
-        this.store.dispatch(RatingActions.saveEventRating({
-          event: { id: this.data.eventId },
-          userContext: {id: this.data.user?.id, uploads: this.data.user?.uploads},
-          score: this.data.rating,
-        }))
-
-        if (this.content) {
-          this.store.dispatch(CommentActions.saveEventComment({
-            content: this.content,
-            event: { id: this.data.eventId },
-            userContext: {id: this.data.user?.id},
-            
-          }));
-        }
-        break;
-
-      case !!this.data.organisationId:
-        // TODO: add orga Actions
-        break;
-
-      case !!this.data.articleId:
-        // TODO: add article Actions
-        break;
-
-      default:
-        break;
-    }
+    this.form.value.rating = this.data.rating;
+    this.dialogRef.close(this.form.value);
   }
 }
 

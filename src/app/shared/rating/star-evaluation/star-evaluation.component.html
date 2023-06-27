@@ -1,11 +1,11 @@
 <div>
   <section>
-    <span class="mat-subtitle-1">{{ratings?.length}}</span>
-    <span class="mat-subtitle-1" [appLabel]="(ratings?.length ?? 0) !== 1 ? 'ratings' : 'rating'"></span>
+    <span class="mat-subtitle-1">{{reviewAmount}}</span>
+    <span class="mat-subtitle-1" [appLabel]="(reviewAmount) !== 1 ? 'ratings' : 'rating'"></span>
   </section>
   <section>
-  <div *ngFor="let item of ratingResult">
-    <app-rating-progress-bar [value]="item.percentage" [star]="item.star"></app-rating-progress-bar>
+  <div *ngFor="let item of distribution | keyvalue">
+    <app-rating-progress-bar [value]="item.value" [star]="item.key"></app-rating-progress-bar>
   </div>
   </section>
 </div>

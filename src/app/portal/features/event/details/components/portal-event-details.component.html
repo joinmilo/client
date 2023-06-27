@@ -33,14 +33,11 @@
       [link]="['./media']">
     </app-media-slider>
 
-    <app-save-rating [eventId]="this.event?.id">
-    </app-save-rating>
-
-    <app-rating-average>
-    </app-rating-average>
-
-    <app-star-evaluation>
-    </app-star-evaluation>
+    <app-rating [currentUser]="currentUser"
+      revi
+     [ratingDto]="event?.calculatedRatings"
+     (content)="saveContent($event)"
+     (rating)="saveRating($event)"></app-rating>
 
     <app-comment *ngIf="event?.lastComment?.id" [comment]="event?.lastComment">
     </app-comment>

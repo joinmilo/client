@@ -1,0 +1,5 @@
+fragment RatingDto on RatingDto {
+  average,
+  distribution,
+  totalReviews
+}
