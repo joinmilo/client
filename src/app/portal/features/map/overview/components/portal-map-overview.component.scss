@@ -8,7 +8,6 @@
   position: relative;
   top: 0;
 
-  --map-bg: white;
   --map-gap: 1rem;
   --map-z: 0;
   --map-height: calc(100vh - var(--map-above) - 6rem); // 6rem needed at bottom in Safari/Chrome mobile
@@ -30,7 +29,6 @@
     padding: var(--map-gap);
 
     border-radius: 0 0 var(--map-gap) var(--map-gap);
-    background-color: var(--map-bg);
   }
 
   .map-container {
@@ -69,7 +67,6 @@
     border-radius: var(--map-gap);
     padding: var(--map-gap);
     box-sizing: border-box;
-    background-color: var(--map-bg);
     box-shadow: var(--map-box-shadow)
   }
 
@@ -106,7 +103,7 @@
         position: absolute;
         top: var(--map-gap);
         left: var(--map-gap);
-        background: var(--map-bg);
+        background: white;
       }
 
       mat-button-toggle-group {

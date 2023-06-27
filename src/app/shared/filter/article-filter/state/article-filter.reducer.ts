@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { ArticleFilterQueryDefinition, ArticleFilterQueryParams, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { ArticleFilterQueryDefinition, ArticleFilterQueryParams } from 'src/app/core/typings/filter-params/article-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { ArticleCategoryEntity, Maybe } from 'src/schema/schema';
 import { ArticleFilterActions } from './article-filter.actions';
 

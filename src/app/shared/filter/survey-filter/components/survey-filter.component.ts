@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, take, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
+import { SurveyFilterQueryParams } from 'src/app/core/typings/filter-params/survey-filter-param';
 import { SurveyFilterActions } from 'src/app/shared/filter/survey-filter/state/survey-filter.actions';
 import { selectFiltersActive, selectSurveyFilterParams } from 'src/app/shared/filter/survey-filter/state/survey-filter.selectors';
 import { FilterSortPaginateInput } from 'src/schema/schema';
-import { SurveyFilterQueryParams } from '../../../../core/typings/filter-param';
 
 @Component({
   selector: 'app-survey-filter',

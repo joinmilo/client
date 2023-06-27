@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-params/deal-filter-param';
 import { Maybe } from 'src/schema/schema';
 import { DealFilterActions } from '../../state/deal-filter.actions';
 

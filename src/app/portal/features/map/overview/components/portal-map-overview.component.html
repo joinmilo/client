@@ -26,6 +26,7 @@
          (leafletMapReady)="onMapReady($event)"
          (leafletMapMoveEnd)="onMapPositionChange()"
          (leafletMapZoomEnd)="onMapPositionChange()"
+         (leafletMouseOver)="test($event)"
          [leafletOptions]="leafletOptions"
          [leafletFitBounds]="(mapBounds | async)!">
       <div *ngIf="(markers | async) as markers"
@@ -50,10 +51,10 @@
 </div>
 
 <ng-template #resultList>
-  <app-map-card-list
+  <app-portal-map-overview-list
     *ngIf="(results | async) as results"
     [entity]="results.entity"
     [cards]="results.data"
     [pageSize]="(isDesktop | async) ? 8 : 4">
-  </app-map-card-list>
+  </app-portal-map-overview-list>
 </ng-template>

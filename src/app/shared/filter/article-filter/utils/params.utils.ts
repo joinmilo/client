@@ -1,4 +1,6 @@
-import { ArticleFilterQueryDefinition, ArticleFilterQueryParams, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+
+import { ArticleFilterQueryDefinition, ArticleFilterQueryParams } from 'src/app/core/typings/filter-params/article-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { createListParam } from 'src/app/core/utils/params.utils';
 import { FilterSortPaginateInput, QueryOperator } from 'src/schema/schema';
 

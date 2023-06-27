@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { SurveyFilterQueryDefinition, SurveyFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { SurveyFilterQueryDefinition, SurveyFilterQueryParams } from 'src/app/core/typings/filter-params/survey-filter-param';
 import { SurveyFilterActions } from './survey-filter.actions';
 
 export interface SurveyFilterState {

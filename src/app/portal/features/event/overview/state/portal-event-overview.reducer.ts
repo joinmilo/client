@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { EventFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { EventEntity, FilterSortPaginateInput, Maybe, PageableList_EventEntity, ScheduleEntity } from 'src/schema/schema';
 import { PortalEventOverviewActions } from './portal-event-overview.actions';
 

@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { FilterQueryDefinition, OrganisationFilterQueryDefinition, OrganisationFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
+import { OrganisationFilterQueryDefinition, OrganisationFilterQueryParams } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { OrganisationFilterActions } from './organisation-filter.actions';
 
 export interface OrganisationFilterState {

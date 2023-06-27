@@ -1,8 +1,8 @@
-import {createActionGroup, props} from '@ngrx/store';
-import {DealEntity, EventEntity, FilterSortPaginateInput, OrganisationEntity,} from 'src/schema/schema';
-import {FilterKey} from '../constants/map.constants';
-import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
-import {PointOfInterest} from '../typings/point-of-interest';
+import { createActionGroup, props } from '@ngrx/store';
+import { FilterKey } from 'src/app/core/typings/filter-params/map-filter-param';
+import { CardData, CardEntity } from 'src/app/shared/card/typings/card';
+import { DealEntity, EventEntity, FilterSortPaginateInput, OrganisationEntity, } from 'src/schema/schema';
+import { PointOfInterest } from '../typings/point-of-interest';
 
 export const MapFeatureActions = createActionGroup({
   source: 'Map Feature',

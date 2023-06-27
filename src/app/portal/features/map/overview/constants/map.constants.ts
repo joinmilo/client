@@ -8,22 +8,6 @@ import {
 
 export const mapFeatureKey = 'mapState';
 
-export enum FilterKey {
-  // NOTE: Values used in URLs, changes might break links
-  events = 1,
-  organisations = 2,
-  deals = 3
-}
-
-export enum MapQueryParams {
-  // NOTE: Values used in URLs, changes might break links
-  filter = "filter",
-  southWestLat = "sw1",
-  southWestLng = "sw2",
-  northEastLat = "ne1",
-  northEastLng = "ne2",
-}
-
 export const defaultBounds = [[51.246938, 7.121244], [51.273150, 7.186175]] as LatLngBoundsLiteral;
 export const defaultCenter = [51.256214, 7.150764] as LatLngExpression;
 

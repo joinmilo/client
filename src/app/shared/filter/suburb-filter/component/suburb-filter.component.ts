@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { Maybe } from 'src/schema/schema';
 import { SuburbFilterActions } from '../state/suburb-filter.actions';
 import { selectSuburbs } from '../state/suburb-filter.selectors';

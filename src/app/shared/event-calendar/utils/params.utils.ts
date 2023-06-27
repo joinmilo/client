@@ -1,4 +1,5 @@
-import { EventFilterQueryDefinition, EventFilterQueryParams, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { EventFilterQueryDefinition, EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { Period } from 'src/app/core/typings/period';
 import { createListParam } from 'src/app/core/utils/params.utils';
 import { FilterSortPaginateInput, Maybe, QueryOperator } from 'src/schema/schema';

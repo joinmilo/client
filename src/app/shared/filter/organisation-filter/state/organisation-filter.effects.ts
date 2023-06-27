@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, tap } from 'rxjs';
-import { FilterQueryDefinition, OrganisationFilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
+import { OrganisationFilterQueryDefinition } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { OrganisationFilterActions } from './organisation-filter.actions';
 
 @Injectable()

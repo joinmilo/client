@@ -1,4 +1,5 @@
-import { FilterQueryDefinition, OrganisationFilterQueryDefinition, OrganisationFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
+import { OrganisationFilterQueryDefinition, OrganisationFilterQueryParams } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { createListParam } from 'src/app/core/utils/params.utils';
 import { FilterSortPaginateInput, QueryOperator } from 'src/schema/schema';
 

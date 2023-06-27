@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { displayQueryParam } from 'src/app/core/constants/core.constants';
-import { EventFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { DisplayType } from 'src/app/core/typings/overview-display';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
 import { FilterSortPaginateInput } from 'src/schema/schema';

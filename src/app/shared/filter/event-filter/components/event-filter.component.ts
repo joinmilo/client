@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, take, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
+import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { Period } from 'src/app/core/typings/period';
 import { EventFilterActions } from 'src/app/shared/filter/event-filter/state/event-filter.actions';
 import { selectEventFilterParams, selectFiltersActive, selectRawFilterParams } from 'src/app/shared/filter/event-filter/state/event-filter.selectors';
 import { FilterSortPaginateInput, Maybe } from 'src/schema/schema';
-import { EventFilterQueryParams } from '../../../../core/typings/filter-param';
 
 @Component({
   selector: 'app-event-filter',

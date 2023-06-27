@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { SurveyFilterQueryDefinition } from 'src/app/core/typings/filter-params/survey-filter-param';
 import { Maybe } from 'src/schema/schema';
-import { SurveyFilterQueryDefinition } from '../../../../../core/typings/filter-param';
 import { SurveyFilterActions } from '../../state/survey-filter.actions';
 
 @Component({

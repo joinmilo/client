@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { OrganisationFilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { OrganisationFilterQueryDefinition } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { Maybe } from 'src/schema/schema';
 import { OrganisationFilterActions } from '../../state/organisation-filter.actions';
 

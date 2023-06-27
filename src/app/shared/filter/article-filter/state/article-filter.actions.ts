@@ -1,8 +1,8 @@
 import { Params } from '@angular/router';
 import { createActionGroup, emptyProps } from '@ngrx/store';
+import { ArticleFilterQueryParams } from 'src/app/core/typings/filter-params/article-filter-param';
 import { Period } from 'src/app/core/typings/period';
 import { ArticleCategoryEntity, Maybe } from 'src/schema/schema';
-import { ArticleFilterQueryParams } from '../../../../core/typings/filter-param';
 
 export const ArticleFilterActions = createActionGroup({
   source: 'Article Filter',

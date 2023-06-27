@@ -1,4 +1,4 @@
-import { SurveyFilterQueryDefinition, SurveyFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { SurveyFilterQueryDefinition, SurveyFilterQueryParams } from 'src/app/core/typings/filter-params/survey-filter-param';
 import { FilterSortPaginateInput, QueryOperator } from 'src/schema/schema';
 
 export const createSurveyParams = (queryParams: SurveyFilterQueryParams) => {

@@ -1,6 +1,6 @@
 import { Params } from '@angular/router';
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { OrganisationFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { OrganisationFilterQueryParams } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { Maybe } from 'src/schema/schema';
 
 export const OrganisationFilterActions = createActionGroup({

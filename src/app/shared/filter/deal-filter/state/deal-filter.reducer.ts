@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-params/deal-filter-param';
 import { DealCategoryEntity } from 'src/schema/schema';
 import { DealFilterActions } from './deal-filter.actions';
 

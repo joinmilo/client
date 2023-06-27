@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs';
-import { DealFilterQueryDefinition, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-params/deal-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { DealCategoryEntity, GetDealCategoriesGQL } from 'src/schema/schema';
 import { DealFilterActions } from './deal-filter.actions';
 

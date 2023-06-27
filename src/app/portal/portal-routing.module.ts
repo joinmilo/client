@@ -44,6 +44,11 @@ const routes: Routes = [
         .then((imported) => imported.PortalGuestArticleModule),
   },
   {
+    path: mapFeatureKey,
+    loadChildren: () => import('./features/map/overview/map.module')
+      .then((imported) => imported.MapPortalModule),
+  },
+  {
     path: 'notifications',
     loadChildren: () => import('../shared/notification/notification.module')
       .then((imported) => imported.NotificationModule),
@@ -67,11 +72,6 @@ const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./shared/search/search.module')
       .then((imported) => imported.PortalSearchModule),
-  },
-  {
-    path: mapFeatureKey,
-    loadChildren: () => import('./features/map/main/map.module')
-      .then((imported) => imported.MapPortalModule),
   },
   {
     path: '404',

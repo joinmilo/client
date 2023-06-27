@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, tap } from 'rxjs';
-import { FilterQueryDefinition, SurveyFilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
+import { SurveyFilterQueryDefinition } from 'src/app/core/typings/filter-params/survey-filter-param';
 import { SurveyFilterActions } from './survey-filter.actions';
 
 @Injectable()

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs';
-import { EventFilterQueryDefinition, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-params/event-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { EventCategoryEntity, EventTargetGroupEntity, GetEventCategoriesGQL, GetEventTargetGroupsGQL } from 'src/schema/schema';
 import { EventFilterActions } from './event-filter.actions';
 

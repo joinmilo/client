@@ -1,5 +1,4 @@
 import { createActionGroup, emptyProps } from "@ngrx/store";
-import { SurveyFilterQueryParams } from 'src/app/core/typings/filter-param';
 import { FilterSortPaginateInput, Maybe, PageableList_SurveyEntity, SurveyEntity } from "src/schema/schema";
 
 export const PortalSurveyOverviewActions = createActionGroup({
@@ -12,6 +11,5 @@ export const PortalSurveyOverviewActions = createActionGroup({
     'set overview data': (surveys?: Maybe<PageableList_SurveyEntity>) => ({ surveys }),
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),
-    'update raw params': (params: SurveyFilterQueryParams) => ({ params }),
   }
 });

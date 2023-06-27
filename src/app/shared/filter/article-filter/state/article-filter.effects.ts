@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs';
-import { ArticleFilterQueryDefinition, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { ArticleFilterQueryDefinition } from 'src/app/core/typings/filter-params/article-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { ArticleCategoryEntity, GetArticleCategoriesGQL } from 'src/schema/schema';
 import { ArticleFilterActions } from './article-filter.actions';
 

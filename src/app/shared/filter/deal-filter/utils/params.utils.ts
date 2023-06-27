@@ -1,4 +1,4 @@
-import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-params/deal-filter-param';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 
 export const createDealParams = (queryParams: DealFilterQueryParams) => {

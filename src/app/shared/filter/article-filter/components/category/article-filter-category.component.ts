@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil, tap } from 'rxjs';
+import { ArticleFilterQueryDefinition } from 'src/app/core/typings/filter-params/article-filter-param';
 import { Maybe } from 'src/schema/schema';
-import { ArticleFilterQueryDefinition } from '../../../../../core/typings/filter-param';
 import { ArticleFilterActions } from '../../state/article-filter.actions';
 import { selectCategories } from '../../state/article-filter.selectors';
 

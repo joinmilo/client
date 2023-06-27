@@ -1,15 +1,13 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRoute, Params, Router} from '@angular/router';
-import {FilterKey, MapQueryParams} from '../constants/map.constants';
-import {distinctUntilChanged, Observable} from 'rxjs';
-import {filter, map} from 'rxjs/operators';
-import {latLngBounds, LatLngBounds} from 'leaflet';
-import {
-  DealFilterQueryDefinition,
-  EventFilterQueryDefinition, FilterQueryDefinition,
-  OrganisationFilterQueryDefinition
-} from 'src/app/core/typings/filter-param';
-
+import { Injectable } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { LatLngBounds, latLngBounds } from 'leaflet';
+import { Observable, distinctUntilChanged } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-params/deal-filter-param';
+import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-params/event-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
+import { FilterKey, MapQueryParams } from 'src/app/core/typings/filter-params/map-filter-param';
+import { OrganisationFilterQueryDefinition } from 'src/app/core/typings/filter-params/organisation-filter-param';
 
 @Injectable({
   providedIn: 'root'

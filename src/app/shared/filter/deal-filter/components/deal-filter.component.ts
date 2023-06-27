@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, take, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
-import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-params/deal-filter-param';
 import { FilterSortPaginateInput, Maybe } from 'src/schema/schema';
 import { DealFilterActions } from '../state/deal-filter.actions';
 import { selectDealFilterParams, selectFiltersActive, selectRawFilterParams } from '../state/deal-filter.selectors';

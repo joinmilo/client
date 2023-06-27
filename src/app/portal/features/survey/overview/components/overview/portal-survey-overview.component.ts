@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { Store } from '@ngrx/store';
-import { SurveyFilterQueryParams } from 'src/app/core/typings/filter-param';
 import { CardType } from 'src/app/shared/card/typings/card';
 import { SortOption, SortPaginate } from 'src/app/shared/table/typings/table';
 import { FilterSortPaginateInput } from 'src/schema/schema';
@@ -44,10 +43,5 @@ export class PortalSurveyOverviewComponent {
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalSurveyOverviewActions.updateParams(params));
   }
-
-  public updateRawParams(params: SurveyFilterQueryParams) {
-    this.store.dispatch(PortalSurveyOverviewActions.updateRawParams(params));
-  }
-
 
 }

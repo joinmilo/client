@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { EventFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { Period } from 'src/app/core/typings/period';
 import { EventEntity, Maybe } from 'src/schema/schema';
 import { EventCalendarActions } from '../state/event-calendar.actions';

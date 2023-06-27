@@ -12,8 +12,7 @@
   </app-content-card>
   
   <app-survey-filter 
-    (paramsUpdated)="updateParams($event)"
-    (rawParamsUpdated)="updateRawParams($event)">
+    (paramsUpdated)="updateParams($event)">
   </app-survey-filter>
 
   <ng-container *ngIf="(surveys | async)?.total; else emptyResult">

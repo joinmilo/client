@@ -1,6 +1,6 @@
 import { Params } from '@angular/router';
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { SurveyFilterQueryParams } from '../../../../core/typings/filter-param';
+import { SurveyFilterQueryParams } from 'src/app/core/typings/filter-params/survey-filter-param';
 
 export const SurveyFilterActions = createActionGroup({
   source: 'Survey Filter',

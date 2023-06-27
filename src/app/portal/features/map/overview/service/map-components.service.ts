@@ -5,9 +5,9 @@ import {
   Injectable,
   Injector, Type
 } from '@angular/core';
-import {MapMarkerComponent} from '../components/map-marker/map-marker.component';
-import {PointOfInterest} from '../typings/point-of-interest';
-import {MapPopupComponent} from '../components/map-popup/map-popup.component';
+import { MapPopupComponent } from '../components/map-popup/map-popup.component';
+import { MapMarkerComponent } from '../components/marker/portal-map-overview-marker.component';
+import { PointOfInterest } from '../typings/point-of-interest';
 
 /**
  * This programmatically creates Components bound to Html Elements
@@ -20,7 +20,7 @@ import {MapPopupComponent} from '../components/map-popup/map-popup.component';
 export class MapComponentsService {
 
   private elements: HTMLElement[] = [];
-  private refs: ComponentRef<any>[] = [];
+  private refs: ComponentRef<unknown>[] = [];
 
   constructor(
     private injector: Injector,

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, take, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
-import { OrganisationFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { OrganisationFilterQueryParams } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { FilterSortPaginateInput, Maybe } from 'src/schema/schema';
 import { OrganisationFilterActions } from '../state/organisation-filter.actions';
 import { selectFiltersActive, selectOrganisationFilterParams, selectRawFilterParams } from '../state/organisation-filter.selectors';

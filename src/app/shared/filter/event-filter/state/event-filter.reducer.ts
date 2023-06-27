@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { EventFilterQueryDefinition, EventFilterQueryParams, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { EventFilterQueryDefinition, EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { EventCategoryEntity, EventTargetGroupEntity, Maybe, SuburbEntity } from 'src/schema/schema';
 import { EventFilterActions } from './event-filter.actions';
 

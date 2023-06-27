@@ -1,11 +1,12 @@
-import {Component, Input} from '@angular/core';
-import {defaultMarkerColor} from '../../constants/map.constants';
-import {IconName} from '@fortawesome/fontawesome-svg-core';
+import { Component, Input } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
+import { defaultMarkerColor } from '../../constants/map.constants';
 
 
 @Component({
-  styleUrls: ['map-marker.component.scss'],
-  templateUrl: 'map-marker.component.html'
+  selector: 'app-portal-map-overview-marker',
+  styleUrls: ['portal-map-overview-marker.component.scss'],
+  templateUrl: 'portal-map-overview-marker.component.html'
 })
 export class MapMarkerComponent {
 

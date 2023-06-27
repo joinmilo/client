@@ -1,44 +1,36 @@
-import {Component, OnDestroy} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {MapFeatureActions} from '../../state/map.actions';
-import {selectActiveFilter, selectPois, selectResults} from '../../state/map.selector';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
 import {
-  defaultBounds,
-  FilterKey,
-  iconOptions,
-  mapOptions,
-  markerClusterOptions,
-  popupOptions,
-  tileLayerOptions,
-  tileLayerURL
-} from '../../constants/map.constants';
-import {
-  divIcon,
   FeatureGroup,
-  latLng,
-  latLngBounds,
   LatLngBounds,
   Layer,
   Map,
   MapOptions,
   Marker,
+  divIcon,
+  latLng,
+  latLngBounds,
   marker,
   tileLayer
 } from 'leaflet';
-import {combineLatest, concat, filter, map, Observable, take} from 'rxjs';
-import {MapComponentsService} from '../../service/map-components.service';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import {PointOfInterest} from '../../typings/point-of-interest';
-import {MapRouteService} from '../../service/map-route-service';
-import {FilterSortPaginateInput} from 'src/schema/schema';
+import { Observable, combineLatest, concat, filter, map, take } from 'rxjs';
+import { FilterKey } from 'src/app/core/typings/filter-params/map-filter-param';
+import { FilterSortPaginateInput } from 'src/schema/schema';
+import { defaultBounds, iconOptions, mapOptions, markerClusterOptions, popupOptions, tileLayerOptions, tileLayerURL } from '../constants/map.constants';
+import { MapComponentsService } from '../service/map-components.service';
+import { MapRouteService } from '../service/map-route-service';
+import { MapFeatureActions } from '../state/map.actions';
+import { selectActiveFilter, selectPois, selectResults } from '../state/map.selector';
+import { PointOfInterest } from '../typings/point-of-interest';
 
 
 @Component({
-  selector: 'app-portal-map-page',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss'],
+  selector: 'app-portal-map-overview',
+  templateUrl: './portal-map-overview.component.html',
+  styleUrls: ['./portal-map-overview.component.scss'],
 })
-export class MapPageComponent implements OnDestroy {
+export class PortalMapOverviewComponent implements OnDestroy {
 
   public FilterKey: typeof FilterKey = FilterKey;
 
@@ -79,10 +71,10 @@ export class MapPageComponent implements OnDestroy {
       map((pois) => pois.map((poi) => this.poiToMarker(poi))),
     );
 
-    this.isLandscape = breakpointObserver
+    this.isLandscape = this.breakpointObserver
       .observe([this.orientations.portrait, this.orientations.landscape,])
       .pipe(map((result) => result.matches && result.breakpoints[this.orientations.landscape]));
-    this.isDesktop = breakpointObserver
+    this.isDesktop = this.breakpointObserver
       .observe('(min-width: 1024px)')
       .pipe(map((result) => result.matches));
 
@@ -91,10 +83,6 @@ export class MapPageComponent implements OnDestroy {
     this.mapRouteService.filterKeyQueryParam()
       .pipe(take(1))
       .subscribe((key) => this.store.dispatch(MapFeatureActions.setActiveFilter({key})));
-  }
-
-  ngOnDestroy() {
-    this.components.cleanup();
   }
 
   setFilter(key: FilterKey) {
@@ -129,6 +117,10 @@ export class MapPageComponent implements OnDestroy {
     setTimeout(() => this.map?.invalidateSize(true), 100);
   }
 
+  test($event: any) {
+    console.log($event)
+  }
+
   private setupBoundsSource(): Observable<LatLngBounds> {
     const boundsFromMarkers = this.markers.pipe(
       filter((markers) => markers.length > 0),
@@ -150,5 +142,9 @@ export class MapPageComponent implements OnDestroy {
       boundsFromRoute.pipe(map((bounds) => bounds ? bounds : latLngBounds(defaultBounds))),
       preferRouteOnFirstEmit
     );
+  }
+
+  public ngOnDestroy() {
+    this.components.cleanup();
   }
 }

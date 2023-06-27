@@ -1,13 +1,13 @@
-import {Component, Input, OnChanges} from '@angular/core';
-import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
+import { Component, Input, OnChanges } from '@angular/core';
+import { CardData, CardEntity } from 'src/app/shared/card/typings/card';
 
 
 @Component({
-  selector: 'app-map-card-list',
-  templateUrl: 'map-card-list.component.html',
-  styleUrls: ['map-card-list.component.scss']
+  selector: 'app-portal-map-overview-list',
+  templateUrl: 'portal-map-overview-list.component.html',
+  styleUrls: ['portal-map-overview-list.component.scss']
 })
-export class MapCardListComponent implements OnChanges {
+export class PortalMapOverviewListComponent implements OnChanges {
 
   @Input()
   public entity!: CardEntity;

@@ -1,9 +1,9 @@
-import {createReducer, on} from '@ngrx/store';
-import {DealEntity, EventEntity, FilterSortPaginateInput, OrganisationEntity} from 'src/schema/schema';
-import {MapFeatureActions} from './map.actions';
-import {FilterKey} from '../constants/map.constants'
-import {CardData, CardEntity} from 'src/app/shared/card/typings/card';
-import {PointOfInterest} from '../typings/point-of-interest';
+import { createReducer, on } from '@ngrx/store';
+import { FilterKey } from 'src/app/core/typings/filter-params/map-filter-param';
+import { CardData, CardEntity } from 'src/app/shared/card/typings/card';
+import { DealEntity, EventEntity, FilterSortPaginateInput, OrganisationEntity } from 'src/schema/schema';
+import { PointOfInterest } from '../typings/point-of-interest';
+import { MapFeatureActions } from './map.actions';
 
 export interface MapState {
   activeFilter: FilterKey;

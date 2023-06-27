@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {MapFeatureActions} from './map.actions';
-import {map, switchMap, withLatestFrom} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { map, switchMap, withLatestFrom } from 'rxjs';
+import { FilterKey } from 'src/app/core/typings/filter-params/map-filter-param';
 import {
   DealEntity,
   EventEntity,
@@ -11,10 +12,9 @@ import {
   GetOrganisationsGQL,
   OrganisationEntity,
 } from 'src/schema/schema';
-import {Store} from '@ngrx/store';
-import {selectActiveFilter} from './map.selector';
-import {FilterKey} from '../constants/map.constants';
-import {dealsToPois, eventsToPois, organisationsToPois} from '../utils/point-of-interest.util';
+import { dealsToPois, eventsToPois, organisationsToPois } from '../utils/point-of-interest.util';
+import { MapFeatureActions } from './map.actions';
+import { selectActiveFilter } from './map.selector';
 
 @Injectable()
 export class MapEffects {

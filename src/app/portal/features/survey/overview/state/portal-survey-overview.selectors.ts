@@ -18,8 +18,3 @@ export const selectParams = createSelector(
   selectPortalSurveyOverviewState,
   state => state.params
 );
-
-export const selectRawParams = createSelector(
-  selectPortalSurveyOverviewState,
-  state => state.rawFilterParams
-);

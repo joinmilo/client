@@ -6,9 +6,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, take, takeUntil } from 'rxjs';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { Period } from 'src/app/core/typings/period';
 import { Maybe } from 'src/schema/schema';
-import { FilterQueryDefinition } from '../../../core/typings/filter-param';
 
 @Component({
   selector: 'app-date-range-filter',
