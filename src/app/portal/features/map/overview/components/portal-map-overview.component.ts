@@ -15,8 +15,8 @@ import {
   tileLayer
 } from 'leaflet';
 import { Observable, combineLatest, concat, filter, map, take } from 'rxjs';
+import { fadeInAnimation } from 'src/app/core/animations/animations';
 import { FilterKey } from 'src/app/core/typings/filter-params/map-filter-param';
-import { FilterSortPaginateInput } from 'src/schema/schema';
 import { defaultBounds, iconOptions, mapOptions, markerClusterOptions, popupOptions, tileLayerOptions, tileLayerURL } from '../constants/map.constants';
 import { MapComponentsService } from '../service/map-components.service';
 import { MapRouteService } from '../service/map-route-service';
@@ -24,11 +24,13 @@ import { MapFeatureActions } from '../state/map.actions';
 import { selectActiveFilter, selectPois, selectResults } from '../state/map.selector';
 import { PointOfInterest } from '../typings/point-of-interest';
 
-
 @Component({
   selector: 'app-portal-map-overview',
   templateUrl: './portal-map-overview.component.html',
   styleUrls: ['./portal-map-overview.component.scss'],
+  animations: [
+    fadeInAnimation(),
+  ]
 })
 export class PortalMapOverviewComponent implements OnDestroy {
 
@@ -90,10 +92,6 @@ export class PortalMapOverviewComponent implements OnDestroy {
     this.store.dispatch(MapFeatureActions.setActiveFilter({key}));
   }
 
-  updateParams(params: FilterSortPaginateInput) {
-    this.store.dispatch(MapFeatureActions.setFilterParams({params}));
-  }
-
   poiToMarker(poi: PointOfInterest): Marker {
     const icon = divIcon({
       ...iconOptions,
@@ -115,10 +113,6 @@ export class PortalMapOverviewComponent implements OnDestroy {
   toggleMenu() {
     this.showMenuInDesktop = !this.showMenuInDesktop;
     setTimeout(() => this.map?.invalidateSize(true), 100);
-  }
-
-  test($event: any) {
-    console.log($event)
   }
 
   private setupBoundsSource(): Observable<LatLngBounds> {

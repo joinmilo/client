@@ -1,0 +1,23 @@
+<ng-container [ngSwitch]="activeFilter | async">
+  <div *ngSwitchCase="filterKey.events">
+    <app-event-filter (paramsUpdated)="updateParams($event)">
+      <ng-container *ngTemplateOutlet="result"></ng-container>
+    </app-event-filter>
+  </div>
+  <div *ngSwitchCase="filterKey.organisations" >
+    <app-organisation-filter (paramsUpdated)="updateParams($event)">
+      <ng-container *ngTemplateOutlet="result"></ng-container>
+    </app-organisation-filter>
+  </div>
+  <div *ngSwitchCase="filterKey.deals">
+    <app-deal-filter (paramsUpdated)="updateParams($event)">
+      <ng-container *ngTemplateOutlet="result"></ng-container>
+    </app-deal-filter>
+  </div>
+</ng-container>
+<ng-template #result>
+  <section>
+    <span>{{ total }}</span>
+    <span [appLabel]="label"></span>
+  </section>
+</ng-template>

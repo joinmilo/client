@@ -1,47 +1,31 @@
 <div class="{{(isLandscape | async) ? 'landscape' : ''}} {{(isDesktop | async) ? 'desktop' : ''}} {{showMenuInDesktop ? '' : 'hide-menu' }}">
   <div class="map-menu">
-    <div *ngIf="activeFilter | async as filter">
-      <div *ngIf="filter === FilterKey.events">
-        <app-event-filter (paramsUpdated)="updateParams($event)">
-          <app-map-result-count></app-map-result-count>
-        </app-event-filter>
-      </div>
-      <div *ngIf="filter === FilterKey.organisations">
-        <app-organisation-filter (paramsUpdated)="updateParams($event)">
-          <app-map-result-count></app-map-result-count>
-        </app-organisation-filter>
-      </div>
-      <div *ngIf="filter === FilterKey.deals">
-        <app-deal-filter  (paramsUpdated)="updateParams($event)">
-          <app-map-result-count></app-map-result-count>
-        </app-deal-filter>
-      </div>
-    </div>
+    <app-portal-map-overview-filter></app-portal-map-overview-filter>
 
     <div *ngIf="isDesktop | async"><ng-container *ngTemplateOutlet="resultList"></ng-container></div>
   </div>
 
   <div class="map-container">
     <div leaflet
-         (leafletMapReady)="onMapReady($event)"
-         (leafletMapMoveEnd)="onMapPositionChange()"
-         (leafletMapZoomEnd)="onMapPositionChange()"
-         (leafletMouseOver)="test($event)"
-         [leafletOptions]="leafletOptions"
-         [leafletFitBounds]="(mapBounds | async)!">
-      <div *ngIf="(markers | async) as markers"
-           [leafletMarkerCluster]="markers"
-           [leafletMarkerClusterOptions]="markerClusterOptions"></div>
+      (leafletMapReady)="onMapReady($event)"
+      (leafletMapMoveEnd)="onMapPositionChange()"
+      (leafletMapZoomEnd)="onMapPositionChange()"
+      [leafletOptions]="leafletOptions"
+      [leafletFitBounds]="(mapBounds | async)!">
+        <div *ngIf="(markers | async) as markers"
+          [leafletMarkerCluster]="markers"
+          [leafletMarkerClusterOptions]="markerClusterOptions">
+        </div>
     </div>
 
     <app-map-attribution></app-map-attribution>
 
     <button mat-mini-fab *ngIf="isDesktop | async" (click)="toggleMenu()">
-      <fa-icon icon="angle-left"></fa-icon>
+      <fa-icon [icon]="showMenuInDesktop ? 'angle-left' : 'angle-right'"></fa-icon>
     </button>
 
     <mat-button-toggle-group (change)="setFilter($event.value)" [value]="activeFilter | async" name="filter">
-      <mat-button-toggle [value]="FilterKey.events"><span appLabel="events"></span></mat-button-toggle>
+      <mat-button-toggle [value]="FilterKey.events"><span appLabel="activities"></span></mat-button-toggle>
       <mat-button-toggle [value]="FilterKey.organisations"><span appLabel="organisations"></span></mat-button-toggle>
       <mat-button-toggle [value]="FilterKey.deals"><span appLabel="deals"></span></mat-button-toggle>
     </mat-button-toggle-group>

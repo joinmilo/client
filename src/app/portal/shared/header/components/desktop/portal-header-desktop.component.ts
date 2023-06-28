@@ -15,7 +15,7 @@ import { UserContextEntity } from 'src/schema/schema';
     fadeInAnimation(),
   ]
 })
-export class PortalHeaderDesktopComponent implements OnInit{
+export class PortalHeaderDesktopComponent implements OnInit {
 
   public currentUser?: Maybe<UserContextEntity>;
 
@@ -27,9 +27,9 @@ export class PortalHeaderDesktopComponent implements OnInit{
     private store: Store,
   ) {}
 
-  ngOnInit(): void {
-  this.store.select(selectCurrentUser).subscribe((user) => {
-    this.currentUser = user;
-  });
-}
+  public ngOnInit(): void {
+    this.store.select(selectCurrentUser).subscribe((user) => {
+      this.currentUser = user;
+    });
+  }
 }

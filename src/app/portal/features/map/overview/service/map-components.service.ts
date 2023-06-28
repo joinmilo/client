@@ -1,12 +1,12 @@
 import {
-  ApplicationRef, ComponentRef,
-  createComponent,
-  EnvironmentInjector,
-  Injectable,
-  Injector, Type
+    ApplicationRef, ComponentRef,
+    createComponent,
+    EnvironmentInjector,
+    Injectable,
+    Injector, Type
 } from '@angular/core';
 import { MapPopupComponent } from '../components/map-popup/map-popup.component';
-import { MapMarkerComponent } from '../components/marker/portal-map-overview-marker.component';
+import { MapMarkerComponent } from '../components/marker/map-marker.component';
 import { PointOfInterest } from '../typings/point-of-interest';
 
 /**

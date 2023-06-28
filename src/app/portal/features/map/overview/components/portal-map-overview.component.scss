@@ -29,6 +29,8 @@
     padding: var(--map-gap);
 
     border-radius: 0 0 var(--map-gap) var(--map-gap);
+    border-right: 1px solid var(--color-border);
+    background-color: var(--color-background);
   }
 
   .map-container {
@@ -47,7 +49,6 @@
       left: calc(0.5 * var(--map-gap));
       bottom: calc(2 * var(--map-gap));
 
-      font-weight: bolder;
       border-radius: var(--map-gap);
     }
 
@@ -67,13 +68,14 @@
     border-radius: var(--map-gap);
     padding: var(--map-gap);
     box-sizing: border-box;
+    background-color: var(--color-background);
     box-shadow: var(--map-box-shadow)
   }
 
   // Use this class instead of responsive() mixin to make sure styles
   // are in sync with elements positioned via breakpoint observer
   .desktop {
-    --map-desktop-menu-width: 30vw;
+    --map-desktop-menu-width: 50vw;
 
     .map-menu {
       position: absolute;
@@ -103,7 +105,7 @@
         position: absolute;
         top: var(--map-gap);
         left: var(--map-gap);
-        background: white;
+        background: var(--color-background);
       }
 
       mat-button-toggle-group {

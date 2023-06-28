@@ -19,10 +19,10 @@ import { DealFilterModule } from 'src/app/shared/filter/deal-filter/deal-filter.
 import { EventFilterModule } from 'src/app/shared/filter/event-filter/event-filter.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation-filter/organisation-filter.module';
 import { MapAttributionComponent } from './components/attribution/map-overview-attribution.component';
+import { PortalMapOverviewFilterComponent } from './components/filter/portal-map-overview-filter.component';
 import { PortalMapOverviewListComponent } from './components/list/portal-map-overview-list.component';
 import { MapPopupComponent } from './components/map-popup/map-popup.component';
-import { MapResultCountComponent } from './components/map-result-count/map-result-count.component';
-import { MapMarkerComponent } from './components/marker/portal-map-overview-marker.component';
+import { MapMarkerComponent } from './components/marker/map-marker.component';
 import { PortalMapOverviewComponent } from './components/portal-map-overview.component';
 import { mapFeatureKey } from './constants/map.constants';
 import { MapPortalRoutingModule } from './map-routing.module';
@@ -31,11 +31,11 @@ import { mapReducer } from './state/map.reducer';
 
 
 const components = [
-  MapAttributionComponent,
+  PortalMapOverviewFilterComponent,
   PortalMapOverviewListComponent,
+  MapAttributionComponent,
   MapPopupComponent,
   MapMarkerComponent,
-  MapResultCountComponent
 ]
 
 const pages = [

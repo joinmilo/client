@@ -4,9 +4,9 @@ import { defaultMarkerColor } from '../../constants/map.constants';
 
 
 @Component({
-  selector: 'app-portal-map-overview-marker',
-  styleUrls: ['portal-map-overview-marker.component.scss'],
-  templateUrl: 'portal-map-overview-marker.component.html'
+  selector: 'app-map-marker',
+  styleUrls: ['map-marker.component.scss'],
+  templateUrl: 'map-marker.component.html'
 })
 export class MapMarkerComponent {
 
