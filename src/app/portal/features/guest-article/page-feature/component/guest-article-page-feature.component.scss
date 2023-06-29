@@ -1,0 +1,23 @@
+mat-card {
+  width: 40rem;
+  max-width: calc(100% - var(--gap));
+  margin: auto;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    padding: var(--gap);
+    padding-bottom: .5rem; //same gap between section and card-slider like in the calender-page-feature
+    gap: var(--gap);
+  }
+
+  button {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+}
+
+app-card-slider {
+  padding: 1rem;
+}

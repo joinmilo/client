@@ -13,6 +13,7 @@ import { PortalContestPageFeatureModule } from '../features/contest/page-feature
 import { PortalDealPageFeatureModule } from '../features/deal/page-feature/portal-deal-page-feature.module';
 import { PortalEventPageFeatureModule } from '../features/event/page-feature/portal-event-page-feature.module';
 import { PortalFormPageFeatureModule } from '../features/form/page-feature/portal-form-page-feature.module';
+import { PortalGuestArticlePageFeatureModule } from '../features/guest-article/page-feature/guest-portal-article-page-feature.module';
 import { PortalOrganisationPageFeatureModule } from '../features/organisation/page-feature/portal-organisation-page-feature.module';
 import { PortalReportPageFeatureModule } from '../features/report/page-feature/portal-report-page-feature.module';
 import { PortalSurveyPageFeatureModule } from '../features/survey/page-feature/portal-survey-page-feature.module';
@@ -38,6 +39,7 @@ const features = [
   PortalDealPageFeatureModule,
   PortalEventPageFeatureModule,
   PortalFormPageFeatureModule,
+  PortalGuestArticlePageFeatureModule,
   PortalOrganisationPageFeatureModule,
   PortalReportPageFeatureModule,
   PortalSurveyPageFeatureModule,
