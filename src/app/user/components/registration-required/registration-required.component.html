@@ -1,0 +1,33 @@
+<div class="main">
+  <form class="border-box" [formGroup]="form" #formDirective="ngForm">
+  
+    <h2 class="mat-headline-5" appLabel="registrationRequired"></h2>
+    <p appLabel="registrationRequiredText"></p>
+  
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="email"></mat-label>
+      <input matInput formControlName="email" placeholder="m.mustermann@example.com">
+    </mat-form-field>
+
+    <app-password-confirm formControlName="password"></app-password-confirm>
+    <app-privacy-policy-form formControlName="termsAccepted"></app-privacy-policy-form>
+  
+    <app-captcha-submit
+      [disabled]="form.invalid"
+      (verified)="onSubmit($event, formDirective)">
+    </app-captcha-submit>
+  
+    <section>
+      <small>
+        <span appLabel="haveAcc?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'login']" appLabel="login"></a>
+      </small>
+      <small>
+        <span appLabel="noVerification?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'verification']" appLabel="sendNewMail"></a>
+      </small>
+    </section>
+
+  </form>
+  <app-image-slider></app-image-slider>
+</div>

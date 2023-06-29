@@ -19,6 +19,7 @@ import { ImageSliderComponent } from './components/image-slider/image-slider.com
 import { LoginComponent } from './components/login/login.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
+import { RegistrationRequiredComponent } from './components/registration-required/registration-required.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VerificationSendMailComponent } from './components/verification-send-mail/verification-send-mail.component';
 import { VerificationComponent } from './components/verification/verification.component';
@@ -34,6 +35,7 @@ const components = [
   PasswordSetNewComponent,
   PasswordSendMailComponent,
   RegistrationComponent,
+  RegistrationRequiredComponent,
   UserComponent,
   VerificationComponent,
   VerificationSendMailComponent,
