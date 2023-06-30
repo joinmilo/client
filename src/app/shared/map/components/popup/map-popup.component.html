@@ -5,7 +5,11 @@
       : poi?.translatables | translatable: poi?.titleTranslatableField | async
   }}
 </h3>
-<app-date-piece *ngIf="poi?.date" [date]="poi?.date" [dateTime]="true"></app-date-piece>
+<app-address-piece *ngIf="poi?.address" [address]="poi?.address">
+</app-address-piece>
+
+<app-date-piece *ngIf="poi?.date" [date]="poi?.date" [dateTime]="true">
+</app-date-piece>
 <span>
   {{
     (poi?.text
