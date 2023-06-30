@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
@@ -36,7 +35,6 @@ const modules = [
   CoreModule,
   CardModule,
   FormModule,
-  MatPaginatorModule,
   MatSortModule,
   PortalSurveyOverviewRoutingModule,
   SurveyFilterModule,

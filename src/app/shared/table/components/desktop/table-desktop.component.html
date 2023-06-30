@@ -30,11 +30,10 @@
   </mat-card>
 
   <mat-card>
-    <mat-paginator
+    <app-table-paginator
       [length]="(data | async)?.total"
       [pageSize]="initParams?.size"
-      [pageIndex]="initParams?.page"
-      [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator>
+      [pageIndex]="initParams?.page">
+  </app-table-paginator>
   </mat-card>
 </div>

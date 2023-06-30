@@ -1,13 +1,14 @@
 import {
-    ApplicationRef, ComponentRef,
-    createComponent,
-    EnvironmentInjector,
-    Injectable,
-    Injector, Type
+  ApplicationRef, ComponentRef,
+  createComponent,
+  EnvironmentInjector,
+  Injectable,
+  Injector, Type
 } from '@angular/core';
-import { MapPopupComponent } from '../components/map-popup/map-popup.component';
+import { Maybe } from 'src/schema/schema';
 import { MapMarkerComponent } from '../components/marker/map-marker.component';
-import { PointOfInterest } from '../typings/point-of-interest';
+import { MapPopupComponent } from '../components/popup/map-popup.component';
+import { PointOfInterest } from '../typings/map';
 
 /**
  * This programmatically creates Components bound to Html Elements
@@ -28,22 +29,17 @@ export class MapComponentsService {
     private applicationRef: ApplicationRef
   ) { }
 
-  createMarkerElement(poi: PointOfInterest): HTMLElement {
+  public createMarkerElement(color?: Maybe<string>, icon?: Maybe<string>): HTMLElement {
     const [element, component] = this.createElementWithComponent(MapMarkerComponent);
-    component.instance.color = poi.color;
-    component.instance.icon = poi.icon;
+    component.instance.color = color;
+    component.instance.icon = icon;
     return element;
   }
 
-  createPopupElement(poi: PointOfInterest): HTMLElement {
+  public createPopupElement(poi: PointOfInterest): HTMLElement {
     const [element, component] = this.createElementWithComponent(MapPopupComponent);
     component.instance.poi = poi;
     return element;
-  }
-
-  cleanup() {
-    this.refs.splice(0).forEach((ref) => ref.destroy());
-    this.elements.splice(0).forEach((element) => element.remove());
   }
 
   private createElementWithComponent<C>(componentType: Type<C>, tag = 'div'): [HTMLElement, ComponentRef<C>] {
@@ -56,6 +52,11 @@ export class MapComponentsService {
     this.applicationRef.attachView(component.hostView);
     this.refs.push(component);
     this.elements.push(element);
-    return [element, component]
+    return [element, component];
+  }
+
+  public cleanup(): void {
+    this.refs.splice(0).forEach((ref) => ref.destroy());
+    this.elements.splice(0).forEach((element) => element.remove());
   }
 }

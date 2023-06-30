@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { dealsFeatureKey, displayQueryParam } from 'src/app/core/constants/core.constants';
-import { DisplayType } from 'src/app/core/typings/overview-display';
+import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 import { PortalDealOverviewActions } from '../state/portal-deal-overview.actions';
@@ -14,7 +14,7 @@ import { selectOverviewData, selectSponsoredDeal } from '../state/portal-deal-ov
 })
 export class PortalDealOverviewComponent {
 
-  public displayType = DisplayType.Category;
+  public displayType = OverviewDisplayType.Category;
 
   public displayQueryParam = displayQueryParam;
 
@@ -22,17 +22,17 @@ export class PortalDealOverviewComponent {
     {
       icon: ['fas', 'shapes'],
       label: 'category',
-      value: DisplayType.Category
+      value: OverviewDisplayType.Category
     },
     {
       icon: ['fas', 'map-location-dot'],
       label: 'mapview',
-      value: DisplayType.Map
+      value: OverviewDisplayType.Map
     },
     {
       icon: ['fas', 'list'],
       label: 'table',
-      value: DisplayType.Table
+      value: OverviewDisplayType.Table
     },
   ];
 

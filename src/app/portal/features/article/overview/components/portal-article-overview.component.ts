@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { displayQueryParam, guestArticlesFeatureKey } from 'src/app/core/constants/core.constants';
-import { DisplayType } from 'src/app/core/typings/overview-display';
+import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 import { PortalArticleOverviewActions } from '../state/portal-article-overview.actions';
@@ -14,7 +14,7 @@ import { selectOverviewData, selectSponsoredArticle } from '../state/portal-arti
 })
 export class PortalArticleOverviewComponent {
 
-  public displayType = DisplayType.Category;
+  public displayType = OverviewDisplayType.Category;
 
   public displayQueryParam = displayQueryParam;
 
@@ -22,12 +22,12 @@ export class PortalArticleOverviewComponent {
     {
       icon: ['fas', 'shapes'],
       label: 'category',
-      value: DisplayType.Category
+      value: OverviewDisplayType.Category
     },
     {
       icon: ['fas', 'list'],
       label: 'table',
-      value: DisplayType.Table
+      value: OverviewDisplayType.Table
     },
   ];
 

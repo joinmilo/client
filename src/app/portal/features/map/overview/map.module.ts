@@ -3,13 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -18,24 +13,20 @@ import { CardModule } from 'src/app/shared/card/card.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal-filter/deal-filter.module';
 import { EventFilterModule } from 'src/app/shared/filter/event-filter/event-filter.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation-filter/organisation-filter.module';
-import { MapAttributionComponent } from './components/attribution/map-overview-attribution.component';
+import { FormModule } from 'src/app/shared/form/form.module';
+import { MapModule } from 'src/app/shared/map/map.module';
+import { TableModule } from 'src/app/shared/table/table.module';
 import { PortalMapOverviewFilterComponent } from './components/filter/portal-map-overview-filter.component';
 import { PortalMapOverviewListComponent } from './components/list/portal-map-overview-list.component';
-import { MapPopupComponent } from './components/map-popup/map-popup.component';
-import { MapMarkerComponent } from './components/marker/map-marker.component';
 import { PortalMapOverviewComponent } from './components/portal-map-overview.component';
 import { mapFeatureKey } from './constants/map.constants';
 import { MapPortalRoutingModule } from './map-routing.module';
 import { MapEffects } from './state/map.effects';
 import { mapReducer } from './state/map.reducer';
 
-
 const components = [
   PortalMapOverviewFilterComponent,
   PortalMapOverviewListComponent,
-  MapAttributionComponent,
-  MapPopupComponent,
-  MapMarkerComponent,
 ]
 
 const pages = [
@@ -50,13 +41,10 @@ const framework = [
 ];
 
 const materials = [
+  MatCardModule,
   MatButtonModule,
   MatButtonToggleModule,
-  MatCheckboxModule,
-  MatDatepickerModule,
-  MatIconModule,
-  MatInputModule,
-  MatSelectModule,
+  MatSidenavModule,
 ];
 
 const modules = [
@@ -64,14 +52,15 @@ const modules = [
   CoreModule,
   DealFilterModule,
   EventFilterModule,
+  FormModule,
   OrganisationFilterModule,
   MapPortalRoutingModule,
+  MapModule,
+  TableModule,
 ]
 
 const libs = [
   FontAwesomeModule,
-  LeafletModule,
-  LeafletMarkerClusterModule
 ]
 
 @NgModule({

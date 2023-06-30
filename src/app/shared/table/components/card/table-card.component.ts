@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, startWith, take } from 'rxjs';
 import { CardData, CardEntity, CardType } from 'src/app/shared/card/typings/card';
 import { Maybe } from 'src/schema/schema';
 import { PageableList, Sort, SortOption, SortPaginate } from '../../typings/table';
+import { TablePaginatorComponent } from '../paginator/table-paginator.component';
 
 @Component({
   selector: 'app-table-card',
@@ -37,8 +37,8 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
   @Output()
   public sortPaginate = new EventEmitter<SortPaginate>();
 
-  @ViewChild(MatPaginator)
-  public paginator!: MatPaginator;
+  @ViewChild(TablePaginatorComponent)
+  public paginator!: TablePaginatorComponent;
 
   private sort?: Sort;
 

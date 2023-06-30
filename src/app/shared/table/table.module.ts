@@ -16,6 +16,7 @@ import { TableActionsComponent } from './components/actions/table-actions.compon
 import { TableCardComponent } from './components/card/table-card.component';
 import { TableDesktopComponent } from './components/desktop/table-desktop.component';
 import { TableMobileComponent } from './components/mobile/table-mobile.component';
+import { TablePaginatorComponent } from './components/paginator/table-paginator.component';
 import { TableBooleanRowComponent } from './components/rows/table-boolean-row.component';
 import { TableSortComponent } from './components/sort/table-sort.component';
 import { TableComponent } from './components/table.component';
@@ -29,6 +30,7 @@ const components = [
   TableCardComponent,
   TableDesktopComponent,
   TableMobileComponent,
+  TablePaginatorComponent,
   TableSortComponent,
 ];
 

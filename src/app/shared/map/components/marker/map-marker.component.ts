@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { defaultMarkerColor } from '../../constants/map.constants';
 
-
 @Component({
   selector: 'app-map-marker',
   styleUrls: ['map-marker.component.scss'],
@@ -10,8 +9,8 @@ import { defaultMarkerColor } from '../../constants/map.constants';
 })
 export class MapMarkerComponent {
 
-  fill = '';
-  stroke = '';
+  public fill = '';
+  public  stroke = '';
 
   @Input()
   set color(color: string | null | undefined) {

@@ -1,0 +1,11 @@
+<div leaflet *ngIf="leafletOptions && bounds"
+  (leafletMapReady)="onMapReady($event)"
+  (leafletMapMoveEnd)="onMapPositionChange()"
+  (leafletMapZoomEnd)="onMapPositionChange()"
+  [leafletOptions]="leafletOptions"
+  [leafletFitBounds]="bounds">
+    <div *ngIf="markers"
+      [leafletMarkerCluster]="markers"
+      [leafletMarkerClusterOptions]="markerClusterOptions">
+    </div>
+</div>

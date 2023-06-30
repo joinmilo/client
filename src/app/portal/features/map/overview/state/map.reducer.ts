@@ -1,41 +1,28 @@
 import { createReducer, on } from '@ngrx/store';
-import { FilterKey } from 'src/app/core/typings/filter-params/map-filter-param';
-import { CardData, CardEntity } from 'src/app/shared/card/typings/card';
+import { MapEntityFilter } from 'src/app/core/typings/filter-params/map-filter-param';
 import { DealEntity, EventEntity, FilterSortPaginateInput, OrganisationEntity } from 'src/schema/schema';
-import { PointOfInterest } from '../typings/point-of-interest';
 import { MapFeatureActions } from './map.actions';
 
 export interface MapState {
-  activeFilter: FilterKey;
+  activeEntity?: MapEntityFilter;
   filterParams: FilterSortPaginateInput;
 
   events?: EventEntity[]
   organisations?: OrganisationEntity[]
   deals?: DealEntity[]
-
-  searchResults?: {
-    count: number,
-    label: string,
-    labelPlural: string,
-    entity: CardEntity,
-    data: CardData[],
-  }
-
-  pois: PointOfInterest[],
 }
 
 export const initialState: MapState = {
-  activeFilter: FilterKey.events,
-  pois: [],
+  activeEntity: MapEntityFilter.Events,
   filterParams: {}
 };
 
 export const mapReducer = createReducer(
   initialState,
 
-  on(MapFeatureActions.setActiveFilter, (state, action): MapState => ({
+  on(MapFeatureActions.setEntityFilter, (state, action): MapState => ({
     ...state,
-    activeFilter: action.key
+    activeEntity: action.entity
   })),
 
   on(MapFeatureActions.setEvents, (state, action): MapState => ({
@@ -53,13 +40,4 @@ export const mapReducer = createReducer(
     deals: action.deals
   })),
 
-  on(MapFeatureActions.setResults, (state, action): MapState => ({
-    ...state,
-    searchResults: { ...action }
-  })),
-
-  on(MapFeatureActions.setPois, (state, action): MapState => ({
-    ...state,
-    pois: action.pois
-  })),
 )

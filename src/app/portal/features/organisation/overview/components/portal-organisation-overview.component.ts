@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { displayQueryParam } from 'src/app/core/constants/core.constants';
-import { DisplayType } from 'src/app/core/typings/overview-display';
+import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 import { PortalOrganisationOverviewActions } from '../state/portal-organisation-overview.actions';
@@ -14,7 +14,7 @@ import { selectOverviewData, selectSponsoredOrganisation } from '../state/portal
 })
 export class PortalOrganisationOverviewComponent {
 
-  public displayType = DisplayType.Card;
+  public displayType = OverviewDisplayType.Card;
 
   public displayQueryParam = displayQueryParam;
 
@@ -22,22 +22,22 @@ export class PortalOrganisationOverviewComponent {
     {
       icon: ['fas', 'shapes'],
       label: 'list',
-      value: DisplayType.Card
+      value: OverviewDisplayType.Card
     },
     {
       icon: ['fas', 'map-location-dot'],
       label: 'mapview',
-      value: DisplayType.Map
+      value: OverviewDisplayType.Map
     },
     {
       icon: ['fas', 'tree-city'],
       label: 'suburbs',
-      value: DisplayType.Suburb
+      value: OverviewDisplayType.Suburb
     },
     {
       icon: ['fas', 'list'],
       label: 'table',
-      value: DisplayType.Table
+      value: OverviewDisplayType.Table
     },
   ];
 

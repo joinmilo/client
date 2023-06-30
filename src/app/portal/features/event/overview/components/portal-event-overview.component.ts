@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { displayQueryParam } from 'src/app/core/constants/core.constants';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
-import { DisplayType } from 'src/app/core/typings/overview-display';
+import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 import { RadioInput } from 'src/app/shared/form/typings/radio-input';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 import { PortalEventOverviewActions } from '../state/portal-event-overview.actions';
@@ -15,7 +15,7 @@ import { selectOverviewData, selectSponsoredEvent } from '../state/portal-event-
 })
 export class PortalEventOverviewComponent {
 
-  public displayType = DisplayType.Category;
+  public displayType = OverviewDisplayType.Category;
 
   public displayQueryParam = displayQueryParam;
 
@@ -23,22 +23,22 @@ export class PortalEventOverviewComponent {
     {
       icon: ['fas', 'shapes'],
       label: 'category',
-      value: DisplayType.Category
+      value: OverviewDisplayType.Category
     },
     {
       icon: ['fas', 'calendar'],
       label: 'calendar',
-      value: DisplayType.Calendar
+      value: OverviewDisplayType.Calendar
     },
     {
       icon: ['fas', 'map-location-dot'],
       label: 'mapview',
-      value: DisplayType.Map
+      value: OverviewDisplayType.Map
     },
     {
       icon: ['fas', 'list'],
       label: 'table',
-      value: DisplayType.Table
+      value: OverviewDisplayType.Table
     },
   ];
 

@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil } from 'rxjs';
-import { FilterKey } from 'src/app/core/typings/filter-params/map-filter-param';
+import { Subject, combineLatest, takeUntil } from 'rxjs';
+import { MapEntityFilter } from 'src/app/core/typings/filter-params/map-filter-param';
 import { FilterSortPaginateInput, Maybe } from 'src/schema/schema';
 import { MapFeatureActions } from '../../state/map.actions';
-import { selectActiveFilter, selectResults } from '../../state/map.selector';
+import { selectActiveEntityFilter, selectResult } from '../../state/map.selector';
 
 @Component({
   selector: 'app-portal-map-overview-filter',
@@ -12,9 +12,9 @@ import { selectActiveFilter, selectResults } from '../../state/map.selector';
 })
 export class PortalMapOverviewFilterComponent implements OnDestroy {
 
-  public activeFilter = this.store.select(selectActiveFilter);
+  public activeFilter = this.store.select(selectActiveEntityFilter);
   
-  public filterKey = FilterKey;
+  public entityFilter = MapEntityFilter;
 
   public total?: Maybe<number>;
 
@@ -23,18 +23,21 @@ export class PortalMapOverviewFilterComponent implements OnDestroy {
   private destroy = new Subject<void>();
 
   constructor(private store: Store) {
-    this.store.select(selectResults)
+    combineLatest([
+      this.store.select(selectActiveEntityFilter),
+      this.store.select(selectResult)
+    ])
       .pipe(takeUntil(this.destroy))
-      .subscribe(result => {
-        this.total = result?.count;
-        switch (result?.entity) {
-          case 'EventEntity':
-            this.label = this.total && this.total === 1 ? 'activity' : 'activities';
-            break;
-          case 'DealEntity':
+      .subscribe(([entityFilter, result]) => {
+        this.total = result?.data?.length;
+        switch (entityFilter) {
+          case MapEntityFilter.Deals:
             this.label = this.total && this.total === 1 ? 'deal' : 'deals';
             break;
-          case 'OrganisationEntity':
+          case MapEntityFilter.Events:
+            this.label = this.total && this.total === 1 ? 'activity' : 'activities';
+            break;
+          case MapEntityFilter.Organisations:
             this.label = this.total && this.total === 1 ? 'organisation' : 'organisations';
             break;
         }
@@ -42,7 +45,7 @@ export class PortalMapOverviewFilterComponent implements OnDestroy {
   }
 
   public updateParams(params: FilterSortPaginateInput) {
-    this.store.dispatch(MapFeatureActions.setFilterParams({ params }));
+    this.store.dispatch(MapFeatureActions.setFilterParams(params));
   }
 
   public ngOnDestroy(): void {

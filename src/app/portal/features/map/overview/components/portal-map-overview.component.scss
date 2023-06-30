@@ -1,134 +1,94 @@
+@import 'src/styles/mixins.scss';
 
-.landscape {
-  --map-height: calc(100vh - var(--map-above) - 3rem);
+mat-drawer-container {
+  height: 100%;
 }
 
-:host {
-  display: block;
-  position: relative;
-  top: 0;
+mat-drawer {
+  width: 45vw;
+  background-color: var(--color-background);
 
-  --map-gap: 1rem;
-  --map-z: 0;
-  --map-height: calc(100vh - var(--map-above) - 6rem); // 6rem needed at bottom in Safari/Chrome mobile
-
-  --mat-toolbar-height: 56px; // TODO: Fix for main toolbar
-  --map-toolbar-height: 3rem;
-  --map-above: calc(var(--mat-toolbar-height) + var(--map-toolbar-height));
-  --map-box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
-
-  .map-menu {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: calc(var(--map-z) + 10);
-
-    min-height: var(--map-toolbar-height);
-    box-sizing: border-box;
-    padding: var(--map-gap);
-
-    border-radius: 0 0 var(--map-gap) var(--map-gap);
-    border-right: 1px solid var(--color-border);
-    background-color: var(--color-background);
+  .drawer-container {
+    display: flex;
+    height: 100%;
   }
 
-  .map-container {
-    position: relative;
-    top: var(--map-toolbar-height);
-    height: var(--map-height);
-
-    div[leaflet] {
-      z-index: var(--map-z);
-      height: 100%;
-      border-radius: 0 0 var(--map-gap) var(--map-gap);
-    }
-
-    mat-button-toggle-group {
-      position: absolute;
-      left: calc(0.5 * var(--map-gap));
-      bottom: calc(2 * var(--map-gap));
-
-      border-radius: var(--map-gap);
-    }
-
-    app-map-attribution {
-      position: absolute;
-      left: calc(1 * var(--map-gap));
-      bottom: calc(var(--map-gap));
-      font-size: xx-small;
-      opacity: 0.5;
-    }
+  section {
+    display: flex;
+    flex-flow: column;
+    gap: 1rem;
+    width: 100%;
   }
 
-  app-map-card-list {
-    position: relative;
-    top: calc(var(--map-toolbar-height) - var(--map-gap));
-    margin: 0 calc(0.5 * var(--map-gap)) var(--map-toolbar-height);
-    border-radius: var(--map-gap);
-    padding: var(--map-gap);
-    box-sizing: border-box;
-    background-color: var(--color-background);
-    box-shadow: var(--map-box-shadow)
-  }
-
-  // Use this class instead of responsive() mixin to make sure styles
-  // are in sync with elements positioned via breakpoint observer
-  .desktop {
-    --map-desktop-menu-width: 50vw;
-
-    .map-menu {
-      position: absolute;
-      width: var(--map-desktop-menu-width);
-      height: var(--map-height);
-      overflow-y: scroll;
-      border-radius: 0;
-
-      app-map-card-list {
-        position: static;
-        padding: unset;
-        margin: var(--map-gap) 0;
-        box-shadow: unset;
-      }
-    }
-
-    .map-container {
-      top: 0;
-      left: var(--map-desktop-menu-width);
-      width: calc(100vw - var(--map-desktop-menu-width));
-
-      div[leaflet] {
-        border-radius: 0;
-      }
-
-      button[mat-mini-fab] {
-        position: absolute;
-        top: var(--map-gap);
-        left: var(--map-gap);
-        background: var(--color-background);
-      }
-
-      mat-button-toggle-group {
-        left: var(--map-gap);
-        bottom: var(--map-gap);
-      }
-
-      app-map-attribution {
-        position: absolute;
-        left: unset;
-        right: 0;
-        bottom: 0;
-        font-size: small;
-        opacity: 1;
-      }
-    }
-  }
-
-  .desktop.hide-menu {
-    --map-desktop-menu-width: 0vw;
-
-    .map-menu {
+  @include responsive(desktop) {
+    button {
       display: none;
     }
+  
+    section {
+      margin: 1rem 1rem 1rem 1rem;
+    }
+  }
+
+  @include responsive(tablet) {
+    width: 100vw;
+
+    button {
+      display: flex;
+      position: absolute;
+      right: 0;
+      height: 100%;
+      width: 2rem;
+      min-width: unset;
+      padding: unset;
+      align-items: center;
+      justify-content: center;
+    }
+
+    section {
+      margin: 1rem 2rem 1rem 1rem;
+      max-width: calc(100% - 3rem);
+    }
+  }
+}
+
+.map-container {
+  height: 100%;
+
+  button {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--color-background);
+  }
+  
+  app-map-attribution {
+    position: absolute;
+    right: 1rem;
+    bottom: .5rem;
+    opacity: 0.6;
+    font-size: smaller;
+  }
+
+  app-radio-button-group {
+    position: absolute;
+    left: 1rem;
+    bottom: 2rem;
+  }
+
+  mat-button-toggle-group {
+    position: absolute;
+    left: 1rem;
+    bottom: 2rem;
+
+    border-radius: var(--mdc-shape-medium);
+  }
+
+}
+
+:host ::ng-deep {
+  .mat-button-toggle-checked {
+    background-color: var(--color-primary-500) !important;
+    color: var(--color-primary-contrast-500) !important;
   }
 }

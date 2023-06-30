@@ -17,12 +17,9 @@
     gap: var(--gap) 0;
   }
 
-  nav {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    gap: var(--gap);
-    margin-top: var(--gap);
+  mat-card {
+    margin: var(--gap) 0 var(--gap) 0;
+    padding: 1rem;
   }
 
   @include responsive(desktop) {

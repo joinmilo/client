@@ -1,15 +1,15 @@
 <ng-container [ngSwitch]="activeFilter | async">
-  <div *ngSwitchCase="filterKey.events">
+  <div *ngSwitchCase="entityFilter.Events">
     <app-event-filter (paramsUpdated)="updateParams($event)">
       <ng-container *ngTemplateOutlet="result"></ng-container>
     </app-event-filter>
   </div>
-  <div *ngSwitchCase="filterKey.organisations" >
+  <div *ngSwitchCase="entityFilter.Organisations" >
     <app-organisation-filter (paramsUpdated)="updateParams($event)">
       <ng-container *ngTemplateOutlet="result"></ng-container>
     </app-organisation-filter>
   </div>
-  <div *ngSwitchCase="filterKey.deals">
+  <div *ngSwitchCase="entityFilter.Deals">
     <app-deal-filter (paramsUpdated)="updateParams($event)">
       <ng-container *ngTemplateOutlet="result"></ng-container>
     </app-deal-filter>

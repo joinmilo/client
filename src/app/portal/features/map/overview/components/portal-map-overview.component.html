@@ -1,44 +1,35 @@
-<div class="{{(isLandscape | async) ? 'landscape' : ''}} {{(isDesktop | async) ? 'desktop' : ''}} {{showMenuInDesktop ? '' : 'hide-menu' }}">
-  <div class="map-menu">
-    <app-portal-map-overview-filter></app-portal-map-overview-filter>
-
-    <div *ngIf="isDesktop | async"><ng-container *ngTemplateOutlet="resultList"></ng-container></div>
-  </div>
-
-  <div class="map-container">
-    <div leaflet
-      (leafletMapReady)="onMapReady($event)"
-      (leafletMapMoveEnd)="onMapPositionChange()"
-      (leafletMapZoomEnd)="onMapPositionChange()"
-      [leafletOptions]="leafletOptions"
-      [leafletFitBounds]="(mapBounds | async)!">
-        <div *ngIf="(markers | async) as markers"
-          [leafletMarkerCluster]="markers"
-          [leafletMarkerClusterOptions]="markerClusterOptions">
-        </div>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side">
+    <div class="drawer-container">
+      <section>
+        <app-portal-map-overview-filter>
+        </app-portal-map-overview-filter>
+    
+        <app-portal-map-overview-list>
+        </app-portal-map-overview-list>
+      </section>
+      <button mat-button (click)="drawer.toggle(); menuToggled();">
+        <fa-icon [icon]="'angle-left'"></fa-icon>
+      </button>
     </div>
-
-    <app-map-attribution></app-map-attribution>
-
-    <button mat-mini-fab *ngIf="isDesktop | async" (click)="toggleMenu()">
-      <fa-icon [icon]="showMenuInDesktop ? 'angle-left' : 'angle-right'"></fa-icon>
+  </mat-drawer>
+  <div class="map-container">
+    <app-map
+      [markerDefinition]="markers | async">
+    </app-map>
+  
+    <button mat-mini-fab (click)="drawer.toggle(); menuToggled();">
+      <fa-icon [icon]="drawer.opened ? 'angle-left' : 'angle-right'"></fa-icon>
     </button>
 
-    <mat-button-toggle-group (change)="setFilter($event.value)" [value]="activeFilter | async" name="filter">
-      <mat-button-toggle [value]="FilterKey.events"><span appLabel="activities"></span></mat-button-toggle>
-      <mat-button-toggle [value]="FilterKey.organisations"><span appLabel="organisations"></span></mat-button-toggle>
-      <mat-button-toggle [value]="FilterKey.deals"><span appLabel="deals"></span></mat-button-toggle>
-    </mat-button-toggle-group>
+    <app-radio-button-group
+      [inputs]="inputs"
+      [value]="entityType | async"
+      [queryParamKey]="entityQueryParam"
+      (valueChanged)="updateEntityFilter($event)">
+    </app-radio-button-group>
+
+    <app-map-attribution></app-map-attribution>
   </div>
 
-  <div *ngIf="(isDesktop | async) === false"><ng-container *ngTemplateOutlet="resultList"></ng-container></div>
-</div>
-
-<ng-template #resultList>
-  <app-portal-map-overview-list
-    *ngIf="(results | async) as results"
-    [entity]="results.entity"
-    [cards]="results.data"
-    [pageSize]="(isDesktop | async) ? 8 : 4">
-  </app-portal-map-overview-list>
-</ng-template>
+</mat-drawer-container>

@@ -1,17 +1,33 @@
 <hr>
-<div>
-  <app-content-card *ngFor="let card of cards | slice:start:end"
-    [entity]="entity"
-    [data]="card">
-  </app-content-card>
+<div #resultView>
+  <ng-container [ngSwitch]="result?.entity">
+
+    <ng-container *ngSwitchCase="'DealEntity'">
+      <app-content-card *ngFor="let element of result?.data | slice: start:end"
+        [entity]="result?.entity"
+        [data]="element">
+      </app-content-card>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'EventEntity'">
+      <app-content-card *ngFor="let element of result?.data | slice: start:end"
+        [entity]="result?.entity"
+        [data]="element">
+      </app-content-card>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'OrganisationEntity'">
+      <app-contact-card *ngFor="let element of result?.data| slice: start:end"
+        [entity]="result?.entity"
+        [data]="element">
+      </app-contact-card>
+    </ng-container>
+
+  </ng-container>
 </div>
-<nav *ngIf="cards.length > pageSize">
-  <button mat-raised-button (click)="previous()" [disabled]="start === 0">
-    <fa-icon icon="angle-left"></fa-icon>
-    <span appLabel="previousPage"></span>
-  </button>
-  <button mat-raised-button (click)="next()" [disabled]="start === maxStart()">
-    <span appLabel="nextPage"></span>
-    <fa-icon icon="angle-right"></fa-icon>
-  </button>
-</nav>
+<mat-card>
+  <app-table-paginator
+    (page)="pageUpdated($event)"
+    [length]="result?.data?.length">
+  </app-table-paginator>
+</mat-card>

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { Observable, Subject, takeUntil, tap } from 'rxjs';
 import { Column, PageableList, RowAction, SortPaginate } from '../../typings/table';
+import { TablePaginatorComponent } from '../paginator/table-paginator.component';
 
 @Component({
   selector: 'app-table-mobile',
@@ -27,8 +27,8 @@ export class TableMobileComponent<T> implements AfterViewInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
-  @ViewChild(MatPaginator)
-  public paginator!: MatPaginator;
+  @ViewChild(TablePaginatorComponent)
+  public paginator!: TablePaginatorComponent;
 
   public ngAfterViewInit(): void {
     this.paginator.page.pipe(

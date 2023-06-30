@@ -1,4 +1,4 @@
-export enum DisplayType {
+export enum OverviewDisplayType {
   Calendar = 'calendar',
   Category = 'category',
   Card = 'card',

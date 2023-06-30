@@ -1,26 +1,29 @@
-import {DealEntity, EventEntity, Maybe, OrganisationEntity} from 'src/schema/schema';
-import {Translatable} from 'src/app/core/typings/translatable';
+import { Translatable } from 'src/app/core/typings/translatable';
+import { AddressEntity, DealEntity, EventEntity, Maybe, OrganisationEntity } from 'src/schema/schema';
 
-export type PoiEntity =  'DealEntity'
+export type MapEntity = 'DealEntity'
   | 'EventEntity'
   | 'OrganisationEntity';
 
-export type PoiData = Maybe<DealEntity>
+export type MapData = Maybe<DealEntity>
   | Maybe<EventEntity>
   | Maybe<OrganisationEntity>
   | undefined;
 
-export type PointOfInterest = {
-  latitude: number,
-  longitude: number
+export type MarkerDefinition = {
+  entity: MapEntity,
+  data?: MapData[]
+};
 
-  icon?: Maybe<string>,
-  color?: Maybe<string>,
+export type PointOfInterest = {
+  address?: Maybe<AddressEntity>,
 
   category?: Maybe<string>,
   categoryTranslatables?: Maybe<Maybe<Translatable>[]>,
   categoryTranslatableField?: Maybe<string>,
-
+  
+  color?: Maybe<string>,
+  icon?: Maybe<string>,
   date?: Maybe<string>,
 
   text?: Maybe<string>,
@@ -30,4 +33,4 @@ export type PointOfInterest = {
   titleTranslatableField?: Maybe<string>,
 
   translatables?: Maybe<Maybe<Translatable>[]>,
-}
+};
