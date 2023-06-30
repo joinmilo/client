@@ -1,5 +1,6 @@
 <app-sub-title titleLabel="newGuestBlogposts"></app-sub-title>
 <mat-card>
+  <h2 class="mat-headline-6" appLabel="beCreative!"></h2>
   <section>
     <span appLabel="guestArticleText"></span>
     <button 
@@ -7,9 +8,9 @@
       appLabel="createGuestArticle"
       [routerLink]="['./guestarticle']">
     </button>
+    <app-card-slider 
+      entity="ArticleEntity" 
+      [data]="guestArticles | async">
+    </app-card-slider>
   </section>
-  <app-card-slider 
-    entity="ArticleEntity" 
-    [data]="guestArticles | async">
-  </app-card-slider>
 </mat-card>

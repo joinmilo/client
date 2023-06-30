@@ -23,12 +23,15 @@ const framework = [
   RouterModule,
 ];
 
+const materials = [
+  MatButtonModule,
+  MatCardModule,
+];
+
 const modules = [
   CoreModule,
   CardModule,
   FormModule,
-  MatButtonModule,
-  MatCardModule,
   TitleModule,
 ];
 
@@ -41,6 +44,7 @@ const libs = [
   declarations: [...components],
   imports: [
     ...framework,
+    ...materials,
     ...modules,
     ...libs,
   ],
