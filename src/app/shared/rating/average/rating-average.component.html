@@ -1,5 +1,5 @@
 <div>
-  <span class="mat-headline-6" appLabel="userReviews"></span>
+  <app-details-title titleLabel="userReviews"></app-details-title>
   <section>
     <button *ngFor="let ratingId of [1, 2, 3, 4, 5]; index as i" mat-icon-button disabled="true">
       <fa-icon size="1x" [icon]="showIcon(i)"></fa-icon></button>

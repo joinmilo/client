@@ -1,15 +1,15 @@
 <div>
-  <span class="mat-headline-6" appLabel="submitReview"></span>
+  <app-details-title titleLabel="submitReview"></app-details-title>
   <section>
     <ng-container *ngIf="currentUser">
       <button *ngFor="let ratingId of [1, 2, 3, 4, 5]; index as i" mat-icon-button matTooltipPosition="above"
-        [id]="'star_' + i" (click)="openDialog('300ms', '0ms')" (mouseenter)="onHover(i + 1)" (mouseleave)="onHover(0)">
+        [id]="'star_' + i" (click)="openDialog('300ms', '0ms')" (mouseenter)="onHover(i + 1)" (mouseleave)="onHover(undefined)">
         <fa-icon size="1x" [icon]="[showIcon(i), 'star']"></fa-icon>
       </button>
     </ng-container>
     <ng-container *ngIf="!currentUser">
       <button *ngFor="let ratingId of [1, 2, 3, 4, 5]; index as i" mat-icon-button matTooltipPosition="above"
-        [id]="'star_' + i" [routerLink]="['/user', 'register']" (mouseenter)="onHover(i + 1)" (mouseleave)="onHover(0)">
+        [id]="'star_' + i" [routerLink]="['/user', 'register']" (mouseenter)="onHover(i + 1)" (mouseleave)="onHover(undefined)">
         <fa-icon size="1x" [icon]="[showIcon(i), 'star']"></fa-icon>
       </button>
     </ng-container>

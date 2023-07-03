@@ -11,7 +11,11 @@
   </section>
   <section class="border-box">
     <div *ngFor="let comment of (comments | async); let last = last">
-      <app-comment [comment]="comment"></app-comment>
+      <app-comment 
+        [userContext]="comment.userContext"
+        [created]="comment.created"
+        [content]="comment.content"
+      ></app-comment>
       <mat-divider *ngIf="!last"></mat-divider>
     </div>
   </section>

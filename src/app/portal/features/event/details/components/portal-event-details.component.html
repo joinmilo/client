@@ -49,12 +49,14 @@
      *ngIf="event?.lastComment?.id"
      [content]="event?.lastComment?.content"
      [created]="event?.lastComment?.created"
-     [userContext]="event?.lastComment?.userContext"
-     >
+     [userContext]="event?.lastComment?.userContext">
     </app-comment>
 
     <div>
-      <app-save-comment (content)="saveComment($event)"></app-save-comment>
+      <app-save-comment 
+        (content)="saveComment($event)"
+        [currentUser]="currentUser"
+       ></app-save-comment>
       <a [routerLink]="['./comments']" appLabel="allComments" suffix="»"></a>
     </div>
   </section>

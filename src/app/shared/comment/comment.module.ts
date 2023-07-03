@@ -7,16 +7,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
 import { CoreModule } from "../../core/core.module";
 import { CaptchaModule } from '../captcha/captcha.module';
 import { AvatarComponent } from '../image/avatar/avatar.component';
 import { CommentDialogComponent } from './comment-dialog/comment-dialog.component';
-import { commentStateKey } from './comment.constant';
 import { CommentComponent } from './component/comment.component';
-import { CommentEffects } from './state/comment.effects';
-import { commentReducer } from './state/comment.reducer';
 import { SaveCommentComponent } from './write-comment/save-comment.component';
 
 const components = [
@@ -39,8 +34,6 @@ const modules = [
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(commentStateKey, commentReducer),
-  EffectsModule.forFeature([CommentEffects]),
 ];
 
 const materials = [
