@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { SurveyFilterModule } from 'src/app/shared/filter/survey-filter/survey-filter.module';
-import { FormModule } from 'src/app/shared/form/form.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalSurveyOverviewEmptyComponent } from './components/empty/portal-survey-overview-empty.component';
@@ -34,7 +33,6 @@ const materials = [
 const modules = [
   CoreModule,
   CardModule,
-  FormModule,
   MatSortModule,
   PortalSurveyOverviewRoutingModule,
   SurveyFilterModule,

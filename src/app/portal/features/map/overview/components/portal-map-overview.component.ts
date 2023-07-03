@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { displayQueryParam } from 'src/app/core/constants/core.constants';
 import { MapEntityFilter } from 'src/app/core/typings/filter-params/map-filter-param';
-import { RadioInput } from 'src/app/shared/form/typings/radio-input';
+import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
 import { MapComponent } from 'src/app/shared/map/components/map.component';
 import { Maybe } from 'src/schema/schema';
 import { MapFeatureActions } from '../state/portal-map-overview.actions';
