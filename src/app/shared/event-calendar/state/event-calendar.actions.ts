@@ -14,7 +14,3 @@ export const EventCalendarActions = createActionGroup({
     'set schedules': (schedules: Maybe<ScheduleEntity>[]) => ({ schedules }),
   }
 });
-
-
-
-

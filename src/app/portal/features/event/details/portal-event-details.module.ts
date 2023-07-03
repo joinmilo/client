@@ -8,10 +8,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { CommentModule } from 'src/app/shared/comment/comment.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
@@ -22,6 +24,8 @@ import { ShareModule } from 'src/app/shared/share/share.module';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
+import { PortalEventAttendeeComponent } from './components/attendee/portal-event-attendee.component';
+import { PortalEventCalendarComponent } from './components/calendar/portal-event-calendar.component';
 import { PortalEventCommentsComponent } from './components/comments/portal-event-comments.component';
 import { InviteFriendsComponent } from './components/invite-friends/invite-friends.component';
 import { EventDetailsOrganisationComponent } from './components/organisation/event-details-organisation.component';
@@ -36,18 +40,21 @@ import { portalEventDetailsReducer } from './state/portal-event-details.reducer'
 
 const components = [
   PortalEventDetailsComponent,
-  PortalEventCommentsComponent,
   EventDetailsSummrayComponent,
   EventParticipantsComponent,
   ShowFriendsComponent,
   EventDetailsOrganisationComponent,
   InviteFriendsComponent,
+  PortalEventCalendarComponent,
+  PortalEventAttendeeComponent,
+  PortalEventCommentsComponent,
 ];
 
 const framework = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
+  CalendarModule,
 ];
 
 const materials = [
@@ -58,6 +65,7 @@ const materials = [
   MatCheckboxModule,
   MatFormFieldModule,
   MatInputModule,
+  MatMenuModule
 ];
 
 const modules = [

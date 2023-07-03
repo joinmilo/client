@@ -13,3 +13,13 @@ export const selectEventComments = createSelector(
   selectPortalEventDetailsState,
   state => state.comments
 );
+
+export const selectSchedules = createSelector(
+  selectPortalEventDetailsState,
+  state => state.schedules
+);
+
+export const selectScheduleStartDates = createSelector(
+  selectSchedules,
+  schedules => schedules?.map(schedule => new Date(schedule.startDate))
+);

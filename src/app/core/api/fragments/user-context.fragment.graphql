@@ -4,6 +4,13 @@ fragment UserContext on UserContextEntity {
   articles {
     ...Article
   }
+  attendee{
+  id
+    event{
+      id
+    }
+    approved
+  }
   uploads {
     profilePicture
     title

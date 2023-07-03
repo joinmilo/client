@@ -20,7 +20,10 @@ export class CoreEffects implements OnInitEffects {
   }
 
   getCurrentUser = createEffect(() => this.actions.pipe(
-    ofType(CoreActions.init),
+    ofType(
+      CoreActions.init,
+      CoreActions.updateUser,
+    ),
     filter(() => !!localStorage.getItem(refreshKey)),
     switchMap(() => this.getMeService.watch().valueChanges),
     filter(response => !!response.data.me?.id),

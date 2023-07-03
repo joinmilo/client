@@ -27,3 +27,11 @@ mat-card {
     }
   }
 }
+
+mat-calendar{
+  min-width: 25rem;
+
+  @include responsive(phone){
+    min-width: 60vw;
+  }
+}

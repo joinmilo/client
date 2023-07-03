@@ -102,7 +102,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
       .subscribe(dates => this.dateFilter = (calendarDate: Date) =>
         !!dates?.some(date => date.toDateString() === calendarDate.toDateString()))
   }
-
   public selectedChange(date: Maybe<Date>): void {
     this.daySelected.emit(dayPeriod(date) as Period);
 

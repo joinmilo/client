@@ -22,7 +22,7 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
-    gap: 3rem;
+    gap: 5rem;
     padding: 1rem;
 
     width: 80%;
@@ -30,5 +30,22 @@
     h2 {
       margin: 0;
     }
+
+    section {
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      gap: 3rem;
+
+      * {
+        width: 100%;
+      }
+    }
+  }
+
+  div {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
   }
 }

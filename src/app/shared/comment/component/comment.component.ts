@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Maybe } from 'src/schema/schema';
-import { Comment } from '../typings/comment';
+import { Maybe, UserContextEntity } from 'src/schema/schema';
 
 @Component({
   selector: 'app-comment',
@@ -10,5 +9,11 @@ import { Comment } from '../typings/comment';
 export class CommentComponent {
 
   @Input()
-  public comment?: Maybe<Comment>;
+  public content?: Maybe<string>;
+
+  @Input()
+  public created?: Maybe<string>;
+
+  @Input()
+  public userContext?: Maybe<UserContextEntity>;
 }

@@ -1,6 +1,8 @@
 <app-sub-title titleLabel="activities"></app-sub-title>
 <mat-card>
-  <app-event-calendar (events)="selectedEvents($event)">
+  <app-event-calendar
+    [queryParams]="false"
+    (events)="selectedEvents($event)">
   </app-event-calendar>
 
   <section *ngIf="events?.length">

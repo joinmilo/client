@@ -3,6 +3,7 @@ fragment Event on EventEntity {
   entryFee
   slug
 
+  videoChatLink
   calculatedRatings{
     ...RatingDto
   }
@@ -13,7 +14,12 @@ fragment Event on EventEntity {
   address {
     ...Address
   }
+  attendeeConfiguration{
+    approval,
+    maxAttendees  
+  }
   attendees {
+    id
     approved
     userContext {
       ...UserContext
@@ -31,6 +37,9 @@ fragment Event on EventEntity {
   ratings {
     id
     score
+    userContext{
+    id
+    }
   }
   schedule(begin: $scheduleBegin, end: $scheduleEnd) {
     ...Schedule

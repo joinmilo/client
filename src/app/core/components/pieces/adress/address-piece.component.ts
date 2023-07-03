@@ -11,4 +11,7 @@ export class AddressPieceComponent {
   @Input()
   public address?: Maybe<AddressEntity>;
 
+  @Input()
+  public link?: Maybe<string>;
+
 }

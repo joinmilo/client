@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { slug } from 'src/app/core/constants/core.constants';
+import { eventsFeatureKey, slug } from 'src/app/core/constants/core.constants';
 import { selectCurrentUser } from 'src/app/core/state/core.selectors';
+import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-param';
 import { CommentActions } from 'src/app/shared/comment/state/comment.actions';
 import { EventEntity, Maybe, MediaEntity, UserContextEntity } from 'src/schema/schema';
 import { PortalEventDetailsActions } from '../state/portal-event-details.actions';
@@ -15,6 +16,10 @@ import { selectEventDetails } from '../state/portal-event-details.selectors';
   styleUrls: ['./portal-event-details.component.scss']
 })
 export class PortalEventDetailsComponent implements OnInit, OnDestroy {
+
+  public url = eventsFeatureKey;
+
+  public queryParams = EventFilterQueryDefinition.eventCategories;
 
   public event?: Maybe<EventEntity>;
 
@@ -49,14 +54,14 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
   saveRating($event: number) {
     this.store.dispatch(PortalEventDetailsActions.saveEventRating({
+      id: this.event?.ratings?.filter(rating => rating?.userContext?.id == this.currentUser?.id)?.[0]?.id,
       event: {id: this.event?.id},
       userContext: {id: this.currentUser?.id, uploads: this.currentUser?.uploads},
       score: $event,
     }))
-    this.store.dispatch(PortalEventDetailsActions.getDetails(this.event?.slug || ''));
   }
 
-  saveContent($event: string) {
+  saveComment($event: string) {
     this.store.dispatch(CommentActions.saveEventComment({
       content: $event,
       event: {id: this.event?.id},
