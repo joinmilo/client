@@ -1,0 +1,35 @@
+<div class="main">
+  <form class="border-box" [formGroup]="form" #formDirective="ngForm">
+  
+    <h2 class="mat-headline-5" appLabel="loginRequired"></h2>
+    <p appLabel="loginRequiredText"></p>
+  
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="email"></mat-label>
+      <input matInput formControlName="email" placeholder="email@example.com">
+    </mat-form-field>
+    
+    <app-password-field formControlName="password"></app-password-field>
+    
+    <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
+      <label appLabel="login"></label>
+    </button>
+
+    <button mat-stroked-button color="primary" (click)="back()">
+      <label appLabel="backToPage"></label>
+    </button>
+  
+    <section>
+      <small>
+        <span appLabel="notRegistered?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'register']" appLabel="register"></a>
+      </small>
+      <small>
+        <span appLabel="forgotpassword?" suffix="&nbsp;"></span>
+        <a [routerLink]="['/user', 'password']" appLabel="resetPassword"></a>
+      </small>
+    </section>
+
+  </form>
+  <app-image-slider></app-image-slider>
+</div>

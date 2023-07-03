@@ -16,10 +16,10 @@ import { TitleModule } from '../shared/title/title.module';
 import { PortalFooterModule } from './../portal/shared/footer/portal-footer.module';
 import { PasswordModule } from './../shared/password/password.module';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
+import { LoginRequiredComponent } from './components/login-required/login-required.component';
 import { LoginComponent } from './components/login/login.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
-import { RegistrationRequiredComponent } from './components/registration-required/registration-required.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VerificationSendMailComponent } from './components/verification-send-mail/verification-send-mail.component';
 import { VerificationComponent } from './components/verification/verification.component';
@@ -32,10 +32,10 @@ import { UserComponent } from './user.component';
 const components = [
   ImageSliderComponent,
   LoginComponent,
+  LoginRequiredComponent,
   PasswordSetNewComponent,
   PasswordSendMailComponent,
   RegistrationComponent,
-  RegistrationRequiredComponent,
   UserComponent,
   VerificationComponent,
   VerificationSendMailComponent,
