@@ -6,7 +6,6 @@ import { Subject, takeUntil } from 'rxjs';
 import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-params/event-filter-param';
 import { Maybe } from 'src/schema/schema';
 import { EventFilterActions } from '../../state/event-filter.actions';
-import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-param';
 
 @Component({
   selector: 'app-event-filter-free>',

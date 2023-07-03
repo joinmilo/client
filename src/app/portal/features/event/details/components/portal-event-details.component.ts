@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { eventsFeatureKey, slug } from 'src/app/core/constants/core.constants';
 import { selectCurrentUser } from 'src/app/core/state/core.selectors';
-import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-params/event-filter-param';
 import { EventEntity, Maybe, MediaEntity, UserContextEntity } from 'src/schema/schema';
 import { PortalEventDetailsActions } from '../state/portal-event-details.actions';
 import { selectEventDetails } from '../state/portal-event-details.selectors';

@@ -6,8 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { CardModule } from 'src/app/shared/card/card.module';
-import { FormModule } from 'src/app/shared/form/form.module';
+import { CardSliderComponent } from 'src/app/shared/sliders/card-slider/card-slider.component';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { GuestArticlePageFeatureComponent } from './component/guest-article-page-feature.component';
 import { guestArticlePageFeatureStateKey } from './constants/guest-article-page-feature.constants';
@@ -30,8 +29,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-  CardModule,
-  FormModule,
+  CardSliderComponent,
   TitleModule,
 ];
 
