@@ -1,0 +1,13 @@
+mutation saveAttendee($entity: AttendeeEntityInput!) {
+  saveAttendee(entity: $entity) {
+    id
+    approved
+    event {
+      id
+      slug
+    }
+    userContext {
+      id
+    }
+  }
+}

@@ -1,5 +1,6 @@
 <div>
-  <h2 class="mat-headline-6" appLabel="attendingFriends"></h2>
+  <app-details-title *ngIf="attendingFriends" titleLabel="attendingFriends"></app-details-title>
+  <app-details-title *ngIf="!attendingFriends" titleLabel="SoFarNoFriendsAreAttending"></app-details-title>
   <div>
     <section *ngIf="attendingFriends && attendingFriends.length > 0">
       <app-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))" [user]="attendingFriend"></app-avatar>

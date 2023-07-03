@@ -1,4 +1,11 @@
-<div>
+<div *ngIf="address">
   <fa-icon size="xl" [icon]="['fas', 'location-dot']"></fa-icon>
   <address [innerHtml]="address | address"></address>
+</div>
+
+<div *ngIf="link">
+  <fa-icon size="xl" [icon]="['fas', 'link']"></fa-icon>
+  <a href="link">
+    <span appLabel="toTheRoom"></span>
+  </a>
 </div>

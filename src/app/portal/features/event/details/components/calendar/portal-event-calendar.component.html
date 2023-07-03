@@ -1,0 +1,21 @@
+<div>
+  <section>
+    <fa-icon size="lg" [icon]="['far', 'calendar']"></fa-icon>
+    <button mat-button [matMenuTriggerFor]="menu" (menuClosed)="clearData()">
+      <time>{{event?.schedule?.startDate| date: 'short' }}</time>
+    </button>
+  </section>
+</div>
+
+<mat-menu #menu="matMenu">
+  <div>
+    <app-calendar (click)="$event.stopPropagation()" [queryParams]="false" (monthSelected)="monthSelected($event)"
+      (daySelected)="daySelected($event)" [dates]="startDates">
+    </app-calendar>
+    <div class="date" *ngIf="selectedSchedule">
+      <span>{{selectedSchedule.startDate | date: 'short'}}</span>
+      <span appLabel="to"></span>
+      <span>{{selectedSchedule.endDate | date: 'short'}}</span>
+    </div>
+  </div>
+</mat-menu>

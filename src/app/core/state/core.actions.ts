@@ -20,6 +20,7 @@ export const CoreActions = createActionGroup({
 
     'login': (email: string, password: string) => ({ email, password }),
     'logged in': emptyProps(),
+    'update user': emptyProps(),
     'get me': (user: UserContextEntity) => ({ user }),
     'refresh expired': emptyProps(),
     'logout': emptyProps(),

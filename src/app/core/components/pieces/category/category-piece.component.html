@@ -1,5 +1,5 @@
 <div>
-  <span [ngStyle]="styles()">
+  <span [ngStyle]="styles()" (click)="route()"> 
     {{category | translatable: 'name' | async}}
   </span>
 </div>

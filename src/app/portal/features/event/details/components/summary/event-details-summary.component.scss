@@ -2,10 +2,20 @@ div {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  div {
+    gap: unset;
+  }
 
   section {
     display: flex;
     flex-flow: column wrap;
     gap: 1rem;
   }
+}
+
+fa-icon {
+  margin-right: .5rem;
+  color: grey;
 }

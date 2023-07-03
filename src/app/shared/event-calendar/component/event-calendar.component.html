@@ -1,4 +1,5 @@
 <app-calendar
+  [queryParams]="queryParams"
   [dates]="startDates"
   (daySelected)="daySelectionUpdate($event)"
   (monthSelected)="monthSelectionUpdate($event)">

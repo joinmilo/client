@@ -7,7 +7,10 @@
     <app-favorite-piece>
     </app-favorite-piece>
 
-    <app-category-piece [category]="event?.category">
+    <app-category-piece
+      [category]="event?.category"
+      [url]="['/portal', url]"
+      [queryParam]="queryParams">
     </app-category-piece>
   </section>
   <section>
@@ -15,35 +18,43 @@
       {{event | translatable: 'name' | async}}
     </h2>
 
-    <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
+    <section>
+      <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
 
-    <app-event-details-summary>
-    </app-event-details-summary>
+      <app-event-details-summary>
+      </app-event-details-summary>
 
-    <p [innerHtml]="event | translatable : 'content' | async"></p>
+      <p [innerHtml]="event | translatable : 'content' | async"></p>
+    </section>
 
     <app-event-details-organisation *ngIf="event?.organisation">
     </app-event-details-organisation>
 
+    <app-media-slider *ngIf="media && media.length > 0" 
+      [media]="media" [link]="['./media']"
+      [titleType]="'details-title'">
+    </app-media-slider>
+
     <app-event-participants>
     </app-event-participants>
 
-    <app-media-slider *ngIf="media && media.length > 0"
-      [media]="media"
-      [link]="['./media']">
-    </app-media-slider>
-
     <app-rating [currentUser]="currentUser"
-      revi
-     [ratingDto]="event?.calculatedRatings"
-     (content)="saveContent($event)"
-     (rating)="saveRating($event)"></app-rating>
+      [ratingDto]="event?.calculatedRatings"
+      (content)="saveComment($event)"
+      (rating)="saveRating($event)"
+      [currentRatingScore]="(event?.ratings | filter: {userContext: {id: currentUser?.id}})?.[0]?.score">
+    </app-rating>
 
-    <app-comment *ngIf="event?.lastComment?.id" [comment]="event?.lastComment">
+    <app-comment 
+     *ngIf="event?.lastComment?.id"
+     [content]="event?.lastComment?.content"
+     [created]="event?.lastComment?.created"
+     [userContext]="event?.lastComment?.userContext"
+     >
     </app-comment>
 
     <div>
-      <app-save-comment [eventId]="event?.id"></app-save-comment>
+      <app-save-comment (content)="saveComment($event)"></app-save-comment>
       <a [routerLink]="['./comments']" appLabel="allComments" suffix="»"></a>
     </div>
   </section>

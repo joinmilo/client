@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
@@ -18,27 +17,21 @@ export class EventDetailsSummrayComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
-  private currentUser?: Maybe<UserContextEntity> | undefined;
+  public currentUser?: Maybe<UserContextEntity> | undefined;
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
+
     this.store.select(selectEventDetails)
       .pipe(takeUntil(this.destroy))
-      .subscribe(event => this.event = event);
+      .subscribe(event => {
+        this.event = event;
+      });
 
     this.store.select(selectCurrentUser)
       .pipe(takeUntil(this.destroy))
       .subscribe(user => this.currentUser = user);
-  }
-
-  attendEvent() {
-    if (this.currentUser !== null && this.currentUser !== undefined) {
-      // TODO: attend logic
-    }
-    else {
-      this.router.navigate(['/user', 'register'])
-    }
   }
 
   ngOnDestroy(): void {

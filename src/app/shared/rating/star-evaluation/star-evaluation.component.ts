@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Maybe } from 'graphql/jsutils/Maybe';
 
 @Component({
@@ -6,10 +6,7 @@ import { Maybe } from 'graphql/jsutils/Maybe';
   templateUrl: './star-evaluation.component.html',
   styleUrls: ['./star-evaluation.component.scss'],
 })
-export class StarEvaluationComponent implements OnInit{
-  ngOnInit(): void {
-    console.log(this.distribution)
-  }
+export class StarEvaluationComponent{
 
   @Input()
   public distribution?: Map<string, number>; 

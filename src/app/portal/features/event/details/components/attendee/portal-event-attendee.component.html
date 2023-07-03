@@ -1,0 +1,37 @@
+<div>
+  <span>
+    <fa-icon size="1x" class="grey" [icon]="['fas', 'ticket']"></fa-icon>
+    {{ event?.entryFee || '' }}
+    <span *ngIf="!event?.entryFee" appLabel="admissionFree"></span>
+  </span>
+
+  <span *ngIf="event?.attendeeConfiguration">
+    <fa-icon size="1x" class="grey" [icon]="['fas', 'user-group']"></fa-icon>
+    {{ (event?.attendees | filter: {approved: true})?.length ?? 0}} / {{ event?.attendeeConfiguration?.maxAttendees }}
+  </span>
+
+  <button *ngIf="event?.attendeeConfiguration && event?.attendeeConfiguration?.maxAttendees &&
+      (event?.attendees | filter: {approved: true})?.length < (event?.attendeeConfiguration?.maxAttendees)! &&
+      (currentUser?.attendee | filter: {event: {id: event?.id}, approved: true})?.length <= 0"
+       mat-flat-button color="primary" (click)="attendEvent()">
+    <fa-icon size="1x" [icon]="['fas', 'right-to-bracket']"></fa-icon>
+    <span appLabel="attend"></span>
+  </button>
+
+  <i *ngIf="(currentUser?.attendee | filter: {event: {id: event?.id}, approved: true})?.length > 0"
+    appLabel="youAttendToThisEvent"></i>
+
+  <i *ngIf="(currentUser?.attendee | filter: {event: {id: event?.id}, approved: false})?.length > 0"
+    appLabel="yourRegistrationIsInProcess"></i>
+
+  <i *ngIf="event?.attendeeConfiguration?.maxAttendees &&
+      (event?.attendees | filter: {approved: true})?.length >= (event?.attendeeConfiguration?.maxAttendees)! &&
+      (currentUser?.attendee | filter: {event: {id: event?.id}})?.length <= 0" appLabel="unfortunatelyEventFullyBooked"></i>
+
+  <button *ngIf="(currentUser?.attendee | filter: {event: {id: event?.id}})?.length > 0"
+    mat-flat-button color="primary" (click)="cancelRegistration()">
+    <fa-icon size="1x" [icon]="['fas', 'right-from-bracket']"></fa-icon>
+    <span appLabel="deRegister"></span>
+  </button>
+
+</div>
