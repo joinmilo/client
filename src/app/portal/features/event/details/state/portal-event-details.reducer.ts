@@ -5,7 +5,8 @@ import { PortalEventDetailsActions } from './portal-event-details.actions';
 export interface PortalEventDetailsState {
   comments?: Maybe<EventCommentEntity[]>,
   details?: Maybe<EventEntity>,
-  schedules?: Maybe<ScheduleEntity[]>
+  schedules?: Maybe<ScheduleEntity[]>,
+  savedEventComment?: Maybe<EventCommentEntity>
 }
 
 export const initialState: PortalEventDetailsState = {
@@ -27,5 +28,9 @@ export const portalEventDetailsReducer = createReducer(
 
   on(PortalEventDetailsActions.setSchedules, (state, action): PortalEventDetailsState => (
     { ...state, schedules: action.schedules }
+  )),
+
+  on(PortalEventDetailsActions.eventCommentSaved, (state, action): PortalEventDetailsState => (
+    { ...state, savedEventComment: action.entity }
   )),
 );

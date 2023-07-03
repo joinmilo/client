@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { IconPrefix } from '@fortawesome/fontawesome-svg-core';
 import { Maybe } from 'graphql/jsutils/Maybe';
@@ -13,7 +13,7 @@ import { SaveRatingDialogComponent } from '../save-rating-dialog/save-rating-dia
 })
 export class SaveRatingComponent {
   
-  hoverIndex = 0;
+  hoverIndex?: Maybe<number>;
 
   @Output()
   rating: EventEmitter<number> = new EventEmitter<number>();
@@ -23,10 +23,7 @@ export class SaveRatingComponent {
 
   @Input() currentUser?: Maybe<UserContextEntity> | undefined;
 
-  public form = this.fb.group({
-    rating: [0, [Validators.required]],
-    content: ['']
-  })
+  @Input() currentRatingScore?: Maybe<number>;
 
   constructor(public dialog: MatDialog, private fb: FormBuilder) { }
 
@@ -48,11 +45,11 @@ export class SaveRatingComponent {
     })
   }
 
-  onHover(index: number) {
+  onHover(index?: number) {
     this.hoverIndex = index;
   }
 
   showIcon(index: number): IconPrefix {
-    return (this.hoverIndex >= index + 1 ? 'fas' : 'far') as IconPrefix;
+    return ((this.hoverIndex ?? this.currentRatingScore ?? 0)>= index + 1 ? 'fas' : 'far') as IconPrefix;
   }
 }

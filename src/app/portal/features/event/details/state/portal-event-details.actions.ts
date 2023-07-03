@@ -1,5 +1,5 @@
 import { createActionGroup } from '@ngrx/store';
-import { AttendeeEntity, EventCommentEntity, EventEntity, EventRatingEntity, EventRatingEntityInput, Maybe, ScheduleEntity } from 'src/schema/schema';
+import { AttendeeEntity, EventCommentEntity, EventCommentEntityInput, EventEntity, EventRatingEntity, EventRatingEntityInput, Maybe, ScheduleEntity } from 'src/schema/schema';
 import { AttendeeEntityInput } from './../../../../../../schema/schema';
 
 export const PortalEventDetailsActions = createActionGroup({
@@ -24,5 +24,8 @@ export const PortalEventDetailsActions = createActionGroup({
 
     'delete attendee': (id: Maybe<string>) => ({ id }),
     'attendee deleted': (deleted?: Maybe<boolean> ) => ({ deleted }),
+
+    'save event comment': (entity: EventCommentEntityInput) => ({ entity }),
+    'event comment saved': (entity: EventCommentEntity) => ({ entity }),
   }
 });

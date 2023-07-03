@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TitleModule } from 'src/app/shared/title/title.module';
 import { CoreModule } from "../../core/core.module";
 import { CaptchaModule } from '../captcha/captcha.module';
 import { RatingAverageComponent } from './average/rating-average.component';
@@ -31,6 +32,7 @@ const framework = [
   CommonModule,
   RouterModule,
   CaptchaModule,
+  TitleModule
 ];
 
 const modules = [

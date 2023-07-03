@@ -1,8 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { selectCurrentUser } from 'src/app/core/state/core.selectors';
+import { Maybe, UserContextEntity } from 'src/schema/schema';
 import { CommentDialogComponent } from '../comment-dialog/comment-dialog.component';
 
 @Component({
@@ -13,27 +11,21 @@ import { CommentDialogComponent } from '../comment-dialog/comment-dialog.compone
 export class SaveCommentComponent{
 
   @Input()
-  eventId?: Maybe<string>;
+  currentUser?: Maybe<UserContextEntity>;
 
-  @Input()
-  organisationId?: Maybe<string>;
+  @Output()
+  content: EventEmitter<string> = new EventEmitter<string>();
 
-  @Input()
-  articleId?: Maybe<string>;
-
-  public currentUser = this.store.select(selectCurrentUser);
-
-  constructor(public dialog: MatDialog, private store: Store) { }
+  constructor(public dialog: MatDialog) { }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(CommentDialogComponent, {
       width: '32rem',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: {
-        eventId: this.eventId,
-        organisationId: this.organisationId,
-        articleId: this.articleId
+    }).afterClosed().subscribe((result) => {
+      if(result) {
+        this.content.emit(result);
       }
     });
   }

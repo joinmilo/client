@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
+import { DetailsTitleComponent } from './components/details-title/details-title.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { SubTitleComponent } from './components/sub-title/sub-title.component';
 
@@ -8,6 +9,7 @@ import { SubTitleComponent } from './components/sub-title/sub-title.component';
 const components = [
   PageTitleComponent,
   SubTitleComponent,
+  DetailsTitleComponent,
 ];
 
 const framework = [

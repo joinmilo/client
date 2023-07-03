@@ -5,7 +5,6 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { eventsFeatureKey, slug } from 'src/app/core/constants/core.constants';
 import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-param';
-import { CommentActions } from 'src/app/shared/comment/state/comment.actions';
 import { EventEntity, Maybe, MediaEntity, UserContextEntity } from 'src/schema/schema';
 import { PortalEventDetailsActions } from '../state/portal-event-details.actions';
 import { selectEventDetails } from '../state/portal-event-details.selectors';
@@ -62,10 +61,10 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
   }
 
   saveComment($event: string) {
-    this.store.dispatch(CommentActions.saveEventComment({
+    this.store.dispatch(PortalEventDetailsActions.saveEventComment({
       content: $event,
       event: {id: this.event?.id},
-      userContext: {id: this.currentUser?.id}
+      userContext:  this.currentUser
     }))
   }
 

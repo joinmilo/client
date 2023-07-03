@@ -5,7 +5,7 @@ import { map, switchMap, withLatestFrom } from 'rxjs';
 import { CoreActions } from 'src/app/core/state/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalMenuActions } from 'src/app/portal/shared/menu/state/portal-menu.actions';
-import { DeleteAttendeeGQL, EventCommentEntity, EventEntity, EventRatingEntity, GetEventCommentsGQL, GetEventGQL, GetSchedulesGQL, Maybe, QueryOperator, SaveAttendeeGQL, SaveEventRatingGQL, ScheduleEntity } from 'src/schema/schema';
+import { DeleteAttendeeGQL, EventCommentEntity, EventEntity, EventRatingEntity, GetEventCommentsGQL, GetEventGQL, GetSchedulesGQL, Maybe, QueryOperator, SaveAttendeeGQL, SaveEventCommentGQL, SaveEventRatingGQL, ScheduleEntity } from 'src/schema/schema';
 import { ConjunctionOperator } from './../../../../../../schema/schema';
 import { PortalEventDetailsActions } from './portal-event-details.actions';
 import { selectEventDetails } from './portal-event-details.selectors';
@@ -31,6 +31,7 @@ export class PortalEventDetailsEffects {
     ofType(PortalEventDetailsActions.attendeeDeleted,
       PortalEventDetailsActions.attendeeSaved,
       PortalEventDetailsActions.eventRatingSaved,
+      PortalEventDetailsActions.eventCommentSaved
       ),
     withLatestFrom(this.store.select(selectEventDetails)),
     switchMap(([, eventDetails]) => this.getEventService.watch({
@@ -153,6 +154,22 @@ export class PortalEventDetailsEffects {
     }))
   ));
 
+  saveEventComment = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.saveEventComment),
+    switchMap((action) => this.saveEventCommentService.mutate({
+      entity: action.entity
+    })),
+    map(response => PortalEventDetailsActions.eventCommentSaved(response.data?.saveEventComment as EventCommentEntity))
+  ));
+
+  eventCommentSaved = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.eventCommentSaved),
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'commentSaved'
+    }))
+  ));
+
   constructor(
     private store: Store,
     private actions: Actions,
@@ -162,5 +179,6 @@ export class PortalEventDetailsEffects {
     private getSchedulesService: GetSchedulesGQL,
     private saveAttendeeService: SaveAttendeeGQL,
     private deleteAttendeeService: DeleteAttendeeGQL,
+    private saveEventCommentService: SaveEventCommentGQL,
   ) { }
 }

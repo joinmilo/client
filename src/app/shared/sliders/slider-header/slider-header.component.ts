@@ -31,5 +31,7 @@ export class SliderHeaderComponent {
   @Input()
   public title?: Maybe<string>;
 
+  @Input()
+  public titleType?: Maybe<string>;
 
 }

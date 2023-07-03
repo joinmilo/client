@@ -15,6 +15,9 @@ export class RatingComponent {
   @Input()
   currentUser?: Maybe<UserContextEntity> | undefined;
 
+  @Input()
+  currentRatingScore?: Maybe<number>;
+
   @Output()
   rating: EventEmitter<number> = new EventEmitter<number>();
 

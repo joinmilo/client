@@ -1,5 +1,5 @@
 <div>
-  <a *ngIf="(currentUser | async)?.id" (click)="openDialog('300ms', '0ms')" appLabel="writeComment" suffix="»"></a>
-  <a *ngIf="!((currentUser | async)?.id)" [routerLink]="['/user', 'register']" appLabel="writeComment" suffix="»"></a>
+  <a *ngIf="currentUser?.id" (click)="openDialog('300ms', '0ms')" appLabel="writeComment" suffix="»"></a>
+  <a *ngIf="!currentUser?.id" [routerLink]="['/user', 'register']" appLabel="writeComment" suffix="»"></a>
 </div>
 
