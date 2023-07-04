@@ -51,9 +51,9 @@ const directives = [
 
 const pipes = [
   AddressPipe,
-  StripTagsPipe,
   FileSizePipe,
   FilterPipe,
+  StripTagsPipe,
   TranslatablePipe,
   TruncateWordsPipe,
 ];
