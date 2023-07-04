@@ -14,10 +14,19 @@ export class AddressPieceComponent {
   @Input()
   public link?: Maybe<string>;
 
-  @Output() scrollToMap: EventEmitter<void> = new EventEmitter<void>();
+  @Output() detailsAddressClicked: EventEmitter<void> = new EventEmitter<void>();
+
+  @Output()
+  public mapAddressClicked = new EventEmitter<{
+    longtitude?: Maybe<number>,
+    latitude?: Maybe<number>
+  }>();
 
   onClick() {
-    this.scrollToMap.emit();
+    this.detailsAddressClicked.emit();
+    this.mapAddressClicked.emit({
+      longtitude: this.address?.longitude,
+      latitude: this.address?.latitude
+    });
   }
-
 }
