@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { Maybe, MediaEntity } from 'src/schema/schema';
+import { MediaEntity } from 'src/schema/schema';
 
 export const coreStateKey = 'coreState';
 
@@ -69,8 +69,9 @@ export const displayQueryParam = 'display';
 export const baseApi = `${environment.base}api`;
 export const graphqlApi = `${baseApi}/graphql`;
 export const mediaBaseApi = `${baseApi}/media`;
-export const mediaDownloadBaseApi = `${mediaBaseApi}/download`;
-export const mediaExportBaseApi = `${mediaBaseApi}/export`;
-export const mediaApi = (media: Maybe<MediaEntity>): string => `${mediaBaseApi}/${media?.id}`
-export const mediaDownloadApi = (media?: Maybe<MediaEntity>): string => `${mediaDownloadBaseApi}/${media?.id}`
+export const mediaDownloadApi = `${mediaBaseApi}/download`;
+export const mediaExportApi = `${mediaBaseApi}/export`;
+export const mediaApi = (media: MediaEntity): string => `${mediaBaseApi}/${media?.id}`;
 export const tileLayerURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+export const locationURL = (latitude: number, longtitude: number): string =>
+ `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longtitude}`;
