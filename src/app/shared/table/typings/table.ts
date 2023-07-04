@@ -28,7 +28,7 @@ export type RowActionType = 'EDIT'
   | 'SHARE';
 
 export type RowAction<T> = {
-  callback?: (row: T) => void
+  callback?: (row: T) => void,
   type?: RowActionType,
 };
 

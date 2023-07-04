@@ -5,6 +5,7 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { eventsFeatureKey, slug } from 'src/app/core/constants/core.constants';
 import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-params/event-filter-param';
+import { MarkerDefinition } from 'src/app/shared/map/typings/map';
 import { EventEntity, Maybe, MediaEntity, UserContextEntity } from 'src/schema/schema';
 import { PortalEventDetailsActions } from '../state/portal-event-details.actions';
 import { selectEventDetails } from '../state/portal-event-details.selectors';
@@ -30,6 +31,8 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
   public currentUser?: Maybe<UserContextEntity> | undefined;
 
+  public marker?: Maybe<MarkerDefinition>;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
@@ -42,6 +45,10 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
     ).subscribe(event => {
       this.event = event;
       this.titleImage = event?.uploads?.find(upload => upload?.title)?.media;
+      this.marker = {
+        entity: 'EventEntity',
+        data: [event]
+      };
       this.media = event?.uploads
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(eventMedia => eventMedia?.media)
@@ -67,6 +74,10 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
       event: {id: this.event?.id},
       userContext:  this.currentUser
     }))
+  }
+
+  ScrollToMap(map: HTMLDivElement) {
+    map.scrollIntoView({behavior: 'smooth'});
   }
 
   ngOnDestroy(): void {

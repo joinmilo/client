@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AddressEntity, Maybe } from 'src/schema/schema';
 
 @Component({
@@ -13,5 +13,11 @@ export class AddressPieceComponent {
 
   @Input()
   public link?: Maybe<string>;
+
+  @Output() scrollToMap: EventEmitter<void> = new EventEmitter<void>();
+
+  onClick() {
+    this.scrollToMap.emit();
+  }
 
 }

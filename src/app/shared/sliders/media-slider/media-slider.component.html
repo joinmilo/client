@@ -1,10 +1,10 @@
-<app-slider-header
-  [titleType]="titleType"
-  [link]="link"
-  [linkLabel]="linkLabel"
-  [title]="title"
-  [titleLabel]="titleLabel">
-</app-slider-header>
+<div *ngIf="titleLabel || link || title">
+  <app-details-title *ngIf="titleLabel" [titleLabel]="titleLabel"></app-details-title>
+  <app-details-title *ngIf="title" [title]="title"></app-details-title>
+  <section *ngIf="link">
+    <a [routerLink]="link" [appLabel]="linkLabel" suffix="»"></a>
+  </section>
+</div>
 
 <app-slider>
   <ng-container *ngFor="let element of media">

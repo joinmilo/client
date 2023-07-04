@@ -6,6 +6,7 @@ div {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    cursor: pointer;
   }
 }
 
@@ -17,3 +18,4 @@ fa-icon {
 a {
   color: black;
 }
+
