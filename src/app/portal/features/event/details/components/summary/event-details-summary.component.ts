@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
@@ -19,6 +19,8 @@ export class EventDetailsSummrayComponent implements OnInit, OnDestroy {
 
   public currentUser?: Maybe<UserContextEntity> | undefined;
 
+  @Output() scrollToMap: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private store: Store) { }
 
   ngOnInit(): void {
@@ -32,6 +34,10 @@ export class EventDetailsSummrayComponent implements OnInit, OnDestroy {
     this.store.select(selectCurrentUser)
       .pipe(takeUntil(this.destroy))
       .subscribe(user => this.currentUser = user);
+  }
+
+  onScrollToMap() {
+    this.scrollToMap.emit();
   }
 
   ngOnDestroy(): void {

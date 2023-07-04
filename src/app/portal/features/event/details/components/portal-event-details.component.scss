@@ -43,9 +43,28 @@
     }
   }
 
-  div {
+  div:nth-last-child(2) {
     width: 100%;
     justify-content: space-between;
     display: flex;
+  }
+
+  div:last-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 30rem;
+
+    app-map {
+      width: 100%;
+      height: 100%;
+
+    }
+  }
+}
+
+:host ::ng-deep {
+  .leaflet-container {
+    border-radius: var(--mdc-shape-small) !important;
   }
 }

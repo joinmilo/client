@@ -8,7 +8,8 @@
       <i appLabel="noFixedDates"></i>
     </div>
 
-    <app-address-piece *ngIf="event?.address" [address]="event?.address">
+    <app-address-piece *ngIf="event?.address" [address]="event?.address"
+    (scrollToMap)="onScrollToMap()">
     </app-address-piece>
 
     <app-address-piece *ngIf="event?.videoChatLink" [link]="event?.videoChatLink">

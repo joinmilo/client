@@ -7,10 +7,7 @@
     <app-favorite-piece>
     </app-favorite-piece>
 
-    <app-category-piece
-      [category]="event?.category"
-      [url]="['/portal', url]"
-      [queryParam]="queryParams">
+    <app-category-piece [category]="event?.category" [url]="['/portal', url]" [queryParam]="queryParams">
     </app-category-piece>
   </section>
   <section>
@@ -21,7 +18,7 @@
     <section>
       <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
 
-      <app-event-details-summary>
+      <app-event-details-summary (scrollToMap)="ScrollToMap(target)">
       </app-event-details-summary>
 
       <p [innerHtml]="event | translatable : 'content' | async"></p>
@@ -30,34 +27,31 @@
     <app-event-details-organisation *ngIf="event?.organisation">
     </app-event-details-organisation>
 
-    <app-media-slider *ngIf="media && media.length > 0" 
-      [media]="media" [link]="['./media']"
+    <app-media-slider *ngIf="media && media.length > 0" [media]="media" [link]="['./media']"
       [titleType]="'details-title'">
     </app-media-slider>
 
     <app-event-participants>
     </app-event-participants>
 
-    <app-rating [currentUser]="currentUser"
-      [ratingDto]="event?.calculatedRatings"
-      (content)="saveComment($event)"
+    <app-rating [currentUser]="currentUser" [ratingDto]="event?.calculatedRatings" (content)="saveComment($event)"
       (rating)="saveRating($event)"
       [currentRatingScore]="(event?.ratings | filter: {userContext: {id: currentUser?.id}})?.[0]?.score">
     </app-rating>
 
-    <app-comment 
-     *ngIf="event?.lastComment?.id"
-     [content]="event?.lastComment?.content"
-     [created]="event?.lastComment?.created"
-     [userContext]="event?.lastComment?.userContext">
+    <app-comment *ngIf="event?.lastComment?.id" [content]="event?.lastComment?.content"
+      [created]="event?.lastComment?.created" [userContext]="event?.lastComment?.userContext">
     </app-comment>
 
     <div>
-      <app-save-comment 
-        (content)="saveComment($event)"
-        [currentUser]="currentUser"
-       ></app-save-comment>
+      <app-save-comment (content)="saveComment($event)" [currentUser]="currentUser"></app-save-comment>
       <a [routerLink]="['./comments']" appLabel="allComments" suffix="»"></a>
     </div>
+
+    <div #target>
+      <app-details-title titleLabel="mapView"></app-details-title>
+      <app-map [markerDefinition]="marker"></app-map>
+    </div>
   </section>
+
 </div>
