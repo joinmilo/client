@@ -13,7 +13,7 @@ import { CardModule } from 'src/app/shared/card/card.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal-filter/deal-filter.module';
 import { EventFilterModule } from 'src/app/shared/filter/event-filter/event-filter.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation-filter/organisation-filter.module';
-import { FormModule } from 'src/app/shared/form/form.module';
+import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { MapModule } from 'src/app/shared/map/map.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { PortalMapOverviewFilterComponent } from './components/filter/portal-map-overview-filter.component';
@@ -52,10 +52,10 @@ const modules = [
   CoreModule,
   DealFilterModule,
   EventFilterModule,
-  FormModule,
+  MapModule,
   OrganisationFilterModule,
   PortalMapOverviewRoutingModule,
-  MapModule,
+  RadioButtonFormModule,
   TableModule,
 ]
 
