@@ -34,7 +34,7 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.activatedRoute.paramMap.pipe(
       tap(params => this.store.dispatch(PortalEventDetailsActions.getDetails(params.get(slug) || ''))),
       switchMap(() => this.store.select(selectEventDetails)),
@@ -44,20 +44,21 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
       this.titleImage = event?.uploads?.find(upload => upload?.title)?.media;
       this.media = event?.uploads
         ?.filter(upload => !upload?.card && !upload?.title)
-        ?.map(eventMedia => eventMedia?.media) as MediaEntity[];
+        ?.map(eventMedia => eventMedia?.media)
+        ?.slice(0, 3) as MediaEntity[];
     });
 
     this.store.select(selectCurrentUser).pipe(takeUntil(this.destroy))
-    .subscribe(user => this.currentUser = user);
+      .subscribe(user => this.currentUser = user);
   }
 
-  saveRating($event: number) {
+  public saveRating(score: number): void {
     this.store.dispatch(PortalEventDetailsActions.saveEventRating({
       id: this.event?.ratings?.filter(rating => rating?.userContext?.id == this.currentUser?.id)?.[0]?.id,
       event: {id: this.event?.id},
       userContext: {id: this.currentUser?.id, uploads: this.currentUser?.uploads},
-      score: $event,
-    }))
+      score,
+    }));
   }
 
   saveComment($event: string) {
