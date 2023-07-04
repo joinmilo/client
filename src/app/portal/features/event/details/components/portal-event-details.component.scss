@@ -52,11 +52,9 @@
   div:last-child {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 30rem;
+    height: 35rem;
 
     app-map {
-      width: 100%;
       height: 100%;
 
     }
