@@ -18,8 +18,8 @@
     <section>
       <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
 
-      <app-event-details-summary (scrollToMap)="ScrollToMap(target)">
-      </app-event-details-summary>
+      <app-portal-event-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
+      </app-portal-event-details-summary>
 
       <p [innerHtml]="event | translatable : 'content' | async"></p>
     </section>
@@ -27,8 +27,9 @@
     <app-event-details-organisation *ngIf="event?.organisation">
     </app-event-details-organisation>
 
-    <app-media-slider *ngIf="media && media.length > 0" [media]="media" [link]="['./media']"
-      [titleType]="'details-title'">
+    <app-media-slider *ngIf="media && media.length > 0"
+      [media]="media"
+      [link]="['./media']">
     </app-media-slider>
 
     <app-event-participants>
@@ -48,9 +49,11 @@
       <a [routerLink]="['./comments']" appLabel="allComments" suffix="»"></a>
     </div>
 
-    <div #target>
+    <div #map>
       <app-details-title titleLabel="mapView"></app-details-title>
-      <app-map [markerDefinition]="marker"></app-map>
+      <app-map
+        [queryParams]="false"
+        [markerDefinition]="marker"></app-map>
     </div>
   </section>
 

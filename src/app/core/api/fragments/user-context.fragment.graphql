@@ -1,22 +1,9 @@
 fragment UserContext on UserContextEntity {
   id
   slug
+
   articles {
     ...Article
-  }
-  attendee{
-  id
-    event{
-      id
-    }
-    approved
-  }
-  uploads {
-    profilePicture
-    title
-    media {
-      ...Media
-    }
   }
 
   friendRequester {
@@ -27,6 +14,14 @@ fragment UserContext on UserContextEntity {
     ...Friend
   }
   
+  uploads {
+    profilePicture
+    title
+    media {
+      ...Media
+    }
+  }
+
   user {
     id
     firstName
@@ -36,6 +31,7 @@ fragment UserContext on UserContextEntity {
       ...Notification  
     }
   }
+
   userFormTemplate {
       ...Form
   }

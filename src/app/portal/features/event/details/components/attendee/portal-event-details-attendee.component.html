@@ -1,0 +1,38 @@
+<div>
+
+  <span>
+    <fa-icon size="1x" class="grey" [icon]="['fas', 'user-group']"></fa-icon>
+    {{ approvedAttendees?.length ?? 0 }}
+    {{ maxAttendees ? '/ ' + maxAttendees: '' }}
+  </span>
+
+  <ng-container *ngIf="currentUserAttendee; else attendSection">
+    <i *ngIf="currentUserAttendee?.approved"
+      appLabel="youAttendToThisEvent">
+    </i>
+
+    <i *ngIf="!currentUserAttendee?.approved"
+      appLabel="yourRegistrationIsInProcess">
+    </i>
+
+    <button mat-flat-button color="primary" (click)="cancel()">
+      <fa-icon size="1x" [icon]="['fas', 'right-from-bracket']"></fa-icon>
+      <span appLabel="deRegister"></span>
+    </button>
+  </ng-container>
+
+  <ng-template #attendSection>
+    <button *ngIf="!maxAttendees
+        || (approvedAttendees?.length || 0) < maxAttendees;
+        else fullyBooked"
+      mat-flat-button color="primary" (click)="attend()">
+      <fa-icon size="1x" [icon]="['fas', 'right-to-bracket']"></fa-icon>
+      <span appLabel="attend"></span>
+    </button>
+
+    <ng-template #fullyBooked>
+      <i appLabel="unfortunatelyEventFullyBooked"></i>
+    </ng-template>
+  </ng-template>
+
+</div>

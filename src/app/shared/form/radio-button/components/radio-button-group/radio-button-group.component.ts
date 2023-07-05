@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, take } from 'rxjs';
 import { RadioInput } from '../../typings/radio-input';
 
 @Component({
@@ -20,7 +20,7 @@ export class RadioButtonGroupComponent<T> implements ControlValueAccessor, OnIni
 
   @Input()
   public value?: T;
-  
+
   @Input()
   public inputs?: RadioInput[];
 
@@ -37,12 +37,12 @@ export class RadioButtonGroupComponent<T> implements ControlValueAccessor, OnIni
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-  ) {}
+  ) { }
 
   public ngOnInit(): void {
     if (this.queryParamKey) {
       this.activatedRoute.queryParams
-        .pipe(takeUntil(this.destroy))
+        .pipe(take(1))
         .subscribe(params => this.emit(params[this.queryParamKey || '']));
     }
   }
@@ -52,15 +52,16 @@ export class RadioButtonGroupComponent<T> implements ControlValueAccessor, OnIni
   }
 
   public next(value?: T) {
-    this.queryParamKey
-      ? this.router.navigate([], {
-          
-          queryParams: {
-            [this.queryParamKey]: value
-          },
-          queryParamsHandling: 'merge',
-        })
-      : this.emit(value);
+    if (this.queryParamKey) {
+      this.router.navigate([], {
+
+        queryParams: {
+          [this.queryParamKey]: value
+        },
+        queryParamsHandling: 'merge',
+      });
+    }
+    this.emit(value);
   }
 
   private emit(value?: T): void {

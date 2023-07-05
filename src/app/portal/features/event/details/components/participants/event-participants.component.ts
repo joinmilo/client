@@ -39,19 +39,19 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
         this.currentUser = user;
 
         if (event && user) {
-          const attendees = this.event?.attendees?.filter((attendee) => attendee?.approved)
-            .map((attendee) => attendee?.userContext);
-          const requester = this.currentUser?.friendRequester?.filter((requester) => requester?.accepted)
-            .map((requester) => requester?.addressee);
-          const addressee = this.currentUser?.friendAddressee?.filter((addressee) => addressee?.accepted)
-            .map((addressee) => addressee?.requester);
+          // const attendees = this.event?.attendees?.filter((attendee) => attendee?.approved)
+          //   .map((attendee) => attendee?.userContext);
+          // const requester = this.currentUser?.friendRequester?.filter((requester) => requester?.accepted)
+          //   .map((requester) => requester?.addressee);
+          // const addressee = this.currentUser?.friendAddressee?.filter((addressee) => addressee?.accepted)
+          //   .map((addressee) => addressee?.requester);
 
-          if (requester && requester?.length > 0 || addressee && addressee.length > 0) {
-            this.friends = requester?.concat(addressee);
-            if (attendees && attendees.length > 0) {
-              this.findAttendingFriends(attendees, this.friends);
-            }
-          }
+          // if (requester && requester?.length > 0 || addressee && addressee.length > 0) {
+          //   this.friends = requester?.concat(addressee);
+          //   if (attendees && attendees.length > 0) {
+          //     this.findAttendingFriends(attendees, this.friends);
+          //   }
+          // }
         }
       });
   }

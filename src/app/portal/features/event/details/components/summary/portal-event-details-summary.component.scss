@@ -4,8 +4,8 @@ div {
   justify-content: space-between;
   flex-wrap: wrap;
 
-  div {
-    gap: unset;
+  fa-icon {
+    color: grey;
   }
 
   section {
@@ -13,13 +13,4 @@ div {
     flex-flow: column wrap;
     gap: 1rem;
   }
-}
-
-fa-icon {
-  margin-right: .5rem;
-  color: grey;
-}
-
-app-adress-piece{
-  cursor: pointer;
 }

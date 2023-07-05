@@ -12,7 +12,7 @@ import { selectScheduleStartDates, selectSchedules } from './../../state/portal-
   templateUrl: './portal-event-calendar.component.html',
   styleUrls: ['./portal-event-calendar.component.scss']
 })
-export class PortalEventCalendarComponent implements OnDestroy{
+export class PortalEventDetailsCalendarComponent implements OnDestroy{
   
   @Input()
   public event?: Maybe<EventEntity>;
