@@ -38,8 +38,8 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
     private store: Store) { }
 
   public ngOnInit(): void {
-    this.activatedRoute.paramMap.pipe(
-      tap(params => this.store.dispatch(PortalEventDetailsActions.getDetails(params.get(slug) || ''))),
+    this.activatedRoute.params.pipe(
+      tap(params => this.store.dispatch(PortalEventDetailsActions.getDetails(params[slug] || ''))),
       switchMap(() => this.store.select(selectEventDetails)),
       takeUntil(this.destroy)
     ).subscribe(event => {
@@ -74,10 +74,6 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
       event: {id: this.event?.id},
       userContext:  this.currentUser
     }))
-  }
-
-  ScrollToMap(map: HTMLDivElement) {
-    map.scrollIntoView({behavior: 'smooth'});
   }
 
   ngOnDestroy(): void {

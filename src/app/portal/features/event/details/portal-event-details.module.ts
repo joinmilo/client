@@ -25,15 +25,15 @@ import { ShareModule } from 'src/app/shared/share/share.module';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { PortalEventAttendeeComponent } from './components/attendee/portal-event-attendee.component';
-import { PortalEventCalendarComponent } from './components/calendar/portal-event-calendar.component';
+import { PortalEventDetailsAttendeeComponent } from './components/attendee/portal-event-details-attendee.component';
+import { PortalEventDetailsCalendarComponent } from './components/calendar/portal-event-calendar.component';
 import { PortalEventCommentsComponent } from './components/comments/portal-event-comments.component';
 import { InviteFriendsComponent } from './components/invite-friends/invite-friends.component';
 import { EventDetailsOrganisationComponent } from './components/organisation/event-details-organisation.component';
 import { EventParticipantsComponent } from './components/participants/event-participants.component';
 import { PortalEventDetailsComponent } from './components/portal-event-details.component';
 import { ShowFriendsComponent } from './components/show-friends/show-friends.component';
-import { EventDetailsSummrayComponent } from './components/summary/event-details-summary.component';
+import { PortalEventDetailsSummrayComponent } from './components/summary/portal-event-details-summary.component';
 import { portalEventDetailsStateKey } from './constants/event-details.constant';
 import { PortalEventDetailsRoutingModule } from './portal-event-details-routing.module';
 import { PortalEventDetailsEffects } from './state/portal-event-details.effects';
@@ -41,13 +41,13 @@ import { portalEventDetailsReducer } from './state/portal-event-details.reducer'
 
 const components = [
   PortalEventDetailsComponent,
-  EventDetailsSummrayComponent,
+  PortalEventDetailsSummrayComponent,
   EventParticipantsComponent,
   ShowFriendsComponent,
   EventDetailsOrganisationComponent,
   InviteFriendsComponent,
-  PortalEventCalendarComponent,
-  PortalEventAttendeeComponent,
+  PortalEventDetailsCalendarComponent,
+  PortalEventDetailsAttendeeComponent,
   PortalEventCommentsComponent,
 ];
 

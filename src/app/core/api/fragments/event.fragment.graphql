@@ -14,15 +14,15 @@ fragment Event on EventEntity {
   address {
     ...Address
   }
-  attendeeConfiguration{
+  attendeeConfiguration{ 
     approval,
     maxAttendees  
-  }
-  attendees {
-    id
-    approved
-    userContext {
-      ...UserContext
+    attendees {
+      id
+      approved
+      userContext {
+        ...UserContext
+      }
     }
   }
   contact {

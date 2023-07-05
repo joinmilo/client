@@ -28,9 +28,6 @@ import { SliderComponent } from '../slider/slider.component';
 })
 
 export class MediaSliderComponent {
-
-  @Input()
-  public titleType?: string;
   
   @Input()
   public media?: Maybe<Maybe<MediaEntity>[]>;

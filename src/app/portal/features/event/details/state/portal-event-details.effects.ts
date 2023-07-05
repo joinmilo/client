@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, switchMap, withLatestFrom } from 'rxjs';
+import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { CoreActions } from 'src/app/core/state/core.actions';
+import { selectCurrentUser } from 'src/app/core/state/core.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalMenuActions } from 'src/app/portal/shared/menu/state/portal-menu.actions';
 import { DeleteAttendeeGQL, EventCommentEntity, EventEntity, EventRatingEntity, GetEventCommentsGQL, GetEventGQL, GetSchedulesGQL, Maybe, QueryOperator, SaveAttendeeGQL, SaveEventCommentGQL, SaveEventRatingGQL, ScheduleEntity } from 'src/schema/schema';
 import { ConjunctionOperator } from './../../../../../../schema/schema';
 import { PortalEventDetailsActions } from './portal-event-details.actions';
-import { selectEventDetails } from './portal-event-details.selectors';
+import { selectEventAttendeeConfiguration, selectEventDetails, selectEventUserAttendee } from './portal-event-details.selectors';
 
 @Injectable()
 export class PortalEventDetailsEffects {
@@ -122,10 +124,24 @@ export class PortalEventDetailsEffects {
       .setSchedules(response.data.getSchedules?.result as Maybe<ScheduleEntity[]>))
   ));
 
-  saveAttendee = createEffect(() => this.actions.pipe(
-    ofType(PortalEventDetailsActions.saveAttendee),
-    switchMap((action) => this.saveAttendeeService.mutate({
-      entity: action.entity
+  attendEvent = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.attendEvent),
+    withLatestFrom(
+      this.store.select(selectCurrentUser),
+      this.store.select(selectEventAttendeeConfiguration),
+    ),
+    tap(([, currentUser,]) => !currentUser?.id
+      && this.router.navigate(['/user', 'login-required'])),
+    filter(([, currentUser,]) => !!currentUser?.id),
+    switchMap(([, currentUser, configuration]) => this.saveAttendeeService.mutate({
+      entity: {
+        configuration: {
+          id: configuration?.id
+        },
+        userContext: {
+          id: currentUser?.id
+        }
+      }
     })),
     map(response => PortalEventDetailsActions.attendeeSaved(response.data?.saveAttendee))
   ));
@@ -138,10 +154,13 @@ export class PortalEventDetailsEffects {
     }))
   ));
 
-  deleteAttendee = createEffect(() => this.actions.pipe(
-    ofType(PortalEventDetailsActions.deleteAttendee),
-    switchMap((action) => this.deleteAttendeeService.mutate({
-      id: action.id,
+  cancelAttendeeRegistration = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.cancelAttendeeRegistration),
+    withLatestFrom(
+      this.store.select(selectEventUserAttendee),
+    ),
+    switchMap(([, attendee]) => this.deleteAttendeeService.mutate({
+      id: attendee?.id,
     })),
     map(response => PortalEventDetailsActions.attendeeDeleted(response.data?.deleteAttendee))
   ));
@@ -173,12 +192,13 @@ export class PortalEventDetailsEffects {
   constructor(
     private store: Store,
     private actions: Actions,
+    private deleteAttendeeService: DeleteAttendeeGQL,
     private getEventService: GetEventGQL,
     private getCommentsService: GetEventCommentsGQL,
-    private saveEventRatingService: SaveEventRatingGQL,
     private getSchedulesService: GetSchedulesGQL,
     private saveAttendeeService: SaveAttendeeGQL,
-    private deleteAttendeeService: DeleteAttendeeGQL,
+    private saveEventRatingService: SaveEventRatingGQL,
     private saveEventCommentService: SaveEventCommentGQL,
+    private router: Router,
   ) { }
 }

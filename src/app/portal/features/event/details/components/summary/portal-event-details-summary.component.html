@@ -9,7 +9,7 @@
     </div>
 
     <app-address-piece *ngIf="event?.address" [address]="event?.address"
-    (scrollToMap)="onScrollToMap()">
+    (scrollToMap)="onAddressClicked()">
     </app-address-piece>
 
     <app-address-piece *ngIf="event?.videoChatLink" [link]="event?.videoChatLink">
@@ -22,6 +22,16 @@
     </app-phone-piece>
   </section>
 
-  <app-portal-event-attendee [event]="event" [currentUser]="currentUser"></app-portal-event-attendee>
+  <section>
+    <span>
+      <fa-icon size="1x" class="grey" [icon]="['fas', 'ticket']"></fa-icon>
+      {{ event?.entryFee || '' }}
+      <span *ngIf="!event?.entryFee" appLabel="admissionFree"></span>
+    </span>
+
+    <app-portal-event-details-attendee
+      *ngIf="event?.attendeeConfiguration"
+    ></app-portal-event-details-attendee>
+  </section>
   
 </div>
