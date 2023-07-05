@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
+  LeafletMouseEvent,
   Marker,
   divIcon,
   latLng,
@@ -17,7 +18,7 @@ export class MapMarkerService {
 
   constructor(
     private componentService: MapComponentsService) { }
-  
+
   public definitionsToMarkers(definitions?: MarkerDefinition[]): Marker[] {
     return (definitions?.map((definition) => this.definitionToMarker(definition)) || []).flat();
   }
@@ -86,7 +87,7 @@ export class MapMarkerService {
       translatables: entity?.translatables
     })
   }
-  
+
   public createMarker(poi: PointOfInterest): Marker {
     const icon = divIcon({
       ...iconOptions,
@@ -97,7 +98,18 @@ export class MapMarkerService {
     return marker(latLng(poi.address?.latitude || 0, poi.address?.longitude || 0), { icon })
       .bindPopup(popup, popupOptions)
       .on('mouseover', event => event.target.openPopup())
-      .on('mouseout', event => event.target.closePopup());
+      .on('mouseout', event => {
+        const target = event.target.getPopup()._container;
+        target.matches(':hover')
+          ? this.handleMouseOutPopup(target, event)
+          : event.target.closePopup();
+      })
+  }
+
+  public handleMouseOutPopup(container: HTMLElement, leaflet: LeafletMouseEvent): void {
+    container.addEventListener('mouseout', () => {
+      !container.matches(':hover') ? leaflet.target.closePopup() : null;
+    })
   }
 
   public cleanup(): void {
