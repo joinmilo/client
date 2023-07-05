@@ -107,9 +107,8 @@ export class MapMarkerService {
   }
 
   public handleMouseOutPopup(container: HTMLElement, leaflet: LeafletMouseEvent): void {
-    container.addEventListener('mouseout', () => {
-      !container.matches(':hover') ? leaflet.target.closePopup() : null;
-    })
+    container.addEventListener('mouseout', () =>
+      !container.matches(':hover') && leaflet.target.closePopup())
   }
 
   public cleanup(): void {
