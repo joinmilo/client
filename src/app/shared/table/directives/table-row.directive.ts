@@ -1,6 +1,6 @@
 import { Directive, Input, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { Observable, Subject, isObservable, takeUntil } from 'rxjs';
-import { AddressPieceComponent } from 'src/app/core/components/pieces/adress/address-piece.component';
+import { AddressPieceComponent } from 'src/app/core/components/pieces/address/address-piece.component';
 import { CategoryPieceComponent } from 'src/app/core/components/pieces/category/category-piece.component';
 import { Category } from 'src/app/core/typings/category';
 import { AddressEntity, Maybe } from 'src/schema/schema';

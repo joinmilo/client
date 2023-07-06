@@ -14,19 +14,10 @@ export class AddressPieceComponent {
   @Input()
   public link?: Maybe<string>;
 
-  @Output() detailsAddressClicked: EventEmitter<void> = new EventEmitter<void>();
-
   @Output()
-  public mapAddressClicked = new EventEmitter<{
-    longtitude?: Maybe<number>,
-    latitude?: Maybe<number>
-  }>();
+  public addressClicked = new EventEmitter<Maybe<AddressEntity>>();
 
-  onClick() {
-    this.detailsAddressClicked.emit();
-    this.mapAddressClicked.emit({
-      longtitude: this.address?.longitude,
-      latitude: this.address?.latitude
-    });
+  public onClick(): void {
+    this.addressClicked.emit(this.address);
   }
 }

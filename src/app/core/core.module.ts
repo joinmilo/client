@@ -13,7 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { LogoComponent } from './components/logo/logo.component';
-import { AddressPieceComponent } from './components/pieces/adress/address-piece.component';
+import { AddressPieceComponent } from './components/pieces/address/address-piece.component';
 import { CategoryPieceComponent } from './components/pieces/category/category-piece.component';
 import { DatePieceComponent } from './components/pieces/date/date-piece.component';
 import { FavoritePieceComponent } from './components/pieces/favorite/favorite-piece.component';

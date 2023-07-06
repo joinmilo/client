@@ -9,7 +9,7 @@
     </div>
 
     <app-address-piece *ngIf="event?.address" [address]="event?.address"
-    (scrollToMap)="onAddressClicked()">
+      (addressClicked)="onAddressClicked()">
     </app-address-piece>
 
     <app-address-piece *ngIf="event?.videoChatLink" [link]="event?.videoChatLink">

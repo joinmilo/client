@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import { locationURL } from 'src/app/core/constants/core.constants';
+import { AddressEntity } from 'src/schema/schema';
 import { PointOfInterest } from '../../typings/map';
 
 @Component({
@@ -12,12 +13,9 @@ export class MapPopupComponent {
   @Input()
   public poi?: PointOfInterest;
 
-  constructor(private router: Router) { }
-
-  openGoogleMaps(event: { longtitude?: Maybe<number> | undefined; latitude?: Maybe<number> | undefined; }) {
-    if (event.latitude && event.longtitude) {
-      const url = `https://www.google.com/maps/dir/?api=1&destination=${event.latitude},${event.longtitude}`;
-      window.open(url, '_blank');
+  public openGoogleMaps(address: Maybe<AddressEntity>) {
+    if (address?.latitude && address?.longitude) {
+      window.open(locationURL(address.latitude, address.longitude));
     }
   }
 }

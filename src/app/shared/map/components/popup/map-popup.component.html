@@ -6,7 +6,7 @@
   }}
 </h3>
 <app-address-piece *ngIf="poi?.address" [address]="poi?.address"
- (mapAddressClicked)="openGoogleMaps($event)">
+  (addressClicked)="openGoogleMaps($event)">
 </app-address-piece>
 
 <app-date-piece *ngIf="poi?.date" [date]="poi?.date" [dateTime]="true">
@@ -14,7 +14,7 @@
 <span>
   {{
     (poi?.text
-        ? poi?.text
-        : poi?.translatables | translatable: poi?.textTranslatableField | async) | stripTags | truncateWords:20
+      ? poi?.text
+      : poi?.translatables | translatable: poi?.textTranslatableField | async) | stripTags | truncateWords:20
   }}
 </span>
