@@ -4,7 +4,7 @@
     [src]="media ? '' : '/assets/placeholder.webp'"
     [appMedia]="media" alt="organisation-image">
   <section>
-    <span class="mat-subtitle-1">{{event?.organisation?.name}}</span>
+    <app-details-title [title]="event?.organisation?.name"></app-details-title>
     <button 
       mat-stroked-button color="primary"
       [routerLink]="['/portal', 'organisations', event?.organisation?.slug]">

@@ -1,17 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { EventEntity, Maybe, MediaEntity } from 'src/schema/schema';
 import { selectEventDetails } from '../../state/portal-event-details.selectors';
 
 @Component({
-  selector: 'app-event-details-organisation',
-  templateUrl: './event-details-organisation.component.html',
-  styleUrls: ['./event-details-organisation.component.scss'],
+  selector: 'app-portal-event-details-organisation',
+  templateUrl: './portal-event-details-organisation.component.html',
+  styleUrls: ['./portal-event-details-organisation.component.scss'],
 })
-export class EventDetailsOrganisationComponent implements OnInit, OnDestroy {
+export class PortalEventDetailsOrganisationComponent implements OnInit, OnDestroy {
 
   public event?: Maybe<EventEntity> | undefined;
 
@@ -19,19 +17,18 @@ export class EventDetailsOrganisationComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
-  constructor(private store: Store, private router: Router, public dialog: MatDialog) { }
+  constructor(private store: Store) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.store.select(selectEventDetails)
       .pipe(takeUntil(this.destroy))
       .subscribe((event) => {
         this.event = event;
         this.media = event?.organisation?.uploads?.find(upload => upload?.card)?.media;
-      }
-      )
+      });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

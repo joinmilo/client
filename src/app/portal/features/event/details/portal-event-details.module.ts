@@ -28,9 +28,9 @@ import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalEventDetailsAttendeeComponent } from './components/attendee/portal-event-details-attendee.component';
 import { PortalEventDetailsCalendarComponent } from './components/calendar/portal-event-calendar.component';
 import { PortalEventCommentsComponent } from './components/comments/portal-event-comments.component';
-import { InviteFriendsComponent } from './components/invite-friends/invite-friends.component';
-import { EventDetailsOrganisationComponent } from './components/organisation/event-details-organisation.component';
-import { EventParticipantsComponent } from './components/participants/event-participants.component';
+import { PortalEventDetailsInviteFriendsComponent } from './components/invite-friends/portal-event-details-invite-friends.component';
+import { PortalEventDetailsOrganisationComponent } from './components/organisation/portal-event-details-organisation.component';
+import { PortalEventDetailsParticipantsComponent } from './components/participants/portal-event-details-participants.component';
 import { PortalEventDetailsComponent } from './components/portal-event-details.component';
 import { ShowFriendsComponent } from './components/show-friends/show-friends.component';
 import { PortalEventDetailsSummrayComponent } from './components/summary/portal-event-details-summary.component';
@@ -42,10 +42,10 @@ import { portalEventDetailsReducer } from './state/portal-event-details.reducer'
 const components = [
   PortalEventDetailsComponent,
   PortalEventDetailsSummrayComponent,
-  EventParticipantsComponent,
+  PortalEventDetailsParticipantsComponent,
   ShowFriendsComponent,
-  EventDetailsOrganisationComponent,
-  InviteFriendsComponent,
+  PortalEventDetailsOrganisationComponent,
+  PortalEventDetailsInviteFriendsComponent,
   PortalEventDetailsCalendarComponent,
   PortalEventDetailsAttendeeComponent,
   PortalEventCommentsComponent,

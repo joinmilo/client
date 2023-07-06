@@ -1,13 +1,11 @@
-<mat-dialog-content class="mat-typography">
-  <app-details-title appLabel="attendingFriends"></app-details-title>
-  <hr>
-  <section *ngFor="let friend of friends">
-    <div>
-      <app-avatar [user]="friend"></app-avatar>
-      <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
-    </div>
-  </section>
-  <hr>
+<mat-dialog-content>
+  <h1 class="mat-headline-6" appLabel="inviteFriends"></h1>
+  <mat-divider></mat-divider>
+  <div *ngFor="let friend of friends">
+    <app-avatar [user]="friend"></app-avatar>
+    <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
+  </div>
+  <mat-divider></mat-divider>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>

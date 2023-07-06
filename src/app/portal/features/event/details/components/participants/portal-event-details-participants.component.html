@@ -3,18 +3,22 @@
     <app-details-title *ngIf="!attendingFriends" titleLabel="SoFarNoFriendsAreAttending"></app-details-title>
   <div>
     <section *ngIf="attendingFriends && attendingFriends.length > 0">
-      <app-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))" [user]="attendingFriend"></app-avatar>
-      <button mat-stroked-button color="primary" (click)="openAllFriendsDialog()">
+      <app-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))"
+        [user]="attendingFriend">
+      </app-avatar>
+      <button mat-stroked-button color="primary" (click)="showAllFriends()">
         <fa-icon size="1x" [icon]="['fas', 'users']"></fa-icon>
         <span appLabel="showAllFriends"></span>
       </button>
     </section>
     <section>
-      <button mat-flat-button color="primary" *ngIf="(currentUser | async)?.id" (click)="openInviteFriendsDialog()">
+      <button mat-flat-button color="primary" *ngIf="(currentUser | async)?.id"
+        (click)="inviteFriends()">
         <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
         <span appLabel="inviteFriends"></span>
       </button>
-      <button mat-flat-button color="primary" *ngIf="!((currentUser | async)?.id)" [routerLink]="['/user', 'register']">
+      <button mat-flat-button color="primary" *ngIf="!((currentUser | async)?.id)"
+        [routerLink]="['/user', 'login-required']">
         <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
         <span appLabel="inviteFriends"></span>
       </button>

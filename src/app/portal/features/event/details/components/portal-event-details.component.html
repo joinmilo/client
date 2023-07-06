@@ -24,16 +24,16 @@
       <p [innerHtml]="event | translatable : 'content' | async"></p>
     </section>
 
-    <app-event-details-organisation *ngIf="event?.organisation">
-    </app-event-details-organisation>
+    <app-portal-event-details-organisation *ngIf="event?.organisation">
+    </app-portal-event-details-organisation>
 
     <app-media-slider *ngIf="media && media.length > 0"
       [media]="media"
       [link]="['./media']">
     </app-media-slider>
 
-    <app-event-participants>
-    </app-event-participants>
+    <app-portal-event-details-participants>
+    </app-portal-event-details-participants>
 
     <app-rating [currentUser]="currentUser" [ratingDto]="event?.calculatedRatings" (content)="saveComment($event)"
       (rating)="saveRating($event)"
