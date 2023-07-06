@@ -1,67 +1,32 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, combineLatestWith, takeUntil } from 'rxjs';
-import { selectCurrentUser } from 'src/app/core/state/core.selectors';
-import { EventEntity, Maybe, UserContextEntity } from 'src/schema/schema';
-import { selectEventDetails } from '../../state/portal-event-details.selectors';
+import { Maybe, UserContextEntity } from 'src/schema/schema';
+import { selectAttendingFriends } from '../../state/portal-event-details.selectors';
 import { InviteFriendsComponent } from '../invite-friends/invite-friends.component';
 import { ShowFriendsComponent } from '../show-friends/show-friends.component';
+import { selectCurrentUser, selectFriends } from './../../../../../../core/state/core.selectors';
 
 @Component({
   selector: 'app-event-participants',
   templateUrl: './event-participants.component.html',
   styleUrls: ['./event-participants.component.scss'],
 })
-export class EventParticipantsComponent implements OnInit, OnDestroy {
-
-  public currentUser?: Maybe<UserContextEntity> | undefined;
-
-  private event?: Maybe<EventEntity> | undefined;
-
-  private destroy = new Subject<void>();
+export class EventParticipantsComponent implements OnInit{
 
   public friends?: (Maybe<UserContextEntity> | undefined)[] | undefined;
 
   public attendingFriends?: (Maybe<UserContextEntity> | undefined)[] | undefined;
 
-  constructor(private store: Store, private router: Router, public dialog: MatDialog) { }
+  public currentUser = this.store.select(selectCurrentUser);
+
+  constructor(public dialog: MatDialog, private store: Store) { }
 
   ngOnInit(): void {
-    this.store.select(selectEventDetails)
-      .pipe(
-        combineLatestWith(this.store.select(selectCurrentUser)),
-        takeUntil(this.destroy)
-      )
-      .subscribe(([event, user]) => {
-        this.event = event;
-        this.currentUser = user;
+    this.store.select(selectFriends).subscribe(friends => this.friends = friends);
 
-        if (event && user) {
-          // const attendees = this.event?.attendees?.filter((attendee) => attendee?.approved)
-          //   .map((attendee) => attendee?.userContext);
-          // const requester = this.currentUser?.friendRequester?.filter((requester) => requester?.accepted)
-          //   .map((requester) => requester?.addressee);
-          // const addressee = this.currentUser?.friendAddressee?.filter((addressee) => addressee?.accepted)
-          //   .map((addressee) => addressee?.requester);
-
-          // if (requester && requester?.length > 0 || addressee && addressee.length > 0) {
-          //   this.friends = requester?.concat(addressee);
-          //   if (attendees && attendees.length > 0) {
-          //     this.findAttendingFriends(attendees, this.friends);
-          //   }
-          // }
-        }
-      });
-  }
-
-  findAttendingFriends(
-    attendees: (Maybe<UserContextEntity> | undefined)[] | undefined,
-    friends: (Maybe<UserContextEntity> | undefined)[] | undefined) {
-      this.attendingFriends = attendees?.filter((attendee) =>
-        friends?.some((friend) => friend?.id === attendee?.id)
-      );
+    this.store.select(selectAttendingFriends).subscribe(attendingFriends =>
+       this.attendingFriends = attendingFriends);
   }
 
   openAllFriendsDialog(): void {
@@ -73,13 +38,11 @@ export class EventParticipantsComponent implements OnInit, OnDestroy {
   openInviteFriendsDialog(): void {
     this.dialog.open(InviteFriendsComponent, {
       width: 'auto',
-      data: this.friends?.filter(friend => !this.attendingFriends
-        ?.some(attendingFriend => attendingFriend?.id === friend?.id))
+      data: {
+      friends: this.friends?.filter(friend =>
+         !this.attendingFriends?.includes(friend))
+      }
     });
   }
 
-  ngOnDestroy(): void {
-    this.destroy.next();
-    this.destroy.complete();
-  }
 }
