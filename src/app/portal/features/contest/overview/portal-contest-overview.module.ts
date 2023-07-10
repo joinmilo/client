@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { ContestFilterModule } from 'src/app/shared/filter/contest-filter/contest-filter.module';
+import { CardSliderComponent } from 'src/app/shared/sliders/card-slider/card-slider.component';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalContestOverviewActiveComponent } from './components/active/portal-contest-overview-active.component';
 import { PortalContestOverviewCompletedComponent } from './components/completed/portal-contest-overview-completed.component';
@@ -38,6 +39,7 @@ const materials = [
 const modules = [
   CoreModule,
   CardModule,
+  CardSliderComponent,
   ContestFilterModule,
   PortalContestOverviewRoutingModule,
   TitleModule,
