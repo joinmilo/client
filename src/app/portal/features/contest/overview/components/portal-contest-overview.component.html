@@ -1,0 +1,38 @@
+<div class="main">
+  <app-page-title title="contests"></app-page-title>
+  
+  <app-sponsored-card 
+    *ngIf="(sponsored | async)?.id"
+    entity="ContestEntity"
+    [data]="sponsored | async">
+  </app-sponsored-card>
+
+  <app-contest-filter 
+  (paramsUpdated)="updateParams($event)">
+  </app-contest-filter>
+
+
+  <app-sub-title titleLabel="activeContests"></app-sub-title>
+  <ng-container *ngIf="(activeContests | async); else emptyResult">
+    <app-portal-contest-overview-active >
+    </app-portal-contest-overview-active>
+  </ng-container>
+
+  <app-sub-title titleLabel="voteableContests"></app-sub-title>
+  <ng-container *ngIf="( voteableContests | async); else emptyResult">
+    <app-portal-contest-overview-voteable>
+    </app-portal-contest-overview-voteable>
+  </ng-container>
+
+  <app-sub-title titleLabel="completedContests"></app-sub-title>
+  <ng-container *ngIf="( completedContests | async); else emptyResult">
+    <app-portal-contest-overview-completed>
+    </app-portal-contest-overview-completed>
+  </ng-container>
+
+  <ng-template #emptyResult>
+    <app-portal-contest-overview-empty></app-portal-contest-overview-empty>
+  </ng-template>
+
+  
+</div>

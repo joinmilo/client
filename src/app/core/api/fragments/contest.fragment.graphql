@@ -3,12 +3,18 @@ fragment Contest on ContestEntity {
   modified
   created
   participationEndDate
+  voteEndDate
   uploads {
     title
     card
-    media{
+    media {
       ...Media
     }
+  }
+  created
+  modified
+  type {
+    ...ContestType
   }
   slug
   translatables {

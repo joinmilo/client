@@ -1,0 +1,13 @@
+div {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+button {
+  margin-left: auto;
+}
+
+h1 {
+  margin: 2rem !important;
+}

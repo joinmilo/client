@@ -1,0 +1,10 @@
+fragment ContestType on ContestTypeEntity {
+  id
+  translatables {
+    id
+    name
+    language {
+      ...Language
+    }
+  }
+}

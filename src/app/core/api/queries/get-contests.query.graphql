@@ -3,5 +3,6 @@ query getContests($params: FilterSortPaginateInput) {
     result {
       ...Contest
     }
+    total
   }
 }

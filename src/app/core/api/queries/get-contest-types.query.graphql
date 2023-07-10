@@ -1,0 +1,16 @@
+query getContestTypes ($params: FilterSortPaginateInput){
+  getContestTypes(params: $params) {
+    result {
+      id
+      translatables {
+        id
+        name
+        language{
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}

@@ -5058,7 +5058,9 @@ export type ConfigurationFragment = { __typename?: 'ConfigurationEntity', id?: s
 
 export type ContactFragment = { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null };
 
-export type ContestFragment = { __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+export type ContestTypeFragment = { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+
+export type ContestFragment = { __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
 export type DealCategoryFragment = { __typename?: 'DealCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
@@ -5259,12 +5261,26 @@ export type GetConfigurationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetConfigurationsQuery = { __typename?: 'Query', getConfigurations?: { __typename?: 'PageableList_ConfigurationEntity', result?: Array<{ __typename?: 'ConfigurationEntity', id?: string | null, key?: string | null, value?: string | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null } | null };
 
+export type GetContestTypesQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type GetContestTypesQuery = { __typename?: 'Query', getContestTypes?: { __typename?: 'PageableList_ContestTypeEntity', result?: Array<{ __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, name?: string | null, locale?: string | null } | null } | null> | null } | null> | null } | null };
+
+export type GetContestQueryVariables = Exact<{
+  entity?: InputMaybe<ContestEntityInput>;
+}>;
+
+
+export type GetContestQuery = { __typename?: 'Query', getContest?: { __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
 export type GetContestsQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
 }>;
 
 
-export type GetContestsQuery = { __typename?: 'Query', getContests?: { __typename?: 'PageableList_ContestEntity', result?: Array<{ __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetContestsQuery = { __typename?: 'Query', getContests?: { __typename?: 'PageableList_ContestEntity', total: any, result?: Array<{ __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export type GetDealCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5490,18 +5506,43 @@ export const ConfigurationFragmentDoc = gql`
   }
 }
     ${MediaFragmentDoc}`;
+export const LanguageFragmentDoc = gql`
+    fragment Language on LanguageEntity {
+  id
+  locale
+  name
+}
+    `;
+export const ContestTypeFragmentDoc = gql`
+    fragment ContestType on ContestTypeEntity {
+  id
+  translatables {
+    id
+    name
+    language {
+      ...Language
+    }
+  }
+}
+    ${LanguageFragmentDoc}`;
 export const ContestFragmentDoc = gql`
     fragment Contest on ContestEntity {
   id
   modified
   created
   participationEndDate
+  voteEndDate
   uploads {
     title
     card
     media {
       ...Media
     }
+  }
+  created
+  modified
+  type {
+    ...ContestType
   }
   slug
   translatables {
@@ -5516,7 +5557,8 @@ export const ContestFragmentDoc = gql`
     }
   }
 }
-    ${MediaFragmentDoc}`;
+    ${MediaFragmentDoc}
+${ContestTypeFragmentDoc}`;
 export const SuburbFragmentDoc = gql`
     fragment Suburb on SuburbEntity {
   id
@@ -5545,13 +5587,6 @@ export const ContactFragmentDoc = gql`
   phone
   preferredContact
   website
-}
-    `;
-export const LanguageFragmentDoc = gql`
-    fragment Language on LanguageEntity {
-  id
-  locale
-  name
 }
     `;
 export const DealCategoryFragmentDoc = gql`
@@ -6607,12 +6642,60 @@ export const GetConfigurationsDocument = gql`
       super(apollo);
     }
   }
+export const GetContestTypesDocument = gql`
+    query getContestTypes($params: FilterSortPaginateInput) {
+  getContestTypes(params: $params) {
+    result {
+      id
+      translatables {
+        id
+        name
+        language {
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetContestTypesGQL extends Apollo.Query<GetContestTypesQuery, GetContestTypesQueryVariables> {
+    override document = GetContestTypesDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetContestDocument = gql`
+    query getContest($entity: ContestEntityInput) {
+  getContest(entity: $entity) {
+    ...Contest
+  }
+}
+    ${ContestFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetContestGQL extends Apollo.Query<GetContestQuery, GetContestQueryVariables> {
+    override document = GetContestDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const GetContestsDocument = gql`
     query getContests($params: FilterSortPaginateInput) {
   getContests(params: $params) {
     result {
       ...Contest
     }
+    total
   }
 }
     ${ContestFragmentDoc}`;

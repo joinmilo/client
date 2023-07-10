@@ -1,0 +1,11 @@
+<app-filter-area 
+  [filtersActive]="filtersActive | async" 
+  (filtersCleared)="clearFilters()">
+
+  <!-- The filters to use in this filter area -->
+  <ng-container filters>
+    <app-contest-filter-types>
+    </app-contest-filter-types>
+  </ng-container>
+
+</app-filter-area>
