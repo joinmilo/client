@@ -1,0 +1,7 @@
+query getOrganisationComments($params: FilterSortPaginateInput) {
+  getOrganisationComments(params: $params) {
+    result {
+      ...OrganisationComment
+    }
+  }
+}

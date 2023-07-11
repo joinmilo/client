@@ -26,7 +26,7 @@
   </div>
 
   <div>
-    <span class="mat-subtitle-1">{{ratings?.total}}</span>
+    <span class="mat-subtitle-1">{{ratings?.total ?? 0}}</span>
     <span class="mat-subtitle-1" [appLabel]="(ratings?.total) !== 1 ? 'ratings' : 'rating'"></span>
   </div>
 

@@ -22,3 +22,8 @@ export const selectUserEventRatings = createSelector(
   selectCurrentUser,
   user => user?.eventRatings
 );
+
+export const selectUserOrganisationRatings = createSelector(
+  selectCurrentUser,
+  user => user?.organisationRatings
+);

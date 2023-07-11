@@ -1,0 +1,37 @@
+<div class="details">
+  <app-title-image [image]="titleImage"></app-title-image>
+  <section>
+
+    <app-share-button>
+    </app-share-button>
+
+    <app-favorite-piece>
+    </app-favorite-piece>
+
+  </section>
+  <section>
+    <section>
+      <h2 class="mat-headline-4">{{organisation?.name}}</h2>
+      <app-portal-organisation-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
+      </app-portal-organisation-details-summary>
+
+      <p [innerHtml]="organisation | translatable : 'description' | async"></p>
+    </section>
+
+    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </app-media-slider>
+
+    <app-portal-organisation-details-rating>
+    </app-portal-organisation-details-rating>
+
+    <app-portal-organisation-details-comment>
+    </app-portal-organisation-details-comment>
+
+    <div #map>
+      <app-details-title titleLabel="mapView"></app-details-title>
+      <app-map [queryParams]="false" [markerDefinition]="marker">
+      </app-map>
+    </div>
+  </section>
+
+</div>

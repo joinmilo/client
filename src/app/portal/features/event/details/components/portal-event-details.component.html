@@ -14,11 +14,9 @@
     </app-category-piece>
   </section>
   <section>
-    <h2 class="mat-headline-4">
-      {{event | translatable: 'name' | async}}
-    </h2>
-
     <section>
+      <h2 class="mat-headline-4">{{event | translatable: 'name' | async}}</h2>
+      
       <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
 
       <app-portal-event-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">

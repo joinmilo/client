@@ -14,7 +14,7 @@ import { selectEventDetails } from '../../state/portal-event-details.selectors';
 export class PortalEventDetailsCommentComponent {
 
   public lastComment = this.store.select(selectEventDetails)
-    .pipe(map(event => event?.lastComment));
+    .pipe(map(event => event?.lastEventComment));
 
   constructor(
     private router: Router,

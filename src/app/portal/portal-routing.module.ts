@@ -59,6 +59,11 @@ const routes: Routes = [
       .then((imported) => imported.PortalOrganisationOverviewModule),
   },
   {
+    path: `${organisationsFeatureKey}/:${slug}`,
+    loadChildren: () => import('./features/organisation/details/portal-organisation-details.module')
+      .then((imported) => imported.PortalOrganisationDetailsModule),
+  },
+  {
     path: reportsFeatureKey,
     loadChildren: () => import('./features/report/main/portal-report.module')
       .then((imported) => imported.PortalReportModule),

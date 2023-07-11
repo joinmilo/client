@@ -19,6 +19,7 @@ import { DatePieceComponent } from './components/pieces/date/date-piece.componen
 import { FavoritePieceComponent } from './components/pieces/favorite/favorite-piece.component';
 import { MailPieceComponent } from './components/pieces/mail/mail-piece.component';
 import { PhonePieceComponent } from './components/pieces/phone/phone-piece.component';
+import { WebsitePieceComponent } from './components/pieces/website/website-piece.component';
 import { appStateKey } from './constants/core.constants';
 import { HtmlDirective } from './directives/html.directive';
 import { LabelDirective } from './directives/label.directive';
@@ -42,6 +43,7 @@ const components = [
   LogoComponent,
   MailPieceComponent,
   PhonePieceComponent,
+  WebsitePieceComponent,
 ];
 
 const directives = [

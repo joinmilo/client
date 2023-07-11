@@ -17,6 +17,12 @@ fragment Organisation on OrganisationEntity {
   contact {
     ...Contact
   }
+  lastOrganisationComment {
+    ...OrganisationComment
+  }
+    calculatedRatings{
+    ...RatingDto
+  }
   slug
   translatables {
     id

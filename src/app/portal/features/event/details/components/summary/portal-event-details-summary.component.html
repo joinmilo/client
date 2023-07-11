@@ -4,7 +4,7 @@
     <app-portal-event-details-calendar>
     </app-portal-event-details-calendar>
 
-    <app-address-piece
+    <app-address-piece *ngIf="event?.address"
       [address]="event?.address"
       [link]="event?.videoChatLink"
       (addressClicked)="onAddressClicked()">

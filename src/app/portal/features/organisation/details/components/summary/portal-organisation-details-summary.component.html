@@ -1,0 +1,21 @@
+<div>
+  <section>
+    
+    <app-address-piece *ngIf="organisation?.address"
+      [address]="organisation?.address"
+      (addressClicked)="onAddressClicked()">
+    </app-address-piece>
+
+    <app-mail-piece *ngIf="organisation?.contact?.email"
+      [mail]="organisation?.contact?.email">
+    </app-mail-piece>
+
+    <app-phone-piece *ngIf="organisation?.contact?.phone"
+      [phone]="organisation?.contact?.phone">
+    </app-phone-piece>
+
+    <app-website-piece *ngIf="organisation?.contact?.website"
+    [website]="organisation?.contact?.website"></app-website-piece>
+  </section>
+  
+</div>

@@ -1,0 +1,11 @@
+mutation saveOrganisationRating($entity: OrganisationRatingEntityInput!) {
+  saveOrganisationRating(entity: $entity) {
+    score
+    organisation {
+      id
+    }
+    userContext {
+      id
+    }
+  }
+}

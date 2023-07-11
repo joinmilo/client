@@ -29,7 +29,7 @@ fragment Event on EventEntity {
   contact {
     ...Contact
   }
-  lastComment {
+  lastEventComment {
     ...EventComment
   }
   organisation {

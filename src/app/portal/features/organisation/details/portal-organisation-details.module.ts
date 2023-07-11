@@ -25,34 +25,24 @@ import { ShareModule } from 'src/app/shared/share/share.module';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
-import { PortalEventDetailsAttendeeComponent } from './components/attendee/portal-event-details-attendee.component';
-import { PortalEventDetailsCalendarComponent } from './components/calendar/portal-event-details-calendar.component';
-import { PortalEventDetailsCommentComponent } from './components/comment/portal-event-details-comment.component';
-import { PortalEventDetailsCommentsComponent } from './components/comments/portal-event-details-comments.component';
-import { PortalEventDetailsFriendsInviteComponent } from './components/friends-invite/portal-event-details-friends-invite.component';
-import { PortalEventDetailsFriendsShowComponent } from './components/friends-show/portal-event-details-friends-show.component';
-import { PortalEventDetailsOrganisationComponent } from './components/organisation/portal-event-details-organisation.component';
-import { PortalEventDetailsParticipantsComponent } from './components/participants/portal-event-details-participants.component';
-import { PortalEventDetailsComponent } from './components/portal-event-details.component';
-import { PortalEventDetailsRatingComponent } from './components/rating/portal-event-details-rating.component';
-import { PortalEventDetailsSummaryComponent } from './components/summary/portal-event-details-summary.component';
-import { portalEventDetailsStateKey } from './constants/event-details.constant';
-import { PortalEventDetailsRoutingModule } from './portal-event-details-routing.module';
-import { PortalEventDetailsEffects } from './state/portal-event-details.effects';
-import { portalEventDetailsReducer } from './state/portal-event-details.reducer';
+import { PortalOrganisationDetailsCommentComponent } from './components/comment/portal-organisation-details-comments.component';
+import { PortalOrganisationDetailsCommentsComponent } from './components/comments/portal-organisation-details-comments.component';
+import { PortalOrganisationDetailsComponent } from './components/portal-organisation-details.component';
+import { PortalOrganisationDetailsRatingComponent } from './components/rating/portal-organisation-details-rating.component';
+import { PortalOrganisationDetailsSummaryComponent } from './components/summary/portal-organisation-details-summary.component';
+import { portalOrganisationDetailsStateKey } from './constants/organisation-details.constant';
+import { PortalOrganisationDetailsRoutingModule } from './portal-organisation-details-routing.module';
+import { PortalOrganisationDetailsEffects } from './state/portal-organisation-details.effects';
+import { portalOrganisationDetailsReducer } from './state/portal-organisation-details.reducer';
+
 
 const components = [
-  PortalEventDetailsComponent,
-  PortalEventDetailsAttendeeComponent,
-  PortalEventDetailsCalendarComponent,
-  PortalEventDetailsCommentComponent,
-  PortalEventDetailsCommentsComponent,
-  PortalEventDetailsFriendsInviteComponent,
-  PortalEventDetailsOrganisationComponent,
-  PortalEventDetailsParticipantsComponent,
-  PortalEventDetailsRatingComponent,
-  PortalEventDetailsSummaryComponent,
-  PortalEventDetailsFriendsShowComponent,
+  PortalOrganisationDetailsComponent,
+  PortalOrganisationDetailsCommentComponent,
+  PortalOrganisationDetailsCommentsComponent,
+  PortalOrganisationDetailsSummaryComponent,
+  PortalOrganisationDetailsRatingComponent,
+
 ];
 
 const framework = [
@@ -64,6 +54,7 @@ const framework = [
 ];
 
 const materials = [
+  RatingModule,
   MatButtonModule,
   MatDividerModule,
   MatCardModule,
@@ -80,7 +71,7 @@ const modules = [
   CommentModule,
   CardModule,
   MediaSliderComponent,
-  PortalEventDetailsRoutingModule,
+  PortalOrganisationDetailsRoutingModule,
   RadioButtonFormModule,
   RatingModule,
   ShareModule,
@@ -91,8 +82,8 @@ const modules = [
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(portalEventDetailsStateKey, portalEventDetailsReducer),
-  EffectsModule.forFeature([PortalEventDetailsEffects]),
+  StoreModule.forFeature(portalOrganisationDetailsStateKey, portalOrganisationDetailsReducer),
+  EffectsModule.forFeature([PortalOrganisationDetailsEffects]),
 ]
 
 @NgModule({
@@ -105,4 +96,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class PortalEventDetailsModule { }
+export class PortalOrganisationDetailsModule { }

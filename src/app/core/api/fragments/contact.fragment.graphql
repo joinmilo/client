@@ -4,4 +4,5 @@ fragment Contact on ContactEntity {
   name
   phone
   preferredContact
+  website
 }

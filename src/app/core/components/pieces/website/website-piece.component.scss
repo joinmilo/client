@@ -1,0 +1,21 @@
+div {
+  display: flex;
+  gap: 1rem;
+
+  address {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+}
+
+fa-icon {
+  color: gray;
+  align-self: center;
+}
+
+a {
+  color: black;
+}
+
