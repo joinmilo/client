@@ -25,6 +25,7 @@ import { ShareModule } from 'src/app/shared/share/share.module';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
+import { PortalMapPageFeatureModule } from '../../map/page-feature/portal-map-page-feature.module';
 import { PortalEventDetailsAttendeeComponent } from './components/attendee/portal-event-details-attendee.component';
 import { PortalEventDetailsCalendarComponent } from './components/calendar/portal-event-details-calendar.component';
 import { PortalEventDetailsCommentComponent } from './components/comment/portal-event-details-comment.component';
@@ -53,6 +54,7 @@ const components = [
   PortalEventDetailsRatingComponent,
   PortalEventDetailsSummaryComponent,
   PortalEventDetailsFriendsShowComponent,
+
 ];
 
 const framework = [
@@ -71,7 +73,8 @@ const materials = [
   MatCheckboxModule,
   MatFormFieldModule,
   MatInputModule,
-  MatMenuModule
+  MatMenuModule,
+  PortalMapPageFeatureModule,
 ];
 
 const modules = [
