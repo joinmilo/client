@@ -1,0 +1,16 @@
+div {
+  width: 70rem;
+  max-width: calc(100% - var(--gap));
+  margin: var(--gap) auto;
+  display: flex;
+  flex-flow: column wrap;
+  gap: var(--gap);
+}
+
+section {
+  width: 100%;
+  display: flex;
+  gap: var(--gap);
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

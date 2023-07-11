@@ -5,7 +5,7 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
 import { slug } from 'src/app/core/constants/core.constants';
 import { MediaEntity } from 'src/schema/schema';
-import { AuthorDetailsActions } from '../state/portal-author-details.actions';
+import { PortalAuthorDetailsActions } from '../state/portal-author-details.actions';
 import { selectAuthorDetails } from '../state/portal-author-details.selectors';
 
 @Component({
@@ -29,7 +29,7 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy))
       .subscribe(params =>
-        this.store.dispatch(AuthorDetailsActions.getDetails(params.get(slug))));
+        this.store.dispatch(PortalAuthorDetailsActions.getDetails(params.get(slug))));
 
     this.author.pipe(takeUntil(this.destroy))
       .subscribe(author => 

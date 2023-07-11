@@ -2,6 +2,15 @@ fragment UserContext on UserContextEntity {
   id
   slug
 
+  translatables {
+    id
+    description
+    language {
+      id
+      locale
+      name
+    }
+  }
   articles {
     ...Article
   }

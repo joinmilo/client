@@ -1,0 +1,19 @@
+<div class="details">
+  <app-title-image [image]="titleImage"></app-title-image>
+  <app-avatar [user]="author"></app-avatar>
+  <div>
+    <section>
+      <span class="mat-headline-5">{{author?.user?.firstName}}</span>
+      <span class="mat-headline-5">{{author?.user?.lastName}}</span>
+    </section>
+    <section>
+      <app-share-button></app-share-button>
+      <app-favorite-piece></app-favorite-piece>
+      <button mat-icon-button *ngIf="author?.user?.email">
+        <a href="mailto:{{author?.user?.email}}">
+          <fa-icon size="2xs" [icon]="['fas', 'envelope']"></fa-icon>
+        </a></button>
+    </section>
+    <span>{{author | translatable: "description" | async}}</span>
+  </div>
+</div>

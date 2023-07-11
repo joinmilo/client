@@ -2,6 +2,15 @@ fragment UserContextAuthor on UserContextEntity {
   id
   description
   slug
+    translatables {
+    id
+    description
+    language {
+      id
+      locale
+      name
+    }
+  }
   uploads {
     profilePicture
     title

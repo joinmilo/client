@@ -1,0 +1,10 @@
+<div *ngIf="author | async as author">
+  <app-portal-author-details-summary></app-portal-author-details-summary>
+
+  <app-sub-title *ngIf="author.articles && author.articles.length > 0" titleLabel="blogposts"></app-sub-title>
+
+  <section>
+    <app-content-card *ngFor="let card of author.articles" [entity]="'ArticleEntity'" [data]="card">
+    </app-content-card>
+  </section>
+</div>
