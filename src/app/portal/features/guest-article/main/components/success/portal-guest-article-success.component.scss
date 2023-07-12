@@ -1,0 +1,30 @@
+@import 'src/styles/mixins.scss';
+
+.border-box {
+  display: flex;
+  max-height: 55rem;
+  padding: 0;
+  gap: var(--gap);
+  align-items: center;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    margin: 5%;
+
+    h2, p {
+      margin: 0;
+    }
+  }
+
+  img {
+    max-height: inherit;
+    object-fit: cover;
+    border-bottom-right-radius: 1rem;
+
+    @include responsive(tablet) {
+        display: none;
+      }
+  }
+}

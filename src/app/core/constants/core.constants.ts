@@ -21,6 +21,7 @@ export const tokenExpiredError = 'TokenExpiredException'
  * Configuration keys
  */
 export const faviconConfig = 'favicon';
+export const guestArticleSuccessConfig = 'guestArticleSuccess';
 export const defaultLocaleConfig = 'defaultLocale';
 export const hCaptchaSitekeyConfig = 'hCaptchaSitekey';
 export const logoConfig = 'logo';

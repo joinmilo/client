@@ -1,0 +1,16 @@
+<div class="main">
+  <div class="border-box">
+    <section>
+      <h2 class="mat-headline-6" appLabel="thankYou"></h2>
+      <p appLabel="guestArticleSuccesMessage"></p>
+      <mat-divider></mat-divider>
+      <p appLabel="becomeContentCreaterText"></p>
+      <button mat-flat-button color="primary" [routerLink]="['/user', 'register']">
+        <span appLabel="register"></span>
+      </button>
+    </section>
+
+    <img *ngIf="( guestArticleSuccessPicture | async)?.media?.id" class="logo-text"
+    [appMedia]="(guestArticleSuccessPicture | async)?.media" alt="logo-text">
+  </div>
+</div>
