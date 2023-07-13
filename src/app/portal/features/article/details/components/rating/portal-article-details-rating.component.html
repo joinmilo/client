@@ -1,0 +1,5 @@
+<app-rating
+  [currentValue]="currentUserRating | async"
+  [ratings]="calculatedRatings | async"
+  (rating)="saveRating($event)">
+</app-rating>

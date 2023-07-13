@@ -1,0 +1,5 @@
+mutation saveArticleComment($entity: ArticleCommentEntityInput!) {
+  saveArticleComment(entity: $entity) {
+    ...ArticleComment
+  }
+}

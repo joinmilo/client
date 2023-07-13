@@ -1,0 +1,46 @@
+<div class="details">
+  <app-title-image [image]="titleImage"></app-title-image>
+  <section>
+    <app-share-button>
+    </app-share-button>
+
+    <app-favorite-piece>
+    </app-favorite-piece>
+
+    <app-category-piece
+      [category]="article?.category"
+      [url]="['/portal', categoryUrl]"
+      [queryParam]="categoryQueryParams">
+    </app-category-piece>
+  </section>
+  <section>
+ 
+    <section>
+   <h2 class="mat-headline-4">
+      {{article | translatable: 'name' | async}}
+    </h2>
+
+      <app-date-piece [date]="article?.created"></app-date-piece>
+
+      <p [innerHtml]="article | translatable: 'shortDescription' | async"></p>
+
+      <p [innerHtml]="article | translatable : 'content' | async"></p>
+    </section>
+
+    <app-portal-article-details-author *ngIf="article?.author">
+    </app-portal-article-details-author>
+
+    <app-media-slider *ngIf="media && media.length"
+      [media]="media"
+      [link]="['./media']">
+    </app-media-slider>
+
+    <app-portal-article-details-rating>
+    </app-portal-article-details-rating>
+
+    <app-portal-article-details-comment>
+    </app-portal-article-details-comment>
+
+  </section>
+
+</div>

@@ -18,6 +18,11 @@ export const selectFriends = createSelector(
   }
 );
 
+export const selectUserArticleRatings = createSelector(
+  selectCurrentUser,
+  user => user?.articleRatings
+);
+
 export const selectUserEventRatings = createSelector(
   selectCurrentUser,
   user => user?.eventRatings

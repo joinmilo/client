@@ -74,7 +74,7 @@ export const baseApi = `${environment.base}api`;
 export const graphqlApi = `${baseApi}/graphql`;
 
 export const locationNavigationURL = (latitude: number, longtitude: number): string =>
- `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longtitude}`;
+  `https://www.google.com/maps/dir/?api=1&destination=${latitude},${longtitude}`;
 export const locationTileLayerURL = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 
 export const mediaBaseApi = `${baseApi}/media`;

@@ -1,0 +1,7 @@
+query getArticleComments($params: FilterSortPaginateInput) {
+  getArticleComments(params: $params) {
+    result {
+      ...ArticleComment
+    }
+  }
+}

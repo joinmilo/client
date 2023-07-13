@@ -9,6 +9,11 @@ const routes: Routes = [
       .then((imported) => imported.PortalArticleOverviewModule),
   },
   {
+    path: `${articlesFeatureKey}/:${slug}`,
+    loadChildren: () => import('./features/article/details/portal-article-details.module')
+      .then((imported) => imported.PortalArticleDetailsModule),
+  },
+  {
     path: authorsFeatureKey,
     loadChildren: () => import('./features/author/overview/portal-author-overview.module')
       .then((imported) => imported.PortalAuthorOverviewModule),

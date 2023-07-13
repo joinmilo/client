@@ -1,0 +1,11 @@
+mutation saveArticleRating($entity: ArticleRatingEntityInput!) {
+  saveArticleRating(entity: $entity) {
+    score
+    article {
+      id
+    }
+    userContext {
+      id
+    }
+  }
+}

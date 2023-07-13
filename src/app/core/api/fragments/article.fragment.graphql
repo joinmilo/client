@@ -7,6 +7,12 @@ fragment Article on ArticleEntity {
       lastName
     }
   }
+  lastArticleComment {
+    ...ArticleComment
+  }
+  calculatedRatings{
+    ...RatingDto
+  }
   uploads {
     title
     card

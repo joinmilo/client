@@ -1,0 +1,35 @@
+fragment ArticleComment on ArticleCommentEntity {
+  id
+  created
+  modified
+  content
+
+  article {
+    id
+  }
+
+  userContext {
+    id
+    uploads {
+      profilePicture
+      title
+      media {
+        ...Media
+    }
+  }
+    user{
+      firstName
+      lastName
+    }
+  }
+
+  translatables {
+    id
+    content
+    language {
+      id
+      locale
+      name
+    }
+  }
+}
