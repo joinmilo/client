@@ -44,6 +44,11 @@ const routes: Routes = [
       .then((imported) => imported.PortalDealOverviewModule),
   },
   {
+    path: `${dealsFeatureKey}/:${slug}`,
+    loadChildren: () => import('./features/deal/details/portal-deal-details.module')
+      .then((imported) => imported.PortalDealDetailsModule),
+  },
+  {
     path: eventsFeatureKey,
     loadChildren: () => import('./features/event/overview/portal-event-overview.module')
       .then((imported) => imported.PortalEventOverviewModule),

@@ -9,6 +9,15 @@ fragment Deal on DealEntity {
   }
   creator {
     id
+    
+    uploads {
+    profilePicture
+    title
+    media {
+      ...Media
+    }
+  }
+
     user {
       id
       firstName

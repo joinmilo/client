@@ -1,0 +1,22 @@
+div {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  fa-icon {
+    color: grey;
+  }
+
+  section {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+  }
+}
+
+span{
+  color: #6C9813;
+  font-weight: bold;
+  font-size: larger;
+}

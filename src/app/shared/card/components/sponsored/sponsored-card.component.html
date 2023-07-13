@@ -9,7 +9,7 @@
           {{
             element?.category
               ? element?.category
-              : (element?.categoryTranslatables | translatable: element?.categoryTranslatableField | async) || 'Test'
+              : (element?.categoryTranslatables | translatable: element?.categoryTranslatableField | async)
           }}
         </span>
       </mat-chip-option>

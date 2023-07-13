@@ -1,0 +1,38 @@
+<div class="details">
+  <app-title-image [image]="titleImage"></app-title-image>
+  <section>
+    <app-share-button>
+    </app-share-button>
+
+    <app-favorite-piece>
+    </app-favorite-piece>
+
+    <app-category-piece *ngIf="deal?.category" [category]="deal?.category" [url]="['/portal', categoryUrl]"
+      [queryParam]="categoryQueryParams">
+    </app-category-piece>
+  </section>
+  <section>
+    <section>
+      <h2 class="mat-headline-4">
+        {{deal | translatable: 'name' | async}}
+      </h2>
+
+      <app-portal-deal-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
+      </app-portal-deal-details-summary>
+
+      <p [innerHtml]="deal | translatable: 'content' | async"></p>
+    </section>
+
+    <app-portal-deal-details-creator *ngIf="deal?.creator">
+    </app-portal-deal-details-creator>
+
+    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </app-media-slider>
+
+    <div #map>
+      <app-details-title titleLabel="mapView"></app-details-title>
+      <app-map [queryParams]="false" [markerDefinition]="marker">
+      </app-map>
+    </div>
+  </section>
+</div>
