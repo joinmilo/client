@@ -22,6 +22,7 @@ import { TitleImageComponent } from 'src/app/shared/image/title/title-image.comp
 import { MapModule } from 'src/app/shared/map/map.module';
 import { RatingModule } from 'src/app/shared/rating/rating.module';
 import { ShareModule } from 'src/app/shared/share/share.module';
+import { CardSliderComponent } from 'src/app/shared/sliders/card-slider/card-slider.component';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
@@ -76,6 +77,7 @@ const modules = [
   RatingModule,
   ShareModule,
   TableModule,
+  CardSliderComponent,
   TitleModule,
   TitleImageComponent,
 ];

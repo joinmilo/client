@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { selectUserOrganisationRatings } from 'src/app/core/state/selectors/user.selectors';
 import { portalOrganisationDetailsStateKey } from '../constants/organisation-details.constant';
 import { PortalOrganisationDetailsState } from './portal-organisation-details.reducer';
@@ -27,3 +28,10 @@ export const selectCalculatedOrganisationRatings = createSelector(
   organisation => organisation?.calculatedRatings
 );
 
+
+export const selectMembers = createSelector(
+  selectOrganisationDetails,
+  (organisation) =>
+    organisation?.members?.filter(member => member?.isPublic)
+    .map(member => member?.userContext)
+);

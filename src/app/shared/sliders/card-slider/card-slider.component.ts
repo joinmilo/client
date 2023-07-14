@@ -56,6 +56,4 @@ export class CardSliderComponent {
     content: CardType.Content,
     sponsored: CardType.Sponsored
   };
-
-
 }

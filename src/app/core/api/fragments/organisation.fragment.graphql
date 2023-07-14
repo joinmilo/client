@@ -1,15 +1,9 @@
 fragment Organisation on OrganisationEntity {
   id
   name
+  slug
   address {
     ...Address
-  }
-  uploads {
-    title
-    card
-    media{
-      ...Media
-    }
   }
   address {
     ...Address
@@ -17,13 +11,23 @@ fragment Organisation on OrganisationEntity {
   contact {
     ...Contact
   }
-  lastOrganisationComment {
-    ...OrganisationComment
-  }
-    calculatedRatings{
+  calculatedRatings{
     ...RatingDto
   }
-  slug
+  lastOrganisationComment {
+    ...OrganisationComment
+  }  
+  members{
+    approved
+    admin
+    isPublic
+    organisation{
+    id
+    }
+    userContext{
+      ...UserContext
+    }
+  }
   translatables {
     id
     description
@@ -33,4 +37,11 @@ fragment Organisation on OrganisationEntity {
       name
     }
   }
+  uploads {
+    title
+    card
+    media{
+      ...Media
+    }
+  } 
 }
