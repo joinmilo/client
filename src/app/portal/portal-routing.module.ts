@@ -34,6 +34,11 @@ const routes: Routes = [
       .then((imported) => imported.PortalContestOverviewModule),
   },
   {
+    path: `${contestsFeatureKey}/:${slug}`,
+    loadChildren: () => import('./features/contest/details/portal-contest-details.module')
+      .then((imported) => imported.PortalContestDetailsModule),
+  },
+  {
     path: dealsFeatureKey,
     loadChildren: () => import('./features/deal/overview/portal-deal-overview.module')
       .then((imported) => imported.PortalDealOverviewModule),
