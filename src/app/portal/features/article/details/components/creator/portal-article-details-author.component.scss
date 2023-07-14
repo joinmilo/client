@@ -1,11 +1,11 @@
-div {
+.container {
   display: flex;
   gap: var(--gap);
   flex-flow: wrap;
 
   img {
-    max-width: 6rem;
-    aspect-ratio: 1/1;
+    width: 6rem;
+    height: 6rem;
     object-fit: cover;
   }
 
@@ -13,6 +13,11 @@ div {
     display: flex;
     justify-content: center;
     flex-direction: column;
+
+    div {
+      display: flex;
+      flex-flow: wrap;
+    }
 
     button {
       width: max-content;

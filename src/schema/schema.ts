@@ -5108,7 +5108,7 @@ export type SocialMediaFragment = { __typename?: 'SocialMediaEntity', icon?: str
 
 export type SuburbFragment = { __typename?: 'SuburbEntity', id?: string | null, name?: string | null };
 
-export type SurveyFragment = { __typename?: 'SurveyEntity', id?: string | null, name?: string | null, dueDate?: any | null, uploads?: Array<{ __typename?: 'SurveyMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'SurveyTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+export type SurveyFragment = { __typename?: 'SurveyEntity', id?: string | null, name?: string | null, slug?: string | null, dueDate?: any | null, startDate?: any | null, uploads?: Array<{ __typename?: 'SurveyMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'SurveyTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null };
 
 export type ThemeFragment = { __typename?: 'ThemeEntity', id?: string | null, isDefault?: boolean | null, name?: string | null, variables?: Array<{ __typename?: 'ThemeVariableEntity', id?: string | null, key?: string | null, value?: string | null } | null> | null };
 
@@ -5444,14 +5444,14 @@ export type GetSurveyQueryVariables = Exact<{
 }>;
 
 
-export type GetSurveyQuery = { __typename?: 'Query', getSurvey?: { __typename?: 'SurveyEntity', id?: string | null, name?: string | null, dueDate?: any | null, uploads?: Array<{ __typename?: 'SurveyMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'SurveyTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+export type GetSurveyQuery = { __typename?: 'Query', getSurvey?: { __typename?: 'SurveyEntity', id?: string | null, name?: string | null, slug?: string | null, dueDate?: any | null, startDate?: any | null, uploads?: Array<{ __typename?: 'SurveyMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'SurveyTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null } | null };
 
 export type GetSurveysQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
 }>;
 
 
-export type GetSurveysQuery = { __typename?: 'Query', getSurveys?: { __typename?: 'PageableList_SurveyEntity', total: any, result?: Array<{ __typename?: 'SurveyEntity', id?: string | null, name?: string | null, dueDate?: any | null, uploads?: Array<{ __typename?: 'SurveyMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'SurveyTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetSurveysQuery = { __typename?: 'Query', getSurveys?: { __typename?: 'PageableList_SurveyEntity', total: any, result?: Array<{ __typename?: 'SurveyEntity', id?: string | null, name?: string | null, slug?: string | null, dueDate?: any | null, startDate?: any | null, uploads?: Array<{ __typename?: 'SurveyMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, translatables?: Array<{ __typename?: 'SurveyTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null } | null } | null> | null } | null };
 
 export type GetThemeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6249,6 +6249,9 @@ export const SurveyFragmentDoc = gql`
     fragment Survey on SurveyEntity {
   id
   name
+  slug
+  dueDate
+  startDate
   uploads {
     title
     card
@@ -6256,7 +6259,6 @@ export const SurveyFragmentDoc = gql`
       ...Media
     }
   }
-  dueDate
   translatables {
     id
     description
@@ -6266,8 +6268,12 @@ export const SurveyFragmentDoc = gql`
       name
     }
   }
+  contact {
+    ...Contact
+  }
 }
-    ${MediaFragmentDoc}`;
+    ${MediaFragmentDoc}
+${ContactFragmentDoc}`;
 export const ThemeFragmentDoc = gql`
     fragment Theme on ThemeEntity {
   id

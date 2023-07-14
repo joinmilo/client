@@ -84,6 +84,11 @@ const routes: Routes = [
       .then((imported) => imported.PortalSurveyOverviewModule),
   },
   {
+    path: `${surveysFeatureKey}/:${slug}`,
+    loadChildren: () => import('./features/survey/details/portal-survey-details.module')
+      .then((imported) => imported.PortalSurveyDetailsModule),
+  },
+  {
     path: 'search',
     loadChildren: () => import('./shared/search/search.module')
       .then((imported) => imported.PortalSearchModule),

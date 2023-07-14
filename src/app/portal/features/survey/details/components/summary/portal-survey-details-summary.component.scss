@@ -1,0 +1,17 @@
+div {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-flow: column wrap;
+
+  section {
+    display: flex;
+    flex-flow: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+}
+
+fa-icon {
+  color: grey;
+}
