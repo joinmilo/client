@@ -31,6 +31,18 @@ fragment UserContext on UserContextEntity {
     }
   }
 
+  favoriteEvents {
+    id
+  }
+
+  favoriteOffers {
+    id
+  }
+
+  favoriteOrganisations {
+    id
+  }
+
   friendRequester {
     ...Friend
   }

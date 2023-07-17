@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, mapFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
+import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, favoritesFeatureKey, guestArticlesFeatureKey, mapFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
 
 const routes: Routes = [
   {
@@ -57,6 +57,11 @@ const routes: Routes = [
     path: `${eventsFeatureKey}/:${slug}`,
     loadChildren: () => import('./features/event/details/portal-event-details.module')
       .then((imported) => imported.PortalEventDetailsModule),
+  },
+  {
+    path: favoritesFeatureKey,
+    loadChildren: () => import('./features/user-features/favorites/portal-favorites.module')
+      .then((imported) => imported.PortalFavoritesModule),
   },
   {
     path: guestArticlesFeatureKey,
