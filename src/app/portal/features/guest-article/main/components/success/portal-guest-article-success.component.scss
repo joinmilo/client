@@ -1,11 +1,18 @@
 @import 'src/styles/mixins.scss';
 
-.border-box {
+.success-message {
   display: flex;
-  max-height: 55rem;
-  padding: 0;
-  gap: var(--gap);
+  justify-content: center;
   align-items: center;
+  height: 90vh;
+}
+
+.border-box {
+  width: 90rem;
+  max-width: calc(100% - var(--gap));
+  display: flex;
+  padding: 0;
+  text-align: center;
 
   section {
     display: flex;
@@ -16,12 +23,17 @@
     h2, p {
       margin: 0;
     }
+
+    fa-icon {
+      color: var(--color-success-900)
+    }
   }
 
   img {
-    max-height: inherit;
+    padding: 2rem 2rem 2rem 0;
+    width: 26%;
     object-fit: cover;
-    border-bottom-right-radius: 1rem;
+    border-top-right-radius: 1rem;
 
     @include responsive(tablet) {
         display: none;
