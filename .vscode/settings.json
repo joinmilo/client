@@ -4,5 +4,4 @@
   "javascript.preferences.quoteStyle": "single",
   "typescript.preferences.quoteStyle": "single",
   "yaml.format.singleQuote": true,
-  "git-blame.gitWebUrl": ""
 }
