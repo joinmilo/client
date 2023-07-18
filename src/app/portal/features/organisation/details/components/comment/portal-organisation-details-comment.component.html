@@ -7,6 +7,8 @@
     <app-comment-form
       (content)="saveComment($event)">
     </app-comment-form>
-    <a [routerLink]="['./comments']" appLabel="allComments" suffix="»"></a>
+    <a *ngIf="(lastComment | async)?.id"
+      [routerLink]="['./comments']" appLabel="allComments" suffix="»">
+    </a>
   </section>
 </div>

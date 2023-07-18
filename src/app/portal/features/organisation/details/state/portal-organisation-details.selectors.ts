@@ -28,10 +28,10 @@ export const selectCalculatedOrganisationRatings = createSelector(
   organisation => organisation?.calculatedRatings
 );
 
-
 export const selectMembers = createSelector(
   selectOrganisationDetails,
   (organisation) =>
-    organisation?.members?.filter(member => member?.isPublic)
-    .map(member => member?.userContext)
+    organisation?.members
+      ?.filter(member => member?.isPublic)
+      ?.map(member => member?.userContext)
 );

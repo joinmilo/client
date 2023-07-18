@@ -21,10 +21,10 @@
     <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </app-media-slider>
 
-    <app-card-slider 
-     [cardType]="cardType"
-     entity="UserContextEntity"
-     [data]="members | async">
+    <app-card-slider *ngIf="(members | async)?.length"
+      [cardType]="cardType"
+      [data]="members | async"
+      entity="UserContextEntity">
     </app-card-slider>
 
     <app-portal-organisation-details-rating>

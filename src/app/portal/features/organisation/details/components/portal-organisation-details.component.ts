@@ -9,8 +9,6 @@ import { Maybe, MediaEntity, OrganisationEntity } from 'src/schema/schema';
 import { PortalOrganisationDetailsActions } from '../state/portal-organisation-details.actions';
 import { selectMembers, selectOrganisationDetails } from '../state/portal-organisation-details.selectors';
 
-
-
 @Component({
   selector: 'app-portal-organisation-details',
   templateUrl: './portal-organisation-details.component.html',
