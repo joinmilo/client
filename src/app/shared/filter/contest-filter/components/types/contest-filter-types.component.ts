@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { ContestFilterQueryDefinition } from 'src/app/core/typings/filter-params/contest-filter-param';
 import { Maybe } from 'src/schema/schema';
-import { ContestFilterQueryDefinition } from '../../../../../core/typings/filter-param';
 import { ContestFilterActions } from '../../state/contest-filter.actions';
 import { selectTypes } from '../../state/contest-filter.selector';
 

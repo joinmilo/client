@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { ContestFilterQueryDefinition, ContestFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { ContestFilterQueryDefinition, ContestFilterQueryParams } from 'src/app/core/typings/filter-params/contest-filter-param';
 import { ContestTypeEntity } from 'src/schema/schema';
 import { ContestFilterActions } from './contest-filter.actions';
 

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs';
-import { ContestFilterQueryDefinition, FilterQueryDefinition } from 'src/app/core/typings/filter-param';
+import { ContestFilterQueryDefinition } from 'src/app/core/typings/filter-params/contest-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { ContestTypeEntity, GetContestTypesGQL } from 'src/schema/schema';
 import { ContestFilterActions } from './contest-filter.actions';
 

@@ -1,4 +1,4 @@
-import { ContestFilterQueryDefinition, ContestFilterQueryParams } from 'src/app/core/typings/filter-param';
+import { ContestFilterQueryDefinition, ContestFilterQueryParams } from 'src/app/core/typings/filter-params/contest-filter-param';
 import { createListParam } from 'src/app/core/utils/params.utils';
 import { FilterSortPaginateInput } from 'src/schema/schema';
 
