@@ -3,6 +3,8 @@
 }
 
 mat-card {
+  cursor: pointer;
+  user-select: none;
   width: 22rem;
   max-width: calc(100% - 2rem);
 
@@ -43,6 +45,22 @@ mat-card-content {
   gap: 1rem;
   padding: 1rem;
 
+  section {
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      margin: unset;
+      height: 5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+    }
+  }
+
   span {
     height: 5rem;
     display: -webkit-box;
@@ -63,3 +81,4 @@ mat-card-actions {
     height: 2rem;
   }
 }
+

@@ -5,10 +5,7 @@ import { dataToElement } from '../../utils/card.utils';
 @Component({
   selector: 'app-contact-card',
   templateUrl: './contact-card.component.html',
-  styleUrls: [
-    './contact-card.component.scss',
-    '../card.scss'
-  ]
+  styleUrls: ['./contact-card.component.scss']
 })
 export class ContactCardComponent implements OnInit {
 

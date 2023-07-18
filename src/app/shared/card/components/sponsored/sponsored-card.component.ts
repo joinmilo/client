@@ -6,10 +6,7 @@ import { CardData, CardElement, CardEntity } from '../../typings/card';
 @Component({
   selector: 'app-sponsored-card',
   templateUrl: './sponsored-card.component.html',
-  styleUrls: [
-    './sponsored-card.component.scss',
-    '../card.scss'
-  ],
+  styleUrls: ['./sponsored-card.component.scss'],
 })
 export class SponsoredCardComponent implements OnInit {
 

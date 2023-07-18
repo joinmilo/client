@@ -3,20 +3,22 @@
     <img class="border-image" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.image"
       alt="contact-card">
   </figure>
-  <span class="mat-headline-5" [routerLink]="element?.url">
-    {{element?.creator ? element?.creator: ''}}
-  </span>
-  <section>
-    <button mat-button *ngIf="element?.email">
-      <a href="mailto:{{element?.email}}">
-        <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
-      </a>
+    <h1 [routerLink]="element?.url">
+      {{element?.creator ? element?.creator: ''}}
+    </h1>
+    <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+      <fa-icon [icon]="['fas', 'ellipsis-vertical']"></fa-icon>
     </button>
-    <button mat-button *ngIf="element?.phone">
-      <a href="tel:{{element?.phone}}">
-        <fa-icon [icon]="['fas', 'phone']"></fa-icon>
-      </a>
-    </button>
-  </section>
-  <app-favorite-piece></app-favorite-piece>
 </mat-card>
+
+<mat-menu #menu="matMenu">
+  <button *ngIf="element?.email" mat-menu-item>
+    <app-mail-piece [mail]="element?.email" [actionMenu]="true"></app-mail-piece>
+  </button>
+  <button *ngIf="element?.phone" mat-menu-item>
+    <app-phone-piece [phone]="element?.phone" [actionMenu]="true"></app-phone-piece>
+  </button>
+  <button mat-menu-item>
+    <app-favorite-piece [actionMenu]="true"></app-favorite-piece>
+  </button>
+</mat-menu>

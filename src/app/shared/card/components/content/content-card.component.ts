@@ -6,10 +6,7 @@ import { dataToElement } from '../../utils/card.utils';
 @Component({
   selector: 'app-content-card',
   templateUrl: './content-card.component.html',
-  styleUrls: [
-    './content-card.component.scss',
-    '../card.scss',
-  ],
+  styleUrls: ['./content-card.component.scss']
 })
 export class ContentCardComponent implements OnInit {
 

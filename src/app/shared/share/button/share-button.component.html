@@ -1,3 +1,8 @@
-<button mat-icon-button (click)="openDialog()">
-  <fa-icon size="2xs" [icon]="['fas', 'share-nodes']"></fa-icon>
+<button *ngIf="!actionMenu" mat-button (click)="openDialog()">
+  <fa-icon [icon]="['fas', 'share-nodes']"></fa-icon>
 </button>
+
+<div *ngIf="actionMenu">
+  <fa-icon [icon]="['fas', 'share-nodes']"></fa-icon>
+  <span appLabel="share"></span>
+</div>

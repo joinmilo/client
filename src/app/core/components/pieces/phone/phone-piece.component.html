@@ -1,5 +1,5 @@
 <div>
-  <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+  <fa-icon [icon]="['fas', 'phone']" [style.color]="actionMenu ? 'black' : 'gray'"></fa-icon>
   <a [href]="'tel:' + phone">
   <span>{{phone}}</span>
   </a>

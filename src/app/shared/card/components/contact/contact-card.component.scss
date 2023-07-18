@@ -8,10 +8,10 @@ mat-card {
   justify-content: center;
   width: 22rem;
   max-width: calc(100% - 1rem);
+  cursor: pointer;
 
   * {
     text-align: center;
-    cursor: pointer;
   }
 
   img {
@@ -23,13 +23,12 @@ mat-card {
   figure {
     align-self: center;
     position: relative;
-    aspect-ratio: 1/1;
     max-height: 12rem;
     max-width: 12rem;
     margin-bottom: var(--gap);
   }
 
-  span {
+  h1 {
     height: 4.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -39,7 +38,9 @@ mat-card {
     white-space: initial;
   }
 
-  fa-icon {
-    color: var(--color-primary-900);
+  button{
+    position: absolute;
+    top: .5rem;
+    right: .25rem;
   }
 }

@@ -6,7 +6,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { MatMenuModule } from '@angular/material/menu';
 import { CoreModule } from 'src/app/core/core.module';
+import { ShareModule } from '../share/share.module';
 import { ContactCardComponent } from './components/contact/contact-card.component';
 import { ContentCardComponent } from './components/content/content-card.component';
 import { FileCardComponent } from './components/file/file-card.component';
@@ -28,6 +31,8 @@ const materials = [
   MatButtonModule,
   MatCardModule,
   MatChipsModule,
+  MatMenuModule,
+  ShareModule,
 ];
 
 const modules = [

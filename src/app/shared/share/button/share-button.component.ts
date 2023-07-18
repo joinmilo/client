@@ -14,6 +14,9 @@ export class ShareButtonComponent  {
   @Input()
   public url?: Maybe<string>;
 
+  @Input()
+  public actionMenu = false;
+
   constructor(public dialog: MatDialog) {}
 
   public openDialog(): void {

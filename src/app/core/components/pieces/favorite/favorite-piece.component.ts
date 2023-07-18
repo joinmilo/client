@@ -12,6 +12,10 @@ export class FavoritePieceComponent<T> {
   @Input()
   public entity?: T;
 
+  @Input()
+  public actionMenu = false;
+
+
   public changeFavorite() {
     this.isFavorite = !this.isFavorite;
   }

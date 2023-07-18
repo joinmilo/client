@@ -11,4 +11,7 @@ export class PhonePieceComponent {
   @Input()
   public phone?: Maybe<string>;
 
+  @Input()
+  public actionMenu = false;
+
 }
