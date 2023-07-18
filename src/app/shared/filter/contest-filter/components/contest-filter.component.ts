@@ -24,7 +24,6 @@ export class ContestFilterComponent implements OnInit, OnDestroy {
   public filtersActive = this.store.select(selectFiltersActive);
 
   private destroy = new Subject<void>();
-
   
   constructor(
     private activatedRoute: ActivatedRoute,

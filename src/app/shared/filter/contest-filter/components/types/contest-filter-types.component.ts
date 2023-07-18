@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil, tap } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/schema/schema';
 import { ContestFilterQueryDefinition } from '../../../../../core/typings/filter-param';
 import { ContestFilterActions } from '../../state/contest-filter.actions';
@@ -25,16 +25,14 @@ export class ContestFilterTypesComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
-  public types = this.store.select(selectTypes).pipe(
-    tap(types => !types?.length
-      && this.store.dispatch(ContestFilterActions.getTypes()))
-  );
+  public types = this.store.select(selectTypes);
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private store: Store,
   ) {
+    this.store.dispatch(ContestFilterActions.getTypes());
     this.watchValueChange();
   }
   

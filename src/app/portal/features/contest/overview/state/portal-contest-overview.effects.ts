@@ -28,7 +28,7 @@ export class PortalContestOverviewEffects {
               operands: [
                 {
                   entity: {
-                    path: 'contestEndDate',
+                    path: 'participationEndDate',
                     operator: QueryOperator.GreaterOrEqual,
                     value: new Date().toISOString()
                   }
@@ -91,7 +91,7 @@ export class PortalContestOverviewEffects {
                   operands: [
                     {
                       entity: {
-                        path: 'contestEndDate',
+                        path: 'participationEndDate',
                         operator: QueryOperator.LessThan,
                         value: new Date().toISOString()
                       }
