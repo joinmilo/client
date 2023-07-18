@@ -1,24 +1,28 @@
 @import 'src/styles/mixins.scss';
 
-.success-message {
+:host {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
+  height: 100%;
 }
 
 .border-box {
-  width: 90rem;
-  max-width: calc(100% - var(--gap));
   display: flex;
-  padding: 0;
+  width: 70rem;
+  padding: var(--gap);
+  margin: var(--gap);
+  max-width: calc(100% - var(--gap));
   text-align: center;
+  gap: 1rem;
 
   section {
     display: flex;
     flex-direction: column;
     gap: var(--gap);
-    margin: 5%;
+    justify-content: space-between;
+
+    flex: 2 1 60%;
 
     h2, p {
       margin: 0;
@@ -30,10 +34,7 @@
   }
 
   img {
-    padding: 2rem 2rem 2rem 0;
-    width: 26%;
-    object-fit: cover;
-    border-top-right-radius: 1rem;
+    width: 40%;
 
     @include responsive(tablet) {
         display: none;
