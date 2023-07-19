@@ -25,9 +25,9 @@ import { ShareModule } from 'src/app/shared/share/share.module';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
+import { PortalArticleDetailsAuthorComponent } from './components/author/portal-article-details-author.component';
 import { PortalArticleDetailsCommentComponent } from './components/comment/portal-article-details-comment.component';
 import { PortalArticleDetailsCommentsComponent } from './components/comments/portal-article-details-comments.component';
-import { PortalArticleDetailsAuthorComponent } from './components/creator/portal-article-details-author.component';
 import { PortalArticleDetailsComponent } from './components/portal-article-details.component';
 import { PortalArticleDetailsRatingComponent } from './components/rating/portal-article-details-rating.component';
 import { portalArticleDetailsStateKey } from './constants/article-details.constant';
@@ -41,7 +41,6 @@ const components = [
   PortalArticleDetailsCommentsComponent,
   PortalArticleDetailsAuthorComponent,
   PortalArticleDetailsRatingComponent,
-
 ];
 
 const framework = [

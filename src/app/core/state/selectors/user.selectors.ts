@@ -6,6 +6,11 @@ export const selectCurrentUser = createSelector(
   state => state?.currentUser
 );
 
+export const selectIsAuthenticated = createSelector(
+  selectCoreUserState,
+  state => !!state?.currentUser?.id
+);
+
 export const selectFriends = createSelector(
   selectCurrentUser,
   (user) => {

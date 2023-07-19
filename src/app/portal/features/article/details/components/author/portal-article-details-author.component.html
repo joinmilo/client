@@ -1,0 +1,12 @@
+<img class="border-image" [src]="profilePicture ? '' : '/assets/placeholder.webp'" [appMedia]="profilePicture"
+  alt="profile-picture">
+<section>
+  <div>
+    <app-details-title [title]="article?.author?.user?.firstName"></app-details-title>
+    <app-details-title [title]="article?.author?.user?.lastName"></app-details-title>
+  </div>
+  <button mat-stroked-button color="primary"
+      [routerLink]="['/portal', authorsFeatureKey, article?.author?.slug]">
+    <span appLabel="toAuthor"></span>
+  </button>
+</section>

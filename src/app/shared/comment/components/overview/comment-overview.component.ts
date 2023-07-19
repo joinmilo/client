@@ -9,20 +9,23 @@ import { Comment } from '../../typings/comment';
 import { CommentDialogComponent } from '../dialog/comment-dialog.component';
 
 @Component({
-  selector: 'app-comment-form',
-  templateUrl: './comment-form.component.html',
-  styleUrls: ['./comment-form.component.scss']
+  selector: 'app-comment-overview',
+  templateUrl: './comment-overview.component.html',
+  styleUrls: ['./comment-overview.component.scss']
 })
-export class CommentFormComponent implements OnDestroy {
+export class CommentOverviewComponent implements OnDestroy {
 
   @Input()
-  public comment?: Maybe<Comment>;
+  public backLabel?: string = 'back';
 
   @Input()
-  public overviewRoute?: string[];
+  public backRoute?: string[];
+  
+  @Input()
+  public comments?: Maybe<Comment[]>;
 
   @Output()
-  public content = new EventEmitter<string>();
+  public enteredComment = new EventEmitter<string>();
 
   private destroy = new Subject<void>();
 
@@ -36,25 +39,26 @@ export class CommentFormComponent implements OnDestroy {
   public openDialog(): void {
     this.store.select(selectIsAuthenticated)
       .pipe(take(1))
-      .subscribe(authenticated => authenticated
+      .subscribe(isAuthenticated => isAuthenticated
         ? this.dialog.open(CommentDialogComponent).afterClosed()
             .pipe(takeUntil(this.destroy))
-            .subscribe((result) => {
+            .subscribe(result => {
               if (result) {
-                this.content.emit(result);
+                this.enteredComment.emit(result);
               }
             })
         : this.router.navigate(['/user', 'login-required']));
   }
 
-  public routeOverview(): void {
-    this.overviewRoute
-      ? this.router.navigate(this.overviewRoute)
-      : this.router.navigate(['./comments'], { relativeTo: this.activatedRoute });
+  public routeBack(): void {
+    this.backRoute
+      ? this.router.navigate(this.backRoute)
+      : this.router.navigate(['../'], { relativeTo: this.activatedRoute });
   }
 
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }
+
 }

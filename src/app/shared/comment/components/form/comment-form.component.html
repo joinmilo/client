@@ -1,2 +1,12 @@
-<a appLabel="writeComment" suffix="»" (click)="openDialog()"></a>
+<app-comment-entry *ngIf="comment?.id"
+  [comment]="comment">
+</app-comment-entry>
+
+<section>
+  <a appLabel="writeComment" suffix="»" (click)="openDialog()"></a>
+  <a *ngIf="comment?.id"
+    (click)="routeOverview()"
+    appLabel="allComments" suffix="»"></a>
+</section>
+
 

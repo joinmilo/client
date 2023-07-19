@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+
+  section:first-of-type {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  section:last-of-type {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+  }
+}

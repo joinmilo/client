@@ -1,14 +1,4 @@
-<div>
-  <app-comment-entry *ngIf="(lastComment | async)?.id"
-    [comment]="(lastComment | async)">
-  </app-comment-entry>
-  
-  <section>
-    <app-comment-form
-      (content)="saveComment($event)">
-    </app-comment-form>
-    <a *ngIf="(lastComment | async)?.id"
-      [routerLink]="['./comments']" appLabel="allComments" suffix="»">
-    </a>
-  </section>
-</div>
+<app-comment-form
+  [comment]="(lastComment | async)"
+  (content)="saveComment($event)">
+</app-comment-form>

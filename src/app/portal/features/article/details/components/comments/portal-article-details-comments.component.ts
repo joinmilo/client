@@ -20,13 +20,20 @@ export class PortalArticleDetailsCommentsComponent implements OnInit, OnDestroy 
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store,
-    ) { }
+  ) { }
     
   public ngOnInit(): void {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy))
       .subscribe(params => this.store.dispatch(
-        PortalArticleDetailsActions.getComments(params.get(slug) || '')));
+        PortalArticleDetailsActions.getComments(params.get(slug) || ''))
+      );
+  }
+
+  public saveComment(content: string): void {
+    this.store.dispatch(PortalArticleDetailsActions.saveArticleComment({
+      content,
+    }));
   }
 
   public ngOnDestroy(): void {

@@ -1,0 +1,22 @@
+<div class="main">
+  <app-page-title titleLabel="comments"></app-page-title>
+  
+  <section>
+    <button mat-raised-button (click)="routeBack()">
+      <span [appLabel]="backLabel" preFix="←"></span>
+    </button>
+    <button mat-raised-button color="primary" (click)="openDialog()">
+      <span appLabel="writeComment"></span>
+    </button>
+  </section>
+  
+  <section class="border-box">
+    <div *ngFor="let comment of comments let last = last">
+  
+      <app-comment-entry [comment]="comment">
+      </app-comment-entry>
+  
+      <mat-divider *ngIf="!last"></mat-divider>
+    </div>
+  </section>
+</div>

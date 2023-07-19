@@ -30,6 +30,12 @@ export class PortalOrganisationDetailsCommentsComponent implements OnInit, OnDes
         PortalOrganisationDetailsActions.getComments(params.get(slug) || '')));
   }
 
+  public saveComment(content: string): void {
+    this.store.dispatch(PortalOrganisationDetailsActions.saveOrganisationComment({
+      content,
+    }));
+  }
+
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();

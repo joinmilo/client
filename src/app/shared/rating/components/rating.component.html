@@ -1,39 +1,36 @@
-<div class="container">
+<div>
+  <app-details-title titleLabel="submitReview"></app-details-title>
+  <app-rating-form
+    [currentValue]="currentValue"
+    [maxRating]="maxRating | async"
+    (valueSelected)="rated($event)">
+  </app-rating-form>
+</div>
 
-  <div>
-    <app-details-title titleLabel="submitReview"></app-details-title>
+<div>
+  <app-details-title titleLabel="userReviews"></app-details-title>
+  <section>
     <app-rating-form
-      [currentValue]="currentValue"
+      [currentValue]="ratings?.average"
       [maxRating]="maxRating | async"
-      (valueSelected)="rated($event)">
+      [disabled]="true">
     </app-rating-form>
-  </div>
+    <div *ngIf="ratings?.average">
+      <strong>
+        {{ ratings?.average | number:'1.0-1' }} / {{ maxRating | async }}
+      </strong>
+    </div>
+  </section>  
+</div>
 
-  <div>
-    <app-details-title titleLabel="userReviews"></app-details-title>
-    <section>
-      <app-rating-form
-        [currentValue]="ratings?.average"
-        [maxRating]="maxRating | async"
-        [disabled]="true">
-      </app-rating-form>
-      <div *ngIf="ratings?.average">
-        <strong>
-          {{ ratings?.average | number:'1.0-1' }} / {{ maxRating | async }}
-        </strong>
-      </div>
-    </section>  
-  </div>
+<div>
+  <span class="mat-subtitle-1">{{ratings?.total ?? 0}}</span>
+  <span class="mat-subtitle-1" [appLabel]="(ratings?.total) !== 1 ? 'ratings' : 'rating'"></span>
+</div>
 
-  <div>
-    <span class="mat-subtitle-1">{{ratings?.total ?? 0}}</span>
-    <span class="mat-subtitle-1" [appLabel]="(ratings?.total) !== 1 ? 'ratings' : 'rating'"></span>
-  </div>
-
-  <div *ngIf="ratings">
-    <app-rating-distribution *ngFor="let item of ratings?.distribution | keyvalue"
-      [key]="item.key"
-      [value]="item.value">
-    </app-rating-distribution>
-  </div>
+<div *ngIf="ratings">
+  <app-rating-distribution *ngFor="let item of ratings?.distribution | keyvalue"
+    [key]="item.key"
+    [value]="item.value">
+  </app-rating-distribution>
 </div>

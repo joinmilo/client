@@ -29,6 +29,12 @@ export class PortalEventDetailsCommentsComponent implements OnInit, OnDestroy {
         PortalEventDetailsActions.getComments(params.get(slug) || '')));
   }
 
+  public saveComment(content: string): void {
+    this.store.dispatch(PortalEventDetailsActions.saveEventComment({
+      content,
+    }));
+  }
+
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();

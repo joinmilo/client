@@ -1,7 +1,11 @@
 fragment Article on ArticleEntity {
   id
   approved
+  created
+  modified
+  slug
   author {
+    slug
     user {
       firstName
       lastName
@@ -10,25 +14,22 @@ fragment Article on ArticleEntity {
   lastArticleComment {
     ...ArticleComment
   }
-  calculatedRatings{
+  calculatedRatings {
     ...RatingDto
   }
   uploads {
     title
     card
-    media{
+    media {
       ...Media
     }
-  }  
+  }
   category {
     ...ArticleCategory
   }
-  created
-  modified
   publicAuthor {
     ...PublicAuthor
   }
-  slug
   translatables {
     id
     content
