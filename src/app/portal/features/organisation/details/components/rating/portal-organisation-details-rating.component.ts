@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { map, take } from 'rxjs';
-import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { map } from 'rxjs';
 import { PortalOrganisationDetailsActions } from '../../state/portal-organisation-details.actions';
 import { selectCalculatedOrganisationRatings, selectOrganisationUserRating } from '../../state/portal-organisation-details.selectors';
 
@@ -19,16 +17,11 @@ export class PortalOrganisationDetailsRatingComponent {
   public calculatedRatings = this.store.select(selectCalculatedOrganisationRatings);
 
   constructor(
-    private router: Router,
     private store: Store) { }
 
   public saveRating(score: number): void {
-    this.store.select(selectCurrentUser)
-      .pipe(take(1))
-      .subscribe(user => user?.id
-        ? this.store.dispatch(PortalOrganisationDetailsActions.saveOrganisationRating({
-            score,
-          }))
-        : this.router.navigate(['/user', 'login-required']))
+    this.store.dispatch(PortalOrganisationDetailsActions.saveOrganisationRating({
+      score,
+    }));
   }
 }

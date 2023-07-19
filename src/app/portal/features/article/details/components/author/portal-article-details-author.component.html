@@ -1,9 +1,10 @@
-<img class="border-image" [src]="profilePicture ? '' : '/assets/placeholder.webp'" [appMedia]="profilePicture"
+<img class="border-image" *ngIf="profilePicture"
+  [appMedia]="profilePicture"
   alt="profile-picture">
 <section>
   <div>
-    <app-details-title [title]="article?.author?.user?.firstName"></app-details-title>
-    <app-details-title [title]="article?.author?.user?.lastName"></app-details-title>
+    <app-details-title titleLabel="from"></app-details-title>
+    <app-details-title [title]="author()"></app-details-title>
   </div>
   <button mat-stroked-button color="primary"
       [routerLink]="['/portal', authorsFeatureKey, article?.author?.slug]">

@@ -31,6 +31,15 @@ export class PortalArticleDetailsAuthorComponent implements OnInit, OnDestroy {
       });
   }
 
+  public author(): string {
+    return this.article?.author?.user?.firstName
+      || this.article?.author?.user?.firstName
+      ? `${this.article.author.user.firstName} ${this.article.author.user.lastName}`
+      : this.article?.publicAuthor?.name
+        ? this.article.publicAuthor.name
+        : '';
+  }
+
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
