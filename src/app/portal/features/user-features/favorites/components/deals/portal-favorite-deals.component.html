@@ -1,0 +1,14 @@
+<section *ngIf="(favoriteDeals | async)?.length; else emptyResult">
+  <app-content-card *ngFor="let card of favoriteDeals | async" [entity]="'DealEntity'" [data]="card">
+  </app-content-card>
+</section>
+
+<mat-card *ngIf="(favoriteDeals | async)?.length">
+  <app-table-paginator [length]="(data | async)?.total" [pageSize]="initParams?.size" [pageIndex]="initParams?.page">
+  </app-table-paginator>
+</mat-card>
+
+<ng-template #emptyResult>
+  <app-portal-favorite-empty>
+  </app-portal-favorite-empty>
+</ng-template>

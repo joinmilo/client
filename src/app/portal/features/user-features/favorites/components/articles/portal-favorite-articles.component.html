@@ -1,0 +1,15 @@
+<section *ngIf="(favoriteArticles | async)?.length; else emptyResult">
+  <app-content-card *ngFor="let card of favoriteArticles | async" [entity]="'ArticleEntity'" [data]="card">
+  </app-content-card>
+</section>
+
+<mat-card *ngIf="(favoriteArticles | async)?.length">
+  <app-table-paginator [length]="(data | async)?.total" [pageSize]="initParams?.size" [pageIndex]="initParams?.page">
+  </app-table-paginator>
+</mat-card>
+
+
+<ng-template #emptyResult>
+  <app-portal-favorite-empty>
+  </app-portal-favorite-empty>
+</ng-template>

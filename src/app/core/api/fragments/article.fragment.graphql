@@ -27,6 +27,13 @@ fragment Article on ArticleEntity {
   category {
     ...ArticleCategory
   }
+
+  favoritingUsers {
+    id
+  }
+
+  created
+  modified
   publicAuthor {
     ...PublicAuthor
   }

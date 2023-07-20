@@ -29,6 +29,11 @@ fragment Event on EventEntity {
   contact {
     ...Contact
   }
+
+  favoriteEventsUsers {
+    ...UserContext
+  }
+
   lastEventComment {
     ...EventComment
   }

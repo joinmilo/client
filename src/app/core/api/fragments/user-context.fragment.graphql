@@ -31,8 +31,9 @@ fragment UserContext on UserContextEntity {
     }
   }
 
-  favoriteEvents {
+  favoriteAuthorsUsers {
     id
+<<<<<<< Upstream, based on main
   }
 
   favoriteOffers {
@@ -41,6 +42,8 @@ fragment UserContext on UserContextEntity {
 
   favoriteOrganisations {
     id
+=======
+>>>>>>> 3e56332 172 Favorite-List-View finished
   }
 
   friendRequester {

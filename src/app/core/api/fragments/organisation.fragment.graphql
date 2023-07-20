@@ -17,6 +17,11 @@ fragment Organisation on OrganisationEntity {
   lastOrganisationComment {
     ...OrganisationComment
   }  
+
+  favoriteOrganisationsUsers {
+    ...UserContext
+  }
+
   members{
     approved
     admin
