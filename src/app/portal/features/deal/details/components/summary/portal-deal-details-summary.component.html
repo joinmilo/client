@@ -1,7 +1,5 @@
 <div>
-  <section>
-    <span *ngIf="deal?.price">{{ deal?.price ?? 0}} €</span>
-      
+  <section>      
     <app-address-piece *ngIf="deal?.address"
       [address]="deal?.address"
       (addressClicked)="onAddressClicked()">
@@ -15,4 +13,5 @@
       [phone]="deal?.contact?.phone">
     </app-phone-piece>
   </section>
+  <span *ngIf="deal?.price">{{ deal?.price ?? 0}} €</span>
 </div>
