@@ -2,7 +2,7 @@ fragment UserContextAuthor on UserContextEntity {
   id
   description
   slug
-    translatables {
+  translatables {
     id
     description
     language {

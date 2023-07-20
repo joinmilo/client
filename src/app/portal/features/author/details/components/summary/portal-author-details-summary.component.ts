@@ -18,10 +18,10 @@ export class PortalAuthorDetailsSummaryComponent implements OnInit, OnDestroy {
 
   public author?: Maybe<UserContextEntity>;
 
-  private destroy = new Subject<void>();
-
   public titleImage?: Maybe<MediaEntity> | undefined;
 
+  private destroy = new Subject<void>();
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
