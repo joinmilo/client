@@ -38,7 +38,7 @@ fragment Deal on DealEntity {
     ...DealCategory
   }
 
-  favoriteDealsUsers {
+  favoritingUsers {
     ...UserContext
   }
 

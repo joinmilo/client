@@ -19,7 +19,7 @@ export class PortalFavoritesEffects {
 
       expression: {
         entity: {
-          path: 'favoriteArticlesUsers.id',
+          path: 'favoritingUsers.id',
           operator: QueryOperator.Equal,
           value: user?.id
         }
@@ -39,7 +39,7 @@ export class PortalFavoritesEffects {
 
       expression: {
         entity: {
-          path: 'favoriteAuthorsUsers.id',
+          path: 'favoritingUsers.id',
           operator: QueryOperator.Equal,
           value: user?.id
         }
@@ -59,7 +59,7 @@ export class PortalFavoritesEffects {
 
       expression: {
         entity: {
-          path: 'favoriteDealsUsers.id',
+          path: 'favoritingUsers.id',
           operator: QueryOperator.Equal,
           value: user?.id
         }
@@ -79,7 +79,7 @@ export class PortalFavoritesEffects {
 
       expression: {
         entity: {
-          path: 'favoriteEventsUsers.id',
+          path: 'favoritingUsers.id',
           operator: QueryOperator.Equal,
           value: user?.id
         }
@@ -99,7 +99,7 @@ export class PortalFavoritesEffects {
 
       expression: {
         entity: {
-          path: 'favoriteOrganisationsUsers.id',
+          path: 'favoritingUsers.id',
           operator: QueryOperator.Equal,
           value: user?.id
         }

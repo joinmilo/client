@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
+import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
+import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalFavoriteArticlesComponent } from './components/articles/portal-favorite-articles.component';
 import { PortalFavoriteAuthorsComponent } from './components/authors/portal-favorite-authors.component';
 import { PortalFavoriteDealsComponent } from './components/deals/portal-favorite-deals.component';
+import { PortalFavoritesEmptyComponent } from './components/empty/portal-favorites-empty.component';
 import { PortalFavoriteEventsComponent } from './components/events/portal-favorite-events.component';
 import { PortalFavoriteOrganisationsComponent } from './components/organisations/portal-favorite-organisations.component';
 import { PortalFavoritesComponent } from './components/portal-favorites.component';
@@ -24,6 +26,7 @@ const components = [
   PortalFavoriteArticlesComponent,
   PortalFavoriteAuthorsComponent,
   PortalFavoriteDealsComponent,
+  PortalFavoritesEmptyComponent,
   PortalFavoriteEventsComponent,
   PortalFavoriteOrganisationsComponent,
 ];
@@ -36,10 +39,10 @@ const modules = [
   CoreModule,
   CardModule,
   PortalFavoritesRoutingModule,
+  RadioButtonFormModule,
   TitleModule,
-  MatPaginatorModule,
+  TableModule,
   MatCardModule,
-
 ];
 
 const libs = [

@@ -30,7 +30,7 @@ fragment Event on EventEntity {
     ...Contact
   }
 
-  favoriteEventsUsers {
+  favoritingUsers {
     ...UserContext
   }
 
