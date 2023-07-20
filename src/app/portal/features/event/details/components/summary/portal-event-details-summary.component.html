@@ -20,11 +20,7 @@
   </section>
 
   <section>
-    <article>
-      <fa-icon size="1x" class="grey" [icon]="['fas', 'ticket']"></fa-icon>
-      <span *ngIf="event?.entryFee">{{ event?.entryFee || '' }} EUR</span>
-      <span *ngIf="!event?.entryFee" appLabel="admissionFree"></span>
-    </article>
+    <app-price [price]="event?.entryFee"></app-price>
 
     <app-portal-event-details-attendee
       *ngIf="event?.attendeeConfiguration">

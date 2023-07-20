@@ -13,5 +13,5 @@
       [phone]="deal?.contact?.phone">
     </app-phone-piece>
   </section>
-  <span *ngIf="deal?.price">{{ deal?.price ?? 0}} €</span>
+  <app-price [price]="deal?.price"></app-price>
 </div>

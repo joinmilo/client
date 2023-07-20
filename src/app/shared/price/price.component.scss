@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+span, fa-icon {
+  color: var(--color-success-800);
+}
+
+span {
+  font-weight: bold;
+}

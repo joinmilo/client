@@ -3,12 +3,8 @@
   [src]="profilePicture ? '' : '/assets/placeholder.webp'" [appMedia]="profilePicture"
     alt="profile-picture">
   <section>
-    <div>
-      <app-details-title [title]="deal?.creator?.user?.firstName"></app-details-title>
-      <app-details-title [title]="deal?.creator?.user?.lastName"></app-details-title>
-    </div>
-    <button mat-stroked-button color="primary">
-      <span appLabel="writeMessage"></span>
-    </button>
+    <app-details-title titleLabel="from"></app-details-title>
+    <app-details-title [title]="deal?.creator?.user?.firstName"></app-details-title>
+    <app-details-title [title]="deal?.creator?.user?.lastName"></app-details-title>
   </section>
 </div>

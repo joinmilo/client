@@ -20,6 +20,7 @@ import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-bu
 import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
 import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
 import { MapModule } from 'src/app/shared/map/map.module';
+import { PriceComponent } from 'src/app/shared/price/price.component';
 import { RatingModule } from 'src/app/shared/rating/rating.module';
 import { ShareModule } from 'src/app/shared/share/share.module';
 import { MediaSliderComponent } from 'src/app/shared/sliders/media-slider/media-slider.component';
@@ -54,7 +55,6 @@ const components = [
   PortalEventDetailsRatingComponent,
   PortalEventDetailsSummaryComponent,
   PortalEventDetailsFriendsShowComponent,
-
 ];
 
 const framework = [
@@ -84,6 +84,7 @@ const modules = [
   CardModule,
   MediaSliderComponent,
   PortalEventDetailsRoutingModule,
+  PriceComponent,
   RadioButtonFormModule,
   RatingModule,
   ShareModule,

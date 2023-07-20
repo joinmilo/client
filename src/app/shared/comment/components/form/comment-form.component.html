@@ -1,6 +1,10 @@
+<app-details-title titleLabel="comments"></app-details-title>
+
 <app-comment-entry *ngIf="comment?.id"
   [comment]="comment">
 </app-comment-entry>
+
+<span *ngIf="!comment?.id" appLabel="noCommentsYet"></span>
 
 <section>
   <a appLabel="writeComment" suffix="»" (click)="openDialog()"></a>

@@ -11,16 +11,8 @@
 
   section {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-    div {
-      display: flex;
-      flex-flow: wrap;
-    }
-
-    button {
-      width: max-content;
-    }
+    flex-flow: row wrap;
+    align-items: center;
+    gap: .5rem;
   }
 }
