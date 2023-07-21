@@ -19,7 +19,7 @@ export class PortalGuestArticleEffects {
   articleSaved = createEffect(() => this.actions.pipe(
     ofType(PortalGuestArticleActions.articleSaved),
     tap(() => this.router.navigate(['/portal', 'guestarticle', 'success'])),
-  ));
+  ), {dispatch: false});
 
   constructor(
     private actions: Actions,
