@@ -12,10 +12,11 @@ export class PortalFavoritesEffects {
   getFavoriteArticles = createEffect(() => this.actions.pipe(
     ofType(PortalFavoritesActions.getFavoriteArticles),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    map(([, user])=> ({
+    map(([action, user])=> ({
       sort: 'modified',
       dir: 'desc',
-      size: 10,
+      size: action.params?.size,
+      page: action.params?.page,
 
       expression: {
         entity: {
@@ -32,10 +33,11 @@ export class PortalFavoritesEffects {
   getFavoriteAuthors = createEffect(() => this.actions.pipe(
     ofType(PortalFavoritesActions.getFavoriteAuthors),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    map(([, user])=> ({
+    map(([action, user])=> ({
       sort: 'modified',
       dir: 'desc',
-      size: 10,
+      size: action.params?.size,
+      page: action.params?.page,
 
       expression: {
         entity: {
@@ -52,10 +54,11 @@ export class PortalFavoritesEffects {
   getFavoriteDeals = createEffect(() => this.actions.pipe(
     ofType(PortalFavoritesActions.getFavoriteDeals),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    map(([, user])=> ({
+    map(([action, user])=> ({
       sort: 'modified',
       dir: 'desc',
-      size: 10,
+      size: action.params?.size,
+      page: action.params?.page,
 
       expression: {
         entity: {
@@ -72,10 +75,11 @@ export class PortalFavoritesEffects {
   getFavoriteEvents = createEffect(() => this.actions.pipe(
     ofType(PortalFavoritesActions.getFavoriteEvents),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    map(([, user])=> ({
+    map(([action, user])=> ({
       sort: 'modified',
       dir: 'desc',
-      size: 10,
+      size: action.params?.size,
+      page: action.params?.page,
 
       expression: {
         entity: {
@@ -92,10 +96,11 @@ export class PortalFavoritesEffects {
   getFavoriteOrganisations = createEffect(() => this.actions.pipe(
     ofType(PortalFavoritesActions.getFavoriteOrganisations),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    map(([, user])=> ({
+    map(([action, user])=> ({
       sort: 'modified',
       dir: 'desc',
-      size: 10,
+      size: action.params?.size,
+      page: action.params?.page,
 
       expression: {
         entity: {
