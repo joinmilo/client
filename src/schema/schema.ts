@@ -5100,7 +5100,7 @@ export type PublicAuthorFragment = { __typename?: 'PublicAuthorEntity', id?: str
 
 export type RatingDtoFragment = { __typename?: 'RatingDto', average?: number | null, distribution?: any | null, total?: number | null };
 
-export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
+export type ReportFragment = { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, content?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null };
 
 export type ScheduleFragment = { __typename?: 'ScheduleEntity', id?: string | null, startDate?: any | null, endDate?: any | null };
 
@@ -5223,7 +5223,7 @@ export type SaveReportMutationVariables = Exact<{
 }>;
 
 
-export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
+export type SaveReportMutation = { __typename?: 'Mutation', saveReport?: { __typename?: 'ReportEntity', id?: string | null, name?: string | null, email?: string | null, captchaToken?: string | null, content?: string | null, translatables?: Array<{ __typename?: 'ReportTranslatableEntity', id?: string | null, content?: string | null } | null> | null, type?: { __typename?: 'ReportTypeEntity', id?: string | null } | null } | null };
 
 export type SaveUserMutationVariables = Exact<{
   entity: UserContextEntityInput;
@@ -6250,6 +6250,7 @@ export const ReportFragmentDoc = gql`
   name
   email
   captchaToken
+  content
   translatables {
     id
     content

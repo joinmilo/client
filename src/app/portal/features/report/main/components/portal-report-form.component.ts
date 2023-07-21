@@ -43,6 +43,7 @@ export class PortalReportFormComponent implements OnDestroy {
     this.store.dispatch(ReportActions.saveReport({
       name: this.form.value.name,
       email: this.form.value.email,
+      content: this.form.value.content,
       type: {
         id: this.form.value.type?.id
       },
