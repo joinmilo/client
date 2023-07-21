@@ -1,8 +1,7 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { TablePaginatorComponent } from 'src/app/shared/table/components/paginator/table-paginator.component';
-import { PageableList, SortPaginate } from 'src/app/shared/table/typings/table';
+import { CardType } from 'src/app/shared/card/typings/card';
+import { SortPaginate } from 'src/app/shared/table/typings/table';
 import { PortalFavoritesActions } from '../../state/portal-favorites.actions';
 import { selectFavoriteAuthors } from '../../state/portal-favorites.selectors';
 
@@ -11,24 +10,20 @@ import { selectFavoriteAuthors } from '../../state/portal-favorites.selectors';
   templateUrl: './portal-favorite-authors.component.html',
   styleUrls: ['./portal-favorite-authors.component.scss']
 })
-export class PortalFavoriteAuthorsComponent<T> implements OnInit{
+export class PortalFavoriteAuthorsComponent{
+
+  @Output()
+  public sortPaginate = new EventEmitter<SortPaginate>();
 
   public favoriteAuthors = this.store.select(selectFavoriteAuthors);
 
-  @Input()
-  public data?: Observable<PageableList<T> | undefined>;
-
-  @Input()
-  public initParams?: SortPaginate;
-
-  @ViewChild(TablePaginatorComponent)
-  public paginator!: TablePaginatorComponent;
-
+  public cardType = CardType.Contact;
+  
   constructor(
     public store: Store
   ) { }
-
-  ngOnInit(): void {
-    this.store.dispatch(PortalFavoritesActions.getFavoriteAuthors())
+  
+  public updateParams(params: SortPaginate) {
+    this.store.dispatch(PortalFavoritesActions.getFavoriteAuthors(params));
   }
 }

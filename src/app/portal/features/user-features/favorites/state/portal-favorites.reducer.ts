@@ -1,15 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
-import { ArticleEntity, DealEntity, EventEntity, FilterSortPaginateInput, Maybe, OrganisationEntity, UserContextEntity } from 'src/schema/schema';
+import { FilterSortPaginateInput, PageableList_ArticleEntity, PageableList_DealEntity, PageableList_EventEntity, PageableList_OrganisationEntity, PageableList_UserContextEntity } from 'src/schema/schema';
 import { PortalFavoritesActions } from './portal-favorites.actions';
 
 
 export interface PortalFavoritesState {
   params: FilterSortPaginateInput,
-  favoriteArticles?: Maybe<ArticleEntity[]>,
-  favoriteAuthors?: Maybe<UserContextEntity[]>,
-  favoriteDeals?: Maybe<DealEntity[]>,
-  favoriteEvents?: Maybe<EventEntity[]>,
-  favoriteOrganisations?: Maybe<OrganisationEntity[]>,
+  favoriteArticles?: PageableList_ArticleEntity,
+  favoriteAuthors?: PageableList_UserContextEntity,
+  favoriteDeals?: PageableList_DealEntity,
+  favoriteEvents?: PageableList_EventEntity,
+  favoriteOrganisations?: PageableList_OrganisationEntity,
 }
 
 export const initialState: PortalFavoritesState = {
