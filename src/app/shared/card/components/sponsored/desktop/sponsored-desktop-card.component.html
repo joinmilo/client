@@ -1,0 +1,34 @@
+<mat-card [routerLink]="element?.url">
+  <aside>
+    <img alt="content-card" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.image">
+    <app-category-piece *ngIf="element?.category"
+      [category]="element?.category">
+    </app-category-piece>
+    <app-card-actions>
+    </app-card-actions>
+  </aside>
+  <mat-card-content>
+    <header>
+      <h1>
+        {{
+          element?.title
+            ? element?.title
+            : element?.translatables | translatable: element?.titleTranslatableField | async
+        }}
+      </h1>
+    </header>
+    <app-date-piece *ngIf="element?.date" [date]="element?.date" [dateTime]="element?.dateTime">Date</app-date-piece>
+    <app-address-piece *ngIf="element?.address" [address]="element?.address"></app-address-piece>
+    <span>
+      {{
+        element?.text
+          ? element?.text
+          : element?.translatables | translatable: element?.textTranslatableField | async
+      }}
+    </span>
+    <section>
+      <img *ngIf="element?.creatorImage" class="border-image" alt="content-card" [appMedia]="element?.creatorImage">
+      <span>{{element?.creator}}</span>
+    </section>
+  </mat-card-content>
+</mat-card>

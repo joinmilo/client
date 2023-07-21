@@ -1,8 +1,9 @@
-<button *ngIf="!actionMenu" mat-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
-  <fa-icon click size="lg" [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+<button mat-button (click)="changeFavorite()" [ngClass]="isFavorite ? 'favorite' : ''">
+  <div>
+    <fa-icon click size="lg" [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+    <ng-container *ngIf="withLabel">
+      <span *ngIf="!isFavorite" appLabel="addToFavorites"></span>
+      <span *ngIf="isFavorite" appLabel="removeFromFavorites"></span>
+    </ng-container>
+  </div>
 </button>
-
-<div *ngIf="actionMenu">
-  <fa-icon [icon]="['fas', 'heart']"></fa-icon>
-  <span appLabel="addToFavorites"></span>
-</div>

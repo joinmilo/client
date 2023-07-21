@@ -1,3 +1,4 @@
+import { Category } from 'src/app/core/typings/category';
 import { Translatable } from 'src/app/core/typings/translatable';
 import { AddressEntity, ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, MediaEntity, OrganisationEntity, SurveyEntity, UserContextEntity } from 'src/schema/schema';
 
@@ -29,10 +30,7 @@ export type CardElement = {
 
   address?: Maybe<AddressEntity>,
 
-  // Either 
-  category?: Maybe<string>,
-  categoryTranslatables?: Maybe<Maybe<Translatable>[]>,
-  categoryTranslatableField?: Maybe<string>,
+  category?: Maybe<Category>,
 
   creator?: Maybe<string>,
   creatorImage?: Maybe<MediaEntity>,

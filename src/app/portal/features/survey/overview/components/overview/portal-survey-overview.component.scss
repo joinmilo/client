@@ -1,5 +1,3 @@
-@import 'src/styles/mixins.scss';
-
 div {
   display: flex;
   flex-flow: column;
@@ -7,17 +5,5 @@ div {
 
   app-sponsored-card {
     margin: auto;
-  }
-}
-
-@include responsive(phone) {
-  app-sponsored-card {
-    display: none;
-  }
-}
-
-@include responsive(tablet-desktop) {
-  app-content-card {
-    display: none;
   }
 }

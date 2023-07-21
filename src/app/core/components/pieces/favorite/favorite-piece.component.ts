@@ -7,14 +7,13 @@ import { Component, Input } from '@angular/core';
 })
 export class FavoritePieceComponent<T> {
 
-  isFavorite = false;
-
   @Input()
   public entity?: T;
 
   @Input()
-  public actionMenu = false;
+  public withLabel = false;
 
+  isFavorite = false;
 
   public changeFavorite() {
     this.isFavorite = !this.isFavorite;

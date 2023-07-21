@@ -11,7 +11,4 @@ export class MailPieceComponent {
   @Input()
   public mail?: Maybe<string>;
 
-  @Input()
-  public actionMenu = false;
-
 }

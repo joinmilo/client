@@ -6,19 +6,5 @@
     <h1 [routerLink]="element?.url">
       {{element?.creator ? element?.creator: ''}}
     </h1>
-    <button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-      <fa-icon [icon]="['fas', 'ellipsis-vertical']"></fa-icon>
-    </button>
+    <app-card-actions></app-card-actions>
 </mat-card>
-
-<mat-menu #menu="matMenu">
-  <button *ngIf="element?.email" mat-menu-item>
-    <app-mail-piece [mail]="element?.email" [actionMenu]="true"></app-mail-piece>
-  </button>
-  <button *ngIf="element?.phone" mat-menu-item>
-    <app-phone-piece [phone]="element?.phone" [actionMenu]="true"></app-phone-piece>
-  </button>
-  <button mat-menu-item>
-    <app-favorite-piece [actionMenu]="true"></app-favorite-piece>
-  </button>
-</mat-menu>

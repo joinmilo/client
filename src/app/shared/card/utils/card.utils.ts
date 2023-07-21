@@ -26,8 +26,7 @@ export const articlesToCards = (entities?: Maybe<ArticleEntity[]>): CardElement[
 
 export const articleToCard = (entity?: Maybe<ArticleEntity>): CardElement => ({
   id: entity?.id,
-  categoryTranslatables: entity?.category?.translatables,
-  categoryTranslatableField: 'name',
+  category: entity?.category,
   date: entity?.created,
   dateTime: false,
   creator: entity?.publicAuthor?.name ?? `${entity?.author?.user?.firstName} ${entity?.author?.user?.lastName}`,
@@ -78,8 +77,7 @@ export const eventsToCards = (entities?: Maybe<Maybe<EventEntity>[]>): CardEleme
 export const eventToCard = (entity?: Maybe<EventEntity>): CardElement => ({
   id: entity?.id,
   address: entity?.address,
-  categoryTranslatables: entity?.category?.translatables,
-  categoryTranslatableField: 'name',
+  category: entity?.category,
   creator: entity?.organisation?.name ?? entity?.contact?.name,
   creatorImage: entity?.organisation?.uploads?.find(upload => upload?.media)?.media || entity?.creator?.uploads?.find(upload => upload?.profilePicture)?.media,
   date: entity?.schedule?.startDate,
