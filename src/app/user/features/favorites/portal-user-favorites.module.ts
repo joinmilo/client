@@ -12,12 +12,11 @@ import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalFavoriteArticlesComponent } from './components/articles/portal-favorite-articles.component';
 import { PortalFavoriteAuthorsComponent } from './components/authors/portal-favorite-authors.component';
 import { PortalFavoriteDealsComponent } from './components/deals/portal-favorite-deals.component';
-import { PortalFavoritesEmptyComponent } from './components/empty/portal-favorites-empty.component';
 import { PortalFavoriteEventsComponent } from './components/events/portal-favorite-events.component';
 import { PortalFavoriteOrganisationsComponent } from './components/organisations/portal-favorite-organisations.component';
 import { PortalFavoritesComponent } from './components/portal-favorites.component';
 import { portalFavoritesStateKey } from './constants/portal-favorites.constants';
-import { PortalFavoritesRoutingModule } from './portal-favorite-routing.module';
+import { PortalFavoritesRoutingModule } from './portal-user-favorite-routing.module';
 import { PortalFavoritesEffects } from './state/portal-favorites.effects';
 import { portalFavoritesReducer } from './state/portal-favorites.reducer';
 
@@ -26,7 +25,6 @@ const components = [
   PortalFavoriteArticlesComponent,
   PortalFavoriteAuthorsComponent,
   PortalFavoriteDealsComponent,
-  PortalFavoritesEmptyComponent,
   PortalFavoriteEventsComponent,
   PortalFavoriteOrganisationsComponent,
 ];

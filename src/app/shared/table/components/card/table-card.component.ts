@@ -62,10 +62,10 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
         .pipe(take(1))
         .subscribe((queryParams: SortPaginate) => {
           this.initParams = {
-            dir: queryParams.dir,
-            page: queryParams.page ?? this.initParams?.page ?? 0,
-            size: queryParams.size ?? this.initParams?.size ?? 10,
-            sort: queryParams.sort
+            dir: queryParams?.dir,
+            page: queryParams?.page ?? this.initParams?.page ?? 0,
+            size: queryParams?.size ?? this.initParams?.size ?? 10,
+            sort: queryParams?.sort
           };
 
           this.paginator.pageIndex = this.initParams.page;
@@ -75,7 +75,7 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
         });
     }
 
-    this.paginator.page
+    this.paginator?.page
       .pipe(startWith({}))
       .subscribe(() => this.emit());
   }

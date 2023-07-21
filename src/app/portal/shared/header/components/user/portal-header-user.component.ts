@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
-import { accountUrl } from 'src/app/core/constants/core.constants';
+import { userUrl } from 'src/app/core/constants/core.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { selectIsAuthenticated } from 'src/app/core/state/selectors/user.selectors';
 
@@ -21,7 +21,7 @@ export class PortalHeaderUserComponent {
     this.store.select(selectIsAuthenticated)
       .pipe(take(1))
       .subscribe(isAuthenticated => isAuthenticated
-        ? this.router.navigate([accountUrl, route])
+        ? this.router.navigate([userUrl, route])
         : this.store.dispatch(CoreUserActions.requireLogin()));
   }
 

@@ -1,0 +1,7 @@
+<app-table-card 
+  entity="OrganisationEntity" 
+  [data]="favoriteOrganisations" 
+  noDataLabel="noFavorites"
+  [cardType]="cardType"
+  (sortPaginate)="updateParams($event)">
+</app-table-card>

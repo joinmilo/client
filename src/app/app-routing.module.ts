@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AccountComponent } from './account/account.component';
+import { accountUrl, userUrl } from './core/constants/core.constants';
 import { PortalComponent } from './portal/portal.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   {
@@ -12,11 +14,18 @@ const routes: Routes = [
     component: PortalComponent,
   },
   
-    {
-    path: 'account',
+  {
+    path: accountUrl,
       loadChildren: () => import('./account/account.module')
       .then((imported) => imported.AccountModule),
     component: AccountComponent,
+  },
+
+  {
+    path: userUrl,
+      loadChildren: () => import('./user/user.module')
+      .then((imported) => imported.UserModule),
+    component: UserComponent,
   },
 
   {

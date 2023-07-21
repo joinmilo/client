@@ -4,7 +4,7 @@
   (sortChange)="sortChange($event)">
 </app-table-sort>
 
-<ng-container *ngIf="(data | async)?.result; else noData">
+<ng-container *ngIf="(data | async)?.result?.length; else noData">
   <section>
     <ng-container [ngSwitch]="cardType">
       <ng-container *ngSwitchCase="types.contact">
@@ -18,15 +18,16 @@
       </ng-container>
     </ng-container>
   </section>
-  <mat-card>
-    <app-table-paginator
-      [length]="(data | async)?.total"
-      [pageSize]="initParams.size"
-      [pageIndex]="initParams.page">
-    </app-table-paginator>
-  </mat-card>
 </ng-container>
 
 <ng-template #noData>
   <span [appLabel]="noDataLabel"></span>
 </ng-template>
+
+<mat-card>
+  <app-table-paginator
+    [length]="(data | async)?.total"
+    [pageSize]="initParams.size"
+    [pageIndex]="initParams.page">
+  </app-table-paginator>
+</mat-card>

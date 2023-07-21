@@ -1,9 +1,8 @@
 <section>
-  <app-portal-favorites-empty *ngIf="!(favoriteDeals | async)?.total">
-  </app-portal-favorites-empty>
   <app-table-card 
     entity="DealEntity" 
-    [data]="favoriteDeals" 
+    [data]="favoriteDeals"
+    noDataLabel="noFavorites"
     [cardType]="cardType"
     (sortPaginate)="updateParams($event)">
   </app-table-card>
