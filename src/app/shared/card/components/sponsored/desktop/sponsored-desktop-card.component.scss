@@ -5,22 +5,22 @@ mat-card {
   flex-flow: row;
 }
 
-aside {
+app-category-piece {
+  position: absolute;
+  z-index: 2;
+  top: .5rem;
+  left: .5rem;
+}
+
+app-card-actions {
+  position: absolute;
+  z-index: 2;
+  top: .5rem;
+  right: .5rem;
+}
+
+figure {
   width: 50%;
-
-  app-category-piece {
-    position: absolute;
-    z-index: 2;
-    top: .5rem;
-    left: .5rem;
-  }
-
-  app-card-actions {
-    position: absolute;
-    z-index: 2;
-    top: .5rem;
-    right: .5rem;
-  }
   
   img {
     object-fit: cover;

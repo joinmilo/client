@@ -1,12 +1,12 @@
 <mat-card [routerLink]="element?.url">
-  <aside>
+  <app-category-piece *ngIf="element?.category"
+    [category]="element?.category">
+  </app-category-piece>
+  <app-card-actions>
+  </app-card-actions>
+  <figure>
     <img alt="content-card" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.image">
-    <app-category-piece *ngIf="element?.category"
-      [category]="element?.category">
-    </app-category-piece>
-    <app-card-actions>
-    </app-card-actions>
-  </aside>
+  </figure>
   <mat-card-content>
     <header>
       <h1>
