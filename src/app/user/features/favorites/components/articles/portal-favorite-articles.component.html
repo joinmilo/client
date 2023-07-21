@@ -1,9 +1,7 @@
-<section>
-  <app-table-card 
-    entity="ArticleEntity"
-    [data]="favoriteArticles" 
-    noDataLabel="noFavorites"
-    [cardType]="cardType"
-    (sortPaginate)="updateParams($event)">
-  </app-table-card>
-</section>
+<app-table-card 
+  entity="ArticleEntity"
+  [data]="favoriteArticles" 
+  noDataLabel="noFavorites"
+  [cardType]="cardType"
+  (sortPaginate)="updateParams($event)">
+</app-table-card>
