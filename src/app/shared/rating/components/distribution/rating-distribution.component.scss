@@ -20,16 +20,10 @@ div {
 }
 
 :host ::ng-deep {
-  
-  .mdc-linear-progress__bar-inner {
-    border-top-width: 1rem;
-  }
-
-  .mdc-linear-progress {
-    height: 1rem;
-  }
 
   .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-height: 1rem;
     --mdc-linear-progress-active-indicator-color: var(--color-evaluation);
+    --mdc-linear-progress-track-height: 1rem;
   }
 }
