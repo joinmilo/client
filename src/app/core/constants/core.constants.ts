@@ -41,6 +41,7 @@ export const contestsFeatureKey = 'contests';
 export const dealsFeatureKey = 'deals';
 export const eventsFeatureKey = 'events';
 export const formsFeatureKey = 'forms';
+export const friendsFeatureKey = 'friends'
 export const guestArticlesFeatureKey = 'guestarticle';
 export const mapFeatureKey = 'map';
 export const mediaFeatureKey = 'media';

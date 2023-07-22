@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, mapFeatureKey, mediaFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
+import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, friendsFeatureKey, guestArticlesFeatureKey, mapFeatureKey, mediaFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
 import { PortalLandingComponent } from './modules/landing/component/portal-landing.component';
 
 const routes: Routes = [
@@ -58,6 +58,11 @@ const routes: Routes = [
     path: `${eventsFeatureKey}/:${slug}`,
     loadChildren: () => import('./features/event/details/portal-event-details.module')
       .then((imported) => imported.PortalEventDetailsModule),
+  },
+  {
+    path: friendsFeatureKey,
+    loadChildren: () => import('./features/user-features/friends/portal-friends.module')
+      .then((imported) => imported.PortalFriendsModule),
   },
   {
     path: guestArticlesFeatureKey,

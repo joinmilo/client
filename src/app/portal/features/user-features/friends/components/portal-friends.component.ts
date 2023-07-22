@@ -1,0 +1,8 @@
+import { Component } from "@angular/core";
+
+@Component({
+  selector: 'app-portal-friends',
+  templateUrl: './portal-friends.component.html',
+  styleUrls: ['./portal-friends.component.scss'],
+})
+export class PortalFriendsComponent { }
