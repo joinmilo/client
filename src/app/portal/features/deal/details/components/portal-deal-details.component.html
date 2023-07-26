@@ -1,16 +1,15 @@
 <div class="details">
   <app-title-image [image]="titleImage"></app-title-image>
-  <section>
+  <section class="details-action-box">
     <app-share-button>
     </app-share-button>
 
     <app-favorite-piece>
     </app-favorite-piece>
-
-    <app-category-piece *ngIf="deal?.category" [category]="deal?.category" [url]="['/portal', categoryUrl]"
-      [queryParam]="categoryQueryParams">
-    </app-category-piece>
   </section>
+  <app-category-piece *ngIf="deal?.category" [category]="deal?.category" [url]="['/portal', categoryUrl]"
+    [queryParam]="categoryQueryParams">
+  </app-category-piece>
   <section>
     <section>
       <h2 class="mat-headline-4">
@@ -26,9 +25,7 @@
     <app-portal-deal-details-creator *ngIf="deal?.creator">
     </app-portal-deal-details-creator>
 
-    <app-file-slider *ngIf="media && media.length"
-      [media]="media"
-      [link]="['./media']">
+    <app-file-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </app-file-slider>
 
     <div #map>

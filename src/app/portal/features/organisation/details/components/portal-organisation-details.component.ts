@@ -3,11 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { organisationsFeatureKey, slug } from 'src/app/core/constants/core.constants';
-import { CardType } from 'src/app/shared/card/typings/card';
 import { MarkerDefinition } from 'src/app/shared/map/typings/map';
 import { Maybe, MediaEntity, OrganisationEntity } from 'src/schema/schema';
 import { PortalOrganisationDetailsActions } from '../state/portal-organisation-details.actions';
-import { selectMembers, selectOrganisationDetails } from '../state/portal-organisation-details.selectors';
+import { selectOrganisationDetails } from '../state/portal-organisation-details.selectors';
 
 @Component({
   selector: 'app-portal-organisation-details',
@@ -16,11 +15,7 @@ import { selectMembers, selectOrganisationDetails } from '../state/portal-organi
 })
 export class PortalOrganisationDetailsComponent implements OnInit, OnDestroy {
 
-  public cardType = CardType.Contact;
-
   public categoryUrl = organisationsFeatureKey;
-
-  public members = this.store.select(selectMembers);
 
   public organisation?: Maybe<OrganisationEntity>;
 

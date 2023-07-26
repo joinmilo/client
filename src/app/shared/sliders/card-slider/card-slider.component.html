@@ -11,6 +11,9 @@
     <app-slider *ngSwitchCase="types.contact">
       <app-contact-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-contact-card>
     </app-slider>
+    <app-slider *ngSwitchCase="types.member">
+      <app-member-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-member-card>
+    </app-slider>
     <app-slider *ngSwitchCase="types.content">
       <app-content-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-content-card>
     </app-slider>

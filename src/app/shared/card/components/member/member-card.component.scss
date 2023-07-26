@@ -1,0 +1,19 @@
+:host {
+  width: 15rem;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+  gap: .5rem;
+}
+
+img {
+  object-fit: cover;
+  width: 5rem;
+  height: 5rem;
+}
+
+.mat-subtitle-1 {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

@@ -6,6 +6,7 @@ export enum CardType {
   Contact = 'contact',
   Content = 'content',
   Sponsored = 'sponsored',
+  Member = 'member',
 }
 
 export type CardEntity = 'ArticleEntity'

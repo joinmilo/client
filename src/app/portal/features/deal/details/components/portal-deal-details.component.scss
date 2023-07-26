@@ -4,18 +4,16 @@
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  position: relative;
 
   app-title-image {
     width: 100%;
   }
 
-  section:first-of-type {
-    display: flex;
-    flex-flow: row wrap;
-    align-self: flex-end;
-    align-items: center;
-    padding-right: 1rem;
-    gap: .5rem;
+  app-category-piece {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
   }
 
   section:last-of-type {

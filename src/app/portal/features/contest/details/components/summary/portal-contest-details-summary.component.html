@@ -1,15 +1,11 @@
-<div >
-  <section>
+<div>
   <app-date-piece [date]="(contest | async)?.modified"></app-date-piece>
   <span appLabel="to"></span>
   <app-date-piece [date]="(contest | async)?.participationEndDate"></app-date-piece>
-
-  </section>
-  <section>
-    <app-mail-piece *ngIf="(contest | async)?.contact?.email" [mail]="(contest | async)?.contact?.email">
-    </app-mail-piece>
-    
-    <app-phone-piece *ngIf="(contest | async)?.contact?.phone" [phone]="(contest | async)?.contact?.phone">
-    </app-phone-piece>
-  </section>
 </div>
+
+<app-mail-piece *ngIf="(contest | async)?.contact?.email" [mail]="(contest | async)?.contact?.email">
+</app-mail-piece>
+
+<app-phone-piece *ngIf="(contest | async)?.contact?.phone" [phone]="(contest | async)?.contact?.phone">
+</app-phone-piece>

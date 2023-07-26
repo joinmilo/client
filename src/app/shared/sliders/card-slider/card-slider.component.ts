@@ -54,6 +54,7 @@ export class CardSliderComponent {
   public types = {
     contact: CardType.Contact,
     content: CardType.Content,
-    sponsored: CardType.Sponsored
+    sponsored: CardType.Sponsored,
+    member: CardType.Member,
   };
 }

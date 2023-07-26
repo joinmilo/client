@@ -1,6 +1,6 @@
 <div class="details">
   <app-title-image [image]="titleImage"></app-title-image>
-  <section>
+  <section class="details-action-box">
 
     <app-share-button>
     </app-share-button>
@@ -23,11 +23,8 @@
       [link]="['./media']">
     </app-file-slider>
 
-    <app-card-slider *ngIf="(members | async)?.length"
-      [cardType]="cardType"
-      [data]="members | async"
-      entity="UserContextEntity">
-    </app-card-slider>
+    <app-portal-organisation-details-members>
+    </app-portal-organisation-details-members>
 
     <app-portal-organisation-details-rating>
     </app-portal-organisation-details-rating>

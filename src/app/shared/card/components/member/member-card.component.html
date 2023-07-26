@@ -1,0 +1,9 @@
+<figure>
+  <img class="border-image" [src]="element?.image ? '' : '/assets/placeholder.webp'" [appMedia]="element?.creatorImage"
+    alt="member-card">
+</figure>
+<span class="mat-subtitle-1">
+  {{element?.creator ? element?.creator: ''}}
+</span>
+<app-mail-piece *ngIf="element?.email" [mail]="element?.email"></app-mail-piece>
+<app-phone-piece [phone]="element?.phone"></app-phone-piece>

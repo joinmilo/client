@@ -1,15 +1,13 @@
-<div >
-  <section>
-  <app-date-piece [date]="(survey | async)?.startDate"></app-date-piece>
-  <span appLabel="to"></span>
-  <app-date-piece [date]="(survey | async)?.dueDate"></app-date-piece>
+<div>
+<app-date-piece [date]="(survey | async)?.startDate"></app-date-piece>
 
-  </section>
-  <section>
-    <app-mail-piece *ngIf="(survey | async)?.contact?.email" [mail]="(survey | async)?.contact?.email">
-    </app-mail-piece>
-    
-    <app-phone-piece *ngIf="(survey | async)?.contact?.phone" [phone]="(survey | async)?.contact?.phone">
-    </app-phone-piece>
-  </section>
+<span appLabel="to"></span>
+
+<app-date-piece [date]="(survey | async)?.dueDate"></app-date-piece>
 </div>
+
+<app-mail-piece *ngIf="(survey | async)?.contact?.email" [mail]="(survey | async)?.contact?.email">
+</app-mail-piece>
+
+<app-phone-piece *ngIf="(survey | async)?.contact?.phone" [phone]="(survey | async)?.contact?.phone">
+</app-phone-piece>

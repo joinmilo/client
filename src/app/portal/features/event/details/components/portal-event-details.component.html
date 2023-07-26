@@ -1,23 +1,20 @@
 <div class="details">
   <app-title-image [image]="titleImage"></app-title-image>
-  <section>
+  <section class="details-action-box">
     <app-share-button>
     </app-share-button>
 
     <app-favorite-piece>
     </app-favorite-piece>
-
-    <app-category-piece
-      [category]="event?.category"
-      [url]="['/portal', categoryUrl]"
-      [queryParam]="categoryQueryParams">
-    </app-category-piece>
   </section>
+
+  <app-category-piece [category]="event?.category" [url]="['/portal', categoryUrl]" [queryParam]="categoryQueryParams">
+  </app-category-piece>
   
   <section>
     <section>
       <h2 class="mat-headline-4">{{event | translatable: 'name' | async}}</h2>
-      
+
       <p [innerHtml]="event | translatable: 'shortDescription' | async"></p>
 
       <app-portal-event-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
@@ -29,9 +26,7 @@
     <app-portal-event-details-organisation *ngIf="event?.organisation">
     </app-portal-event-details-organisation>
 
-    <app-file-slider *ngIf="media && media.length"
-      [media]="media"
-      [link]="['./media']">
+    <app-file-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </app-file-slider>
 
     <app-portal-event-details-rating>
@@ -45,9 +40,7 @@
 
     <div #map>
       <app-details-title titleLabel="mapView"></app-details-title>
-      <app-map
-        [queryParams]="false"
-        [markerDefinition]="marker">
+      <app-map [queryParams]="false" [markerDefinition]="marker">
       </app-map>
     </div>
   </section>

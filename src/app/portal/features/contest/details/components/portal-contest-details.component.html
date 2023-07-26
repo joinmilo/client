@@ -1,23 +1,23 @@
 <div class="details">
   <app-title-image [image]="titleImage"></app-title-image>
-    <section>
-      <app-share-button>
-      </app-share-button>
+  <section class="details-action-box">
+    <app-share-button>
+    </app-share-button>
 
-      <app-favorite-piece>
-      </app-favorite-piece>
-    </section>
-    <section>
-      <h2 class="mat-headline-4">{{contest | translatable: 'name' | async}}</h2>
+    <app-favorite-piece>
+    </app-favorite-piece>
+  </section>
+  <section>
+    <h2 class="mat-headline-4">{{contest | translatable: 'name' | async}}</h2>
 
-      <app-portal-contest-details-summary></app-portal-contest-details-summary>
+    <app-portal-contest-details-summary></app-portal-contest-details-summary>
 
-      <p [innerHtml]="contest | translatable: 'content' | async"></p>
+    <p [innerHtml]="contest | translatable: 'content' | async"></p>
 
-      <div>
-        <app-details-title titleLabel="attend"></app-details-title>
-        <img src="assets/features/contest.svg" alt="contest-image">
-        <button mat-raised-button color="primary" appLabel="participateContest"></button>
-      </div>
-    </section>
+    <div>
+      <app-details-title titleLabel="attend"></app-details-title>
+      <img src="assets/features/contest.svg" alt="contest-image">
+      <button mat-raised-button color="primary" appLabel="participateContest"></button>
+    </div>
+  </section>
 </div>

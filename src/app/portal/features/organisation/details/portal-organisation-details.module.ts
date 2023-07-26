@@ -28,6 +28,7 @@ import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalOrganisationDetailsCommentComponent } from './components/comment/portal-organisation-details-comments.component';
 import { PortalOrganisationDetailsCommentsComponent } from './components/comments/portal-organisation-details-comments.component';
+import { PortalOrganisationDetailsMembersComponent } from './components/members/portal-organisation-details-members.component';
 import { PortalOrganisationDetailsComponent } from './components/portal-organisation-details.component';
 import { PortalOrganisationDetailsRatingComponent } from './components/rating/portal-organisation-details-rating.component';
 import { PortalOrganisationDetailsSummaryComponent } from './components/summary/portal-organisation-details-summary.component';
@@ -43,6 +44,7 @@ const components = [
   PortalOrganisationDetailsCommentsComponent,
   PortalOrganisationDetailsSummaryComponent,
   PortalOrganisationDetailsRatingComponent,
+  PortalOrganisationDetailsMembersComponent,
 
 ];
 

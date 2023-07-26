@@ -30,7 +30,19 @@ fragment Organisation on OrganisationEntity {
     id
     }
     userContext{
-      ...UserContext
+      user{
+      id
+      firstName
+      lastName
+      email
+      phone
+      }
+      uploads {
+      profilePicture
+      media {
+       ...Media
+       }
+      }
     }
   }
   translatables {

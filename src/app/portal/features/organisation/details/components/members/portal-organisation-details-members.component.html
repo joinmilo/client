@@ -1,0 +1,4 @@
+<app-details-title titleLabel="team"></app-details-title>
+<app-card-slider *ngIf="(members | async)?.length" [cardType]="cardType" [data]="members | async"
+  entity="UserContextEntity">
+</app-card-slider>

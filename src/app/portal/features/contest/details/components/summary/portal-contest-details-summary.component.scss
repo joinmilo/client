@@ -1,13 +1,11 @@
-div {
+:host {
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
   flex-flow: column wrap;
 
-  section {
+  div {
     display: flex;
-    flex-flow: wrap;
-    gap: 1rem;
-    justify-content: space-between;
+    flex-flow: row wrap;
+    gap: var(--gap);
   }
 }

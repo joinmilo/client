@@ -131,5 +131,6 @@ export const userToCard = (entity?: Maybe<UserContextEntity>): CardElement => ({
   creator: `${entity?.user?.firstName} ${entity?.user?.lastName}`,
   creatorImage: entity?.uploads?.find(upload => upload?.profilePicture)?.media,
   dateTime: true,
+  phone: entity?.user?.phone,
   url: ['/portal', authorsFeatureKey, entity?.slug],
 });

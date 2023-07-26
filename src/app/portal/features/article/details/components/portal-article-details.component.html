@@ -1,25 +1,20 @@
 <div class="details">
-  <app-title-image [image]="titleImage"></app-title-image>
-  <section>
+    <app-title-image [image]="titleImage"></app-title-image>
+  <section class="details-action-box">
     <app-share-button>
     </app-share-button>
 
     <app-favorite-piece>
     </app-favorite-piece>
-
-    <app-category-piece
-      [category]="article?.category"
-      [url]="['/portal', categoryUrl]"
-      [queryParam]="categoryQueryParams">
-    </app-category-piece>
   </section>
+  <app-category-piece [category]="article?.category" [url]="['/portal', categoryUrl]" [queryParam]="categoryQueryParams">
+  </app-category-piece>
   <section>
- 
-    <section>
-   <h2 class="mat-headline-4">
-      {{article | translatable: 'name' | async}}
-    </h2>
 
+    <section>
+      <h2 class="mat-headline-4">
+        {{article | translatable: 'name' | async}}
+      </h2>
       <app-date-piece [date]="article?.created"></app-date-piece>
 
       <p [innerHtml]="article | translatable: 'shortDescription' | async"></p>
@@ -30,9 +25,7 @@
     <app-portal-article-details-author *ngIf="article?.author">
     </app-portal-article-details-author>
 
-    <app-file-slider *ngIf="media && media.length"
-      [media]="media"
-      [link]="['./media']">
+    <app-file-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </app-file-slider>
 
     <app-portal-article-details-rating>
