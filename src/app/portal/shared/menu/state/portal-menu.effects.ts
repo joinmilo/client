@@ -31,6 +31,7 @@ export class PortalMenuEffects implements OnInitEffects {
   navigateMenu = createEffect(() => this.actions.pipe(
     ofType(PortalMenuActions.navigateMenu),
     tap(action => {
+      console.log(action);
       action?.item?.feature?.key
         ? this.router.navigate(['/portal', action.item.feature.key])
         : action?.item?.page?.slug
