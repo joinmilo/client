@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { PortalArticlePageFeatureModule } from '../features/article/page-feature/portal-article-page-feature.module';
 import { PortalAuthorPageFeatureModule } from '../features/author/page-feature/portal-author-page-feature.module';
 import { PortalCalendarPageFeatureModule } from '../features/calendar/page-feature/portal-calendar-page-feature.module';
@@ -25,7 +26,6 @@ import { portalMainStateKey } from './constants/portal-main.constants';
 import { PortalMainRoutingModule } from './portal-main-routing.module';
 import { PortalMainEffects } from './state/portal-main.effects';
 import { portalMainReducer } from './state/portal-main.reducer';
-import { MediaModule } from 'src/app/shared/media/media.module';
 
 const components = [
   PortalLandingComponent,
