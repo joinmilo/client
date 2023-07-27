@@ -8,3 +8,8 @@ export const selectContestDetails = createSelector(
   selectPortalContestDetailsState,
   state => state.details
 );
+
+export const selectContestComments = createSelector(
+  selectPortalContestDetailsState,
+  state => state.comments
+);

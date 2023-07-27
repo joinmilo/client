@@ -450,12 +450,34 @@ export type ContactEntityInput = {
   website?: InputMaybe<Scalars['String']>;
 };
 
+export type ContestCommentEntity = {
+  __typename?: 'ContestCommentEntity';
+  content?: Maybe<Scalars['String']>;
+  contest?: Maybe<ContestEntity>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  translatables?: Maybe<Array<Maybe<ArticleCommentTranslatableEntity>>>;
+  userContext?: Maybe<UserContextEntity>;
+};
+
+export type ContestCommentEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
+  contest?: InputMaybe<ContestEntityInput>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  translatables?: InputMaybe<Array<InputMaybe<ArticleCommentTranslatableEntityInput>>>;
+  userContext?: InputMaybe<UserContextEntityInput>;
+};
+
 export type ContestEntity = {
   __typename?: 'ContestEntity';
   contact?: Maybe<ContactEntity>;
   content?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
+  lastContestComment?: Maybe<ContestCommentEntity>;
   metaDescription?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   multiSubmission?: Maybe<Scalars['Boolean']>;
@@ -1443,6 +1465,8 @@ export type Mutation = {
   deleteContact?: Maybe<Scalars['Boolean']>;
   deleteContacts?: Maybe<Scalars['Boolean']>;
   deleteContest?: Maybe<Scalars['Boolean']>;
+  deleteContestComment?: Maybe<Scalars['Boolean']>;
+  deleteContestComments?: Maybe<Scalars['Boolean']>;
   deleteContestType?: Maybe<Scalars['Boolean']>;
   deleteContestTypes?: Maybe<Scalars['Boolean']>;
   deleteContestVote?: Maybe<Scalars['Boolean']>;
@@ -1547,6 +1571,8 @@ export type Mutation = {
   saveContact?: Maybe<ContactEntity>;
   saveContacts?: Maybe<Array<Maybe<ContactEntity>>>;
   saveContest?: Maybe<ContestEntity>;
+  saveContestComment?: Maybe<ContestCommentEntity>;
+  saveContestComments?: Maybe<Array<Maybe<ContestCommentEntity>>>;
   saveContestType?: Maybe<ContestTypeEntity>;
   saveContestTypes?: Maybe<Array<Maybe<ContestTypeEntity>>>;
   saveContestVote?: Maybe<ContestVoteEntity>;
@@ -1793,6 +1819,18 @@ export type MutationDeleteContactsArgs = {
 /** Mutation root */
 export type MutationDeleteContestArgs = {
   id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteContestCommentArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteContestCommentsArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -2418,6 +2456,18 @@ export type MutationSaveContactsArgs = {
 /** Mutation root */
 export type MutationSaveContestArgs = {
   entity?: InputMaybe<ContestEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveContestCommentArgs = {
+  entity?: InputMaybe<ContestCommentEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveContestCommentsArgs = {
+  entities?: InputMaybe<Array<InputMaybe<ContestCommentEntityInput>>>;
 };
 
 
@@ -3306,6 +3356,12 @@ export type PageableList_ContactEntity = {
   total: Scalars['Long'];
 };
 
+export type PageableList_ContestCommentEntity = {
+  __typename?: 'PageableList_ContestCommentEntity';
+  result?: Maybe<Array<Maybe<ContestCommentEntity>>>;
+  total: Scalars['Long'];
+};
+
 export type PageableList_ContestEntity = {
   __typename?: 'PageableList_ContestEntity';
   result?: Maybe<Array<Maybe<ContestEntity>>>;
@@ -3604,6 +3660,8 @@ export type Query = {
   getContact?: Maybe<ContactEntity>;
   getContacts?: Maybe<PageableList_ContactEntity>;
   getContest?: Maybe<ContestEntity>;
+  getContestComment?: Maybe<ContestCommentEntity>;
+  getContestComments?: Maybe<PageableList_ContestCommentEntity>;
   getContestType?: Maybe<ContestTypeEntity>;
   getContestTypes?: Maybe<PageableList_ContestTypeEntity>;
   getContestVote?: Maybe<ContestVoteEntity>;
@@ -3822,6 +3880,18 @@ export type QueryGetContactsArgs = {
 /** Query root */
 export type QueryGetContestArgs = {
   entity?: InputMaybe<ContestEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetContestCommentArgs = {
+  entity?: InputMaybe<ContestCommentEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetContestCommentsArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
 };
 
 
@@ -5078,9 +5148,11 @@ export type ConfigurationFragment = { __typename?: 'ConfigurationEntity', id?: s
 
 export type ContactFragment = { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null };
 
+export type ContestCommentFragment = { __typename?: 'ContestCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, contest?: { __typename?: 'ContestEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, slug?: string | null, translatables?: Array<{ __typename?: 'UserContextTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, created?: any | null, modified?: any | null, slug?: string | null, author?: { __typename?: 'UserContextEntity', slug?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, lastArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, calculatedRatings?: { __typename?: 'RatingDto', average?: number | null, distribution?: any | null, total?: number | null } | null, uploads?: Array<{ __typename?: 'ArticleMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, articleRatings?: Array<{ __typename?: 'ArticleRatingEntity', id?: string | null, score?: number | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null } | null> | null, eventRatings?: Array<{ __typename?: 'EventRatingEntity', id?: string | null, score?: number | null, event?: { __typename?: 'EventEntity', id?: string | null } | null } | null> | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, friendRequester?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, friendAddressee?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, organisationRatings?: Array<{ __typename?: 'OrganisationRatingEntity', id?: string | null, score?: number | null, organisation?: { __typename?: 'OrganisationEntity', id?: string | null } | null } | null> | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, notifications?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', content?: string | null, id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, userFormTemplate?: Array<{ __typename?: 'UserFormTemplateEntity', id?: string | null, modified?: any | null, name?: string | null, type?: { __typename?: 'FormTemplateTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'FormTemplateTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'UserFormTemplateTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
+
 export type ContestTypeFragment = { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
-export type ContestFragment = { __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null } | null };
+export type ContestFragment = { __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, lastContestComment?: { __typename?: 'ContestCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, contest?: { __typename?: 'ContestEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, slug?: string | null, translatables?: Array<{ __typename?: 'UserContextTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, created?: any | null, modified?: any | null, slug?: string | null, author?: { __typename?: 'UserContextEntity', slug?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, lastArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, calculatedRatings?: { __typename?: 'RatingDto', average?: number | null, distribution?: any | null, total?: number | null } | null, uploads?: Array<{ __typename?: 'ArticleMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, articleRatings?: Array<{ __typename?: 'ArticleRatingEntity', id?: string | null, score?: number | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null } | null> | null, eventRatings?: Array<{ __typename?: 'EventRatingEntity', id?: string | null, score?: number | null, event?: { __typename?: 'EventEntity', id?: string | null } | null } | null> | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, friendRequester?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, friendAddressee?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, organisationRatings?: Array<{ __typename?: 'OrganisationRatingEntity', id?: string | null, score?: number | null, organisation?: { __typename?: 'OrganisationEntity', id?: string | null } | null } | null> | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, notifications?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', content?: string | null, id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, userFormTemplate?: Array<{ __typename?: 'UserFormTemplateEntity', id?: string | null, modified?: any | null, name?: string | null, type?: { __typename?: 'FormTemplateTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'FormTemplateTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'UserFormTemplateTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null } | null };
 
 export type DealCategoryFragment = { __typename?: 'DealCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, created?: any | null, translatables?: Array<{ __typename?: 'DealCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null };
 
@@ -5173,6 +5245,13 @@ export type ResetPasswordMutationVariables = Exact<{
 
 export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword?: boolean | null };
 
+export type SaveArticleCommentMutationVariables = Exact<{
+  entity: ArticleCommentEntityInput;
+}>;
+
+
+export type SaveArticleCommentMutation = { __typename?: 'Mutation', saveArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+
 export type SaveArticleRatingMutationVariables = Exact<{
   entity: ArticleRatingEntityInput;
 }>;
@@ -5194,12 +5273,12 @@ export type SaveAttendeeMutationVariables = Exact<{
 
 export type SaveAttendeeMutation = { __typename?: 'Mutation', saveAttendee?: { __typename?: 'AttendeeEntity', id?: string | null } | null };
 
-export type SaveArticleCommentMutationVariables = Exact<{
-  entity: ArticleCommentEntityInput;
+export type SaveContestCommentMutationVariables = Exact<{
+  entity: ContestCommentEntityInput;
 }>;
 
 
-export type SaveArticleCommentMutation = { __typename?: 'Mutation', saveArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
+export type SaveContestCommentMutation = { __typename?: 'Mutation', saveContestComment?: { __typename?: 'ContestCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, contest?: { __typename?: 'ContestEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, slug?: string | null, translatables?: Array<{ __typename?: 'UserContextTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, created?: any | null, modified?: any | null, slug?: string | null, author?: { __typename?: 'UserContextEntity', slug?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, lastArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, calculatedRatings?: { __typename?: 'RatingDto', average?: number | null, distribution?: any | null, total?: number | null } | null, uploads?: Array<{ __typename?: 'ArticleMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, articleRatings?: Array<{ __typename?: 'ArticleRatingEntity', id?: string | null, score?: number | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null } | null> | null, eventRatings?: Array<{ __typename?: 'EventRatingEntity', id?: string | null, score?: number | null, event?: { __typename?: 'EventEntity', id?: string | null } | null } | null> | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, friendRequester?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, friendAddressee?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, organisationRatings?: Array<{ __typename?: 'OrganisationRatingEntity', id?: string | null, score?: number | null, organisation?: { __typename?: 'OrganisationEntity', id?: string | null } | null } | null> | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, notifications?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', content?: string | null, id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, userFormTemplate?: Array<{ __typename?: 'UserFormTemplateEntity', id?: string | null, modified?: any | null, name?: string | null, type?: { __typename?: 'FormTemplateTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'FormTemplateTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'UserFormTemplateTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null };
 
 export type SaveEventCommentMutationVariables = Exact<{
   entity: EventCommentEntityInput;
@@ -5302,6 +5381,13 @@ export type GetConfigurationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetConfigurationsQuery = { __typename?: 'Query', getConfigurations?: { __typename?: 'PageableList_ConfigurationEntity', result?: Array<{ __typename?: 'ConfigurationEntity', id?: string | null, key?: string | null, value?: string | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null } | null };
 
+export type GetContestCommentsQueryVariables = Exact<{
+  params?: InputMaybe<FilterSortPaginateInput>;
+}>;
+
+
+export type GetContestCommentsQuery = { __typename?: 'Query', getContestComments?: { __typename?: 'PageableList_ContestCommentEntity', result?: Array<{ __typename?: 'ContestCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, contest?: { __typename?: 'ContestEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, slug?: string | null, translatables?: Array<{ __typename?: 'UserContextTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, created?: any | null, modified?: any | null, slug?: string | null, author?: { __typename?: 'UserContextEntity', slug?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, lastArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, calculatedRatings?: { __typename?: 'RatingDto', average?: number | null, distribution?: any | null, total?: number | null } | null, uploads?: Array<{ __typename?: 'ArticleMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, articleRatings?: Array<{ __typename?: 'ArticleRatingEntity', id?: string | null, score?: number | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null } | null> | null, eventRatings?: Array<{ __typename?: 'EventRatingEntity', id?: string | null, score?: number | null, event?: { __typename?: 'EventEntity', id?: string | null } | null } | null> | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, friendRequester?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, friendAddressee?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, organisationRatings?: Array<{ __typename?: 'OrganisationRatingEntity', id?: string | null, score?: number | null, organisation?: { __typename?: 'OrganisationEntity', id?: string | null } | null } | null> | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, notifications?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', content?: string | null, id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, userFormTemplate?: Array<{ __typename?: 'UserFormTemplateEntity', id?: string | null, modified?: any | null, name?: string | null, type?: { __typename?: 'FormTemplateTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'FormTemplateTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'UserFormTemplateTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+
 export type GetContestTypesQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
 }>;
@@ -5314,14 +5400,14 @@ export type GetContestQueryVariables = Exact<{
 }>;
 
 
-export type GetContestQuery = { __typename?: 'Query', getContest?: { __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null } | null } | null };
+export type GetContestQuery = { __typename?: 'Query', getContest?: { __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, lastContestComment?: { __typename?: 'ContestCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, contest?: { __typename?: 'ContestEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, slug?: string | null, translatables?: Array<{ __typename?: 'UserContextTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, created?: any | null, modified?: any | null, slug?: string | null, author?: { __typename?: 'UserContextEntity', slug?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, lastArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, calculatedRatings?: { __typename?: 'RatingDto', average?: number | null, distribution?: any | null, total?: number | null } | null, uploads?: Array<{ __typename?: 'ArticleMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, articleRatings?: Array<{ __typename?: 'ArticleRatingEntity', id?: string | null, score?: number | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null } | null> | null, eventRatings?: Array<{ __typename?: 'EventRatingEntity', id?: string | null, score?: number | null, event?: { __typename?: 'EventEntity', id?: string | null } | null } | null> | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, friendRequester?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, friendAddressee?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, organisationRatings?: Array<{ __typename?: 'OrganisationRatingEntity', id?: string | null, score?: number | null, organisation?: { __typename?: 'OrganisationEntity', id?: string | null } | null } | null> | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, notifications?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', content?: string | null, id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, userFormTemplate?: Array<{ __typename?: 'UserFormTemplateEntity', id?: string | null, modified?: any | null, name?: string | null, type?: { __typename?: 'FormTemplateTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'FormTemplateTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'UserFormTemplateTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null } | null } | null };
 
 export type GetContestsQueryVariables = Exact<{
   params?: InputMaybe<FilterSortPaginateInput>;
 }>;
 
 
-export type GetContestsQuery = { __typename?: 'Query', getContests?: { __typename?: 'PageableList_ContestEntity', total: any, result?: Array<{ __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null } | null } | null> | null } | null };
+export type GetContestsQuery = { __typename?: 'Query', getContests?: { __typename?: 'PageableList_ContestEntity', total: any, result?: Array<{ __typename?: 'ContestEntity', id?: string | null, modified?: any | null, created?: any | null, participationEndDate?: any | null, voteEndDate?: any | null, slug?: string | null, uploads?: Array<{ __typename?: 'ContestMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, type?: { __typename?: 'ContestTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'ContestTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ContestTranslatableEntity', id?: string | null, name?: string | null, content?: string | null, shortDescription?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, lastContestComment?: { __typename?: 'ContestCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, contest?: { __typename?: 'ContestEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, slug?: string | null, translatables?: Array<{ __typename?: 'UserContextTranslatableEntity', id?: string | null, description?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, articles?: Array<{ __typename?: 'ArticleEntity', id?: string | null, approved?: boolean | null, created?: any | null, modified?: any | null, slug?: string | null, author?: { __typename?: 'UserContextEntity', slug?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, lastArticleComment?: { __typename?: 'ArticleCommentEntity', id?: string | null, created?: any | null, modified?: any | null, content?: string | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, calculatedRatings?: { __typename?: 'RatingDto', average?: number | null, distribution?: any | null, total?: number | null } | null, uploads?: Array<{ __typename?: 'ArticleMediaEntity', title?: boolean | null, card?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, category?: { __typename?: 'ArticleCategoryEntity', id?: string | null, icon?: string | null, color?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, publicAuthor?: { __typename?: 'PublicAuthorEntity', id?: string | null, name?: string | null, email?: string | null, phone?: string | null } | null, translatables?: Array<{ __typename?: 'ArticleTranslatableEntity', id?: string | null, content?: string | null, shortDescription?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null, articleRatings?: Array<{ __typename?: 'ArticleRatingEntity', id?: string | null, score?: number | null, article?: { __typename?: 'ArticleEntity', id?: string | null } | null } | null> | null, eventRatings?: Array<{ __typename?: 'EventRatingEntity', id?: string | null, score?: number | null, event?: { __typename?: 'EventEntity', id?: string | null } | null } | null> | null, favoritingUsers?: Array<{ __typename?: 'UserContextEntity', id?: string | null } | null> | null, friendRequester?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, friendAddressee?: Array<{ __typename?: 'FriendEntity', id?: string | null, accepted?: boolean | null, addressee?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null, requester?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, verified?: boolean | null } | null } | null } | null> | null, organisationRatings?: Array<{ __typename?: 'OrganisationRatingEntity', id?: string | null, score?: number | null, organisation?: { __typename?: 'OrganisationEntity', id?: string | null } | null } | null> | null, uploads?: Array<{ __typename?: 'UserContextMediaEntity', profilePicture?: boolean | null, title?: boolean | null, media?: { __typename?: 'MediaEntity', id?: string | null, credits?: string | null, extension?: string | null, mimeType?: string | null, name?: string | null, size?: any | null } | null } | null> | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null, notifications?: Array<{ __typename?: 'NotificationEntity', id?: string | null, read?: boolean | null, modified?: any | null, translatables?: Array<{ __typename?: 'NotificationTranslatableEntity', content?: string | null, id?: string | null, title?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, userFormTemplate?: Array<{ __typename?: 'UserFormTemplateEntity', id?: string | null, modified?: any | null, name?: string | null, type?: { __typename?: 'FormTemplateTypeEntity', id?: string | null, translatables?: Array<{ __typename?: 'FormTemplateTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, translatables?: Array<{ __typename?: 'UserFormTemplateTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null, translatables?: Array<{ __typename?: 'ArticleCommentTranslatableEntity', id?: string | null, content?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null, contact?: { __typename?: 'ContactEntity', id?: string | null, email?: string | null, name?: string | null, phone?: string | null, preferredContact?: boolean | null, website?: string | null } | null } | null> | null } | null };
 
 export type GetDealCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5559,91 +5645,6 @@ export const LanguageFragmentDoc = gql`
 export const ContestTypeFragmentDoc = gql`
     fragment ContestType on ContestTypeEntity {
   id
-  translatables {
-    id
-    name
-    language {
-      ...Language
-    }
-  }
-}
-    ${LanguageFragmentDoc}`;
-export const ContactFragmentDoc = gql`
-    fragment Contact on ContactEntity {
-  id
-  email
-  name
-  phone
-  preferredContact
-  website
-}
-    `;
-export const ContestFragmentDoc = gql`
-    fragment Contest on ContestEntity {
-  id
-  modified
-  created
-  participationEndDate
-  voteEndDate
-  uploads {
-    title
-    card
-    media {
-      ...Media
-    }
-  }
-  created
-  modified
-  type {
-    ...ContestType
-  }
-  slug
-  translatables {
-    id
-    name
-    content
-    shortDescription
-    language {
-      id
-      locale
-      name
-    }
-  }
-  contact {
-    ...Contact
-  }
-}
-    ${MediaFragmentDoc}
-${ContestTypeFragmentDoc}
-${ContactFragmentDoc}`;
-export const SuburbFragmentDoc = gql`
-    fragment Suburb on SuburbEntity {
-  id
-  name
-}
-    `;
-export const AddressFragmentDoc = gql`
-    fragment Address on AddressEntity {
-  id
-  houseNumber
-  place
-  postalCode
-  street
-  latitude
-  longitude
-  suburb {
-    ...Suburb
-  }
-}
-    ${SuburbFragmentDoc}`;
-export const DealCategoryFragmentDoc = gql`
-    fragment DealCategory on DealCategoryEntity {
-  id
-  color
-  icon
-  created
-  color
-  icon
   translatables {
     id
     name
@@ -5913,6 +5914,118 @@ ${FriendFragmentDoc}
 ${MediaFragmentDoc}
 ${NotificationFragmentDoc}
 ${FormFragmentDoc}`;
+export const ContestCommentFragmentDoc = gql`
+    fragment ContestComment on ContestCommentEntity {
+  id
+  created
+  modified
+  content
+  contest {
+    id
+  }
+  userContext {
+    ...UserContext
+  }
+  translatables {
+    id
+    content
+    language {
+      id
+      locale
+      name
+    }
+  }
+}
+    ${UserContextFragmentDoc}`;
+export const ContactFragmentDoc = gql`
+    fragment Contact on ContactEntity {
+  id
+  email
+  name
+  phone
+  preferredContact
+  website
+}
+    `;
+export const ContestFragmentDoc = gql`
+    fragment Contest on ContestEntity {
+  id
+  modified
+  created
+  participationEndDate
+  voteEndDate
+  uploads {
+    title
+    card
+    media {
+      ...Media
+    }
+  }
+  created
+  modified
+  type {
+    ...ContestType
+  }
+  slug
+  translatables {
+    id
+    name
+    content
+    shortDescription
+    language {
+      id
+      locale
+      name
+    }
+  }
+  lastContestComment {
+    ...ContestComment
+  }
+  contact {
+    ...Contact
+  }
+}
+    ${MediaFragmentDoc}
+${ContestTypeFragmentDoc}
+${ContestCommentFragmentDoc}
+${ContactFragmentDoc}`;
+export const SuburbFragmentDoc = gql`
+    fragment Suburb on SuburbEntity {
+  id
+  name
+}
+    `;
+export const AddressFragmentDoc = gql`
+    fragment Address on AddressEntity {
+  id
+  houseNumber
+  place
+  postalCode
+  street
+  latitude
+  longitude
+  suburb {
+    ...Suburb
+  }
+}
+    ${SuburbFragmentDoc}`;
+export const DealCategoryFragmentDoc = gql`
+    fragment DealCategory on DealCategoryEntity {
+  id
+  color
+  icon
+  created
+  color
+  icon
+  translatables {
+    id
+    name
+    language {
+      ...Language
+    }
+  }
+}
+    ${LanguageFragmentDoc}`;
 export const DealFragmentDoc = gql`
     fragment Deal on DealEntity {
   id
@@ -6476,6 +6589,24 @@ export const ResetPasswordDocument = gql`
       super(apollo);
     }
   }
+export const SaveArticleCommentDocument = gql`
+    mutation saveArticleComment($entity: ArticleCommentEntityInput!) {
+  saveArticleComment(entity: $entity) {
+    ...ArticleComment
+  }
+}
+    ${ArticleCommentFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class SaveArticleCommentGQL extends Apollo.Mutation<SaveArticleCommentMutation, SaveArticleCommentMutationVariables> {
+    override document = SaveArticleCommentDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const SaveArticleRatingDocument = gql`
     mutation saveArticleRating($entity: ArticleRatingEntityInput!) {
   saveArticleRating(entity: $entity) {
@@ -6536,19 +6667,19 @@ export const SaveAttendeeDocument = gql`
       super(apollo);
     }
   }
-export const SaveArticleCommentDocument = gql`
-    mutation saveArticleComment($entity: ArticleCommentEntityInput!) {
-  saveArticleComment(entity: $entity) {
-    ...ArticleComment
+export const SaveContestCommentDocument = gql`
+    mutation saveContestComment($entity: ContestCommentEntityInput!) {
+  saveContestComment(entity: $entity) {
+    ...ContestComment
   }
 }
-    ${ArticleCommentFragmentDoc}`;
+    ${ContestCommentFragmentDoc}`;
 
   @Injectable({
     providedIn: 'root'
   })
-  export class SaveArticleCommentGQL extends Apollo.Mutation<SaveArticleCommentMutation, SaveArticleCommentMutationVariables> {
-    override document = SaveArticleCommentDocument;
+  export class SaveContestCommentGQL extends Apollo.Mutation<SaveContestCommentMutation, SaveContestCommentMutationVariables> {
+    override document = SaveContestCommentDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
@@ -6851,6 +6982,26 @@ export const GetConfigurationsDocument = gql`
   })
   export class GetConfigurationsGQL extends Apollo.Query<GetConfigurationsQuery, GetConfigurationsQueryVariables> {
     override document = GetConfigurationsDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetContestCommentsDocument = gql`
+    query getContestComments($params: FilterSortPaginateInput) {
+  getContestComments(params: $params) {
+    result {
+      ...ContestComment
+    }
+  }
+}
+    ${ContestCommentFragmentDoc}`;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetContestCommentsGQL extends Apollo.Query<GetContestCommentsQuery, GetContestCommentsQueryVariables> {
+    override document = GetContestCommentsDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

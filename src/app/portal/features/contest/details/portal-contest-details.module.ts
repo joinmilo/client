@@ -25,6 +25,8 @@ import { RatingModule } from 'src/app/shared/rating/rating.module';
 import { ShareModule } from 'src/app/shared/share/share.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
+import { PortalContestDetailsCommentComponent } from './components/comment/portal-contest-details-comment.component';
+import { PortalContestDetailsCommentsComponent } from './components/comments/portal-contest-details-comments.component';
 import { PortalContestDetailsComponent } from './components/portal-contest-details.component';
 import { PortalContestDetailsSummaryComponent } from './components/summary/portal-contest-details-summary.component';
 import { portalContestDetailsStateKey } from './constants/contest-details.constant';
@@ -35,6 +37,8 @@ import { portalContestDetailsReducer } from './state/portal-contest-details.redu
 const components = [
   PortalContestDetailsComponent,
   PortalContestDetailsSummaryComponent,
+  PortalContestDetailsCommentComponent,
+  PortalContestDetailsCommentsComponent,
 
 ];
 

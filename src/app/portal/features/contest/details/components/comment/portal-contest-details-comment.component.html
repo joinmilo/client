@@ -1,0 +1,4 @@
+<app-comment-form
+  [comment]="(lastComment | async)"
+  (content)="saveComment($event)">
+</app-comment-form>

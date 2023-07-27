@@ -1,0 +1,5 @@
+<app-comment-overview
+  [backLabel]="'toContest'"
+  [comments]="comments | async"
+  (enteredComment)="saveComment($event)">
+</app-comment-overview>

@@ -28,6 +28,9 @@ fragment Contest on ContestEntity {
       name
     }
   }
+  lastContestComment {
+    ...ContestComment
+  }
   contact{
     ...Contact
   }
