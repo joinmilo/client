@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
 import { PortalArticlePageFeatureModule } from '../features/article/page-feature/portal-article-page-feature.module';
 import { PortalAuthorPageFeatureModule } from '../features/author/page-feature/portal-author-page-feature.module';
 import { PortalCalendarPageFeatureModule } from '../features/calendar/page-feature/portal-calendar-page-feature.module';
@@ -60,6 +61,8 @@ const materials = [
 const modules = [
   CoreModule,
   PortalMainRoutingModule,
+  TitleImageComponent,
+  
 ];
 
 const libs = [

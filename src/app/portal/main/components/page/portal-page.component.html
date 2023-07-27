@@ -1,7 +1,15 @@
-<div class="main">
+<div class="details">
+  <app-title-image *ngIf="titleImage" [image]="titleImage"></app-title-image>
+
   <section>
-    <article>
-      <h1>{{page | translatable: 'name' | async}}</h1>
-    </article>
+    <h2 class="mat-headline-4">{{page | translatable: 'name' | async}}</h2>
+
+    <p [innerHtml]="page | translatable: 'content' | async"></p>
   </section>
+
+</div>
+
+<div class="main">
+  <app-portal-page-features *ngIf="page?.pageFeatures?.length" [pageFeatures]="page?.pageFeatures">
+  </app-portal-page-features>
 </div>

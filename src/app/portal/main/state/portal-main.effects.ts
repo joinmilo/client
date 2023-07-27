@@ -19,7 +19,7 @@ export class PortalMainEffects {
   getLandingPage = createEffect(() => this.actions.pipe(
     ofType(PortalMainActions.getLandingPage),
     switchMap(() => this.getPageService.watch({ isLanding: true }).valueChanges),
-    map(response => PortalMainActions.setCurrentPage(response.data.getPage as PageEntity))
+    map(response => PortalMainActions.setLandingPage(response.data.getPage as PageEntity))
   ));
 
   constructor(

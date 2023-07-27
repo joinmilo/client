@@ -4,7 +4,7 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { MediaEntity, PageEntity } from 'src/schema/schema';
 import { PortalMainActions } from '../../state/portal-main.actions';
-import { selectCurrentPage } from '../../state/portal-main.selectors';
+import { selectLandingPage } from '../../state/portal-main.selectors';
 
 @Component({
   selector: 'app-portal-landing',
@@ -24,7 +24,7 @@ export class PortalLandingComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.store.select(selectCurrentPage)
+    this.store.select(selectLandingPage)
     .pipe(
       tap(landing => !landing?.id
         && this.store.dispatch(PortalMainActions.getLandingPage())),

@@ -8,3 +8,8 @@ export const selectCurrentPage = createSelector(
   selectPortalMainState,
   state => state.page
 );
+
+export const selectLandingPage = createSelector(
+  selectPortalMainState,
+  state => state.landingPage
+);
