@@ -12,6 +12,7 @@ fragment MenuItem on MenuItemEntity {
   }
   page {
     id
+    slug
   }
   translatables {
     id
@@ -30,6 +31,7 @@ fragment MenuItem on MenuItemEntity {
     }
     page {
       id
+      slug
     }
     subMenuItems {
       id
