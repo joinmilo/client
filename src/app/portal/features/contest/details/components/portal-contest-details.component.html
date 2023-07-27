@@ -1,12 +1,14 @@
 <div class="details">
-  <app-title-image [image]="titleImage"></app-title-image>
-  <section class="details-action-box">
-    <app-share-button>
-    </app-share-button>
+  <div>
+    <app-title-image [image]="titleImage"></app-title-image>
+    <section class="details-action-box">
+      <app-share-button>
+      </app-share-button>
 
-    <app-favorite-piece>
-    </app-favorite-piece>
-  </section>
+      <app-favorite-piece>
+      </app-favorite-piece>
+    </section>
+  </div>
   <section>
     <h2 class="mat-headline-4">{{contest | translatable: 'name' | async}}</h2>
 

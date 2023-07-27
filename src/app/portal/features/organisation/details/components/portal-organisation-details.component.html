@@ -1,14 +1,17 @@
 <div class="details">
-  <app-title-image [image]="titleImage"></app-title-image>
-  <section class="details-action-box">
+  <div>
+    <app-title-image [image]="titleImage"></app-title-image>
+    <section class="details-action-box">
 
-    <app-share-button>
-    </app-share-button>
+      <app-share-button>
+      </app-share-button>
 
-    <app-favorite-piece>
-    </app-favorite-piece>
+      <app-favorite-piece>
+      </app-favorite-piece>
 
-  </section>
+    </section>
+  </div>
+
   <section>
     <section>
       <h2 class="mat-headline-4">{{organisation?.name}}</h2>
@@ -18,9 +21,7 @@
       <p [innerHtml]="organisation | translatable : 'description' | async"></p>
     </section>
 
-    <app-file-slider *ngIf="media && media.length"
-      [media]="media"
-      [link]="['./media']">
+    <app-file-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </app-file-slider>
 
     <app-portal-organisation-details-members>

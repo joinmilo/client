@@ -1,5 +1,6 @@
 <div class="details">
-  <app-title-image [image]="titleImage"></app-title-image>
+  <div>
+    <app-title-image [image]="titleImage"></app-title-image>
     <section class="details-action-box">
       <app-share-button>
       </app-share-button>
@@ -7,17 +8,19 @@
       <app-favorite-piece>
       </app-favorite-piece>
     </section>
-    <section>
-      <h2 class="mat-headline-4">{{survey?.name}}</h2>
+  </div>
 
-      <app-portal-survey-details-summary></app-portal-survey-details-summary>
+  <section>
+    <h2 class="mat-headline-4">{{survey?.name}}</h2>
 
-      <p [innerHtml]="survey | translatable: 'description' | async"></p>
+    <app-portal-survey-details-summary></app-portal-survey-details-summary>
 
-      <div>
-        <app-details-title titleLabel="attend"></app-details-title>
-        <img src="assets/features/survey.svg" alt="survey-image">
-        <button mat-raised-button color="primary" appLabel="participateSurvey"></button>
-      </div>
-    </section>
+    <p [innerHtml]="survey | translatable: 'description' | async"></p>
+
+    <div>
+      <app-details-title titleLabel="attend"></app-details-title>
+      <img src="assets/features/survey.svg" alt="survey-image">
+      <button mat-raised-button color="primary" appLabel="participateSurvey"></button>
+    </div>
+  </section>
 </div>

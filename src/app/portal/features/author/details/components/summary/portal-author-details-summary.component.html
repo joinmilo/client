@@ -9,10 +9,11 @@
     <section>
       <app-share-button></app-share-button>
       <app-favorite-piece></app-favorite-piece>
-      <button mat-icon-button *ngIf="author?.user?.email">
+      <button mat-button *ngIf="author?.user?.email">
         <a href="mailto:{{author?.user?.email}}">
-          <fa-icon size="2xs" [icon]="['fas', 'envelope']"></fa-icon>
-        </a></button>
+          <fa-icon size="lg" [icon]="['fas', 'envelope']"></fa-icon>
+        </a>
+      </button>
     </section>
     <span [innerHtml]="author | translatable: 'description' | async"></span>
   </div>

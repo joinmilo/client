@@ -1,16 +1,18 @@
 <div class="details">
-  <app-title-image [image]="titleImage"></app-title-image>
-  <section class="details-action-box">
-    <app-share-button>
-    </app-share-button>
+  <div>
+    <app-title-image [image]="titleImage"></app-title-image>
+    <section class="details-action-box">
+      <app-share-button>
+      </app-share-button>
 
-    <app-favorite-piece>
-    </app-favorite-piece>
-  </section>
+      <app-favorite-piece>
+      </app-favorite-piece>
+    </section>
 
-  <app-category-piece [category]="event?.category" [url]="['/portal', categoryUrl]" [queryParam]="categoryQueryParams">
-  </app-category-piece>
-  
+    <app-category-piece [category]="event?.category" [url]="['/portal', categoryUrl]"
+      [queryParam]="categoryQueryParams">
+    </app-category-piece>
+  </div>
   <section>
     <section>
       <h2 class="mat-headline-4">{{event | translatable: 'name' | async}}</h2>

@@ -6,9 +6,15 @@
   align-items: center;
   position: relative;
 
-  app-title-image {
-    width: 100%;
-  }
+  > div:first-of-type {
+      width: 100%;
+      height: 25rem;
+      position: relative;
+  
+      app-title-image {
+        width: 100%;
+      }
+    }
 
   app-category-piece {
     position: absolute;
@@ -16,7 +22,7 @@
     left: 1rem;
   }
 
-  section:last-of-type {
+ > section:last-of-type {
     display: flex;
     flex-flow: column;
     justify-content: center;
