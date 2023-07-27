@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { Period } from 'src/app/core/typings/period';
-import { EventEntity, FilterSortPaginateInput, Maybe, ScheduleEntity } from 'src/schema/schema';
+import { EventEntity, EventScheduleEntity, FilterSortPaginateInput, Maybe } from 'src/schema/schema';
 import { createCalendarParams } from '../utils/params.utils';
 import { EventCalendarActions } from './event-calendar.actions';
 
@@ -12,7 +12,7 @@ export interface EventCalendarState {
   selectedDay?: Maybe<Period>,
   selectedMonth?: Maybe<Period>,
   scheduleParams?: FilterSortPaginateInput,
-  schedules?: Maybe<ScheduleEntity>[],
+  schedules?: Maybe<EventScheduleEntity>[],
 }
 
 export const initialState: EventCalendarState = { };

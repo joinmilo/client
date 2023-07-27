@@ -1,5 +1,5 @@
-mutation saveAttendee($entity: AttendeeEntityInput!) {
-  saveAttendee(entity: $entity) {
+mutation saveEventAttendee($entity: EventAttendeeEntityInput!) {
+  saveEventAttendee(entity: $entity) {
     id
   }
 }

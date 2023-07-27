@@ -1,4 +1,4 @@
-fragment PublicAuthor on PublicAuthorEntity {
+fragment PublicAuthor on ArticlePublicAuthorEntity {
   id
   name
   email

@@ -1,1 +1,1 @@
-export const articlePageFeatureStateKey = 'articlePageFeatureState';
+export const articlePageFeatureStateKey = 'portalArticlePageFeatureState';

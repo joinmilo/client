@@ -1,4 +1,4 @@
-fragment Schedule on ScheduleEntity {
+fragment Schedule on EventScheduleEntity {
   id
   startDate
   endDate

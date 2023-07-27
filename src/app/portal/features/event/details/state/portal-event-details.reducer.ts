@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { EventCommentEntity, EventEntity, Maybe, ScheduleEntity } from 'src/schema/schema';
+import { EventCommentEntity, EventEntity, EventScheduleEntity, Maybe } from 'src/schema/schema';
 import { PortalEventDetailsActions } from './portal-event-details.actions';
 
 export interface PortalEventDetailsState {
   comments?: Maybe<EventCommentEntity[]>,
   details?: Maybe<EventEntity>,
-  schedules?: Maybe<ScheduleEntity[]>,
+  schedules?: Maybe<EventScheduleEntity[]>,
   savedEventComment?: Maybe<EventCommentEntity>
 }
 

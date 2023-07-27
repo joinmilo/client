@@ -1,1 +1,1 @@
-export const authorPageFeatureStateKey = 'authorPageFeatureState';
+export const authorPageFeatureStateKey = 'portalAuthorPageFeatureState';

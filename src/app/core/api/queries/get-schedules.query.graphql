@@ -1,5 +1,5 @@
-query getSchedules($params: FilterSortPaginateInput) {
-  getSchedules(params: $params) {
+query getEventSchedules($params: FilterSortPaginateInput) {
+  getEventSchedules(params: $params) {
     result {
       ...Schedule
     }

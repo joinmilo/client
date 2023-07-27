@@ -1,1 +1,1 @@
-export const mapPageFeatureStateKey = 'mapPageFeatureState';
+export const mapPageFeatureStateKey = 'portalMapPageFeatureState';

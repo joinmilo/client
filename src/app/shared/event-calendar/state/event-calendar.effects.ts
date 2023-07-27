@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { filter, map, switchMap, withLatestFrom } from 'rxjs';
-import { EventEntity, GetEventsGQL, GetSchedulesGQL, ScheduleEntity } from 'src/schema/schema';
+import { EventEntity, EventScheduleEntity, GetEventSchedulesGQL, GetEventsGQL } from 'src/schema/schema';
 import { EventCalendarActions } from './event-calendar.actions';
 import { selectEventParams, selectScheduleParams, selectSelectedDay } from './event-calendar.selectors';
 
@@ -33,16 +33,16 @@ export class EventCalendarEffects {
       EventCalendarActions.filterUpdated,
     ),
     withLatestFrom(this.store.select(selectScheduleParams)),
-    switchMap(([, params]) => this.getSchedulesService.watch({
+    switchMap(([, params]) => this.getEventSchedulesService.watch({
       params
     }).valueChanges),
-    map(response => EventCalendarActions.setSchedules(response.data.getSchedules?.result as ScheduleEntity[]))
+    map(response => EventCalendarActions.setSchedules(response.data.getEventSchedules?.result as EventScheduleEntity[]))
   ));
 
   constructor(
     private actions: Actions,
     private getEventsService: GetEventsGQL,
-    private getSchedulesService: GetSchedulesGQL,
+    private getEventSchedulesService: GetEventSchedulesGQL,
     private store: Store,
   ) {}
 }

@@ -1,1 +1,1 @@
-export const reportStateKey = 'reportState';
+export const reportStateKey = 'portalReportState';

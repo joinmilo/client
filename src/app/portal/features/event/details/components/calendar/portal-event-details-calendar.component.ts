@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Period } from 'src/app/core/typings/period';
-import { EventEntity, Maybe, ScheduleEntity } from 'src/schema/schema';
+import { EventEntity, EventScheduleEntity, Maybe } from 'src/schema/schema';
 import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
 import { selectEventDetails, selectSchedules } from '../../state/portal-event-details.selectors';
 
@@ -17,7 +17,7 @@ export class PortalEventDetailsCalendarComponent implements OnDestroy{
     
   public startDates?: Date[];
 
-  public selectedSchedule?: ScheduleEntity;
+  public selectedSchedule?: EventScheduleEntity;
 
   private destroy = new Subject<void>();
   

@@ -1,1 +1,1 @@
-export const portalOrganisationDetailsStateKey = 'portalEvenDetailsState';
+export const portalOrganisationDetailsStateKey = 'portalOrganisationDetailsState';

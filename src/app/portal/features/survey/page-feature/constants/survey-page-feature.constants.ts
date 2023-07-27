@@ -1,1 +1,1 @@
-export const surveyPageFeatureStateKey = 'surveyPageFeatureState';
+export const surveyPageFeatureStateKey = 'portalSurveyPageFeatureState';

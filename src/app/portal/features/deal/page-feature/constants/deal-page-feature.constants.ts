@@ -1,1 +1,1 @@
-export const dealPageFeatureStateKey = 'dealPageFeatureState';
+export const dealPageFeatureStateKey = 'portalDealPageFeatureState';

@@ -7,7 +7,7 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalMenuActions } from 'src/app/portal/shared/menu/state/portal-menu.actions';
-import { DeleteAttendeeGQL, EventCommentEntity, EventEntity, EventRatingEntity, GetEventCommentsGQL, GetEventGQL, GetSchedulesGQL, Maybe, QueryOperator, SaveAttendeeGQL, SaveEventCommentGQL, SaveEventRatingGQL, ScheduleEntity } from 'src/schema/schema';
+import { DeleteEventAttendeeGQL, EventCommentEntity, EventEntity, EventRatingEntity, EventScheduleEntity, GetEventCommentsGQL, GetEventGQL, GetEventSchedulesGQL, Maybe, QueryOperator, SaveEventAttendeeGQL, SaveEventCommentGQL, SaveEventRatingGQL } from 'src/schema/schema';
 import { ConjunctionOperator } from './../../../../../../schema/schema';
 import { PortalEventDetailsActions } from './portal-event-details.actions';
 import { selectEventAttendeeConfiguration, selectEventDetails, selectEventUserAttendee, selectEventUserRating } from './portal-event-details.selectors';
@@ -97,7 +97,7 @@ export class PortalEventDetailsEffects {
 
   getSchedules = createEffect(() => this.actions.pipe(
     ofType(PortalEventDetailsActions.getSchedules),
-    switchMap(action => this.getSchedulesService.watch({
+    switchMap(action => this.getEventSchedulesService.watch({
       params: {
         sort: 'created',
         dir: 'desc',
@@ -131,7 +131,7 @@ export class PortalEventDetailsEffects {
       },
     }).valueChanges),
     map(response => PortalEventDetailsActions
-      .setSchedules(response.data.getSchedules?.result as Maybe<ScheduleEntity[]>))
+      .setSchedules(response.data.getEventSchedules?.result as Maybe<EventScheduleEntity[]>))
   ));
 
   attendEvent = createEffect(() => this.actions.pipe(
@@ -143,7 +143,7 @@ export class PortalEventDetailsEffects {
     tap(([, currentUser,]) => !currentUser?.id
       && this.store.dispatch(CoreUserActions.requireLogin())),
     filter(([, currentUser,]) => !!currentUser?.id),
-    switchMap(([, currentUser, configuration]) => this.saveAttendeeService.mutate({
+    switchMap(([, currentUser, configuration]) => this.saveEventAttendeeService.mutate({
       entity: {
         configuration: {
           id: configuration?.id
@@ -153,7 +153,7 @@ export class PortalEventDetailsEffects {
         }
       }
     })),
-    map(response => PortalEventDetailsActions.attendeeSaved(response.data?.saveAttendee))
+    map(response => PortalEventDetailsActions.attendeeSaved(response.data?.saveEventAttendee))
   ));
 
   attendeeSaved = createEffect(() => this.actions.pipe(
@@ -172,7 +172,7 @@ export class PortalEventDetailsEffects {
     switchMap(([, attendee]) => this.deleteAttendeeService.mutate({
       id: attendee?.id,
     })),
-    map(response => PortalEventDetailsActions.attendeeDeleted(response.data?.deleteAttendee))
+    map(response => PortalEventDetailsActions.attendeeDeleted(response.data?.deleteEventAttendee))
   ));
 
   attendeeDeleted = createEffect(() => this.actions.pipe(
@@ -213,11 +213,11 @@ export class PortalEventDetailsEffects {
   constructor(
     private store: Store,
     private actions: Actions,
-    private deleteAttendeeService: DeleteAttendeeGQL,
+    private deleteAttendeeService: DeleteEventAttendeeGQL,
     private getEventService: GetEventGQL,
     private getCommentsService: GetEventCommentsGQL,
-    private getSchedulesService: GetSchedulesGQL,
-    private saveAttendeeService: SaveAttendeeGQL,
+    private getEventSchedulesService: GetEventSchedulesGQL,
+    private saveEventAttendeeService: SaveEventAttendeeGQL,
     private saveEventRatingService: SaveEventRatingGQL,
     private saveEventCommentService: SaveEventCommentGQL,
   ) { }

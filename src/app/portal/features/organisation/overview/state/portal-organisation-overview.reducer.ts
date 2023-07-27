@@ -1,11 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { FilterSortPaginateInput, Maybe, OrganisationEntity, PageableList_OrganisationEntity, ScheduleEntity } from 'src/schema/schema';
+import { EventScheduleEntity, FilterSortPaginateInput, Maybe, OrganisationEntity, PageableList_OrganisationEntity } from 'src/schema/schema';
 import { PortalOrganisationOverviewActions } from './portal-organisation-overview.actions';
 
 export interface PortalOrganisationOverviewState {
   overviewData?: PageableList_OrganisationEntity,
   params: FilterSortPaginateInput,
-  schedules?: Maybe<ScheduleEntity>[],
+  schedules?: Maybe<EventScheduleEntity>[],
   sponsoredOrganisation?: Maybe<OrganisationEntity>,
 }
 

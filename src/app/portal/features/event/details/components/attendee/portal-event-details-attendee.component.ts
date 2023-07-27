@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
-import { AttendeeEntity } from 'src/schema/schema';
+import { EventAttendeeEntity } from 'src/schema/schema';
 import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
 import { selectEventAttendeeConfiguration, selectEventUserAttendee } from '../../state/portal-event-details.selectors';
 
@@ -13,8 +13,8 @@ import { selectEventAttendeeConfiguration, selectEventUserAttendee } from '../..
 })
 export class PortalEventDetailsAttendeeComponent implements OnDestroy {
 
-  public approvedAttendees?: Maybe<Maybe<AttendeeEntity>[]>;
-  public currentUserAttendee?: Maybe<AttendeeEntity>;
+  public approvedAttendees?: Maybe<Maybe<EventAttendeeEntity>[]>;
+  public currentUserAttendee?: Maybe<EventAttendeeEntity>;
   public maxAttendees?: Maybe<number>
 
   private destroy = new Subject<void>();

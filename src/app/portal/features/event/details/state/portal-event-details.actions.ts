@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { AttendeeEntity, EventCommentEntity, EventCommentEntityInput, EventEntity, EventRatingEntity, EventRatingEntityInput, Maybe, ScheduleEntity } from 'src/schema/schema';
+import { EventAttendeeEntity, EventCommentEntity, EventCommentEntityInput, EventEntity, EventRatingEntity, EventRatingEntityInput, EventScheduleEntity, Maybe } from 'src/schema/schema';
 
 export const PortalEventDetailsActions = createActionGroup({
   source: 'Portal Event Details',
@@ -16,10 +16,10 @@ export const PortalEventDetailsActions = createActionGroup({
     'event rating saved': (entity: EventRatingEntity) => ({ entity }),
 
     'get schedules': (startDate: Maybe<string>, endDate: Maybe<string>) => ({startDate, endDate}),
-    'set schedules': (schedules: Maybe<ScheduleEntity[]>) => ({schedules}),
+    'set schedules': (schedules: Maybe<EventScheduleEntity[]>) => ({schedules}),
 
     'attend event': emptyProps(),
-    'attendee saved': (entity: Maybe<AttendeeEntity> | undefined) => ({ entity }),
+    'attendee saved': (entity: Maybe<EventAttendeeEntity> | undefined) => ({ entity }),
 
     'cancel attendee registration': emptyProps(),
     'attendee deleted': (deleted?: Maybe<boolean> ) => ({ deleted }),
