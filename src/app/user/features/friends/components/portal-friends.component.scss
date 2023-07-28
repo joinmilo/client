@@ -1,0 +1,30 @@
+div {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+mat-card {
+  padding: 1rem;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+button {
+  white-space: nowrap;
+  min-width: min-content;
+  
+  section {
+    gap: 1rem;
+    align-items: center;
+  }
+
+  fa-icon {
+    color: var(--color-primary-contrast-900);
+  }
+}

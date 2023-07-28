@@ -1,0 +1,26 @@
+<div class="main">
+  <app-page-title title="friends"></app-page-title>
+
+  <section>
+    <app-radio-button-group 
+      [inputs]="inputs" 
+      [value]="displayType" 
+      [queryParamKey]="displayQueryParam"
+      (valueChanged)="displayType = $event">
+    </app-radio-button-group>
+
+    <button mat-flat-button color="primary" (click)="addFriends()">
+      <section>
+        <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>
+        <span appLabel="addFriends"></span>
+      </section>
+    </button>
+  </section>
+  
+  <ng-container [ngSwitch]="displayType">
+    <app-portal-all-friends *ngSwitchCase="'allFriends'"></app-portal-all-friends>
+    <app-portal-received-friend-requests *ngSwitchCase="'receivedRequests'"></app-portal-received-friend-requests>
+    <app-portal-sent-friend-requests *ngSwitchCase="'sentRequests'"></app-portal-sent-friend-requests>
+  </ng-container>
+
+</div>

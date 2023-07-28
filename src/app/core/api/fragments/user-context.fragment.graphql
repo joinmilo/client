@@ -1,7 +1,6 @@
 fragment UserContext on UserContextEntity {
   id
   slug
-
   translatables {
     id
     description
@@ -70,7 +69,7 @@ fragment UserContext on UserContextEntity {
     lastName
     email
     lastLogin
-    
+    verified
     notifications {
       ...Notification
     }
