@@ -6,7 +6,7 @@
   align-items: center;
   position: relative;
 
-  >div:first-of-type {
+  .title-area {
     width: 100%;
     height: 25rem;
     position: relative;
@@ -16,7 +16,7 @@
     }
   }
 
-  >section:last-of-type {
+  .content-area {
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -41,14 +41,7 @@
     }
   }
 
-  div:nth-last-child(2) {
-    width: 100%;
-    justify-content: space-between;
-    display: flex;
-    flex-flow: row wrap;
-  }
-
-  div:last-child {
+  .map-area {
     display: flex;
     flex-direction: column;
     height: 35rem;

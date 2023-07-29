@@ -1,72 +1,42 @@
 @import 'src/styles/mixins.scss';
 
-.details {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-
-  .wrapper {
+.title-area {
+  width: 100%;
+  height: 25rem;
+  position: relative;
+  
+  app-title-image{
     width: 100%;
-    height: 25rem;
-    position: relative;
-    
-    app-title-image{
-      width: 100%;
-    }
   }
 
-  app-category-piece{
+  app-category-piece {
     position: absolute;
     top: 1rem;
     left: 1rem;
   }
-
- > section:last-of-type {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    gap: 5rem;
-    padding: 1rem;
-
-    width: 80%;
-
-    h2 {
-      margin: 0;
-    }
-
-    section {
-      width: 100%;
-      display: flex;
-      flex-flow: column;
-      gap: 3rem;
-
-      * {
-        width: 100%;
-      }
-    }
-  }
-
-  div:nth-last-child(2) {
-    width: 100%;
-    justify-content: space-between;
-    display: flex;
-    flex-flow: row wrap;
-  }
-
-  div:last-child {
-    display: flex;
-    flex-direction: column;
-    height: 35rem;
-
-    app-map {
-      height: 100%;
-
-    }
-  }
 }
 
-:host ::ng-deep {
-  .leaflet-container {
-    border-radius: var(--mdc-shape-small) !important;
+.content-area {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  gap: 5rem;
+  padding: 1rem;
+
+  width: 80%;
+
+  h2 {
+    margin: 0;
+  }
+
+  section {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 3rem;
+
+    * {
+      width: 100%;
+    }
   }
 }

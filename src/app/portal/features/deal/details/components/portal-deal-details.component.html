@@ -1,5 +1,5 @@
 <div class="details">
-  <div>
+  <div class="title-area">
     <app-title-image [image]="titleImage"></app-title-image>
     <section class="details-action-box">
       <app-share-button>
@@ -12,7 +12,7 @@
       [queryParam]="categoryQueryParams">
     </app-category-piece>
   </div>
-  <section>
+  <section class="content-area">
     <section>
       <h2 class="mat-headline-4">
         {{deal | translatable: 'name' | async}}
@@ -30,7 +30,7 @@
     <app-file-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </app-file-slider>
 
-    <div #map>
+    <div class="map-area" #map>
       <app-details-title titleLabel="mapView"></app-details-title>
       <app-map [queryParams]="false" [markerDefinition]="marker">
       </app-map>

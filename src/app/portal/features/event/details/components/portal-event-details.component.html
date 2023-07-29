@@ -1,5 +1,5 @@
 <div class="details">
-  <div>
+  <div class="title-area">
     <app-title-image [image]="titleImage"></app-title-image>
     <section class="details-action-box">
       <app-share-button>
@@ -40,7 +40,7 @@
     <app-portal-event-details-participants>
     </app-portal-event-details-participants>
 
-    <div #map>
+    <div #map class="map-area">
       <app-details-title titleLabel="mapView"></app-details-title>
       <app-map [queryParams]="false" [markerDefinition]="marker">
       </app-map>

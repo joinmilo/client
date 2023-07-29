@@ -1,5 +1,5 @@
 <div class="details">
-  <div class="wrapper">
+  <div class="title-area">
     <app-title-image [image]="titleImage"></app-title-image>
     <app-category-piece [category]="article?.category" [url]="['/portal', categoryUrl]"
       [queryParam]="categoryQueryParams">
@@ -12,7 +12,7 @@
       </app-favorite-piece>
     </section>
   </div>
-  <section>
+  <section class="content-area">
     <section>
       <h2 class="mat-headline-4">
         {{article | translatable: 'name' | async}}

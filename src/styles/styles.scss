@@ -21,6 +21,9 @@ body {
 }
 
 .details {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
   width: 60rem;
   max-width: calc(100% - var(--gap));
   margin: var(--gap) auto;
