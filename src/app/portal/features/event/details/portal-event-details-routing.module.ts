@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PortalEventDetailsCommentsComponent } from './components/comments/portal-event-details-comments.component';
 import { PortalEventDetailsComponent } from './components/portal-event-details.component';
+import { PortalEventDetailsMediaComponent } from './components/media/portal-event-details-media.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,11 @@ const routes: Routes = [
   {
     path: 'comments',
     component: PortalEventDetailsCommentsComponent
-  }, 
+  },
+  {
+    path: 'media',
+    component: PortalEventDetailsMediaComponent
+  }
 ];
 
 @NgModule({

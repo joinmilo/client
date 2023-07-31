@@ -16,6 +16,7 @@ import { ContentCardComponent } from './components/content/content-card.componen
 import { MemberCardComponent } from './components/member/member-card.component';
 import { SponsoredDesktopCardComponent } from './components/sponsored/desktop/sponsored-desktop-card.component';
 import { SponsoredCardComponent } from './components/sponsored/sponsored-card.component';
+import { MediaCardComponent } from './components/media/media-card.component';
 
 const components = [
   CardActionsComponent,
@@ -24,6 +25,7 @@ const components = [
   SponsoredCardComponent,
   SponsoredDesktopCardComponent,
   MemberCardComponent,
+  MediaCardComponent
 ];
 
 const framework = [

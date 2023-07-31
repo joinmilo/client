@@ -5,4 +5,5 @@ fragment Media on MediaEntity {
   mimeType
   name
   size
+  modified
 }

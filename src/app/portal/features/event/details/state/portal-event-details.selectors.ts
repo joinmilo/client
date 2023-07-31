@@ -54,3 +54,18 @@ export const selectSchedules = createSelector(
   state => state.schedules
 );
 
+export const selectEventImages = createSelector(
+  selectEventDetails,
+  state => state?.uploads?.filter(upload => upload?.media?.mimeType?.includes('image'))
+);
+
+export const selectEventVideos = createSelector(
+  selectEventDetails,
+  state => state?.uploads?.filter(upload => upload?.media?.mimeType?.includes('video'))
+);
+
+export const selectEventFiles = createSelector(
+  selectEventDetails,
+  state => state?.uploads?.filter(upload => upload?.media?.mimeType?.includes('pdf') || upload?.media?.mimeType?.includes('word'))
+);
+

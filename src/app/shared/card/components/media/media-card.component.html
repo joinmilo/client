@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-header [ngSwitch]="mimeType">
+    <img
+      *ngSwitchCase="'IMAGE'"
+      alt="media-card"
+      (click)="openImage(media)"
+      [appMedia]="media" />
+
+    <video
+      *ngSwitchCase="'VIDEO'"
+      width="500"
+      controls>
+      <source
+        [type]="media?.mimeType"
+        [appMedia]="media"/>
+    </video>
+
+    <fa-icon
+      *ngSwitchCase="'WORD'"
+      [icon]="['far', 'file-word']">
+    </fa-icon>
+
+    <fa-icon
+      *ngSwitchCase="'PDF'"
+      [icon]="['far', 'file-pdf']">
+    </fa-icon>
+
+  </mat-card-header>
+  <mat-card-content>
+    <section>
+      <h3>{{name()}}</h3>
+      <button mat-button (click)="download()" *ngIf="mimeType !== 'VIDEO'">
+        <div>
+          <fa-icon [icon]="['fas', 'download']"></fa-icon>
+        </div>
+    </button>
+    </section>
+    <app-date-piece *ngIf="media?.modified" [dateTime]="false" [date]="media?.modified"></app-date-piece>
+  </mat-card-content>
+</mat-card>

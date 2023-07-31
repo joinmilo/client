@@ -42,6 +42,7 @@ import { portalEventDetailsStateKey } from './constants/event-details.constant';
 import { PortalEventDetailsRoutingModule } from './portal-event-details-routing.module';
 import { PortalEventDetailsEffects } from './state/portal-event-details.effects';
 import { portalEventDetailsReducer } from './state/portal-event-details.reducer';
+import { PortalEventDetailsMediaComponent } from './components/media/portal-event-details-media.component';
 
 const components = [
   PortalEventDetailsComponent,
@@ -55,6 +56,7 @@ const components = [
   PortalEventDetailsRatingComponent,
   PortalEventDetailsSummaryComponent,
   PortalEventDetailsFriendsShowComponent,
+  PortalEventDetailsMediaComponent
 ];
 
 const framework = [
