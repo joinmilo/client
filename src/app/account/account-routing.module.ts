@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { slug } from '../core/constants/core.constants';
 import { NotFoundComponent } from '../shared/pages/not-found/component/not-found.component';
 import { LoginRequiredComponent } from './components/login-required/login-required.component';
+import { LoginStepperComponent } from './components/login-stepper/login-stepper.component';
 import { LoginComponent } from './components/login/login.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'login-stepper',
+    component: LoginStepperComponent
+  },
+  {
     path: 'password',
     component: PasswordSendMailComponent
   },
@@ -43,8 +48,7 @@ const routes: Routes = [
     path: `verification/:${slug}`,
     component: VerificationComponent
   },
-];
-
+]
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

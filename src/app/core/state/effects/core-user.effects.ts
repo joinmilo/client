@@ -7,11 +7,12 @@ import { FeedbackService } from '../../services/feedback.service';
 import { CoreActions } from '../actions/core.actions';
 
 import { Router } from '@angular/router';
-import { Action } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { accountUrl, refreshKey } from '../../constants/core.constants';
 import { AuthService } from '../../services/auth.service';
 import { FeedbackType } from '../../typings/feedback';
 import { CoreUserActions } from '../actions/core-user.actions';
+import { selectCurrentUser } from '../selectors/user.selectors';
 
 @Injectable()
 export class CoreUserEffects {
@@ -51,8 +52,14 @@ export class CoreUserEffects {
       type: FeedbackType.Success,
       labelMessage: 'youreLoggedIn'
     })),
-    tap(() => this.router.navigate([''])), //TODO: Route to admin or user portal
-  ));
+    switchMap(() => this.store.select(selectCurrentUser).pipe(
+      tap(currentUser => {
+        currentUser?.user?.lastLoggedIn 
+        ? this.router.navigate([''])  
+          : this.router.navigate([`/${accountUrl}`, 'login-stepper']);
+      })
+    ))
+  ), { dispatch: false });
 
   logout = createEffect(() => this.actions.pipe(
     ofType(CoreUserActions.logout),
@@ -82,5 +89,6 @@ export class CoreUserEffects {
     private feedbackService: FeedbackService,
     private getMeService: GetMeGQL,
     private router: Router,
+    private store: Store
     ) { }
 }

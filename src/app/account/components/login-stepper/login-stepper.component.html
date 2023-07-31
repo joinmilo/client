@@ -1,0 +1,53 @@
+<mat-stepper orientation="vertical" #stepper>
+  <mat-step [stepControl]="form">
+    <form [formGroup]="form">
+      <ng-template appLabel="firstName"></ng-template>
+        <mat-form-field appearance="outline">
+          <app-label matStepLabel appLabel="whatIsYourName"></app-label>
+          <mat-label appLabel="firstName"></mat-label>
+          <input matInput formControlName="firstName" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="lastName"></mat-label>
+          <input matInput formControlName="lastName" required>
+        </mat-form-field>
+      <div>
+        <button mat-button matStepperNext appLabel="next"></button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="form">
+    <form [formGroup]="form">
+      <ng-template matStepLabel appLabel="whatIsYourPhoneNumber"></ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="phone"></mat-label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious appLabel="previous"></button>
+        <button mat-button matStepperNext appLabel="next"></button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="form">
+    <form [formGroup]="form">
+      <ng-template matStepLabel appLabel=""></ng-template>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="lastName"></mat-label>
+        <input matInput formControlName="lastName" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious appLabel="previous"></button>
+        <button mat-button matStepperNext appLabel="next"></button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
