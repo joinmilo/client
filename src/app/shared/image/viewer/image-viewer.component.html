@@ -1,3 +1,33 @@
-<div mat-dialog-content>
-  <img [appMedia]="media" />
+<button mat-button (click)="closeDialog()">
+  <fa-icon size="2x" [icon]="['fas', 'xmark']"></fa-icon>
+</button>
+
+<div (click)="closeDialog()">
+  <button mat-button (click)="navigate(-1); $event.stopPropagation()" [disabled]="isFirstImage()">
+    <fa-icon size="2xl" [icon]="['fas', 'chevron-left']"></fa-icon>
+  </button>
+
+  <ng-container [ngSwitch]="mimeType(getCurrentImage())">
+
+    <audio *ngSwitchCase="'AUDIO'" controls>
+      <source [appMedia]="getCurrentImage()" [type]="getCurrentImage().mimeType">
+    </audio>
+
+    <img *ngSwitchCase="'IMAGE'" [appMedia]="getCurrentImage()"/>
+
+    <app-file-card *ngSwitchCase="'PDF'" [media]="getCurrentImage()">
+    </app-file-card>
+
+    <app-file-card *ngSwitchCase="'WORD'" [media]="getCurrentImage()">
+    </app-file-card>
+
+    <video *ngSwitchCase="'VIDEO'" width="900" controls>
+      <source [appMedia]="getCurrentImage()" [type]="getCurrentImage().mimeType">
+    </video>
+
+  </ng-container>
+
+  <button mat-button (click)="navigate(1); $event.stopPropagation()" [disabled]="isLastImage()">
+    <fa-icon size="2xl" [icon]="['fas', 'chevron-right']"></fa-icon>
+  </button>
 </div>

@@ -16,7 +16,6 @@ import { FileUploadComponent } from './components/upload/file-upload.component';
 
 
 const components = [
-  FileCardComponent,
   FileSliderComponent,
   FileUploadComponent,
   FileFormComponent,
@@ -38,6 +37,7 @@ const modules = [
   SliderComponent,
   SliderHeaderComponent,
   TitleModule,
+  FileCardComponent,
 ];
 
 const libs = [

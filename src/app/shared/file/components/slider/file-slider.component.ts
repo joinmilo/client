@@ -48,11 +48,13 @@ export class FileSliderComponent {
     return mimeTypeDefinition(element);
   }
 
-  public openImage(image?: Maybe<MediaEntity>): void {
+  public openMedia(index: number): void {
     this.dialog.open(ImageViewerComponent, {
-      data: image,
+      width: "100vw",
+      height: "100vh",
+      maxWidth: "100vw",
+      data: {media: this.media, currentIndex: index},
+      panelClass: "transparent-dialog"
     });
   }
-
-
 }

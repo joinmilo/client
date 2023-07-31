@@ -34,6 +34,7 @@ fragment Article on ArticleEntity {
 
   created
   modified
+  
   publicAuthor {
     ...PublicAuthor
   }

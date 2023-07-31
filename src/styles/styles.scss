@@ -104,3 +104,11 @@ figure {
     @include mat.typography-level($typography, 'headline-2');
   }
 }
+
+.transparent-dialog {
+  .mat-mdc-dialog-container .mat-mdc-dialog-surface {
+    background-color: transparent;
+    box-shadow: none;
+    max-width: none;
+  }
+}
