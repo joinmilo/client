@@ -1,9 +1,9 @@
-div {
+:host {
   display: flex;
   flex-direction: column;
   min-width: 15rem;
   max-width: 30rem;
-  padding-bottom: var(--gap);
+  // padding-bottom: 1rem;
 
   mat-form-field {
     max-width: 95%;
@@ -13,12 +13,37 @@ div {
   h1, p {
     text-align: center;
   }
-}
 
-section {
-  display: flex;
-  align-items: center;
-  fa-icon {
-    color: var(--color-primary-contrast-900);
+  mat-dialog-actions {
+    section {
+        display: flex;
+        align-items: center;
+
+        fa-icon {
+          color: var(--color-primary-contrast-900);
+        }
+      }
+  }
+
+  .scroll {
+    max-height: 15rem;
+    overflow-y: auto;
+
+    div {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding: 0 5%;    
+  
+      span {
+        margin-right: auto;
+      }
+  
+      app-avatar {
+        min-width: 3rem;
+        height: 3rem;
+      }
+    }
   }
 }

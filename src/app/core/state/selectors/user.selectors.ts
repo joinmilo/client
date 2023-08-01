@@ -30,8 +30,8 @@ export const selectFriendRequests = createSelector(
   selectCurrentUser,
   user => {
     const friendRequester = user?.friendAddressee
-  ?.filter((requester) => !requester?.accepted)
-  ?.map((requester) => requester?.requester);
+      ?.filter((requester) => !requester?.accepted)
+      ?.map((requester) => requester?.requester);
   
   return friendRequester as UserContextEntity[]
 });
@@ -40,8 +40,8 @@ export const selectSentRequests = createSelector(
   selectCurrentUser,
   user => {
     const sentRequests = user?.friendRequester
-  ?.filter((addressee) => !addressee?.accepted)
-  ?.map((addressee) => addressee?.addressee)
+      ?.filter((addressee) => !addressee?.accepted)
+      ?.map((addressee) => addressee?.addressee)
 
   return sentRequests as UserContextEntity[]
 });

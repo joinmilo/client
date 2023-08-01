@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from "@angular/core";
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { Maybe, UserContextEntity } from 'src/schema/schema';
+import { PortalFriendsActions } from '../../state/portal-friends.actions';
 
 @Component({
   selector: 'app-portal-add-friends',
@@ -16,16 +18,24 @@ export class PortalAddFriendsComponent implements OnInit{
 
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public users: Maybe<UserContextEntity>[]) { }
+    public users: Maybe<UserContextEntity>[],
+    public store: Store) { 
+    }
 
   public ngOnInit(): void {
     this.allPortalUsers = this.users;
   }
 
-  public allUsers(value: string): void{
-    this.allPortalUsers = 
-      this.users?.filter(user => (user?.user?.firstName + '' + user?.user?.lastName)
-        ?.toLowerCase().includes(value.toLowerCase().replace(/\s/g, '')));
+  // public filterUsers(value: string): void{
+  //   this.allPortalUsers = 
+  //     this.users?.filter(user => (user?.user?.firstName + '' + user?.user?.lastName)
+  //       ?.toLowerCase().includes(value.toLowerCase().replace(/\s/g, '')));
+
+  //   this.store.dispatch(PortalFriendsActions.getUsers({filter: this.value}))
+  // }
+  
+  public filterUsers(value: string): void{
+    this.store.dispatch(PortalFriendsActions.getUsers())
   }
 
   public toggleSelectedFriend(user: Maybe<UserContextEntity>, checked: boolean): void {

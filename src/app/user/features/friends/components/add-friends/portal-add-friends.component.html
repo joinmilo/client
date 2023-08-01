@@ -1,41 +1,41 @@
-<div>
-  <mat-dialog-actions align="end">
-    <button mat-button [mat-dialog-close]="true">
-      <fa-icon [icon]="['fas', 'xmark']"></fa-icon>
-    </button>
-  </mat-dialog-actions>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true">
+    <fa-icon [icon]="['fas', 'xmark']"></fa-icon>
+  </button>
+</mat-dialog-actions>
 
-  <h1 class="mat-headline-6" appLabel="addFriends"></h1>
+<h1 class="mat-headline-6" appLabel="addFriends"></h1>
 
-  <mat-dialog-content>
-    <p appLabel="findYourFriends"></p>
-    <p appLabel="showFriendsAtEvents"></p>
-  </mat-dialog-content>
+<mat-dialog-content>
+  <p appLabel="findYourFriends"></p>
+  <p appLabel="showFriendsAtEvents"></p>
+</mat-dialog-content>
 
-  <mat-form-field appearance="outline">
-    <mat-label appLabel="search"></mat-label>
-    <input matInput type="text" [(ngModel)]="value" (input)="allUsers(value)">
-    <button *ngIf="!value" matSuffix mat-icon-button>
-      <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
-    </button>
-    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" (click)="allUsers(value)">
-      <fa-icon [icon]="['fas', 'close']"></fa-icon>
-    </button>
-  </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label appLabel="search"></mat-label>
+  <input matInput type="text" [(ngModel)]="value" (input)="filterUsers(value)">
+  <button *ngIf="!value" matSuffix mat-icon-button>
+    <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+  </button>
+  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" (click)="filterUsers(value)">
+    <fa-icon [icon]="['fas', 'close']"></fa-icon>
+  </button>
+</mat-form-field>
 
+<div class="scroll">
   <div *ngFor="let portalUser of allPortalUsers">
     <app-avatar [user]="portalUser"></app-avatar>
     <span>{{portalUser?.user?.firstName + ' ' + portalUser?.user?.lastName}}</span>
     <mat-checkbox [checked]="selectedPortalUsers.includes(portalUser)" (change)="toggleSelectedFriend(portalUser, $event.checked)">
     </mat-checkbox>
   </div>
-
-  <mat-dialog-actions align="center">
-    <button mat-flat-button color="primary">
-      <section>
-        <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>
-        <span appLabel="sendFriendRequest"></span>
-      </section>
-    </button>
-  </mat-dialog-actions>
 </div>
+
+<mat-dialog-actions align="center">
+  <button mat-flat-button color="primary">
+    <section>
+      <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>
+      <span appLabel="sendFriendRequest"></span>
+    </section>
+  </button>
+</mat-dialog-actions>
