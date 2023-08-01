@@ -3,7 +3,7 @@
 </button>
 
 <div (click)="closeDialog()">
-  <button mat-button (click)="navigate(-1); $event.stopPropagation()" [disabled]="isFirstImage()">
+  <button mat-button (click)="previous($event);">
     <fa-icon size="2xl" [icon]="['fas', 'chevron-left']"></fa-icon>
   </button>
 
@@ -27,7 +27,7 @@
 
   </ng-container>
 
-  <button mat-button (click)="navigate(1); $event.stopPropagation()" [disabled]="isLastImage()">
+  <button mat-button (click)="next($event);">
     <fa-icon size="2xl" [icon]="['fas', 'chevron-right']"></fa-icon>
   </button>
 </div>

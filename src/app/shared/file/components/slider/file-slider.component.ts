@@ -1,16 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Maybe, MediaEntity } from 'src/schema/schema';
-import { ImageViewerComponent } from '../../../image/viewer/image-viewer.component';
-import { FileAction, MimeTypeDefinition } from '../../typings/file';
+import { FileAction, FileViewerData, MimeTypeDefinition } from '../../typings/file';
 import { fileToMedia, mimeTypeDefinition } from '../../utils/file.utils';
+import { FileViewerComponent } from '../viewer/file-viewer.component';
 
 @Component({
   selector: 'app-file-slider',
   templateUrl: './file-slider.component.html',
   styleUrls: ['./file-slider.component.scss'],
 })
-
 export class FileSliderComponent {
 
   @Input()
@@ -49,12 +48,16 @@ export class FileSliderComponent {
   }
 
   public openMedia(index: number): void {
-    this.dialog.open(ImageViewerComponent, {
-      width: "100vw",
-      height: "100vh",
-      maxWidth: "100vw",
-      data: {media: this.media, currentIndex: index},
-      panelClass: "transparent-dialog"
+    this.dialog.open(FileViewerComponent, {
+      width: '100vw',
+      height: '100vh',
+      maxWidth: '100vw',
+      data: {
+        media: this.media,
+        currentIndex: index
+      } as FileViewerData,
+      panelClass: 'transparent-dialog',
+      autoFocus: false,
     });
   }
 }

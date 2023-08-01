@@ -13,12 +13,15 @@ import { FileCardComponent } from './components/card/file-card.component';
 import { FileFormComponent } from './components/form/file-form.component';
 import { FileSliderComponent } from './components/slider/file-slider.component';
 import { FileUploadComponent } from './components/upload/file-upload.component';
+import { FileViewerComponent } from './components/viewer/file-viewer.component';
 
 
 const components = [
+  FileCardComponent,
+  FileFormComponent,
   FileSliderComponent,
   FileUploadComponent,
-  FileFormComponent,
+  FileViewerComponent,
 ];
 
 const framework = [
@@ -37,7 +40,6 @@ const modules = [
   SliderComponent,
   SliderHeaderComponent,
   TitleModule,
-  FileCardComponent,
 ];
 
 const libs = [

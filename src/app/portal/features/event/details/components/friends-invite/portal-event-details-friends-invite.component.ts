@@ -28,7 +28,7 @@ export class PortalEventDetailsFriendsInviteComponent implements OnInit {
   }
 
   public toggleAllFriends(checked: boolean) {
-    this.selectedFriends =  checked
+    this.selectedFriends = checked
       ? this.friends 
       : [];
   }
@@ -40,6 +40,6 @@ export class PortalEventDetailsFriendsInviteComponent implements OnInit {
   }
 
   public sendNotification(): void {
-    throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.'); //TODO
   }
 }

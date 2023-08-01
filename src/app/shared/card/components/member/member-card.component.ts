@@ -21,6 +21,5 @@ export class MemberCardComponent implements OnInit {
     if (this.entity && this.data) {
       this.element = dataToElement(this.entity, this.data);
     }
-    console.log(this.element)
   }
 }

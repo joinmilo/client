@@ -1,3 +1,5 @@
+import { MediaEntity } from 'src/schema/schema';
+
 export type MimeTypeDefinition = 'AUDIO'
   | 'IMAGE'
   | 'PDF'
@@ -6,3 +8,8 @@ export type MimeTypeDefinition = 'AUDIO'
 
 export type FileAction = 'DOWNLOAD'
   | 'DELETE';
+
+export type FileViewerData = {
+  media: MediaEntity[],
+  currentIndex?: number
+};
