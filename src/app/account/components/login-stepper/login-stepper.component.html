@@ -1,9 +1,10 @@
 <mat-stepper orientation="vertical" #stepper>
   <mat-step [stepControl]="form">
     <form [formGroup]="form">
-      <ng-template appLabel="firstName"></ng-template>
+      <ng-template matStepLabel >
+        <span appLabel="firstName"></span>
+      </ng-template>
         <mat-form-field appearance="outline">
-          <app-label matStepLabel appLabel="whatIsYourName"></app-label>
           <mat-label appLabel="firstName"></mat-label>
           <input matInput formControlName="firstName" required>
         </mat-form-field>
