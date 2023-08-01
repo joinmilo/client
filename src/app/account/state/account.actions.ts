@@ -1,5 +1,5 @@
 import { createActionGroup } from '@ngrx/store';
-import { Maybe, UserEntity, UserEntityInput } from 'src/schema/schema';
+import { Maybe, UserContextEntity, UserContextEntityInput, UserEntity, UserEntityInput } from 'src/schema/schema';
 
 export const AccountActions = createActionGroup({
   source: 'Account',
@@ -13,6 +13,9 @@ export const AccountActions = createActionGroup({
     'verify': (token: Maybe<string>) => ({ token }),
     'verified': (verified: boolean | null | undefined) => ({ verified }),
     'send mail verification': (email: Maybe<string> | undefined) => ({ email }),
+
+    'save': (entity: UserContextEntityInput) => ({ entity }),
+    'saved': (entity: UserContextEntity) => ({ entity }),
   },
 });
 

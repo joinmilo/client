@@ -1,9 +1,10 @@
-<mat-stepper orientation="vertical" #stepper>
+<mat-vertical-stepper linear="true" orientation="vertical" #stepper>
   <mat-step [stepControl]="form">
     <form [formGroup]="form">
-      <ng-template matStepLabel >
-        <span appLabel="firstName"></span>
+      <ng-template matStepLabel>
+        <span appLabel="whatIsYourName"></span>
       </ng-template>
+      <div>
         <mat-form-field appearance="outline">
           <mat-label appLabel="firstName"></mat-label>
           <input matInput formControlName="firstName" required>
@@ -12,6 +13,7 @@
           <mat-label appLabel="lastName"></mat-label>
           <input matInput formControlName="lastName" required>
         </mat-form-field>
+      </div>
       <div>
         <button mat-button matStepperNext appLabel="next"></button>
       </div>
@@ -19,11 +21,15 @@
   </mat-step>
   <mat-step [stepControl]="form">
     <form [formGroup]="form">
-      <ng-template matStepLabel appLabel="whatIsYourPhoneNumber"></ng-template>
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="phone"></mat-label>
-        <input matInput formControlName="phone">
-      </mat-form-field>
+      <ng-template matStepLabel>
+        <span appLabel="whatIsYourPhoneNumber"></span>
+      </ng-template>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="phone"></mat-label>
+          <input matInput formControlName="phone">
+        </mat-form-field>
+      </div>
       <div>
         <button mat-button matStepperPrevious appLabel="previous"></button>
         <button mat-button matStepperNext appLabel="next"></button>
@@ -32,11 +38,31 @@
   </mat-step>
   <mat-step [stepControl]="form">
     <form [formGroup]="form">
-      <ng-template matStepLabel appLabel=""></ng-template>
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="lastName"></mat-label>
-        <input matInput formControlName="lastName" required>
-      </mat-form-field>
+      <ng-template matStepLabel>
+        <span appLabel="whatIsYourAddress"></span>
+      </ng-template>
+      <div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label appLabel="street"></mat-label>
+            <input matInput formControlName="street">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label appLabel="houseNumber"></mat-label>
+            <input matInput formControlName="houseNumber">
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label appLabel="postalCode"></mat-label>
+            <input matInput formControlName="postalCode">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label appLabel="place"></mat-label>
+            <input matInput formControlName="place">
+          </mat-form-field>
+        </div>
+      </div>
       <div>
         <button mat-button matStepperPrevious appLabel="previous"></button>
         <button mat-button matStepperNext appLabel="next"></button>
@@ -44,11 +70,11 @@
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+    <ng-template matStepLabel>
+      <span appLabel="done"></span>
+    </ng-template>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+     <button mat-button [routerLink]="['/']" appLabel="save" (click)="saveData()"></button>
     </div>
   </mat-step>
-</mat-stepper>
+</mat-vertical-stepper>

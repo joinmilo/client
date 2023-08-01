@@ -1,5 +1,6 @@
 mutation saveUser($entity: UserContextEntityInput!) {
   saveUserContext(entity: $entity) {
+    ...UserContext
     user {
       ...User
     }

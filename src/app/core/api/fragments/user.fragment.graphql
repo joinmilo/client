@@ -5,4 +5,19 @@ fragment User on UserEntity {
   email
   verified
   lastLoggedIn
+  userContext{
+    uploads{
+      profilePicture
+      media {
+      ...Media
+      }
+    }
+
+    address {
+    street
+    houseNumber
+    postalCode
+    place
+    }
+  }
 }

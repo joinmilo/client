@@ -11,6 +11,11 @@ fragment UserContext on UserContextEntity {
       name
     }
   }
+
+  address {
+     ...Address
+  }
+
   articles {
     ...Article
   }
@@ -64,6 +69,7 @@ fragment UserContext on UserContextEntity {
     firstName
     lastName
     email
+    lastLoggedIn
     notifications {
       ...Notification
     }

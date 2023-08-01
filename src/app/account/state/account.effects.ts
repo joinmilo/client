@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, switchMap, tap } from 'rxjs';
 import { accountUrl } from 'src/app/core/constants/core.constants';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL, SendVerificationGQL, UserEntity, VerifyUserGQL } from '../../../schema/schema';
+import { ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL, SendVerificationGQL, UserContextEntity, UserEntity, VerifyUserGQL } from '../../../schema/schema';
 import { CoreActions } from '../../core/state/actions/core.actions';
 import { AccountActions } from './account.actions';
 
@@ -89,6 +89,25 @@ export class AccountEffects {
       }))
     )
   );
+
+  save = createEffect(() => this.actions.pipe(
+    ofType(AccountActions.save),
+    switchMap((action) => this.saveUserService.mutate({
+      entity: {
+        user: action.entity
+      }
+    })),
+    map(response => AccountActions.saved(response.data?.saveUserContext as UserContextEntity))
+  ));
+
+  saved = createEffect(() => this.actions.pipe(
+    ofType(AccountActions.saved),
+    tap(() => this.router.navigate(['/'])),
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'dataSaved'
+    }))
+  ));
 
   constructor(
     private router: Router,
