@@ -23,20 +23,24 @@ export class MediaGalleryComponent {
 
   @Input()
   public set media(media: Maybe<Maybe<MediaEntity | undefined>[] | undefined>) {
+    this.files = [];
+    this.images = [];
+    this.videos = [];
+    
     media?.forEach(element => {
       if (element?.mimeType?.includes('image')) {
-        this.images.push(element);
+        this.images?.push(element);
       } else if (element?.mimeType?.includes('video')) {
-        this.videos.push(element);
+        this.videos?.push(element);
       } else {
-        this.files.push(element);
+        this.files?.push(element);
       }
     });
   }
 
-  public files: Maybe<MediaEntity | undefined>[] = [];
-  public images: Maybe<MediaEntity | undefined>[] = [];
-  public videos: Maybe<MediaEntity | undefined>[] = [];
+  public files?: Maybe<MediaEntity | undefined>[];
+  public images?: Maybe<MediaEntity | undefined>[];
+  public videos?: Maybe<MediaEntity | undefined>[];
 
   public fileType = MediaDisplayType.Image;
 
