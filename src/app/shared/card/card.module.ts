@@ -4,10 +4,9 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-import { MatMenuModule } from '@angular/material/menu';
 import { CoreModule } from 'src/app/core/core.module';
 import { ShareModule } from '../share/share.module';
 import { CardActionsComponent } from './components/actions/card-actions.component';
@@ -16,7 +15,6 @@ import { ContentCardComponent } from './components/content/content-card.componen
 import { MemberCardComponent } from './components/member/member-card.component';
 import { SponsoredDesktopCardComponent } from './components/sponsored/desktop/sponsored-desktop-card.component';
 import { SponsoredCardComponent } from './components/sponsored/sponsored-card.component';
-import { MediaCardComponent } from './components/media/media-card.component';
 
 const components = [
   CardActionsComponent,
@@ -25,7 +23,6 @@ const components = [
   SponsoredCardComponent,
   SponsoredDesktopCardComponent,
   MemberCardComponent,
-  MediaCardComponent
 ];
 
 const framework = [

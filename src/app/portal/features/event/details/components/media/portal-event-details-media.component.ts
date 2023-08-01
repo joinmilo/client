@@ -1,15 +1,15 @@
 import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
+import { slug } from 'src/app/core/constants/core.constants';
 import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
 import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
-import { selectEventFiles, selectEventImages, selectEventVideos } from '../../state/portal-event-details.selectors';
-import { ActivatedRoute } from '@angular/router';
-import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
-import { slug } from 'src/app/core/constants/core.constants';
+import { MimeTypeDefinition } from 'src/app/shared/media/typings/media';
+import { mimeTypeDefinition } from 'src/app/shared/media/utils/media.utils';
 import { Maybe, MediaEntity } from 'src/schema/schema';
-import { MimeTypeDefinition } from 'src/app/shared/file/typings/file';
-import { mimeTypeDefinition } from 'src/app/shared/file/utils/file.utils';
+import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
+import { selectEventMedia } from '../../state/portal-event-details.selectors';
 
 @Component({
   selector: 'app-portal-event-details-media',
@@ -39,10 +39,7 @@ export class PortalEventDetailsMediaComponent implements OnDestroy {
     }
   ];
 
-
-  public eventImages = this.store.select(selectEventImages);
-  public eventVideos = this.store.select(selectEventVideos);
-  public eventFiles = this.store.select(selectEventFiles);
+  public media = this.store.select(selectEventMedia);
 
   constructor(
     private activatedRoute: ActivatedRoute,

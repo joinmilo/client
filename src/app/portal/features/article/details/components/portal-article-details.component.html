@@ -4,7 +4,7 @@
     <app-category-piece [category]="article?.category" [url]="['/portal', categoryUrl]"
       [queryParam]="categoryQueryParams">
     </app-category-piece>
-    <section class="details-action-box">
+    <section class="card-box">
       <app-share-button>
       </app-share-button>
 
@@ -27,8 +27,8 @@
     <app-portal-article-details-author *ngIf="article?.author">
     </app-portal-article-details-author>
 
-    <app-file-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
-    </app-file-slider>
+    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </app-media-slider>
 
     <app-portal-article-details-rating>
     </app-portal-article-details-rating>

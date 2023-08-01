@@ -1,14 +1,16 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { MediaEntity } from 'src/schema/schema';
+import { fileToMedia } from '../../utils/media.utils';
 
 @Component({
-  selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.scss'],
+  selector: 'app-media-upload',
+  templateUrl: './media-upload.component.html',
+  styleUrls: ['./media-upload.component.scss'],
 })
-export class FileUploadComponent {
+export class MediaUploadComponent {
 
   @Output()
-  public uploads: EventEmitter<File[]> = new EventEmitter();
+  public uploads: EventEmitter<MediaEntity[]> = new EventEmitter();
 
   @Input()
   public disabled = false;
@@ -35,7 +37,7 @@ export class FileUploadComponent {
     evt.stopPropagation();
     this.isDraggedOver = false;
 
-    if ((!this.disabled)
+    if (!this.disabled
       && evt?.dataTransfer?.files?.length) {
         this.addFiles(evt.dataTransfer.files);
     }
@@ -49,7 +51,7 @@ export class FileUploadComponent {
   }
 
   public addFiles(fileList: FileList) {
-    this.uploads.emit(Array.from(fileList));  
+    this.uploads.emit(Array.from(fileList).map(file => fileToMedia(file))); 
   }
 
 }

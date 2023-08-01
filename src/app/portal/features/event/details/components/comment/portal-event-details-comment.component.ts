@@ -18,7 +18,7 @@ export class PortalEventDetailsCommentComponent {
     private store: Store) { }
 
   public saveComment(content: string): void {
-    this.store.dispatch(PortalEventDetailsActions.saveEventComment({
+    this.store.dispatch(PortalEventDetailsActions.saveComment({
       content,
     }));
   }

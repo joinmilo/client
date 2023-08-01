@@ -1,5 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { distinctStartDates } from 'src/app/core/utils/schedule.utils';
 import { MarkerDefinition } from 'src/app/shared/map/typings/map';
 import { portalOrganisationOverviewStateKey } from '../constants/portal-organisation-overview.constants';
 import { SuburbOrganisation } from '../typings/portal-overview-organisation-suburb';
@@ -44,14 +43,4 @@ export const selectOverviewDataMarkers = createSelector(
 export const selectParams = createSelector(
   selectPortalOrganisationOverviewState,
   state => state.params
-);
-
-export const selectSchedules = createSelector(
-  selectPortalOrganisationOverviewState,
-  state => state.schedules
-);
-
-export const selectDistinctSchedules = createSelector(
-  selectSchedules,
-  schedules => distinctStartDates(schedules)
 );

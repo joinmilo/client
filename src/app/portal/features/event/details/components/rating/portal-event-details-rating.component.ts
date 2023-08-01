@@ -20,7 +20,7 @@ export class PortalEventDetailsRatingComponent {
     private store: Store) { }
 
   public saveRating(score: number): void {
-    this.store.dispatch(PortalEventDetailsActions.saveEventRating({
+    this.store.dispatch(PortalEventDetailsActions.saveRating({
       score,
     }));
   }

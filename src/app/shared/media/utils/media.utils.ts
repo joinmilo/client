@@ -1,5 +1,5 @@
 import { Maybe, MediaEntity } from 'src/schema/schema';
-import { MimeTypeDefinition } from '../typings/file';
+import { MimeTypeDefinition } from '../typings/media';
 
 export const fileToMedia = (file?: Maybe<File>) => {
   return ({

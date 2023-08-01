@@ -9,7 +9,7 @@ export type MimeTypeDefinition = 'AUDIO'
 export type FileAction = 'DOWNLOAD'
   | 'DELETE';
 
-export type FileViewerData = {
+export type MediaViewerData = {
   media: MediaEntity[],
   currentIndex?: number
 };

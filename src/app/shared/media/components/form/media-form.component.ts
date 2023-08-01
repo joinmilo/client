@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
+import { MediaEntity } from 'src/schema/schema';
 
 @Component({
-  selector: 'app-file-form',
-  templateUrl: './file-form.component.html',
-  styleUrls: ['./file-form.component.scss'],
+  selector: 'app-media-form',
+  templateUrl: './media-form.component.html',
+  styleUrls: ['./media-form.component.scss'],
   // providers: [
   //   {
   //     provide: NG_VALUE_ACCESSOR,
@@ -15,22 +16,22 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
   //   }
   // ],
 })
-export class FileFormComponent {
+export class MediaFormComponent {
 
   @Output()
-  public uploads: EventEmitter<File[]> = new EventEmitter();
+  public uploads: EventEmitter<MediaEntity[]> = new EventEmitter();
 
   @Input()
   public maxFiles? = 5;
 
   @Input()
-  public maxFileSize = 1024 * 1024 * 4 //4mb
+  public maxFileSize = 1024 * 1024 * 10 //10mb
 
-  public files: File[] = [];
+  public media: MediaEntity[] = [];
 
   public labelVariables = new Map([
     ['maxFiles', this.maxFiles?.toString()],
-    ['maxFileSize', '4mb']
+    ['maxFileSize', '10mb']
   ]);
 
   public notBeLargerLabel = 'filesCannotBeLargerThanX';
@@ -40,18 +41,18 @@ export class FileFormComponent {
     private store: Store,
   ) { }
 
-  public addFiles(newFiles: File[]) {
+  public addFiles(newMedia: MediaEntity[]) {
 
-    const files = [...this.files, ...newFiles];
+    const media = [...this.media, ...newMedia];
 
-    if (newFiles.some(file => file.size > this.maxFileSize)) {
+    if (newMedia.some(element => element.size > this.maxFileSize)) {
       this.store.dispatch(CoreActions.setFeedback({
         type: FeedbackType.Error,
         labelMessage: this.notBeLargerLabel,
         labelAction: 'chooseOtherFile',
         labelVariables: this.labelVariables,
       }));
-    } else if (this.maxFiles && files?.length > this.maxFiles) {
+    } else if (this.maxFiles && media?.length > this.maxFiles) {
       this.store.dispatch(CoreActions.setFeedback({
         type: FeedbackType.Error,
         labelMessage: this.notMoreThanLabel,
@@ -60,15 +61,15 @@ export class FileFormComponent {
       }));
     }
     else {
-      this.files = files;
-      this.uploads.emit(this.files);
+      this.media = media;
+      this.uploads.emit(this.media);
     }
 
   }
 
   public removeFile(fileIndex: number) {
-    this.files.splice(fileIndex, 1);
-    this.uploads.emit(this.files);
+    this.media.splice(fileIndex, 1);
+    this.uploads.emit(this.media);
   }
 
   // public control = new FormControl(false);

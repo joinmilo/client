@@ -7,8 +7,7 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalMenuActions } from 'src/app/portal/shared/menu/state/portal-menu.actions';
-import { DeleteEventAttendeeGQL, EventCommentEntity, EventEntity, EventRatingEntity, EventScheduleEntity, GetEventCommentsGQL, GetEventGQL, GetEventSchedulesGQL, Maybe, QueryOperator, SaveEventAttendeeGQL, SaveEventCommentGQL, SaveEventRatingGQL } from 'src/schema/schema';
-import { ConjunctionOperator } from './../../../../../../schema/schema';
+import { ConjunctionOperator, DeleteEventAttendeeGQL, EventCommentEntity, EventEntity, EventRatingEntity, EventScheduleEntity, GetEventCommentsGQL, GetEventGQL, GetEventSchedulesGQL, Maybe, QueryOperator, SaveEventAttendeeGQL, SaveEventCommentGQL, SaveEventRatingGQL } from 'src/schema/schema';
 import { PortalEventDetailsActions } from './portal-event-details.actions';
 import { selectEventAttendeeConfiguration, selectEventDetails, selectEventUserAttendee, selectEventUserRating } from './portal-event-details.selectors';
 
@@ -30,8 +29,8 @@ export class PortalEventDetailsEffects {
   updateDetails = createEffect(() => this.actions.pipe(
     ofType(PortalEventDetailsActions.attendeeDeleted,
       PortalEventDetailsActions.attendeeSaved,
-      PortalEventDetailsActions.eventRatingSaved,
-      PortalEventDetailsActions.eventCommentSaved
+      PortalEventDetailsActions.ratingSaved,
+      PortalEventDetailsActions.commentSaved
     ),
     withLatestFrom(this.store.select(selectEventDetails)),
     switchMap(([, eventDetails]) => this.getEventService.watch({
@@ -67,8 +66,35 @@ export class PortalEventDetailsEffects {
     map(response => PortalEventDetailsActions.setComments(response.data.getEventComments?.result as Maybe<EventCommentEntity[]>))
   ));
 
-  saveEventRating = createEffect(() => this.actions.pipe(
-    ofType(PortalEventDetailsActions.saveEventRating),
+  saveComment = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.saveComment),
+    withLatestFrom(
+      this.store.select(selectEventDetails),
+      this.store.select(selectCurrentUser),
+    ),
+    map(([action, event, user]) => (
+      {
+        ...action.entity,
+        event: { id: event?.id },
+        userContext: { id: user?.id }
+      }
+    )),
+    switchMap(entity => this.saveCommentService.mutate({
+      entity
+    })),
+    map(response => PortalEventDetailsActions.commentSaved(response.data?.saveEventComment as EventCommentEntity))
+  ));
+
+  commentSaved = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.commentSaved),
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'commentSaved'
+    }))
+  ));
+
+  saveRating = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.saveRating),
     withLatestFrom(
       this.store.select(selectEventDetails),
       this.store.select(selectCurrentUser),
@@ -81,14 +107,14 @@ export class PortalEventDetailsEffects {
           userContext: { id: user?.id}
         }
     ),
-    switchMap((entity) => this.saveEventRatingService.mutate({
+    switchMap((entity) => this.saveRatingService.mutate({
       entity: entity
     })),
-    map(response => PortalEventDetailsActions.eventRatingSaved(response.data?.saveEventRating as EventRatingEntity))
+    map(response => PortalEventDetailsActions.ratingSaved(response.data?.saveEventRating as EventRatingEntity))
   ));
 
-  eventRatingSaved = createEffect(() => this.actions.pipe(
-    ofType(PortalEventDetailsActions.eventRatingSaved),
+  ratingSaved = createEffect(() => this.actions.pipe(
+    ofType(PortalEventDetailsActions.ratingSaved),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'ratingSaved'
@@ -97,7 +123,7 @@ export class PortalEventDetailsEffects {
 
   getSchedules = createEffect(() => this.actions.pipe(
     ofType(PortalEventDetailsActions.getSchedules),
-    switchMap(action => this.getEventSchedulesService.watch({
+    switchMap(action => this.getSchedulesService.watch({
       params: {
         sort: 'created',
         dir: 'desc',
@@ -183,42 +209,15 @@ export class PortalEventDetailsEffects {
     }))
   ));
 
-  saveEventComment = createEffect(() => this.actions.pipe(
-    ofType(PortalEventDetailsActions.saveEventComment),
-    withLatestFrom(
-      this.store.select(selectEventDetails),
-      this.store.select(selectCurrentUser),
-    ),
-    map(([action, event, user]) => (
-      {
-        ...action.entity,
-        event: { id: event?.id },
-        userContext: { id: user?.id }
-      }
-    )),
-    switchMap(entity => this.saveEventCommentService.mutate({
-      entity
-    })),
-    map(response => PortalEventDetailsActions.eventCommentSaved(response.data?.saveEventComment as EventCommentEntity))
-  ));
-
-  eventCommentSaved = createEffect(() => this.actions.pipe(
-    ofType(PortalEventDetailsActions.eventCommentSaved),
-    map(() => CoreActions.setFeedback({
-      type: FeedbackType.Success,
-      labelMessage: 'commentSaved'
-    }))
-  ));
-
   constructor(
     private store: Store,
     private actions: Actions,
     private deleteAttendeeService: DeleteEventAttendeeGQL,
     private getEventService: GetEventGQL,
     private getCommentsService: GetEventCommentsGQL,
-    private getEventSchedulesService: GetEventSchedulesGQL,
+    private getSchedulesService: GetEventSchedulesGQL,
     private saveEventAttendeeService: SaveEventAttendeeGQL,
-    private saveEventRatingService: SaveEventRatingGQL,
-    private saveEventCommentService: SaveEventCommentGQL,
+    private saveRatingService: SaveEventRatingGQL,
+    private saveCommentService: SaveEventCommentGQL,
   ) { }
 }

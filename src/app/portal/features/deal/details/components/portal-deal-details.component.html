@@ -1,7 +1,7 @@
 <div class="details">
   <div class="title-area">
     <app-title-image [image]="titleImage"></app-title-image>
-    <section class="details-action-box">
+    <section class="card-box">
       <app-share-button>
       </app-share-button>
 
@@ -27,8 +27,8 @@
     <app-portal-deal-details-creator *ngIf="deal?.creator">
     </app-portal-deal-details-creator>
 
-    <app-file-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
-    </app-file-slider>
+    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </app-media-slider>
 
     <div class="map-area" #map>
       <app-details-title titleLabel="mapView"></app-details-title>

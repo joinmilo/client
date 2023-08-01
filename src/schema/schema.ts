@@ -392,7 +392,7 @@ export type ContestCommentEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  translatables?: InputMaybe<Array<InputMaybe<ArticleCommentTranslatableEntityInput>>>;
+  translatables?: InputMaybe<Array<InputMaybe<ContestCommentTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
@@ -403,6 +403,13 @@ export type ContestCommentTranslatableEntity = {
   id?: Maybe<Scalars['String']>;
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
+};
+
+export type ContestCommentTranslatableEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
 };
 
 export type ContestEntity = {
@@ -655,6 +662,7 @@ export type DealEntity = {
   creator?: Maybe<UserContextEntity>;
   favoritingUsers?: Maybe<Array<Maybe<UserContextEntity>>>;
   id?: Maybe<Scalars['String']>;
+  isPublic?: Maybe<Scalars['Boolean']>;
   metaDescription?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
@@ -677,6 +685,7 @@ export type DealEntityInput = {
   creator?: InputMaybe<UserContextEntityInput>;
   favoritingUsers?: InputMaybe<Array<InputMaybe<UserContextEntityInput>>>;
   id?: InputMaybe<Scalars['String']>;
+  isPublic?: InputMaybe<Scalars['Boolean']>;
   metaDescription?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
@@ -1421,6 +1430,8 @@ export type Mutation = {
   deleteArticleCategory?: Maybe<Scalars['Boolean']>;
   deleteArticleComment?: Maybe<Scalars['Boolean']>;
   deleteArticleComments?: Maybe<Scalars['Boolean']>;
+  deleteArticleMedia?: Maybe<Scalars['Boolean']>;
+  deleteArticleMedium?: Maybe<Scalars['Boolean']>;
   deleteArticlePublicAuthor?: Maybe<Scalars['Boolean']>;
   deleteArticlePublicAuthors?: Maybe<Scalars['Boolean']>;
   deleteArticleRating?: Maybe<Scalars['Boolean']>;
@@ -1441,6 +1452,8 @@ export type Mutation = {
   deleteDeal?: Maybe<Scalars['Boolean']>;
   deleteDealCategories?: Maybe<Scalars['Boolean']>;
   deleteDealCategory?: Maybe<Scalars['Boolean']>;
+  deleteDealMedia?: Maybe<Scalars['Boolean']>;
+  deleteDealMedium?: Maybe<Scalars['Boolean']>;
   deleteDeals?: Maybe<Scalars['Boolean']>;
   deleteErrorMessage?: Maybe<Scalars['Boolean']>;
   deleteErrorMessages?: Maybe<Scalars['Boolean']>;
@@ -1451,6 +1464,8 @@ export type Mutation = {
   deleteEventCategory?: Maybe<Scalars['Boolean']>;
   deleteEventComment?: Maybe<Scalars['Boolean']>;
   deleteEventComments?: Maybe<Scalars['Boolean']>;
+  deleteEventMedia?: Maybe<Scalars['Boolean']>;
+  deleteEventMedium?: Maybe<Scalars['Boolean']>;
   deleteEventRating?: Maybe<Scalars['Boolean']>;
   deleteEventRatings?: Maybe<Scalars['Boolean']>;
   deleteEventSchedule?: Maybe<Scalars['Boolean']>;
@@ -1474,6 +1489,8 @@ export type Mutation = {
   deleteOrganisation?: Maybe<Scalars['Boolean']>;
   deleteOrganisationComment?: Maybe<Scalars['Boolean']>;
   deleteOrganisationComments?: Maybe<Scalars['Boolean']>;
+  deleteOrganisationMedia?: Maybe<Scalars['Boolean']>;
+  deleteOrganisationMedium?: Maybe<Scalars['Boolean']>;
   deleteOrganisationMember?: Maybe<Scalars['Boolean']>;
   deleteOrganisationMembers?: Maybe<Scalars['Boolean']>;
   deleteOrganisationRating?: Maybe<Scalars['Boolean']>;
@@ -1527,6 +1544,8 @@ export type Mutation = {
   saveArticleCategory?: Maybe<ArticleCategoryEntity>;
   saveArticleComment?: Maybe<ArticleCommentEntity>;
   saveArticleComments?: Maybe<Array<Maybe<ArticleCommentEntity>>>;
+  saveArticleMedia?: Maybe<Array<Maybe<ArticleMediaEntity>>>;
+  saveArticleMedium?: Maybe<ArticleMediaEntity>;
   saveArticlePublicAuthor?: Maybe<ArticlePublicAuthorEntity>;
   saveArticlePublicAuthors?: Maybe<Array<Maybe<ArticlePublicAuthorEntity>>>;
   saveArticleRating?: Maybe<ArticleRatingEntity>;
@@ -1547,6 +1566,8 @@ export type Mutation = {
   saveDeal?: Maybe<DealEntity>;
   saveDealCategories?: Maybe<Array<Maybe<DealCategoryEntity>>>;
   saveDealCategory?: Maybe<DealCategoryEntity>;
+  saveDealMedia?: Maybe<Array<Maybe<DealMediaEntity>>>;
+  saveDealMedium?: Maybe<DealMediaEntity>;
   saveDeals?: Maybe<Array<Maybe<DealEntity>>>;
   saveErrorMessage?: Maybe<ErrorMessageEntity>;
   saveErrorMessages?: Maybe<Array<Maybe<ErrorMessageEntity>>>;
@@ -1557,6 +1578,8 @@ export type Mutation = {
   saveEventCategory?: Maybe<EventCategoryEntity>;
   saveEventComment?: Maybe<EventCommentEntity>;
   saveEventComments?: Maybe<Array<Maybe<EventCommentEntity>>>;
+  saveEventMedia?: Maybe<Array<Maybe<EventMediaEntity>>>;
+  saveEventMedium?: Maybe<EventMediaEntity>;
   saveEventRating?: Maybe<EventRatingEntity>;
   saveEventRatings?: Maybe<Array<Maybe<EventRatingEntity>>>;
   saveEventSchedule?: Maybe<EventScheduleEntity>;
@@ -1580,6 +1603,8 @@ export type Mutation = {
   saveOrganisation?: Maybe<OrganisationEntity>;
   saveOrganisationComment?: Maybe<OrganisationCommentEntity>;
   saveOrganisationComments?: Maybe<Array<Maybe<OrganisationCommentEntity>>>;
+  saveOrganisationMedia?: Maybe<Array<Maybe<OrganisationMediaEntity>>>;
+  saveOrganisationMedium?: Maybe<OrganisationMediaEntity>;
   saveOrganisationMember?: Maybe<OrganisationMemberEntity>;
   saveOrganisationMembers?: Maybe<Array<Maybe<OrganisationMemberEntity>>>;
   saveOrganisationRating?: Maybe<OrganisationRatingEntity>;
@@ -1709,6 +1734,18 @@ export type MutationDeleteArticleCommentsArgs = {
 
 
 /** Mutation root */
+export type MutationDeleteArticleMediaArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteArticleMediumArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
 export type MutationDeleteArticlePublicAuthorArgs = {
   id?: InputMaybe<Scalars['String']>;
 };
@@ -1829,6 +1866,18 @@ export type MutationDeleteDealCategoryArgs = {
 
 
 /** Mutation root */
+export type MutationDeleteDealMediaArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteDealMediumArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
 export type MutationDeleteDealsArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
@@ -1885,6 +1934,18 @@ export type MutationDeleteEventCommentArgs = {
 /** Mutation root */
 export type MutationDeleteEventCommentsArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteEventMediaArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteEventMediumArgs = {
+  id?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2023,6 +2084,18 @@ export type MutationDeleteOrganisationCommentArgs = {
 /** Mutation root */
 export type MutationDeleteOrganisationCommentsArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteOrganisationMediaArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteOrganisationMediumArgs = {
+  id?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2346,6 +2419,18 @@ export type MutationSaveArticleCommentsArgs = {
 
 
 /** Mutation root */
+export type MutationSaveArticleMediaArgs = {
+  entities?: InputMaybe<Array<InputMaybe<ArticleMediaEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveArticleMediumArgs = {
+  entity?: InputMaybe<ArticleMediaEntityInput>;
+};
+
+
+/** Mutation root */
 export type MutationSaveArticlePublicAuthorArgs = {
   entity?: InputMaybe<ArticlePublicAuthorEntityInput>;
 };
@@ -2466,6 +2551,18 @@ export type MutationSaveDealCategoryArgs = {
 
 
 /** Mutation root */
+export type MutationSaveDealMediaArgs = {
+  entities?: InputMaybe<Array<InputMaybe<DealMediaEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveDealMediumArgs = {
+  entity?: InputMaybe<DealMediaEntityInput>;
+};
+
+
+/** Mutation root */
 export type MutationSaveDealsArgs = {
   entities?: InputMaybe<Array<InputMaybe<DealEntityInput>>>;
 };
@@ -2522,6 +2619,18 @@ export type MutationSaveEventCommentArgs = {
 /** Mutation root */
 export type MutationSaveEventCommentsArgs = {
   entities?: InputMaybe<Array<InputMaybe<EventCommentEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveEventMediaArgs = {
+  entities?: InputMaybe<Array<InputMaybe<EventMediaEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveEventMediumArgs = {
+  entity?: InputMaybe<EventMediaEntityInput>;
 };
 
 
@@ -2660,6 +2769,18 @@ export type MutationSaveOrganisationCommentArgs = {
 /** Mutation root */
 export type MutationSaveOrganisationCommentsArgs = {
   entities?: InputMaybe<Array<InputMaybe<OrganisationCommentEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveOrganisationMediaArgs = {
+  entities?: InputMaybe<Array<InputMaybe<OrganisationMediaEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveOrganisationMediumArgs = {
+  entity?: InputMaybe<OrganisationMediaEntityInput>;
 };
 
 
@@ -3313,6 +3434,12 @@ export type PageableList_ArticleEntity = {
   total: Scalars['Long'];
 };
 
+export type PageableList_ArticleMediaEntity = {
+  __typename?: 'PageableList_ArticleMediaEntity';
+  result?: Maybe<Array<Maybe<ArticleMediaEntity>>>;
+  total: Scalars['Long'];
+};
+
 export type PageableList_ArticlePublicAuthorEntity = {
   __typename?: 'PageableList_ArticlePublicAuthorEntity';
   result?: Maybe<Array<Maybe<ArticlePublicAuthorEntity>>>;
@@ -3373,6 +3500,12 @@ export type PageableList_DealEntity = {
   total: Scalars['Long'];
 };
 
+export type PageableList_DealMediaEntity = {
+  __typename?: 'PageableList_DealMediaEntity';
+  result?: Maybe<Array<Maybe<DealMediaEntity>>>;
+  total: Scalars['Long'];
+};
+
 export type PageableList_ErrorMessageEntity = {
   __typename?: 'PageableList_ErrorMessageEntity';
   result?: Maybe<Array<Maybe<ErrorMessageEntity>>>;
@@ -3400,6 +3533,12 @@ export type PageableList_EventCommentEntity = {
 export type PageableList_EventEntity = {
   __typename?: 'PageableList_EventEntity';
   result?: Maybe<Array<Maybe<EventEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_EventMediaEntity = {
+  __typename?: 'PageableList_EventMediaEntity';
+  result?: Maybe<Array<Maybe<EventMediaEntity>>>;
   total: Scalars['Long'];
 };
 
@@ -3466,6 +3605,12 @@ export type PageableList_OrganisationCommentEntity = {
 export type PageableList_OrganisationEntity = {
   __typename?: 'PageableList_OrganisationEntity';
   result?: Maybe<Array<Maybe<OrganisationEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_OrganisationMediaEntity = {
+  __typename?: 'PageableList_OrganisationMediaEntity';
+  result?: Maybe<Array<Maybe<OrganisationMediaEntity>>>;
   total: Scalars['Long'];
 };
 
@@ -3618,6 +3763,8 @@ export type Query = {
   getArticleCategory?: Maybe<ArticleCategoryEntity>;
   getArticleComment?: Maybe<ArticleCommentEntity>;
   getArticleComments?: Maybe<PageableList_ArticleCommentEntity>;
+  getArticleMedia?: Maybe<PageableList_ArticleMediaEntity>;
+  getArticleMedium?: Maybe<ArticleMediaEntity>;
   getArticlePublicAuthor?: Maybe<ArticlePublicAuthorEntity>;
   getArticlePublicAuthors?: Maybe<PageableList_ArticlePublicAuthorEntity>;
   getArticleRating?: Maybe<ArticleRatingEntity>;
@@ -3638,6 +3785,8 @@ export type Query = {
   getDeal?: Maybe<DealEntity>;
   getDealCategories?: Maybe<PageableList_DealCategoryEntity>;
   getDealCategory?: Maybe<DealCategoryEntity>;
+  getDealMedia?: Maybe<PageableList_DealMediaEntity>;
+  getDealMedium?: Maybe<DealMediaEntity>;
   getDeals?: Maybe<PageableList_DealEntity>;
   getErrorMessage?: Maybe<ErrorMessageEntity>;
   getErrorMessages?: Maybe<PageableList_ErrorMessageEntity>;
@@ -3648,6 +3797,8 @@ export type Query = {
   getEventCategory?: Maybe<EventCategoryEntity>;
   getEventComment?: Maybe<EventCommentEntity>;
   getEventComments?: Maybe<PageableList_EventCommentEntity>;
+  getEventMedia?: Maybe<PageableList_EventMediaEntity>;
+  getEventMedium?: Maybe<EventMediaEntity>;
   getEventRating?: Maybe<EventRatingEntity>;
   getEventRatings?: Maybe<PageableList_EventRatingEntity>;
   getEventSchedule?: Maybe<EventScheduleEntity>;
@@ -3671,6 +3822,8 @@ export type Query = {
   getOrganisation?: Maybe<OrganisationEntity>;
   getOrganisationComment?: Maybe<OrganisationCommentEntity>;
   getOrganisationComments?: Maybe<PageableList_OrganisationCommentEntity>;
+  getOrganisationMedia?: Maybe<PageableList_OrganisationMediaEntity>;
+  getOrganisationMedium?: Maybe<OrganisationMediaEntity>;
   getOrganisationMember?: Maybe<OrganisationMemberEntity>;
   getOrganisationMembers?: Maybe<PageableList_OrganisationMemberEntity>;
   getOrganisationRating?: Maybe<OrganisationRatingEntity>;
@@ -3768,6 +3921,18 @@ export type QueryGetArticleCommentArgs = {
 /** Query root */
 export type QueryGetArticleCommentsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetArticleMediaArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetArticleMediumArgs = {
+  entity?: InputMaybe<ArticleMediaEntityInput>;
 };
 
 
@@ -3892,6 +4057,18 @@ export type QueryGetDealCategoryArgs = {
 
 
 /** Query root */
+export type QueryGetDealMediaArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetDealMediumArgs = {
+  entity?: InputMaybe<DealMediaEntityInput>;
+};
+
+
+/** Query root */
 export type QueryGetDealsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
 };
@@ -3948,6 +4125,18 @@ export type QueryGetEventCommentArgs = {
 /** Query root */
 export type QueryGetEventCommentsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetEventMediaArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetEventMediumArgs = {
+  entity?: InputMaybe<EventMediaEntityInput>;
 };
 
 
@@ -4080,6 +4269,18 @@ export type QueryGetOrganisationCommentArgs = {
 /** Query root */
 export type QueryGetOrganisationCommentsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetOrganisationMediaArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetOrganisationMediumArgs = {
+  entity?: InputMaybe<OrganisationMediaEntityInput>;
 };
 
 
@@ -4569,6 +4770,8 @@ export type SuburbEntity = {
   addresses?: Maybe<Array<Maybe<AddressEntity>>>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
+  latitude?: Maybe<Scalars['Float']>;
+  longitude?: Maybe<Scalars['Float']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
 };
@@ -4577,6 +4780,8 @@ export type SuburbEntityInput = {
   addresses?: InputMaybe<Array<InputMaybe<AddressEntityInput>>>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
+  latitude?: InputMaybe<Scalars['Float']>;
+  longitude?: InputMaybe<Scalars['Float']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
 };

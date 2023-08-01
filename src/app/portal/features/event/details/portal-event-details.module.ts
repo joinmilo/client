@@ -16,11 +16,11 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { CommentModule } from 'src/app/shared/comment/comment.module';
-import { FileModule } from 'src/app/shared/file/file.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
 import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
 import { MapModule } from 'src/app/shared/map/map.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { PriceComponent } from 'src/app/shared/price/price.component';
 import { RatingModule } from 'src/app/shared/rating/rating.module';
 import { ShareModule } from 'src/app/shared/share/share.module';
@@ -33,6 +33,7 @@ import { PortalEventDetailsCommentComponent } from './components/comment/portal-
 import { PortalEventDetailsCommentsComponent } from './components/comments/portal-event-details-comments.component';
 import { PortalEventDetailsFriendsInviteComponent } from './components/friends-invite/portal-event-details-friends-invite.component';
 import { PortalEventDetailsFriendsShowComponent } from './components/friends-show/portal-event-details-friends-show.component';
+import { PortalEventDetailsMediaComponent } from './components/media/portal-event-details-media.component';
 import { PortalEventDetailsOrganisationComponent } from './components/organisation/portal-event-details-organisation.component';
 import { PortalEventDetailsParticipantsComponent } from './components/participants/portal-event-details-participants.component';
 import { PortalEventDetailsComponent } from './components/portal-event-details.component';
@@ -42,7 +43,6 @@ import { portalEventDetailsStateKey } from './constants/event-details.constant';
 import { PortalEventDetailsRoutingModule } from './portal-event-details-routing.module';
 import { PortalEventDetailsEffects } from './state/portal-event-details.effects';
 import { portalEventDetailsReducer } from './state/portal-event-details.reducer';
-import { PortalEventDetailsMediaComponent } from './components/media/portal-event-details-media.component';
 
 const components = [
   PortalEventDetailsComponent,
@@ -84,7 +84,7 @@ const modules = [
   CoreModule,
   CommentModule,
   CardModule,
-  FileModule,
+  MediaModule,
   PortalEventDetailsRoutingModule,
   PriceComponent,
   RadioButtonFormModule,

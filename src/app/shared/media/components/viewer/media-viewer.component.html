@@ -15,11 +15,11 @@
 
     <img *ngSwitchCase="'IMAGE'" [appMedia]="getCurrentImage()"/>
 
-    <app-file-card *ngSwitchCase="'PDF'" [media]="getCurrentImage()">
-    </app-file-card>
+    <app-media-card *ngSwitchCase="'PDF'" [media]="getCurrentImage()">
+    </app-media-card>
 
-    <app-file-card *ngSwitchCase="'WORD'" [media]="getCurrentImage()">
-    </app-file-card>
+    <app-media-card *ngSwitchCase="'WORD'" [media]="getCurrentImage()">
+    </app-media-card>
 
     <video *ngSwitchCase="'VIDEO'" width="900" controls>
       <source [appMedia]="getCurrentImage()" [type]="getCurrentImage().mimeType">

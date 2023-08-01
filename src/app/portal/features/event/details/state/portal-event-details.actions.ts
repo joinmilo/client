@@ -12,19 +12,19 @@ export const PortalEventDetailsActions = createActionGroup({
     'get comments': (slug: Maybe<string>) => ({ slug }),
     'set comments': (comments: Maybe<EventCommentEntity[]>) => ({ comments }),
 
-    'save event rating': (entity: EventRatingEntityInput) => ({ entity }),
-    'event rating saved': (entity: EventRatingEntity) => ({ entity }),
+    'save comment': (entity: EventCommentEntityInput) => ({ entity }),
+    'comment saved': (entity: EventCommentEntity) => ({ entity }),
 
-    'get schedules': (startDate: Maybe<string>, endDate: Maybe<string>) => ({startDate, endDate}),
+    'get schedules': (startDate: Maybe<string>, endDate: Maybe<string>) => ({ startDate, endDate }),
     'set schedules': (schedules: Maybe<EventScheduleEntity[]>) => ({schedules}),
+
+    'save rating': (entity: EventRatingEntityInput) => ({ entity }),
+    'rating saved': (entity: EventRatingEntity) => ({ entity }),
 
     'attend event': emptyProps(),
     'attendee saved': (entity: Maybe<EventAttendeeEntity> | undefined) => ({ entity }),
 
     'cancel attendee registration': emptyProps(),
     'attendee deleted': (deleted?: Maybe<boolean> ) => ({ deleted }),
-
-    'save event comment': (entity: EventCommentEntityInput) => ({ entity }),
-    'event comment saved': (entity: EventCommentEntity) => ({ entity }),
   }
 });

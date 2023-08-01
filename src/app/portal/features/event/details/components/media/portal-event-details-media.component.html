@@ -1,33 +1,4 @@
-<div class="main">
-  <app-page-title titleLabel="media"></app-page-title>
-
-  <section>
-    <app-radio-button-group
-      [inputs]="inputs"
-      [value]="fileType"
-      (valueChanged)="fileType = $event"
-    >
-    </app-radio-button-group>
-  </section>
-
-  <section>
-    <ng-container [ngSwitch]="fileType">
-
-      <ng-container *ngSwitchCase="'image'">
-        <app-media-card *ngFor="let element of eventImages | async" [media]="element?.media">
-        </app-media-card>
-      </ng-container>
-
-      <ng-container *ngSwitchCase="'file'">
-        <app-media-card *ngFor="let element of eventFiles | async" [media]="element?.media">
-        </app-media-card>
-      </ng-container>
-
-      <ng-container *ngSwitchCase="'video'" >
-        <app-media-card *ngFor="let element of eventVideos | async" [media]="element?.media">
-        </app-media-card>
-      </ng-container>
-
-    </ng-container>
-  </section>
-</div>
+<app-media-gallery
+  backLabel="toEvent"
+  [media]="media | async">
+</app-media-gallery>

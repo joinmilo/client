@@ -1,0 +1,53 @@
+<mat-card (click)="click()">
+  <mat-card-header [ngSwitch]="mimeType">
+    <button *ngIf="showDelete"
+      mat-button 
+      (click)="delete($event)">
+      <fa-icon [icon]="['fas', 'trash']"></fa-icon>
+    </button>
+
+    <div *ngSwitchCase="'IMAGE'"
+      class="image-wrapper">
+      <img alt="media-card" [appMedia]="media" />
+    </div>
+
+    <ng-container *ngSwitchCase="'IMAGE'">
+      <div *ngIf="media?.credits" class="card-box">
+        <small>© {{ media?.credits }}</small>
+      </div>
+    </ng-container>
+
+    <video *ngSwitchCase="'VIDEO'"
+      controls>
+      <source
+        [type]="media?.mimeType"
+        [appMedia]="media"/>
+    </video>
+
+    <fa-icon *ngSwitchCase="'WORD'"
+      [icon]="['far', 'file-word']"
+      [size]="iconSize" class="word">
+    </fa-icon>
+
+    <fa-icon *ngSwitchCase="'PDF'"
+      [icon]="['far', 'file-pdf']"
+      [size]="iconSize" class="pdf">
+    </fa-icon>
+
+    <fa-icon *ngSwitchDefault
+      [icon]="['far', 'file']"
+      [size]="iconSize">
+    </fa-icon>
+
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <h3>{{ name()}}</h3>
+    <button mat-button (click)="download($event)" *ngIf="mimeType !== 'VIDEO'">
+      <div>
+        <span>{{ media?.size | fileSize }}</span>
+        <fa-icon [icon]="['fas', 'download']"></fa-icon>
+      </div>
+    </button>
+  </mat-card-content>
+</mat-card>

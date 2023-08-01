@@ -16,11 +16,11 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CalendarModule } from 'src/app/shared/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { CommentModule } from 'src/app/shared/comment/comment.module';
-import { FileModule } from 'src/app/shared/file/file.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
 import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
 import { MapModule } from 'src/app/shared/map/map.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { RatingModule } from 'src/app/shared/rating/rating.module';
 import { ShareModule } from 'src/app/shared/share/share.module';
 import { TableModule } from 'src/app/shared/table/table.module';
@@ -66,7 +66,7 @@ const modules = [
   CoreModule,
   CommentModule,
   CardModule,
-  FileModule,
+  MediaModule,
   PortalContestDetailsRoutingModule,
   RadioButtonFormModule,
   RatingModule,

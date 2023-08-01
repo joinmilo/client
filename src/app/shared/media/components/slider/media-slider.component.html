@@ -1,0 +1,14 @@
+<div *ngIf="(titleLabel || link || title) && media?.length">
+  <app-details-title *ngIf="titleLabel" [titleLabel]="titleLabel"></app-details-title>
+  <app-details-title *ngIf="title" [title]="title"></app-details-title>
+  <section *ngIf="link">
+    <a [routerLink]="link" [appLabel]="linkLabel" suffix="»"></a>
+  </section>
+</div>
+
+<app-slider *ngIf="media?.length">
+  <ng-container *ngFor="let element of media">
+    <app-media-card [media]="element" (clicked)="openImageViewer(element)">
+    </app-media-card>
+  </ng-container>
+</app-slider>

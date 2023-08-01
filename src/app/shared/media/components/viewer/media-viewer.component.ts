@@ -1,21 +1,21 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Maybe, MediaEntity } from 'src/schema/schema';
-import { FileViewerData, MimeTypeDefinition } from '../../typings/file';
-import { mimeTypeDefinition } from '../../utils/file.utils';
+import { MediaViewerData, MimeTypeDefinition } from '../../typings/media';
+import { mimeTypeDefinition } from '../../utils/media.utils';
 
 @Component({
-  selector: 'app-file-viewer',
-  templateUrl: './file-viewer.component.html',
-  styleUrls: ['./file-viewer.component.scss'],
+  selector: 'app-media-viewer',
+  templateUrl: './media-viewer.component.html',
+  styleUrls: ['./media-viewer.component.scss'],
 })
-export class FileViewerComponent implements OnInit{
+export class MediaViewerComponent implements OnInit{
 
   public currentIndex = 0;
 
   constructor(
-    public dialogRef: MatDialogRef<FileViewerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: FileViewerData
+    public dialogRef: MatDialogRef<MediaViewerComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: MediaViewerData
   ) { }
 
   public ngOnInit(): void {

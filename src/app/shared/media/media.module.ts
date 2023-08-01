@@ -3,25 +3,29 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
+import { RadioButtonFormModule } from '../form/radio-button/radio-button-form.module';
 import { SliderHeaderComponent } from '../sliders/slider-header/slider-header.component';
 import { SliderComponent } from '../sliders/slider/slider.component';
 import { TitleModule } from '../title/title.module';
-import { FileCardComponent } from './components/card/file-card.component';
-import { FileFormComponent } from './components/form/file-form.component';
-import { FileSliderComponent } from './components/slider/file-slider.component';
-import { FileUploadComponent } from './components/upload/file-upload.component';
-import { FileViewerComponent } from './components/viewer/file-viewer.component';
+import { MediaCardComponent } from './components/card/media-card.component';
+import { MediaFormComponent } from './components/form/media-form.component';
+import { MediaGalleryComponent } from './components/gallery/media-gallery.component';
+import { MediaSliderComponent } from './components/slider/media-slider.component';
+import { MediaUploadComponent } from './components/upload/media-upload.component';
+import { MediaViewerComponent } from './components/viewer/media-viewer.component';
 
 
 const components = [
-  FileCardComponent,
-  FileFormComponent,
-  FileSliderComponent,
-  FileUploadComponent,
-  FileViewerComponent,
+  MediaCardComponent,
+  MediaFormComponent,
+  MediaGalleryComponent,
+  MediaSliderComponent,
+  MediaUploadComponent,
+  MediaViewerComponent,
 ];
 
 const framework = [
@@ -33,11 +37,13 @@ const framework = [
 const materials = [
   MatCardModule,
   MatButtonModule,
+  MatDividerModule,
 ];
 
 const modules = [
   CoreModule,
   SliderComponent,
+  RadioButtonFormModule,
   SliderHeaderComponent,
   TitleModule,
 ];
@@ -56,4 +62,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class FileModule { }
+export class MediaModule { }

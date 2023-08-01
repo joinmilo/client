@@ -1,21 +1,21 @@
 <div>
-  <app-file-upload
-    [disabled]="!!maxFiles && files.length >= maxFiles"
+  <app-media-upload
+    [disabled]="!!maxFiles && media.length >= maxFiles"
     (uploads)="addFiles($event)">
-  </app-file-upload>
+  </app-media-upload>
   <small [appLabel]="notMoreThanLabel" [variables]="labelVariables"></small>
   <small [appLabel]="notBeLargerLabel" [variables]="labelVariables"></small>
 </div>
 
 <div>
-  <app-details-title *ngIf="files.length" titleLabel="files">
+  <app-details-title *ngIf="media.length" titleLabel="files">
   </app-details-title>
 
   <section>
-    <app-file-card *ngFor="let file of files; let i = index;"
-      [file]="file"
-      action="DELETE"
+    <app-media-card *ngFor="let file of media; let i = index;"
+      [media]="file"
+      [showDelete]="true"
       (deleted)="removeFile(i)">
-    </app-file-card>
+    </app-media-card>
   </section>
 </div>

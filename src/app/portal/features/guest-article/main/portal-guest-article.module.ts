@@ -13,8 +13,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CaptchaModule } from 'src/app/shared/captcha/captcha.module';
-import { FileModule } from 'src/app/shared/file/file.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { PortalGuestArticleFormComponent } from './components/form/portal-guest-article-form.component';
 import { PortalGuestArticleSuccessComponent } from './components/success/portal-guest-article-success.component';
@@ -47,7 +47,7 @@ const modules = [
   CoreModule,
   CaptchaModule,
   CkEditorFormComponent,
-  FileModule,
+  MediaModule,
   PortalGuestArticleRoutingModule,
   TitleModule,
 ];
