@@ -40,10 +40,13 @@ export class PortalAddFriendsComponent implements OnInit{
   }
 
   public sendFriendRequest() {
-    this.selectedPortalUsers.map(user => ({
+    this.store.dispatch(PortalFriendsActions.sendFriendRequests(
+      this.selectedPortalUsers.map(user => ({
       accepted: false,
       addressee: {id: user?.id},
       requester: {id: this.currentUser?.id},
     }))
+    ))
+
   }
 }
