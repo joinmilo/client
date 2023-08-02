@@ -1,6 +1,8 @@
 fragment UserContext on UserContextEntity {
   id
   slug
+  modified
+
   translatables {
     id
     description

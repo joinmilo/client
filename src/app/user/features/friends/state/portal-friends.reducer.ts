@@ -14,5 +14,4 @@ export const portalFriendsReducer = createReducer(
   on(PortalFriendsActions.setUsers, (state, action): PortalFriendsState => (
     { ...state, allUsers: action.users }
   )),
-
 );

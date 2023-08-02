@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { selectFriendRequests } from 'src/app/core/state/selectors/user.selectors';
+import { selectReceivedRequest } from 'src/app/core/state/selectors/user.selectors';
 import { CardType } from 'src/app/shared/card/typings/card';
 
 
@@ -12,7 +12,7 @@ import { CardType } from 'src/app/shared/card/typings/card';
 })
 export class PortalReceivedFriendRequestsComponent {
 
-  public receivedFriendRequests = this.store.select(selectFriendRequests).pipe(
+  public receivedFriendRequests = this.store.select(selectReceivedRequest).pipe(
     map(receivedFriendRequests => ({
       result: receivedFriendRequests,
       total: receivedFriendRequests?.length
@@ -24,4 +24,4 @@ export class PortalReceivedFriendRequestsComponent {
   constructor(
     public store: Store
   ) { }
- }
+}

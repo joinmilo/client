@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { UserContextEntity } from 'src/schema/schema';
+import { Maybe, UserContextEntity } from 'src/schema/schema';
 import { selectCoreUserState } from './selector';
 
 export const selectCurrentUser = createSelector(
@@ -26,14 +26,14 @@ export const selectFriends = createSelector(
   }
 );
 
-export const selectFriendRequests = createSelector(
+export const selectReceivedRequest = createSelector(
   selectCurrentUser,
   user => {
     const friendRequester = user?.friendAddressee
       ?.filter((requester) => !requester?.accepted)
       ?.map((requester) => requester?.requester);
   
-  return friendRequester as UserContextEntity[]
+  return friendRequester as Maybe<UserContextEntity>[]
 });
 
 export const selectSentRequests = createSelector(
@@ -43,7 +43,7 @@ export const selectSentRequests = createSelector(
       ?.filter((addressee) => !addressee?.accepted)
       ?.map((addressee) => addressee?.addressee)
 
-  return sentRequests as UserContextEntity[]
+  return sentRequests as Maybe<UserContextEntity>[]
 });
 
 export const selectUserArticleRatings = createSelector(

@@ -1,0 +1,11 @@
+mutation saveFriends($entities: [FriendEntityInput!]) {
+  saveFriends(entities: $entities) {
+    accepted
+    addressee{
+      id
+    }
+    requester{
+      id
+    }
+  }
+}

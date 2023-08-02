@@ -24,4 +24,4 @@ export class PortalSentFriendRequestsComponent {
   constructor(
     public store: Store
   ) { }
- }
+}

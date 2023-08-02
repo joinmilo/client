@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -41,6 +42,7 @@ const materials = [
   MatButtonModule,
   MatCheckboxModule,
   MatDialogModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatInputModule,
 ];
@@ -70,6 +72,5 @@ const libs = [
     ...modules, 
     ...libs],
   exports: [...components],
-  // providers: [...providers],
 })
 export class PortalFriendsModule {}

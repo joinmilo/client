@@ -22,17 +22,21 @@
   </button>
 </mat-form-field>
 
+<mat-divider></mat-divider>
+
 <div class="scroll">
   <div *ngFor="let portalUser of allPortalUsers">
     <app-avatar [user]="portalUser"></app-avatar>
     <span>{{portalUser?.user?.firstName + ' ' + portalUser?.user?.lastName}}</span>
-    <mat-checkbox [checked]="selectedPortalUsers.includes(portalUser)" (change)="toggleSelectedFriend(portalUser, $event.checked)">
+    <mat-checkbox [checked]="selectedPortalUsers.includes(portalUser)" (change)="toggleSelectedUser(portalUser, $event.checked)">
     </mat-checkbox>
   </div>
 </div>
 
+<mat-divider></mat-divider>
+
 <mat-dialog-actions align="center">
-  <button mat-flat-button color="primary">
+  <button mat-flat-button color="primary" (click)="sendFriendRequest()">
     <section>
       <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>
       <span appLabel="sendFriendRequest"></span>
