@@ -6,12 +6,18 @@ button {
 
 section {
   display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  
-  span {
-    margin-top: 0.5rem;
-    align-self: center;
-    text-align: center;
-  }
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: var(--gap);
+  padding: 1rem; 
+}
+
+span{
+  color: black;
+}
+
+::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface{
+  background-color: white;
 }

@@ -4,13 +4,19 @@
   </button>
   <section>
     <fa-icon *ngIf="feedback.type === error || feedback.type === critical" size="2x"
-      [icon]="['fas', 'circle-exclamation']"></fa-icon>
+      [icon]="['fas', 'circle-exclamation']" [style.color]="'var(--color-warn-900)'">
+    </fa-icon>
 
-    <fa-icon *ngIf="feedback.type === success" size="2x" [icon]="['fas', 'circle-check']"></fa-icon>
+    <fa-icon *ngIf="feedback.type === success" size="2x" [icon]="['fas', 'circle-check']"
+      [style.color]="'var(--color-success-900)'">
+    </fa-icon>
 
-    <fa-icon *ngIf="feedback.type === info" size="2x" [icon]="['fas', 'circle-info']"></fa-icon>
+    <fa-icon *ngIf="feedback.type === info" size="2x" [icon]="['fas', 'circle-info']"
+      [style.color]="'var(--color-warn-200)'">
+    </fa-icon>
 
-    <span><strong [appLabel]="feedback.labelMessage" [variables]="feedback.labelVariables"></strong></span>
-    <span [appLabel]="feedback.labelAction" [variables]="feedback.labelVariables"></span>
+    <span><strong *ngIf="feedback.labelMessage" [appLabel]="feedback.labelMessage"
+        [variables]="feedback.labelVariables"></strong></span>
+    <span *ngIf="feedback.labelAction" [appLabel]="feedback.labelAction" [variables]="feedback.labelVariables"></span>
   </section>
 </div>
