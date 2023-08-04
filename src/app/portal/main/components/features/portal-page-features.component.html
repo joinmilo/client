@@ -1,18 +1,3 @@
 <div>
-  <ng-container *ngFor="let pageFeature of pageFeatures">
-    <ng-container [ngSwitch]="pageFeature?.feature?.key">
-      <app-article-page-feature *ngSwitchCase="features.articles"></app-article-page-feature>
-      <app-calendar-page-feature *ngSwitchCase="features.calendar"></app-calendar-page-feature>
-      <app-event-page-feature *ngSwitchCase="features.events"></app-event-page-feature>
-      <app-report-page-feature *ngSwitchCase="features.reports"></app-report-page-feature>
-      <app-author-page-feature *ngSwitchCase="features.authors"></app-author-page-feature>
-      <app-organisation-page-feature *ngSwitchCase="features.organisations"></app-organisation-page-feature>
-      <app-deal-page-feature *ngSwitchCase="features.deals"></app-deal-page-feature>
-      <app-contest-page-feature *ngSwitchCase="features.contests"></app-contest-page-feature>
-      <app-survey-page-feature *ngSwitchCase="features.surveys"></app-survey-page-feature>
-      <app-form-page-feature *ngSwitchCase="features.forms"></app-form-page-feature>
-      <app-guest-article-page-feature *ngSwitchCase="features.guestArticle"></app-guest-article-page-feature>
-      <app-map-page-feature *ngSwitchCase="features.map"></app-map-page-feature>
-    </ng-container>
-  </ng-container>
+  <ng-template #featureComponents></ng-template>
 </div>
