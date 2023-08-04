@@ -10,8 +10,8 @@ section {
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: var(--gap);
-  padding: 1rem; 
+  gap: 1rem;
+  padding: .5rem;
 }
 
 span{
@@ -20,4 +20,5 @@ span{
 
 ::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface{
   background-color: white;
+  border-radius: var(--mdc-shape-small);
 }
