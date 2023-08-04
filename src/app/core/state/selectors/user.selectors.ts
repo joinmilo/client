@@ -37,3 +37,8 @@ export const selectUserOrganisationRatings = createSelector(
   selectCurrentUser,
   user => user?.organisationRatings
 );
+
+export const selectConsentForExternalContent = createSelector(
+  selectCoreUserState,
+  state => state.consentExternalContent?.allow
+)

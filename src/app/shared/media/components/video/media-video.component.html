@@ -1,6 +1,14 @@
 <ng-container *ngIf="media">
-  <iframe *ngIf="isYoutube; else videoTemplate" [src]="url" frameborder="0">
-  </iframe>
+  <ng-container *ngIf="isYoutube; else videoTemplate">
+    <ng-container *ngIf="allowExternalContent | async; else frameTemplate">
+      <iframe [src]="url" frameborder="0">
+      </iframe>
+    </ng-container>
+    <ng-template  #frameTemplate>
+      <app-external-content [hostname]="getHostname()"></app-external-content>
+    </ng-template>
+
+  </ng-container>
   <ng-template #videoTemplate>
     <video controls #video>
       <source

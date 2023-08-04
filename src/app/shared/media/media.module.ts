@@ -20,7 +20,7 @@ import { MediaUploadComponent } from './components/upload/media-upload.component
 import { MediaVideoComponent } from './components/video/media-video.component';
 import { MediaViewerComponent } from './components/viewer/media-viewer.component';
 import { MediaAttributionDirective } from './directives/media-attribution.directive';
-
+import { ContentModule } from '../content/content.module';
 
 const components = [
   MediaAttributionComponent,
@@ -55,6 +55,7 @@ const modules = [
   RadioButtonFormModule,
   SliderHeaderComponent,
   TitleModule,
+  ContentModule
 ];
 
 const libs = [

@@ -1,12 +1,13 @@
-<mat-card (click)="click()">
+<mat-card>
   <mat-card-header [ngSwitch]="mimeType">
     <button *ngIf="showDelete"
-      mat-button 
+      mat-button
       (click)="delete($event)">
       <fa-icon [icon]="['fas', 'trash']"></fa-icon>
     </button>
 
     <div *ngSwitchCase="'IMAGE'"
+      (click)="click()"
       class="image-wrapper">
       <img alt="media-card" [src]="media?.url" [appAttribution]="media?.attribution" />
     </div>
@@ -35,10 +36,10 @@
   <mat-card-content>
     <h3>{{ media?.name }}</h3>
     <ng-container [ngSwitch]="mimeType">
-      <button *ngSwitchCase="'VIDEO'" mat-button>
+      <button *ngSwitchCase="'VIDEO'" mat-button (click)="click()">
         <fa-icon [icon]="['fas', 'play']"></fa-icon>
       </button>
-      <button *ngSwitchCase="'IMAGE'" mat-button>
+      <button *ngSwitchCase="'IMAGE'" mat-button (click)="click()">
         <fa-icon [icon]="['fas', 'eye']"></fa-icon>
       </button>
       <button *ngSwitchDefault
