@@ -4,7 +4,7 @@
   height: 100%;
 }
 
-.gradient, img {
+.gradient, img, video {
   border-top-left-radius: var(--mdc-shape-small);
   border-top-right-radius: var(--mdc-shape-small);
   width: 100%;
@@ -16,6 +16,6 @@
   background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-primary-50) 30%, var(--color-accent-50)70%, var(--color-accent-100) 100%);
 }
 
-img {
+img, video {
   object-fit: cover;
 }

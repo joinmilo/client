@@ -23,7 +23,7 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
 
   public deal?: Maybe<DealEntity>;
 
-  public titleImage?: Maybe<MediaEntity>;
+  public mediaTitle?: Maybe<MediaEntity>;
 
   public media?: Maybe<Maybe<MediaEntity>[]>;
 
@@ -42,8 +42,8 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy)
     ).subscribe(deal => {
       this.deal = deal;
-      this.titleImage = deal?.uploads?.find(upload => upload?.title)?.media;
-      
+      this.mediaTitle = deal?.uploads?.find(upload => upload?.title)?.media;
+
       this.marker = {
         entity: 'DealEntity',
         data: [deal]

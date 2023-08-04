@@ -18,10 +18,10 @@ export class PortalAuthorDetailsSummaryComponent implements OnInit, OnDestroy {
 
   public author?: Maybe<UserContextEntity>;
 
-  public titleImage?: Maybe<MediaEntity> | undefined;
+  public mediaTitle?: Maybe<MediaEntity> | undefined;
 
   private destroy = new Subject<void>();
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
@@ -33,7 +33,7 @@ export class PortalAuthorDetailsSummaryComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy)
     ).subscribe(author => {
       this.author = author;
-      this.titleImage = author?.uploads?.find(upload => upload?.title)?.media;
+      this.mediaTitle = author?.uploads?.find(upload => upload?.title)?.media;
     });
   }
 

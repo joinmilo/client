@@ -22,6 +22,7 @@ import { MediaUploadComponent } from './components/upload/media-upload.component
 import { MediaVideoComponent } from './components/video/media-video.component';
 import { MediaViewerComponent } from './components/viewer/media-viewer.component';
 import { MediaAttributionDirective } from './directives/media-attribution.directive';
+import { MediaTitleComponent } from './components/title/media-title.component';
 
 const components = [
   MediaAttributionComponent,
@@ -33,6 +34,7 @@ const components = [
   MediaUploadComponent,
   MediaViewerComponent,
   MediaVideoComponent,
+  MediaTitleComponent
 ];
 
 const directives = [

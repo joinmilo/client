@@ -18,7 +18,6 @@ import { CardModule } from 'src/app/shared/card/card.module';
 import { CommentModule } from 'src/app/shared/comment/comment.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
-import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
 import { MapModule } from 'src/app/shared/map/map.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
 import { RatingModule } from 'src/app/shared/rating/rating.module';
@@ -68,8 +67,7 @@ const modules = [
   RatingModule,
   ShareModule,
   TableModule,
-  TitleModule,
-  TitleImageComponent,
+  TitleModule
 ];
 
 const libs = [

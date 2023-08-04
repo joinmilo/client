@@ -14,7 +14,7 @@ import { selectEventDetails } from '../state/portal-event-details.selectors';
   templateUrl: './portal-event-details.component.html',
   styleUrls: ['./portal-event-details.component.scss']
 })
-export class PortalEventDetailsComponent implements OnInit, OnDestroy {
+export class PortalEventDetailsComponent implements OnInit {
 
   public categoryUrl = eventsFeatureKey;
 
@@ -22,7 +22,7 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
   public event?: Maybe<EventEntity>;
 
-  public titleImage?: Maybe<MediaEntity>;
+  public mediaTitle?: Maybe<MediaEntity>;
 
   public media?: Maybe<Maybe<MediaEntity>[]>;
 
@@ -41,8 +41,8 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy)
     ).subscribe(event => {
       this.event = event;
-      this.titleImage = event?.uploads?.find(upload => upload?.title)?.media;
-      
+      this.mediaTitle = event?.uploads?.find(upload => upload?.title)?.media;
+
       this.marker = {
         entity: 'EventEntity',
         data: [event]

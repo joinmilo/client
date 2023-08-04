@@ -16,7 +16,7 @@ export class PortalContestDetailsComponent implements OnInit, OnDestroy {
 
   public contest?: Maybe<ContestEntity>;
 
-  public titleImage?: Maybe<MediaEntity>;
+  public mediaTitle?: Maybe<MediaEntity>;
 
   private destroy = new Subject<void>();
 
@@ -31,7 +31,7 @@ export class PortalContestDetailsComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy)
     ).subscribe(contest => {
       this.contest = contest;
-      this.titleImage = contest?.uploads?.find(upload => upload?.title)?.media;
+      this.mediaTitle = contest?.uploads?.find(upload => upload?.title)?.media;
     });
 
   }

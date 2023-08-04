@@ -16,7 +16,7 @@ export class PortalPageComponent implements OnInit, OnDestroy{
 
   public page?: Maybe<PageEntity>;
 
-  public titleImage?: Maybe<MediaEntity>;
+  public mediaTitle?: Maybe<MediaEntity>;
 
   public media?: Maybe<Maybe<MediaEntity>[]>;
 
@@ -33,7 +33,7 @@ export class PortalPageComponent implements OnInit, OnDestroy{
       takeUntil(this.destroy)
     ).subscribe(page => {
       this.page = page;
-      this.titleImage = page?.uploads?.find(upload => upload?.title)?.media;
+      this.mediaTitle = page?.uploads?.find(upload => upload?.title)?.media;
   })
 }
 
