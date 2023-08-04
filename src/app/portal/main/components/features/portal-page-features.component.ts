@@ -58,15 +58,12 @@ export class PortalPageFeaturesComponent implements OnInit {
     const { PortalArticlePageFeatureModule } = await import("src/app/portal/features/article/page-feature/portal-article-page-feature.module");
     const articleModuleRef = createNgModule(PortalArticlePageFeatureModule, this.injector);
 
-    const { PortalMapPageFeatureModule } = await import("./../../../features/map/page-feature/portal-map-page-feature.module");
-    const mapModuleRef = createNgModule(PortalMapPageFeatureModule, this.injector);
-
     const { PortalEventPageFeatureModule } = await import("src/app/portal/features/event/page-feature/portal-event-page-feature.module");
     const eventModuleRef = createNgModule(PortalEventPageFeatureModule, this.injector);
-
+    
     const { PortalCalendarPageFeatureModule } = await import("src/app/portal/features/calendar/page-feature/portal-calendar-page-feature.module");
     const calendarModuleRef = createNgModule(PortalCalendarPageFeatureModule, this.injector);
-
+    
     const { PortalReportPageFeatureModule } = await import("src/app/portal/features/report/page-feature/portal-report-page-feature.module");
     const reportModuleRef = createNgModule(PortalReportPageFeatureModule, this.injector);
 
@@ -90,9 +87,12 @@ export class PortalPageFeaturesComponent implements OnInit {
 
     const { PortalGuestArticlePageFeatureModule } = await import("src/app/portal/features/guest-article/page-feature/portal-guest-article-page-feature.module");
     const guestArticleModuleRef = createNgModule(PortalGuestArticlePageFeatureModule, this.injector);
+    
+    const { PortalMapPageFeatureModule } = await import("./../../../features/map/page-feature/portal-map-page-feature.module");
+    const mapModuleRef = createNgModule(PortalMapPageFeatureModule, this.injector);
 
     this.featureComponents.clear();
-
+    
     this.pageFeatures?.forEach(pageFeature => {
       switch (pageFeature?.feature?.key) {
         case 'articles':
