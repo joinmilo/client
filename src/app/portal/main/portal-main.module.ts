@@ -8,15 +8,13 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleImageComponent } from 'src/app/shared/image/title/title-image.component';
 import { MediaModule } from 'src/app/shared/media/media.module';
-import { PortalArticlePageFeatureModule } from '../features/article/page-feature/portal-article-page-feature.module';
 import { PortalAuthorPageFeatureModule } from '../features/author/page-feature/portal-author-page-feature.module';
 import { PortalCalendarPageFeatureModule } from '../features/calendar/page-feature/portal-calendar-page-feature.module';
 import { PortalContestPageFeatureModule } from '../features/contest/page-feature/portal-contest-page-feature.module';
 import { PortalDealPageFeatureModule } from '../features/deal/page-feature/portal-deal-page-feature.module';
 import { PortalEventPageFeatureModule } from '../features/event/page-feature/portal-event-page-feature.module';
 import { PortalFormPageFeatureModule } from '../features/form/page-feature/portal-form-page-feature.module';
-import { PortalGuestArticlePageFeatureModule } from '../features/guest-article/page-feature/guest-portal-article-page-feature.module';
-import { PortalMapPageFeatureModule } from '../features/map/page-feature/portal-map-page-feature.module';
+import { PortalGuestArticlePageFeatureModule } from '../features/guest-article/page-feature/portal-guest-article-page-feature.module';
 import { PortalOrganisationPageFeatureModule } from '../features/organisation/page-feature/portal-organisation-page-feature.module';
 import { PortalReportPageFeatureModule } from '../features/report/page-feature/portal-report-page-feature.module';
 import { PortalSurveyPageFeatureModule } from '../features/survey/page-feature/portal-survey-page-feature.module';
@@ -35,7 +33,7 @@ const components = [
 ];
 
 const features = [
-  PortalArticlePageFeatureModule,
+  // PortalArticlePageFeatureModule,
   PortalAuthorPageFeatureModule,
   PortalCalendarPageFeatureModule,
   PortalContestPageFeatureModule,
@@ -43,7 +41,7 @@ const features = [
   PortalEventPageFeatureModule,
   PortalFormPageFeatureModule,
   PortalGuestArticlePageFeatureModule,
-  PortalMapPageFeatureModule,
+  // PortalMapPageFeatureModule,
   PortalOrganisationPageFeatureModule,
   PortalReportPageFeatureModule,
   PortalSurveyPageFeatureModule,
