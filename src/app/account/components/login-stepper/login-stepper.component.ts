@@ -38,25 +38,30 @@ export class LoginStepperComponent implements OnInit {
   }
 
   saveData() {
-    this.store.dispatch(AccountActions.save(
-      {
-        id: this.currentUser?.id,
-         //todo mediaEntityInput
-        address: {
-          street: this.form.value.street,
-          houseNumber: this.form.value.houseNumber,
-          postalCode: this.form.value.postalCode,
-          place: this.form.value.place
-        },
+    console.log(this.currentUser);
 
-        user:{
-          lastLoggedIn: new Date().toISOString(), 
-          firstName: this.form.value.firstName,
-          lastName: this.form.value.lastName,
-          phone: this.form.value.phone
-        }
+    const test = {
+      id: this.currentUser?.id,
+      //todo mediaEntityInput
+      address: {
+        street: this.form.value.street ?? "",
+        houseNumber: this.form.value.houseNumber ?? "",
+        postalCode: this.form.value.postalCode ?? "",
+        place: this.form.value.place ?? ""
+      },
 
+      user: {
+        id: this.currentUser?.user?.id,
+        lastLoggedIn: new Date().toISOString(),
+        firstName: this.form.value.firstName ?? "",
+        lastName: this.form.value.lastName ?? "",
+        phone: this.form.value.phone ?? ""
       }
+    }
+    console.log(test);
+
+    this.store.dispatch(AccountActions.save(
+      test
     ))
   }
 }
