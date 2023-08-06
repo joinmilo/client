@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnChanges, OnDestroy, ViewChild } from '@
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { selectAllowThirdpartyContent } from 'src/app/core/state/selectors/user.selectors';
+import { selectAllowExternalContent } from 'src/app/core/state/selectors/user.selectors';
 import { Maybe, MediaEntity } from 'src/schema/schema';
 import { getUrlHost, isValidYoutubeUrl } from '../../utils/media.utils';
 
@@ -17,7 +17,7 @@ export class MediaVideoComponent implements OnChanges, OnDestroy {
   @Input()
   public media?: Maybe<MediaEntity>;
 
-  public allowThirdpartyContent?: boolean;
+  public allowExternalContent?: boolean;
 
   public videoElement?: HTMLVideoElement;
 
@@ -36,9 +36,9 @@ export class MediaVideoComponent implements OnChanges, OnDestroy {
   constructor(
     private sanitizer: DomSanitizer,
     private store: Store) {
-      this.store.select(selectAllowThirdpartyContent)
+      this.store.select(selectAllowExternalContent)
         .pipe(takeUntil(this.destroy))
-        .subscribe(allowed => this.allowThirdpartyContent = allowed);
+        .subscribe(allowed => this.allowExternalContent = allowed);
     }
 
   public ngOnChanges(): void {

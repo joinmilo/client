@@ -38,7 +38,7 @@ export const selectUserOrganisationRatings = createSelector(
   user => user?.organisationRatings
 );
 
-export const selectAllowThirdpartyContent = createSelector(
+export const selectAllowExternalContent = createSelector(
   selectCoreUserState,
-  state => state.allowThirdPartyContent
+  state => state.allowExternalContent
 )

@@ -14,7 +14,7 @@ import { SliderComponent } from '../sliders/slider/slider.component';
 import { TitleModule } from '../title/title.module';
 import { MediaAttributionComponent } from './components/attribution/media-attribution.component';
 import { MediaCardComponent } from './components/card/media-card.component';
-import { MediaThirdpartyConsentComponent } from './components/consent/media-thirdparty-consent.component';
+import { MediaExternalConsentComponent } from './components/consent/media-external-consent.component';
 import { MediaFormComponent } from './components/form/media-form.component';
 import { MediaGalleryComponent } from './components/gallery/media-gallery.component';
 import { MediaSliderComponent } from './components/slider/media-slider.component';
@@ -29,7 +29,7 @@ const components = [
   MediaFormComponent,
   MediaGalleryComponent,
   MediaSliderComponent,
-  MediaThirdpartyConsentComponent,
+  MediaExternalConsentComponent,
   MediaUploadComponent,
   MediaViewerComponent,
   MediaVideoComponent,

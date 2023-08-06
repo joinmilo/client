@@ -4,11 +4,11 @@ import { CoreUserActions } from '../actions/core-user.actions';
 
 export interface CoreUserState {
   currentUser?: UserContextEntity,
-  allowThirdPartyContent?: boolean
+  allowExternalContent?: boolean
 }
 
 export const initialState: CoreUserState = {
-  allowThirdPartyContent: false
+  allowExternalContent: false
 };
 
 export const coreUserReducer = createReducer(
@@ -23,7 +23,7 @@ export const coreUserReducer = createReducer(
   )),
 
   on(CoreUserActions.allowExternalContent, (state): CoreUserState => (
-    { ...state, allowThirdPartyContent: true}
+    { ...state, allowExternalContent: true}
   ))
 
 );

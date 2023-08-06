@@ -4,11 +4,11 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 
 @Component({
-  selector: 'app-media-thirdparty-consent',
-  styleUrls: ['media-thirdparty-consent.component.scss'],
-  templateUrl: 'media-thirdparty-consent.component.html'
+  selector: 'app-media-external-consent',
+  styleUrls: ['media-external-consent.component.scss'],
+  templateUrl: 'media-external-consent.component.html'
 })
-export class MediaThirdpartyConsentComponent {
+export class MediaExternalConsentComponent {
 
   @Input()
   public externalUrl?: Maybe<string>;
