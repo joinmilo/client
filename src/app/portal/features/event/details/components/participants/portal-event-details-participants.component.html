@@ -3,9 +3,9 @@
     <app-details-title *ngIf="!attendingFriends?.length" titleLabel="SoFarNoFriendsAreAttending"></app-details-title>
   <div>
     <section *ngIf="attendingFriends && attendingFriends.length > 0">
-      <app-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))"
+      <app-media-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))"
         [user]="attendingFriend">
-      </app-avatar>
+      </app-media-avatar>
       <button mat-stroked-button color="primary" (click)="showAllFriends()">
         <fa-icon size="1x" [icon]="['fas', 'users']"></fa-icon>
         <span appLabel="showAllFriends"></span>

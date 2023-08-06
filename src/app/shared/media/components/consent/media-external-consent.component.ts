@@ -21,7 +21,8 @@ export class MediaExternalConsentComponent {
   constructor(
     private store: Store) { }
 
-  public loadExternalContent(): void {
+  public loadExternalContent(event: UIEvent): void {
+    event.stopPropagation();
     this.allowed.emit();
     if (this.rememberConsent) {
       this.store.dispatch(CoreUserActions.allowExternalContent());

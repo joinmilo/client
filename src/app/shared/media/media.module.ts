@@ -13,18 +13,20 @@ import { SliderHeaderComponent } from '../sliders/slider-header/slider-header.co
 import { SliderComponent } from '../sliders/slider/slider.component';
 import { TitleModule } from '../title/title.module';
 import { MediaAttributionComponent } from './components/attribution/media-attribution.component';
+import { MediaAvatarComponent } from './components/avatar/media-avatar.component';
 import { MediaCardComponent } from './components/card/media-card.component';
 import { MediaExternalConsentComponent } from './components/consent/media-external-consent.component';
 import { MediaFormComponent } from './components/form/media-form.component';
 import { MediaGalleryComponent } from './components/gallery/media-gallery.component';
 import { MediaSliderComponent } from './components/slider/media-slider.component';
+import { MediaTitleComponent } from './components/title/media-title.component';
 import { MediaUploadComponent } from './components/upload/media-upload.component';
 import { MediaVideoComponent } from './components/video/media-video.component';
 import { MediaViewerComponent } from './components/viewer/media-viewer.component';
 import { MediaAttributionDirective } from './directives/media-attribution.directive';
-import { MediaTitleComponent } from './components/title/media-title.component';
 
 const components = [
+  MediaAvatarComponent,
   MediaAttributionComponent,
   MediaCardComponent,
   MediaFormComponent,

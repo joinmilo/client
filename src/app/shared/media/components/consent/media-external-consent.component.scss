@@ -1,11 +1,17 @@
-section{
-  background-color:  var(--color-background);
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+section {
+  background-color: var(--color-background);
   text-overflow: ellipsis;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
   padding: 0.5rem;
-  padding-bottom: 3rem;
+  border-radius: var(--mdc-shape-small);
 
   p, div{
     text-align: center;

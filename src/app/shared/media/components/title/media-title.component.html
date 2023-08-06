@@ -1,7 +1,7 @@
   <div [ngSwitch]="mimeType">
 
     <div *ngSwitchCase="'IMAGE'" class="image-wrapper">
-      <img alt="media-card" [src]="media?.url" [appAttribution]="media?.attribution" />
+      <img alt="media-card" [src]="media?.url" [appAttribution]="media?.attribution" direction="TOP-RIGHT" />
     </div>
 
     <app-media-video *ngSwitchCase="'VIDEO'" [media]="media"></app-media-video>

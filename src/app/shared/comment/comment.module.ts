@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from "../../core/core.module";
 import { CaptchaModule } from '../captcha/captcha.module';
-import { AvatarComponent } from '../image/avatar/avatar.component';
+import { MediaModule } from '../media/media.module';
 import { TitleModule } from '../title/title.module';
 import { CommentDialogComponent } from './components/dialog/comment-dialog.component';
 import { CommentEntryComponent } from './components/entry/comment-entry.component';
@@ -32,8 +32,8 @@ const framework = [
 ];
 
 const modules = [
-  AvatarComponent,
   CoreModule,
+  MediaModule,
   TitleModule,
 ];
 

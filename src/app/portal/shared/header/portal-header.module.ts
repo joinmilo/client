@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
-import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { PortalMenuModule } from '../menu/portal-menu.module';
 import { PortalSearchModule } from '../search/search.module';
 import { PortalHeaderBackComponent } from './components/back/portal-header-back.component';
@@ -43,8 +43,8 @@ const materials = [
 ];
 
 const modules = [
-  AvatarComponent,
   CoreModule,
+  MediaModule,
   PortalMenuModule,
   PortalSearchModule,
 ];

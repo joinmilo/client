@@ -24,7 +24,7 @@
   <mat-divider></mat-divider>
 
   <div *ngFor="let friend of filteredFriends">
-    <app-avatar [user]="friend"></app-avatar>
+    <app-media-avatar [user]="friend"></app-media-avatar>
     <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
     <mat-checkbox [checked]="selectedFriends.includes(friend)" (change)="toggleSelectedFriend(friend, $event.checked)">
     </mat-checkbox>

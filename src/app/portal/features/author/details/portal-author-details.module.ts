@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/card/card.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
-import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { ShareModule } from 'src/app/shared/share/share.module';
 import { TableModule } from 'src/app/shared/table/table.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
@@ -17,7 +17,6 @@ import { authorDetailsStateKey } from './constants/portal-author-details.constan
 import { PortalAuthorDetailsRoutingModule } from './portal-author-details-routing.module';
 import { AuthorDetailsEffects } from './state/portal-author-details.effects';
 import { authorReducer } from './state/portal-author-details.reducer';
-import { MediaModule } from 'src/app/shared/media/media.module';
 
 const components = [
   PortalAuthorDetailsComponent,
@@ -33,15 +32,14 @@ const materials = [
 ];
 
 const modules = [
-  AvatarComponent,
   CoreModule,
   CardModule,
+  MediaModule,
   RadioButtonFormModule,
   PortalAuthorDetailsRoutingModule,
   ShareModule,
   TableModule,
   TitleModule,
-  MediaModule
 ];
 
 const libs = [

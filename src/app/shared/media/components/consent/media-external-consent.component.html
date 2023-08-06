@@ -11,12 +11,12 @@
       type="button"
       mat-flat-button
       color="primary"
-      (click)="loadExternalContent()">
+      (click)="loadExternalContent($event)">
       <span appLabel="showContent"></span>
     </button>
   </div>
   <div>
-    <mat-checkbox [(ngModel)]="rememberConsent">
+    <mat-checkbox (click)="$event.stopPropagation();" [(ngModel)]="rememberConsent">
       <span appLabel="rememberChoice"></span>
     </mat-checkbox>
   </div>

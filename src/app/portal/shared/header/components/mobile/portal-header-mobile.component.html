@@ -28,7 +28,7 @@
           </button>          
         </section>
         <section *ngIf="currentUser?.id">
-          <app-avatar [user]="currentUser"></app-avatar>
+          <app-media-avatar [user]="currentUser"></app-media-avatar>
           <div class="currentUser">
           <span>{{ currentUser?.user?.firstName }} {{ currentUser?.user?.lastName }}</span>
           <small>{{ currentUser?.user?.email }}</small>
