@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -13,6 +14,7 @@ import { SliderComponent } from '../sliders/slider/slider.component';
 import { TitleModule } from '../title/title.module';
 import { MediaAttributionComponent } from './components/attribution/media-attribution.component';
 import { MediaCardComponent } from './components/card/media-card.component';
+import { MediaThirdpartyConsentComponent } from './components/consent/media-thirdparty-consent.component';
 import { MediaFormComponent } from './components/form/media-form.component';
 import { MediaGalleryComponent } from './components/gallery/media-gallery.component';
 import { MediaSliderComponent } from './components/slider/media-slider.component';
@@ -20,7 +22,6 @@ import { MediaUploadComponent } from './components/upload/media-upload.component
 import { MediaVideoComponent } from './components/video/media-video.component';
 import { MediaViewerComponent } from './components/viewer/media-viewer.component';
 import { MediaAttributionDirective } from './directives/media-attribution.directive';
-import { ContentModule } from '../content/content.module';
 
 const components = [
   MediaAttributionComponent,
@@ -28,6 +29,7 @@ const components = [
   MediaFormComponent,
   MediaGalleryComponent,
   MediaSliderComponent,
+  MediaThirdpartyConsentComponent,
   MediaUploadComponent,
   MediaViewerComponent,
   MediaVideoComponent,
@@ -39,12 +41,14 @@ const directives = [
 
 const framework = [
   CommonModule,
+  FormsModule,
   ReactiveFormsModule,
   RouterModule
 ];
 
 const materials = [
   MatCardModule,
+  MatCheckboxModule,
   MatButtonModule,
   MatDividerModule,
 ];
@@ -55,7 +59,6 @@ const modules = [
   RadioButtonFormModule,
   SliderHeaderComponent,
   TitleModule,
-  ContentModule
 ];
 
 const libs = [

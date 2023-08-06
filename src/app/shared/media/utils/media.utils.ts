@@ -30,7 +30,7 @@ export const isValidYoutubeUrl = (url?: Maybe<string>): boolean => {
   return !!url && youtubeRegex.test(url);
 }
 
-export const urlParser = (url?: Maybe<string>): string => {
-  const location = new URL(url!);
+export const getUrlHost = (url: string): string => {
+  const location = new URL(url);
   return location.hostname;
 }

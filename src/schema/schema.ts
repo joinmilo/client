@@ -1188,6 +1188,58 @@ export type FriendEntityInput = {
   requester?: InputMaybe<UserContextEntityInput>;
 };
 
+export type InfoMediaCategoryEntity = {
+  __typename?: 'InfoMediaCategoryEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  infoMedia?: Maybe<Array<Maybe<InfoMediaEntity>>>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  translatables?: Maybe<Array<Maybe<InfoMediaCategoryTranslatableEntity>>>;
+};
+
+export type InfoMediaCategoryEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  infoMedia?: InputMaybe<Array<InputMaybe<InfoMediaEntityInput>>>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  translatables?: InputMaybe<Array<InputMaybe<InfoMediaCategoryTranslatableEntityInput>>>;
+};
+
+export type InfoMediaCategoryTranslatableEntity = {
+  __typename?: 'InfoMediaCategoryTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type InfoMediaCategoryTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type InfoMediaEntity = {
+  __typename?: 'InfoMediaEntity';
+  category?: Maybe<InfoMediaCategoryEntity>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  media?: Maybe<MediaEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+};
+
+export type InfoMediaEntityInput = {
+  category?: InputMaybe<InfoMediaCategoryEntityInput>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  media?: InputMaybe<MediaEntityInput>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+};
+
 export type InformationDto = {
   __typename?: 'InformationDto';
   version?: Maybe<Scalars['String']>;
@@ -1498,6 +1550,10 @@ export type Mutation = {
   deleteEventTargetGroup?: Maybe<Scalars['Boolean']>;
   deleteEventTargetGroups?: Maybe<Scalars['Boolean']>;
   deleteEvents?: Maybe<Scalars['Boolean']>;
+  deleteInfoMedia?: Maybe<Scalars['Boolean']>;
+  deleteInfoMediaCategories?: Maybe<Scalars['Boolean']>;
+  deleteInfoMediaCategory?: Maybe<Scalars['Boolean']>;
+  deleteInfoMedium?: Maybe<Scalars['Boolean']>;
   deleteLabel?: Maybe<Scalars['Boolean']>;
   deleteLabels?: Maybe<Scalars['Boolean']>;
   deleteLanguage?: Maybe<Scalars['Boolean']>;
@@ -1612,6 +1668,10 @@ export type Mutation = {
   saveEventTargetGroup?: Maybe<EventTargetGroupEntity>;
   saveEventTargetGroups?: Maybe<Array<Maybe<EventTargetGroupEntity>>>;
   saveEvents?: Maybe<Array<Maybe<EventEntity>>>;
+  saveInfoMedia?: Maybe<Array<Maybe<InfoMediaEntity>>>;
+  saveInfoMediaCategories?: Maybe<Array<Maybe<InfoMediaCategoryEntity>>>;
+  saveInfoMediaCategory?: Maybe<InfoMediaCategoryEntity>;
+  saveInfoMedium?: Maybe<InfoMediaEntity>;
   saveLabel?: Maybe<LabelEntity>;
   saveLabels?: Maybe<Array<Maybe<LabelEntity>>>;
   saveLanguage?: Maybe<LanguageEntity>;
@@ -2013,6 +2073,30 @@ export type MutationDeleteEventTargetGroupsArgs = {
 /** Mutation root */
 export type MutationDeleteEventsArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteInfoMediaArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteInfoMediaCategoriesArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteInfoMediaCategoryArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteInfoMediumArgs = {
+  id?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2698,6 +2782,30 @@ export type MutationSaveEventTargetGroupsArgs = {
 /** Mutation root */
 export type MutationSaveEventsArgs = {
   entities?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveInfoMediaArgs = {
+  entities?: InputMaybe<Array<InputMaybe<InfoMediaEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveInfoMediaCategoriesArgs = {
+  entities?: InputMaybe<Array<InputMaybe<InfoMediaCategoryEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveInfoMediaCategoryArgs = {
+  entity?: InputMaybe<InfoMediaCategoryEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveInfoMediumArgs = {
+  entity?: InputMaybe<InfoMediaEntityInput>;
 };
 
 
@@ -3585,6 +3693,18 @@ export type PageableList_EventTargetGroupEntity = {
   total: Scalars['Long'];
 };
 
+export type PageableList_InfoMediaCategoryEntity = {
+  __typename?: 'PageableList_InfoMediaCategoryEntity';
+  result?: Maybe<Array<Maybe<InfoMediaCategoryEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_InfoMediaEntity = {
+  __typename?: 'PageableList_InfoMediaEntity';
+  result?: Maybe<Array<Maybe<InfoMediaEntity>>>;
+  total: Scalars['Long'];
+};
+
 export type PageableList_LabelEntity = {
   __typename?: 'PageableList_LabelEntity';
   result?: Maybe<Array<Maybe<LabelEntity>>>;
@@ -3831,6 +3951,10 @@ export type Query = {
   getEventTargetGroup?: Maybe<EventTargetGroupEntity>;
   getEventTargetGroups?: Maybe<PageableList_EventTargetGroupEntity>;
   getEvents?: Maybe<PageableList_EventEntity>;
+  getInfoMedia?: Maybe<PageableList_InfoMediaEntity>;
+  getInfoMediaCategories?: Maybe<PageableList_InfoMediaCategoryEntity>;
+  getInfoMediaCategory?: Maybe<InfoMediaCategoryEntity>;
+  getInfoMedium?: Maybe<InfoMediaEntity>;
   getInformation?: Maybe<InformationDto>;
   getLabel?: Maybe<LabelEntity>;
   getLabels?: Maybe<PageableList_LabelEntity>;
@@ -4204,6 +4328,30 @@ export type QueryGetEventTargetGroupsArgs = {
 /** Query root */
 export type QueryGetEventsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetInfoMediaArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetInfoMediaCategoriesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetInfoMediaCategoryArgs = {
+  entity?: InputMaybe<InfoMediaCategoryEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetInfoMediumArgs = {
+  entity?: InputMaybe<InfoMediaEntityInput>;
 };
 
 

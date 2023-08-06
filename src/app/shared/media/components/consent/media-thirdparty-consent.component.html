@@ -1,0 +1,23 @@
+<section>
+  <p>
+    <small appLabel="contentHostedByThirdParty"></small>
+    <small appLabel="byShowAcceptTermsAndCondition"></small>
+  </p>
+  <p>
+    <b>{{ externalUrl }}</b>
+  </p>
+  <div>
+    <button
+      type="button"
+      mat-flat-button
+      color="primary"
+      (click)="loadExternalContent()">
+      <span appLabel="showContent"></span>
+    </button>
+  </div>
+  <div>
+    <mat-checkbox [(ngModel)]="rememberConsent">
+      <span appLabel="rememberChoice"></span>
+    </mat-checkbox>
+  </div>
+</section>

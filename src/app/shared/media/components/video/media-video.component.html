@@ -1,11 +1,14 @@
 <ng-container *ngIf="media">
   <ng-container *ngIf="isYoutube; else videoTemplate">
-    <ng-container *ngIf="allowExternalContent | async; else frameTemplate">
+    <ng-container *ngIf="allowThirdpartyContent; else frameTemplate">
       <iframe [src]="url" frameborder="0">
       </iframe>
     </ng-container>
     <ng-template  #frameTemplate>
-      <app-external-content [hostname]="getHostname()"></app-external-content>
+      <app-media-thirdparty-consent
+        [externalUrl]="getHostname()"
+        (allowed)="allowThirdpartyContent = true">
+      </app-media-thirdparty-consent>
     </ng-template>
 
   </ng-container>

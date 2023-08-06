@@ -1,9 +1,10 @@
-import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnDestroy, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Maybe, MediaEntity } from 'src/schema/schema';
-import { isValidYoutubeUrl, urlParser } from '../../utils/media.utils';
 import { Store } from '@ngrx/store';
-import { selectConsentForExternalContent } from 'src/app/core/state/selectors/user.selectors';
+import { Subject, takeUntil } from 'rxjs';
+import { selectAllowThirdpartyContent } from 'src/app/core/state/selectors/user.selectors';
+import { Maybe, MediaEntity } from 'src/schema/schema';
+import { getUrlHost, isValidYoutubeUrl } from '../../utils/media.utils';
 
 
 @Component({
@@ -11,10 +12,12 @@ import { selectConsentForExternalContent } from 'src/app/core/state/selectors/us
   templateUrl: './media-video.component.html',
   styleUrls: ['./media-video.component.scss'],
 })
-export class MediaVideoComponent implements OnChanges {
+export class MediaVideoComponent implements OnChanges, OnDestroy {
 
   @Input()
   public media?: Maybe<MediaEntity>;
+
+  public allowThirdpartyContent?: boolean;
 
   public videoElement?: HTMLVideoElement;
 
@@ -28,11 +31,15 @@ export class MediaVideoComponent implements OnChanges {
 
   public url?: SafeResourceUrl;
 
-  public allowExternalContent = this.store.select(selectConsentForExternalContent);
+  private destroy = new Subject<void>();
 
   constructor(
     private sanitizer: DomSanitizer,
-    private store: Store) { }
+    private store: Store) {
+      this.store.select(selectAllowThirdpartyContent)
+        .pipe(takeUntil(this.destroy))
+        .subscribe(allowed => this.allowThirdpartyContent = allowed);
+    }
 
   public ngOnChanges(): void {
     this.isYoutube = isValidYoutubeUrl(this.media?.url);
@@ -43,7 +50,12 @@ export class MediaVideoComponent implements OnChanges {
     }
   }
 
-  public getHostname(){
-    return urlParser(this.media?.url);
+  public getHostname(): string {
+    return getUrlHost(this.media?.url as string);
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

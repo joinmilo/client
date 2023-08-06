@@ -1,0 +1,14 @@
+section{
+  background-color:  var(--color-background);
+  text-overflow: ellipsis;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 0.5rem;
+  padding-bottom: 3rem;
+
+  p, div{
+    text-align: center;
+  }
+
+}
