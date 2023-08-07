@@ -19,7 +19,7 @@ export class MediaGalleryComponent implements OnInit, OnChanges {
 
   @Input()
   public backRoute?: string[];
-
+  
   @Input()
   public media?: Maybe<MediaEntity[]>;
 
