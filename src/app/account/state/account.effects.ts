@@ -93,9 +93,7 @@ export class AccountEffects {
   save = createEffect(() => this.actions.pipe(
     ofType(AccountActions.save),
     switchMap((action) => this.saveUserService.mutate({
-      entity: {
-        user: action.entity
-      }
+      entity: action.entity
     })),
     map(response => AccountActions.saved(response.data?.saveUserContext as UserContextEntity))
   ));

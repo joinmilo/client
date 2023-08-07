@@ -1,4 +1,4 @@
-<mat-vertical-stepper linear="true" orientation="vertical" #stepper>
+<mat-vertical-stepper linear="true" orientation="vertical" #stepper (selectionChange)="checkStepData()">
   <mat-step [stepControl]="form">
     <form [formGroup]="form">
       <ng-template matStepLabel>

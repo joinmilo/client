@@ -38,9 +38,8 @@ export class LoginStepperComponent implements OnInit {
   }
 
   saveData() {
-    console.log(this.currentUser);
 
-    const test = {
+    this.store.dispatch(AccountActions.save({
       id: this.currentUser?.id,
       //todo mediaEntityInput
       address: {
@@ -58,10 +57,14 @@ export class LoginStepperComponent implements OnInit {
         phone: this.form.value.phone ?? ""
       }
     }
-    console.log(test);
-
-    this.store.dispatch(AccountActions.save(
-      test
     ))
+  }
+
+  public checkStepData(): void {
+    if(this.form.value.street || this.form.value.houseNumber ||
+      this.form.value.place || this.form.value.postalCode)
+      {
+console.log("d");
+      }
   }
 }

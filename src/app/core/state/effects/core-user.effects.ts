@@ -12,7 +12,6 @@ import { accountUrl, refreshKey } from '../../constants/core.constants';
 import { AuthService } from '../../services/auth.service';
 import { FeedbackType } from '../../typings/feedback';
 import { CoreUserActions } from '../actions/core-user.actions';
-import { selectCurrentUser } from '../selectors/user.selectors';
 
 @Injectable()
 export class CoreUserEffects {
@@ -46,20 +45,19 @@ export class CoreUserEffects {
   loggedIn = createEffect(() => this.actions.pipe(
     ofType(CoreUserActions.loggedIn),
     switchMap(() => this.getMeService.watch().valueChanges),
-    filter(response => !!response.data.me?.id),
-    map(response => CoreUserActions.getMe(response.data.me as UserContextEntity)),
+    map(response => response.data.me as UserContextEntity),
+    filter(currentUser => !!currentUser?.id),
     tap(() => this.feedbackService.open({
       type: FeedbackType.Success,
       labelMessage: 'youreLoggedIn'
     })),
-    switchMap(() => this.store.select(selectCurrentUser).pipe(
-      tap(currentUser => {
-        currentUser?.user?.lastLoggedIn 
-        ? this.router.navigate([''])  
-          : this.router.navigate([`/${accountUrl}`, 'login-stepper']);
-      })
-    ))
-  ), { dispatch: false });
+    tap(currentUser => {
+      currentUser?.user?.lastLoggedIn
+        ? this.router.navigate([''])
+        : this.router.navigate([`/${accountUrl}`, 'login-stepper']);
+    }),
+    map(currentUser => CoreUserActions.getMe(currentUser)),
+  ) );
 
   logout = createEffect(() => this.actions.pipe(
     ofType(CoreUserActions.logout),
