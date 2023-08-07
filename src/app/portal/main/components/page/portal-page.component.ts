@@ -12,7 +12,7 @@ import { selectCurrentPage } from '../../state/portal-main.selectors';
   templateUrl: './portal-page.component.html',
   styleUrls: ['./portal-page.component.scss']
 })
-export class PortalPageComponent implements OnInit, OnDestroy{
+export class PortalPageComponent implements OnInit, OnDestroy {
 
   public page?: Maybe<PageEntity>;
 
@@ -33,9 +33,15 @@ export class PortalPageComponent implements OnInit, OnDestroy{
       takeUntil(this.destroy)
     ).subscribe(page => {
       this.page = page;
+
       this.mediaTitle = page?.uploads?.find(upload => upload?.title)?.media;
-  })
-}
+
+      this.media = page?.uploads
+        ?.filter(upload => !upload?.title)
+        ?.map(eventMedia => eventMedia?.media)
+        ?.slice(0, 5) as MediaEntity[];
+    })
+  }
 
   ngOnDestroy(): void {
     this.destroy.next();

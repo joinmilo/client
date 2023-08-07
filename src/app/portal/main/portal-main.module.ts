@@ -21,6 +21,7 @@ import { PortalReportPageFeatureModule } from '../features/report/page-feature/p
 import { PortalSurveyPageFeatureModule } from '../features/survey/page-feature/portal-survey-page-feature.module';
 import { PortalPageFeaturesComponent } from './components/features/portal-page-features.component';
 import { PortalLandingComponent } from './components/landing/portal-landing.component';
+import { PortalPageMediaComponent } from './components/page/media/portal-page-media.component';
 import { PortalPageComponent } from './components/page/portal-page.component';
 import { portalMainStateKey } from './constants/portal-main.constants';
 import { PortalMainRoutingModule } from './portal-main-routing.module';
@@ -31,6 +32,7 @@ const components = [
   PortalLandingComponent,
   PortalPageComponent,
   PortalPageFeaturesComponent,
+  PortalPageMediaComponent,
 ];
 
 const features = [
@@ -61,7 +63,7 @@ const materials = [
 const modules = [
   CoreModule,
   PortalMainRoutingModule,
-  MediaModule
+  MediaModule,
 ];
 
 const libs = [

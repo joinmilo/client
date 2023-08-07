@@ -13,3 +13,8 @@ export const selectLandingPage = createSelector(
   selectPortalMainState,
   state => state.landingPage
 );
+
+export const selectPageMedia = createSelector(
+  selectPortalMainState,
+  state => state.page?.uploads?.map(upload => upload?.media ?? {})
+);

@@ -14,7 +14,7 @@ import { selectEventDetails } from '../state/portal-event-details.selectors';
   templateUrl: './portal-event-details.component.html',
   styleUrls: ['./portal-event-details.component.scss']
 })
-export class PortalEventDetailsComponent implements OnInit {
+export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
   public categoryUrl = eventsFeatureKey;
 

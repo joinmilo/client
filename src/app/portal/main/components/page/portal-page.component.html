@@ -7,10 +7,11 @@
     <p [innerHtml]="page | translatable: 'content' | async"></p>
   </section>
 
+  <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+  </app-media-slider>
 </div>
 
 <div class="main">
   <app-portal-page-features *ngIf="page?.pageFeatures?.length" [pageFeatures]="page?.pageFeatures">
   </app-portal-page-features>
 </div>
-

@@ -65,15 +65,16 @@ export class MediaGalleryComponent implements OnInit, OnChanges {
       });
     }
 
-    if (this.images?.length) {
-      this.inputs.push({
-        icon: ['fas', 'image'],
-        label: 'images',
-        value: MediaDisplayType.Image
+    if (this.files?.length) {
+      this.fileType = MediaDisplayType.File;
+      this.inputs?.push({
+        icon: ['fas', 'file'],
+        label: 'files',
+        value: MediaDisplayType.File
       });
-    }
 
     if (this.videos?.length) {
+      this.fileType = MediaDisplayType.Video;
       this.inputs?.push({
         icon: ['fas', 'video'],
         label: 'videos',
@@ -81,12 +82,14 @@ export class MediaGalleryComponent implements OnInit, OnChanges {
       })
     }
 
-    if (this.files?.length) {
-      this.inputs?.push({
-        icon: ['fas', 'file'],
-        label: 'files',
-        value: MediaDisplayType.File
+    if (this.images?.length) {
+      this.fileType = MediaDisplayType.Image;
+      this.inputs.push({
+        icon: ['fas', 'image'],
+        label: 'images',
+        value: MediaDisplayType.Image
       });
+    }
     }
   }
 
