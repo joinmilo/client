@@ -16,6 +16,9 @@
       <ng-container *ngSwitchCase="types.sponsored">
         <app-sponsored-card *ngFor="let card of (data | async)?.result" [entity]="entity" [data]="card"></app-sponsored-card>
       </ng-container>
+      <ng-container *ngSwitchCase="types.friends">
+        <app-friends-card *ngFor="let card of (data | async)?.result" [entity]="entity" [data]="card" [allFriends]="allFriends" [receivedFriendRequests]="receivedFriendRequests" [sentFriendRequests]="sentFriendRequests"></app-friends-card>
+      </ng-container>
     </ng-container>
   </section>
 </ng-container>

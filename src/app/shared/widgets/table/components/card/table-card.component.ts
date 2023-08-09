@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, startWith, take } from 'rxjs';
-import { CardData, CardEntity, CardType } from 'src/app/shared/widgets/card/typings/card';
 import { Maybe } from 'src/schema/schema';
+import { CardData, CardEntity, CardType } from '../../../card/typings/card';
 import { PageableList, Sort, SortOption, SortPaginate } from '../../typings/table';
 import { TablePaginatorComponent } from '../paginator/table-paginator.component';
 
@@ -21,7 +21,7 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
 
   @Input()
   public entity?: CardEntity;
-  
+
   @Input()
   public initParams: SortPaginate = {
     page: 0,
@@ -30,7 +30,7 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
 
   @Input()
   public noDataLabel = 'noData';
-  
+
   @Input()
   public queryParams = true;
 
@@ -39,6 +39,15 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
 
   @Input()
   public sortOptions?: SortOption[];
+
+  @Input()
+  public allFriends = false;
+
+  @Input()
+  public receivedFriendRequests = false;
+
+  @Input()
+  public sentFriendRequests = false;
 
   @Output()
   public sortPaginate = new EventEmitter<SortPaginate>();
@@ -51,13 +60,14 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
   public types = {
     contact: CardType.Contact,
     content: CardType.Content,
-    sponsored: CardType.Sponsored
+    sponsored: CardType.Sponsored,
+    friends: CardType.Friends
   };
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-  ) {}
+  ) { }
 
   public ngAfterViewInit(): void {
     if (this.queryParams) {

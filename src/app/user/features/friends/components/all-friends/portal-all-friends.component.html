@@ -1,6 +1,8 @@
 <app-table-card 
   entity="UserContextEntity" 
   [data]="friends" 
+  noDataLabel="noFriends"
   [cardType]="cardType"
-  [paginate]="false">
+  [paginate]="false"
+  [allFriends]="true">
 </app-table-card>

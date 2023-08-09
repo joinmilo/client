@@ -11,11 +11,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { CardModule } from 'src/app/shared/card/card.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
-import { AvatarComponent } from 'src/app/shared/image/avatar/avatar.component';
-import { TableModule } from 'src/app/shared/table/table.module';
-import { TitleModule } from 'src/app/shared/title/title.module';
+import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { CardModule } from 'src/app/shared/widgets/card/card.module';
+import { MediaModule } from 'src/app/shared/widgets/media/media.module';
+import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalAddFriendsComponent } from './components/add-friends/portal-add-friends.component';
 import { PortalAllFriendsComponent } from './components/all-friends/portal-all-friends.component';
 import { PortalFriendsComponent } from './components/portal-friends.component';
@@ -48,10 +48,10 @@ const materials = [
 ];
 
 const modules = [
-  AvatarComponent,
   CardModule,
   CoreModule,
   FormsModule,
+  MediaModule,
   PortalUserFriendsRoutingModule,
   RadioButtonFormModule,
   TableModule,

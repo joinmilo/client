@@ -2,8 +2,7 @@ import { Component } from "@angular/core";
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { selectReceivedRequest } from 'src/app/core/state/selectors/user.selectors';
-import { CardType } from 'src/app/shared/card/typings/card';
-
+import { CardType } from 'src/app/shared/widgets/card/typings/card';
 
 @Component({
   selector: 'app-portal-received-friend-requests',
@@ -19,7 +18,7 @@ export class PortalReceivedFriendRequestsComponent {
     }))
   );
 
-  public cardType = CardType.Contact
+  public cardType = CardType.Friends
 
   constructor(
     public store: Store

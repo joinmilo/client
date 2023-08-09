@@ -1,0 +1,54 @@
+:host {
+  max-width: 100%;
+}
+
+mat-card {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 22rem;
+  max-width: calc(100% - 1rem);
+  cursor: pointer;
+
+  * {
+    text-align: center;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  figure {
+    align-self: center;
+    position: relative;
+    max-height: 12rem;
+    max-width: 12rem;
+    margin-bottom: var(--gap);
+  }
+
+  h1 {
+    height: 4.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+  }
+
+  app-card-actions {
+    position: absolute;
+    top: 1rem;
+    right: .25rem;
+  }
+
+  div{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+}

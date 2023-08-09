@@ -1,6 +1,8 @@
 <app-table-card 
   entity="UserContextEntity" 
   [data]="receivedFriendRequests" 
+  noDataLabel="noFriendRequests"
   [cardType]="cardType"
-  [paginate]="false">
+  [paginate]="false"
+  [receivedFriendRequests]="true">
 </app-table-card>
