@@ -70,7 +70,7 @@ export class LoginStepperComponent implements OnInit {
             [
               {
                 user: { id: this.currentUser?.user?.id },
-                role: { key: "author" },
+                role: { keyword: "author" },
                 accepted: false
               }
             ]
