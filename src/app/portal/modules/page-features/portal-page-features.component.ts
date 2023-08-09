@@ -14,6 +14,7 @@ import { PortalOrganisationPageFeatureModule } from 'src/app/portal/features/org
 import { PortalReportPageFeatureModule } from 'src/app/portal/features/report/page-feature/portal-report-page-feature.module';
 import { PortalSurveyPageFeatureModule } from 'src/app/portal/features/survey/page-feature/portal-survey-page-feature.module';
 import { Maybe, PageFeatureEntity } from 'src/schema/schema';
+import { PortalMediaPageFeatureModule } from '../../features/media/page-feature/portal-media-page-feature.module';
 
 @Component({
   selector: 'app-portal-page-features',
@@ -32,6 +33,7 @@ import { Maybe, PageFeatureEntity } from 'src/schema/schema';
     PortalFormPageFeatureModule,
     PortalGuestArticlePageFeatureModule,
     PortalMapPageFeatureModule,
+    PortalMediaPageFeatureModule,
     PortalOrganisationPageFeatureModule,
     PortalReportPageFeatureModule,
     PortalSurveyPageFeatureModule,

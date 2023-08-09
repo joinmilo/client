@@ -18,3 +18,7 @@ export type AttributionDirection = 'TOP-LEFT'
   | 'TOP-RIGHT'
   | 'BOTTOM-RIGHT'
   | 'BOTTOM-LEFT';
+
+export type MediaSliderTitleType = 'SUBTITLE'
+  | 'DETAILS'
+  | 'PAGE';

@@ -1,6 +1,26 @@
 <div *ngIf="(titleLabel || link || title) && media?.length">
-  <app-details-title *ngIf="titleLabel" [titleLabel]="titleLabel"></app-details-title>
-  <app-details-title *ngIf="title" [title]="title"></app-details-title>
+  
+  <ng-container *ngIf="titleType === 'DETAILS'">
+    <app-details-title *ngIf="titleLabel; detailsTitleLabel" [titleLabel]="titleLabel"></app-details-title>
+    <ng-template #subTitleLabel>
+      <app-details-title [title]="title"></app-details-title>
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="titleType === 'SUBTITLE'">
+    <app-sub-title *ngIf="title; else subTitleLabel" [title]="title"></app-sub-title>
+    <ng-template #subTitleLabel>
+      <app-sub-title [titleLabel]="titleLabel"></app-sub-title>
+    </ng-template>
+  </ng-container>
+
+  <ng-container *ngIf="titleType === 'PAGE'">
+    <app-page-title *ngIf="titleLabel; else pageTitleLabel" [titleLabel]="titleLabel"></app-page-title>
+    <ng-template #pageTitleLabel>
+      <app-page-title *ngIf="title" [title]="title"></app-page-title>
+    </ng-template>
+  </ng-container>
+  
   <section *ngIf="link">
     <a [routerLink]="link" [appLabel]="linkLabel" suffix="»"></a>
   </section>

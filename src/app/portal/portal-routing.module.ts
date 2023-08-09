@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, mapFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
+import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, guestArticlesFeatureKey, mapFeatureKey, mediaFeatureKey, organisationsFeatureKey, reportsFeatureKey, slug, surveysFeatureKey } from '../core/constants/core.constants';
 import { PortalLandingComponent } from './modules/landing/component/portal-landing.component';
 
 const routes: Routes = [
@@ -68,6 +68,11 @@ const routes: Routes = [
     path: mapFeatureKey,
     loadChildren: () => import('./features/map/overview/portal-map-overview.module')
       .then((imported) => imported.PortalMapOverviewModule),
+  },
+  {
+    path: mediaFeatureKey,
+    loadChildren: () => import('./features/media/overview/portal-media-overview.module')
+      .then((imported) => imported.PortalMediaOverviewModule),
   },
   {
     path: 'notifications',

@@ -1,0 +1,11 @@
+<div class="main">
+  <app-page-title titleLabel="media"></app-page-title>
+
+  <ng-container *ngIf="(infoMedia | async); else emptyResult">
+    <app-portal-media-overview-category>
+    </app-portal-media-overview-category>
+  </ng-container>
+  <ng-template #emptyResult>
+    <app-portal-media-overview-empty></app-portal-media-overview-empty>
+  </ng-template>
+</div>

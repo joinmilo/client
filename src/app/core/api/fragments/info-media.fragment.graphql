@@ -1,0 +1,16 @@
+fragment InfoMedia on InfoMediaEntity {
+  id
+  category {
+    id
+    translatables {
+      id
+      name
+      language {
+        ...Language
+      }
+    }
+  }
+  media {
+    ...Media
+  }
+}
