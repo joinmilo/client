@@ -6,10 +6,10 @@ export const selectConfigurations = createSelector(
   state => state?.configurations
 );
 
-export const selectConfiguration = (key: string) =>
+export const selectConfiguration = (keyword: string) =>
   createSelector(
     selectConfigurations,
-    configurations => configurations?.find(c => c?.key === key)
+    configurations => configurations?.find(c => c?.keyword === keyword)
   );
 
 export const selectIsLoading = createSelector(

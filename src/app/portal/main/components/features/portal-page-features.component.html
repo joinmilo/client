@@ -1,6 +1,6 @@
 <div>
   <ng-container *ngFor="let pageFeature of pageFeatures">
-    <ng-container [ngSwitch]="pageFeature?.feature?.key">
+    <ng-container [ngSwitch]="pageFeature?.feature?.keyword">
       <app-article-page-feature *ngSwitchCase="features.articles"></app-article-page-feature>
       <app-calendar-page-feature *ngSwitchCase="features.calendar"></app-calendar-page-feature>
       <app-event-page-feature *ngSwitchCase="features.events"></app-event-page-feature>
