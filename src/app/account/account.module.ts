@@ -1,10 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
@@ -47,6 +50,7 @@ const components = [
 const framework = [
   CommonModule,
   ReactiveFormsModule,
+  FormsModule
 ];
 
 const materials = [
@@ -54,7 +58,11 @@ const materials = [
   MatInputModule,
   MatButtonModule,
   MatButtonToggleModule,
-  MatStepperModule
+  MatStepperModule,
+  MatSlideToggleModule,
+  MatSelectModule,
+  MatAutocompleteModule,
+  MatInputModule,
 ];
 
 const modules = [
@@ -65,7 +73,6 @@ const modules = [
   PrivacyPolicyFormComponent,
   TitleModule,
   UserPortalRoutingModule,
-
   LoadingComponent,
 ];
 

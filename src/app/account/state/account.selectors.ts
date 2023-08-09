@@ -18,3 +18,8 @@ export const selectAccountToken = createSelector(
   selectAccountState,
   state => state.token
 );
+
+export const selectOrganisations = createSelector(
+  selectAccountState,
+  state => state.organisations
+);

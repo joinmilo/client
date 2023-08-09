@@ -5,6 +5,24 @@ fragment User on UserEntity {
   email
   verified
   lastLoggedIn
+  roleApplications{
+    accepted
+    role{
+      id
+    }
+    user{
+      id
+    }
+    translatables {
+      id
+      content
+      language {
+        id
+        locale
+        name
+      } 
+    }
+  }
   userContext{
     uploads{
       profilePicture

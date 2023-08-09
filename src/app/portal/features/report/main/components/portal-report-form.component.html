@@ -7,16 +7,14 @@
       <p appLabel="featureRequest"></p>
     </div>
     <section>
-      <div>
-        <mat-form-field appearance="outline">
-          <mat-label appLabel="topic"></mat-label>
-          <mat-select formControlName="type">
-            <mat-option [value]="type" *ngFor="let type of types | async">
-              <p>{{type | translatable: "name" | async}}</p>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="topic"></mat-label>
+        <mat-select formControlName="type">
+          <mat-option [value]="type" *ngFor="let type of types | async">
+            <p>{{type | translatable: "name" | async}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <div>
         <mat-form-field appearance="outline">
           <mat-label appLabel="name"></mat-label>
@@ -34,9 +32,7 @@
         </mat-form-field>
       </div>
       <div>
-        <app-captcha-submit
-          [disabled]="form.invalid"
-          (verified)="onSubmit($event, formDirective)">
+        <app-captcha-submit [disabled]="form.invalid" (verified)="onSubmit($event, formDirective)">
         </app-captcha-submit>
       </div>
     </section>

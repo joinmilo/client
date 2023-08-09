@@ -4,7 +4,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, switchMap, tap } from 'rxjs';
 import { accountUrl } from 'src/app/core/constants/core.constants';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL, SendVerificationGQL, UserContextEntity, UserEntity, VerifyUserGQL } from '../../../schema/schema';
+import { GetOrganisationsGQL, Maybe, OrganisationEntity } from 'src/schema/schema';
+import { AddressEntity, ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL, SendVerificationGQL, UserContextEntity, UserEntity, VerifyAddressGQL, VerifyUserGQL } from '../../../schema/schema';
 import { CoreActions } from '../../core/state/actions/core.actions';
 import { AccountActions } from './account.actions';
 
@@ -107,6 +108,25 @@ export class AccountEffects {
     }))
   ));
 
+  verifyAddress = createEffect(() => this.actions.pipe(
+    ofType(AccountActions.verifyAddress),
+    switchMap((action) => this.verifyAddressService.mutate({
+      entity: action.entity
+    })),
+    map(response => AccountActions.addressVerified(response.data?.verifyAddress as AddressEntity))
+  ));
+
+  getOrganisations = createEffect(() => this.actions.pipe(
+    ofType(AccountActions.getOrganisations),
+    switchMap(() => this.getOrganisationsService.watch({
+      params:{
+        sort: 'name',
+        dir: 'asc'
+      }
+    }).valueChanges),
+    map(response => AccountActions.setOrganisations(response.data?.getOrganisations?.result as Maybe<OrganisationEntity[]>))
+  ));
+
   constructor(
     private router: Router,
     private actions: Actions,
@@ -114,5 +134,8 @@ export class AccountEffects {
     private sendPasswordResetService: SendPasswordResetGQL,
     private sendVerificationService: SendVerificationGQL,
     private resetPasswordService: ResetPasswordGQL,
-    private saveUserService: SaveUserGQL) { }
+    private saveUserService: SaveUserGQL,
+    private verifyAddressService: VerifyAddressGQL,
+    private getOrganisationsService: GetOrganisationsGQL
+    ) { }
 }

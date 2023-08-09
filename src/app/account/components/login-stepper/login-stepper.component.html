@@ -1,6 +1,6 @@
-<mat-vertical-stepper linear="true" orientation="vertical" #stepper (selectionChange)="checkStepData()">
-  <mat-step [stepControl]="form">
-    <form [formGroup]="form">
+<mat-vertical-stepper linear="true" orientation="vertical" #stepper>
+  <form [formGroup]="form">
+    <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
         <span appLabel="whatIsYourName"></span>
       </ng-template>
@@ -13,68 +13,58 @@
           <mat-label appLabel="lastName"></mat-label>
           <input matInput formControlName="lastName" required>
         </mat-form-field>
-      </div>
-      <div>
-        <button mat-button matStepperNext appLabel="next"></button>
-      </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="form">
-    <form [formGroup]="form">
-      <ng-template matStepLabel>
-        <span appLabel="whatIsYourPhoneNumber"></span>
-      </ng-template>
-      <div>
         <mat-form-field appearance="outline">
           <mat-label appLabel="phone"></mat-label>
           <input matInput formControlName="phone">
         </mat-form-field>
       </div>
       <div>
+        <button mat-button matStepperNext appLabel="next"></button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="form" [completed]="false">
+      <ng-template matStepLabel>
+        <span appLabel="applyToBeABlogger"></span>
+      </ng-template>
+      <section>
+        <mat-slide-toggle formControlName="author" class="example-margin" color="primary"></mat-slide-toggle>
+        <span appLabel="iApplyAsABlogger"></span>
+      </section>
+      <mat-form-field class="form-field-full-width" appearance="outline">
+        <mat-label appLabel="writeSomethingAboutYou"></mat-label>
+        <textarea formControlName="content" matInput rows="5"></textarea>
+      </mat-form-field>
+      <div>
         <button mat-button matStepperPrevious appLabel="previous"></button>
         <button mat-button matStepperNext appLabel="next"></button>
       </div>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="form">
-    <form [formGroup]="form">
+    </mat-step>
+    <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="whatIsYourAddress"></span>
+        <span appLabel="joinAnOrganisation"></span>
       </ng-template>
       <div>
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label appLabel="street"></mat-label>
-            <input matInput formControlName="street">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label appLabel="houseNumber"></mat-label>
-            <input matInput formControlName="houseNumber">
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label appLabel="postalCode"></mat-label>
-            <input matInput formControlName="postalCode">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label appLabel="place"></mat-label>
-            <input matInput formControlName="place">
-          </mat-form-field>
-        </div>
+        <mat-form-field class="form-field-full-width" appearance="outline">
+          <mat-label appLabel="organisations"></mat-label>
+          <mat-select formControlName="organisations" multiple>
+            <mat-option *ngFor="let organisation of (organisations | async)" [value]="organisation">
+              {{ organisation.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <div>
         <button mat-button matStepperPrevious appLabel="previous"></button>
         <button mat-button matStepperNext appLabel="next"></button>
       </div>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>
-      <span appLabel="done"></span>
-    </ng-template>
-    <div>
-     <button mat-button [routerLink]="['/']" appLabel="save" (click)="saveData()"></button>
-    </div>
-  </mat-step>
+    </mat-step>
+    <mat-step [completed]="false">
+      <ng-template matStepLabel>
+        <span appLabel="done"></span>
+      </ng-template>
+      <div>
+        <button mat-button [routerLink]="['/']" appLabel="save" (click)="saveData()"></button>
+      </div>
+    </mat-step>
+  </form>
 </mat-vertical-stepper>

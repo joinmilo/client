@@ -1,5 +1,5 @@
-import { createActionGroup } from '@ngrx/store';
-import { Maybe, UserContextEntity, UserContextEntityInput, UserEntity, UserEntityInput } from 'src/schema/schema';
+import { createActionGroup, emptyProps } from '@ngrx/store';
+import { AddressEntity, AddressEntityInput, Maybe, OrganisationEntity, UserContextEntity, UserContextEntityInput, UserEntity, UserEntityInput } from 'src/schema/schema';
 
 export const AccountActions = createActionGroup({
   source: 'Account',
@@ -16,6 +16,12 @@ export const AccountActions = createActionGroup({
 
     'save': (entity: UserContextEntityInput) => ({ entity }),
     'saved': (entity: UserContextEntity) => ({ entity }),
+
+    'verify address': (entity: AddressEntityInput) => ({entity}),
+    'address verified': (entity: AddressEntity) => ({entity}),
+
+    'get organisations': emptyProps(),
+    'set organisations': (entities: Maybe<OrganisationEntity[]>) => ({entities})
   },
 });
 
