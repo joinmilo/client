@@ -17,6 +17,7 @@ import { PortalFooterModule } from '../portal/shared/footer/portal-footer.module
 import { CaptchaModule } from '../shared/captcha/captcha.module';
 import { PrivacyPolicyFormComponent } from '../shared/form/privacy-policy/privacy-policy-form.component';
 import { LoadingComponent } from '../shared/loading/loading.component';
+import { MediaModule } from '../shared/media/media.module';
 import { PasswordModule } from '../shared/password/password.module';
 import { TitleModule } from '../shared/title/title.module';
 import { UserPortalRoutingModule } from './account-routing.module';
@@ -74,6 +75,7 @@ const modules = [
   TitleModule,
   UserPortalRoutingModule,
   LoadingComponent,
+  MediaModule
 ];
 
 const libs = [

@@ -22,7 +22,7 @@ export class MediaFormComponent {
   public uploads: EventEmitter<MediaEntity[]> = new EventEmitter();
 
   @Input()
-  public maxFiles? = 5;
+  public maxFiles?: number;
 
   @Input()
   public maxFileSize = 1024 * 1024 * 10 //10mb

@@ -24,13 +24,19 @@
     </mat-step>
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
+        <span appLabel="profilepicPlease"></span>
+      </ng-template>
+      <app-media-form class="content-full-width" [maxFiles]="1"></app-media-form>
+    </mat-step>
+    <mat-step [stepControl]="form" [completed]="false">
+      <ng-template matStepLabel>
         <span appLabel="applyToBeABlogger"></span>
       </ng-template>
       <section>
-        <mat-slide-toggle formControlName="author" class="example-margin" color="primary"></mat-slide-toggle>
         <span appLabel="iApplyAsABlogger"></span>
+        <mat-slide-toggle formControlName="author" class="example-margin" color="primary"></mat-slide-toggle>
       </section>
-      <mat-form-field class="form-field-full-width" appearance="outline">
+      <mat-form-field class="content-full-width" appearance="outline">
         <mat-label appLabel="writeSomethingAboutYou"></mat-label>
         <textarea formControlName="content" matInput rows="5"></textarea>
       </mat-form-field>
@@ -44,7 +50,7 @@
         <span appLabel="joinAnOrganisation"></span>
       </ng-template>
       <div>
-        <mat-form-field class="form-field-full-width" appearance="outline">
+        <mat-form-field class="content-full-width" appearance="outline">
           <mat-label appLabel="organisations"></mat-label>
           <mat-select formControlName="organisations" multiple>
             <mat-option *ngFor="let organisation of (organisations | async)" [value]="organisation">
