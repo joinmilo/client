@@ -13,7 +13,7 @@ fragment Page on PageEntity {
     order
     feature {
       id
-      key
+      keyword
     }
   }
   translatables {

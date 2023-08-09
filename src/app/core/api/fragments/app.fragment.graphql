@@ -3,7 +3,7 @@ fragment App on AppEntity {
   url
   platform {
     id
-    key
+    keyword
     name
   }
 }

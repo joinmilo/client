@@ -4,7 +4,7 @@ fragment Theme on ThemeEntity {
   name
   variables {
     id
-    key
+    keyword
     value
   }
 }
