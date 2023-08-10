@@ -6,5 +6,5 @@ export const selectPortalFriendsState = createFeatureSelector<PortalFriendsState
 
 export const selectAllUsers = createSelector(
   selectPortalFriendsState,
-  state => state.allUsers
+  state => state.filteredUsers
 );
