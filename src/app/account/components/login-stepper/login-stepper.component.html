@@ -24,9 +24,9 @@
     </mat-step>
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="profilepicPlease"></span>
+        <span appLabel="addAProfilePicture"></span>
       </ng-template>
-      <app-media-form class="content-full-width" [maxFiles]="1"></app-media-form>
+      <app-media-form class="content-full-width" [maxFiles]="1" (uploads)="addUploads($event)"></app-media-form>
     </mat-step>
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>

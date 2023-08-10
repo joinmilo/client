@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { Maybe, OrganisationEntity, UserContextEntity } from 'src/schema/schema';
+import { Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/schema/schema';
 import { AccountActions } from '../../state/account.actions';
 import { selectOrganisations } from './../../state/account.selectors';
 
@@ -20,6 +20,7 @@ export class LoginStepperComponent implements OnInit {
   public formControl = new FormControl();
   private currentUser?: Maybe<UserContextEntity>;
   public organisations = this.store.select(selectOrganisations);
+  public profilePicture?: Maybe<MediaEntity>;
 
   public form = this.fb.group({
     firstName: ['', [Validators.required]],
@@ -31,7 +32,6 @@ export class LoginStepperComponent implements OnInit {
     place: [''],
     content: [''],
     author: [false],
-    profilePicture: [], //todo MediaEntity
     organisations: [[] as OrganisationEntity[]]
   });
 
@@ -45,8 +45,12 @@ export class LoginStepperComponent implements OnInit {
     this.store.select(selectCurrentUser).subscribe(user => this.currentUser = user);
   }
 
+  addUploads(uploads: MediaEntity[]): void{
+    this.profilePicture = uploads[0];
+  }
+
   saveData() {
-     console.log(this.currentUser);
+     console.log(this.profilePicture);
      console.log(this.form.value.author);
     const memberEntities = this.form.value.organisations?.map(organisation => ({
       organisation: { id: organisation.id },
@@ -58,7 +62,12 @@ export class LoginStepperComponent implements OnInit {
 
     this.store.dispatch(AccountActions.save({
       id: this.currentUser?.id,
-      //todo mediaEntityInput
+      uploads: [{
+        title: false,
+        profilePicture: true,
+        userContext: { id: this.currentUser?.id },
+        media: this.profilePicture
+      }],
       user: {
         id: this.currentUser?.user?.id,
         lastLoggedIn: new Date().toISOString(),
@@ -71,7 +80,8 @@ export class LoginStepperComponent implements OnInit {
               {
                 user: { id: this.currentUser?.user?.id },
                 role: { keyword: "author" },
-                accepted: false
+                accepted: false,
+                content: this.form.value.content
               }
             ]
             : []
