@@ -48,6 +48,7 @@ const materials = [
 ];
 
 const modules = [
+  MediaModule,
   CardModule,
   CoreModule,
   FormsModule,
@@ -55,7 +56,7 @@ const modules = [
   PortalUserFriendsRoutingModule,
   RadioButtonFormModule,
   TableModule,
-  TitleModule,
+  TitleModule, 
 ];
 
 const libs = [

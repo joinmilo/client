@@ -1,31 +1,31 @@
 <mat-card>
   <figure [routerLink]="element?.url">
-    <img class="border-image" [src]="element?.image ? '' : '/assets/placeholder.webp'"
+    <img [src]="element?.image ? element?.image?.url : '/assets/placeholder.webp'" class="border-image"
       alt="contact-card">
   </figure>
-    <h1 [routerLink]="element?.url">
-      {{element?.creator ? element?.creator: ''}}
-    </h1>
-    <section (click)="$event.stopPropagation();">
-      <button mat-button *ngIf="element?.email">
-        <a href="mailto:{{element?.email}}">
-          <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
-        </a>
-      </button>
-      <button mat-button *ngIf="element?.phone">
-        <a href="tel:{{element?.phone}}">
-          <fa-icon [icon]="['fas', 'phone']"></fa-icon>
-        </a>
-      </button>
-    </section>
-    <div *ngIf="allFriends">
-      <button mat-stroked-button color="primary" appLabel="deleteFriendship" (click)="deleteFriendEntity()"></button>
-    </div>
-    <div *ngIf="receivedFriendRequests">
-      <button mat-flat-button color="primary" appLabel="confirm" (click)="confirmRequest()"></button>
-      <button mat-stroked-button color="primary" appLabel="delete" (click)="deleteFriendEntity()"></button>
-    </div>
-    <div *ngIf="sentFriendRequests">
-      <button mat-stroked-button color="primary" appLabel="deleteRequest" (click)="deleteFriendEntity()"></button>
-    </div>
+  <h1 [routerLink]="element?.url">
+    {{element?.creator ? element?.creator: ''}}
+  </h1>
+  <section (click)="$event.stopPropagation();">
+    <button mat-button *ngIf="element?.email">
+      <a href="mailto:{{element?.email}}">
+        <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+      </a>
+    </button>
+    <button mat-button *ngIf="element?.phone">
+      <a href="tel:{{element?.phone}}">
+        <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+      </a>
+    </button>
+  </section>
+  <div *ngIf="allFriends">
+    <button mat-stroked-button color="primary" appLabel="deleteFriendship" (click)="deleteFriendEntity()"></button>
+  </div>
+  <div *ngIf="receivedFriendRequests">
+    <button mat-flat-button color="primary" appLabel="confirm" (click)="confirmRequest()"></button>
+    <button mat-stroked-button color="primary" appLabel="delete" (click)="deleteFriendEntity()"></button>
+  </div>
+  <div *ngIf="sentFriendRequests">
+    <button mat-stroked-button color="primary" appLabel="deleteRequest" (click)="deleteFriendEntity()"></button>
+  </div>
 </mat-card>
