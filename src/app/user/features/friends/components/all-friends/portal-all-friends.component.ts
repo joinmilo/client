@@ -14,7 +14,6 @@ export class PortalAllFriendsComponent {
   public friends = this.store.select(selectFriends).pipe(
     map(friends => ({
       result: friends,
-      total: friends?.length
     }))
   );
 

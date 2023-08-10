@@ -12,10 +12,6 @@ export const initialState: PortalFriendsState = { };
 export const portalFriendsReducer = createReducer(
   initialState,
 
-  on(PortalFriendsActions.friendsUpdated, (state, action): PortalFriendsState => ({
-      ...state, update: action.friends }
-  )),
-
   on(PortalFriendsActions.setUsers, (state, action): PortalFriendsState => (
     { ...state, filteredUsers: action.filteredUsers }
   )),

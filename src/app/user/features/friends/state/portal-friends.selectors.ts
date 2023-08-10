@@ -4,7 +4,7 @@ import { PortalFriendsState } from './portal-friends.reducer';
 
 export const selectPortalFriendsState = createFeatureSelector<PortalFriendsState>(portalFriendsStateKey);
 
-export const selectAllUsers = createSelector(
+export const selectFilteredUsers = createSelector(
   selectPortalFriendsState,
   state => state.filteredUsers
 );

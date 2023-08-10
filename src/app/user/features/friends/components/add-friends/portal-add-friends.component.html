@@ -25,12 +25,13 @@
 <mat-divider></mat-divider>
 
 <div class="scroll">
-  <div *ngFor="let portalUser of allPortalUsers">
-    <app-media-avatar [user]="portalUser"></app-media-avatar>
-    <span>{{portalUser?.user?.firstName + ' ' + portalUser?.user?.lastName}}</span>
-    <mat-checkbox [checked]="selectedPortalUsers.includes(portalUser)" (change)="toggleSelectedUser(portalUser, $event.checked)">
-    </mat-checkbox>
-  </div>
+    <div *ngFor="let portalUser of filteredUsers">
+      <app-media-avatar [user]="portalUser"></app-media-avatar>
+      <span>{{portalUser?.user?.firstName + ' ' + portalUser?.user?.lastName}}</span>
+      <mat-checkbox [checked]="selectedPortalUsers.includes(portalUser)"
+        (change)="toggleSelectedUser(portalUser, $event.checked)">
+      </mat-checkbox>
+    </div>
 </div>
 
 <mat-divider></mat-divider>

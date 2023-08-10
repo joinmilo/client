@@ -18,12 +18,10 @@ export class PortalFriendsEffects {
       this.store.select(selectCurrentUser),
       this.store.select(selectFriends),
       this.store.select(selectSentRequests),
-      this.store.select(selectReceivedRequest),
-      ),
+      this.store.select(selectReceivedRequest)),
     map(([ action, user, friends, sentRequests, receivedRequests]) => {
-      
-      const addFriends = ({ 
-        
+
+      const addFriends = ({  
       sort: 'modified',
       dir: 'desc',
       search: action.query,
@@ -86,7 +84,6 @@ export class PortalFriendsEffects {
         }
       }
     ))
-
     return addFriends
 
     }),
@@ -130,26 +127,14 @@ export class PortalFriendsEffects {
       id: action.id
     })),
     map(response => PortalFriendsActions.friendEntityDeleted(response.data?.deleteFriend))
-  ))
-
-  updateFriends = createEffect(() => this.actions.pipe(
-    ofType(
-      PortalFriendsActions.friendRequestAccepted, 
-      PortalFriendsActions.friendEntityDeleted),
-    withLatestFrom(
-      this.store.select(selectFriends),
-      this.store.select(selectSentRequests),
-      this.store.select(selectReceivedRequest)
-      ),
-    switchMap(() => this.getUsersService.watch().valueChanges),
-    map((response) => PortalFriendsActions.friendsUpdated(response.data?.getUserContexts as Maybe<UserContextEntity[]>))
   ));
 
-  friendsUpdated = createEffect(() => this.actions.pipe(
-    ofType(PortalFriendsActions.friendsUpdated),
+  updateUser = createEffect(() => this.actions.pipe(
+    ofType(PortalFriendsActions.friendEntityDeleted,
+      PortalFriendsActions.friendRequestAccepted),
     map(() => CoreUserActions.updateUser())
   ));
-
+  
   constructor(
     private actions: Actions,
     private getUsersService: GetUserContextsGQL,

@@ -13,8 +13,7 @@ export class PortalSentFriendRequestsComponent {
 
   public sentFriendRequests = this.store.select(selectSentRequests).pipe(
     map(sentFriendRequests => ({
-      result: sentFriendRequests,
-      total: sentFriendRequests?.length
+      result: sentFriendRequests
     }))
   );
 

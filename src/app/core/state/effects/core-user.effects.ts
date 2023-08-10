@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-
+import { Action, Store } from '@ngrx/store';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { GetMeGQL, UserContextEntity } from 'src/schema/schema';
-import { FeedbackService } from '../../services/feedback.service';
-import { CoreActions } from '../actions/core.actions';
-
-import { Router } from '@angular/router';
-import { Action, Store } from '@ngrx/store';
 import { accountUrl, refreshKey } from '../../constants/core.constants';
 import { AuthService } from '../../services/auth.service';
+import { FeedbackService } from '../../services/feedback.service';
 import { FeedbackType } from '../../typings/feedback';
 import { CoreUserActions } from '../actions/core-user.actions';
+import { CoreActions } from '../actions/core.actions';
 
 @Injectable()
 export class CoreUserEffects {

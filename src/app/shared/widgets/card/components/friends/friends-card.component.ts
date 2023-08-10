@@ -21,10 +21,10 @@ export class FriendsCardComponent implements OnInit {
   public data?: Maybe<CardData>;
 
   public element?: Maybe<CardElement>;
-  
+
   @Input()
   public allFriends = false;
-  
+
   @Input()
   public receivedFriendRequests = false;
 
@@ -34,10 +34,10 @@ export class FriendsCardComponent implements OnInit {
   public confirmRequest() {
     this.store.dispatch(PortalFriendsActions.acceptFriendRequest(
       {
-        id: this.currentUser?.friendAddressee?.filter(friend => friend?.requester?.id  == this.element?.id)[0]?.id,
+        id: this.currentUser?.friendAddressee?.filter(friend => friend?.requester?.id == this.element?.id)[0]?.id,
         accepted: true,
       }
-    ))
+    ));
   }
 
   public deleteFriendEntity() {
@@ -56,5 +56,5 @@ export class FriendsCardComponent implements OnInit {
 
   constructor(
     public store: Store
-  ) {}
+  ) { }
 }

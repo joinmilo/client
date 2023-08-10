@@ -1,12 +1,11 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { displayQueryParam } from 'src/app/core/constants/core.constants';
 import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
 import { Maybe, UserContextEntity } from 'src/schema/schema';
-import { PortalFriendsActions } from '../state/portal-friends.actions';
-import { selectAllUsers } from '../state/portal-friends.selectors';
+import { selectFilteredUsers } from '../state/portal-friends.selectors';
 import { PortalAddFriendsComponent } from './add-friends/portal-add-friends.component';
 
 @Component({
@@ -19,6 +18,8 @@ export class PortalFriendsComponent implements OnInit, OnDestroy {
   public displayType = 'allFriends';
 
   public displayQueryParam = displayQueryParam;
+
+  private destroy = new Subject<void>();
 
   public inputs: RadioInput[] = [
     {
@@ -48,18 +49,14 @@ export class PortalFriendsComponent implements OnInit, OnDestroy {
   public value = '';
 
   public ngOnInit(): void {
-    this.store.dispatch(PortalFriendsActions.getUsers())
-
-    this.store.select(selectAllUsers)
+    this.store.select(selectFilteredUsers)
+      .pipe(takeUntil(this.destroy))
       .subscribe(allUsers => this.allUsers = allUsers)
   }
-
-  private destroy = new Subject<void>();
 
   public friendsDialog(): void {  
     this.dialog.open(PortalAddFriendsComponent, {
       autoFocus: false,
-      data: this.allUsers?.slice(0,5)
     });
   }
 
