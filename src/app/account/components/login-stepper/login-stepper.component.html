@@ -27,6 +27,10 @@
         <span appLabel="addAProfilePicture"></span>
       </ng-template>
       <app-media-form class="content-full-width" [maxFiles]="1" (uploads)="addUploads($event)"></app-media-form>
+        <div>
+          <button mat-button matStepperPrevious appLabel="previous"></button>
+          <button mat-button matStepperNext appLabel="next"></button>
+        </div>
     </mat-step>
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
@@ -69,6 +73,7 @@
         <span appLabel="done"></span>
       </ng-template>
       <div>
+        <button mat-button matStepperPrevious appLabel="previous"></button>
         <button mat-button [routerLink]="['/']" appLabel="save" (click)="saveData()"></button>
       </div>
     </mat-step>
