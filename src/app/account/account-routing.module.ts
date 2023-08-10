@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { slug } from '../core/constants/core.constants';
 import { NotFoundComponent } from '../shared/pages/not-found/component/not-found.component';
+import { FirstLoginFormComponent } from './components/first-login-form/first-login-form.component';
 import { LoginRequiredComponent } from './components/login-required/login-required.component';
-import { LoginStepperComponent } from './components/login-stepper/login-stepper.component';
 import { LoginComponent } from './components/login/login.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
@@ -30,7 +30,7 @@ const routes: Routes = [
   },
   {
     path: 'login-stepper',
-    component: LoginStepperComponent
+    component: FirstLoginFormComponent
   },
   {
     path: 'password',

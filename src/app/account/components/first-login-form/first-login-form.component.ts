@@ -1,24 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/schema/schema';
 import { AccountActions } from '../../state/account.actions';
-import { selectOrganisations } from './../../state/account.selectors';
+import { selectOrganisations } from '../../state/account.selectors';
 
 @Component({
-  selector: 'app-login-stepper',
-  templateUrl: './login-stepper.component.html',
+  selector: 'app-first-login-form',
+  templateUrl: './first-login-form.component.html',
   styleUrls: [
     '../form.scss',
-    './login-stepper.component.scss'
+    './first-login-form.component.scss'
   ],
 })
-export class LoginStepperComponent implements OnInit {
+export class FirstLoginFormComponent implements OnInit, OnDestroy {
 
-  public value = '';
-  public formControl = new FormControl();
   private currentUser?: Maybe<UserContextEntity>;
+
   public organisations = this.store.select(selectOrganisations);
   public profilePicture?: Maybe<MediaEntity>;
 
@@ -35,23 +35,25 @@ export class LoginStepperComponent implements OnInit {
     organisations: [[] as OrganisationEntity[]]
   });
 
+  private destroy = new Subject<void>();
+
   constructor(
     private store: Store,
     private fb: FormBuilder,
   ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.store.dispatch(AccountActions.getOrganisations());
-    this.store.select(selectCurrentUser).subscribe(user => this.currentUser = user);
+    this.store.select(selectCurrentUser)
+      .pipe(takeUntil(this.destroy))
+      .subscribe(user => this.currentUser = user);
   }
 
-  addUploads(uploads: MediaEntity[]): void{
+  public addUploads(uploads: MediaEntity[]): void {
     this.profilePicture = uploads[0];
   }
 
-  saveData() {
-     console.log(this.profilePicture);
-     console.log(this.form.value.author);
+  public saveData(): void {
     const memberEntities = this.form.value.organisations?.map(organisation => ({
       organisation: { id: organisation.id },
       userContext: { id: this.currentUser?.id },
@@ -70,7 +72,7 @@ export class LoginStepperComponent implements OnInit {
       }],
       user: {
         id: this.currentUser?.user?.id,
-        lastLoggedIn: new Date().toISOString(),
+        lastLogin: new Date().toISOString(),
         firstName: this.form.value.firstName,
         lastName: this.form.value.lastName,
         phone: this.form.value.phone,
@@ -79,15 +81,20 @@ export class LoginStepperComponent implements OnInit {
             [
               {
                 user: { id: this.currentUser?.user?.id },
-                role: { keyword: "author" },
+                role: { keyword: 'author' },
                 accepted: false,
                 content: this.form.value.content
               }
             ]
             : []
       },
-      member: memberEntities
+      members: memberEntities
     }
     ))
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

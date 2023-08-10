@@ -22,9 +22,9 @@ import { PasswordModule } from '../shared/password/password.module';
 import { TitleModule } from '../shared/title/title.module';
 import { UserPortalRoutingModule } from './account-routing.module';
 import { AccountComponent } from './account.component';
+import { FirstLoginFormComponent } from './components/first-login-form/first-login-form.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
 import { LoginRequiredComponent } from './components/login-required/login-required.component';
-import { LoginStepperComponent } from './components/login-stepper/login-stepper.component';
 import { LoginComponent } from './components/login/login.component';
 import { PasswordSendMailComponent } from './components/password-send-mail/password-send-mail.component';
 import { PasswordSetNewComponent } from './components/password-set-new/password-set-new.component';
@@ -38,7 +38,7 @@ import { accountReducer } from './state/account.reducer';
 const components = [
   ImageSliderComponent,
   LoginComponent,
-  LoginStepperComponent,
+  FirstLoginFormComponent,
   LoginRequiredComponent,
   PasswordSetNewComponent,
   PasswordSendMailComponent,

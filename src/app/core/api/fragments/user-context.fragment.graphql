@@ -69,7 +69,7 @@ fragment UserContext on UserContextEntity {
     firstName
     lastName
     email
-    lastLoggedIn
+    lastLogin
     notifications {
       ...Notification
     }

@@ -1,5 +1,6 @@
 <mat-vertical-stepper linear="true" orientation="vertical" #stepper>
   <form [formGroup]="form">
+
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
         <span appLabel="whatIsYourName"></span>
@@ -22,6 +23,7 @@
         <button mat-button matStepperNext appLabel="next"></button>
       </div>
     </mat-step>
+
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
         <span appLabel="addAProfilePicture"></span>
@@ -32,6 +34,7 @@
           <button mat-button matStepperNext appLabel="next"></button>
         </div>
     </mat-step>
+
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
         <span appLabel="applyToBeABlogger"></span>
@@ -49,6 +52,7 @@
         <button mat-button matStepperNext appLabel="next"></button>
       </div>
     </mat-step>
+
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
         <span appLabel="joinAnOrganisation"></span>
@@ -68,6 +72,7 @@
         <button mat-button matStepperNext appLabel="next"></button>
       </div>
     </mat-step>
+
     <mat-step [completed]="false">
       <ng-template matStepLabel>
         <span appLabel="done"></span>
@@ -77,5 +82,6 @@
         <button mat-button [routerLink]="['/']" appLabel="save" (click)="saveData()"></button>
       </div>
     </mat-step>
+
   </form>
 </mat-vertical-stepper>

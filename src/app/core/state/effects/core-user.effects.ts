@@ -52,7 +52,7 @@ export class CoreUserEffects {
       labelMessage: 'youreLoggedIn'
     })),
     tap(currentUser => {
-      currentUser?.user?.lastLoggedIn
+      currentUser?.user?.lastLogin
         ? this.router.navigate([''])
         : this.router.navigate([`/${accountUrl}`, 'login-stepper']);
     }),

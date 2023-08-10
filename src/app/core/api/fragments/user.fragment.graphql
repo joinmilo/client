@@ -4,7 +4,7 @@ fragment User on UserEntity {
   lastName
   email
   verified
-  lastLoggedIn
+  lastLogin
   roleApplications{
     accepted
     content
