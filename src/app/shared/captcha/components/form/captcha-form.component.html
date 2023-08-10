@@ -1,4 +1,4 @@
-<div *ngIf="sitekey | async">
+<ng-container *ngIf="sitekey | async">
   <ng-hcaptcha class="mobile"
     (verify)="token = $event"
     [siteKey]="(sitekey | async)!"
@@ -8,4 +8,4 @@
     (verify)="token = $event"
     [siteKey]="(sitekey | async)!">
   </ng-hcaptcha>
-</div>
+</ng-container>

@@ -35,7 +35,9 @@ export class CaptchaSubmitComponent implements OnDestroy {
   ) { }
 
   public submit(): void {
-    this.dialog.open(CaptchaDialogComponent).afterClosed()
+    this.dialog.open(CaptchaDialogComponent, {
+      panelClass: 'media-dialog'
+    }).afterClosed()
       .pipe(filter(token => !!token))
       .subscribe(token => this.verified.emit(token as string))
   }
