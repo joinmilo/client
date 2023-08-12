@@ -1,0 +1,19 @@
+<app-filter-area
+  [filtersActive]="filtersActive | async"
+  (filtersCleared)="clearFilters()">
+
+  <!-- The parent content, e.g. display filters, etc. -->
+  <ng-content></ng-content>
+
+  <!-- The filters to use in this filter area -->
+  <ng-container filters>
+
+    <app-media-filter-category>
+    </app-media-filter-category>
+
+    <app-media-filter-type>
+    </app-media-filter-type>
+
+  </ng-container>
+
+</app-filter-area>

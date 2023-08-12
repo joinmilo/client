@@ -24,3 +24,8 @@ export const selectOverviewDataCategories = createSelector(
     }, [] as InfoMediaCategoryEntity[]);
   }
 );
+
+export const selectParams = createSelector(
+  selectPortalMediaOverviewState,
+  state => state.params
+);

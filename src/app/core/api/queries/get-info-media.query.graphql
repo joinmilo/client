@@ -3,5 +3,6 @@ query getInfoMedia($params: FilterSortPaginateInput) {
     result {
      ...InfoMedia
     }
+    total
   }
 }

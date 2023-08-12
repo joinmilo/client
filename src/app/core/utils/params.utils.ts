@@ -2,12 +2,13 @@ import { ConjunctionOperator, Maybe, QueryExpressionInput, QueryOperator } from 
 
 export const createListParam = (
   param: Maybe<string[] | string>,
-  field: string): QueryExpressionInput => {
+  field: string,
+  operator: QueryOperator = QueryOperator.Equal): QueryExpressionInput => {
   return (typeof param === 'string' || param?.length === 1)
     ? {
       entity: {
         path: field,
-        operator: QueryOperator.Equal,
+        operator: operator,
         value: typeof param === 'string' ? param : param[0]
       }
     }
@@ -16,7 +17,7 @@ export const createListParam = (
         operands: param?.map(id => ({
           entity: {
             path: field,
-            operator: QueryOperator.Equal,
+            operator: operator,
             value: id
           }
         })),

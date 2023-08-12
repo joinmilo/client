@@ -1,6 +1,10 @@
 <div class="main">
   <app-page-title titleLabel="media"></app-page-title>
 
+  <app-media-filter
+    (paramsUpdated)="updateParams($event)">
+  </app-media-filter>
+
   <ng-container *ngIf="(infoMedia | async); else emptyResult">
     <app-portal-media-overview-category>
     </app-portal-media-overview-category>

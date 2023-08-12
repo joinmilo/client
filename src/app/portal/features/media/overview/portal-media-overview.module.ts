@@ -14,6 +14,7 @@ import { portalMediaOverviewStateKey } from './constants/portal-media-overview.c
 import { PortalMediaOverviewRoutingModule } from './portal-media-overview-routing.module';
 import { PortalMediaOverviewEffects } from './state/portal-media-overview.effects';
 import { portalMediaOverviewReducer } from './state/portal-media-overview.reducer';
+import { MediaFilterModule } from 'src/app/shared/filter/media-filter/media-filter.module';
 
 const components = [
   PortalMediaOverviewComponent,
@@ -34,7 +35,8 @@ const modules = [
   CoreModule,
   PortalMediaOverviewRoutingModule,
   TitleModule,
-  MediaModule
+  MediaModule,
+  MediaFilterModule
 ];
 
 const libs = [

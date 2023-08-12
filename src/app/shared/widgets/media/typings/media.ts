@@ -6,6 +6,12 @@ export type MimeTypeDefinition = 'AUDIO'
   | 'VIDEO'
   | 'WORD';
 
+  export enum MimeTypes {
+    IMAGES = 'image',
+    VIDEOS = 'video',
+    AUDIO = 'audio',
+    Files = 'file'};
+
 export type FileAction = 'DOWNLOAD'
   | 'DELETE';
 

@@ -1,0 +1,16 @@
+query getInfoMediaCategories($params: FilterSortPaginateInput) {
+  getInfoMediaCategories(params: $params) {
+    result {
+      id
+      translatables{
+        id
+        name
+        language{
+          id
+          name
+          locale
+        }
+      }
+    }
+  }
+}
