@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { CookieComponent } from './cookie.component';
@@ -9,7 +10,6 @@ const components = [
 ];
 
 // const directives = [
-  
 // ]
 
 const framework = [
@@ -23,7 +23,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-
+  RouterModule
 ];
 
 const libs = [
@@ -46,4 +46,4 @@ const libs = [
     // ...directives,
   ],
 })
-export class MediaModule { }
+export class CookieModule { }

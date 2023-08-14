@@ -8,13 +8,13 @@
       unseren Datenschutzbestimmungen zu.
     </span>
     <span matSnackBarLabel>
-      Hier gehts zur<a (click)="dismiss()" [routerLink]="['/portal', 'data-protection']" appLabel="dataProtection"></a>
+      Hier gehts zur<a [routerLink]="['/portal', 'data-protection']" appLabel="dataProtection"></a>
     </span>
 
   </section>
 </div>
 <section class="buttons" matSnackBarActions>
-  <button mat-button matSnackBarAction (click)="openDialog(); dismiss()" appLabel="cookieSettings"></button>
-  <button mat-button matSnackBarAction (click)="dismiss()" appLabel="onlyNecessaryCookies"></button>
-  <button mat-flat-button matSnackBarAction (click)="dismiss()" appLabel="acceptAll"></button>
+  <button mat-button matSnackBarAction appLabel="cookieSettings"></button>
+  <button mat-button matSnackBarAction appLabel="onlyNecessaryCookies"></button>
+  <button mat-flat-button matSnackBarAction appLabel="acceptAll"></button>
 </section>

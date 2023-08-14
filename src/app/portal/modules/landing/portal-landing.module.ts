@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { CookieModule } from 'src/app/shared/widgets/cookie/cookie.module';
 import { PortalPageFeaturesComponent } from '../page-features/portal-page-features.component';
 import { PortalLandingComponent } from './component/portal-landing.component';
 import { portalLandingStateKey } from './constants/portal-landing.constants';
@@ -27,6 +28,7 @@ const materials = [
 const modules = [
   CoreModule,
   PortalPageFeaturesComponent,
+  CookieModule
 ];
 
 const libs = [

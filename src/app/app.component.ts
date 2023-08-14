@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FavIconService } from './core/services/favicon.service';
 import { ThemeService } from './core/services/theme.service';
 import { BrowserTitleService } from './core/services/title.service';
@@ -9,7 +9,7 @@ import { BrowserTitleService } from './core/services/title.service';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
 
   //TODO: Find a place to init them properly
   constructor(
@@ -18,4 +18,5 @@ export class AppComponent implements OnInit{
     public favIconService: FavIconService
   ) {
   }
+
 }
