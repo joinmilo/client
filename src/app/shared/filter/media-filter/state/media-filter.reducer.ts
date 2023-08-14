@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
-import { InfoMediaCategoryEntity, Maybe } from 'src/schema/schema';
 import { MediaFilterQueryDefinition, MediaFilterQueryParams } from 'src/app/core/typings/filter-params/media-filter-param';
+import { InfoMediaCategoryEntity, Maybe } from 'src/schema/schema';
 import { MediaFilterActions } from './media-filter.actions';
 
 export interface MediaFilterState {

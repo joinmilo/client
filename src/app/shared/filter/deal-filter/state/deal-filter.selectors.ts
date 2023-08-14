@@ -30,5 +30,7 @@ export const selectRawFilterParams = createSelector(
 
 export const selectDealFilterParams = createSelector(
   selectRawFilterParams,
-  params => createDealParams(params)
+  params => params 
+    ? createDealParams(params)
+    : undefined
 );

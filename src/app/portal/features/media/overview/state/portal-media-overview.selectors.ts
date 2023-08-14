@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { PortalMediaOverviewState } from './portal-media-overview.reducer';
-import { portalMediaOverviewStateKey } from '../constants/portal-media-overview.constants';
 import { InfoMediaCategoryEntity } from 'src/schema/schema';
+import { portalMediaOverviewStateKey } from '../constants/portal-media-overview.constants';
+import { PortalMediaOverviewState } from './portal-media-overview.reducer';
 
 export const selectPortalMediaOverviewState = createFeatureSelector<PortalMediaOverviewState>(portalMediaOverviewStateKey);
 
@@ -23,9 +23,4 @@ export const selectOverviewDataCategories = createSelector(
       return result;
     }, [] as InfoMediaCategoryEntity[]);
   }
-);
-
-export const selectParams = createSelector(
-  selectPortalMediaOverviewState,
-  state => state.params
 );

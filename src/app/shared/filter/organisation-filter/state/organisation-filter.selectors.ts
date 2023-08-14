@@ -25,5 +25,7 @@ export const selectRawFilterParams = createSelector(
 
 export const selectOrganisationFilterParams = createSelector(
   selectRawFilterParams,
-  params => createOrganisationParams(params)
+  params => params 
+    ? createOrganisationParams(params)
+    : undefined
 );

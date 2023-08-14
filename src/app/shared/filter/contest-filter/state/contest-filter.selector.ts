@@ -31,5 +31,7 @@ export const selectRawFilterParams = createSelector(
 
 export const selectContestFilterParams = createSelector(
   selectRawFilterParams,
-  params => createContestParams(params)
+  params => params 
+   ? createContestParams(params)
+   : undefined
 );

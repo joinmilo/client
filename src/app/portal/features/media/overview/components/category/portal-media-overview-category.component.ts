@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectOverviewDataCategories } from '../../state/portal-media-overview.selectors';
 import { InfoMediaCategoryEntity, MediaEntity } from 'src/schema/schema';
+import { selectOverviewDataCategories } from '../../state/portal-media-overview.selectors';
 
 @Component({
   selector: 'app-portal-media-overview-category',
@@ -16,8 +16,10 @@ export class PortalMediaOverviewCategoryComponent {
     private store: Store,
   ) { }
 
-  public getMedia(category: InfoMediaCategoryEntity): MediaEntity[] | undefined{
-    return category.infoMedia?.map((item) => item?.media!);
+  public getMedia(category: InfoMediaCategoryEntity): MediaEntity[] | undefined {
+    return category.infoMedia
+      ?.filter(item => !!item?.media)
+      ?.map((item) => item?.media as MediaEntity);
   }
 
 }

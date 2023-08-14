@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, debounceTime, take, takeUntil } from 'rxjs';
+import { Subject, debounceTime, filter, take, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
 import { OrganisationFilterQueryParams } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { FilterSortPaginateInput, Maybe } from 'src/schema/schema';
@@ -13,7 +13,7 @@ import { selectFiltersActive, selectOrganisationFilterParams, selectRawFilterPar
   templateUrl: './organisation-filter.component.html',
   styleUrls: ['./organisation-filter.component.scss'],
   animations: [
-     collapse()
+    collapse()
   ],
 })
 export class OrganisationFilterComponent implements OnInit, OnDestroy {
@@ -37,11 +37,17 @@ export class OrganisationFilterComponent implements OnInit, OnDestroy {
   
   public ngOnInit(): void {
     this.store.select(selectOrganisationFilterParams)
-      .pipe(takeUntil(this.destroy))
+      .pipe(
+        filter(params => !!params),
+        takeUntil(this.destroy)
+      )
       .subscribe(params => this.paramsUpdated.emit(params));
 
     this.store.select(selectRawFilterParams)
-      .pipe(takeUntil(this.destroy))
+      .pipe(
+        filter(params => !!params),
+        takeUntil(this.destroy)
+      )
       .subscribe(params => this.rawParamsUpdated.emit(params));
   }
 

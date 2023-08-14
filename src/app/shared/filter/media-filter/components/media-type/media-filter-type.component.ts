@@ -4,10 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { MediaFilterQueryDefinition } from 'src/app/core/typings/filter-params/media-filter-param';
+import { MimeTypes } from 'src/app/shared/widgets/media/typings/media';
 import { Maybe } from 'src/schema/schema';
-import { selectCategories } from '../../state/media-filter.selectors';
 import { MediaFilterActions } from '../../state/media-filter.actions';
-import { MimeTypeDefinition, MimeTypes } from 'src/app/shared/widgets/media/typings/media';
 
 @Component({
   selector: 'app-media-filter-type',
@@ -28,7 +27,7 @@ export class MediaFilterTypeComponent implements OnInit, OnDestroy {
 
   public mimeTypes = Object.keys(MimeTypes).map(key => ({
       key : key.toLowerCase(),
-      value: MimeTypes[key as keyof typeof MimeTypes] }));;
+      value: MimeTypes[key as keyof typeof MimeTypes] }));
 
   constructor(
     private activatedRoute: ActivatedRoute,

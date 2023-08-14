@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { mediaFilterStateKey } from '../constants/media-filter.constants';
-import { MediaFilterState } from './media-filter.reducer';
 import { createMediaParams } from '../utils/params.utils';
+import { MediaFilterState } from './media-filter.reducer';
 
 export const selectMediaFilterState = createFeatureSelector<MediaFilterState>(mediaFilterStateKey);
 
@@ -30,5 +30,7 @@ export const selectRawFilterParams = createSelector(
 
 export const selectMediaFilterParams = createSelector(
   selectRawFilterParams,
-  params => createMediaParams(params)
+  params => params
+    ? createMediaParams(params)
+    : undefined
 );

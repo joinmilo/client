@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, debounceTime, take, takeUntil } from 'rxjs';
+import { Subject, debounceTime, filter, take, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
 import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-params/deal-filter-param';
 import { FilterSortPaginateInput, Maybe } from 'src/schema/schema';
@@ -41,11 +41,17 @@ export class DealFilterComponent implements OnInit, OnDestroy {
   
   public ngOnInit(): void {
     this.store.select(selectDealFilterParams)
-      .pipe(takeUntil(this.destroy))
+      .pipe(
+        filter(params => !!params),
+        takeUntil(this.destroy)
+      )
       .subscribe(params => this.paramsUpdated.emit(params));
 
     this.store.select(selectRawFilterParams)
-      .pipe(takeUntil(this.destroy))
+      .pipe(
+        filter(params => !!params),
+        takeUntil(this.destroy)
+      )
       .subscribe(params => {
         if (params) {
           this.disableSearchFilter = typeof params[DealFilterQueryDefinition.offerOnly] === 'string'

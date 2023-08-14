@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { FilterSortPaginateInput } from 'src/schema/schema';
 import { PortalMediaOverviewActions } from '../state/portal-media-overview.actions';
 import { selectOverviewData } from '../state/portal-media-overview.selectors';
-import { FilterSortPaginateInput } from 'src/schema/schema';
 
 @Component({
   selector: 'app-portal-media-overview',
@@ -15,9 +15,7 @@ export class PortalMediaOverviewComponent {
 
   constructor(
     private store: Store,
-  ) {
-    this.store.dispatch(PortalMediaOverviewActions.getOverviewMedia());
-  }
+  ) { }
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalMediaOverviewActions.updateParams(params));

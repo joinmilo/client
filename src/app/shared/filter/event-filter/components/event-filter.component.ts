@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, debounceTime, take, takeUntil } from 'rxjs';
+import { Subject, debounceTime, filter, take, takeUntil } from 'rxjs';
 import { collapse } from 'src/app/core/animations/animations';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { Period } from 'src/app/core/typings/period';
@@ -40,11 +40,17 @@ export class EventFilterComponent implements OnInit, OnDestroy {
   
   public ngOnInit(): void {
     this.store.select(selectEventFilterParams)
-      .pipe(takeUntil(this.destroy))
+      .pipe(
+        filter(params => !!params),
+        takeUntil(this.destroy)
+      )
       .subscribe(params => this.paramsUpdated.emit(params));
 
     this.store.select(selectRawFilterParams)
-      .pipe(takeUntil(this.destroy))
+      .pipe(
+        filter(params => !!params),
+        takeUntil(this.destroy)
+      )
       .subscribe(params => {
         this.disbleDateFilter = !!params?.past;
         this.rawParamsUpdated.emit(params);

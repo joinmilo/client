@@ -5,8 +5,8 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { MediaFilterQueryDefinition } from 'src/app/core/typings/filter-params/media-filter-param';
 import { Maybe } from 'src/schema/schema';
-import { selectCategories } from '../../state/media-filter.selectors';
 import { MediaFilterActions } from '../../state/media-filter.actions';
+import { selectCategories } from '../../state/media-filter.selectors';
 
 @Component({
   selector: 'app-media-filter-category',
