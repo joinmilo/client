@@ -9,7 +9,7 @@ import { BrowserTitleService } from './core/services/title.service';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   //TODO: Find a place to init them properly
   constructor(
@@ -17,6 +17,5 @@ export class AppComponent {
     public themeService: ThemeService,
     public favIconService: FavIconService
   ) {
-
   }
 }

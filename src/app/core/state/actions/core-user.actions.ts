@@ -12,7 +12,8 @@ export const CoreUserActions = createActionGroup({
     'refresh expired': emptyProps(),
     'logout': emptyProps(),
     'require login': emptyProps(),
-    'allow external content': emptyProps()
+    'allow external content': emptyProps(),
+    'save cookies': emptyProps(),
   },
 });
 

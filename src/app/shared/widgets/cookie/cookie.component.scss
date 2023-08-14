@@ -1,0 +1,37 @@
+:host{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  fa-icon {
+    align-content: center;
+
+    color: var(--color-primary-contrast-900);
+  }
+
+  div {
+    flex-direction: row;
+    padding: var(--gap);
+    gap: var(--gap);
+  }
+
+  .content {
+    flex: 1;
+    flex-direction: column;
+    gap: var(--gap);
+  }
+
+  .headline {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .buttons {
+    justify-content: space-between;
+    padding: 0 var(--gap) var(--gap)
+  }
+
+  .mdc-snackbar__label {
+    padding: 0;
+    gap: .25rem;
+  }
