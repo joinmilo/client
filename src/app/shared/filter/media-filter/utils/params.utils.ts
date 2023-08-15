@@ -1,8 +1,8 @@
 
 import { MediaFilterQueryDefinition, MediaFilterQueryParams } from 'src/app/core/typings/filter-params/media-filter-param';
 import { createListParam } from 'src/app/core/utils/params.utils';
-import { MimeTypes } from 'src/app/shared/widgets/media/typings/media';
-import { ConjunctionOperator, FilterSortPaginateInput, QueryOperator } from 'src/schema/schema';
+import { FilterSortPaginateInput, QueryOperator } from 'src/schema/schema';
+import { MimeTypeFilterOptions } from '../typing/media-filter';
 
 export const createMediaParams = (queryParams?: MediaFilterQueryParams) => {
   const params = {
@@ -22,14 +22,13 @@ export const createMediaParams = (queryParams?: MediaFilterQueryParams) => {
     );
   }
 
-  if (queryParams && queryParams[MediaFilterQueryDefinition.mediaTypes]) {
+  if (queryParams && queryParams[MediaFilterQueryDefinition.mediaTypes]?.length) {
 
-    const mimeTypes = (typeof queryParams[MediaFilterQueryDefinition.mediaTypes] === 'string') ?
-     [queryParams[MediaFilterQueryDefinition.mediaTypes]] :
-     [...queryParams[MediaFilterQueryDefinition.mediaTypes]];
+    const mimeTypes = queryParams[MediaFilterQueryDefinition.mediaTypes];
 
-    if(mimeTypes.indexOf(MimeTypes.Files)! > -1){
-      mimeTypes.splice(mimeTypes.indexOf(MimeTypes.Files)!, 1, 'word', 'pdf');
+    const fileIdx = mimeTypes.indexOf(MimeTypeFilterOptions.File);
+    if (fileIdx > -1) {
+      mimeTypes.splice(fileIdx, 1, 'word', 'pdf');
     }
 
     params.expression?.conjunction?.operands?.push(

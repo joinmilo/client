@@ -39,11 +39,19 @@ export class LabelDirective implements OnInit, OnChanges, OnDestroy {
         }
         return label;
       }),
-    ).subscribe(label => this.el.nativeElement.innerHTML = `${this.preFix ?? ''} ${label ?? ''} ${this.suffix ?? ''}`);
+    ).subscribe(label => this.el.nativeElement.innerHTML = `${this.prefixing()}${label ?? ''}${this.suffixing()}`);
 
     if (this.appLabel) {
       this.labels.next(this.appLabel);
     }
+  }
+
+  private prefixing(): string {
+    return this.preFix ? `${this.preFix} ` : '';
+  }
+
+  private suffixing(): string {
+    return this.suffix ? ` ${this.suffix}` : '';
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -58,3 +66,4 @@ export class LabelDirective implements OnInit, OnChanges, OnDestroy {
     this.labels.complete();
   }
 }
+
