@@ -12,19 +12,30 @@ export const selectIsAuthenticated = createSelector(
   state => !!state?.currentUser?.id
 );
 
-export const selectAllFriendRequests = createSelector(
+export const selectAllFriends = createSelector(
   selectCurrentUser,
   user => [...(user?.receivedFriendRequests ?? []), ...(user?.sentFriendRequests ?? [])]
 );
 
-export const selectFriends = createSelector(
-  selectAllFriendRequests,
-  friends => friends
-    ?.filter(friend => friend?.accepted)
+export const selectAllFriendUsers = createSelector(
+  selectAllFriends,
+  selectCurrentUser,
+  (friends, user) => friends?.map(friend =>
+    friend?.addressee?.id !== user?.id
+      ? friend?.addressee
+      : friend?.requester?.id !== user?.id
+        ? friend?.requester
+        : undefined
+  )
 );
 
-export const selectFriendUsers = createSelector(
-  selectFriends,
+export const selectAcceptedFriends = createSelector(
+  selectAllFriends,
+  friends => friends?.filter(friend => friend?.accepted)
+);
+
+export const selectAcceptedFriendUsers = createSelector(
+  selectAcceptedFriends,
   selectCurrentUser,
   (friends, user) => friends?.map(friend =>
     friend?.addressee?.id !== user?.id

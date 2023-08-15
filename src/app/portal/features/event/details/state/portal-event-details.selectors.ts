@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { selectCurrentUser, selectFriendUsers, selectUserEventRatings } from 'src/app/core/state/selectors/user.selectors';
+import { selectAcceptedFriendUsers, selectCurrentUser, selectUserEventRatings } from 'src/app/core/state/selectors/user.selectors';
 import { portalEventDetailsStateKey } from '../constants/event-details.constant';
 import { PortalEventDetailsState } from './portal-event-details.reducer';
 
@@ -27,7 +27,7 @@ export const selectEventUserAttendee = createSelector(
 );
 
 export const selectAttendingFriends = createSelector(
-  selectFriendUsers,
+  selectAcceptedFriendUsers,
   selectEventAttendeeConfiguration,
   (friends, attendeeConfiguration) =>
     friends?.filter((friend) =>

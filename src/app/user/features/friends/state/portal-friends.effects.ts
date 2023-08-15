@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { selectAllFriendRequests, selectCurrentUser, selectFriendUsers, selectReceivedFriendRequest, selectSentFriendRequests } from 'src/app/core/state/selectors/user.selectors';
+import { selectAllFriendUsers, selectAllFriends, selectCurrentUser, selectReceivedFriendRequest } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConjunctionOperator, DeleteFriendGQL, FilterSortPaginateInput, FriendEntity, GetUserContextsGQL, Maybe, QueryOperator, SaveFriendGQL, SaveFriendsGQL, UserContextEntity } from 'src/schema/schema';
 import { PortalFriendsActions } from './portal-friends.actions';
@@ -16,81 +16,58 @@ export class PortalFriendsEffects {
     ofType(PortalFriendsActions.getUsers),
     withLatestFrom(
       this.store.select(selectCurrentUser),
-      this.store.select(selectFriendUsers),
-      this.store.select(selectSentFriendRequests),
-      this.store.select(selectReceivedFriendRequest)),
-    map(([ action, user, friends, sentRequests, receivedRequests]) => {
+      this.store.select(selectAllFriendUsers)),
+    map(([action, user, friends]) => {
 
-      const addFriends = ({  
-      sort: 'modified',
-      dir: 'desc',
-      search: action.query,
-      
-      expression: {
-        conjunction: {
-          operands: [
-            {
-              conjunction: {
-                operator: ConjunctionOperator.And,
-                operands: [
-                  {
-                    entity: {
-                      path: 'id',
-                      operator: QueryOperator.NotEqual,
-                      value: user?.id,
+      const addFriends = ({
+        sort: 'modified',
+        dir: 'desc',
+        search: action.query,
+
+        expression: {
+          conjunction: {
+            operands: [
+              {
+                conjunction: {
+                  operator: ConjunctionOperator.And,
+                  operands: [
+                    {
+                      entity: {
+                        path: 'id',
+                        operator: QueryOperator.NotEqual,
+                        value: user?.id,
+                      },
                     },
-                  },
-                  {
-                    entity: {
-                      path: 'user.verified',
-                      operator: QueryOperator.Equal,
-                      value: true,
+                    {
+                      entity: {
+                        path: 'user.verified',
+                        operator: QueryOperator.Equal,
+                        value: true,
+                      },
                     },
-                  },
-                ],
+                  ],
+                },
               },
-            },
-          ],
+            ],
+          },
         },
-      },
-    } as FilterSortPaginateInput)
+      } as FilterSortPaginateInput)
 
-    friends?.forEach(friend => addFriends.expression?.conjunction?.operands?.push(
-      {
-        entity: {
-          path: 'id',
-          operator: QueryOperator.NotEqual,
-          value: friend?.id 
+      friends?.forEach(friend => addFriends.expression?.conjunction?.operands?.push(
+        {
+          entity: {
+            path: 'id',
+            operator: QueryOperator.NotEqual,
+            value: friend?.id
+          }
         }
-      }
-    ))
-    
-    sentRequests?.forEach(sentRequests => addFriends.expression?.conjunction?.operands?.push(
-      {
-        entity: {
-          path: 'id',
-          operator: QueryOperator.NotEqual,
-          value: sentRequests?.id 
-        }
-      }
-    ))
+      ));
 
-    receivedRequests?.forEach(receivedRequests => addFriends.expression?.conjunction?.operands?.push(
-      {
-        entity: {
-          path: 'id',
-          operator: QueryOperator.NotEqual,
-          value: receivedRequests?.id 
-        }
-      }
-    ))
-    return addFriends
-
+      return addFriends;
     }),
-      switchMap((params) => this.getUsersService.watch({params}).valueChanges),
-      map((response) => PortalFriendsActions.setUsers(response.data.getUserContexts?.result as Maybe<UserContextEntity[]>))
-    )
-  );
+    switchMap((params) => this.getUsersService.watch({ params }).valueChanges),
+    map((response) => PortalFriendsActions.setUsers(response.data.getUserContexts?.result as Maybe<UserContextEntity[]>))
+  ));
 
   saveFriendRequests = createEffect(() =>
     this.actions.pipe(
@@ -107,9 +84,9 @@ export class PortalFriendsEffects {
     map((friends) => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage:
-      friends.friendRequests?.length && friends.friendRequests.length > 1
-        ? 'friendRequestsSent'
-        : 'friendRequestSent'
+        friends.friendRequests?.length && friends.friendRequests.length > 1
+          ? 'friendRequestsSent'
+          : 'friendRequestSent'
     }))
   ));
 
@@ -128,7 +105,7 @@ export class PortalFriendsEffects {
 
   deleteFriend = createEffect(() => this.actions.pipe(
     ofType(PortalFriendsActions.deleteFriend),
-    withLatestFrom(this.store.select(selectAllFriendRequests)),
+    withLatestFrom(this.store.select(selectAllFriends)),
     map(([action, friends]) => friends?.find(friend => friend?.requester?.id === action.userId) ||
       friends?.find(friend => friend?.addressee?.id === action.userId)
     ),
@@ -143,7 +120,7 @@ export class PortalFriendsEffects {
       PortalFriendsActions.friendRequestAccepted),
     map(() => CoreUserActions.updateUser())
   ));
-  
+
   constructor(
     private actions: Actions,
     private getUsersService: GetUserContextsGQL,
@@ -151,5 +128,5 @@ export class PortalFriendsEffects {
     private saveFriendService: SaveFriendGQL,
     private deleteFriendService: DeleteFriendGQL,
     private store: Store
-  ) {}
+  ) { }
 }

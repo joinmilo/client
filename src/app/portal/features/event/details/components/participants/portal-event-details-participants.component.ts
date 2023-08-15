@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
-import { selectCurrentUser, selectFriendUsers } from 'src/app/core/state/selectors/user.selectors';
+import { selectAcceptedFriendUsers, selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { Maybe, UserContextEntity } from 'src/schema/schema';
 import { selectAttendingFriends } from '../../state/portal-event-details.selectors';
 import { PortalEventDetailsFriendsInviteComponent } from '../friends-invite/portal-event-details-friends-invite.component';
@@ -29,7 +29,7 @@ export class PortalEventDetailsParticipantsComponent implements OnInit, OnDestro
     private store: Store,) { }
 
   public ngOnInit(): void {
-    this.store.select(selectFriendUsers)
+    this.store.select(selectAcceptedFriendUsers)
       .subscribe(friends => this.friends = friends);
 
     this.store.select(selectAttendingFriends)
