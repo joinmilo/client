@@ -1,13 +1,23 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Category } from 'src/app/core/typings/category';
 import { Translatable } from 'src/app/core/typings/translatable';
 import { AddressEntity, ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, MediaEntity, OrganisationEntity, SurveyEntity, UserContextEntity } from 'src/schema/schema';
 
+export type CardActionInput = {
+  label: string,
+  icon: IconProp,
+}
+
+export type CardActionOutput = {
+  label: string,
+  element: CardElement,
+}
+
 export enum CardType {
   Contact = 'contact',
   Content = 'content',
-  Sponsored = 'sponsored',
   Member = 'member',
-  Friends = 'friends'
+  Sponsored = 'sponsored',
 }
 
 export type CardEntity = 'ArticleEntity'

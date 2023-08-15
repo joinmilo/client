@@ -1,8 +1,9 @@
 <app-table-card 
+  [actions]="actions"
   entity="UserContextEntity" 
   [data]="receivedFriendRequests" 
   noDataLabel="noFriendRequests"
   [cardType]="cardType"
   [paginate]="false"
-  [receivedFriendRequests]="true">
+  (actionClicked)="actionClicked($event)">
 </app-table-card>

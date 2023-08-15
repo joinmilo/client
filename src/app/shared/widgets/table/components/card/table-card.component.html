@@ -8,16 +8,28 @@
   <section>
     <ng-container [ngSwitch]="cardType">
       <ng-container *ngSwitchCase="types.contact">
-        <app-contact-card *ngFor="let card of (data | async)?.result" [entity]="entity" [data]="card"></app-contact-card>
+        <app-contact-card *ngFor="let card of (data | async)?.result"
+          [actions]="actions"
+          [entity]="entity"
+          [data]="card"
+          (actionClicked)="actionClicked.emit($event)">
+        </app-contact-card>
       </ng-container>
       <ng-container *ngSwitchCase="types.content">
-        <app-content-card *ngFor="let card of (data | async)?.result" [entity]="entity" [data]="card"></app-content-card>
+        <app-content-card *ngFor="let card of (data | async)?.result"
+          [actions]="actions"
+          [entity]="entity"
+          [data]="card"
+          (actionClicked)="actionClicked.emit($event)">
+        </app-content-card>
       </ng-container>
       <ng-container *ngSwitchCase="types.sponsored">
-        <app-sponsored-card *ngFor="let card of (data | async)?.result" [entity]="entity" [data]="card"></app-sponsored-card>
-      </ng-container>
-      <ng-container *ngSwitchCase="types.friends">
-        <app-friends-card *ngFor="let card of (data | async)?.result" [entity]="entity" [data]="card" [allFriends]="allFriends" [receivedFriendRequests]="receivedFriendRequests" [sentFriendRequests]="sentFriendRequests"></app-friends-card>
+        <app-sponsored-card *ngFor="let card of (data | async)?.result"
+          [actions]="actions"
+          [entity]="entity"
+          [data]="card"
+          (actionClicked)="actionClicked.emit($event)">
+        </app-sponsored-card>
       </ng-container>
     </ng-container>
   </section>

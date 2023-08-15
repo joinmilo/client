@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { CardElement } from 'src/app/shared/widgets/card/typings/card';
-import { Maybe } from 'src/schema/schema';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CardActionInput } from 'src/app/shared/widgets/card/typings/card';
 
 @Component({
   selector: 'app-card-actions',
@@ -10,6 +9,9 @@ import { Maybe } from 'src/schema/schema';
 export class CardActionsComponent {
 
   @Input()
-  public element?: Maybe<CardElement>;
+  public actions?: CardActionInput[];
+
+  @Output()
+  public actionClicked = new EventEmitter<CardActionInput>();
 
 }

@@ -1,10 +1,24 @@
-<button mat-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+<button mat-button
+  [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
   <fa-icon [icon]="['fas', 'ellipsis-vertical']"></fa-icon>
 </button>
 
 <mat-menu #menu="matMenu">
-  <div class="action-menu">
-    <app-share-button [withLabel]="true"></app-share-button>
-    <app-favorite-piece [withLabel]="true"></app-favorite-piece>
-  </div>
+  <ng-container *ngIf="actions?.length; else defaultActions">
+    <ng-container *ngFor="let action of actions">
+      <button mat-menu-item (click)="actionClicked.emit(action)">
+        <div class="action-button">
+          <fa-icon [icon]="action.icon"></fa-icon>
+          <span [appLabel]="action.label"></span>
+        </div>
+      </button>
+    </ng-container>
+  </ng-container>
+  
+  <ng-template #defaultActions>
+    <div class="default-actions">
+      <app-share-button [withLabel]="true"></app-share-button>
+      <app-favorite-piece [withLabel]="true"></app-favorite-piece>
+    </div>
+  </ng-template>
 </mat-menu>

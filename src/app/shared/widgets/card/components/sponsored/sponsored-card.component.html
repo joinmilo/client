@@ -1,9 +1,12 @@
 <app-sponsored-desktop-card
+  [actions]="actions"
   [entity]="entity"
-  [data]="data">
+  [data]="data"
+  (actionClicked)="actionClicked.emit($event)">
 </app-sponsored-desktop-card>
-
 <app-content-card
+  [actions]="actions"
   [entity]="entity"
-  [data]="data">
+  [data]="data"
+  (actionClicked)="actionClicked.emit($event)">
 </app-content-card>

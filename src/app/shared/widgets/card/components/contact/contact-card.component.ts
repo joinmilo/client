@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Maybe } from 'src/schema/schema';
-import { CardData, CardElement, CardEntity } from '../../typings/card';
+import { CardActionInput, CardActionOutput, CardData, CardElement, CardEntity } from '../../typings/card';
 import { dataToElement } from '../../utils/card.utils';
 @Component({
   selector: 'app-contact-card',
@@ -10,10 +10,16 @@ import { dataToElement } from '../../utils/card.utils';
 export class ContactCardComponent implements OnInit {
 
   @Input()
+  public actions?: CardActionInput[];
+
+  @Input()
   public entity?: Maybe<CardEntity>;
 
   @Input()
   public data?: Maybe<CardData>;
+
+  @Output()
+  public actionClicked = new EventEmitter<CardActionOutput>();
 
   public element?: Maybe<CardElement>;
 
@@ -22,4 +28,9 @@ export class ContactCardComponent implements OnInit {
       this.element = dataToElement(this.entity, this.data);
     }
   }
+
+  public emit(action: CardActionInput): void {
+    this.actionClicked.emit({ ...action, element: this.element as CardElement})
+  }
+
 }

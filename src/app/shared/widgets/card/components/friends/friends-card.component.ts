@@ -6,7 +6,7 @@ import { Maybe, UserContextEntity } from 'src/schema/schema';
 import { CardData, CardElement, CardEntity } from '../../typings/card';
 import { dataToElement } from '../../utils/card.utils';
 @Component({
-  selector: 'app-friends-card',
+  selector: 'app-friends-card-1',
   templateUrl: './friends-card.component.html',
   styleUrls: ['./friends-card.component.scss']
 })

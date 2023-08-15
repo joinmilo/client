@@ -2,8 +2,12 @@
   <app-category-piece *ngIf="element?.category"
     [category]="element?.category">
   </app-category-piece>
-  <app-card-actions>
+
+  <app-card-actions
+    [actions]="actions"
+    (actionClicked)="emit($event)">
   </app-card-actions>
+
   <figure>
     <img [src]="element?.image ? element?.image?.url : '/assets/placeholder.webp'"
       alt="content-card"

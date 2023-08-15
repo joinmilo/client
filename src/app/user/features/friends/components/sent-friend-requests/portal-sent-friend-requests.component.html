@@ -1,8 +1,9 @@
-<app-table-card 
+<app-table-card
+  [actions]="actions"
   entity="UserContextEntity" 
   [data]="sentFriendRequests" 
   noDataLabel="noSentRequests"
   [cardType]="cardType"
   [paginate]="false"
-  [sentFriendRequests]="true">
+  (actionClicked)="deleteFriendEntity($event)">
 </app-table-card>

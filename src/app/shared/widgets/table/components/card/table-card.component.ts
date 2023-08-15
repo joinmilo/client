@@ -2,7 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewC
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, startWith, take } from 'rxjs';
 import { Maybe } from 'src/schema/schema';
-import { CardData, CardEntity, CardType } from '../../../card/typings/card';
+import { CardActionInput, CardActionOutput, CardData, CardEntity, CardType } from '../../../card/typings/card';
 import { PageableList, Sort, SortOption, SortPaginate } from '../../typings/table';
 import { TablePaginatorComponent } from '../paginator/table-paginator.component';
 
@@ -12,6 +12,9 @@ import { TablePaginatorComponent } from '../paginator/table-paginator.component'
   styleUrls: ['./table-card.component.scss']
 })
 export class TableCardComponent implements AfterViewInit, OnDestroy {
+
+  @Input()
+  public actions?: CardActionInput[];
 
   @Input()
   public data?: Observable<Maybe<PageableList<Maybe<CardData>>> | undefined>;
@@ -40,17 +43,11 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
   @Input()
   public sortOptions?: SortOption[];
 
-  @Input()
-  public allFriends = false;
-
-  @Input()
-  public receivedFriendRequests = false;
-
-  @Input()
-  public sentFriendRequests = false;
-
   @Output()
   public sortPaginate = new EventEmitter<SortPaginate>();
+
+  @Output()
+  public actionClicked = new EventEmitter<CardActionOutput>();
 
   @ViewChild(TablePaginatorComponent)
   public paginator!: TablePaginatorComponent;
@@ -61,7 +58,6 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
     contact: CardType.Contact,
     content: CardType.Content,
     sponsored: CardType.Sponsored,
-    friends: CardType.Friends
   };
 
   constructor(

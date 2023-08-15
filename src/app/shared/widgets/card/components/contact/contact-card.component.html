@@ -4,20 +4,28 @@
       class="border-image"
       alt="contact-card">
   </figure>
-    <h1 [routerLink]="element?.url">
-      {{element?.creator ? element?.creator: ''}}
-    </h1>
-    <app-card-actions></app-card-actions>
-    <section (click)="$event.stopPropagation();">
-      <button mat-button *ngIf="element?.email">
-        <a href="mailto:{{element?.email}}">
-          <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
-        </a>
-      </button>
-      <button mat-button *ngIf="element?.phone">
-        <a href="tel:{{element?.phone}}">
-          <fa-icon [icon]="['fas', 'phone']"></fa-icon>
-        </a>
-      </button>
-    </section>
+
+  <h1 [routerLink]="element?.url">
+    {{element?.creator ? element?.creator: ''}}
+  </h1>
+
+  <app-card-actions
+    [actions]="actions"
+    (actionClicked)="emit($event)">
+  </app-card-actions>
+
+  <section (click)="$event.stopPropagation();">
+    <button mat-button *ngIf="element?.email">
+      <a href="mailto:{{element?.email}}">
+        <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+      </a>
+    </button>
+
+    <button mat-button *ngIf="element?.phone">
+      <a href="tel:{{element?.phone}}">
+        <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+      </a>
+    </button>
+  </section>
+
 </mat-card>

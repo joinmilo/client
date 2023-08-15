@@ -1,8 +1,9 @@
 <app-table-card 
+  [actions]="actions"
   entity="UserContextEntity" 
   [data]="friends" 
   noDataLabel="noFriends"
   [cardType]="cardType"
   [paginate]="false"
-  [allFriends]="true">
+  (actionClicked)="deleteFriendEntity($event)">
 </app-table-card>
