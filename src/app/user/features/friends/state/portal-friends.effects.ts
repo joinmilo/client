@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { selectCurrentUser, selectFriends, selectReceivedRequest, selectSentRequests } from 'src/app/core/state/selectors/user.selectors';
+import { selectAllFriendRequests, selectCurrentUser, selectFriendUsers, selectReceivedFriendRequest, selectSentFriendRequests } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConjunctionOperator, DeleteFriendGQL, FilterSortPaginateInput, FriendEntity, GetUserContextsGQL, Maybe, QueryOperator, SaveFriendGQL, SaveFriendsGQL, UserContextEntity } from 'src/schema/schema';
 import { PortalFriendsActions } from './portal-friends.actions';
@@ -16,9 +16,9 @@ export class PortalFriendsEffects {
     ofType(PortalFriendsActions.getUsers),
     withLatestFrom(
       this.store.select(selectCurrentUser),
-      this.store.select(selectFriends),
-      this.store.select(selectSentRequests),
-      this.store.select(selectReceivedRequest)),
+      this.store.select(selectFriendUsers),
+      this.store.select(selectSentFriendRequests),
+      this.store.select(selectReceivedFriendRequest)),
     map(([ action, user, friends, sentRequests, receivedRequests]) => {
 
       const addFriends = ({  
@@ -108,29 +108,38 @@ export class PortalFriendsEffects {
       type: FeedbackType.Success,
       labelMessage:
       friends.friendRequests?.length && friends.friendRequests.length > 1
-      ? 'friendRequestsSent'
-      : 'friendRequestSent'
+        ? 'friendRequestsSent'
+        : 'friendRequestSent'
     }))
   ));
 
   acceptFriendRequest = createEffect(() => this.actions.pipe(
     ofType(PortalFriendsActions.acceptFriendRequest),
+    withLatestFrom(this.store.select(selectReceivedFriendRequest)),
+    map(([action, friends]) => friends?.find(friend => friend?.requester?.id === action.userId)),
     switchMap((action) => this.saveFriendService.mutate({
-      entity: action.friendRequester
+      entity: {
+        id: action?.id,
+        accepted: true,
+      }
     })),
     map((response) => PortalFriendsActions.friendRequestAccepted(response.data?.saveFriend as Maybe<FriendEntity>))
   ));
 
-  deleteFriendEntity = createEffect(() => this.actions.pipe(
-    ofType(PortalFriendsActions.deleteFriendEntity),
-    switchMap((action) => this.deleteFriendEntityService.mutate({
-      id: action.id
+  deleteFriend = createEffect(() => this.actions.pipe(
+    ofType(PortalFriendsActions.deleteFriend),
+    withLatestFrom(this.store.select(selectAllFriendRequests)),
+    map(([action, friends]) => friends?.find(friend => friend?.requester?.id === action.userId) ||
+      friends?.find(friend => friend?.addressee?.id === action.userId)
+    ),
+    switchMap(friend => this.deleteFriendService.mutate({
+      id: friend?.id
     })),
-    map(response => PortalFriendsActions.friendEntityDeleted(response.data?.deleteFriend))
+    map(response => PortalFriendsActions.friendDeleted(response.data?.deleteFriend))
   ));
 
   updateUser = createEffect(() => this.actions.pipe(
-    ofType(PortalFriendsActions.friendEntityDeleted,
+    ofType(PortalFriendsActions.friendDeleted,
       PortalFriendsActions.friendRequestAccepted),
     map(() => CoreUserActions.updateUser())
   ));
@@ -140,7 +149,7 @@ export class PortalFriendsEffects {
     private getUsersService: GetUserContextsGQL,
     private saveFriendsService: SaveFriendsGQL,
     private saveFriendService: SaveFriendGQL,
-    private deleteFriendEntityService: DeleteFriendGQL,
+    private deleteFriendService: DeleteFriendGQL,
     private store: Store
   ) {}
 }

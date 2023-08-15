@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { Maybe, UserContextEntity } from 'src/schema/schema';
+import { FriendEntity, Maybe } from 'src/schema/schema';
 import { selectCoreUserState } from './selector';
 
 export const selectCurrentUser = createSelector(
@@ -12,39 +12,40 @@ export const selectIsAuthenticated = createSelector(
   state => !!state?.currentUser?.id
 );
 
-export const selectFriends = createSelector(
+export const selectAllFriendRequests = createSelector(
   selectCurrentUser,
-  user => {
-    const requester = user?.friendRequester
-      ?.filter((requester) => requester?.accepted)
-      ?.map((requester) => requester?.addressee);
-    const addressee = user?.friendAddressee
-      ?.filter((addressee) => addressee?.accepted)
-      ?.map((addressee) => addressee?.requester);
-
-    return requester?.concat(addressee);
-  }
+  user => [...(user?.receivedFriendRequests ?? []), ...(user?.sentFriendRequests ?? [])]
 );
 
-export const selectReceivedRequest = createSelector(
-  selectCurrentUser,
-  user => {
-    const friendRequester = user?.friendAddressee
-      ?.filter((requester) => !requester?.accepted)
-      ?.map((requester) => requester?.requester);
-  
-  return friendRequester as Maybe<UserContextEntity>[]
-});
+export const selectFriends = createSelector(
+  selectAllFriendRequests,
+  friends => friends
+    ?.filter(friend => friend?.accepted)
+);
 
-export const selectSentRequests = createSelector(
+export const selectFriendUsers = createSelector(
+  selectFriends,
   selectCurrentUser,
-  user => {
-    const sentRequests = user?.friendRequester
-      ?.filter((addressee) => !addressee?.accepted)
-      ?.map((addressee) => addressee?.addressee)
+  (friends, user) => friends?.map(friend =>
+    friend?.addressee?.id !== user?.id
+      ? friend?.addressee
+      : friend?.requester?.id !== user?.id
+        ? friend?.requester
+        : undefined
+    )
+);
 
-  return sentRequests as Maybe<UserContextEntity>[]
-});
+export const selectReceivedFriendRequest = createSelector(
+  selectCurrentUser,
+  user => user?.receivedFriendRequests
+    ?.filter(friend => !friend?.accepted) as Maybe<FriendEntity>[]
+);
+
+export const selectSentFriendRequests = createSelector(
+  selectCurrentUser,
+  user => user?.sentFriendRequests
+    ?.filter(friend => !friend?.accepted) as Maybe<FriendEntity>[]
+);
 
 export const selectUserArticleRatings = createSelector(
   selectCurrentUser,

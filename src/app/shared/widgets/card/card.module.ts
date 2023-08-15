@@ -13,7 +13,6 @@ import { ShareModule } from '../share/share.module';
 import { CardActionsComponent } from './components/actions/card-actions.component';
 import { ContactCardComponent } from './components/contact/contact-card.component';
 import { ContentCardComponent } from './components/content/content-card.component';
-import { FriendsCardComponent } from './components/friends/friends-card.component';
 import { MemberCardComponent } from './components/member/member-card.component';
 import { SponsoredDesktopCardComponent } from './components/sponsored/desktop/sponsored-desktop-card.component';
 import { SponsoredCardComponent } from './components/sponsored/sponsored-card.component';
@@ -22,7 +21,6 @@ const components = [
   CardActionsComponent,
   ContactCardComponent,
   ContentCardComponent,
-  FriendsCardComponent,
   SponsoredCardComponent,
   SponsoredDesktopCardComponent,
   MemberCardComponent,

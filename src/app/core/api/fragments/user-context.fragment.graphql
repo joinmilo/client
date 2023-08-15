@@ -41,11 +41,11 @@ fragment UserContext on UserContextEntity {
     id
   }
 
-  friendRequester {
+  sentFriendRequests {
     ...Friend
   }
 
-  friendAddressee {
+  receivedFriendRequests {
     ...Friend
   }
 

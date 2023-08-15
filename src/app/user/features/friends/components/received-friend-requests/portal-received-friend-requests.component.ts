@@ -1,10 +1,8 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component } from "@angular/core";
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, map, takeUntil } from 'rxjs';
-import { selectCurrentUser, selectReceivedRequest } from 'src/app/core/state/selectors/user.selectors';
+import { map } from 'rxjs';
+import { selectReceivedFriendRequest } from 'src/app/core/state/selectors/user.selectors';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
-import { UserContextEntity } from 'src/schema/schema';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
 
 @Component({
@@ -12,9 +10,7 @@ import { PortalFriendsActions } from '../../state/portal-friends.actions';
   templateUrl: './portal-received-friend-requests.component.html',
   styleUrls: ['./portal-received-friend-requests.component.scss'],
 })
-export class PortalReceivedFriendRequestsComponent implements OnDestroy {
-
-  private currentUser?: Maybe<UserContextEntity>;
+export class PortalReceivedFriendRequestsComponent {
 
   private confirmLabel = 'confirm';
   private removeLabel = 'remove';
@@ -30,46 +26,27 @@ export class PortalReceivedFriendRequestsComponent implements OnDestroy {
     },
   ];
 
-  public receivedFriendRequests = this.store.select(selectReceivedRequest).pipe(
-    map(receivedFriendRequests => ({
-      result: receivedFriendRequests
-    }))
+  public receivedFriendRequests = this.store.select(selectReceivedFriendRequest).pipe(
+    map(receivedFriendRequests => receivedFriendRequests.map(friend => friend?.requester)),
+    map(result => ({ result }))
   );
 
   public cardType = CardType.Contact;
 
-  private destroy = new Subject<void>();
-
   constructor(
     public store: Store
   ) {
-    this.store.select(selectCurrentUser)
-      .pipe(takeUntil(this.destroy))
-      .subscribe(user => this.currentUser = user);
   }
 
   public actionClicked(action: CardActionOutput) {
     switch(action.label) {
       case this.confirmLabel:
-        this.store.dispatch(PortalFriendsActions.acceptFriendRequest(
-          {
-            id: this.currentUser?.friendAddressee?.filter(friend => friend?.requester?.id == action.element?.id)[0]?.id,
-            accepted: true,
-          }
-        ));
+        this.store.dispatch(PortalFriendsActions.acceptFriendRequest(action.element?.id));
         break;
       case this.removeLabel:
-        this.store.dispatch(PortalFriendsActions.deleteFriendEntity(
-          this.currentUser?.friendAddressee?.find(friend => friend?.requester?.id === action.element?.id)?.id ||
-          this.currentUser?.friendRequester?.find(friend => friend?.addressee?.id === action.element?.id)?.id
-        ));
+        this.store.dispatch(PortalFriendsActions.deleteFriend(action.element?.id));
         break;
     }
-  }
-
-  public ngOnDestroy(): void {
-    this.destroy.next();
-    this.destroy.complete();
   }
 
 }

@@ -10,10 +10,10 @@ export const PortalFriendsActions = createActionGroup({
     'send friend requests': (friendRequests: FriendEntityInput[]) => ({ friendRequests }),
     'friend requests sent': (friendRequests: Maybe<FriendEntity[]>) => ({ friendRequests }),
     
-    'accept friend request': (friendRequester: FriendEntityInput) => ({ friendRequester }),
+    'accept friend request': (userId?: Maybe<string>) => ({ userId }),
     'friend request accepted': (friendRequester: Maybe<FriendEntity>) => ({ friendRequester }),
 
-    'delete friend entity': (id?: Maybe<string>)  => ({ id }),
-    'friend entity deleted': (deleted?: Maybe<boolean>) => ({ deleted })
+    'delete friend': (userId?: Maybe<string>) => ({ userId }),
+    'friend deleted': (deleted?: Maybe<boolean>) => ({ deleted })
    }
 });

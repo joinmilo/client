@@ -2,7 +2,7 @@ import { Component, OnDestroy } from "@angular/core";
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, map, takeUntil } from 'rxjs';
-import { selectCurrentUser, selectFriends } from 'src/app/core/state/selectors/user.selectors';
+import { selectCurrentUser, selectFriendUsers } from 'src/app/core/state/selectors/user.selectors';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
 import { UserContextEntity } from 'src/schema/schema';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
@@ -23,7 +23,7 @@ export class PortalAllFriendsComponent implements OnDestroy {
 
   private currentUser?: Maybe<UserContextEntity>;
 
-  public friends = this.store.select(selectFriends).pipe(
+  public friends = this.store.select(selectFriendUsers).pipe(
     map(friends => ({
       result: friends,
     }))
@@ -41,11 +41,8 @@ export class PortalAllFriendsComponent implements OnDestroy {
       .subscribe(user => this.currentUser = user);
   }
 
-  public deleteFriendEntity(action: CardActionOutput): void {
-    this.store.dispatch(PortalFriendsActions.deleteFriendEntity(
-      this.currentUser?.friendAddressee?.find(friend => friend?.requester?.id === action.element?.id)?.id ||
-      this.currentUser?.friendRequester?.find(friend => friend?.addressee?.id === action.element?.id)?.id
-    ));
+  public deleteFriend(action: CardActionOutput): void {
+    this.store.dispatch(PortalFriendsActions.deleteFriend(action.element?.id));
   }
 
   public ngOnDestroy(): void {
