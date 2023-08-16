@@ -1,7 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutModule } from '@angular/cdk/layout';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -25,7 +25,7 @@ import { TranslatablePipe } from './pipes/translatable.pipe';
 import { TruncateWordsPipe } from './pipes/truncate-words.pipe';
 import { CoreUserEffects } from './state/effects/core-user.effects';
 import { CoreEffects } from './state/effects/core.effects';
-import { appReducers } from './state/reducers/reducer';
+import { appReducers, localStorageMetaReducer } from './state/reducers/reducer';
 
 const components = [
   FeedbackComponent,
@@ -61,9 +61,11 @@ const materials = [
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(appStateKey, appReducers),
-  EffectsModule.forFeature([CoreEffects, CoreUserEffects]),
-  NgOptimizedImage,
+  StoreModule.forFeature(appStateKey, {
+    core: appReducers.core,
+    coreUser: localStorageMetaReducer(appReducers.coreUser),
+  }),
+  EffectsModule.forFeature([CoreEffects, CoreUserEffects])
 ];
 
 @NgModule({
@@ -91,3 +93,5 @@ export class CoreModule {
     iconLibrary.addIconPacks(fab, far, fas);
   }
 }
+
+

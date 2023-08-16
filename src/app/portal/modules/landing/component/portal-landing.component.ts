@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { CookieComponent } from 'src/app/shared/widgets/cookie/cookie.component';
 import { MediaEntity, PageEntity } from 'src/schema/schema';
 import { PortalLandingActions } from '../state/portal-landing.actions';
 import { selectLandingPage } from '../state/portal-landing.selectors';
@@ -35,13 +34,6 @@ export class PortalLandingComponent implements OnInit, OnDestroy {
     ).subscribe(page => {
       this.page = page;
       this.media = page?.uploads?.find(upload => upload?.title)?.media;
-    });
-    this.openDialog();
-  }
-
-  public openDialog(): void {
-    this.dialog.open(CookieComponent, {
-      data: this.url
     });
   }
 

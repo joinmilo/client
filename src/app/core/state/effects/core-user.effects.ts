@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { delay, filter, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { CookieComponent } from 'src/app/shared/widgets/cookie/cookie.component';
 import { GetMeGQL, UserContextEntity } from 'src/schema/schema';
 import { accountUrl, refreshKey } from '../../constants/core.constants';
 import { AuthService } from '../../services/auth.service';
@@ -10,6 +12,7 @@ import { FeedbackService } from '../../services/feedback.service';
 import { FeedbackType } from '../../typings/feedback';
 import { CoreUserActions } from '../actions/core-user.actions';
 import { CoreActions } from '../actions/core.actions';
+import { selectCookieSettings } from '../selectors/user.selectors';
 
 @Injectable()
 export class CoreUserEffects {
@@ -55,7 +58,7 @@ export class CoreUserEffects {
         : this.router.navigate([`/${accountUrl}`, 'login-stepper']);
     }),
     map(currentUser => CoreUserActions.getMe(currentUser)),
-  ) );
+  ));
 
   logout = createEffect(() => this.actions.pipe(
     ofType(CoreUserActions.logout),
@@ -79,12 +82,29 @@ export class CoreUserEffects {
     tap(() => this.router.navigate([`/${accountUrl}`, 'login-required'])),
   ), { dispatch: false });
 
+  openCookieDialog = createEffect(() =>
+    this.actions.pipe(
+      ofType(CoreUserActions.init),
+      delay(1200),
+      withLatestFrom(this.store.select(selectCookieSettings)),
+      tap(([, cookieSettings]) => {
+        if (!cookieSettings) {
+          this.dialog.open(CookieComponent, {
+            disableClose: true
+          });
+        }
+      })
+    ),
+    { dispatch: false }
+  );
+
   constructor(
     private actions: Actions,
     private authService: AuthService,
     private feedbackService: FeedbackService,
     private getMeService: GetMeGQL,
     private router: Router,
-    private store: Store
-    ) { }
+    private store: Store,
+    private dialog: MatDialog
+  ) { }
 }

@@ -30,6 +30,7 @@ export const mapLatitudeConfig = 'mapLatitude';
 export const maxRating = 'maxRating';
 export const portalNameConfig = 'portalName';
 export const pwBitStrengthConfig = 'pwBitStrength';
+export const dataProtectionConfig = 'dataProtection';
 
 /**
  * Features

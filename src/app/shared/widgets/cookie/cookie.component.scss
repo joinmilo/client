@@ -1,37 +1,31 @@
-:host{
-    display: flex;
-    flex-wrap: wrap;
-  }
+@import 'src/styles/mixins.scss';
 
-  fa-icon {
-    align-content: center;
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 35rem;
+}
 
-    color: var(--color-primary-contrast-900);
-  }
+mat-dialog-content {
+  display: flex;
+  justify-content: space-around;
+  gap: var(--gap);
+  align-items: center;
 
-  div {
-    flex-direction: row;
-    padding: var(--gap);
-    gap: var(--gap);
+  @include responsive(phone) {
+    flex-flow: row wrap;
+    text-align: center;
   }
+}
 
-  .content {
-    flex: 1;
-    flex-direction: column;
-    gap: var(--gap);
-  }
+.cookie-setting {
+  align-items: center;
+}
 
-  .headline {
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-
-  .buttons {
-    justify-content: space-between;
-    padding: 0 var(--gap) var(--gap)
-  }
-
-  .mdc-snackbar__label {
-    padding: 0;
-    gap: .25rem;
-  }
+mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}

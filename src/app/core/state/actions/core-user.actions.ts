@@ -1,4 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
+import { Cookie } from 'src/app/shared/widgets/cookie/typings/cookie';
 import { UserContextEntity } from 'src/schema/schema';
 
 export const CoreUserActions = createActionGroup({
@@ -12,8 +13,7 @@ export const CoreUserActions = createActionGroup({
     'refresh expired': emptyProps(),
     'logout': emptyProps(),
     'require login': emptyProps(),
-    'allow external content': emptyProps(),
-    'save cookies': emptyProps(),
+    'save cookie settings': (cookieSettings: Cookie) => ({cookieSettings}),
   },
 });
 

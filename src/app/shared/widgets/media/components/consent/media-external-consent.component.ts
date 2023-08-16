@@ -25,7 +25,11 @@ export class MediaExternalConsentComponent {
     event.stopPropagation();
     this.allowed.emit();
     if (this.rememberConsent) {
-      this.store.dispatch(CoreUserActions.allowExternalContent());
+      this.store.dispatch(CoreUserActions.saveCookieSettings(
+        {
+          externalContent: true
+        }
+      ));
     }
   }
 }

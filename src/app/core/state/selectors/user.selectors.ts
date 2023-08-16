@@ -73,7 +73,7 @@ export const selectUserOrganisationRatings = createSelector(
   user => user?.organisationRatings
 );
 
-export const selectAllowExternalContent = createSelector(
+export const selectCookieSettings = createSelector(
   selectCoreUserState,
-  state => state.allowExternalContent
+  state => state.cookieSettings
 )

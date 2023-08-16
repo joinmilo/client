@@ -1,20 +1,42 @@
-<div>
+<mat-dialog-content>
   <fa-icon size="10x" [icon]="['fas', 'cookie-bite']"></fa-icon>
-  <section class="content">
-    <span class="headline" matSnackBarLabel appLabel="privacySettings"></span>
-    <span matSnackBarLabel>
-      Wir verwenden Cookies, um Ihnen die bestmögliche Nutzungserfahrung zu bieten. Sie stimmen der Nutzung von Cookies
-      und
-      unseren Datenschutzbestimmungen zu.
-    </span>
-    <span matSnackBarLabel>
-      Hier gehts zur<a [routerLink]="['/portal', 'data-protection']" appLabel="dataProtection"></a>
-    </span>
+  <div>
+    <h1 class="mat-headline-6" appLabel="privacySettings"></h1>
 
-  </section>
-</div>
-<section class="buttons" matSnackBarActions>
-  <button mat-button matSnackBarAction appLabel="cookieSettings"></button>
-  <button mat-button matSnackBarAction appLabel="onlyNecessaryCookies"></button>
-  <button mat-flat-button matSnackBarAction appLabel="acceptAll"></button>
-</section>
+    <span appLabel="weUseCookies"></span>
+
+    <a [routerLink]="['/portal', (dataProtectionConfig | async)?.value]" appLabel="clickHereForDataProtection"></a>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="cookieSettings">
+  <div class="cookie-setting">
+    <span appLabel="necessary"></span>
+    <mat-slide-toggle [checked]="necessary" disabled="true" color="primary"></mat-slide-toggle>
+  </div>
+  <div class="cookie-setting">
+    <span appLabel="externalContent"></span>
+    <mat-slide-toggle [checked]="externalContent" color="primary"
+      (toggleChange)="externalContent = !externalContent"></mat-slide-toggle>
+  </div>
+  <div class="cookie-setting">
+    <span appLabel="preferences"></span>
+    <mat-slide-toggle [checked]="preferences" color="primary"
+      (toggleChange)="preferences = !preferences"></mat-slide-toggle>
+  </div>
+  <div class="cookie-setting">
+    <span appLabel="statistics"></span>
+    <mat-slide-toggle [checked]="statistics" color="primary"
+      (toggleChange)="statistics = !statistics"></mat-slide-toggle>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-flat-button mat-dialog-close appLabel="declineAllOptionalCookies"
+    (click)="declineOptionalCookies()"></button>
+  <button *ngIf="!cookieSettings" mat-flat-button appLabel="cookieSettings"
+    (click)="cookieSettings = !cookieSettings"></button>
+  <button *ngIf="cookieSettings" mat-dialog-close mat-flat-button appLabel="acceptSelection"
+    (click)="acceptSelectedCookies()"></button>
+  <button mat-raised-button mat-dialog-close color="primary" appLabel="acceptAll" (click)="acceptAllCookies()"></button>
+</mat-dialog-actions>

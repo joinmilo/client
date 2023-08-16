@@ -1,5 +1,5 @@
 export type Cookie = {
-  marketing?: boolean,
+  externalContent?: boolean,
   statistics?: boolean,
   preferences?: boolean
 };

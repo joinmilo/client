@@ -1,15 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
+import { Cookie } from 'src/app/shared/widgets/cookie/typings/cookie';
 import { UserContextEntity } from 'src/schema/schema';
+import { appStateKey } from '../../constants/core.constants';
 import { CoreUserActions } from '../actions/core-user.actions';
 
 export interface CoreUserState {
   currentUser?: UserContextEntity,
-  allowExternalContent?: boolean
+  cookieSettings?: Cookie
 }
 
-export const initialState: CoreUserState = {
-  allowExternalContent: false
-};
+export const storedData = localStorage.getItem(appStateKey);
+
+console.log(storedData);
+
+export const initialState: CoreUserState = storedData
+  ? JSON.parse(storedData)
+  : { cookieSettings: undefined };
 
 export const coreUserReducer = createReducer(
   initialState,
@@ -22,8 +28,6 @@ export const coreUserReducer = createReducer(
     { ...state, currentUser: undefined }
   )),
 
-  on(CoreUserActions.allowExternalContent, (state): CoreUserState => (
-    { ...state, allowExternalContent: true}
-  ))
-
-);
+  on(CoreUserActions.saveCookieSettings, (state, action): CoreUserState => (
+    { ...state, cookieSettings: action.cookieSettings}
+  )));
