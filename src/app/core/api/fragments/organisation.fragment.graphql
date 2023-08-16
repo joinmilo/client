@@ -24,7 +24,6 @@ fragment Organisation on OrganisationEntity {
 
   members{
     approved
-    admin
     isPublic
     organisation{
     id

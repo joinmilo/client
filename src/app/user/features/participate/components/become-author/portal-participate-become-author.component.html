@@ -1,0 +1,22 @@
+<div class="border-box">
+    <h2 class="mat-headline-6" appLabel="becomeAuthor"></h2>
+    <div>
+      <p appLabel="becomeAuthorText"></p>
+      <p appLabel="becomeAuthorAdvantages"></p>
+    </div>
+    <ul>
+      <li appLabel="becomeAuthorAdvantages1"></li>
+      <li appLabel="becomeAuthorAdvantages2"></li>
+      <li appLabel="becomeAuthorAdvantages3"></li>
+    </ul>
+
+    <form [formGroup]="form"> 
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="content"></mat-label>
+        <textarea formControlName="content" matInput rows="5"></textarea>
+      </mat-form-field>
+    </form>
+    <div>
+      <button mat-button appLabel="save" (click)="save()"></button>
+    </div>
+</div>

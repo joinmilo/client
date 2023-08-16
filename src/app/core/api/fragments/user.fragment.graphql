@@ -5,11 +5,12 @@ fragment User on UserEntity {
   email
   verified
   lastLogin
-  roleApplications {
+  privilegeApplications {
     accepted
     content
-    role{
+    privilege{
       id
+      code
     }
     user{
       id

@@ -58,7 +58,6 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
       organisation: { id: organisation.id },
       userContext: { id: this.currentUser?.id },
       approved: false,
-      admin: false,
       isPublic: false
     }));
 
@@ -76,12 +75,12 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
         firstName: this.form.value.firstName,
         lastName: this.form.value.lastName,
         phone: this.form.value.phone,
-        roleApplications:
+        privilegeApplications:
           this.form.value.author ?
             [
               {
                 user: { id: this.currentUser?.user?.id },
-                role: { code: 'author' },
+                privilege: { code: 'articles_manage' },
                 accepted: false,
                 content: this.form.value.content
               }
