@@ -50,10 +50,10 @@ export class CardSliderComponent {
   public titleLabel?: string;
 
   @Input()
-  public title?: Maybe<string>;
+  public titleType?: Maybe<SliderTitleType> = 'SUBTITLE';
 
   @Input()
-  public titleType?: Maybe<SliderTitleType>;
+  public title?: Maybe<string>;
 
   public types = {
     contact: CardType.Contact,

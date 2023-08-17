@@ -8,8 +8,7 @@
       titleLabel="blogposts"
       [cardType]="types.content"
       [link]="['/articles']"
-      linkLabel="more"
-      titleType="SUBTITLE">
+      linkLabel="more">
     </app-card-slider>
 
     <app-card-slider *ngIf="(events | async)?.length"
@@ -18,8 +17,7 @@
       titleLabel="activities"
       [cardType]="types.content"
       [link]="['/events']"
-      linkLabel="more"
-      titleType="SUBTITLE">
+      linkLabel="more">
     </app-card-slider>
 
     <app-card-slider *ngIf="(organisations | async)?.length"
@@ -28,8 +26,7 @@
       titleLabel="organisations"
       [cardType]="types.contact"
       [link]="['/organisations']"
-      linkLabel="more"
-      titleType="SUBTITLE">
+      linkLabel="more">
     </app-card-slider>
 
     <app-card-slider *ngIf="(authors | async)?.length"
@@ -38,8 +35,7 @@
       titleLabel="author"
       [cardType]="types.contact"
       [link]="['/authors']"
-      linkLabel="more"
-      titleType="SUBTITLE">
+      linkLabel="more">
     </app-card-slider>
 
     <app-card-slider *ngIf="(deals | async)?.length"
@@ -48,8 +44,7 @@
       titleLabel="deals"
       [cardType]="types.content"
       [link]="['/deals']"
-      linkLabel="more"
-      titleType="SUBTITLE">
+      linkLabel="more">
     </app-card-slider>
 
     <app-card-slider *ngIf="(surveys | async)?.length"
@@ -58,8 +53,7 @@
       titleLabel="surveys"
       [cardType]="types.content"
       [link]="['/deals']"
-      linkLabel="more"
-      titleType="SUBTITLE">
+      linkLabel="more">
     </app-card-slider>
 
     <app-card-slider *ngIf="(contests | async)?.length"
@@ -68,8 +62,7 @@
       title="contests"
       [cardType]="types.content"
       [link]="['/contests']"
-      linkLabel="more"
-      titleType="SUBTITLE">
+      linkLabel="more">
     </app-card-slider>
   </section>
 </div>

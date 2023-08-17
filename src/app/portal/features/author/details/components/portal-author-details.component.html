@@ -25,17 +25,18 @@
       <span [innerHtml]="author | translatable: 'description' | async"></span>
     </section>
 
-    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
-    </app-media-slider>
-
     <app-card-slider 
       entity="ArticleEntity"
       [data]="author.articles"
       titleLabel="articles"
-      linkLabel="more"
-      [link]="['/events']"
       titleType="DETAILS">
     </app-card-slider>
+
+    <app-media-slider *ngIf="media && media.length"
+      [media]="media"
+      [link]="['./media']">
+    </app-media-slider>
+
   </section>
 
 </div>
