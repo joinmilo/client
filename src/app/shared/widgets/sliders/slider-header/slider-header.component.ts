@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
+import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
 import { Maybe } from 'src/schema/schema';
 import { TitleModule } from '../../../layout/title/title.module';
 
@@ -32,6 +33,6 @@ export class SliderHeaderComponent {
   public title?: Maybe<string>;
 
   @Input()
-  public titleType?: Maybe<string>;
+  public titleType?: Maybe<SliderTitleType>;
 
 }

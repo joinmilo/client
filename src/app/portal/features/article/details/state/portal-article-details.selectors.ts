@@ -27,4 +27,10 @@ export const selectCalculatedArticleRatings = createSelector(
   article => article?.calculatedRatings
 );
 
+export const selectArticleMedia = createSelector(
+  selectArticleDetails,
+  state => state?.uploads?.map(upload => upload?.media ?? {})
+);
+
+
 

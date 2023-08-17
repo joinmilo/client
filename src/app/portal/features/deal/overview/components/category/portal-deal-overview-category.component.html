@@ -3,6 +3,7 @@
   <app-card-slider *ngFor="let category of categories | async"
     entity="DealEntity"
     [data]="category.deals"
-    [title]="category | translatable: 'name' | async">
+    [title]="category | translatable: 'name' | async"
+    titleType="SUBTITLE">
   </app-card-slider>
 </div>

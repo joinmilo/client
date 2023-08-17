@@ -23,6 +23,7 @@ import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { MediaModule } from 'src/app/shared/widgets/media/media.module';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { PortalSurveyDetailsMediaComponent } from './components/media/portal-survey-details-media.component';
 import { PortalSurveyDetailsComponent } from './components/portal-survey-details.component';
 import { PortalSurveyDetailsSummaryComponent } from './components/summary/portal-survey-details-summary.component';
 import { portalSurveyDetailsStateKey } from './constants/survey-details.constant';
@@ -33,6 +34,7 @@ import { portalSurveyDetailsReducer } from './state/portal-survey-details.reduce
 const components = [
   PortalSurveyDetailsComponent,
   PortalSurveyDetailsSummaryComponent,
+  PortalSurveyDetailsMediaComponent
 
 ];
 

@@ -25,6 +25,7 @@ import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalContestDetailsCommentComponent } from './components/comment/portal-contest-details-comment.component';
 import { PortalContestDetailsCommentsComponent } from './components/comments/portal-contest-details-comments.component';
+import { PortalContestDetailsMediaComponent } from './components/media/portal-contest-details-media.component';
 import { PortalContestDetailsComponent } from './components/portal-contest-details.component';
 import { PortalContestDetailsSummaryComponent } from './components/summary/portal-contest-details-summary.component';
 import { portalContestDetailsStateKey } from './constants/contest-details.constant';
@@ -37,6 +38,8 @@ const components = [
   PortalContestDetailsSummaryComponent,
   PortalContestDetailsCommentComponent,
   PortalContestDetailsCommentsComponent,
+  PortalContestDetailsMediaComponent
+
 ];
 
 const framework = [

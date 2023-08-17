@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { slug } from 'src/app/core/constants/core.constants';
-import { MediaEntity } from 'src/schema/schema';
+import { Maybe, MediaEntity, UserContextEntity } from 'src/schema/schema';
 import { PortalAuthorDetailsActions } from '../state/portal-author-details.actions';
 import { selectAuthorDetails } from '../state/portal-author-details.selectors';
 
@@ -15,25 +14,33 @@ import { selectAuthorDetails } from '../state/portal-author-details.selectors';
 })
 export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
 
-  public author = this.store.select(selectAuthorDetails);
+  public author?: Maybe<UserContextEntity>;
 
   private destroy = new Subject<void>();
+  
+  public media?: Maybe<MediaEntity[]> | undefined;
 
-  public media?: Maybe<MediaEntity> | undefined;
+  public mediaTitle?: Maybe<MediaEntity> | undefined;
+  
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
 
   public ngOnInit(): void {
-    this.activatedRoute.paramMap
-      .pipe(takeUntil(this.destroy))
-      .subscribe(params =>
-        this.store.dispatch(PortalAuthorDetailsActions.getDetails(params.get(slug))));
+    this.activatedRoute.params.pipe(
+      tap(params => this.store.dispatch(PortalAuthorDetailsActions.getDetails(params[slug] || ''))),
+      switchMap(() => this.store.select(selectAuthorDetails)),
+      takeUntil(this.destroy)
+    ).subscribe(author => {
+      this.author = author;
+      this.mediaTitle = author?.uploads?.find(upload => upload?.title)?.media;
 
-    this.author.pipe(takeUntil(this.destroy))
-      .subscribe(author => 
-        this.media = author?.uploads?.find(upload => upload?.title)?.media);
+      this.media = author?.uploads
+        ?.filter(upload => !upload?.profilePicture && !upload?.title)
+        ?.map(eventMedia => eventMedia?.media)
+        ?.slice(0, 10) as MediaEntity[];
+    })
   }
 
   public ngOnDestroy(): void {

@@ -10,9 +10,10 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { MediaModule } from 'src/app/shared/widgets/media/media.module';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
+import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { PortalAuthorDetailsMediaComponent } from './components/media/portal-author-details-media.component';
 import { PortalAuthorDetailsComponent } from './components/portal-author-details.component';
-import { PortalAuthorDetailsSummaryComponent } from './components/summary/portal-author-details-summary.component';
 import { authorDetailsStateKey } from './constants/portal-author-details.constants';
 import { PortalAuthorDetailsRoutingModule } from './portal-author-details-routing.module';
 import { AuthorDetailsEffects } from './state/portal-author-details.effects';
@@ -20,7 +21,7 @@ import { authorReducer } from './state/portal-author-details.reducer';
 
 const components = [
   PortalAuthorDetailsComponent,
-  PortalAuthorDetailsSummaryComponent,
+  PortalAuthorDetailsMediaComponent
 ];
 
 const framework = [
@@ -40,6 +41,7 @@ const modules = [
   ShareModule,
   TableModule,
   TitleModule,
+  CardSliderComponent,
 ];
 
 const libs = [

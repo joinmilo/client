@@ -8,3 +8,8 @@ export const selectAuthorDetails = createSelector(
   selectPortalAuthorDetailsState,
   state => state.details
 );
+
+export const selectAuthorMedia = createSelector(
+  selectAuthorDetails,
+  state => state?.uploads?.map(upload => upload?.media ?? {})
+);

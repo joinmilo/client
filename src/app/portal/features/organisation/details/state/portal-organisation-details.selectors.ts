@@ -35,3 +35,9 @@ export const selectMembers = createSelector(
       ?.filter(member => member?.isPublic)
       ?.map(member => member?.userContext)
 );
+
+export const selectOrganisationMedia = createSelector(
+  selectOrganisationDetails,
+  state => state?.uploads?.map(upload => upload?.media ?? {})
+);
+

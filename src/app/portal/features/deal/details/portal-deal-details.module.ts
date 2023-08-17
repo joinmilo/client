@@ -24,6 +24,7 @@ import { MediaModule } from 'src/app/shared/widgets/media/media.module';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalDealDetailsCreatorComponent } from './components/creator/portal-deal-details-creator.component';
+import { PortalDealDetailsMediaComponent } from './components/media/portal-deal-details-media.component';
 import { PortalDealDetailsComponent } from './components/portal-deal-details.component';
 import { PortalDealDetailsSummaryComponent } from './components/summary/portal-deal-details-summary.component';
 import { portalDealDetailsStateKey } from './constants/deal-details.constant';
@@ -36,6 +37,7 @@ const components = [
   PortalDealDetailsComponent,
   PortalDealDetailsCreatorComponent,
   PortalDealDetailsSummaryComponent,
+  PortalDealDetailsMediaComponent
 ];
 
 const framework = [

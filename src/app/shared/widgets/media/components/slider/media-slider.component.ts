@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
 import { Maybe, MediaEntity } from 'src/schema/schema';
-import { FileAction, MediaSliderTitleType, MediaViewerData, MimeTypeDefinition } from '../../typings/media';
+import { FileAction, MediaViewerData, MimeTypeDefinition } from '../../typings/media';
 import { fileToMedia, mimeTypeDefinition } from '../../utils/media.utils';
 import { MediaViewerComponent } from '../viewer/media-viewer.component';
 
@@ -39,7 +40,7 @@ export class MediaSliderComponent {
   public title?: Maybe<string>;
 
   @Input()
-  public titleType: MediaSliderTitleType = 'DETAILS';
+  public titleType: SliderTitleType = 'DETAILS';
 
   constructor(public dialog: MatDialog) { }
 

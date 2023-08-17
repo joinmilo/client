@@ -26,6 +26,7 @@ import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalOrganisationDetailsCommentComponent } from './components/comment/portal-organisation-details-comments.component';
 import { PortalOrganisationDetailsCommentsComponent } from './components/comments/portal-organisation-details-comments.component';
+import { PortalOrganisationDetailsMediaComponent } from './components/media/portal-organisation-details-media.component';
 import { PortalOrganisationDetailsMembersComponent } from './components/members/portal-organisation-details-members.component';
 import { PortalOrganisationDetailsComponent } from './components/portal-organisation-details.component';
 import { PortalOrganisationDetailsRatingComponent } from './components/rating/portal-organisation-details-rating.component';
@@ -35,7 +36,6 @@ import { PortalOrganisationDetailsRoutingModule } from './portal-organisation-de
 import { PortalOrganisationDetailsEffects } from './state/portal-organisation-details.effects';
 import { portalOrganisationDetailsReducer } from './state/portal-organisation-details.reducer';
 
-
 const components = [
   PortalOrganisationDetailsComponent,
   PortalOrganisationDetailsCommentComponent,
@@ -43,7 +43,7 @@ const components = [
   PortalOrganisationDetailsSummaryComponent,
   PortalOrganisationDetailsRatingComponent,
   PortalOrganisationDetailsMembersComponent,
-
+  PortalOrganisationDetailsMediaComponent
 ];
 
 const framework = [

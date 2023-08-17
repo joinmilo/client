@@ -17,6 +17,8 @@
 
     <p [innerHtml]="survey | translatable: 'description' | async"></p>
 
+    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </app-media-slider>
     <div>
       <app-details-title titleLabel="attend"></app-details-title>
       <img src="assets/features/survey.svg" alt="survey-image">

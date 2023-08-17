@@ -8,3 +8,9 @@ export const selectSurveyDetails = createSelector(
   selectPortalSurveyDetailsState,
   state => state.details
 );
+
+
+export const selectSurveyMedia = createSelector(
+  selectSurveyDetails,
+  state => state?.uploads?.map(upload => upload?.media ?? {})
+);

@@ -13,3 +13,8 @@ export const selectContestComments = createSelector(
   selectPortalContestDetailsState,
   state => state.comments
 );
+
+export const selectContestMedia = createSelector(
+  selectContestDetails,
+  state => state?.uploads?.map(upload => upload?.media ?? {})
+);

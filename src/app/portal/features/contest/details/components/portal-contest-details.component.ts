@@ -18,6 +18,8 @@ export class PortalContestDetailsComponent implements OnInit, OnDestroy {
 
   public mediaTitle?: Maybe<MediaEntity>;
 
+  public media?: Maybe<Maybe<MediaEntity>[]>;
+
   private destroy = new Subject<void>();
 
   constructor(
@@ -32,6 +34,11 @@ export class PortalContestDetailsComponent implements OnInit, OnDestroy {
     ).subscribe(contest => {
       this.contest = contest;
       this.mediaTitle = contest?.uploads?.find(upload => upload?.title)?.media;
+
+      this.media = contest?.uploads
+        ?.filter(upload => !upload?.card && !upload?.title)
+        ?.map(eventMedia => eventMedia?.media)
+        ?.slice(0, 10) as MediaEntity[];
     });
 
   }

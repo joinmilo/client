@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
+import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
 import { CardData, CardEntity, CardType } from 'src/app/shared/widgets/card/typings/card';
 import { Maybe } from 'src/schema/schema';
 import { TitleModule } from '../../../layout/title/title.module';
@@ -50,6 +51,9 @@ export class CardSliderComponent {
 
   @Input()
   public title?: Maybe<string>;
+
+  @Input()
+  public titleType?: Maybe<SliderTitleType>;
 
   public types = {
     contact: CardType.Contact,

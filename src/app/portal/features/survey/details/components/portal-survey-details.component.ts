@@ -20,6 +20,8 @@ export class PortalSurveyDetailsComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
+  public media?: Maybe<Maybe<MediaEntity>[]>;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
@@ -32,6 +34,11 @@ export class PortalSurveyDetailsComponent implements OnInit, OnDestroy {
     ).subscribe(survey => {
       this.survey = survey;
       this.mediaTitle = survey?.uploads?.find(upload => upload?.title)?.media;
+
+      this.media = survey?.uploads
+        ?.filter(upload => !upload?.card && !upload?.title)
+        ?.map(eventMedia => eventMedia?.media)
+        ?.slice(0, 10) as MediaEntity[];
     });
 
   }

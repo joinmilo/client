@@ -16,13 +16,16 @@
 
     <p [innerHtml]="contest | translatable: 'content' | async"></p>
 
+    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </app-media-slider>
+
+    <app-portal-contest-details-comment>
+    </app-portal-contest-details-comment>
+
     <div>
       <app-details-title titleLabel="attend"></app-details-title>
       <img src="assets/features/contest.svg" alt="contest-image">
       <button mat-raised-button color="primary" appLabel="participateContest"></button>
     </div>
-
-    <app-portal-contest-details-comment>
-    </app-portal-contest-details-comment>
   </section>
 </div>

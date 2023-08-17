@@ -26,6 +26,7 @@ import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalArticleDetailsAuthorComponent } from './components/author/portal-article-details-author.component';
 import { PortalArticleDetailsCommentComponent } from './components/comment/portal-article-details-comment.component';
 import { PortalArticleDetailsCommentsComponent } from './components/comments/portal-article-details-comments.component';
+import { PortalArticleDetailsMediaComponent } from './components/media/portal-article-details-media.component';
 import { PortalArticleDetailsComponent } from './components/portal-article-details.component';
 import { PortalArticleDetailsRatingComponent } from './components/rating/portal-article-details-rating.component';
 import { portalArticleDetailsStateKey } from './constants/article-details.constant';
@@ -39,6 +40,7 @@ const components = [
   PortalArticleDetailsCommentsComponent,
   PortalArticleDetailsAuthorComponent,
   PortalArticleDetailsRatingComponent,
+  PortalArticleDetailsMediaComponent
 ];
 
 const framework = [
@@ -57,7 +59,7 @@ const materials = [
   MatCheckboxModule,
   MatFormFieldModule,
   MatInputModule,
-  MatMenuModule
+  MatMenuModule,
 ];
 
 const modules = [

@@ -1,6 +1,6 @@
 <div *ngIf="titleLabel || link || title">
-  <app-sub-title *ngIf="titleLabel" [titleLabel]="titleLabel"></app-sub-title>
-  <app-sub-title *ngIf="title" [title]="title"></app-sub-title>
+  <app-slider-header *ngIf="titleLabel" [titleLabel]="titleLabel" [titleType]="titleType"></app-slider-header>
+  <app-slider-header *ngIf="title" [title]="title" [titleType]="titleType"></app-slider-header>
   <section *ngIf="link">
     <a [routerLink]="link" [appLabel]="linkLabel" suffix="»"></a>
   </section>
