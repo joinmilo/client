@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { delay, filter, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
-import { CookieComponent } from 'src/app/shared/widgets/cookie/cookie.component';
 import { GetMeGQL, UserContextEntity } from 'src/schema/schema';
+import { CookieComponent } from '../../components/cookie/cookie.component';
 import { accountUrl, refreshKey } from '../../constants/core.constants';
 import { AuthService } from '../../services/auth.service';
 import { FeedbackService } from '../../services/feedback.service';
@@ -82,21 +82,18 @@ export class CoreUserEffects {
     tap(() => this.router.navigate([`/${accountUrl}`, 'login-required'])),
   ), { dispatch: false });
 
-  openCookieDialog = createEffect(() =>
-    this.actions.pipe(
-      ofType(CoreUserActions.init),
-      delay(1200),
-      withLatestFrom(this.store.select(selectCookieSettings)),
-      tap(([, cookieSettings]) => {
-        if (!cookieSettings) {
-          this.dialog.open(CookieComponent, {
-            disableClose: true
-          });
-        }
-      })
-    ),
-    { dispatch: false }
-  );
+  openCookieDialog = createEffect(() => this.actions.pipe(
+    ofType(CoreUserActions.init),
+    delay(1500),
+    withLatestFrom(this.store.select(selectCookieSettings)),
+    tap(([, cookieSettings]) => {
+      if (!cookieSettings) {
+        this.dialog.open(CookieComponent, {
+          disableClose: true
+        });
+      }
+    })
+  ), { dispatch: false });
 
   constructor(
     private actions: Actions,

@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { FavIconService } from './core/services/favicon.service';
 import { ThemeService } from './core/services/theme.service';
 import { BrowserTitleService } from './core/services/title.service';
@@ -17,7 +16,6 @@ export class AppComponent {
     public browserTitleService: BrowserTitleService,
     public themeService: ThemeService,
     public favIconService: FavIconService,
-    public store: Store
   ) {
   }
 }

@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { Cookie } from 'src/app/shared/widgets/cookie/typings/cookie';
+import { Cookie } from 'src/app/core/components/cookie/typings/cookie';
 import { UserContextEntity } from 'src/schema/schema';
 
 export const CoreUserActions = createActionGroup({

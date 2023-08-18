@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { dataProtectionConfig } from 'src/app/core/constants/core.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { selectConfiguration } from 'src/app/core/state/selectors/core.selectors';
-import { dataProtectionConfig } from './../../../core/constants/core.constants';
-
 
 @Component({
   selector: 'app-cookie',
@@ -24,9 +23,10 @@ export class CookieComponent {
 
   public statistics = true;
 
-  constructor(private store: Store) { }
+  constructor(
+    private store: Store) { }
 
-  acceptAllCookies() {
+  public acceptAllCookies(): void {
     this.store.dispatch(CoreUserActions.saveCookieSettings({
       externalContent: true,
       statistics: true,
@@ -34,7 +34,7 @@ export class CookieComponent {
     }))
   }
 
-  declineOptionalCookies() {
+  public declineOptionalCookies(): void {
     this.store.dispatch(CoreUserActions.saveCookieSettings({
       externalContent: false,
       statistics: false,
@@ -42,7 +42,7 @@ export class CookieComponent {
     }))
   }
 
-  acceptSelectedCookies() {
+  public acceptSelectedCookies(): void {
     this.store.dispatch(CoreUserActions.saveCookieSettings({
       externalContent: this.externalContent,
       statistics: this.statistics,

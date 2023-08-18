@@ -4,6 +4,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterModule } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,6 +14,7 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { CookieComponent } from './components/cookie/cookie.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { appStateKey } from './constants/core.constants';
@@ -28,6 +31,7 @@ import { CoreEffects } from './state/effects/core.effects';
 import { appReducers, localStorageMetaReducer } from './state/reducers/reducer';
 
 const components = [
+  CookieComponent,
   FeedbackComponent,
   LogoComponent,
 ];
@@ -56,7 +60,9 @@ const framework = [
 const materials = [
   LayoutModule,
   MatButtonModule,
+  MatDialogModule,
   MatSnackBarModule,
+  MatSlideToggleModule,
 ];
 
 const libs = [
