@@ -29,5 +29,16 @@ export const coreUserReducer = createReducer(
   )),
 
   on(CoreUserActions.saveCookieSettings, (state, action): CoreUserState => (
-    { ...state, cookieSettings: action.cookieSettings}
-  )));
+    { ...state, cookieSettings: action.cookieSettings }
+  )),
+
+  on(CoreUserActions.saveCookieSettingExternalContent, (state, action): CoreUserState => ({
+    ...state,
+    cookieSettings: {
+      ...state.cookieSettings,
+      externalContent: action.externalContent
+    }
+  }))
+
+)
+

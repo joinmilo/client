@@ -1,5 +1,7 @@
+import { Maybe } from 'src/schema/schema';
+
 export type Cookie = {
-  externalContent?: boolean,
-  statistics?: boolean,
-  preferences?: boolean
+  externalContent?: Maybe<boolean>,
+  statistics?: Maybe<boolean>,
+  preferences?: Maybe<boolean>
 };

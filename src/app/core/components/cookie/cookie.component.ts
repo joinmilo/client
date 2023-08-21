@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { dataProtectionConfig } from 'src/app/core/constants/core.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
@@ -15,16 +16,15 @@ export class CookieComponent {
 
   public cookieSettings = false;
 
-  public necessary = true;
+  public form = this.fb.group({
+    externalContent: [false, [Validators.required]],
+    preferences: [false, [Validators.required]],
+    statistics: [false, [Validators.required]],
+  });
 
-  public externalContent = true;
-
-  public preferences = true;
-
-  public statistics = true;
 
   constructor(
-    private store: Store) { }
+    private store: Store, private fb: FormBuilder) { }
 
   public acceptAllCookies(): void {
     this.store.dispatch(CoreUserActions.saveCookieSettings({
@@ -44,9 +44,9 @@ export class CookieComponent {
 
   public acceptSelectedCookies(): void {
     this.store.dispatch(CoreUserActions.saveCookieSettings({
-      externalContent: this.externalContent,
-      statistics: this.statistics,
-      preferences: this.preferences
+      externalContent: this.form.value.externalContent,
+      statistics: this.form.value.statistics,
+      preferences: this.form.value.preferences
     }))
   }
 }

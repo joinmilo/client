@@ -14,6 +14,7 @@ export const CoreUserActions = createActionGroup({
     'logout': emptyProps(),
     'require login': emptyProps(),
     'save cookie settings': (cookieSettings: Cookie) => ({cookieSettings}),
+    'save cookie setting external content': (externalContent: boolean) => ({externalContent})
   },
 });
 
