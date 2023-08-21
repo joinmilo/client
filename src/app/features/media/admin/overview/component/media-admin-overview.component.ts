@@ -6,16 +6,12 @@ import { FilterSortPaginateInput, InfoMediaEntity, Maybe, MediaEntity } from 'sr
 import { MediaAdminOverviewActions } from '../state/media-admin-overview.actions';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MediaDisplayTypeForm } from 'src/app/core/typings/filter-params/media-display';
-
 @Component({
   selector: 'app-media-admin-overview',
   templateUrl: './media-admin-overview.component.html',
   styleUrls: ['./media-admin-overview.component.scss']
 })
 export class MediaAdminOverviewComponent {
-
-  public mediaTypeDisplayForm = MediaDisplayTypeForm;
 
   public media = this.store.select(selectOverviewData);
 
@@ -44,7 +40,6 @@ export class MediaAdminOverviewComponent {
   ) { }
 
   public updateParams(params: FilterSortPaginateInput) {
-    console.log(params);
     this.store.dispatch(MediaAdminOverviewActions.updateParams(params));
   }
 }
