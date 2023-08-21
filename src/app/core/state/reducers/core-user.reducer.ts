@@ -32,11 +32,11 @@ export const coreUserReducer = createReducer(
     { ...state, cookieSettings: action.cookieSettings }
   )),
 
-  on(CoreUserActions.saveCookieSettingExternalContent, (state, action): CoreUserState => ({
+  on(CoreUserActions.allowExternalContent, (state): CoreUserState => ({
     ...state,
     cookieSettings: {
       ...state.cookieSettings,
-      externalContent: action.externalContent
+      externalContent: true
     }
   }))
 

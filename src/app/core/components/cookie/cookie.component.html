@@ -1,5 +1,5 @@
 <h1 mat-dialog-title
-  appLabel="privacySettings">
+  appLabel="privacy">
 </h1>
 <mat-dialog-content>
   <section>
@@ -11,35 +11,29 @@
   </section>
 
   <form *ngIf="cookieSettings" [formGroup]="form">
-    <div>
+    <mat-slide-toggle
+      [checked]="true"
+      [disabled]="true"
+      color="primary">
       <span appLabel="necessary"></span>
-      <mat-slide-toggle
-        [checked]="true"
-        [disabled]="true"
-        color="primary">
-      </mat-slide-toggle>
-    </div>
-    <div>
+    </mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="externalContent"
+      color="primary">
       <span appLabel="externalContent"></span>
-      <mat-slide-toggle formControlName="externalContent"
-        color="primary">
-      </mat-slide-toggle>
-    </div>
-    <div>
+    </mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="preferences"
+      color="primary">
       <span appLabel="preferences"></span>
-      <mat-slide-toggle formControlName="preferences"
-        color="primary">
-      </mat-slide-toggle>
-    </div>
-    <div>
+    </mat-slide-toggle>
+
+    <mat-slide-toggle formControlName="statistics"
+      color="primary">
       <span appLabel="statistics"></span>
-      <mat-slide-toggle formControlName="statistics"
-        color="primary">
-      </mat-slide-toggle>
-    </div>
+    </mat-slide-toggle>
   </form>
 </mat-dialog-content>
-
 
 <mat-dialog-actions>
   <button mat-flat-button

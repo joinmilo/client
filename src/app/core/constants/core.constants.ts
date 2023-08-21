@@ -21,6 +21,7 @@ export const tokenExpiredError = 'TokenExpiredException'
  * Configuration keys
  */
 export const faviconConfig = 'favicon';
+export const dataProtectionConfig = 'dataProtection';
 export const defaultLocaleConfig = 'defaultLocale';
 export const hCaptchaSitekeyConfig = 'hCaptchaSitekey';
 export const logoConfig = 'logo';
@@ -30,7 +31,6 @@ export const mapLatitudeConfig = 'mapLatitude';
 export const maxRating = 'maxRating';
 export const portalNameConfig = 'portalName';
 export const pwBitStrengthConfig = 'pwBitStrength';
-export const dataProtectionConfig = 'dataProtection';
 
 /**
  * Features

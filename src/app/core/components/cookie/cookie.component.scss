@@ -1,26 +1,40 @@
 @import 'src/styles/mixins.scss';
 
-div {
+mat-dialog-content {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 35rem;
+  flex-flow: column;
+  gap: 1rem;  
 }
 
-section, form {
+section {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    span {
+      max-width: 35rem;
+    }
+  }
+}
+
+form {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
   gap: var(--gap);
-  align-items: center;
-}
 
-form > div {
-  align-items: center;
+  mat-slide-toggle {
+    width: 10rem;
+  }
 }
 
 mat-dialog-actions {
   display: flex;
+  flex-flow: row;
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -30,9 +44,12 @@ mat-dialog-actions {
   }
 }
 
+@include responsive(tablet) {
+  mat-dialog-actions {
+    flex-flow: column;
+  }
 
-// @include responsive(phone) {
-//   section, mat-dialog-actions {
-//     flex-flow: column;
-//   }
-// }
+  fa-icon {
+    display: none;
+  }
+}

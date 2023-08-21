@@ -13,13 +13,11 @@ export const appReducers = {
   coreUser: coreUserReducer,
 };
 
-export function localStorageMetaReducer(reducer: ActionReducer<CoreUserState, Action>): ActionReducer<CoreUserState, Action> {
+export const localStorageMetaReducer = (reducer: ActionReducer<CoreUserState, Action>): ActionReducer<CoreUserState, Action> =>
+  (state, action) => {
 
-  return function (state, action) {
-    
     const newState = reducer(state, action);
     localStorage.setItem(appStateKey, JSON.stringify(newState));
 
-    return newState
+    return newState;
   };
-}
