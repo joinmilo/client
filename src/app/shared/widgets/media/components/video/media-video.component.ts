@@ -17,7 +17,7 @@ export class MediaVideoComponent implements OnChanges, OnDestroy {
   @Input()
   public media?: Maybe<MediaEntity>;
 
-  public allowExternalContent?: boolean;
+  public allowExternalContent?: Maybe<boolean>;
 
   public videoElement?: HTMLVideoElement;
 

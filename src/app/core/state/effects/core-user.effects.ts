@@ -89,7 +89,8 @@ export class CoreUserEffects {
     tap(([, cookieSettings]) => {
       if (!cookieSettings) {
         this.dialog.open(CookieComponent, {
-          disableClose: true
+          disableClose: true,
+          autoFocus: false,
         });
       }
     })

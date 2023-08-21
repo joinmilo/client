@@ -7,19 +7,15 @@ div {
   max-width: 35rem;
 }
 
-mat-dialog-content {
+section, form {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-around;
   gap: var(--gap);
   align-items: center;
-
-  @include responsive(phone) {
-    flex-flow: row wrap;
-    text-align: center;
-  }
 }
 
-.cookie-setting {
+form > div {
   align-items: center;
 }
 
@@ -28,4 +24,15 @@ mat-dialog-actions {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+
+  button {
+    width: 100%;
+  }
 }
+
+
+// @include responsive(phone) {
+//   section, mat-dialog-actions {
+//     flex-flow: column;
+//   }
+// }
