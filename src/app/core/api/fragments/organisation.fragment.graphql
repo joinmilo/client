@@ -16,7 +16,7 @@ fragment Organisation on OrganisationEntity {
   }
   lastOrganisationComment {
     ...OrganisationComment
-  }  
+  }
 
   favoritingUsers {
     ...UserContext
@@ -60,5 +60,8 @@ fragment Organisation on OrganisationEntity {
     media{
       ...Media
     }
-  } 
+  }
+  visitors{
+    visits
+  }
 }

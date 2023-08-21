@@ -9,7 +9,7 @@ fragment Deal on DealEntity {
   }
   creator {
     id
-    
+
     uploads {
     profilePicture
     title
@@ -52,5 +52,8 @@ fragment Deal on DealEntity {
       locale
       name
     }
+  }
+  visitors{
+    visits
   }
 }

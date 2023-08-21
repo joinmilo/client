@@ -1,0 +1,14 @@
+<div class="main-admin">
+  <app-page-title titleLabel="media"></app-page-title>
+  <app-media-filter (paramsUpdated)="updateParams($event)">
+  </app-media-filter>
+
+  <app-table
+  [actions]="actions"
+  [data]="media"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)"
+>
+</app-table>
+
+</div>

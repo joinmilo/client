@@ -1,0 +1,11 @@
+<div class="main-admin">
+  <app-page-title titleLabel="activities"></app-page-title>
+  <app-event-filter
+    (paramsUpdated)="updateParams($event)"></app-event-filter>
+  <app-table
+    [actions]="actions"
+    [data]="events"
+    [columns]="columns"
+    (sortPaginate)="updateParams($event)">
+  </app-table>
+</div>

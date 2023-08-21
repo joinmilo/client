@@ -22,5 +22,8 @@ fragment Survey on SurveyEntity {
   }
   contact{
     ...Contact
-    }
+  }
+  visitors{
+    visits
+  }
 }

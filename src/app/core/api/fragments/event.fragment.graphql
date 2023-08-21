@@ -3,15 +3,15 @@ fragment Event on EventEntity {
   entryFee
   hasSchedules
   slug
-
+  modified
   videoChatLink
 
   address {
     ...Address
   }
-  attendeeConfiguration{ 
+  attendeeConfiguration{
     approval,
-    maxAttendees  
+    maxAttendees
     attendees {
       id
       approved
@@ -67,5 +67,8 @@ fragment Event on EventEntity {
     media {
       ...Media
     }
+  }
+  visitors{
+    visits
   }
 }
