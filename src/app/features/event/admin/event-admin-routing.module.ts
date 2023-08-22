@@ -20,6 +20,11 @@ const menuRoutes: Routes = [
 ];
 
 const routes: Routes = [
+  {
+    path: eventsFeatureKey,
+    loadChildren: () => import('src/app/features/event/admin/details/event-admin-details.module')
+      .then((imported) => imported.EventAdminDetailsModule),
+  },
 ]
 
 @NgModule({
