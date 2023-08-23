@@ -1,0 +1,72 @@
+<div class="main">
+  <app-page-title titleLabel="yourStory"></app-page-title>
+  <div class="border-box">
+    <h2 class="mat-headline-6" appLabel="giveUsYourStory!"></h2>
+    <p appLabel="guestArticleIntro"></p>
+    <p appLabel="guestArticleIncentive"></p>
+    <p appLabel="guestArticleHowTo"></p>
+  </div>
+  <form [formGroup]="form">
+    <mat-accordion>
+
+      <mat-expansion-panel expanded [expanded]="step === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+          <mat-panel-title appLabel="content"></mat-panel-title>
+          <mat-panel-description appLabel="writeYourStory"></mat-panel-description>
+        </mat-expansion-panel-header>
+        <section>
+          <mat-form-field appearance="outline">
+            <mat-label appLabel="title"></mat-label>
+            <input matInput id="name" formControlName="title">
+          </mat-form-field>
+          <app-ck-editor-form formControlName="content"></app-ck-editor-form>
+        </section>
+        <mat-action-row>
+          <button mat-button color="primary" appLabel="next" (click)="nextStep()"></button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+          <mat-panel-title appLabel="informations"></mat-panel-title>
+          <mat-panel-description appLabel="enterYourData"></mat-panel-description>
+        </mat-expansion-panel-header>
+        <section>
+          <mat-form-field appearance="outline">
+            <mat-label appLabel="fullname"></mat-label>
+            <input matInput id="name" formControlName="name" placeholder="Max Mustermann">
+          </mat-form-field>
+          <fieldset>
+            <mat-form-field appearance="outline">
+              <mat-label appLabel="email"></mat-label>
+              <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label appLabel="phone"></mat-label>
+              <input matInput id="phone" formControlName="phone" placeholder="0174-1234567">
+            </mat-form-field>
+          </fieldset>
+        </section>
+        <mat-action-row>
+          <button mat-button color="accent" appLabel="previous" (click)="prevStep()"></button>
+          <button mat-button color="primary" appLabel="next" (click)="nextStep()"></button>
+        </mat-action-row>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
+        <mat-expansion-panel-header>
+          <mat-panel-title appLabel="uploads"></mat-panel-title>
+          <mat-panel-description appLabel="uploadPicturesOrFiles"></mat-panel-description>
+        </mat-expansion-panel-header>
+        <section>
+          <app-media-form></app-media-form>
+        </section>
+        <mat-action-row>
+          <button mat-button color="accent" appLabel="previous" (click)="prevStep()"></button>
+          <app-captcha-submit [disabled]="form.invalid" (verified)="onSubmit($event)">
+          </app-captcha-submit>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+</div>

@@ -1,0 +1,13 @@
+mutation saveOrganisationMembers($entities: [OrganisationMemberEntityInput!]) {
+  saveOrganisationMembers(entities: $entities) {
+    approved
+    id
+    isPublic
+    organisation{
+      ...Organisation
+    }
+    userContext{
+      ...UserContext
+    }
+  }
+}

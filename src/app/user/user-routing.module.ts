@@ -6,17 +6,17 @@ import { favoriteUserFeatureKey, friendsUserFeatureKey, participateFeatureKey } 
 const routes: Routes = [
   {
     path: participateFeatureKey,
-    loadChildren: () => import('./features/participate/portal-user-participate.module')
+    loadChildren: () => import('./modules/participate/portal-user-participate.module')
       .then((imported) => imported.PortalParticipateModule),
   },  
   {
     path: favoriteUserFeatureKey,
-    loadChildren: () => import('./features/favorites/portal-user-favorites.module')
+    loadChildren: () => import('./modules/favorites/portal-user-favorites.module')
       .then((imported) => imported.PortalFavoritesModule),
   },
   {
     path: friendsUserFeatureKey,
-    loadChildren: () => import('./features/friends/portal-user-friends.module')
+    loadChildren: () => import('./modules/friends/portal-user-friends.module')
       .then((imported) => imported.PortalFriendsModule),
   },
 ];
