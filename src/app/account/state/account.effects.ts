@@ -4,8 +4,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, switchMap, tap } from 'rxjs';
 import { accountUrl } from 'src/app/core/constants/core.constants';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { GetOrganisationsGQL, Maybe, OrganisationEntity } from 'src/schema/schema';
-import { AddressEntity, ResetPasswordGQL, SaveUserGQL, SendPasswordResetGQL, SendVerificationGQL, UserContextEntity, UserEntity, VerifyAddressGQL, VerifyUserGQL } from '../../../schema/schema';
+import { GetOrganisationsGQL, Maybe, OrganisationEntity, SaveUserContextGQL } from 'src/schema/schema';
+import { AddressEntity, ResetPasswordGQL, SendPasswordResetGQL, SendVerificationGQL, UserContextEntity, UserEntity, VerifyAddressGQL, VerifyUserGQL } from '../../../schema/schema';
 import { CoreActions } from '../../core/state/actions/core.actions';
 import { AccountActions } from './account.actions';
 
@@ -134,7 +134,7 @@ export class AccountEffects {
     private sendPasswordResetService: SendPasswordResetGQL,
     private sendVerificationService: SendVerificationGQL,
     private resetPasswordService: ResetPasswordGQL,
-    private saveUserService: SaveUserGQL,
+    private saveUserService: SaveUserContextGQL,
     private verifyAddressService: VerifyAddressGQL,
     private getOrganisationsService: GetOrganisationsGQL
     ) { }

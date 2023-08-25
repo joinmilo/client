@@ -32,7 +32,6 @@ const materials = [
   MatFormFieldModule,
   MatSelectModule,
   MatButtonModule,
-  MatSelectModule,
   MatInputModule
 ];
 

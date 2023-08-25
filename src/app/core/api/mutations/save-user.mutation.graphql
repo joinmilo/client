@@ -1,5 +1,5 @@
-mutation saveUser($entity: UserContextEntityInput!) {
-  saveUserContext(entity: $entity) {
-    ...UserContext
+mutation saveUser($entity: UserEntityInput!) {
+  saveUser(entity: $entity) {
+    ...User
   }
 }

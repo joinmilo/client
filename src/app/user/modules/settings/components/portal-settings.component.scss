@@ -1,0 +1,49 @@
+.settings-overview {
+  display: flex;
+  gap: var(--gap);
+}
+
+.components {
+  width: -webkit-fill-available;
+}
+
+span{
+  display: flex;
+  gap: 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    width: fit-content;
+  }
+}
+
+.mat-accordion {
+  display: inline-block;
+}
+
+.mat-expansion-panel-spacing {
+  margin: 0;
+}
+
+.mat-expansion-panel {
+  --mat-expansion-container-shape: 0px;
+}
+
+.mat-accordion .mat-expansion-panel:first-of-type {
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+
+:host ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
+}
+
