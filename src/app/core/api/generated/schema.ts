@@ -1586,6 +1586,8 @@ export type Mutation = {
   deleteOrganisations?: Maybe<Scalars['Boolean']>;
   deletePage?: Maybe<Scalars['Boolean']>;
   deletePages?: Maybe<Scalars['Boolean']>;
+  deletePrivilegeApplication?: Maybe<Scalars['Boolean']>;
+  deletePrivilegeApplications?: Maybe<Scalars['Boolean']>;
   deleteQuestionOption?: Maybe<Scalars['Boolean']>;
   deleteQuestionOptions?: Maybe<Scalars['Boolean']>;
   deleteQuestionType?: Maybe<Scalars['Boolean']>;
@@ -1595,8 +1597,6 @@ export type Mutation = {
   deleteReportTypes?: Maybe<Scalars['Boolean']>;
   deleteReports?: Maybe<Scalars['Boolean']>;
   deleteRole?: Maybe<Scalars['Boolean']>;
-  deleteRoleApplication?: Maybe<Scalars['Boolean']>;
-  deleteRoleApplications?: Maybe<Scalars['Boolean']>;
   deleteRoles?: Maybe<Scalars['Boolean']>;
   deleteSocialMedia?: Maybe<Scalars['Boolean']>;
   deleteSocialMedias?: Maybe<Scalars['Boolean']>;
@@ -1715,6 +1715,8 @@ export type Mutation = {
   saveOrganisations?: Maybe<Array<Maybe<OrganisationEntity>>>;
   savePage?: Maybe<PageEntity>;
   savePages?: Maybe<Array<Maybe<PageEntity>>>;
+  savePrivilegeApplication?: Maybe<PrivilegeApplicationEntity>;
+  savePrivilegeApplications?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
   saveQuestionOption?: Maybe<SurveyQuestionOptionEntity>;
   saveQuestionOptions?: Maybe<Array<Maybe<SurveyQuestionOptionEntity>>>;
   saveQuestionType?: Maybe<SurveyQuestionTypeEntity>;
@@ -1724,8 +1726,6 @@ export type Mutation = {
   saveReportTypes?: Maybe<Array<Maybe<ReportTypeEntity>>>;
   saveReports?: Maybe<Array<Maybe<ReportEntity>>>;
   saveRole?: Maybe<RoleEntity>;
-  saveRoleApplication?: Maybe<RoleApplicationEntity>;
-  saveRoleApplications?: Maybe<Array<Maybe<RoleApplicationEntity>>>;
   saveRoles?: Maybe<Array<Maybe<RoleEntity>>>;
   saveSocialMedia?: Maybe<SocialMediaEntity>;
   saveSocialMedias?: Maybe<Array<Maybe<SocialMediaEntity>>>;
@@ -2326,6 +2326,18 @@ export type MutationDeletePagesArgs = {
 
 
 /** Mutation root */
+export type MutationDeletePrivilegeApplicationArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeletePrivilegeApplicationsArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
 export type MutationDeleteQuestionOptionArgs = {
   id?: InputMaybe<Scalars['String']>;
 };
@@ -2376,18 +2388,6 @@ export type MutationDeleteReportsArgs = {
 /** Mutation root */
 export type MutationDeleteRoleArgs = {
   id?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Mutation root */
-export type MutationDeleteRoleApplicationArgs = {
-  id?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Mutation root */
-export type MutationDeleteRoleApplicationsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -3101,6 +3101,18 @@ export type MutationSavePagesArgs = {
 
 
 /** Mutation root */
+export type MutationSavePrivilegeApplicationArgs = {
+  entity?: InputMaybe<PrivilegeApplicationEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSavePrivilegeApplicationsArgs = {
+  entities?: InputMaybe<Array<InputMaybe<PrivilegeApplicationEntityInput>>>;
+};
+
+
+/** Mutation root */
 export type MutationSaveQuestionOptionArgs = {
   entity?: InputMaybe<SurveyQuestionOptionEntityInput>;
 };
@@ -3151,18 +3163,6 @@ export type MutationSaveReportsArgs = {
 /** Mutation root */
 export type MutationSaveRoleArgs = {
   entity?: InputMaybe<RoleEntityInput>;
-};
-
-
-/** Mutation root */
-export type MutationSaveRoleApplicationArgs = {
-  entity?: InputMaybe<RoleApplicationEntityInput>;
-};
-
-
-/** Mutation root */
-export type MutationSaveRoleApplicationsArgs = {
-  entities?: InputMaybe<Array<InputMaybe<RoleApplicationEntityInput>>>;
 };
 
 
@@ -3507,7 +3507,6 @@ export type OrganisationMediaEntityInput = {
 
 export type OrganisationMemberEntity = {
   __typename?: 'OrganisationMemberEntity';
-  admin?: Maybe<Scalars['Boolean']>;
   approved?: Maybe<Scalars['Boolean']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
@@ -3518,7 +3517,6 @@ export type OrganisationMemberEntity = {
 };
 
 export type OrganisationMemberEntityInput = {
-  admin?: InputMaybe<Scalars['Boolean']>;
   approved?: InputMaybe<Scalars['Boolean']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
@@ -3948,6 +3946,12 @@ export type PageableList_PageEntity = {
   total: Scalars['Long'];
 };
 
+export type PageableList_PrivilegeApplicationEntity = {
+  __typename?: 'PageableList_PrivilegeApplicationEntity';
+  result?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
+  total: Scalars['Long'];
+};
+
 export type PageableList_ReportEntity = {
   __typename?: 'PageableList_ReportEntity';
   result?: Maybe<Array<Maybe<ReportEntity>>>;
@@ -3957,12 +3961,6 @@ export type PageableList_ReportEntity = {
 export type PageableList_ReportTypeEntity = {
   __typename?: 'PageableList_ReportTypeEntity';
   result?: Maybe<Array<Maybe<ReportTypeEntity>>>;
-  total: Scalars['Long'];
-};
-
-export type PageableList_RoleApplicationEntity = {
-  __typename?: 'PageableList_RoleApplicationEntity';
-  result?: Maybe<Array<Maybe<RoleApplicationEntity>>>;
   total: Scalars['Long'];
 };
 
@@ -4073,6 +4071,48 @@ export type PasswordResetEntityInput = {
   user?: InputMaybe<UserEntityInput>;
 };
 
+export type PrivilegeApplicationEntity = {
+  __typename?: 'PrivilegeApplicationEntity';
+  accepted?: Maybe<Scalars['Boolean']>;
+  content?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  privilege?: Maybe<RolePrivilegeEntity>;
+  translatables?: Maybe<Array<Maybe<PrivilegeApplicationTranslatableEntity>>>;
+  user?: Maybe<UserEntity>;
+};
+
+export type PrivilegeApplicationEntityInput = {
+  accepted?: InputMaybe<Scalars['Boolean']>;
+  content?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  privilege?: InputMaybe<RolePrivilegeEntityInput>;
+  translatables?: InputMaybe<Array<InputMaybe<PrivilegeApplicationTranslatableEntityInput>>>;
+  user?: InputMaybe<UserEntityInput>;
+};
+
+export type PrivilegeApplicationTranslatableEntity = {
+  __typename?: 'PrivilegeApplicationTranslatableEntity';
+  content?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  parent?: Maybe<PrivilegeApplicationEntity>;
+};
+
+export type PrivilegeApplicationTranslatableEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  language?: InputMaybe<LanguageEntityInput>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  parent?: InputMaybe<PrivilegeApplicationEntityInput>;
+};
+
 /** Query root */
 export type Query = {
   __typename?: 'Query';
@@ -4161,6 +4201,8 @@ export type Query = {
   getOrganisations?: Maybe<PageableList_OrganisationEntity>;
   getPage?: Maybe<PageEntity>;
   getPages?: Maybe<PageableList_PageEntity>;
+  getPrivilegeApplication?: Maybe<PrivilegeApplicationEntity>;
+  getPrivilegeApplications?: Maybe<PageableList_PrivilegeApplicationEntity>;
   getQuestionOption?: Maybe<SurveyQuestionOptionEntity>;
   getQuestionOptions?: Maybe<PageableList_SurveyQuestionOptionEntity>;
   getQuestionType?: Maybe<SurveyQuestionTypeEntity>;
@@ -4170,8 +4212,6 @@ export type Query = {
   getReportTypes?: Maybe<PageableList_ReportTypeEntity>;
   getReports?: Maybe<PageableList_ReportEntity>;
   getRole?: Maybe<RoleEntity>;
-  getRoleApplication?: Maybe<RoleApplicationEntity>;
-  getRoleApplications?: Maybe<PageableList_RoleApplicationEntity>;
   getRoles?: Maybe<PageableList_RoleEntity>;
   getSocialMedia?: Maybe<SocialMediaEntity>;
   getSocialMedias?: Maybe<PageableList_SocialMediaEntity>;
@@ -4707,6 +4747,18 @@ export type QueryGetPagesArgs = {
 
 
 /** Query root */
+export type QueryGetPrivilegeApplicationArgs = {
+  entity?: InputMaybe<PrivilegeApplicationEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetPrivilegeApplicationsArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
 export type QueryGetQuestionOptionArgs = {
   entity?: InputMaybe<SurveyQuestionOptionEntityInput>;
 };
@@ -4757,18 +4809,6 @@ export type QueryGetReportsArgs = {
 /** Query root */
 export type QueryGetRoleArgs = {
   entity?: InputMaybe<RoleEntityInput>;
-};
-
-
-/** Query root */
-export type QueryGetRoleApplicationArgs = {
-  entity?: InputMaybe<RoleApplicationEntityInput>;
-};
-
-
-/** Query root */
-export type QueryGetRoleApplicationsArgs = {
-  params?: InputMaybe<FilterSortPaginateInput>;
 };
 
 
@@ -5055,69 +5095,71 @@ export type ReportTypeTranslatableEntityInput = {
   name?: InputMaybe<Scalars['String']>;
 };
 
-export type RoleApplicationEntity = {
-  __typename?: 'RoleApplicationEntity';
-  accepted?: Maybe<Scalars['Boolean']>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  role?: Maybe<RoleEntity>;
-  translatables?: Maybe<Array<Maybe<RoleApplicationTranslatableEntity>>>;
-  user?: Maybe<UserEntity>;
-};
-
-export type RoleApplicationEntityInput = {
-  accepted?: InputMaybe<Scalars['Boolean']>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  role?: InputMaybe<RoleEntityInput>;
-  translatables?: InputMaybe<Array<InputMaybe<RoleApplicationTranslatableEntityInput>>>;
-  user?: InputMaybe<UserEntityInput>;
-};
-
-export type RoleApplicationTranslatableEntity = {
-  __typename?: 'RoleApplicationTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  parent?: Maybe<RoleApplicationEntity>;
-};
-
-export type RoleApplicationTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  language?: InputMaybe<LanguageEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  parent?: InputMaybe<RoleApplicationEntityInput>;
-};
-
 export type RoleEntity = {
   __typename?: 'RoleEntity';
-  applcations?: Maybe<Array<Maybe<RoleApplicationEntity>>>;
   code?: Maybe<Scalars['String']>;
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
+  privileges?: Maybe<Array<Maybe<RolePrivilegeEntity>>>;
   translatables?: Maybe<Array<Maybe<RoleTranslatableEntity>>>;
   users?: Maybe<Array<Maybe<UserEntity>>>;
 };
 
 export type RoleEntityInput = {
-  applcations?: InputMaybe<Array<InputMaybe<RoleApplicationEntityInput>>>;
   code?: InputMaybe<Scalars['String']>;
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
+  privileges?: InputMaybe<Array<InputMaybe<RolePrivilegeEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<RoleTranslatableEntityInput>>>;
   users?: InputMaybe<Array<InputMaybe<UserEntityInput>>>;
+};
+
+export type RolePrivilegeEntity = {
+  __typename?: 'RolePrivilegeEntity';
+  applications?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
+  code?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  translatables?: Maybe<Array<Maybe<RolePrivilegeTranslatableEntity>>>;
+};
+
+export type RolePrivilegeEntityInput = {
+  applications?: InputMaybe<Array<InputMaybe<PrivilegeApplicationEntityInput>>>;
+  code?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  translatables?: InputMaybe<Array<InputMaybe<RolePrivilegeTranslatableEntityInput>>>;
+};
+
+export type RolePrivilegeTranslatableEntity = {
+  __typename?: 'RolePrivilegeTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  parent?: Maybe<RolePrivilegeEntity>;
+};
+
+export type RolePrivilegeTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  language?: InputMaybe<LanguageEntityInput>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  parent?: InputMaybe<RolePrivilegeEntityInput>;
 };
 
 export type RoleTranslatableEntity = {
@@ -5692,7 +5734,7 @@ export type UserEntity = {
   password?: Maybe<Scalars['String']>;
   passwordResets?: Maybe<Array<Maybe<PasswordResetEntity>>>;
   phone?: Maybe<Scalars['String']>;
-  roleApplications?: Maybe<Array<Maybe<RoleApplicationEntity>>>;
+  privilegeApplications?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
   roles?: Maybe<Array<Maybe<RoleEntity>>>;
   subscriptions?: Maybe<Array<Maybe<SubscriptionEntity>>>;
   termsAccepted?: Maybe<Scalars['Boolean']>;
@@ -5714,7 +5756,7 @@ export type UserEntityInput = {
   password?: InputMaybe<Scalars['String']>;
   passwordResets?: InputMaybe<Array<InputMaybe<PasswordResetEntityInput>>>;
   phone?: InputMaybe<Scalars['String']>;
-  roleApplications?: InputMaybe<Array<InputMaybe<RoleApplicationEntityInput>>>;
+  privilegeApplications?: InputMaybe<Array<InputMaybe<PrivilegeApplicationEntityInput>>>;
   roles?: InputMaybe<Array<InputMaybe<RoleEntityInput>>>;
   subscriptions?: InputMaybe<Array<InputMaybe<SubscriptionEntityInput>>>;
   termsAccepted?: InputMaybe<Scalars['Boolean']>;

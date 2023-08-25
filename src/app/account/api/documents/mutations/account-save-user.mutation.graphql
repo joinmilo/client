@@ -1,5 +1,13 @@
 mutation saveUser($entity: UserContextEntityInput!) {
   saveUserContext(entity: $entity) {
     id
+    user{
+      id
+      lastLogin
+      firstName
+      lastName
+      phone
+      privilegeApplications
+    }
   }
 }

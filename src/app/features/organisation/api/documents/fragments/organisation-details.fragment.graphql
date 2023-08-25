@@ -21,7 +21,6 @@ fragment OrganisationDetails on OrganisationEntity {
 
   members {
     approved
-    admin
     isPublic
 
     userContext {
