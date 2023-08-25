@@ -1,3 +1,14 @@
 h1 {
   margin-bottom: 1rem !important;
 }
+
+div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+fa-icon {
+  cursor: pointer;
+}

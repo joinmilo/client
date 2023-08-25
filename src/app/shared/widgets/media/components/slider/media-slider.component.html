@@ -2,7 +2,7 @@
   
   <ng-container *ngIf="titleType === 'DETAILS'">
     <app-details-title *ngIf="titleLabel; detailsTitleLabel" [titleLabel]="titleLabel"></app-details-title>
-    <ng-template #subTitleLabel>
+    <ng-template #subTitleLabel *ngif="title">
       <app-details-title [title]="title"></app-details-title>
     </ng-template>
   </ng-container>

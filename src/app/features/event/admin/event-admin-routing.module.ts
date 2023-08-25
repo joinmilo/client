@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
-import { eventsFeatureKey } from 'src/app/core/constants/core.constants';
+import { eventsFeatureKey, slug } from 'src/app/core/constants/core.constants';
 
 const menuRoutes: Routes = [
   {
@@ -21,7 +21,7 @@ const menuRoutes: Routes = [
 
 const routes: Routes = [
   {
-    path: eventsFeatureKey,
+    path: `${eventsFeatureKey}/:${slug}`,
     loadChildren: () => import('src/app/features/event/admin/details/event-admin-details.module')
       .then((imported) => imported.EventAdminDetailsModule),
   },

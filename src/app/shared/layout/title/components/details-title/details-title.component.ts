@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { Maybe } from 'src/schema/schema';
 
 @Component({
@@ -14,4 +15,12 @@ export class DetailsTitleComponent {
   @Input()
   public titleLabel?: Maybe<string>;
 
+  @Input()
+  public link?: Maybe<string[]>;
+
+  @Input()
+  public linkLabel?: Maybe<string>;
+
+  @Input()
+  public linkIcon?: IconName;
 }

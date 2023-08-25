@@ -3,18 +3,18 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Period } from 'src/app/core/typings/period';
 import { EventEntity, EventScheduleEntity, Maybe } from 'src/schema/schema';
-import { PortalEventDetailsActions } from '../../state/portal-event-details.actions';
-import { selectEventDetails, selectSchedules } from '../../state/portal-event-details.selectors';
+import { EventAdminDetailsLandingActions } from '../../state/event-admin-details-landing.actions';
+import { selectEventAdminDetailsLanding, selectEventAdminDetailsLandingSchedules } from '../../state/event-admin-details-landing.selectors';
 
 @Component({
-  selector: 'app-portal-event-details-calendar',
-  templateUrl: './portal-event-details-calendar.component.html',
-  styleUrls: ['./portal-event-details-calendar.component.scss']
+  selector: 'app-event-admin-details-landing-calendar',
+  templateUrl: './event-admin-details-landing-calendar.component.html',
+  styleUrls: ['./event-admin-details-landing-calendar.component.scss']
 })
-export class PortalEventDetailsCalendarComponent implements OnDestroy {
+export class EventAdminDetailsLandingCalendarComponent implements OnDestroy{
 
   public event?: Maybe<EventEntity>;
-
+    
   public startDates?: Date[];
 
   public selectedSchedule?: EventScheduleEntity;
@@ -24,22 +24,20 @@ export class PortalEventDetailsCalendarComponent implements OnDestroy {
   constructor(
     private store: Store
   ) {
-    this.store.select(selectSchedules)
+    this.store.select(selectEventAdminDetailsLandingSchedules)
       .pipe(takeUntil(this.destroy))
-      .subscribe(schedules => {
-        console.log(schedules);
+      .subscribe(schedules =>
         this.startDates = schedules?.map(schedule => new Date(schedule.startDate))
-      }
       );
 
-    this.store.select(selectEventDetails)
+    this.store.select(selectEventAdminDetailsLanding)
       .pipe(takeUntil(this.destroy))
       .subscribe(event => this.event = event);
   }
-
+  
   public monthSelected(period: Period) {
     this.store.dispatch(
-      PortalEventDetailsActions.getSchedules(
+      EventAdminDetailsLandingActions.getSchedules(
         this.event?.id,
         period.startDate.toISOString(),
         period.endDate.toISOString()
@@ -48,7 +46,7 @@ export class PortalEventDetailsCalendarComponent implements OnDestroy {
   }
 
   public daySelected(period: Period): void {
-    this.store.select(selectSchedules)
+    this.store.select(selectEventAdminDetailsLandingSchedules)
       .pipe(takeUntil(this.destroy))
       .subscribe(dates =>
         this.selectedSchedule = dates

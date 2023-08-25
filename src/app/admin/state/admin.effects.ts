@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { map, switchMap } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
+import { adminUrl } from 'src/app/core/constants/core.constants';
 import { FeatureEntity, GetFeaturesGQL, QueryOperator } from 'src/schema/schema';
 import { AdminActions } from './admin.actions';
 
@@ -28,6 +29,11 @@ export class AdminEffects implements OnInitEffects {
     }).valueChanges),
     map(response => AdminActions.setFeatures(response.data.getFeatures?.result as FeatureEntity[])),
   ));
+
+  notFound = createEffect(() => this.actions.pipe(
+    ofType(AdminActions.notFound),
+    tap(() => this.router.navigate(['/', adminUrl, '404'])),
+  ), { dispatch: false });
 
   // navigateDetails = createEffect(() => this.actions.pipe(
   //   ofType(PortalMenuActions.navigateDetails),
