@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Maybe } from 'graphql/jsutils/Maybe';
 
 @Component({
   selector: 'app-page-title',
@@ -8,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class PageTitleComponent {
 
   @Input()
-  public title?: string;
+  public title?: Maybe<string>;
 
   @Input()
   public titleLabel?: string;

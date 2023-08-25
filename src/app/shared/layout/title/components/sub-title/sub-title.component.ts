@@ -13,4 +13,7 @@ export class SubTitleComponent {
   @Input()
   public title?: string;
 
+  @Input()
+  public link?: string[];
+
 }

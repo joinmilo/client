@@ -14,6 +14,7 @@ export const AdminActions = createActionGroup({
     'get features': emptyProps(),
     'set features': (features?: FeatureEntity[]) => ({ features }),
 
+    'not found': emptyProps(),
   }
 });
 

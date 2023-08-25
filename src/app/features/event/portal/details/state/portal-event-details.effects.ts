@@ -143,6 +143,13 @@ export class PortalEventDetailsEffects {
                   operands: [
                     {
                       entity: {
+                        path: 'event.id',
+                        operator: QueryOperator.Equal,
+                        value: action.event_id
+                      }
+                    },
+                    {
+                      entity: {
                         path: 'startDate',
                         operator: QueryOperator.GreaterOrEqual,
                         value: action.startDate

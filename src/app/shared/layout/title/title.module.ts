@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { DetailsTitleComponent } from './components/details-title/details-title.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
@@ -18,6 +21,9 @@ const framework = [
 
 const modules = [
   CoreModule,
+  RouterModule,
+  FontAwesomeModule,
+  MatButtonModule
 ];
 
 @NgModule({

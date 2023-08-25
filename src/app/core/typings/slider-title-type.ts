@@ -1,3 +1,4 @@
 export type SliderTitleType = 'SUBTITLE'
   | 'DETAILS'
-  | 'PAGE';
+  | 'PAGE'
+  | 'NONE';
