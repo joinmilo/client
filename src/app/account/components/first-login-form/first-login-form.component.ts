@@ -64,6 +64,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(AccountActions.saveFirstLogin({
       id: this.currentUser?.id,
+      // TODO: When working 
       // uploads: [{
       //   title: false,
       //   profilePicture: true,
@@ -80,7 +81,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
             [
               {
                 user: { id: this.currentUser?.user?.id },
-                privilege: { code: 'authors-manage' },
+                privilege: { code: 'articles_manage' },
                 accepted: false,
                 content: this.form.value.content ?? ''
               }
