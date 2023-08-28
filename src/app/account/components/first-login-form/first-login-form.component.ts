@@ -58,7 +58,6 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
       organisation: { id: organisation.id },
       userContext: { id: this.currentUser?.id },
       approved: false,
-      admin: false,
       isPublic: false
     }));
 
