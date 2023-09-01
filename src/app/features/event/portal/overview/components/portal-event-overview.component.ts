@@ -4,7 +4,7 @@ import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalEventOverviewActions } from '../state/portal-event-overview.actions';
 import { selectOverviewData, selectSponsoredEvent } from '../state/portal-event-overview.selectors';
 
@@ -19,7 +19,7 @@ export class PortalEventOverviewComponent {
 
   public displayQueryParam = displayQueryParam;
 
-  public inputs: RadioInput[] = [
+  public inputs: RadioButtonInput[] = [
     {
       icon: ['fas', 'shapes'],
       label: 'category',

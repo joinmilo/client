@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalOrganisationOverviewActions } from '../state/portal-organisation-overview.actions';
 import { selectOverviewData, selectSponsoredOrganisation } from '../state/portal-organisation-overview.selectors';
 
@@ -18,7 +18,7 @@ export class PortalOrganisationOverviewComponent {
 
   public displayQueryParam = displayQueryParam;
 
-  public inputs: RadioInput[] = [
+  public inputs: RadioButtonInput[] = [
     {
       icon: ['fas', 'shapes'],
       label: 'list',

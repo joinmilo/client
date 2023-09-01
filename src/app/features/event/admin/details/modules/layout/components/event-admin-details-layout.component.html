@@ -1,0 +1,17 @@
+<div class="main-admin">
+  <app-page-title [title]="event | translatable: 'name' | async">
+  </app-page-title>
+
+  <app-radio-card-group
+    [value]="''"
+    [inputs]="inputs"
+    (valueChanged)="route($event)">
+  </app-radio-card-group>
+  
+  <button mat-flat-button color="primary">
+    <fa-icon size="1x" [icon]="['fas', 'pen-to-square']"></fa-icon>
+    <span appLabel="editEvent"></span>
+  </button>
+
+  <router-outlet></router-outlet>
+</div>

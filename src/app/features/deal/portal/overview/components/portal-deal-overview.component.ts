@@ -4,7 +4,7 @@ import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalDealOverviewActions } from '../state/portal-deal-overview.actions';
 import { selectOverviewData, selectSponsoredDeal } from '../state/portal-deal-overview.selectors';
 
@@ -19,7 +19,7 @@ export class PortalDealOverviewComponent {
 
   public displayQueryParam = displayQueryParam;
 
-  public inputs: RadioInput[] = [
+  public inputs: RadioButtonInput[] = [
     {
       icon: ['fas', 'shapes'],
       label: 'category',

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { ArticleAdminRoutingModule } from '../features/article/admin/article-admin-routing.module';
@@ -17,6 +18,7 @@ import { adminReducer } from './state/admin.reducer';
 
 const framework = [
   CommonModule,
+  RouterModule,
 ];
 
 const routes = [

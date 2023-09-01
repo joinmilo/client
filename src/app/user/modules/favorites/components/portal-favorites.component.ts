@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 
 @Component({
   selector: 'app-portal-favorites',
@@ -14,7 +14,7 @@ export class PortalFavoritesComponent {
 
   public displayQueryParam = displayQueryParam;
 
-  public inputs: RadioInput[] = [
+  public inputs: RadioButtonInput[] = [
     {
       icon: ['fas', 'calendar'],
       label: 'Events',

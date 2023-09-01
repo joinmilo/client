@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, take } from 'rxjs';
-import { RadioInput } from '../../typings/radio-input';
+import { RadioButtonInput } from '../../typings/radio-button-input';
 
 @Component({
   selector: 'app-radio-button-group',
@@ -22,7 +22,7 @@ export class RadioButtonGroupComponent<T> implements ControlValueAccessor, OnIni
   public value?: T;
 
   @Input()
-  public inputs?: RadioInput[];
+  public inputs?: RadioButtonInput[];
 
   @Input()
   public queryParamKey?: string;

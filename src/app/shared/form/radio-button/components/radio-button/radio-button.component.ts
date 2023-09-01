@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { RadioInput } from '../../typings/radio-input';
+import { RadioButtonInput } from '../../typings/radio-button-input';
 
 @Component({
   selector: 'app-radio-button',
@@ -10,7 +10,7 @@ export class RadioButtonComponent<T> implements OnChanges {
   public checked = false;
 
   @Input()
-  public input?: RadioInput;
+  public input?: RadioButtonInput;
 
   @Input()
   public value?: T;

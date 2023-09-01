@@ -5,7 +5,7 @@ import { guestArticlesFeatureKey } from 'src/app/core/constants/feature.constant
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalArticleOverviewActions } from '../state/portal-article-overview.actions';
 import { selectOverviewData, selectSponsoredArticle } from '../state/portal-article-overview.selectors';
 
@@ -20,7 +20,7 @@ export class PortalArticleOverviewComponent {
 
   public displayQueryParam = displayQueryParam;
 
-  public inputs: RadioInput[] = [
+  public inputs: RadioButtonInput[] = [
     {
       icon: ['fas', 'shapes'],
       label: 'category',
