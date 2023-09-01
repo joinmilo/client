@@ -10,22 +10,4 @@ button {
       color: var(--color-warn-400);
     }
   }
-
-  &:active {
-    animation: pulse .2s ease-in-out;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: scale(1);
-  }
 }

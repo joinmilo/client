@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { ArticlePortalDetailsActions } from '../../state/article-portal-details.actions';
 import { selectArticleMedia } from '../../state/article-portal-details.selectors';
 
@@ -19,12 +19,13 @@ export class ArticlePortalDetailsMediaComponent implements OnDestroy {
 
   private destroy = new Subject<void>();
 
-  public inputs: RadioInput[] = [
+  public inputs: RadioButtonInput[] = [
     {
       icon: ['fas', 'image'],
       label: 'images',
       value: MediaDisplayType.Image
-    },{
+    },
+    {
       icon: ['fas', 'video'],
       label: 'videos',
       value: MediaDisplayType.Video

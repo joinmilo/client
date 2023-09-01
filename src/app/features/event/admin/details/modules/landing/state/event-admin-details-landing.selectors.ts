@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { eventAdminDetailsLandingStateKey } from '../../constants/event-admin-details.constants';
+import { eventAdminDetailsLandingStateKey } from '../constants/event-admin-details-landing.constants';
 import { EventAdminDetailsLandingState } from './event-admin-details-landing.reducer';
 
 export const selectEventAdminDetailsLandingState = createFeatureSelector<EventAdminDetailsLandingState>(eventAdminDetailsLandingStateKey);

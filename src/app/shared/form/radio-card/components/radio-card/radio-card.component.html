@@ -1,0 +1,10 @@
+<div [class.active]="checked"
+  (click)="changeSelect($event)"
+  class="border-box">
+    <strong [appLabel]="input?.label"></strong>
+
+    <section>
+      <fa-icon size="lg" [icon]="input!.icon"></fa-icon>
+      <span *ngIf="input?.display">{{ input?.display }}</span>
+    </section>
+</div>

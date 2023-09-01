@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { MediaViewerData } from 'src/app/shared/media/typings/media';
 import { MediaViewerComponent } from '../viewer/media-viewer.component';
 
@@ -29,7 +29,7 @@ export class MediaGalleryComponent implements OnInit, OnChanges {
 
   public fileType = MediaDisplayType.Image;
 
-  public inputs?: RadioInput[];
+  public inputs?: RadioButtonInput[];
 
   constructor(
     public activatedRoute: ActivatedRoute,

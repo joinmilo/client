@@ -2,11 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { Subject } from 'rxjs';
 import { EventEntity } from 'src/app/core/api/generated/schema';
-import { slug } from 'src/app/core/constants/core.constants';
-import { EventAdminDetailsVisitorsActions } from '../state/event-admin-details-visitors.actions';
-import { selectEventAdminDetailsVisitors } from '../state/event-admin-details-visitors.selectors';
 
 
 
@@ -26,13 +23,13 @@ export class EventAdminDetailsVisitorsComponent implements OnInit, OnDestroy {
     private store: Store) { }
 
   public ngOnInit(): void {
-    this.activatedRoute.params.pipe(
-      tap(params => this.store.dispatch(EventAdminDetailsVisitorsActions.getDetails(params[slug] || ''))),
-      switchMap(() => this.store.select(selectEventAdminDetailsVisitors)),
-      takeUntil(this.destroy)
-    ).subscribe(event => {
-      this.event = event;
-    });
+    // this.activatedRoute.params.pipe(
+    //   tap(params => this.store.dispatch(EventAdminDetailsVisitorsActions.getDetails(params[slug] || ''))),
+    //   switchMap(() => this.store.select(selectEventAdminDetailsVisitors)),
+    //   takeUntil(this.destroy)
+    // ).subscribe(event => {
+    //   this.event = event;
+    // });
   }
 
   ngOnDestroy(): void {

@@ -8,7 +8,6 @@ import { slug } from 'src/app/core/constants/core.constants';
 import { EventAdminDetailsLandingActions } from '../state/event-admin-details-landing.actions';
 import { selectEventAdminDetailsLanding } from '../state/event-admin-details-landing.selectors';
 
-
 @Component({
   selector: 'app-event-admin-details-landing',
   templateUrl: './event-admin-details-landing.component.html',
@@ -18,11 +17,14 @@ export class EventAdminDetailsLandingComponent implements OnInit, OnDestroy {
 
   public event?: Maybe<EventEntity>;
 
-  private destroy = new Subject<void>();
   public media?: Maybe<MediaEntity[]>;
 
   public expanded = false;
-  @ViewChild('contentParagraph', { static: true }) contentParagraph!: ElementRef<HTMLParagraphElement>;
+  
+  @ViewChild('contentParagraph', { static: true })
+  private contentParagraph?: ElementRef<HTMLParagraphElement>;
+
+  private destroy = new Subject<void>();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -41,7 +43,7 @@ export class EventAdminDetailsLandingComponent implements OnInit, OnDestroy {
   }
 
   toggleShowMore() {
-    this.contentParagraph.nativeElement.classList.toggle('expanded');
+    this.contentParagraph?.nativeElement.classList.toggle('expanded');
     this.expanded = !this.expanded;
   }
 

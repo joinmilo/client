@@ -3,7 +3,11 @@
   [ngClass]="isFavorite ? 'favorite' : ''"
   [appTooltip]="createTooltip()">
   <div>
-    <fa-icon click size="lg" [icon]="isFavorite ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+    <fa-icon click size="lg"
+      [icon]="isFavorite
+        ? ['fas', 'heart']
+        : ['far', 'heart']">
+    </fa-icon>
     <ng-container *ngIf="withLabel">
       <span *ngIf="!isFavorite" [appLabel]="addToFavoritesLabel"></span>
       <span *ngIf="isFavorite" [appLabel]="removeFromFavoritesLabel"></span>

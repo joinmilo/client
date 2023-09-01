@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
-import { RadioInput } from 'src/app/shared/form/radio-button/typings/radio-input';
+import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { selectFilteredUsers } from '../state/portal-friends.selectors';
 import { PortalAddFriendsComponent } from './add-friends/portal-add-friends.component';
 
@@ -21,7 +21,7 @@ export class PortalFriendsComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
-  public inputs: RadioInput[] = [
+  public inputs: RadioButtonInput[] = [
     {
       icon: ['fas', 'users'],
       label: 'allFriends',
