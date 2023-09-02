@@ -3,7 +3,7 @@ import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { map, switchMap, tap } from 'rxjs';
 import { FeatureEntity, QueryOperator } from 'src/app/core/api/generated/schema';
-import { adminUrl } from 'src/app/core/constants/core.constants';
+import { adminUrl } from 'src/app/core/constants/module.constants';
 import { GetFeaturesGQL } from '../api/generated/get-features.query.generated';
 import { AdminActions } from './admin.actions';
 

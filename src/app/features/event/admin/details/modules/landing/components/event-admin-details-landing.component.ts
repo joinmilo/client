@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { EventEntity, MediaEntity } from 'src/app/core/api/generated/schema';
-import { slug } from 'src/app/core/constants/core.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
 import { EventAdminDetailsLandingActions } from '../state/event-admin-details-landing.actions';
 import { selectEventAdminDetailsLanding } from '../state/event-admin-details-landing.selectors';
 
