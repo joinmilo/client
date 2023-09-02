@@ -1,0 +1,22 @@
+<div class="main">
+  <app-page-title titleLabel="settings"></app-page-title>
+
+  <div class="settings">
+    <app-user-settings-menu></app-user-settings-menu>
+
+    <div class="border-box">
+      <h2 class="mat-headline-6" appLabel="deleteAccount"></h2>
+      <div>
+        <p appLabel="deleteAccountText2"></p>
+        <p appLabel="deleteAccountText3"></p>
+      </div>
+
+      <form [formGroup]="form">
+        <app-password-field formControlName="password"></app-password-field>
+      </form>
+
+      <button mat-flat-button [disabled]="form.invalid" color="primary" appLabel="deleteAccount" (click)="onSubmit()"></button>
+    </div>
+
+  </div>
+</div>

@@ -3,6 +3,8 @@ fragment FullUserContext on UserContextEntity {
   slug
   modified
 
+  description
+
   translatables {
     id
     description
@@ -90,10 +92,14 @@ fragment FullUserContext on UserContextEntity {
     firstName
     lastName
     email
+    phone
     lastLogin
     verified
     notifications {
       ...Notification
+    }
+    language {
+      ...Language
     }
 
     roles {

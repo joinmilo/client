@@ -1,0 +1,13 @@
+@import 'src/styles/mixins.scss';
+
+.border-box {
+  margin: 1rem;
+
+  @include responsive(phone) {
+    padding: 5%;
+  }
+}
+
+mat-form-field {
+  min-width: 100%;
+}

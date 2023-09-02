@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { favoriteUserFeatureKey, friendsUserFeatureKey } from './constants/user.constants';
+import { favoriteUserFeatureKey, friendsUserFeatureKey, participateFeatureKey, settingsUserFeatureKey } from './constants/user.constants';
+import { UserLayoutComponent } from './modules/settings/components/layout/user-layout.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,17 @@ const routes: Routes = [
     path: friendsUserFeatureKey,
     loadChildren: () => import('./modules/friends/portal-user-friends.module')
       .then((imported) => imported.PortalFriendsModule),
+  },
+  {
+    path: participateFeatureKey,
+    loadChildren: () => import('./modules/participate/portal-user-participate.module')
+      .then((imported) => imported.PortalParticipateModule),
+  },  
+  {
+    path: settingsUserFeatureKey,
+    loadChildren: () => import('./modules/settings/user-settings.module')
+      .then((imported) => imported.UserSettingsModule),
+    component: UserLayoutComponent,
   },
 ];
 

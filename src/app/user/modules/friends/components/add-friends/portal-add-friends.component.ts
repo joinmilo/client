@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
 import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
@@ -10,21 +11,27 @@ import { selectFilteredUsers } from '../../state/portal-friends.selectors';
   templateUrl: './portal-add-friends.component.html',
   styleUrls: ['./portal-add-friends.component.scss'],
 })
-export class PortalAddFriendsComponent implements OnInit {
+export class PortalAddFriendsComponent implements OnInit, OnDestroy {
 
   public filteredUsers?: Maybe<UserContextEntity[]>;
   public selectedPortalUsers: Maybe<UserContextEntity>[] = [];
   public value = '';
   private currentUser?: Maybe<UserContextEntity>;
 
+  private destroy = new Subject<void>();
+
   constructor(
     public store: Store) {
   }
 
   public ngOnInit(): void {
-    this.store.select(selectCurrentUser).subscribe(user => this.currentUser = user);
+    this.store.select(selectCurrentUser)
+      .pipe(takeUntil(this.destroy))
+      .subscribe(user => this.currentUser = user);
 
-    this.store.select(selectFilteredUsers).subscribe(filteredUsers => this.filteredUsers = filteredUsers?.slice(0, 5));
+    this.store.select(selectFilteredUsers)
+      .pipe(takeUntil(this.destroy))
+      .subscribe(filteredUsers => this.filteredUsers = filteredUsers?.slice(0, 5));
   }
 
   public filterUsers(value: string): void {
@@ -45,5 +52,10 @@ export class PortalAddFriendsComponent implements OnInit {
         requester: { id: this.currentUser?.id },
       }))
     ))
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

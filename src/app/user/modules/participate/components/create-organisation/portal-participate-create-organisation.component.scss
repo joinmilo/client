@@ -1,0 +1,89 @@
+@import 'src/styles/mixins.scss';
+
+.border-box {
+  margin: 1rem;
+
+  @include responsive(phone) {
+    padding: 5%;
+  }
+}
+
+form {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+section {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+fieldset {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+}
+
+mat-form-field {
+  width: calc(50% - 1rem);
+
+  @include responsive(tablet) {
+    width: 100%;
+  }
+}
+
+:host ::ng-deep {
+
+  mat-expansion-panel.mat-expanded {
+    border-left: solid var(--color-primary-600);
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+}
+
+.address {
+  @include responsive(tablet) {
+    width: 55%;
+  }
+}
+
+.number {
+  width: 7rem;
+
+  @include responsive(phone) {
+    width: 35%;
+  }
+}
+
+.uploads {
+  padding-top: var(--gap);
+}
+
+.button {
+  width: fit-content;
+}
+
+
+:host ::ng-deep .mat-expansion-panel-header {
+  @include responsive(phone) {
+
+    padding: .5rem 1.5rem;
+
+      .mat-content{
+        display: block !important;
+      }
+
+      .mat-expansion-panel-header-title {
+        padding-bottom: .25rem;
+      }
+
+      mat-panel-description {
+        font-size: .875rem;
+      }
+    }
+}

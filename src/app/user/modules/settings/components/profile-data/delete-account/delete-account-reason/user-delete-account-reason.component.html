@@ -1,0 +1,24 @@
+<div class="main">
+  <app-page-title titleLabel="settings"></app-page-title>
+
+  <div class="settings">
+    <app-user-settings-menu></app-user-settings-menu>
+
+    <div class="border-box">
+      <h2 class="mat-headline-6" appLabel="deleteAccount"></h2>
+      <div>
+        <p appLabel="deleteAccountText"></p>
+      </div>
+
+      <section *ngFor="let type of types">
+        <mat-checkbox 
+          [checked]="selectedDeletionTypes.includes(type)"
+          (change)="toggleSelectedDeletionType(type, $event.checked)">
+        </mat-checkbox>
+        <span>{{type?.name}}</span>
+      </section>
+      
+      <button mat-flat-button color="primary" appLabel="continue" [routerLink]="['../delete-account-description']" (click)="onSubmit()"></button>
+    </div>
+  </div>
+</div>

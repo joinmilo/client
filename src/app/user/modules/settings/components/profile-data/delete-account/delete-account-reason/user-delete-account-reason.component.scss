@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+.settings {
+  display: flex;
+  flex-flow: row;
+  gap: var(--gap);
+}
+
+.border-box {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+
+  button {
+    align-self: center;
+  }
+
+  section {
+    display: flex;
+    align-items: center;
+  }
+}
+
+

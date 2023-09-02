@@ -22,10 +22,10 @@
     <span appLabel="settings"></span>
   </section>
 </button>
-<button mat-menu-item (click)="route('become-content-creator')">
+<button mat-menu-item (click)="route('participate')">
   <section>
     <fa-icon [icon]="['fas', 'pen']"></fa-icon>
-    <span appLabel="becomeContentCreator"></span>
+    <span appLabel="participate"></span>
   </section>
 </button>
 <button mat-menu-item (click)="logout()" *ngIf="isAuthenticated">

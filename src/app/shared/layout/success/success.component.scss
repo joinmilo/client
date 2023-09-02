@@ -1,0 +1,44 @@
+@import 'src/styles/mixins.scss';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.border-box {
+  display: flex;
+  width: 70rem;
+  padding: var(--gap);
+  margin: var(--gap);
+  max-width: calc(100% - var(--gap));
+  text-align: center;
+  gap: 1rem;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    justify-content: space-evenly;
+
+    flex: 2 1 60%;
+
+    h2,
+    p {
+      margin: 0;
+    }
+
+    fa-icon {
+      color: var(--color-success-900)
+    }
+  }
+
+  img {
+    width: 40%;
+
+    @include responsive(tablet) {
+      display: none;
+    }
+  }
+}

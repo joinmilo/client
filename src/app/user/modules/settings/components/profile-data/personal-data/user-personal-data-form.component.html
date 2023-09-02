@@ -1,0 +1,83 @@
+<div class="main">
+  <app-page-title titleLabel="settings"></app-page-title>
+
+  <div class="settings">
+    <app-user-settings-menu></app-user-settings-menu> 
+
+    <form class="border-box" [formGroup]="form">
+
+      <div class="title-area">
+        <app-media-title [media]="mediaTitle"></app-media-title>
+        <button class="mediaTitleButton" mat-icon-button (click)="openDialogTitleImage()">
+          <fa-icon [icon]="['fas', 'camera']"></fa-icon>
+        </button>
+        <app-media-avatar [user]="user"></app-media-avatar> 
+        <button class="mediaAvatarButton" mat-icon-button (click)="openDialogProfilePicture()">
+          <fa-icon [icon]="['fas', 'pen']" size="2xs" ></fa-icon>
+        </button>
+      </div>  
+
+      <section>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="firstName"></mat-label>
+          <input matInput id="firstName" formControlName="firstName" placeholder="Vorname">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="lastName"></mat-label>
+          <input matInput id="lastName" formControlName="lastName" placeholder="Nachname">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="email"></mat-label>
+          <input matInput id="email" formControlName="email" placeholder="E-Mail-Adresse">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="phone"></mat-label>
+          <input matInput id="phone" formControlName="phone" >
+        </mat-form-field>
+        <fieldset>
+          <mat-form-field class="address" appearance="outline">
+            <mat-label appLabel="street"></mat-label>
+            <input matInput id="street" formControlName="street" placeholder="Straße">
+          </mat-form-field>
+          <mat-form-field class="number" appearance="outline">
+            <mat-label appLabel="houseNumber"></mat-label>
+            <input matInput id="houseNumber" formControlName="houseNumber" placeholder="Hausnummer">
+          </mat-form-field>
+        </fieldset>
+        <fieldset>
+          <mat-form-field class="address" appearance="outline">
+            <mat-label appLabel="place"></mat-label>
+            <input matInput id="place" formControlName="place" placeholder="Stadt">
+          </mat-form-field>
+          <mat-form-field class="number" appearance="outline">
+            <mat-label appLabel="postalCode"></mat-label>
+            <input matInput id="postalCode" formControlName="postalCode" placeholder="Postleitzahl">
+          </mat-form-field>
+        </fieldset>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="description"></mat-label>
+          <textarea formControlName="description" matInput rows="5"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="suburb"></mat-label>
+          <mat-select id="suburb" formControlName="suburb">
+            <mat-option [value]="suburb" *ngFor="let suburb of suburbs | async">
+              <span [appLabel]="suburb.name"></span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="languages"></mat-label>
+          <mat-select id="language" formControlName="language" (valueChange)="changeLanguage($event)">
+            <mat-option [value]="language" *ngFor="let language of languages | async">
+              <span [appLabel]="language.name"></span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>  
+
+      <button mat-flat-button [disabled]="form.invalid" color="primary" appLabel="send" (click)="onSubmit()"></button>
+    </form>
+  </div>
+
+</div>

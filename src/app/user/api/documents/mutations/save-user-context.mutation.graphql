@@ -1,0 +1,20 @@
+mutation saveUserContext($entity: UserContextEntityInput!) {
+  saveUserContext(entity: $entity) {
+    address {
+      houseNumber
+      place
+      postalCode
+      street
+      suburb {
+        name
+      }
+    }
+    user {
+      email
+      firstName
+      lastName
+      phone
+    }
+    description
+  }
+}

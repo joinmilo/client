@@ -1,0 +1,15 @@
+query getUserDeletionTypes($params: FilterSortPaginateInput) {
+  getUserDeletionTypes(params: $params) {
+    result {
+      id
+      name
+      translatables {
+        id
+        name
+        language{
+          ...Language
+        }
+      }
+    }
+  }
+}

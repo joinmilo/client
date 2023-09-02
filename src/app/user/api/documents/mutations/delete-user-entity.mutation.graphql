@@ -1,0 +1,3 @@
+mutation deleteMe($userDeletion: UserDeletionEntityInput, $password: String) {
+  deleteMe(userDeletion: $userDeletion, password: $password)
+}

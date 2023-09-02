@@ -1472,6 +1472,7 @@ export type LanguageEntity = {
   locale?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
+  users?: Maybe<Array<Maybe<UserEntity>>>;
 };
 
 export type LanguageEntityInput = {
@@ -1481,6 +1482,7 @@ export type LanguageEntityInput = {
   locale?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
+  users?: InputMaybe<Array<InputMaybe<UserEntityInput>>>;
 };
 
 export type MediaAttributionEntity = {

@@ -1,0 +1,15 @@
+<div class="border-box">
+  <section>
+    <h2 class="mat-headline-6" *ngIf="titleLabel" [appLabel]="titleLabel"></h2>
+    <fa-icon size="4x" [icon]="['far', 'circle-check']"></fa-icon>
+
+    <ng-container *ngFor="let text of texts; let last = last">
+      <p [appLabel]="text"></p>
+      <mat-divider *ngIf="!last"></mat-divider>
+    </ng-container>
+
+    <button mat-flat-button [appLabel]="buttonLabel" color="primary" [routerLink]="link"></button>
+  </section>
+
+  <img src="assets/success.svg">
+</div>

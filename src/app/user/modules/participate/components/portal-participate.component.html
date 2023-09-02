@@ -1,0 +1,24 @@
+<div class="main">
+  <app-page-title titleLabel="participate"></app-page-title>
+
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span appLabel="createOrganisation"></span>
+      </ng-template>
+      <app-portal-participate-create-organisation></app-portal-participate-create-organisation>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span appLabel="joinOrganisation"></span>
+      </ng-template>
+      <app-portal-participate-join-organisation></app-portal-participate-join-organisation>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span appLabel="becomeAuthor"></span>
+      </ng-template>
+      <app-portal-participate-become-author></app-portal-participate-become-author>
+    </mat-tab>
+  </mat-tab-group>
+</div>
