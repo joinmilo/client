@@ -10,8 +10,8 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { SurveyAdminOverviewComponent } from './component/survey-admin-overview.component';
 import { surveyAdminOverviewStateKey } from './constants/survey-admin-overview.constants';
-import { SurveyAdminOverviewEffects } from './state/survey-portal-overview.effects';
-import { surveyAdminOverviewReducer } from './state/survey-portal-overview.reducer';
+import { SurveyAdminOverviewEffects } from './state/survey-admin-overview.effects';
+import { surveyAdminOverviewReducer } from './state/survey-admin-overview.reducer';
 import { SurveyAdminOverviewRoutingModule } from './survey-admin-overview-routing.module';
 
 const components = [

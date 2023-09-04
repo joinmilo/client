@@ -1,0 +1,3 @@
+mutation deleteContest($id: String) {
+  deleteContest(id: $id)
+}

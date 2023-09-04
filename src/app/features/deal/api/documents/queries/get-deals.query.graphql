@@ -1,0 +1,33 @@
+query getDeals($params: FilterSortPaginateInput) {
+  getDeals(params: $params) {
+    result {
+      id
+      created
+      modified
+      slug
+      sponsored
+
+      category {
+        id
+        icon
+        color
+        translatables {
+          id
+          name
+          language {
+            ...Language
+          }
+        }
+      }
+
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+    }
+    total
+  }
+}

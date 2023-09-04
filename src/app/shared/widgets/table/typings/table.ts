@@ -8,7 +8,8 @@ export type ColumnType = 'ADDRESS'
   | 'CATEGORY'
   | 'DATE'
   | 'DATETIME'
-  | 'TIME';
+  | 'TIME'
+  | 'LIST';
 
 export type Column<T> = {
   label?: string,

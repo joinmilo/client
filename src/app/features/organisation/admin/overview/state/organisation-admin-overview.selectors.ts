@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { OrganisationAdminOverviewState } from './organisation-portal-overview.reducer';
 import { organisationAdminOverviewStateKey } from '../constants/organisation-admin-overview.constants';
+import { OrganisationAdminOverviewState } from './organisation-admin-overview.reducer';
 
 export const selectOrganisationAdminOverviewState = createFeatureSelector<OrganisationAdminOverviewState>(organisationAdminOverviewStateKey);
 

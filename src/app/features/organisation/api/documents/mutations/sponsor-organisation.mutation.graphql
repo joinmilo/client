@@ -1,0 +1,3 @@
+mutation sponsorOrganisation($organisationId: String) {
+  sponsorOrganisation(organisationId: $organisationId)
+}

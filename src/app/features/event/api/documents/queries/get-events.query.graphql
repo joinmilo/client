@@ -1,0 +1,37 @@
+query getEvents($params: FilterSortPaginateInput) {
+  getEvents(params: $params) {
+    result {
+      id
+      created
+      modified
+      slug
+      sponsored
+
+      category {
+        id
+        icon
+        color
+        translatables {
+          id
+          name
+          language {
+            ...Language
+          }
+        }
+      }
+
+      contact {
+        ...Contact
+      }
+
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+    }
+    total
+  }
+}

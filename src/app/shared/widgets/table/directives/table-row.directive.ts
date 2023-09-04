@@ -59,6 +59,9 @@ export class RowDirective<T> implements OnInit, OnDestroy {
         case 'TIME':
           this.display = this.time(value as string);
           break;
+        case 'LIST':
+          this.display = this.count(value as string);
+          break;
         default:
           this.display = value as string;
       }
@@ -97,6 +100,10 @@ export class RowDirective<T> implements OnInit, OnDestroy {
     return new Date(value).toLocaleTimeString();
   }
 
+  private count(value: string): string {
+    return value.length.toString();
+  }
+
   private set display(value: Maybe<string> | undefined) {
     this.viewContainer.element.nativeElement.innerHTML = value;
   }
@@ -105,5 +112,4 @@ export class RowDirective<T> implements OnInit, OnDestroy {
     this.destroy.next();
     this.destroy.complete();
   }
-
 }

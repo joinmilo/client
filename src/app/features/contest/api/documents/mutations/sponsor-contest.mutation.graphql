@@ -1,0 +1,3 @@
+mutation sponsorContest($contestId: String) {
+  sponsorContest(contestId: $contestId)
+}

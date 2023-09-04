@@ -11,8 +11,8 @@ import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminOverviewComponent } from './component/organisation-admin-overview.component';
 import { organisationAdminOverviewStateKey } from './constants/organisation-admin-overview.constants';
 import { OrganisationAdminOverviewRoutingModule } from './organisation-admin-overview-routing.module';
-import { OrganisationAdminOverviewEffects } from './state/organisation-portal-overview.effects';
-import { organisationAdminOverviewReducer } from './state/organisation-portal-overview.reducer';
+import { OrganisationAdminOverviewEffects } from './state/organisation-admin-overview.effects';
+import { organisationAdminOverviewReducer } from './state/organisation-admin-overview.reducer';
 
 const components = [
   OrganisationAdminOverviewComponent

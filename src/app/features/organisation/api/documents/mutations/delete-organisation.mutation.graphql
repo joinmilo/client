@@ -1,0 +1,3 @@
+mutation deleteOrganisation($id: String) {
+  deleteOrganisation(id: $id)
+}

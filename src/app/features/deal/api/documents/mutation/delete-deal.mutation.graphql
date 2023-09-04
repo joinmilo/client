@@ -1,0 +1,3 @@
+mutation deleteDeal($id: String) {
+  deleteDeal(id: $id)
+}

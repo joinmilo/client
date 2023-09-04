@@ -1,0 +1,23 @@
+query getUserContexts($params: FilterSortPaginateInput) {
+  getUserContexts(params: $params) {
+    result {
+      id
+      created
+      modified
+      slug
+
+    user{
+      id
+      email
+      firstName
+      lastName
+      lastLogin
+    }
+
+    articles{
+      id
+    }
+  }
+    total
+  }
+}

@@ -1,5 +1,5 @@
-import { createActionGroup } from '@ngrx/store';
-import { FilterSortPaginateInput, PageableList_OrganisationEntity } from 'src/app/core/api/generated/schema';
+import { createActionGroup, emptyProps } from '@ngrx/store';
+import { FilterSortPaginateInput, Maybe, OrganisationEntity, PageableList_OrganisationEntity } from 'src/app/core/api/generated/schema';
 
 export const OrganisationAdminOverviewActions = createActionGroup({
   source: 'Organisation Admin Overview',
@@ -8,5 +8,11 @@ export const OrganisationAdminOverviewActions = createActionGroup({
     'set overview data': (organisations: PageableList_OrganisationEntity) => ({ organisations }),
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),
+
+    'delete organisation': (organisation?: Maybe<OrganisationEntity>) => ({ organisation }),
+    'organisation deleted': emptyProps(),
+
+    'sponsor organisation': (organisation?: Maybe<OrganisationEntity>) => ({ organisation }),
+    'organisation sponsored': emptyProps(),
   }
 });

@@ -1,0 +1,3 @@
+mutation sponsorDeal($dealId: String) {
+  sponsorDeal(dealId: $dealId)
+}

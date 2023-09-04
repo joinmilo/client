@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { surveyAdminOverviewStateKey } from '../constants/survey-admin-overview.constants';
-import { SurveyAdminOverviewState } from './survey-portal-overview.reducer';
+import { SurveyAdminOverviewState } from './survey-admin-overview.reducer';
 
 export const selectSurveyAdminOverviewState = createFeatureSelector<SurveyAdminOverviewState>(surveyAdminOverviewStateKey);
 

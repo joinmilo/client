@@ -1,0 +1,31 @@
+query getSurveys($params: FilterSortPaginateInput) {
+  getSurveys(params: $params) {
+    result {
+      id
+      created
+      modified
+      slug
+      sponsored
+      startDate
+      dueDate
+
+      contact {
+        ...Contact
+      }
+
+      state {
+        id
+        code
+      }
+
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+    }
+    total
+  }
+}

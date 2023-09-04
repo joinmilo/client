@@ -3,8 +3,15 @@ query getContestDetails($entity: ContestEntityInput) {
     id
     modified
     created
+    slug
+    sponsored
     participationEndDate
     voteEndDate
+
+    participations{
+      id
+    }
+
     uploads {
       title
       card
@@ -12,12 +19,11 @@ query getContestDetails($entity: ContestEntityInput) {
         ...Media
       }
     }
-    created
-    modified
+
     type {
       ...ContestType
     }
-    slug
+  
     translatables {
       id
       name

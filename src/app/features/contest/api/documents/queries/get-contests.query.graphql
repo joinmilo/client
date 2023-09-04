@@ -1,0 +1,36 @@
+query getContests($params: FilterSortPaginateInput) {
+  getContests(params: $params) {
+    result {
+      id
+      created
+      modified
+      slug
+      sponsored
+      participationEndDate
+      voteEndDate
+      
+      participations{
+        id
+      }
+
+      type {
+        ...ContestType
+      }
+
+    translatables {
+      id
+      name
+      language {
+        id
+        locale
+        name
+      }
+    }
+
+    contact {
+      ...Contact
+    }
+    }
+    total
+  }
+}

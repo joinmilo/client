@@ -1,0 +1,17 @@
+query getOrganisations($params: FilterSortPaginateInput) {
+  getOrganisations(params: $params) {
+    result {
+      id
+      created
+      modified
+      slug
+      sponsored
+      name
+
+      contact {
+        ...Contact
+      }
+    }
+    total
+  }
+}
