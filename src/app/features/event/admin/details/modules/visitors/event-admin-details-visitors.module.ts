@@ -11,8 +11,8 @@ import { AddressPieceComponent } from 'src/app/shared/layout/address/address-pie
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
-import { MediaModule } from 'src/app/shared/widgets/media/media.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsVisitorsComponent } from './components/event-admin-details-visitors.component';
 import { eventAdminDetailsVisitorsStateKey } from './constants/event-admin-details-visitors.constants';
