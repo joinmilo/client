@@ -13,8 +13,8 @@ import { AddressPieceComponent } from 'src/app/shared/layout/address/address-pie
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
-import { MediaModule } from 'src/app/shared/widgets/media/media.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsLayoutComponent } from './components/event-admin-details-layout.component';
 import { eventAdminDetailsLayoutStateKey } from './constants/event-admin-details-layout.constants';

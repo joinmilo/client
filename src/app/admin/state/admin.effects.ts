@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { map, switchMap, tap } from 'rxjs';
@@ -38,5 +39,6 @@ export class AdminEffects implements OnInitEffects {
   constructor(
     private actions: Actions,
     private getFeatureService: GetFeaturesGQL,
+    private router: Router,
   ) { }
 }
