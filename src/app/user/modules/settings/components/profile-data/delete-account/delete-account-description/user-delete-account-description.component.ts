@@ -23,9 +23,7 @@ export class UserDeleteAccountDescriptionComponent {
   public onSubmit() {
     this.store.dispatch(
     UserSettingsActions.saveUserDeletionDescription(
-      
-        this.form.value.description ?? ''
-      
+        this.form.value.description ?? ''     
     ));
   }
 }

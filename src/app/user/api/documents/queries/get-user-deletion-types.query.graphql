@@ -6,9 +6,6 @@ query getUserDeletionTypes($params: FilterSortPaginateInput) {
       translatables {
         id
         name
-        language{
-          ...Language
-        }
       }
     }
   }

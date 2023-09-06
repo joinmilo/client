@@ -7,12 +7,13 @@ import * as Apollo from 'apollo-angular';
 export type GetSuburbsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetSuburbsQuery = { __typename?: 'Query', getSuburbs?: { __typename?: 'PageableList_SuburbEntity', result?: Array<{ __typename?: 'SuburbEntity', name?: string | null } | null> | null } | null };
+export type GetSuburbsQuery = { __typename?: 'Query', getSuburbs?: { __typename?: 'PageableList_SuburbEntity', result?: Array<{ __typename?: 'SuburbEntity', id?: string | null, name?: string | null } | null> | null } | null };
 
 export const GetSuburbsDocument = gql`
     query getSuburbs {
   getSuburbs {
     result {
+      id
       name
     }
   }

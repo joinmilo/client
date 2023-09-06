@@ -18,7 +18,7 @@ export class PortalParticipateEffects {
   getOrganisations = createEffect(() => this.actions.pipe(
     ofType(PortalParticipateActions.getOrganisations),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    
+
     map(([action, user]) => ({
       sort: 'modified',
       dir: 'desc',
@@ -42,7 +42,7 @@ export class PortalParticipateEffects {
                     entity: {
                       path: 'approved',
                       operator: QueryOperator.Equal,
-                      value: false,
+                      value: true,
                     },
                   },
                 ],

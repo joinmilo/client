@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { LanguageEntity, Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { LanguageEntity, Maybe, MediaEntity, SuburbEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
@@ -30,9 +30,9 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
     houseNumber: [''],
     place: [''],
     postalCode: [''],
-    suburb: [''],
+    suburb: [{} as SuburbEntity],
 
-    language: [''],
+    language: [{} as LanguageEntity],
     description: [''],
   });
 
@@ -41,10 +41,6 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
   public mediaTitle?: Maybe<MediaEntity>;
 
   public profilePicture?: Maybe<MediaEntity>;
-
-  // public language?: Maybe<LanguageEntity>;
-
-  // public selectedLanguage = this.user?.user?.language?.name;
 
   public currentUser = this.store.select(selectCurrentUser);
 
@@ -60,14 +56,22 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
     this.profilePicture = uploads[0];
   }
 
+  compareSuburbs(suburb1: SuburbEntity, suburb2: SuburbEntity) {
+    return suburb1?.id === suburb2?.id;
+  }
+
+  compareLanguages(language1: LanguageEntity, language2: LanguageEntity) {
+    return language1?.id === language2?.id
+  }
+
   constructor(
     private dialog: MatDialog,
     private store: Store,
     private fb: FormBuilder,
     
   ) {
+
     this.store.dispatch(UserSettingsActions.getSuburbs());
-    console.log('suburbs',this.suburbs) 
     this.currentUser.subscribe(currentUser => {
       if (currentUser) {
         this.form.patchValue({
@@ -80,11 +84,10 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
           houseNumber: currentUser?.address?.houseNumber,
           place: currentUser?.address?.place,
           postalCode: currentUser?.address?.postalCode,
-          suburb: currentUser?.address?.suburb?.name,
+          suburb: currentUser?.address?.suburb,
 
           description: currentUser?.description,
-          language: currentUser?.user?.language?.name
-          
+          language: currentUser?.user?.language
         })
       }
     })
@@ -94,10 +97,14 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
     this.store.dispatch(UserSettingsActions.savePersonalData({
       id: this.user?.id,
       user: {
+        id: this.user?.user?.id,
         firstName: this.form.value.firstName,
         lastName: this.form.value.lastName, 
         email: this.form.value.email,
         phone: this.form.value.phone,
+        language: {
+          id: this.form.value.language?.id
+        }
       },
       address: {
         street: this.form.value.street,
@@ -105,25 +112,27 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
         place: this.form.value.place,
         postalCode: this.form.value.postalCode,
         suburb: {
-          name: this.form.value.suburb
+          id: this.form.value.suburb?.id
         }
       },
       description: this.form.value.description,  
-      uploads: [
-        {
-        title: false,
-        profilePicture: true,
-        userContext: {id: this.user?.id},
-        media: this.profilePicture
-        },
-        {
-        title: true,
-        profilePicture: false,
-        userContext: {id: this.user?.id},
-        media: this.mediaTitle
-        }
-      ]  
+      // uploads: [
+      //   {
+      //   title: false,
+      //   profilePicture: true,
+      //   userContext: {id: this.user?.id},
+      //   media: {id: this.profilePicture?.id}
+      //   },
+      //   {
+      //   title: true,
+      //   profilePicture: false,
+      //   userContext: {id: this.user?.id},
+      //   media: {id: this.mediaTitle?.id}
+      //   }
+      // ],
+      
     })); 
+
   }
 
   private destroy = new Subject<void>();
@@ -134,7 +143,6 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
       .subscribe(user => {
         this.user = user;
         this.mediaTitle = user?.uploads?.find(upload => upload?.title)?.media;
-        // this.language = user?.user?.language
         });
   }
 

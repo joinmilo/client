@@ -93,11 +93,11 @@
         </mat-expansion-panel-header>
         <section>
           <span appLabel="profilePicture"></span>
-          <app-media-form [maxFiles]="1" (uploads)="addProfilePicture($event)"></app-media-form>
+          <app-media-form id="profilePic" formControlName="profilePic" [maxFiles]="1" (uploads)="addProfilePicture($event)"></app-media-form>
         </section>
         <section class="uploads">
           <span appLabel="titelImage"></span>
-          <app-media-form [maxFiles]="1" (uploads)="addTitleImage($event)"></app-media-form>
+          <app-media-form id="titleImg" formControlName="titleImg" [maxFiles]="1" (uploads)="addTitleImage($event)"></app-media-form>
         </section>
         <mat-action-row>
           <button mat-button color="accent" appLabel="previous" (click)="prevStep()"></button>

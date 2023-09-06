@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { PortalParticipateActions } from '../../state/portal-participate.actions';
 import { selectJoinableOrganisations } from '../../state/portal-participate.selectors';
@@ -18,7 +18,6 @@ export class PortalParticipateJoinOrganisationComponent implements OnInit, OnDes
   public selectedOrganisations: Maybe<OrganisationEntity>[] = [];
   public value = '';
   private currentUser?: Maybe<UserContextEntity>;
-  public cardImage?: Maybe<MediaEntity>
 
   private destroy = new Subject<void>();
 

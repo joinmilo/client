@@ -1,6 +1,7 @@
 query getSuburbs {
   getSuburbs {
     result {
+      id
       name
     }
   }

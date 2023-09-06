@@ -2,10 +2,11 @@
   <app-page-title titleLabel="settings"></app-page-title>
 
   <div class="settings">
-    <app-user-settings-menu></app-user-settings-menu> 
 
-    <form class="border-box" [formGroup]="form">
-
+  <app-user-settings-menu></app-user-settings-menu> 
+  
+  <form [formGroup]="form">
+      
       <div class="title-area">
         <app-media-title [media]="mediaTitle"></app-media-title>
         <button class="mediaTitleButton" mat-icon-button (click)="openDialogTitleImage()">
@@ -40,7 +41,7 @@
             <input matInput id="street" formControlName="street" placeholder="Straße">
           </mat-form-field>
           <mat-form-field class="number" appearance="outline">
-            <mat-label appLabel="houseNumber"></mat-label>
+            <mat-label appLabel="housenumber"></mat-label>
             <input matInput id="houseNumber" formControlName="houseNumber" placeholder="Hausnummer">
           </mat-form-field>
         </fieldset>
@@ -50,7 +51,7 @@
             <input matInput id="place" formControlName="place" placeholder="Stadt">
           </mat-form-field>
           <mat-form-field class="number" appearance="outline">
-            <mat-label appLabel="postalCode"></mat-label>
+            <mat-label appLabel="postalcode"></mat-label>
             <input matInput id="postalCode" formControlName="postalCode" placeholder="Postleitzahl">
           </mat-form-field>
         </fieldset>
@@ -60,23 +61,24 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label appLabel="suburb"></mat-label>
-          <mat-select id="suburb" formControlName="suburb">
+          <mat-select [compareWith]="compareSuburbs"  id="suburb" formControlName="suburb">
             <mat-option [value]="suburb" *ngFor="let suburb of suburbs | async">
-              <span [appLabel]="suburb.name"></span>
+              {{ suburb.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label appLabel="languages"></mat-label>
-          <mat-select id="language" formControlName="language" (valueChange)="changeLanguage($event)">
+          <mat-select [compareWith]="compareLanguages" id="language" formControlName="language" (valueChange)="changeLanguage($event)">
             <mat-option [value]="language" *ngFor="let language of languages | async">
-              <span [appLabel]="language.name"></span>
+              {{ language.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
+        
+        <button mat-flat-button [disabled]="form.invalid" color="primary" appLabel="send" (click)="onSubmit()"></button>
       </section>  
 
-      <button mat-flat-button [disabled]="form.invalid" color="primary" appLabel="send" (click)="onSubmit()"></button>
     </form>
   </div>
 

@@ -9,6 +9,12 @@ query getOrganisations($params: FilterSortPaginateInput) {
           id
         }
       }
+      uploads {
+        card
+        media {
+          ...Media
+      }
+  }
     }
     total
   }

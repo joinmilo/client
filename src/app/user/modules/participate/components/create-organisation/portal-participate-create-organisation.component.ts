@@ -39,6 +39,8 @@ export class PortalParticipateCreateOrganisationComponent {
     website: [''],
     phone: [''],
     email: ['', [Validators.required, Validators.email]],
+    profilePic: [{} as MediaEntity, [Validators.required]],
+    titleImg: [{} as MediaEntity, [Validators.required]],
   });
 
   constructor(
@@ -67,25 +69,24 @@ export class PortalParticipateCreateOrganisationComponent {
         email: this.form.value.email,
         website: this.form.value.website,
         phone: this.form.value.phone,
+        preferredContact: true,
       },
       uploads: [
         {
         title: false,
         card: true,
-        media: this.profilePicture,
+        media: this.form.value.profilePic,
         },
         {
         title: true,
         card: false,
-        media: this.titleImage,  
+        media: this.form.value.titleImg,  
         } 
       ],
       description: this.form.value.describtion,
       slug: this.form.value.name,
       approved: false,
       sponsored: false,
-    }));
-    
+    })); 
   }
-
 }

@@ -11,6 +11,7 @@ query getUserContexts($params: FilterSortPaginateInput) {
       uploads {
         id
         profilePicture
+        title
         media {
           ...Media
         }

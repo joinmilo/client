@@ -24,3 +24,13 @@ export const selectSuburbs = createSelector(
   selectUserSettingsState,
   state => state.suburbs
 );
+
+export const selectPasswordChanged = createSelector(
+  selectUserSettingsState,
+  state => state.passwordChanged
+)
+
+export const selectUserDeleted = createSelector(
+  selectUserSettingsState,
+  state => state.passwordChanged
+)

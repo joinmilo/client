@@ -7,6 +7,8 @@ export interface UserSettingsState {
   userDeletionDescription?: Maybe<string>,
   selectedUserDeletionTypes?: Maybe<UserDeletionTypeEntity>[],
   suburbs?: Maybe<SuburbEntity[]>,
+  passwordChanged?: Maybe<boolean>,
+  userDeleted?: Maybe<boolean>,
 }
 
 export const initialState: UserSettingsState = {};
@@ -28,5 +30,13 @@ export const portalSettingsReducer = createReducer(
 
   on(UserSettingsActions.setSuburbs, (state, action): UserSettingsState => (
     { ...state, suburbs: action.result }
+  )),
+
+  on(UserSettingsActions.passwordChanged, (state, action): UserSettingsState => (
+    { ...state, passwordChanged: action.passwordChanged }
+  )),
+
+  on(UserSettingsActions.userDeleted, (state, action): UserSettingsState => (
+    { ...state, userDeleted: action.userDeleted }
   )),
 );

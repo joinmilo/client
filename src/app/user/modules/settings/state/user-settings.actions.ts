@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { Maybe, SuburbEntity, UserContextEntity, UserContextEntityInput, UserDeletionEntity, UserDeletionTypeEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, SuburbEntity, UserContextEntity, UserContextEntityInput, UserDeletionTypeEntity } from 'src/app/core/api/generated/schema';
 
 
 export const UserSettingsActions = createActionGroup({
@@ -14,11 +14,14 @@ export const UserSettingsActions = createActionGroup({
     'save user deletion types': (types: Maybe<UserDeletionTypeEntity>[]) => ({ types }),
     'save user deletion description': (description: Maybe<string>) => ({ description }),
 
-    'delete user': (password: string, userDeletion: Maybe<UserDeletionEntity>) => ({ password, userDeletion }),
+    'delete user': (password: string | null | undefined) => ({ password }),
     'user deleted': (userDeleted: Maybe<boolean>) => ({ userDeleted }),
 
     'get suburbs': emptyProps(),
     'set suburbs': (result: SuburbEntity[]) => ({ result }), 
+
+    'change password': (newPassword: string | null | undefined ) => ({ newPassword }),
+    'password changed': (passwordChanged: Maybe<boolean>) => ({ passwordChanged }),
 
   }
 });
