@@ -1,0 +1,9 @@
+query getEventDetailsGoogleSearch(
+  $entity: EventEntityInput) {
+  getEvent(entity: $entity) {
+    id
+    googleSearchEventDetails{
+      ...GoogleSearchDto
+    }
+  }
+}
