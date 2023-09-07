@@ -29,6 +29,10 @@ fragment EventDetails on EventEntity {
     ...EventCategory
   }
 
+  googleSearchEventDetails{
+    ...GoogleSearchDto
+  }
+
   contact {
     ...Contact
   }
