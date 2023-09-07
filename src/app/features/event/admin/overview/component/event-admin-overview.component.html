@@ -1,6 +1,16 @@
-<app-page-title titleLabel="activities"></app-page-title>
-<app-event-filter
-  (paramsUpdated)="updateParams($event)"></app-event-filter>
+<app-page-title titleLabel="activities">
+</app-page-title>
+
+<section>
+  <button mat-raised-button color="primary"
+    [routerLink]="['form']"
+    appLabel="createEvent">
+  </button>
+
+  <app-event-filter (paramsUpdated)="updateParams($event)">
+  </app-event-filter>
+</section>
+
 <app-table
   [data]="events"
   [actions]="actions"
