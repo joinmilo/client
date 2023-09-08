@@ -15,7 +15,8 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/widgets/media/media.module';
+
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { PortalParticipateBecomeAuthorComponent } from './components/become-author/portal-participate-become-author.component';
 import { PortalParticipateCreateOrganisationComponent } from './components/create-organisation/portal-participate-create-organisation.component';
 import { PortalParticipateJoinOrganisationComponent } from './components/join-organisation/portal-participate-join-organisation.component';

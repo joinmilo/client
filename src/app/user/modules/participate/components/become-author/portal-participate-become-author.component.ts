@@ -40,11 +40,11 @@ export class PortalParticipateBecomeAuthorComponent implements OnInit, OnDestroy
   this.store.dispatch(PortalParticipateActions.saveAuthorApplication({
     user: {
       id: this.currentUser?.user?.id,
-      roleApplications: this.form.value.author
+      privilegeApplications: this.form.value.author
         ? [
             {
               user: { id: this.currentUser?.user?.id },
-              role: { code: 'articles_manage' },
+              privilege: { code: 'articles_manage' },
               accepted: false,
               content: this.form.value.content
             }

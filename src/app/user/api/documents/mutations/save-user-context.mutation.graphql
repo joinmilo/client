@@ -1,33 +1,5 @@
 mutation saveUserContext($entity: UserContextEntityInput!) {
   saveUserContext(entity: $entity) {
-    address {
-      houseNumber
-      place
-      postalCode
-      street
-      suburb {
-        id
-        name
-      }
-    }
-    user {
-      email
-      firstName
-      lastName
-      phone
-      language {
-        id
-        name
-      }
-    }
-    description
-    uploads {
-      id
-      media {
-        ...Media
-      }
-      profilePicture
-      title
-    }
+    id
   }
 }

@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { LanguageEntity, Maybe, MediaEntity, SuburbEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
-import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 
@@ -12,6 +11,7 @@ import { UserSettingsActions } from '../../../state/user-settings.actions';
 import { selectSuburbs } from '../../../state/user-settings.selectors';
 import { UserMediaUploadProfilePictureComponent } from './media-upload/media-upload-profile-picture/user-media-upload-profile-picture.component';
 import { UserMediaUploadTitleImageComponent } from './media-upload/media-upload-title-image/user-media-upload-title-image.component';
+
 
 @Component({
   selector: 'app-user-personal-data-form',
@@ -40,21 +40,13 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
 
   public mediaTitle?: Maybe<MediaEntity>;
 
-  public profilePicture?: Maybe<MediaEntity>;
+  public profilePicture?: Maybe<MediaEntity> | undefined;
 
   public currentUser = this.store.select(selectCurrentUser);
 
   public languages = this.store.select(selectLanguages)
 
   public suburbs = this.store.select(selectSuburbs);
-
-  public changeLanguage(language: LanguageEntity) {
-    this.store.dispatch(CoreActions.changeLanguage(language));
-  }
-
-  public addUploads(uploads: MediaEntity[]): void {
-    this.profilePicture = uploads[0];
-  }
 
   compareSuburbs(suburb1: SuburbEntity, suburb2: SuburbEntity) {
     return suburb1?.id === suburb2?.id;
@@ -116,23 +108,21 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
         }
       },
       description: this.form.value.description,  
-      // uploads: [
-      //   {
-      //   title: false,
-      //   profilePicture: true,
-      //   userContext: {id: this.user?.id},
-      //   media: {id: this.profilePicture?.id}
-      //   },
-      //   {
-      //   title: true,
-      //   profilePicture: false,
-      //   userContext: {id: this.user?.id},
-      //   media: {id: this.mediaTitle?.id}
-      //   }
-      // ],
-      
+      uploads: [
+        {
+          title: false,
+          profilePicture: true,
+          userContext: {id: this.user?.id},
+          media: this.profilePicture
+        },
+        {
+          title: true,
+          profilePicture: false,
+          userContext: {id: this.user?.id},
+          media: this.mediaTitle
+        }
+      ],
     })); 
-
   }
 
   private destroy = new Subject<void>();
@@ -142,6 +132,7 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
       .pipe(takeUntil(this.destroy))
       .subscribe(user => {
         this.user = user;
+        this.profilePicture = user?.uploads?.find(upload => upload?.profilePicture)?.media;
         this.mediaTitle = user?.uploads?.find(upload => upload?.title)?.media;
         });
   }
@@ -152,10 +143,18 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy{
   }
 
   openDialogProfilePicture() {
-    this.dialog.open(UserMediaUploadProfilePictureComponent);
+    const dialogRef = this.dialog.open(UserMediaUploadProfilePictureComponent);
+
+     dialogRef.componentInstance.profilePictureChanged.subscribe((newProfilePicture: MediaEntity) => {
+      this.profilePicture = newProfilePicture;
+    });
   }
 
   openDialogTitleImage() {
-    this.dialog.open(UserMediaUploadTitleImageComponent);
+    const dialogRef = this.dialog.open(UserMediaUploadTitleImageComponent);
+
+     dialogRef.componentInstance.mediaTitleChanged.subscribe((newMediaTitle: MediaEntity) => {
+      this.mediaTitle = newMediaTitle;
+    });
   }
 }

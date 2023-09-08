@@ -1,12 +1,12 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { Maybe, SuburbEntity, UserContextEntity, UserContextEntityInput, UserDeletionTypeEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, SuburbEntity, UserContextEntityInput, UserDeletionTypeEntity } from 'src/app/core/api/generated/schema';
 
 
 export const UserSettingsActions = createActionGroup({
   source: 'Portal Settings',
   events: {
     'save personal data': (entity: UserContextEntityInput) => ({ entity }),
-    'personal data saved': (entity: UserContextEntity) => ({ entity }),
+    'personal data saved': emptyProps(),
    
     'get user deletion types': emptyProps(),
     'set user deletion types': (types?: UserDeletionTypeEntity[]) => ({ types }),
@@ -22,6 +22,5 @@ export const UserSettingsActions = createActionGroup({
 
     'change password': (newPassword: string | null | undefined ) => ({ newPassword }),
     'password changed': (passwordChanged: Maybe<boolean>) => ({ passwordChanged }),
-
   }
 });

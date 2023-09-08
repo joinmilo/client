@@ -63,12 +63,12 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(AccountActions.saveFirstLogin({
       id: this.currentUser?.id,
-      // TODO: When working 
-      // uploads: [{
-      //   title: false,
-      //   profilePicture: true,
-      //   userContext: { id: this.currentUser?.id },
-      // }],
+      uploads: [{
+        title: false,
+        profilePicture: true,
+        userContext: { id: this.currentUser?.id },
+        media: this.profilePicture,
+      }],
       user: {
         id: this.currentUser?.user?.id,
         lastLogin: new Date().toISOString(),

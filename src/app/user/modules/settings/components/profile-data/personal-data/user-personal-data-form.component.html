@@ -1,18 +1,19 @@
+
 <div class="main">
   <app-page-title titleLabel="settings"></app-page-title>
-
-  <div class="settings">
-
-  <app-user-settings-menu></app-user-settings-menu> 
   
+  <div class="settings">
+  
+  <app-user-settings-menu></app-user-settings-menu> 
+
   <form [formGroup]="form">
-      
+  
       <div class="title-area">
         <app-media-title [media]="mediaTitle"></app-media-title>
         <button class="mediaTitleButton" mat-icon-button (click)="openDialogTitleImage()">
           <fa-icon [icon]="['fas', 'camera']"></fa-icon>
         </button>
-        <app-media-avatar [user]="user"></app-media-avatar> 
+        <img class="border-image" *ngIf="profilePicture" [src]="profilePicture.url ?? '/assets/placeholder.webp'">
         <button class="mediaAvatarButton" mat-icon-button (click)="openDialogProfilePicture()">
           <fa-icon [icon]="['fas', 'pen']" size="2xs" ></fa-icon>
         </button>
@@ -69,7 +70,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label appLabel="languages"></mat-label>
-          <mat-select [compareWith]="compareLanguages" id="language" formControlName="language" (valueChange)="changeLanguage($event)">
+          <mat-select [compareWith]="compareLanguages" id="language" formControlName="language">
             <mat-option [value]="language" *ngFor="let language of languages | async">
               {{ language.name }}
             </mat-option>
@@ -80,6 +81,8 @@
       </section>  
 
     </form>
+
+    <app-user-settings-menu-mobile class="sticky-container"></app-user-settings-menu-mobile>
   </div>
 
 </div>

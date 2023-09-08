@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, switchMap, tap, withLatestFrom } from 'rxjs';
+import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, FilterSortPaginateInput, Maybe, OrganisationEntity, OrganisationMemberEntity, QueryOperator, UserContextEntity } from 'src/app/core/api/generated/schema';
-import { userUrl } from 'src/app/core/constants/core.constants';
+import { userUrl } from 'src/app/core/constants/module.constants';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { GetOrganisationsGQL } from 'src/app/user/api/generated/get-organisations.query.generated';
 import { SaveOrganisationApplicationGQL } from 'src/app/user/api/generated/save-organisation-application.mutation.generated';
 import { SaveOrganisationMembersGQL } from 'src/app/user/api/generated/save-organisation-members.mutation.generated';
 import { SaveUserContextGQL } from 'src/app/user/api/generated/save-user-context.mutation.generated';
+import { VerifyAddressGQL } from 'src/app/user/api/generated/verify-address.mutation.generated';
 import { PortalParticipateActions } from './portal-participate.actions';
 
 @Injectable()
@@ -88,8 +89,16 @@ export class PortalParticipateEffects {
 
   saveOrganisationApplication = createEffect(() => this.actions.pipe(
     ofType(PortalParticipateActions.saveOrganisationApplication),
-    switchMap((action) => this.saveOrganisationApplicationService.mutate({
-      entity: action.entity
+      switchMap(action => this.verifyAddressService.mutate({
+          entity: action.entity.address
+        })
+        .pipe(
+          filter(response => !!response.data?.verifyAddress?.latitude),
+          map(response => ({ ...action.entity, address: response.data?.verifyAddress, }))
+        ),
+      ),
+    switchMap(entity => this.saveOrganisationApplicationService.mutate({
+      entity
     })),
     map(response => PortalParticipateActions.organisationApplicationSaved(response.data?.saveOrganisation as OrganisationEntity))
   ));
@@ -109,6 +118,7 @@ export class PortalParticipateEffects {
     private saveOrganisationMembersService: SaveOrganisationMembersGQL,
     private saveUserContextService: SaveUserContextGQL,
     private store: Store,
+    private verifyAddressService: VerifyAddressGQL,
   ) {}
 
 }

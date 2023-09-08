@@ -1,0 +1,39 @@
+@import 'src/styles/mixins.scss';
+
+.button-gear {
+  background-color: rgba(255, 255, 255, 0.868);
+  border-radius: 50%;
+  outline: 1px solid var(--color-dark-gray);
+  box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
+
+  @include responsive(desktop) {
+    display: none;
+  }
+}
+
+span{
+  display: flex;
+  gap: 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    width: fit-content;
+  }
+}
+
+.mat-expansion-panel-spacing {
+  margin: 0;
+}
+
+.mat-accordion .mat-expansion-panel:last-of-type {
+  border-bottom-right-radius: none;
+  border-bottom-left-radius: none;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none
+}

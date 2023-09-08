@@ -1,11 +1,11 @@
 @import 'src/styles/mixins.scss';
 
 mat-accordion {
-
   width: max-content;
+  display: inline-block; //the label wont break in two line 
 
   @include responsive(tablet) {
-    width: 100%;
+    display: none;
   }
 }
 
@@ -21,10 +21,6 @@ section {
   button {
     width: fit-content;
   }
-}
-
-.mat-accordion {
-  display: inline-block;
 }
 
 .mat-expansion-panel-spacing {
@@ -46,6 +42,5 @@ section {
 }
 
 :host ::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
-    box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
+  box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
 }
-

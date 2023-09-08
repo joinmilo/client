@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { MediaEntity } from 'src/app/core/api/generated/schema';
 
 
 @Component({
@@ -9,9 +9,17 @@ import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 })
 export class UserMediaUploadTitleImageComponent {
 
-  public mediaTitle?: Maybe<MediaEntity>;
+  public mediaTitle?: MediaEntity | undefined;
 
   public addUploads(uploads: MediaEntity[]): void {
     this.mediaTitle = uploads[0];
+  }
+
+  @Output ()
+  mediaTitleChanged = new EventEmitter<MediaEntity>()
+
+  public continue(): void {
+    if(this.mediaTitle)
+    this.mediaTitleChanged.emit(this.mediaTitle);
   }
 }

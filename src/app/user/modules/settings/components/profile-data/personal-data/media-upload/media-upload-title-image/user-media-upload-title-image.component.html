@@ -2,5 +2,5 @@
   <app-media-form class="content-full-width" [maxFiles]="1" (uploads)="addUploads($event)"></app-media-form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close appLabel="continue"></button>
+  <button mat-button mat-dialog-close appLabel="continue" (click)="continue()"></button>
 </mat-dialog-actions>

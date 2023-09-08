@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
@@ -14,8 +15,8 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { PasswordModule } from 'src/app/shared/form/password/password.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { MediaModule } from 'src/app/shared/widgets/media/media.module';
 import { UserLayoutComponent } from './components/layout/user-layout.component';
 import { UserChangePasswordComponent } from './components/profile-data/change-password/user-change-password.component';
 import { UserDeleteAccountConfirmationComponent } from './components/profile-data/delete-account/delete-account-confirmation/user-delete-account-confirmation.component';
@@ -24,15 +25,15 @@ import { UserDeleteAccountReasonComponent } from './components/profile-data/dele
 import { UserMediaUploadProfilePictureComponent } from './components/profile-data/personal-data/media-upload/media-upload-profile-picture/user-media-upload-profile-picture.component';
 import { UserMediaUploadTitleImageComponent } from './components/profile-data/personal-data/media-upload/media-upload-title-image/user-media-upload-title-image.component';
 import { UserPersonalDataFormComponent } from './components/profile-data/personal-data/user-personal-data-form.component';
-import { UserSettingsMenuComponent } from './components/settings-menu/user-settings-menu.component';
 import { userSettingsStateKey } from './constants/portal-settings.constants';
+import { UserSettingsMenuMobileComponent } from './menu/settings-menu mobile/user-settings-menu-mobile.component';
+import { UserSettingsMenuComponent } from './menu/settings-menu/user-settings-menu.component';
 import { UserSettingsEffects } from './state/user-settings.effects';
 import { portalSettingsReducer } from './state/user-settings.reducer';
 import { UserSettingsRoutingModule } from './user-settings-routing.module';
 
 
 const components = [
-  UserPersonalDataFormComponent,
   UserChangePasswordComponent,
   UserDeleteAccountConfirmationComponent,
   UserDeleteAccountDescriptionComponent,
@@ -40,7 +41,9 @@ const components = [
   UserLayoutComponent,
   UserMediaUploadProfilePictureComponent,
   UserMediaUploadTitleImageComponent,
+  UserPersonalDataFormComponent,
   UserSettingsMenuComponent,
+  UserSettingsMenuMobileComponent,
 ];
 
 const framework = [
@@ -55,6 +58,7 @@ const materials = [
   MatExpansionModule,
   MatFormFieldModule,
   MatInputModule,
+  MatMenuModule,
   MatSelectModule,
 ];
 

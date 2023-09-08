@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { userUrl } from 'src/app/core/constants/core.constants';
+import { userUrl } from 'src/app/core/constants/module.constants';
 
 @Component({
   selector: 'app-user-settings-menu',

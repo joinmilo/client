@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, switchMap, tap, withLatestFrom } from 'rxjs';
-import { SuburbEntity, UserContextEntity, UserDeletionTypeEntity } from 'src/app/core/api/generated/schema';
-import { accountUrl } from 'src/app/core/constants/core.constants';
+import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs';
+import { SuburbEntity, UserDeletionTypeEntity } from 'src/app/core/api/generated/schema';
+import { accountUrl } from 'src/app/core/constants/module.constants';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ChangePasswordGQL } from 'src/app/user/api/generated/change-password.mutation.generated';
@@ -13,6 +14,7 @@ import { DeleteMeGQL } from 'src/app/user/api/generated/delete-user-entity.mutat
 import { GetSuburbsGQL } from 'src/app/user/api/generated/get-suburbs.query.generated';
 import { GetUserDeletionTypesGQL } from 'src/app/user/api/generated/get-user-deletion-types.query.generated';
 import { SaveUserContextGQL } from 'src/app/user/api/generated/save-user-context.mutation.generated';
+import { VerifyAddressGQL } from 'src/app/user/api/generated/verify-address.mutation.generated';
 import { UserSettingsActions } from './user-settings.actions';
 import { selectUserDeletionDescription, selectUserDeletionTypes } from './user-settings.selectors';
 
@@ -21,10 +23,18 @@ export class UserSettingsEffects {
 
   savePersonalData = createEffect(() => this.actions.pipe(
     ofType(UserSettingsActions.savePersonalData),
-    switchMap((action) => this.saveUserContextService.mutate({
-      entity: action.entity
+      switchMap(action => this.verifyAddressService.mutate({
+          entity: action.entity.address
+        })
+        .pipe(
+          filter(response => !!response.data?.verifyAddress?.latitude),
+          map(response => ({ ...action.entity, address: response.data?.verifyAddress, }))
+        ),
+      ),
+    switchMap(entity => this.saveUserContextService.mutate({
+      entity
     })),
-    map(response => UserSettingsActions.personalDataSaved(response.data?.saveUserContext as UserContextEntity))
+    map(() => UserSettingsActions.personalDataSaved())
   ));
 
   personalDataSaved = createEffect(() => this.actions.pipe(
@@ -33,6 +43,11 @@ export class UserSettingsEffects {
       type: FeedbackType.Success,
       labelMessage: 'personalDataSaved'
     }))
+  ));
+
+  reloadOnSave = createEffect(() => this.actions.pipe(
+    ofType(UserSettingsActions.personalDataSaved),
+    map(() => CoreUserActions.updateUser())
   ));
 
   getUserDeletionTypes = createEffect(() => this.actions.pipe(
@@ -89,17 +104,17 @@ export class UserSettingsEffects {
       labelMessage: 'passwordChanged'
     }))
   ));
-  
 
   constructor(
     private actions: Actions,
-    private router: Router,
-    private store: Store,
     private authService: AuthService,
-    private getUserDeletionTypesService: GetUserDeletionTypesGQL,
-    private saveUserContextService: SaveUserContextGQL,
+    private changePasswordService: ChangePasswordGQL,
     private deleteUserEntityService: DeleteMeGQL,
     private getSuburbsService: GetSuburbsGQL,
-    private changePasswordService: ChangePasswordGQL,
+    private getUserDeletionTypesService: GetUserDeletionTypesGQL,
+    private router: Router,
+    private saveUserContextService: SaveUserContextGQL,
+    private store: Store,
+    private verifyAddressService: VerifyAddressGQL,
   ) { }
 }

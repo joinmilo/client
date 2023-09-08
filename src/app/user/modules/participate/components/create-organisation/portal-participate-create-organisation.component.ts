@@ -35,7 +35,7 @@ export class PortalParticipateCreateOrganisationComponent {
     housenumber: ['', [Validators.required]],
     city: ['', [Validators.required]],
     postalcode: ['', [Validators.required]],
-    describtion: ['',],
+    describtion: ['', [Validators.required]],
     website: [''],
     phone: [''],
     email: ['', [Validators.required, Validators.email]],
