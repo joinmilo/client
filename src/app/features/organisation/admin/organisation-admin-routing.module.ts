@@ -17,6 +17,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.PortalOrganisationDetailsModule),
     data: { label: 'dashboard' },
   },
+  {
+    path: `${organisationsFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/organisation/admin/form/organisation-admin-form.module')
+      .then((imported) => imported.OrganisationAdminFormModule),
+    data: { label: 'form' },
+  },
 ];
 
 const routes: Routes = [

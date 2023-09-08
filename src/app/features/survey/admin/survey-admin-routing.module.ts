@@ -17,6 +17,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.PortalSurveyDetailsModule),
     data: { label: 'dashboard' },
   },
+  {
+    path: `${surveysFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/survey/admin/form/survey-admin-form.module')
+      .then((imported) => imported.SurveyAdminFormModule),
+    data: { label: 'form' },
+  },
 ];
 
 const routes: Routes = [

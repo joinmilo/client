@@ -17,6 +17,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.PortalDealDetailsModule),
     data: { label: 'dashboard' },
   },
+  {
+    path: `${dealsFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/deal/admin/form/deal-admin-form.module')
+      .then((imported) => imported.DealAdminFormModule),
+    data: { label: 'form' },
+  },
 ];
 
 const routes: Routes = [

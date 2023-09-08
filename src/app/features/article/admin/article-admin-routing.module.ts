@@ -18,6 +18,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.ArticlePortalDetailsModule),
     data: { label: 'dashboard' },
   },
+  {
+    path: `${articlesFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/article/admin/form/article-admin-form.module')
+      .then((imported) => imported.ArticleAdminFormModule),
+    data: { label: 'form' },
+  },
 ];
 
 const routes: Routes = [

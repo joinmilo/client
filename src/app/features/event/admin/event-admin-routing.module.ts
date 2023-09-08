@@ -19,6 +19,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.PortalEventDetailsModule),
     data: { label: 'dashboard' },
   },
+  {
+    path: `${eventsFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/event/admin/form/event-admin-form.module')
+      .then((imported) => imported.EventAdminFormModule),
+    data: { label: 'form' },
+  },
 ];
 
 const routes: Routes = [
