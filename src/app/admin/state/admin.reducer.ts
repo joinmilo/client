@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { FeatureEntity, Maybe } from 'src/app/core/api/generated/schema';
+import { FeatureEntity, Maybe, PageableList_AddressEntity } from 'src/app/core/api/generated/schema';
 import { AdminMenuItem, AdminRoutes } from '../typings/menu';
 import { AdminActions } from './admin.actions';
 
@@ -8,6 +8,7 @@ export interface AdminState {
   menuOpen?: boolean,
   mainRoutes: AdminRoutes[],
   settingsMenu: AdminMenuItem[],
+  addresses?: PageableList_AddressEntity
 }
 
 export const initialState: AdminState = {

@@ -1,0 +1,11 @@
+query getLanguages($params: FilterSortPaginateInput) {
+  getLanguages(params: $params) {
+    result {
+      id
+      active
+      locale
+      name
+    }
+    total
+  }
+}

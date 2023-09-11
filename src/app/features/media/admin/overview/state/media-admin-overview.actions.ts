@@ -4,8 +4,7 @@ import { FilterSortPaginateInput, PageableList_InfoMediaEntity } from 'src/app/c
 export const MediaAdminOverviewActions = createActionGroup({
   source: 'Media Admin Overview',
   events: {
-
-    'set overview data': (media: PageableList_InfoMediaEntity) => ({ media }),
+    'set overview media': (media: PageableList_InfoMediaEntity) => ({ media }),
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),
   }

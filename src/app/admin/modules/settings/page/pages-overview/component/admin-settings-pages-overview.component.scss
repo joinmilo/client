@@ -1,0 +1,9 @@
+.main-admin {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
+
+button{
+  align-self: flex-start;
+}

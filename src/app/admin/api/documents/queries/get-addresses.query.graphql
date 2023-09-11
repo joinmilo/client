@@ -1,0 +1,17 @@
+query getAddresses($params: FilterSortPaginateInput) {
+  getAddresses(params: $params) {
+    result {
+      id
+      houseNumber
+      latitude
+      longitude
+      place
+      postalCode
+      street
+      suburb{
+        id
+      }
+    }
+    total
+  }
+}

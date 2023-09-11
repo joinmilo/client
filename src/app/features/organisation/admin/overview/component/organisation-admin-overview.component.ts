@@ -30,8 +30,8 @@ export class OrganisationAdminOverviewComponent {
     },
     {
       icon: 'trash',
-      callback: survey =>
-        this.store.dispatch(OrganisationAdminOverviewActions.deleteOrganisation(survey)),
+      callback: organisation =>
+        this.store.dispatch(OrganisationAdminOverviewActions.deleteOrganisation(organisation)),
       tooltipLabel: 'delete'
     },
 

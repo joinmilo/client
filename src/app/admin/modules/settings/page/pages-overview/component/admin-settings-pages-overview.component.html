@@ -1,0 +1,8 @@
+<div class="main-admin">
+  <app-page-title titleLabel="pages"></app-page-title>
+  <button mat-raised-button color="primary" [routerLink]="['form']"
+    appLabel="createPage"></button>
+  <app-table [data]="pages" [actions]="actions" [columns]="columns"
+    (sortPaginate)="updateParams($event)">
+  </app-table>
+</div>

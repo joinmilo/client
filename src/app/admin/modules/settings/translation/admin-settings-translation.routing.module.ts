@@ -9,8 +9,8 @@ const baseRoute = 'translation';
 const routes: AdminSettingsRoutes[] = [
   {
     path: `${baseRoute}/languages`,
-    loadComponent: () => import('./language/admin-settings-language.component')
-      .then((imported) => imported.AdminSettingsLanguageComponent),
+    loadChildren: () => import('src/app/admin/modules/settings/translation/language/admin-settings-language.module')
+      .then((imported) => imported.AdminSettingsLanguageModule),
     data: {
       name: 'languages',
       description: 'languagesDescription',

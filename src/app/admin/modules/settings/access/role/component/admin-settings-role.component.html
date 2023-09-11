@@ -1,0 +1,6 @@
+<div class="main-admin">
+  <app-page-title titleLabel="roles"></app-page-title>
+  <app-table [data]="roles" [actions]="actions" [columns]="columns"
+    (sortPaginate)="updateParams($event)">
+  </app-table>
+</div>

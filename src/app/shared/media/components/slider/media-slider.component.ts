@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
@@ -24,7 +24,7 @@ export class MediaSliderComponent {
 
   @Input()
   public linkLabel?: string = 'allMedia';
-
+  
   @Input()
   public titleLabel?: string = 'media';
 
@@ -34,12 +34,19 @@ export class MediaSliderComponent {
   @Input()
   public titleType: SliderTitleType = 'DETAILS';
 
+  @Output()
+  public deleted = new EventEmitter<Maybe<MediaEntity>>();
+
   constructor(
     public dialog: MatDialog,
     private mediaService: MediaService,) { }
 
   public mimeType(element?: Maybe<MediaEntity>): Maybe<MimeTypeDefinition> {
     return this.mediaService.mimeTypeDefinition(element);
+  }
+
+  delete(event: Maybe<MediaEntity>) {
+    this.deleted.emit(event);
   }
 
   public open(media?: Maybe<MediaEntity>): void {

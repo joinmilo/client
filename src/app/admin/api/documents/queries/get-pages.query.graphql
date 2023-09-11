@@ -1,0 +1,18 @@
+query getPages($params: FilterSortPaginateInput) {
+  getPages(params: $params) {
+    result {
+      id
+      callText
+      callUrl
+      isLanding
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+    }
+    total
+  }
+}

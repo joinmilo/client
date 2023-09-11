@@ -9,8 +9,8 @@ const baseRoute = 'access';
 const routes: AdminSettingsRoutes[] = [
   {
     path: `${baseRoute}/user`,
-    loadComponent: () => import('./user/admin-settings-user.component')
-      .then((imported) => imported.AdminSettingsUserComponent),
+    loadChildren: () => import('src/app/admin/modules/settings/access/user/admin-settings-user.module')
+      .then((imported) => imported.AdminSettingsUserModule),
     data: {
       name: 'users',
       description: 'usersDescription',
@@ -19,8 +19,8 @@ const routes: AdminSettingsRoutes[] = [
   },
   {
     path: `${baseRoute}/role`,
-    loadComponent: () => import('./user/admin-settings-user.component')
-      .then((imported) => imported.AdminSettingsUserComponent),
+    loadComponent: () => import('src/app/admin/modules/settings/access/role/admin-settings-role.module')
+      .then((imported) => imported.AdminSettingsRoleModule),
     data: {
       name: 'roles',
       description: 'rolesDescription',

@@ -9,8 +9,8 @@ const baseRoute = 'location';
 const routes: AdminSettingsRoutes[] = [
   {
     path: `${baseRoute}/addresses`,
-    loadComponent: () => import('./address/admin-settings-address.component')
-      .then((imported) => imported.AdminSettingsAddressComponent),
+    loadChildren: () => import('src/app/admin/modules/settings/location/address/admin-settings-address.module')
+      .then((imported) => imported.AdminSettingsAddressModule),
     data: {
       name: 'addresses',
       description: 'addressesDescription',
@@ -19,8 +19,8 @@ const routes: AdminSettingsRoutes[] = [
   },
   {
     path: `${baseRoute}/suburbs`,
-    loadComponent: () => import('./suburb/admin-settings-suburb.component')
-      .then((imported) => imported.AdminSettingsSuburbComponent),
+    loadChildren: () => import('src/app/admin/modules/settings/location/suburb/admin-settings-suburb.module')
+      .then((imported) => imported.AdminSettingsSuburbModule),
     data: {
       name: 'suburbs',
       description: 'suburbsDescription',

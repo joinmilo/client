@@ -1,0 +1,3 @@
+mutation deleteLanguage($id: String) {
+  deleteLanguage(id: $id)
+}

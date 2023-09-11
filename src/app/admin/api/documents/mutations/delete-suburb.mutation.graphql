@@ -1,0 +1,3 @@
+mutation deleteSuburb($id: String) {
+  deleteSuburb(id: $id)
+}

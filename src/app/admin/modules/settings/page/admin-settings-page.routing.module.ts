@@ -9,8 +9,8 @@ const baseRoute = 'pages';
 const routes: AdminSettingsRoutes[] = [
   {
     path: `${baseRoute}/overview`,
-    loadComponent: () => import('./pages-overview/admin-settings-pages-overview.component')
-      .then((imported) => imported.AdminSettingsPagesOverviewComponent),
+    loadChildren: () => import('src/app/admin/modules/settings/page/pages-overview/admin-settings-pages.module')
+      .then((imported) => imported.AdminSettingsPagesModule),
     data: {
       name: 'pagesOverview',
       description: 'pagesOverviewDescription',

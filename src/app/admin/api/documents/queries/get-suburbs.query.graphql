@@ -1,0 +1,9 @@
+query getSuburbs($params: FilterSortPaginateInput) {
+  getSuburbs(params: $params) {
+    result {
+      id
+      name
+    }
+    total
+  }
+}

@@ -1,0 +1,8 @@
+query getEventDetails(
+  $entity: EventEntityInput,
+  $scheduleBegin: OffsetDateTime,
+  $scheduleEnd: OffsetDateTime) {
+  getEvent(entity: $entity) {
+    ...EventDetails
+  }
+}

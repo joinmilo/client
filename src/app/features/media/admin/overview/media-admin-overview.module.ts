@@ -1,3 +1,4 @@
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,15 +9,22 @@ import { CoreModule } from 'src/app/core/core.module';
 import { MediaFilterModule } from 'src/app/shared/filter/media/media-filter.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
-import { MediaAdminOverviewComponent } from './component/media-admin-overview.component';
+import { MediaAdminOverviewCategoryComponent } from './components/category/media-admin-overview-category.component';
+import { MediaAdminOverviewEmptyComponent } from './components/empty/media-admin-overview-empty.component';
+import { MediaAdminOverviewComponent } from './components/media-admin-overview.component';
 import { mediaAdminOverviewStateKey } from './constants/media-admin-overview.constants';
 import { MediaAdminOverviewRoutingModule } from './media-admin-overview-routing.module';
-import { MediaAdminOverviewEffects } from './state/media-portal-overview.effects';
-import { mediaAdminOverviewReducer } from './state/media-portal-overview.reducer';
+import { MediaAdminOverviewEffects } from './state/media-admin-overview.effects';
+import { mediaAdminOverviewReducer } from './state/media-admin-overview.reducer';
+
 
 const components = [
+  MediaAdminOverviewCategoryComponent,
+  MediaAdminOverviewEmptyComponent,
   MediaAdminOverviewComponent
+
 ]
 
 const framework = [
@@ -30,6 +38,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  MediaModule,
   MediaFilterModule,
   MediaAdminOverviewRoutingModule,
   TableModule,
