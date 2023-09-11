@@ -2,5 +2,6 @@
   *ngFor="let category of categories | async"
   [media]="getMedia(category)"
   [title]="category | translatable : 'name' | async"
-  [titleType]="'SUBTITLE'">
+  [titleType]="'SUBTITLE'"
+  (deleted)="delete($event)">
 </app-media-slider>

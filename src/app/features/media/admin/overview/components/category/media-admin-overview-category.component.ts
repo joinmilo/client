@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { InfoMediaCategoryEntity, MediaEntity } from 'src/app/core/api/generated/schema';
+import { InfoMediaCategoryEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { MediaAdminOverviewActions } from '../../state/media-admin-overview.actions';
 import { selectOverviewDataCategories } from '../../state/media-admin-overview.selectors';
 
 @Component({
@@ -22,4 +23,9 @@ export class MediaAdminOverviewCategoryComponent {
       ?.map((item) => item?.media as MediaEntity);
   }
 
+  delete(medium: Maybe<MediaEntity>) {
+    this.store.dispatch(MediaAdminOverviewActions.deleteMedia(
+      medium
+    ))
+  }
 }

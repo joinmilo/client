@@ -28,7 +28,11 @@
 
 <app-slider *ngIf="media?.length">
   <ng-container *ngFor="let element of media">
-    <app-media-card [media]="element" [showDelete]="true" (clicked)="open(element)">
+    <app-media-card 
+      [media]="element"
+      [showDelete]="true"
+      (clicked)="open(element)"
+      (deleted)="delete($event)">
     </app-media-card>
   </ng-container>
 </app-slider>

@@ -1,0 +1,8 @@
+query getInfoMedia($params: FilterSortPaginateInput) {
+  getInfoMedia(params: $params) {
+    result {
+     ...InfoMediaCard
+    }
+    total
+  }
+}

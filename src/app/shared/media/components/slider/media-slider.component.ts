@@ -46,6 +46,7 @@ export class MediaSliderComponent {
   }
 
   delete(event: Maybe<MediaEntity>) {
+    console.log("slider", event);
     this.deleted.emit(event);
   }
 

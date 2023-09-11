@@ -1,0 +1,3 @@
+mutation deleteMedium($id: String) {
+  deleteMedium(id: $id)
+}
