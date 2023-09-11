@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { googleSearchRoute, visitorsRoute } from './constants/event-admin-details.constants';
-import { EventAdminDetailsGoogleSearchComponent } from './modules/google-search/components/event-admin-details-google-search.component';
+import { searchRoute, visitorsRoute } from './constants/event-admin-details.constants';
 import { EventAdminDetailsLandingComponent } from './modules/landing/components/event-admin-details-landing.component';
+import { EventAdminDetailsSearchComponent } from './modules/search/components/event-admin-details-search.component';
 import { EventAdminDetailsVisitorsComponent } from './modules/visitors/components/event-admin-details-visitors.component';
 
 const routes: Routes = [
@@ -19,10 +19,10 @@ const routes: Routes = [
     component: EventAdminDetailsVisitorsComponent
   },
     {
-    path: googleSearchRoute,
-    loadChildren: () => import('./modules/google-search/event-admin-details-google-search.module')
-      .then((imported) => imported.EventAdminDetailsGoogleSearchModule),
-      component: EventAdminDetailsGoogleSearchComponent
+    path: searchRoute,
+    loadChildren: () => import('./modules/search/event-admin-details-search.module')
+      .then((imported) => imported.EventAdminDetailsSearchModule),
+      component: EventAdminDetailsSearchComponent
   },
 ];
 

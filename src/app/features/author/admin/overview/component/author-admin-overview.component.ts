@@ -16,13 +16,6 @@ export class AuthorAdminOverviewComponent {
   public authors = this.store.select(selectOverviewData);
 
   public actions: RowAction<UserContextEntity>[] = [
-    {
-      icon: 'trash',
-      callback: author =>
-        this.store.dispatch(AuthorAdminOverviewActions.deleteAuthor(author)),
-      tooltipLabel: 'delete'
-    },
-
     'SHARE',
   ];
 

@@ -9,9 +9,6 @@ export const AuthorAdminOverviewActions = createActionGroup({
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),
 
-    'delete author': (author?: Maybe<UserContextEntity>) => ({ author }),
-    'author deleted': emptyProps(),
-
     'sponsor author': (author?: Maybe<UserContextEntity>) => ({ author }),
     'author sponsored': emptyProps(),
   }

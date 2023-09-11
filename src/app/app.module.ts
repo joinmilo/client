@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,8 @@ const libs = [
     logOnly: environment.production,
     autoPause: true,
   }),
+  //TODO: https://github.com/swimlane/ngx-charts/issues/1733
+  NgxChartsModule
 ];
 
 //TODO: Breaks scrolling Angular:

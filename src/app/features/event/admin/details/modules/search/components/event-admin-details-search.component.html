@@ -1,0 +1,19 @@
+<app-date-range-filter
+  (valueChanged)="updateParams($event)">
+</app-date-range-filter>
+
+<section>
+  <mat-card *ngFor="let data of dataSets | async">
+    <ngx-charts-bar-vertical
+      [scheme]="colorScheme"
+      [results]="data?.series"
+      [gradient]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      xAxisLabel="xAxisLabel"
+      yAxisLabel="yAxisLabel">
+    </ngx-charts-bar-vertical>
+  </mat-card>
+</section>

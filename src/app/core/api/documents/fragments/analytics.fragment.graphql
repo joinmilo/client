@@ -1,0 +1,9 @@
+fragment AnalyticsDto on AnalyticsDto {
+  average
+  name
+  sum
+  series {
+    name
+    value
+  }
+}

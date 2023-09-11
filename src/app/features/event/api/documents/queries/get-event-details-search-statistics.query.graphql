@@ -1,0 +1,14 @@
+query getEventDetailsSearchStatistics(
+  $entity: EventEntityInput,
+  $startDate: OffsetDateTime,
+  $endDate: OffsetDateTime) {
+  getEvent(entity: $entity) {
+    id
+    searchStatistics(
+      startDate: $startDate,
+      endDate: $endDate
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

@@ -119,8 +119,10 @@ export type AdminFooterParentTranslatableEntityInput = {
 
 export type AnalyticsDto = {
   __typename?: 'AnalyticsDto';
+  average?: Maybe<Scalars['Float']>;
   name?: Maybe<Scalars['String']>;
   series?: Maybe<Array<Maybe<AnalyticsEntry>>>;
+  sum?: Maybe<Scalars['Float']>;
 };
 
 export type AnalyticsEntry = {
@@ -257,7 +259,7 @@ export type ArticleEntity = {
   name?: Maybe<Scalars['String']>;
   publicAuthor?: Maybe<ArticlePublicAuthorEntity>;
   ratings?: Maybe<Array<Maybe<ArticleRatingEntity>>>;
-  searchConsoleArticleDetails?: Maybe<Array<Maybe<GoogleSearchDto>>>;
+  searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
@@ -268,7 +270,7 @@ export type ArticleEntity = {
 };
 
 
-export type ArticleEntitySearchConsoleArticleDetailsArgs = {
+export type ArticleEntitySearchStatisticsArgs = {
   endDate?: InputMaybe<Scalars['LocalDate']>;
   startDate?: InputMaybe<Scalars['LocalDate']>;
 };
@@ -511,8 +513,8 @@ export type ContestEntity = {
   multiVote?: Maybe<Scalars['Boolean']>;
   name?: Maybe<Scalars['String']>;
   offer?: Maybe<Scalars['Boolean']>;
-  participation?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
   participationEndDate?: Maybe<Scalars['OffsetDateTime']>;
+  participations?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
   shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
@@ -533,8 +535,8 @@ export type ContestEntityInput = {
   multiVote?: InputMaybe<Scalars['Boolean']>;
   name?: InputMaybe<Scalars['String']>;
   offer?: InputMaybe<Scalars['Boolean']>;
-  participation?: InputMaybe<Array<InputMaybe<ContestParticipationEntityInput>>>;
   participationEndDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  participations?: InputMaybe<Array<InputMaybe<ContestParticipationEntityInput>>>;
   shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
@@ -991,7 +993,6 @@ export type EventEntity = {
   creator?: Maybe<UserContextEntity>;
   entryFee?: Maybe<Scalars['Float']>;
   favoritingUsers?: Maybe<Array<Maybe<UserContextEntity>>>;
-  googleSearchEventDetails?: Maybe<Array<Maybe<GoogleSearchDto>>>;
   hasSchedules?: Maybe<Scalars['Boolean']>;
   id?: Maybe<Scalars['String']>;
   lastEventComment?: Maybe<EventCommentEntity>;
@@ -1002,6 +1003,7 @@ export type EventEntity = {
   ratings?: Maybe<Array<Maybe<EventRatingEntity>>>;
   schedule?: Maybe<EventScheduleEntity>;
   schedules?: Maybe<Array<Maybe<EventScheduleEntity>>>;
+  searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
@@ -1013,15 +1015,15 @@ export type EventEntity = {
 };
 
 
-export type EventEntityGoogleSearchEventDetailsArgs = {
-  endDate?: InputMaybe<Scalars['LocalDate']>;
-  startDate?: InputMaybe<Scalars['LocalDate']>;
-};
-
-
 export type EventEntityScheduleArgs = {
   begin?: InputMaybe<Scalars['OffsetDateTime']>;
   end?: InputMaybe<Scalars['OffsetDateTime']>;
+};
+
+
+export type EventEntitySearchStatisticsArgs = {
+  endDate?: InputMaybe<Scalars['LocalDate']>;
+  startDate?: InputMaybe<Scalars['LocalDate']>;
 };
 
 export type EventEntityInput = {
@@ -1283,13 +1285,6 @@ export type FriendEntityInput = {
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   requester?: InputMaybe<UserContextEntityInput>;
-};
-
-export type GoogleSearchDto = {
-  __typename?: 'GoogleSearchDto';
-  entries?: Maybe<Array<Maybe<AnalyticsEntry>>>;
-  name?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['Float']>;
 };
 
 export type InfoMediaCategoryEntity = {
@@ -1870,6 +1865,11 @@ export type Mutation = {
   sendPasswordReset?: Maybe<Scalars['Boolean']>;
   sendVerification?: Maybe<Scalars['Boolean']>;
   sponsorArticle?: Maybe<Scalars['Boolean']>;
+  sponsorContest?: Maybe<Scalars['Boolean']>;
+  sponsorDeal?: Maybe<Scalars['Boolean']>;
+  sponsorEvent?: Maybe<Scalars['Boolean']>;
+  sponsorOrganisation?: Maybe<Scalars['Boolean']>;
+  sponsorSurvey?: Maybe<Scalars['Boolean']>;
   verify?: Maybe<UserEntity>;
   verifyAddress?: Maybe<AddressEntity>;
 };
@@ -3510,6 +3510,36 @@ export type MutationSponsorArticleArgs = {
 
 
 /** Mutation root */
+export type MutationSponsorContestArgs = {
+  contestId?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationSponsorDealArgs = {
+  dealId?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationSponsorEventArgs = {
+  eventId?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationSponsorOrganisationArgs = {
+  organisationId?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationSponsorSurveyArgs = {
+  surveyId?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
 export type MutationVerifyArgs = {
   token?: InputMaybe<Scalars['String']>;
 };
@@ -4398,8 +4428,7 @@ export type Query = {
   getReports?: Maybe<PageableList_ReportEntity>;
   getRole?: Maybe<RoleEntity>;
   getRoles?: Maybe<PageableList_RoleEntity>;
-  getSearchConsoleDetails?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  getSearchConsoleOverview?: Maybe<SearchAnalyticsDto>;
+  getSearchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   getSocialMedia?: Maybe<SocialMediaEntity>;
   getSocialMedias?: Maybe<PageableList_SocialMediaEntity>;
   getSubscription?: Maybe<SubscriptionEntity>;
@@ -5030,15 +5059,8 @@ export type QueryGetRolesArgs = {
 
 
 /** Query root */
-export type QueryGetSearchConsoleDetailsArgs = {
-  dimension?: InputMaybe<SearchDimension>;
-  endDate?: InputMaybe<Scalars['LocalDate']>;
-  startDate?: InputMaybe<Scalars['LocalDate']>;
-};
-
-
-/** Query root */
-export type QueryGetSearchConsoleOverviewArgs = {
+export type QueryGetSearchStatisticsArgs = {
+  dimension?: InputMaybe<SearchConsoleDimension>;
   endDate?: InputMaybe<Scalars['LocalDate']>;
   startDate?: InputMaybe<Scalars['LocalDate']>;
 };
@@ -5407,22 +5429,12 @@ export type RoleTranslatableEntityInput = {
   parent?: InputMaybe<RoleEntityInput>;
 };
 
-export type SearchAnalyticsDto = {
-  __typename?: 'SearchAnalyticsDto';
-  averageCtr?: Maybe<Scalars['Float']>;
-  averagePosition?: Maybe<Scalars['Float']>;
-  ctrs?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  positions?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  totalClicks?: Maybe<Scalars['Int']>;
-  totalImpressions?: Maybe<Scalars['Int']>;
-};
-
-export enum SearchDimension {
-  Country = 'COUNTRY',
-  Date = 'DATE',
-  Device = 'DEVICE',
-  Page = 'PAGE',
-  Query = 'QUERY'
+export enum SearchConsoleDimension {
+  Country = 'country',
+  Date = 'date',
+  Device = 'device',
+  Page = 'page',
+  Query = 'query'
 }
 
 export type SearchDto = {

@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+section {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+
+  mat-card {
+    width: calc(50% - 5rem);
+
+    ngx-charts-bar-vertical {
+      padding: 1rem;
+
+      ngx-charts-chart {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+
+:host ::ng-deep {
+  .mdc-text-field {
+    background-color: white !important;
+  }
+  
+}

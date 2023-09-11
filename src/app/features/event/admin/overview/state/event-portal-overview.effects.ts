@@ -9,7 +9,7 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
 import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 import { DeleteEventGQL } from '../../../api/generated/delete-event.mutation.generated';
-import { GetEventsGQL } from '../../../api/generated/get-articles.query.generated';
+import { GetEventsGQL } from '../../../api/generated/get-events.query.generated';
 import { SponsorEventGQL } from '../../../api/generated/sponsor-event.mutation.generated';
 import { EventAdminOverviewActions } from './event-admin-overview.actions';
 import { selectParams } from './event-portal-overview.selectors';

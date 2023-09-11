@@ -6,7 +6,7 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { EventEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
-import { commentsRoute, favoritesRoute, googleSearchRoute, participantsRoute, ratingsRoute, visitorsRoute } from '../../../constants/event-admin-details.constants';
+import { commentsRoute, favoritesRoute, participantsRoute, ratingsRoute, searchRoute, visitorsRoute } from '../../../constants/event-admin-details.constants';
 import { EventAdminDetailsLayoutActions } from '../state/event-admin-details-layout.actions';
 import { selectEventAdminDetailsLayout } from '../state/event-admin-details-layout.selectors';
 
@@ -35,7 +35,7 @@ export class EventAdminDetailsLayoutComponent implements OnInit, OnDestroy {
     {
       icon: ['fab', 'google'],
       label: 'googleSearch',
-      value: googleSearchRoute
+      value: searchRoute
     },
     {
       icon: ['far', 'comment-dots'],
@@ -60,17 +60,26 @@ export class EventAdminDetailsLayoutComponent implements OnInit, OnDestroy {
     },
   ];
 
+  public initValue = '';
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store) { }
+    private store: Store,) { }
 
   public ngOnInit(): void {
     this.activatedRoute.params.pipe(
       tap(params => this.store.dispatch(EventAdminDetailsLayoutActions.getDetails(params[slug] || ''))),
       switchMap(() => this.store.select(selectEventAdminDetailsLayout)),
       takeUntil(this.destroy)
-    ).subscribe(event => this.event = event);
+    ).subscribe(event => {
+      const lastUrlSegment = this.router.url.split('?')[0].split('/').pop();
+      if (lastUrlSegment && event && lastUrlSegment !== event?.slug) {
+        this.initValue = lastUrlSegment;
+      }
+
+      this.event = event;
+    });
   }
 
   public route(route: string): void {

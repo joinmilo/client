@@ -1,8 +1,0 @@
-fragment GoogleSearchDto on GoogleSearchDto {
-  name,
-  value,
-  entries{
-    name
-    value
-  }
-}

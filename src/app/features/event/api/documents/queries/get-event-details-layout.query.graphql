@@ -1,0 +1,15 @@
+query getEventDetailsLayout($entity: EventEntityInput) {
+  getEvent(entity: $entity) {
+    id
+    slug
+    translatables {
+      id
+      name
+      content
+      shortDescription
+      language {
+        ...Language
+      }
+    }
+  }
+}

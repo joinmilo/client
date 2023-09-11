@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { EventEntity } from 'src/app/core/api/generated/schema';
-import { GetEventDetailsGQL } from 'src/app/features/event/api/generated/get-event-details.query.generated';
+import { GetEventDetailsLayoutGQL } from 'src/app/features/event/api/generated/get-event-details-layout.query.generated';
 import { EventAdminDetailsLayoutActions } from './event-admin-details-layout.actions';
 
 @Injectable()
@@ -23,6 +23,6 @@ export class EventAdminDetailsLayoutEffects {
 
   constructor(
     private actions: Actions,
-    private getEventService: GetEventDetailsGQL,
+    private getEventService: GetEventDetailsLayoutGQL,
   ) {}
 }
