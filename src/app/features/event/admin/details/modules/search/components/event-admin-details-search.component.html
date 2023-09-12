@@ -2,18 +2,36 @@
   (valueChanged)="updateParams($event)">
 </app-date-range-filter>
 
-<section>
-  <mat-card *ngFor="let data of dataSets | async">
-    <ngx-charts-bar-vertical
-      [scheme]="colorScheme"
-      [results]="data?.series"
-      [gradient]="true"
-      [xAxis]="true"
-      [yAxis]="true"
-      [showXAxisLabel]="true"
-      [showYAxisLabel]="true"
-      xAxisLabel="xAxisLabel"
-      yAxisLabel="yAxisLabel">
-    </ngx-charts-bar-vertical>
-  </mat-card>
+<section class="summary">
+  <app-chart-summary *ngIf="(clicks | async) as statistics"
+    [actions]="[clicksAction]"
+    [color]="clicksColor"
+    [value]="statistics.sum"
+    titleLabel="totalClicks">
+  </app-chart-summary>
+
+  <app-chart-summary *ngIf="(impressions | async) as statistics"
+    [actions]="[impressionAction]"
+    [color]="impressionsColor"
+    [value]="statistics.sum"
+    titleLabel="totalImpressions">
+  </app-chart-summary>
+</section>
+
+<section class="charts">
+  <app-chart-bar-vertical *ngIf="(clicks | async) as statistics"
+    [actions]="[clicksAction]"
+    [colors]="[clicksColor]"
+    [data]="statistics.series"
+    [titleLabel]="clicksKey"
+    [yAxisLabel]="clicksKey">
+  </app-chart-bar-vertical>
+
+  <app-chart-bar-vertical *ngIf="(impressions | async) as statistics"
+    [actions]="[impressionAction]"
+    [colors]="[impressionsColor]"
+    [data]="statistics.series"
+    [titleLabel]="impressionsKey"
+    [yAxisLabel]="impressionsKey">
+  </app-chart-bar-vertical>
 </section>

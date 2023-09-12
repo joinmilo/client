@@ -1,11 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CoreModule } from 'src/app/core/core.module';
 import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
+import { ChartModule } from 'src/app/shared/widgets/chart/chart.module';
 import { EventAdminDetailsSearchComponent } from './components/event-admin-details-search.component';
 import { eventAdminDetailsSearchStateKey } from './constants/event-admin-details-search.constants';
 import { EventAdminDetailsSearchEffects } from './state/event-admin-details-search.effects';
@@ -20,11 +23,12 @@ const framework = [
 ];
 
 const materials = [
-  CoreModule,
+  MatButtonModule,
   MatCardModule,
 ];
 
 const modules = [
+  ChartModule,
   CoreModule,
   DateRangeFilterComponent,
 ];
@@ -32,7 +36,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(eventAdminDetailsSearchStateKey, eventAdminDetailsSearchReducer),
   EffectsModule.forFeature([EventAdminDetailsSearchEffects]),
-  NgxChartsModule
+  FontAwesomeModule,
+  NgxChartsModule,
 ];
 
 @NgModule({

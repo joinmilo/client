@@ -6,7 +6,6 @@ import { CoreModule } from 'src/app/core/core.module';
 import { LayoutService } from 'src/app/core/services/layout.service';
 import { selectIsLoading } from 'src/app/core/state/selectors/core.selectors';
 import { LoadingComponent } from 'src/app/shared/layout/loading/loading.component';
-import { AdminFooterModule } from '../footer/admin-footer.module';
 import { AdminLayoutDesktopComponent } from './desktop/admin-layout-desktop.component';
 import { AdminLayoutMobileComponent } from './mobile/admin-layout-mobile.component';
 
@@ -21,7 +20,6 @@ import { AdminLayoutMobileComponent } from './mobile/admin-layout-mobile.compone
     AdminLayoutDesktopComponent,
     AdminLayoutMobileComponent,
     LoadingComponent,
-    AdminFooterModule,
     RouterModule,
   ]
 })

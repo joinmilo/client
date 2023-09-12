@@ -1,13 +1,11 @@
-<div class="main-admin">
-  <app-page-title titleLabel="contests"></app-page-title>
-  <app-contest-filter
-    (paramsUpdated)="updateParams($event)"></app-contest-filter>
-  <app-table
-    [data]="contests"
-    [actions]="actions"
-    [entity]="'ContestEntity'"
-    [columns]="columns"
-    (sortPaginate)="updateParams($event)"
-    (rowClicked)="rowClicked($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="contests"></app-page-title>
+<app-contest-filter
+  (paramsUpdated)="updateParams($event)"></app-contest-filter>
+<app-table
+  [data]="contests"
+  [actions]="actions"
+  [entity]="'ContestEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)"
+  (rowClicked)="rowClicked($event)">
+</app-table>

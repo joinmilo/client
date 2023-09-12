@@ -1,0 +1,29 @@
+<ng-container *ngIf="actions?.length === 1; else menuActions">
+  <button mat-button
+    (click)="actions![0].clicked()"
+    [appTooltip]="actions![0].label">
+    <fa-icon size="xl"
+      [icon]="actions![0].icon">
+    </fa-icon>
+  </button>
+</ng-container>
+
+<ng-template #menuActions>
+  <button mat-button
+    [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+    <fa-icon size="xl"
+      [icon]="['fas', 'ellipsis-vertical']">
+    </fa-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <ng-container *ngFor="let action of actions">
+      <button mat-menu-item (click)="action.clicked()">
+        <div class="action-button">
+          <fa-icon [icon]="action.icon"></fa-icon>
+          <span [appLabel]="action.label"></span>
+        </div>
+      </button>
+    </ng-container>
+  </mat-menu>
+</ng-template>

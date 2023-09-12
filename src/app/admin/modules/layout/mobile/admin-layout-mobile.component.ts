@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { selectIsAdminMenuOpen } from 'src/app/admin/state/admin.selectors';
 import { CoreModule } from 'src/app/core/core.module';
+import { AdminFooterModule } from '../../footer/admin-footer.module';
 import { AdminHeaderModule } from '../../header/admin-header.module';
 import { AdminMenuModule } from '../../menu/admin-menu.module';
 
@@ -17,6 +18,7 @@ import { AdminMenuModule } from '../../menu/admin-menu.module';
   imports: [
     CommonModule,
     CoreModule,
+    AdminFooterModule,
     AdminHeaderModule,
     AdminMenuModule,
     MatSidenavModule,

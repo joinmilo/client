@@ -1,0 +1,32 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  mat-card {
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    justify-content: normal;
+    align-items: normal;
+    overflow: hidden;
+
+      mat-card-title {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+
+        padding: 1rem;
+      }
+
+      mat-card-content {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+        padding: unset;
+        margin: 1rem;
+      }
+  }
+}

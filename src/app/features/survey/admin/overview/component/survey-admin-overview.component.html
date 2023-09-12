@@ -1,13 +1,11 @@
-<div class="main-admin">
-  <app-page-title titleLabel="surveys"></app-page-title>
-  <app-survey-filter
-    (paramsUpdated)="updateParams($event)"></app-survey-filter>
-  <app-table
-    [actions]="actions"
-    [data]="surveys"
-    [entity]="'SurveyEntity'"
-    [columns]="columns"
-    (sortPaginate)="updateParams($event)"
-    (rowClicked)="rowClicked($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="surveys"></app-page-title>
+<app-survey-filter
+  (paramsUpdated)="updateParams($event)"></app-survey-filter>
+<app-table
+  [actions]="actions"
+  [data]="surveys"
+  [entity]="'SurveyEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)"
+  (rowClicked)="rowClicked($event)">
+</app-table>

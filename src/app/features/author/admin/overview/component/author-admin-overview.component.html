@@ -1,11 +1,9 @@
-<div class="main-admin">
-  <app-page-title titleLabel="authors"></app-page-title>
-  <app-table
-    [data]="authors"
-    [actions]="actions"
-    [entity]="'UserContextEntity'"
-    [columns]="columns"
-    (sortPaginate)="updateParams($event)"
-    (rowClicked)="rowClicked($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="authors"></app-page-title>
+<app-table
+  [data]="authors"
+  [actions]="actions"
+  [entity]="'UserContextEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)"
+  (rowClicked)="rowClicked($event)">
+</app-table>

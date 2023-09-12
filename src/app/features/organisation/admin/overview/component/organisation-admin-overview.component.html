@@ -1,13 +1,11 @@
-<div class="main-admin">
-  <app-page-title titleLabel="organisations"></app-page-title>
-  <app-organisation-filter
-    (paramsUpdated)="updateParams($event)"></app-organisation-filter>
-  <app-table
-    [data]="organisations"
-    [actions]="actions"
-    [entity]="'OrganisationEntity'"
-    [columns]="columns"
-    (sortPaginate)="updateParams($event)"
-    (rowClicked)="rowClicked($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="organisations"></app-page-title>
+<app-organisation-filter
+  (paramsUpdated)="updateParams($event)"></app-organisation-filter>
+<app-table
+  [data]="organisations"
+  [actions]="actions"
+  [entity]="'OrganisationEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)"
+  (rowClicked)="rowClicked($event)">
+</app-table>

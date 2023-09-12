@@ -1,4 +1,5 @@
 import { createSelector } from '@ngrx/store';
+import { chartsDefaultColor } from '../../constants/analytics.constant';
 import { selectCoreState } from './selector';
 
 export const selectConfigurations = createSelector(
@@ -51,3 +52,16 @@ export const selectTheme = createSelector(
   selectCoreState,
   state => state?.currentTheme
 );
+
+export const selectChartDefaultColors = createSelector(
+  selectTheme,
+  theme => {
+    return theme
+      ? theme?.variables
+          ?.filter(variable =>
+          chartsDefaultColor.includes(variable?.value))
+          ?.map(variable => variable?.code as string)
+      : chartsDefaultColor.map(color => getComputedStyle(document.documentElement)
+          .getPropertyValue(color as string))
+  }
+)
