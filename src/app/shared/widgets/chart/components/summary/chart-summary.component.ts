@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { ChartAction } from '../../typings/chart-actions';
 
 @Component({
@@ -23,8 +24,16 @@ export class ChartSummaryComponent {
   public titleLabel?: string;
 
   @Input()
-  public value?: unknown;
+  public set summary(summary: Maybe<number>) {
+    if (summary) {
+      this.value = summary % 1 != 0 //only fixed if decimal
+        ? summary.toFixed(2)
+        : summary.toString();
+    }
+  }
 
   public backgroundColor?: string;
+
+  public value?: string;
 
 }

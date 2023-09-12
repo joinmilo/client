@@ -6,15 +6,29 @@
   <app-chart-summary *ngIf="(clicks | async) as statistics"
     [actions]="[clicksAction]"
     [color]="clicksColor"
-    [value]="statistics.sum"
+    [summary]="statistics.sum"
     titleLabel="totalClicks">
   </app-chart-summary>
 
   <app-chart-summary *ngIf="(impressions | async) as statistics"
-    [actions]="[impressionAction]"
+    [actions]="[impressionsAction]"
     [color]="impressionsColor"
-    [value]="statistics.sum"
+    [summary]="statistics.sum"
     titleLabel="totalImpressions">
+  </app-chart-summary>
+
+  <app-chart-summary *ngIf="(positions | async) as statistics"
+    [actions]="[positionsAction]"
+    [color]="positionsColor"
+    [summary]="statistics.average"
+    titleLabel="averagePosition">
+  </app-chart-summary>
+
+  <app-chart-summary *ngIf="(ctr | async) as statistics"
+    [actions]="[ctrAction]"
+    [color]="ctrColor"
+    [summary]="statistics.average"
+    titleLabel="averageCtr">
   </app-chart-summary>
 </section>
 
@@ -28,10 +42,26 @@
   </app-chart-bar-vertical>
 
   <app-chart-bar-vertical *ngIf="(impressions | async) as statistics"
-    [actions]="[impressionAction]"
+    [actions]="[impressionsAction]"
     [colors]="[impressionsColor]"
     [data]="statistics.series"
     [titleLabel]="impressionsKey"
     [yAxisLabel]="impressionsKey">
+  </app-chart-bar-vertical>
+
+  <app-chart-bar-vertical *ngIf="(positions | async) as statistics"
+    [actions]="[positionsAction]"
+    [colors]="[positionsColor]"
+    [data]="statistics.series"
+    [titleLabel]="positionsKey"
+    [yAxisLabel]="positionsKey">
+  </app-chart-bar-vertical>
+
+  <app-chart-bar-vertical *ngIf="(ctr | async) as statistics"
+    [actions]="[ctrAction]"
+    [colors]="[ctrColor]"
+    [data]="statistics.series"
+    [titleLabel]="ctrKey"
+    [yAxisLabel]="ctrKey">
   </app-chart-bar-vertical>
 </section>
