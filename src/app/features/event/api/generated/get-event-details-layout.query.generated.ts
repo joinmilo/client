@@ -1,10 +1,10 @@
 /* eslint-disable */
 import * as Types from '../../../../core/api/generated/schema';
 
-import { Injectable } from '@angular/core';
-import * as Apollo from 'apollo-angular';
 import { gql } from 'apollo-angular';
 import { LanguageFragmentDoc } from '../../../../core/api/generated/language.fragment.generated';
+import { Injectable } from '@angular/core';
+import * as Apollo from 'apollo-angular';
 export type GetEventDetailsLayoutQueryVariables = Types.Exact<{
   entity?: Types.InputMaybe<Types.EventEntityInput>;
 }>;

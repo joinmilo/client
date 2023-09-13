@@ -1,0 +1,11 @@
+<app-date-range-filter 
+(valueChanged)="updateParams(undefined ,$event, undefined)">
+</app-date-range-filter>
+
+<app-table 
+  [data]="comments"
+  [actions]="actions"
+  [entity]="'EventEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams(undefined, undefined, $event)">
+</app-table>

@@ -1,0 +1,41 @@
+import { createReducer, on } from '@ngrx/store';
+
+import { FilterSortPaginateInput, Maybe, PageableList_EventCommentEntity } from 'src/app/core/api/generated/schema';
+import { Period } from 'src/app/core/typings/period';
+import { EventAdminDetailsCommentsActions } from './event-admin-details-comments.actions';
+
+export interface EventAdminDetailsCommentsState {
+  comments?: PageableList_EventCommentEntity,
+  period: Period,
+  slug?: Maybe<string>,
+  params : FilterSortPaginateInput
+}
+
+export const initialState: EventAdminDetailsCommentsState = {
+  period: {
+    startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
+    endDate: new Date()
+  },
+  params:{
+  }
+};
+
+export const eventAdminDetailsCommentsReducer = createReducer(
+  initialState,
+
+  on(EventAdminDetailsCommentsActions.updateParams, (state, action): EventAdminDetailsCommentsState => (
+    { ...state, params: Object.assign({ ...state.params } || {}, action.params) }
+  )),
+
+  on(EventAdminDetailsCommentsActions.updateParams, (state, action): EventAdminDetailsCommentsState => (
+    { ...state, period: Object.assign({ ...state.period } || {}, action.period) }
+  )),
+
+  on(EventAdminDetailsCommentsActions.updateParams, (state, action): EventAdminDetailsCommentsState => (
+    { ...state, slug: action.slug }
+  )),
+
+  on(EventAdminDetailsCommentsActions.setComments, (state, action): EventAdminDetailsCommentsState => (
+    { ...state, comments: action.comments }
+  )),
+);

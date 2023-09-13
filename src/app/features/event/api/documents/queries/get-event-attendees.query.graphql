@@ -1,0 +1,24 @@
+query getEventAttendees($params: FilterSortPaginateInput) {
+  getEventAttendees(params: $params) {
+    result {
+      id
+      approved
+      userContext {
+        id
+        user {
+          id
+          firstName
+          lastName
+          email
+          }
+        }
+        configuration {
+          id
+          events {
+            id
+            slug
+          }
+        }
+    }
+  }
+}

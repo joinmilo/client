@@ -6,7 +6,7 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { EventEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
-import { commentsRoute, favoritesRoute, participantsRoute, ratingsRoute, searchRoute, visitorsRoute } from '../../../constants/event-admin-details.constants';
+import { attendeeRoute, commentsRoute, favoritesRoute, ratingsRoute, searchRoute, visitorsRoute } from '../../../constants/event-admin-details.constants';
 import { EventAdminDetailsLayoutActions } from '../state/event-admin-details-layout.actions';
 import { selectEventAdminDetailsLayout } from '../state/event-admin-details-layout.selectors';
 
@@ -56,7 +56,7 @@ export class EventAdminDetailsLayoutComponent implements OnInit, OnDestroy {
     {
       icon: ['fas', 'person-circle-check'],
       label: 'participants',
-      value: participantsRoute
+      value: attendeeRoute
     },
   ];
 

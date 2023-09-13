@@ -1,10 +1,10 @@
 /* eslint-disable */
 import * as Types from '../../../../core/api/generated/schema';
 
-import { Injectable } from '@angular/core';
-import * as Apollo from 'apollo-angular';
 import { gql } from 'apollo-angular';
 import { AnalyticsDtoFragmentDoc } from '../../../../core/api/generated/analytics.fragment.generated';
+import { Injectable } from '@angular/core';
+import * as Apollo from 'apollo-angular';
 export type GetEventDetailsSearchStatisticsQueryVariables = Types.Exact<{
   entity?: Types.InputMaybe<Types.EventEntityInput>;
   startDate?: Types.InputMaybe<Types.Scalars['OffsetDateTime']>;

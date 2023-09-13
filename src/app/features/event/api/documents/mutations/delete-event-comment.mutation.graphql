@@ -1,0 +1,3 @@
+mutation deleteEventComment($id: String) {
+  deleteEventComment(id: $id) 
+}
