@@ -30,6 +30,9 @@ export class DateRangeFilterComponent implements OnInit, OnChanges, OnDestroy {
   public disabled?: Maybe<boolean>;
 
   @Input()
+  public initValue?: Period;
+
+  @Input()
   public queryParam = true;
 
   @Input()
@@ -37,9 +40,6 @@ export class DateRangeFilterComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input()
   public queryParamEndKey = FilterQueryDefinition.endDate;
-
-  @Input()
-  public initValue?: Period;
 
   @Output()
   public valueChanged = new EventEmitter<Period>();
@@ -65,6 +65,7 @@ export class DateRangeFilterComponent implements OnInit, OnChanges, OnDestroy {
 
   public ngOnInit(): void {
     if (this.initValue) {
+      this.emitEvent = false;
       this.form.setValue({
         startDate: this.initValue.startDate,
         endDate: this.initValue.endDate

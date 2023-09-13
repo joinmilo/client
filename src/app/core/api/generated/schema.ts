@@ -11,7 +11,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  LocalDate: any;
   Long: any;
   Map_Integer_DoubleScalar: any;
   Map_String_StringScalar: any;
@@ -271,8 +270,9 @@ export type ArticleEntity = {
 
 
 export type ArticleEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['LocalDate']>;
-  startDate?: InputMaybe<Scalars['LocalDate']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  interval?: InputMaybe<IntervalFilter>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
 };
 
 export type ArticleEntityInput = {
@@ -1022,8 +1022,9 @@ export type EventEntityScheduleArgs = {
 
 
 export type EventEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['LocalDate']>;
-  startDate?: InputMaybe<Scalars['LocalDate']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  interval?: InputMaybe<IntervalFilter>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
 };
 
 export type EventEntityInput = {
@@ -1343,6 +1344,12 @@ export type InformationDto = {
   __typename?: 'InformationDto';
   version?: Maybe<Scalars['String']>;
 };
+
+export enum IntervalFilter {
+  CalendarWeeks = 'CALENDAR_WEEKS',
+  Daily = 'DAILY',
+  Monthly = 'MONTHLY'
+}
 
 export type LabelEntity = {
   __typename?: 'LabelEntity';
@@ -5061,8 +5068,9 @@ export type QueryGetRolesArgs = {
 /** Query root */
 export type QueryGetSearchStatisticsArgs = {
   dimension?: InputMaybe<SearchConsoleDimension>;
-  endDate?: InputMaybe<Scalars['LocalDate']>;
-  startDate?: InputMaybe<Scalars['LocalDate']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  filter?: InputMaybe<IntervalFilter>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
 };
 
 

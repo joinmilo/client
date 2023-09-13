@@ -4,7 +4,7 @@ import { attendeeRoute, commentsRoute, searchRoute, visitorsRoute } from './cons
 import { EventAdminDetailsAttendeeComponent } from './modules/attendee/components/event-admin-details-attendee.component';
 import { EventAdminDetailsCommentsComponent } from './modules/comments/components/event-admin-details-comments.component';
 import { EventAdminDetailsLandingComponent } from './modules/landing/components/event-admin-details-landing.component';
-import { EventAdminDetailsSearchComponent } from './modules/search/components/event-admin-details-search.component';
+import { EventAdminDetailsSearchComponent } from './modules/search/component/event-admin-details-search.component';
 import { EventAdminDetailsVisitorsComponent } from './modules/visitors/components/event-admin-details-visitors.component';
 
 const routes: Routes = [

@@ -23,7 +23,7 @@ body {
 .main-admin {
   max-width: calc(100% - var(--gap));
   min-height: calc(100vh - 3rem);
-  margin: var(--gap);
+  margin: var(--gap) var(--gap) 10rem var(--gap);
 }
 
 .menu-active {

@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'src/app/core/api/generated/schema';
+import { map, take } from 'rxjs';
+import { IntervalFilter, Maybe } from 'src/app/core/api/generated/schema';
 import { searchConosleClicksKey, searchConsoleCtrKey, searchConsoleImpressionsKey, searchConsolePositionsKey } from 'src/app/core/constants/analytics.constant';
+import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
 import { EventAdminDetailsSearchActions } from '../state/event-admin-details-search.actions';
 import { selectClicksStatistics, selectCtrStatistics, selectImpressionsStatistics, selectPositionsStatistics } from '../state/event-admin-details-search.selectors';
@@ -12,7 +15,7 @@ import { selectClicksStatistics, selectCtrStatistics, selectImpressionsStatistic
   templateUrl: './event-admin-details-search.component.html',
   styleUrls: ['./event-admin-details-search.component.scss']
 })
-export class EventAdminDetailsSearchComponent {
+export class EventAdminDetailsSearchComponent implements OnInit {
 
   public helpAction = {
     label: 'help',
@@ -48,17 +51,37 @@ export class EventAdminDetailsSearchComponent {
   }
 
   public initPeriod: Period = {
-    startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+    startDate: new Date(new Date().getFullYear(), 0, 1, 12),
     endDate: new Date()
   }
+
+  public initInterval = IntervalFilter.Monthly;
   
   constructor(
-    private store: Store) {
-      this.updateParams(this.initPeriod);
-    }
+    private activatedRoute: ActivatedRoute,
+    private store: Store) { }
+  
+  public ngOnInit(): void {
+    this.activatedRoute.parent?.params.pipe(
+      map(params => params[slug]),
+      take(1)
+    ).subscribe(slug => {
+      if (slug) {
+        this.store.dispatch(EventAdminDetailsSearchActions.init(
+          slug,
+          this.initPeriod,
+          this.initInterval,
+        ));
+      }
+    });
+  }
     
-  public updateParams($event: Period): void {
-    this.store.dispatch(EventAdminDetailsSearchActions.updateParams($event));
+  public updatePeriod($event: Period): void {
+    this.store.dispatch(EventAdminDetailsSearchActions.updatePeriod($event));
+  }
+
+  public updateInterval($event: IntervalFilter): void {
+    this.store.dispatch(EventAdminDetailsSearchActions.updateInterval($event));
   }
 
   private openHelp(statisicsKey: Maybe<string>): void {

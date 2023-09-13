@@ -1,8 +1,16 @@
-<app-date-range-filter
-  (valueChanged)="updateParams($event)"
-  [queryParam]="false"
-  [initValue]="initPeriod">
-</app-date-range-filter>
+<section class="filter">
+  <app-date-range-filter
+    [initValue]="initPeriod"
+    [queryParam]="false"
+    (valueChanged)="updatePeriod($event)">
+  </app-date-range-filter>
+
+  <app-interval-filter
+    [initValue]="initInterval"
+    [queryParam]="false"
+    (valueChanged)="updateInterval($event)">
+  </app-interval-filter>
+</section>
 
 <section class="summary">
   <app-chart-summary *ngIf="(clicks | async) as statistics"

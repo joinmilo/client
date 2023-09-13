@@ -10,6 +10,16 @@ export const selectSlug = createSelector(
   state => state.slug
 );
 
+export const selectPeriodParam = createSelector(
+  selectEventAdminDetailsSearchState,
+  state => state.periodParam
+);
+
+export const selectIntervalParam = createSelector(
+  selectEventAdminDetailsSearchState,
+  state => state.intrervalParam
+);
+
 export const selectSearchStatistics = createSelector(
   selectEventAdminDetailsSearchState,
   state => state.searchStatistics
