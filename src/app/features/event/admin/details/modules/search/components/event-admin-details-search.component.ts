@@ -46,9 +46,16 @@ export class EventAdminDetailsSearchComponent {
   public ctrAction = {
     ...this.helpAction, clicked: () => this.openHelp(this.ctrKey)
   }
+
+  public initPeriod: Period = {
+    startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+    endDate: new Date()
+  }
   
   constructor(
-    private store: Store) { }
+    private store: Store) {
+      this.updateParams(this.initPeriod);
+    }
     
   public updateParams($event: Period): void {
     this.store.dispatch(EventAdminDetailsSearchActions.updateParams($event));

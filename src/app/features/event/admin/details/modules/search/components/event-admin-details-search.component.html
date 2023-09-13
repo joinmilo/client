@@ -1,5 +1,7 @@
 <app-date-range-filter
-  (valueChanged)="updateParams($event)">
+  (valueChanged)="updateParams($event)"
+  [queryParam]="false"
+  [initValue]="initPeriod">
 </app-date-range-filter>
 
 <section class="summary">

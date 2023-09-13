@@ -30,10 +30,16 @@ export class DateRangeFilterComponent implements OnInit, OnChanges, OnDestroy {
   public disabled?: Maybe<boolean>;
 
   @Input()
+  public queryParam = true;
+
+  @Input()
   public queryParamStartKey = FilterQueryDefinition.startDate;
 
   @Input()
   public queryParamEndKey = FilterQueryDefinition.endDate;
+
+  @Input()
+  public initValue?: Period;
 
   @Output()
   public valueChanged = new EventEmitter<Period>();
@@ -58,7 +64,13 @@ export class DateRangeFilterComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public ngOnInit(): void {
-    (this.queryParamStartKey || this.queryParamEndKey) && this.activatedRoute.queryParams
+    if (this.initValue) {
+      this.form.setValue({
+        startDate: this.initValue.startDate,
+        endDate: this.initValue.endDate
+      });
+    } else if (this.queryParam) {
+      this.activatedRoute.queryParams
       .pipe(take(1))
       .subscribe(params => {
         this.form.setValue({
@@ -66,6 +78,7 @@ export class DateRangeFilterComponent implements OnInit, OnChanges, OnDestroy {
           endDate: new Date(params[this.queryParamEndKey] ?? '')
         });
       });
+    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -100,7 +113,7 @@ export class DateRangeFilterComponent implements OnInit, OnChanges, OnDestroy {
           endDate?.setHours(23, 59, 59, 999);
           this.form.value.startDate?.setHours(0, 0 , 0, 0);
           
-          if (this.queryParamStartKey || this.queryParamEndKey) {
+          if (this.queryParam) {
             this.router.navigate([], {
               queryParams: {
                 [this.queryParamStartKey]: this.form.value.startDate?.toISOString(),
