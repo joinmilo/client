@@ -3,7 +3,7 @@
   flex-flow: column;
   gap: var(--gap);
 
-  padding: 1rem;
+  padding: var(--gap) 1rem;
 }
 
 button {

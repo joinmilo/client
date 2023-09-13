@@ -13,6 +13,10 @@ mat-card {
     flex-flow: column;
     justify-content: space-between;
 
+    span {
+      white-space: nowrap;
+    }
+
     h2 {
       margin: 0;
     }
