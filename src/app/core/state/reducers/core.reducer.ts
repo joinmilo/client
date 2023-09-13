@@ -1,16 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppEntity, ConfigurationEntity, InformationDto, LanguageEntity, Maybe, SocialMediaEntity, ThemeEntity } from 'src/app/core/api/generated/schema';
+import { HelpComponent } from '../../components/help/help.component';
+import { Help } from '../../typings/help';
 import { Translatable } from '../../typings/translatable';
 import { CoreActions } from '../actions/core.actions';
 
 export interface CoreState {
   apps?: Maybe<AppEntity[]>,
+  asideComponent?: unknown,
   configurations?: ConfigurationEntity[]
   currentTheme?: Maybe<ThemeEntity>,
-  ongoingRequests: number,
+  help?: Help,
+  labels?: Map<string, Maybe<Translatable>[]>,
   language?: LanguageEntity,
   languages?: LanguageEntity[],
-  labels?: Map<string, Maybe<Translatable>[]>,
+  ongoingRequests: number,
   serverInfo?: Maybe<InformationDto>,
   socialMedia?: Maybe<SocialMediaEntity[]>,
   themes?: ThemeEntity[],
@@ -65,6 +69,21 @@ export const coreReducer = createReducer(
       currentTheme: action.themes?.find(theme => theme.isDefault),
       themes: action.themes
     }
+  )),
+
+  on(CoreActions.setHelp, (state, action): CoreState => (
+    { ...state,
+      help: action.help,
+      asideComponent: HelpComponent
+    }
+  )),
+
+  on(CoreActions.setAsideComponent, (state, action): CoreState => (
+    { ...state, asideComponent: action.component }
+  )),
+
+  on(CoreActions.removeAsideComponent, (state): CoreState => (
+    { ...state, asideComponent: undefined }
   )),
 
   on(CoreActions.addRequest, (state): CoreState => (

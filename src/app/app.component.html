@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<mat-drawer-container>
+  <mat-drawer mode="over"
+      position="end" 
+      (closed)="removeAside()">
+    <app-aside></app-aside>
+  </mat-drawer>
+
+  <router-outlet></router-outlet>
+
+</mat-drawer-container>

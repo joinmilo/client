@@ -2,6 +2,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -33,12 +34,21 @@ const framework = [
 
 const libs = [
   GraphQLModule,
-  StoreModule.forRoot({}, {}),
-  EffectsModule.forRoot([]),
   StoreDevtoolsModule.instrument({
     logOnly: environment.production,
     autoPause: true,
   }),
+  StoreModule.forRoot({}, {
+    runtimeChecks: {
+      strictActionImmutability: false,
+      strictActionSerializability: false,
+      strictActionTypeUniqueness: false,
+      strictActionWithinNgZone: false,
+      strictStateImmutability: false,
+      strictStateSerializability: false,
+    }
+  }),
+  EffectsModule.forRoot([]),
   //TODO: https://github.com/swimlane/ngx-charts/issues/1733
   NgxChartsModule
 ];
@@ -48,6 +58,8 @@ const libs = [
 const materials = [
   MatAutocompleteModule,
   MatMenuModule,
+
+  MatSidenavModule,
 ];
 
 const modules = [

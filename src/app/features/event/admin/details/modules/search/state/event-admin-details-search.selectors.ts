@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { searchConosleClicksKey, searchConsoleCtrKey, searchConsoleImpressionsKey, searchConsolePositionsKey } from 'src/app/core/constants/analytics.constant';
+import { searchConsoleClicksKey, searchConsoleCtrKey, searchConsoleImpressionsKey, searchConsolePositionsKey } from 'src/app/core/constants/analytics.constant';
 import { eventAdminDetailsSearchStateKey } from '../constants/event-admin-details-search.constants';
 import { EventAdminDetailsSearchState } from './event-admin-details-search.reducer';
 
@@ -28,7 +28,7 @@ export const selectSearchStatistics = createSelector(
 export const selectClicksStatistics = createSelector(
   selectSearchStatistics,
   statistics => statistics
-    ?.filter(statistic => statistic.name === searchConosleClicksKey)
+    ?.filter(statistic => statistic.name === searchConsoleClicksKey)
     ?.[0]
 );
 

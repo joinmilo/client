@@ -4,8 +4,10 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
 import { map, take } from 'rxjs';
 import { IntervalFilter, Maybe } from 'src/app/core/api/generated/schema';
-import { searchConosleClicksKey, searchConsoleCtrKey, searchConsoleImpressionsKey, searchConsolePositionsKey } from 'src/app/core/constants/analytics.constant';
+import { searchConsoleClicksKey, searchConsoleCtrKey, searchConsoleImpressionsKey, searchConsolePositionsKey } from 'src/app/core/constants/analytics.constant';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { CoreActions } from 'src/app/core/state/actions/core.actions';
+import { Help } from 'src/app/core/typings/help';
 import { Period } from 'src/app/core/typings/period';
 import { EventAdminDetailsSearchActions } from '../state/event-admin-details-search.actions';
 import { selectClicksStatistics, selectCtrStatistics, selectImpressionsStatistics, selectPositionsStatistics } from '../state/event-admin-details-search.selectors';
@@ -24,7 +26,7 @@ export class EventAdminDetailsSearchComponent implements OnInit {
   
   public clicks = this.store.select(selectClicksStatistics);
   public clicksColor = '--color-primary-200';
-  public clicksKey = searchConosleClicksKey;
+  public clicksKey = searchConsoleClicksKey;
   public clicksAction = {
     ...this.helpAction, clicked: () => this.openHelp(this.clicksKey) 
   };
@@ -53,7 +55,7 @@ export class EventAdminDetailsSearchComponent implements OnInit {
   public initPeriod: Period = {
     startDate: new Date(new Date().getFullYear(), 0, 1, 12),
     endDate: new Date()
-  }
+  };
 
   public initInterval = IntervalFilter.Monthly;
   
@@ -85,7 +87,36 @@ export class EventAdminDetailsSearchComponent implements OnInit {
   }
 
   private openHelp(statisicsKey: Maybe<string>): void {
-    console.log(statisicsKey);
+    switch(statisicsKey) {
+      case searchConsoleClicksKey:
+        this.dispatch({
+          titleLabel: 'clicksHelpTitle',
+          contentLabel: 'clicksHelpDescription'
+        });
+        break;
+      case searchConsoleImpressionsKey:
+        this.dispatch({
+          titleLabel: 'impressionsHelpTitle',
+          contentLabel: 'impressionsHelpDescription'
+        });
+        break;
+      case searchConsolePositionsKey:
+        this.dispatch({
+          titleLabel: 'positionsHelpTitle',
+          contentLabel: 'positionsHelpDescription'
+        });
+        break;
+      case searchConsoleCtrKey:
+        this.dispatch({
+          titleLabel: 'ctrHelpTitle',
+          contentLabel: 'ctrHelpDescription'
+        });
+        break;
+    }
+  }
+
+  private dispatch(help: Help): void {
+    this.store.dispatch(CoreActions.setHelp(help));
   }
 
 }

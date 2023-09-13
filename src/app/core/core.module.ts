@@ -15,10 +15,13 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { AsideComponent } from './components/aside/aside.component';
 import { CookieComponent } from './components/cookie/cookie.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { HelpComponent } from './components/help/help.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { appStateKey } from './constants/core.constants';
+import { AsideDirective } from './directives/aside.directive';
 import { HtmlDirective } from './directives/html.directive';
 import { LabelDirective } from './directives/label.directive';
 import { TooltipDirective } from './directives/tooltip.directive';
@@ -33,12 +36,15 @@ import { CoreEffects } from './state/effects/core.effects';
 import { appReducers, localStorageMetaReducer } from './state/reducers/reducer';
 
 const components = [
+  AsideComponent,
   CookieComponent,
   FeedbackComponent,
+  HelpComponent,
   LogoComponent,
 ];
 
 const directives = [
+  AsideDirective,
   LabelDirective,
   HtmlDirective,
   TooltipDirective,

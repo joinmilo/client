@@ -13,9 +13,19 @@ export const selectConfiguration = (code: string) =>
     configurations => configurations?.find(c => c?.code === code)
   );
 
+export const selectAsideComponent = createSelector(
+  selectCoreState,
+  state => state.asideComponent
+);
+
 export const selectApps = createSelector(
   selectCoreState,
   state => state.apps
+);
+
+export const selectHelp = createSelector(
+  selectCoreState,
+  state => state.help
 );
 
 export const selectIsLoading = createSelector(

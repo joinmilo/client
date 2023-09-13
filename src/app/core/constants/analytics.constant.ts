@@ -9,7 +9,7 @@ export const chartsDefaultColor: Maybe<string>[] = [
   '--color-accent-800',
 ];
 
-export const searchConosleClicksKey = 'clicks';
+export const searchConsoleClicksKey = 'clicks';
 export const searchConsoleImpressionsKey = 'impressions';
 export const searchConsolePositionsKey = 'position';
 export const searchConsoleCtrKey = 'ctr';
