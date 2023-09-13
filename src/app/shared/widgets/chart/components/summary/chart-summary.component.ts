@@ -32,6 +32,9 @@ export class ChartSummaryComponent {
     }
   }
 
+  @Input()
+  public unit?: string;
+
   public backgroundColor?: string;
 
   public value?: string;
