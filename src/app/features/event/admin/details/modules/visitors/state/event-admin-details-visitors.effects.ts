@@ -15,8 +15,6 @@ export class EventAdminDetailsVisitorsEffects {
       entity: {
         slug: action.slug,
       },
-      startDate: action.period?.startDate,
-      endDate: action.period?.endDate
     }).valueChanges),
     map(response => response.data.getEvent?.id
       ? EventAdminDetailsVisitorsActions.setDetails(response.data.getEvent as EventEntity)
