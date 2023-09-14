@@ -1,0 +1,14 @@
+query getSurveyDetailsLayout($entity: SurveyEntityInput) {
+  getSurvey(entity: $entity) {
+    id
+    slug
+    translatables {
+      id
+      name
+      description
+      language {
+        ...Language
+      }
+    }
+  }
+}

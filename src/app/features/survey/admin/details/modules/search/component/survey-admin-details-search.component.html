@@ -1,0 +1,78 @@
+<section class="filter">
+  <app-date-range-filter
+    [initValue]="initPeriod"
+    [queryParam]="false"
+    (valueChanged)="updatePeriod($event)">
+  </app-date-range-filter>
+
+  <app-interval-filter
+    [initValue]="initInterval"
+    [queryParam]="false"
+    (valueChanged)="updateInterval($event)">
+  </app-interval-filter>
+</section>
+
+<section class="summary">
+  <app-chart-summary *ngIf="(clicks | async) as statistics"
+    [actions]="[clicksAction]"
+    [color]="clicksColor"
+    [summary]="statistics.sum"
+    titleLabel="totalClicks">
+  </app-chart-summary>
+
+  <app-chart-summary *ngIf="(impressions | async) as statistics"
+    [actions]="[impressionsAction]"
+    [color]="impressionsColor"
+    [summary]="statistics.sum"
+    titleLabel="totalImpressions">
+  </app-chart-summary>
+
+  <app-chart-summary *ngIf="(ctr | async) as statistics"
+    [actions]="[ctrAction]"
+    [color]="ctrColor"
+    [summary]="statistics.average"
+    unit="%"
+    titleLabel="averageCtr">
+  </app-chart-summary>
+
+  <app-chart-summary *ngIf="(positions | async) as statistics"
+    [actions]="[positionsAction]"
+    [color]="positionsColor"
+    [summary]="statistics.average"
+    titleLabel="averagePosition">
+  </app-chart-summary>
+</section>
+
+<section class="charts">
+  <app-chart-bar-vertical *ngIf="(clicks | async) as statistics"
+    [actions]="[clicksAction]"
+    [colors]="[clicksColor]"
+    [data]="statistics.series"
+    [titleLabel]="clicksKey"
+    [yAxisLabel]="clicksKey">
+  </app-chart-bar-vertical>
+
+  <app-chart-bar-vertical *ngIf="(impressions | async) as statistics"
+    [actions]="[impressionsAction]"
+    [colors]="[impressionsColor]"
+    [data]="statistics.series"
+    [titleLabel]="impressionsKey"
+    [yAxisLabel]="impressionsKey">
+  </app-chart-bar-vertical>
+
+  <app-chart-bar-vertical *ngIf="(ctr | async) as statistics"
+    [actions]="[ctrAction]"
+    [colors]="[ctrColor]"
+    [data]="statistics.series"
+    [titleLabel]="ctrKey"
+    [yAxisLabel]="ctrKey">
+  </app-chart-bar-vertical>
+
+  <app-chart-bar-vertical *ngIf="(positions | async) as statistics"
+    [actions]="[positionsAction]"
+    [colors]="[positionsColor]"
+    [data]="statistics.series"
+    [titleLabel]="positionsKey"
+    [yAxisLabel]="positionsKey">
+  </app-chart-bar-vertical>
+</section>

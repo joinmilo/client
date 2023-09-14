@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
+import { DealAdminDetailsLayoutComponent } from './details/modules/layout/components/deal-admin-details-layout.component';
 
 const menuRoutes: Routes = [
   {
@@ -20,6 +22,12 @@ const menuRoutes: Routes = [
 ];
 
 const routes: Routes = [
+  {
+    path: `${dealsFeatureKey}/:${slug}`,
+    loadChildren: () => import('src/app/features/deal/admin/details/deal-admin-details.module')
+      .then((imported) => imported.DealAdminDetailsModule),
+    component: DealAdminDetailsLayoutComponent
+  },
 ]
 
 @NgModule({
