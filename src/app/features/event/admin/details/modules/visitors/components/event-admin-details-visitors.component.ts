@@ -1,14 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { EventEntity } from 'src/app/core/api/generated/schema';
+import { Subject, takeUntil } from 'rxjs';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { EventAdminDetailsLandingActions } from '../../landing/state/event-admin-details-landing.actions';
-import { selectEventAdminDetailsLanding } from '../../landing/state/event-admin-details-landing.selectors';
-
-
+import { Period } from 'src/app/core/typings/period';
+import { EventAdminDetailsVisitorsActions } from '../state/event-admin-details-visitors.actions';
+import { selectVisitorAnalytics } from '../state/event-admin-details-visitors.selectors';
+import { visitorsKey } from './../../../../../../../core/constants/analytics.constant';
 
 @Component({
   selector: 'app-event-admin-details-visitors',
@@ -17,23 +17,50 @@ import { selectEventAdminDetailsLanding } from '../../landing/state/event-admin-
 })
 export class EventAdminDetailsVisitorsComponent implements OnInit, OnDestroy {
 
-  public event?: Maybe<EventEntity>;
-
   private destroy = new Subject<void>();
+
+  public slug?: Maybe<string>;
+
+  public helpAction = {
+    label: 'help',
+    icon: ['far', 'circle-question'] as IconProp,
+  };
+
+  public visitorsAnalytics = this.store.select(selectVisitorAnalytics);
+  public visitorColor = '--color-primary-200';
+  public visitorKey = visitorsKey;
+  public clicksAction = {
+    ...this.helpAction, clicked: () => this.openHelp(this.visitorKey)
+  };
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store) { }
 
   public ngOnInit(): void {
-    this.activatedRoute.parent?.params.pipe(
-      tap(params => this.store.dispatch(EventAdminDetailsLandingActions.getDetails(params[slug] || ''))),
-      switchMap(() => this.store.select(selectEventAdminDetailsLanding)),
-      takeUntil(this.destroy)
-    ).subscribe(event => {
-      this.event = event;
-    });
+    this.activatedRoute.parent?.params.pipe(takeUntil(this.destroy)).subscribe(params => {
+      this.slug = params[slug],
+        this.updateParams(
+          params[slug],
+          this.initPeriod
+          )
+    }
+    )
   }
+
+  private openHelp(statisicsKey: Maybe<string>): void {
+    console.log(statisicsKey);
+  }
+
+  public initPeriod: Period = {
+    startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+    endDate: new Date()
+  }
+
+  public updateParams(slug: Maybe<string>, period: Period) {
+    this.store.dispatch(EventAdminDetailsVisitorsActions.updateParams(this.slug ?? slug, period));
+  }
+
 
   ngOnDestroy(): void {
     this.destroy.next();

@@ -6,18 +6,13 @@ import { EventAdminDetailsCommentsActions } from './event-admin-details-comments
 
 export interface EventAdminDetailsCommentsState {
   comments?: PageableList_EventCommentEntity,
-  period: Period,
+  period?: Period,
   slug?: Maybe<string>,
   params : FilterSortPaginateInput
 }
 
 export const initialState: EventAdminDetailsCommentsState = {
-  period: {
-    startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
-    endDate: new Date()
-  },
-  params:{
-  }
+  params:{}
 };
 
 export const eventAdminDetailsCommentsReducer = createReducer(

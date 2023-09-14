@@ -7,12 +7,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
+import { ChartModule } from 'src/app/shared/widgets/chart/chart.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsVisitorsComponent } from './components/event-admin-details-visitors.component';
 import { eventAdminDetailsVisitorsStateKey } from './constants/event-admin-details-visitors.constants';
@@ -43,6 +45,8 @@ const modules = [
   AddressPieceComponent,
   PhonePieceComponent,
   MailPieceComponent,
+  ChartModule,
+  DateRangeFilterComponent
 ];
 
 const libs = [

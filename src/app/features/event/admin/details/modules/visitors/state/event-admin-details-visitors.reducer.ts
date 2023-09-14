@@ -1,11 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { EventEntity, EventScheduleEntity, Maybe } from 'src/app/core/api/generated/schema';
+import { AnalyticsDto, Maybe } from 'src/app/core/api/generated/schema';
 import { EventAdminDetailsVisitorsActions } from './event-admin-details-visitors.actions';
 
 export interface EventAdminDetailsVisitorsState {
-  details?: Maybe<EventEntity>;
-  schedules?: Maybe<EventScheduleEntity[]>;
+  visitorAnalytics?: Maybe<AnalyticsDto>;
 }
 
 export const initialState: EventAdminDetailsVisitorsState = {
@@ -14,9 +13,11 @@ export const initialState: EventAdminDetailsVisitorsState = {
 export const eventAdminDetailsVisitorsReducer = createReducer(
   initialState,
 
-  on(
-    EventAdminDetailsVisitorsActions.setDetails,
+  on(EventAdminDetailsVisitorsActions.setDetails,
     (state, action): EventAdminDetailsVisitorsState => ({
-      ...state, details: action.event
+      ...state, visitorAnalytics: action.event?.visitorAnalytics
     })),
 );
+
+
+

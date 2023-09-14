@@ -4,7 +4,7 @@ import { EventAdminDetailsVisitorsState } from './event-admin-details-visitors.r
 
 export const selectEventAdminDetailsVisitorsState = createFeatureSelector<EventAdminDetailsVisitorsState>(eventAdminDetailsVisitorsStateKey);
 
-export const selectEventAdminDetailsVisitors = createSelector(
+export const selectVisitorAnalytics = createSelector(
   selectEventAdminDetailsVisitorsState,
-  state => state.details
+  state => state.visitorAnalytics
 );

@@ -70,7 +70,12 @@ export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.activatedRoute.parent?.params.pipe(takeUntil(this.destroy)).subscribe(params => {
       this.slug = params[slug],
-        this.updateParams(params[slug])
+        this.updateParams(
+          params[slug],
+          {
+            startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
+            endDate: new Date()
+          },)
     }
     )
   }
@@ -79,6 +84,11 @@ export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
     this.store.dispatch(EventAdminDetailsCommentsActions.updateParams(this.slug ?? slug, period, params));
   }
 
+  public initPeriod: Period = {
+    startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+    endDate: new Date()
+  }
+  
   ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();

@@ -1,0 +1,11 @@
+query getEventDetailsVisitor(
+  $entity: EventEntityInput) {
+    getEvent(entity: $entity) {
+      id
+      visitorAnalytics(
+      startDate: $startDate,
+      endDate: $endDate){
+        ...AnalyticsDto
+      }
+    }
+}

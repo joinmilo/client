@@ -1012,6 +1012,7 @@ export type EventEntity = {
   uploads?: Maybe<Array<Maybe<EventMediaEntity>>>;
   videoChatLink?: Maybe<Scalars['String']>;
   visitors?: Maybe<Array<Maybe<EventVisitorEntity>>>;
+  visitorAnalytics?: Maybe<AnalyticsDto>;
 };
 
 

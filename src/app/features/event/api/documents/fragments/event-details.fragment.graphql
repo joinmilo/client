@@ -70,5 +70,4 @@ fragment EventDetails on EventEntity {
       ...Media
     }
   }
-
 }
