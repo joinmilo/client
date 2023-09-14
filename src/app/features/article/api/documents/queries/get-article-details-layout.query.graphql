@@ -1,0 +1,15 @@
+query getArticleDetailsLayout($entity: ArticleEntityInput) {
+  getArticle(entity: $entity) {
+    id
+    slug
+    translatables {
+      id
+      name
+      content
+      shortDescription
+      language {
+        ...Language
+      }
+    }
+  }
+}

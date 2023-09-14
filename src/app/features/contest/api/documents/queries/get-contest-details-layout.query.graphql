@@ -1,0 +1,15 @@
+query getContestDetailsLayout($entity: ContestEntityInput) {
+  getContest(entity: $entity) {
+    id
+    slug
+    translatables {
+      id
+      name
+      content
+      shortDescription
+      language {
+        ...Language
+      }
+    }
+  }
+}

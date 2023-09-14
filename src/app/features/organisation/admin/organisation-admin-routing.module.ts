@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { organisationsFeatureKey } from 'src/app/core/constants/feature.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
+import { OrganisationAdminDetailsLayoutComponent } from './details/modules/layout/components/organisation-admin-details-layout.component';
 
 const menuRoutes: Routes = [
   {
@@ -20,6 +22,12 @@ const menuRoutes: Routes = [
 ];
 
 const routes: Routes = [
+  {
+    path: `${organisationsFeatureKey}/:${slug}`,
+    loadChildren: () => import('src/app/features/organisation/admin/details/organisation-admin-details.module')
+      .then((imported) => imported.OrganisationAdminDetailsModule),
+    component: OrganisationAdminDetailsLayoutComponent
+  },
 ]
 
 @NgModule({

@@ -1,0 +1,3 @@
+mutation deleteContestComment($id: String) {
+  deleteContestComment(id: $id) 
+}

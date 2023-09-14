@@ -1,0 +1,16 @@
+query getContestDetailsSearchStatistics(
+  $entity: ContestEntityInput,
+  $startDate: OffsetDateTime,
+  $endDate: OffsetDateTime,
+  $interval: IntervalFilter) {
+  getContest(entity: $entity) {
+    id
+    searchStatistics(
+      startDate: $startDate,
+      endDate: $endDate,
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

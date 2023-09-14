@@ -1,0 +1,15 @@
+<app-page-title [title]="organisation?.name">
+</app-page-title>
+
+<button mat-flat-button color="primary">
+  <fa-icon size="1x" [icon]="['fas', 'pen-to-square']"></fa-icon>
+  <span appLabel="editOrganisation"></span>
+</button>
+
+<app-radio-card-group
+  [value]="initValue"
+  [inputs]="inputs"
+  (valueChanged)="route($event)">
+</app-radio-card-group>
+
+<router-outlet></router-outlet>

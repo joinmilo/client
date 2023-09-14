@@ -1,0 +1,26 @@
+query getContestParticipations($params: FilterSortPaginateInput) {
+  getContestParticipations(params: $params) {
+    result {
+      id
+      winner
+      userContext {
+        id
+        user {
+          id
+          firstName
+          lastName
+          email
+          }
+        }
+      contest {
+         id
+      }
+      mediaSubmissions {
+        id
+        media {
+          ...Media
+        }
+      }
+    }
+  }
+}

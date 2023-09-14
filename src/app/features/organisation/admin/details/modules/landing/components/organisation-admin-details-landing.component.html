@@ -1,0 +1,43 @@
+<section>
+  <div class="media-container">
+    <section class="border-box">
+      <app-details-title titleLabel="media" [link]="['./edit']"
+        linkIcon="pen-to-square">
+      </app-details-title>
+      <app-media-slider *ngIf="media && media.length"
+        [media]="media" titleType="NONE"></app-media-slider>
+    </section>
+  </div>
+
+  <div>
+    <section class="border-box">
+      <app-details-title titleLabel="description"
+        [link]="['./edit']" linkIcon="pen-to-square">
+      </app-details-title>
+      <p #contentParagraph
+        [innerHtml]="organisation | translatable : 'description' | async"></p>
+      <a
+        *ngIf="expanded"
+        mat-button (click)="toggleShowMore()"
+        appLabel="showLess"></a>
+      <a
+        *ngIf="contentParagraph.scrollHeight > contentParagraph.clientHeight"
+        mat-button (click)="toggleShowMore()"
+        appLabel="showMore"></a>
+    </section>
+  </div>
+
+  <div>
+    <section class="border-box">
+      <app-details-title titleLabel="contactData"
+        [link]="['./edit']" linkIcon="pen-to-square">
+      </app-details-title>
+      <app-address-piece [address]="organisation?.address">
+      </app-address-piece>
+      <app-phone-piece [phone]="organisation?.contact?.phone">
+      </app-phone-piece>
+      <app-mail-piece [mail]="organisation?.contact?.email">
+      </app-mail-piece>
+    </section>
+  </div>
+</section>
