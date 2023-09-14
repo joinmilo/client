@@ -7,16 +7,19 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type GetEventDetailsVisitorQueryVariables = Types.Exact<{
   entity?: Types.InputMaybe<Types.EventEntityInput>;
+  startDate?: Types.InputMaybe<Types.Scalars['OffsetDateTime']>;
+  endDate?: Types.InputMaybe<Types.Scalars['OffsetDateTime']>;
+  interval?: Types.InputMaybe<Types.IntervalFilter>;
 }>;
 
 
-export type GetEventDetailsVisitorQuery = { __typename?: 'Query', getEvent?: { __typename?: 'EventEntity', id?: string | null, visitorAnalytics?: { __typename?: 'AnalyticsDto', average?: number | null, name?: string | null, sum?: number | null, series?: Array<{ __typename?: 'AnalyticsEntry', name?: string | null, value?: number | null } | null> | null } | null } | null };
+export type GetEventDetailsVisitorQuery = { __typename?: 'Query', getEvent?: { __typename?: 'EventEntity', id?: string | null, visitorStatistics?: Array<{ __typename?: 'AnalyticsDto', average?: number | null, name?: string | null, sum?: number | null, series?: Array<{ __typename?: 'AnalyticsEntry', name?: string | null, value?: number | null } | null> | null } | null> | null } | null };
 
 export const GetEventDetailsVisitorDocument = gql`
-    query getEventDetailsVisitor($entity: EventEntityInput) {
+    query getEventDetailsVisitor($entity: EventEntityInput, $startDate: OffsetDateTime, $endDate: OffsetDateTime, $interval: IntervalFilter) {
   getEvent(entity: $entity) {
     id
-    visitorAnalytics(startDate: $startDate, endDate: $endDate) {
+    visitorStatistics(startDate: $startDate, endDate: $endDate, interval: $interval) {
       ...AnalyticsDto
     }
   }

@@ -7,9 +7,9 @@ import { EventAdminDetailsSearchActions } from './event-admin-details-search.act
 export interface EventAdminDetailsSearchState {
   slug?: Maybe<string>;
   periodParam?: Period,
-  intrervalParam?: IntervalFilter,
+  intervalParam?: IntervalFilter,
 
-  searchStatistics?: Maybe<AnalyticsDto[]>;
+  statistics?: Maybe<AnalyticsDto[]>;
 }
 
 export const initialState: EventAdminDetailsSearchState = {
@@ -22,7 +22,7 @@ export const eventAdminDetailsSearchReducer = createReducer(
     { ...state,
       slug: action.slug,
       periodParam: action.period,
-      intrervalParam: action.interval
+      intervalParam: action.interval
     }
   )),
 
@@ -31,11 +31,11 @@ export const eventAdminDetailsSearchReducer = createReducer(
   )),
 
   on(EventAdminDetailsSearchActions.updateInterval, (state, action): EventAdminDetailsSearchState => (
-    { ...state, intrervalParam: action.interval }
+    { ...state, intervalParam: action.interval }
   )),
 
-  on(EventAdminDetailsSearchActions.setSearchStatistics, (state, action): EventAdminDetailsSearchState => (
-    { ...state, searchStatistics: action.result }
+  on(EventAdminDetailsSearchActions.setStatistics, (state, action): EventAdminDetailsSearchState => (
+    { ...state, statistics: action.result }
   )),
 
 );

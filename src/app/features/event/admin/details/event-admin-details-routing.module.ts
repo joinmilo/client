@@ -5,7 +5,7 @@ import { EventAdminDetailsAttendeeComponent } from './modules/attendee/component
 import { EventAdminDetailsCommentsComponent } from './modules/comments/components/event-admin-details-comments.component';
 import { EventAdminDetailsLandingComponent } from './modules/landing/components/event-admin-details-landing.component';
 import { EventAdminDetailsSearchComponent } from './modules/search/component/event-admin-details-search.component';
-import { EventAdminDetailsVisitorsComponent } from './modules/visitors/components/event-admin-details-visitors.component';
+import { EventAdminDetailsVisitorsComponent } from './modules/visitors/component/event-admin-details-visitors.component';
 
 const routes: Routes = [
   {

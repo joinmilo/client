@@ -1,8 +1,8 @@
 query getEventDetailsSearchStatistics(
-  $entity: EventEntityInput,
-  $startDate: OffsetDateTime,
-  $endDate: OffsetDateTime,
-  $interval: IntervalFilter) {
+    $entity: EventEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
   getEvent(entity: $entity) {
     id
     searchStatistics(

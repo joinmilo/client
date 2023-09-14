@@ -17,12 +17,12 @@ export const selectPeriodParam = createSelector(
 
 export const selectIntervalParam = createSelector(
   selectEventAdminDetailsSearchState,
-  state => state.intrervalParam
+  state => state.intervalParam
 );
 
 export const selectSearchStatistics = createSelector(
   selectEventAdminDetailsSearchState,
-  state => state.searchStatistics
+  state => state.statistics
 );
 
 export const selectClicksStatistics = createSelector(

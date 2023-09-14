@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs';
@@ -30,13 +29,12 @@ export class EventAdminDetailsSearchEffects {
       interval: interval,
     }).valueChanges),
     map(response => response.data.getEvent?.id
-      ? EventAdminDetailsSearchActions.setSearchStatistics(response.data.getEvent.searchStatistics as AnalyticsDto[])
+      ? EventAdminDetailsSearchActions.setStatistics(response.data.getEvent.searchStatistics as AnalyticsDto[])
       : AdminActions.notFound())
   ));
 
   constructor(
     private actions: Actions,
-    private activatedRoute: ActivatedRoute,
     private store: Store,
     private getSearchStatisticsService: GetEventDetailsSearchStatisticsGQL,
   ) {}

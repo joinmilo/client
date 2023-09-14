@@ -11,6 +11,6 @@ export const EventAdminDetailsSearchActions = createActionGroup({
       interval: IntervalFilter) => ({ slug, period, interval }),
     'update period': (period: Period) => ({ period }),
     'update interval': (interval: IntervalFilter) => ({ interval }),
-    'set search statistics': (result?: AnalyticsDto[]) => ({ result })
+    'set statistics': (result?: AnalyticsDto[]) => ({ result })
   }
 });

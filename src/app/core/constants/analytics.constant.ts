@@ -9,13 +9,13 @@ export const chartsDefaultColor: Maybe<string>[] = [
   '--color-accent-800',
 ];
 
-// GOOGLESEARCH
+// Search Console
 
 export const searchConsoleClicksKey = 'clicks';
 export const searchConsoleImpressionsKey = 'impressions';
 export const searchConsolePositionsKey = 'position';
 export const searchConsoleCtrKey = 'ctr';
 
-// VISITORS
-
-export const visitorsKey = 'visits'
+// Visitables
+export const visitorsKey = 'visitors';
+export const visitsKey = 'visits';

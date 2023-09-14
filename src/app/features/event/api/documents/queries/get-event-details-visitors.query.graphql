@@ -1,11 +1,16 @@
 query getEventDetailsVisitor(
-  $entity: EventEntityInput) {
-    getEvent(entity: $entity) {
-      id
-      visitorAnalytics(
-      startDate: $startDate,
-      endDate: $endDate){
-        ...AnalyticsDto
-      }
+    $entity: EventEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getEvent(entity: $entity) {
+    id
+    visitorStatistics(
+      startDate: $startDate
+      endDate: $endDate
+      interval: $interval
+    ) {
+      ...AnalyticsDto
     }
+  }
 }

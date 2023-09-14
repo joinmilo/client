@@ -1,0 +1,47 @@
+<section class="filter">
+  <app-date-range-filter
+    [initValue]="initPeriod"
+    [queryParam]="false"
+    (valueChanged)="updatePeriod($event)">
+  </app-date-range-filter>
+
+  <app-interval-filter
+    [initValue]="initInterval"
+    [queryParam]="false"
+    (valueChanged)="updateInterval($event)">
+  </app-interval-filter>
+</section>
+
+<section class="summary">
+  <app-chart-summary *ngIf="(visits | async) as statistics"
+    [actions]="[visitsAction]"
+    [color]="visitsColor"
+    [summary]="statistics.sum"
+    titleLabel="totalVisits">
+  </app-chart-summary>
+
+  <app-chart-summary *ngIf="(visitors | async) as statistics"
+    [actions]="[visitorsAction]"
+    [color]="visitorsColor"
+    [summary]="statistics.sum"
+    titleLabel="totalVisitors">
+  </app-chart-summary>
+</section>
+
+<section class="charts">
+  <app-chart-bar-vertical *ngIf="(visits | async) as statistics"
+    [actions]="[visitsAction]"
+    [colors]="[visitsColor]"
+    [data]="statistics.series"
+    [titleLabel]="visitsKey"
+    [yAxisLabel]="visitsKey">
+  </app-chart-bar-vertical>
+
+  <app-chart-bar-vertical *ngIf="(visitors | async) as statistics"
+    [actions]="[visitorsAction]"
+    [colors]="[visitorsColor]"
+    [data]="statistics.series"
+    [titleLabel]="visitorsKey"
+    [yAxisLabel]="visitorsKey">
+  </app-chart-bar-vertical>
+</section>
