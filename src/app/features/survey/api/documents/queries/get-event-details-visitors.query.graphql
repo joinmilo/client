@@ -1,0 +1,16 @@
+query getSurveyDetailsVisitor(
+    $entity: SurveyEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getSurvey(entity: $entity) {
+    id
+    visitorStatistics(
+      startDate: $startDate
+      endDate: $endDate
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

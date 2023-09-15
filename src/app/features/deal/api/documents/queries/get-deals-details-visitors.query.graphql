@@ -1,0 +1,16 @@
+query getDealDetailsVisitor(
+    $entity: DealEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getDeal(entity: $entity) {
+    id
+    visitorStatistics(
+      startDate: $startDate
+      endDate: $endDate
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

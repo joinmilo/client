@@ -1,0 +1,14 @@
+query getOrganisationDetailsLayout($entity: OrganisationEntityInput) {
+  getOrganisation(entity: $entity) {
+    id
+    slug
+    name
+    translatables {
+      id
+      description
+      language {
+        ...Language
+      }
+    }
+  }
+}

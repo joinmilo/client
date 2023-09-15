@@ -1,0 +1,16 @@
+query getArticleDetailsVisitor(
+    $entity: ArticleEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getArticle(entity: $entity) {
+    id
+    visitorStatistics(
+      startDate: $startDate
+      endDate: $endDate
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

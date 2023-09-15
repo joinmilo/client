@@ -1,0 +1,16 @@
+query getArticleDetailsSearchStatistics(
+  $entity: ArticleEntityInput,
+  $startDate: OffsetDateTime,
+  $endDate: OffsetDateTime,
+  $interval: IntervalFilter) {
+  getArticle(entity: $entity) {
+    id
+    searchStatistics(
+      startDate: $startDate,
+      endDate: $endDate,
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

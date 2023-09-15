@@ -1,0 +1,16 @@
+query getOrganisationDetailsVisitor(
+    $entity: OrganisationEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getOrganisation(entity: $entity) {
+    id
+    visitorStatistics(
+      startDate: $startDate
+      endDate: $endDate
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

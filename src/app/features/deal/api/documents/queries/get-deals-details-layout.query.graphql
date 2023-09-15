@@ -1,0 +1,15 @@
+query getDealDetailsLayout($entity: DealEntityInput) {
+  getDeal(entity: $entity) {
+    id
+    slug
+    translatables {
+      id
+      name
+      content
+      shortDescription
+      language {
+        ...Language
+      }
+    }
+  }
+}

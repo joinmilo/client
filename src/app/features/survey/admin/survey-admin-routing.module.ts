@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { surveysFeatureKey } from 'src/app/core/constants/feature.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SurveyAdminDetailsLayoutComponent } from './details/modules/layout/components/survey-admin-details-layout.component';
 
 const menuRoutes: Routes = [
   {
@@ -26,6 +28,12 @@ const menuRoutes: Routes = [
 ];
 
 const routes: Routes = [
+  {
+    path: `${surveysFeatureKey}/:${slug}`,
+    loadChildren: () => import('src/app/features/survey/admin/details/survey-admin-details.module')
+      .then((imported) => imported.SurveyAdminDetailsModule),
+    component: SurveyAdminDetailsLayoutComponent
+  },
 ]
 
 @NgModule({
