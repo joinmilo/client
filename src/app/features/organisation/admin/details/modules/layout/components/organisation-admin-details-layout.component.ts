@@ -6,7 +6,7 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
-import { commentsRoute, favoritesRoute, ratingsRoute, searchRoute, visitorsRoute } from '../../../constants/organisation-admin-details.constants';
+import { applicationsRoute, commentsRoute, favoritesRoute, membersRoute, ratingsRoute, searchRoute, visitorsRoute } from '../../../constants/organisation-admin-details.constants';
 import { OrganisationAdminDetailsLayoutActions } from '../state/organisation-admin-details-layout.actions';
 import { selectOrganisationAdminDetailsLayout } from '../state/organisation-admin-details-layout.selectors';
 
@@ -52,6 +52,16 @@ export class OrganisationAdminDetailsLayoutComponent implements OnInit, OnDestro
       icon: ['far', 'star'],
       label: 'ratings',
       value: ratingsRoute
+    },
+    {
+      icon: ['fas', 'users'],
+      label: 'members',
+      value: membersRoute
+    },
+    {
+      icon: ['fas', 'user-plus'],
+      label: 'applications',
+      value: applicationsRoute
     },
   ];
 

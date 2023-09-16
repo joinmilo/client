@@ -1,0 +1,22 @@
+query getOrganisationMembers($params: FilterSortPaginateInput) {
+  getOrganisationMembers(params: $params) {
+    result {
+      id
+      approved
+      isPublic
+      userContext{
+        user{
+          id
+          firstName
+          lastName
+          email
+        }
+      }
+      organisation{
+        id
+        slug
+      }
+    }
+    total
+  }
+}

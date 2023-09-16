@@ -9,6 +9,7 @@ import { DealAdminDetailsVisitorsComponent } from './modules/visitors/component/
 
 const routes: Routes = [
   {
+    
     path: '',
     loadChildren: () => import('./modules/landing/deal-admin-details-landing.module')
       .then((imported) => imported.DealAdminDetailsLandingModule),

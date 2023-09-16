@@ -1,0 +1,7 @@
+<app-table 
+  [data]="applications"
+  [actions]="actions"
+  [columns]="columns"
+  (sortPaginate)="updateParams(this.slug, $event)">
+</app-table>
+

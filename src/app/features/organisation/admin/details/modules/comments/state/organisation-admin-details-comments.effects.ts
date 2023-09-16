@@ -65,7 +65,6 @@ export class OrganisationAdminDetailsCommentsEffects {
     map(response => OrganisationAdminDetailsCommentsActions.setComments(response.data.getOrganisationComments as PageableList_OrganisationCommentEntity))
   ));
 
-
   deleteComment = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsCommentsActions.deleteComment),
     switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.comment?.content })
