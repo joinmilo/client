@@ -15,7 +15,6 @@ import { SaveOrganisationRatingGQL } from '../../../api/generated/save-organisat
 import { PortalOrganisationDetailsActions } from './portal-organisation-details.actions';
 import { selectOrganisationDetails, selectOrganisationUserRating } from './portal-organisation-details.selectors';
 
-
 @Injectable()
 export class PortalOrganisationDetailsEffects {
 

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { EventCommentEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
@@ -32,8 +32,6 @@ export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
         this.store.dispatch(EventAdminDetailsCommentsActions.deleteComment(comment)),
       tooltipLabel: 'delete'
     },
-
-    'SHARE',
   ];
 
   public columns: Column<EventCommentEntity>[] = [
@@ -63,7 +61,6 @@ export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private translationService: TranslationService,
   ) { }
 

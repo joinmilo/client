@@ -35,8 +35,6 @@ export class EventAdminDetailsAttendeeComponent implements OnInit, OnDestroy {
         this.store.dispatch(EventAdminDetailsAttendeeActions.deleteAttendee(attendee)),
       tooltipLabel: 'delete'
     },
-
-    'SHARE',
   ];
 
   public columns: Column<EventAttendeeEntity>[] = [

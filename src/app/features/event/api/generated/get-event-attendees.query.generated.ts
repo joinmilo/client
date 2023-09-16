@@ -9,7 +9,7 @@ export type GetEventAttendeesQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetEventAttendeesQuery = { __typename?: 'Query', getEventAttendees?: { __typename?: 'PageableList_EventAttendeeEntity', result?: Array<{ __typename?: 'EventAttendeeEntity', id?: string | null, approved?: boolean | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null, configuration?: { __typename?: 'EventAttendeeConfigurationEntity', id?: string | null, events?: Array<{ __typename?: 'EventEntity', id?: string | null, slug?: string | null } | null> | null } | null } | null> | null } | null };
+export type GetEventAttendeesQuery = { __typename?: 'Query', getEventAttendees?: { __typename?: 'PageableList_EventAttendeeEntity', total: any, result?: Array<{ __typename?: 'EventAttendeeEntity', id?: string | null, approved?: boolean | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', id?: string | null, firstName?: string | null, lastName?: string | null, email?: string | null } | null } | null, configuration?: { __typename?: 'EventAttendeeConfigurationEntity', id?: string | null, events?: Array<{ __typename?: 'EventEntity', id?: string | null, slug?: string | null } | null> | null } | null } | null> | null } | null };
 
 export const GetEventAttendeesDocument = gql`
     query getEventAttendees($params: FilterSortPaginateInput) {
@@ -34,6 +34,7 @@ export const GetEventAttendeesDocument = gql`
         }
       }
     }
+    total
   }
 }
     `;

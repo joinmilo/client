@@ -18,7 +18,7 @@
         </th>
         <td mat-cell class="actions" *matCellDef="let row">
           <ng-container *ngIf="(actions?.length || 0) <= maxInline; else menuArea">
-            <app-table-actions
+            <app-table-actions *ngIf="actions"
               [actions]="actions"
               [entity]="entity"
               [data]="row">

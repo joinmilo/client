@@ -28,7 +28,7 @@ export class TableDesktopComponent<T> implements AfterViewInit, OnDestroy {
     this._columns = columns;
     this.displayedColumns = [
       ...columns?.map(c => c.field) || [],
-      'actions'
+      ...(this.actions ? ['actions'] : [])
     ];
   }
 

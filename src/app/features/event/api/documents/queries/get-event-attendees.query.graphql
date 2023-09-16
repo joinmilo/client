@@ -20,5 +20,6 @@ query getEventAttendees($params: FilterSortPaginateInput) {
           }
         }
     }
+    total
   }
 }

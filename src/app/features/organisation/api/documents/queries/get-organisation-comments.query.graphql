@@ -3,5 +3,6 @@ query getOrganisationComments($params: FilterSortPaginateInput) {
     result {
       ...OrganisationComment
     }
+    total
   }
 }

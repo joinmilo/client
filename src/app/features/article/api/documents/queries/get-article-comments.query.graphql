@@ -31,5 +31,6 @@ query getArticleComments($params: FilterSortPaginateInput) {
         }
       }
     }
+    total
   }
 }

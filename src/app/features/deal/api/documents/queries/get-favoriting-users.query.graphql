@@ -1,0 +1,14 @@
+query getFavoritingUsers($params: FilterSortPaginateInput) {
+  getUserContexts(params: $params) {
+    result {
+      id
+      user{
+        id
+        firstName
+        lastName
+        email
+        }
+      }
+    total
+  }
+}

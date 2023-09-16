@@ -3,5 +3,6 @@ query getEventComments($params: FilterSortPaginateInput) {
     result {
       ...EventComment
     }
+    total
   }
 }

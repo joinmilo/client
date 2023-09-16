@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { commentsRoute, searchRoute, visitorsRoute } from './constants/organisation-admin-details.constants';
+import { commentsRoute, favoritesRoute, searchRoute, visitorsRoute } from './constants/organisation-admin-details.constants';
 import { OrganisationAdminDetailsCommentsComponent } from './modules/comments/components/organisation-admin-details-comments.component';
+import { OrganisationAdminDetailsFavoritesComponent } from './modules/favorites/components/organisation-admin-details-favorites.component';
 import { OrganisationAdminDetailsLandingComponent } from './modules/landing/components/organisation-admin-details-landing.component';
 import { OrganisationAdminDetailsSearchComponent } from './modules/search/component/organisation-admin-details-search.component';
 import { OrganisationAdminDetailsVisitorsComponent } from './modules/visitors/component/organisation-admin-details-visitors.component';
@@ -31,6 +32,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/visitors/organisation-admin-details-visitors.module')
       .then((imported) => imported.OrganisationAdminDetailsVisitorsModule),
     component: OrganisationAdminDetailsVisitorsComponent
+  },
+  {
+    path: favoritesRoute,
+    loadChildren: () => import('./modules/favorites/organisation-admin-details-favorites.module')
+      .then((imported) => imported.OrganisationAdminDetailsFavoritesModule),
+    component: OrganisationAdminDetailsFavoritesComponent
   },
 ];
 
