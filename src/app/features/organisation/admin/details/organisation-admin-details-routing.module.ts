@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { applicationsRoute, commentsRoute, favoritesRoute, membersRoute, searchRoute, visitorsRoute } from './constants/organisation-admin-details.constants';
+import { applicationsRoute, commentsRoute, favoritesRoute, membersRoute, ratingsRoute, searchRoute, visitorsRoute } from './constants/organisation-admin-details.constants';
 import { OrganisationAdminDetailsApplicationsComponent } from './modules/applications/components/organisation-admin-details-applications.component';
 import { OrganisationAdminDetailsCommentsComponent } from './modules/comments/components/organisation-admin-details-comments.component';
 import { OrganisationAdminDetailsFavoritesComponent } from './modules/favorites/components/organisation-admin-details-favorites.component';
 import { OrganisationAdminDetailsLandingComponent } from './modules/landing/components/organisation-admin-details-landing.component';
 import { OrganisationAdminDetailsMembersComponent } from './modules/members/components/organisation-admin-details-members.component';
+import { OrganisationAdminDetailsRatingComponent } from './modules/rating/component/organisation-admin-details-rating.component';
 import { OrganisationAdminDetailsSearchComponent } from './modules/search/component/organisation-admin-details-search.component';
 import { OrganisationAdminDetailsVisitorsComponent } from './modules/visitors/component/organisation-admin-details-visitors.component';
 
@@ -45,6 +46,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/visitors/organisation-admin-details-visitors.module')
       .then((imported) => imported.OrganisationAdminDetailsVisitorsModule),
     component: OrganisationAdminDetailsVisitorsComponent
+  },
+  {
+    path: ratingsRoute,
+    loadChildren: () => import('./modules/rating/organisation-admin-details-rating.module')
+      .then((imported) => imported.OrganisationAdminDetailsRatingModule),
+    component: OrganisationAdminDetailsRatingComponent
   },
   {
     path: favoritesRoute,

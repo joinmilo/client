@@ -52,17 +52,13 @@ export class ArticleAdminDetailsFavoritesComponent implements OnInit, OnDestroy 
     this.activatedRoute.parent?.params.pipe(takeUntil(this.destroy)).subscribe(params => {
       this.slug = params[slug],
         this.updateParams(
-          params[slug],
-          {
-            startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
-            endDate: new Date()
-          },)
+          params[slug])
     }
     )
   }
 
-  public updateParams(slug?: Maybe<string>, period?: Period, params?: FilterSortPaginateInput) {
-    this.store.dispatch(ArticleAdminDetailsFavoritesActions.updateParams(this.slug ?? slug, period, params));
+  public updateParams(slug?: Maybe<string>, params?: FilterSortPaginateInput) {
+    this.store.dispatch(ArticleAdminDetailsFavoritesActions.updateParams(this.slug ?? slug, params));
   }
 
   public initPeriod: Period = {

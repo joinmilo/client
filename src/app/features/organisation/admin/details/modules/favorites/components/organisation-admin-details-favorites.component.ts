@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
-import { Period } from 'src/app/core/typings/period';
 import { Column } from 'src/app/shared/widgets/table/typings/table';
 import { slug } from '../../../../../../../core/constants/queryparam.constants';
 import { OrganisationAdminDetailsFavoritesActions } from '../state/organisation-admin-details-favorites.actions';
@@ -51,23 +50,12 @@ export class OrganisationAdminDetailsFavoritesComponent implements OnInit, OnDes
   public ngOnInit(): void {
     this.activatedRoute.parent?.params.pipe(takeUntil(this.destroy)).subscribe(params => {
       this.slug = params[slug],
-        this.updateParams(
-          params[slug],
-          {
-            startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
-            endDate: new Date()
-          },)
-    }
-    )
+        this.updateParams(params[slug])
+    })
   }
 
-  public updateParams(slug?: Maybe<string>, period?: Period, params?: FilterSortPaginateInput) {
-    this.store.dispatch(OrganisationAdminDetailsFavoritesActions.updateParams(this.slug ?? slug, period, params));
-  }
-
-  public initPeriod: Period = {
-    startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
-    endDate: new Date()
+  public updateParams(slug?: Maybe<string>, params?: FilterSortPaginateInput) {
+    this.store.dispatch(OrganisationAdminDetailsFavoritesActions.updateParams(this.slug ?? slug, params));
   }
   
   ngOnDestroy(): void {

@@ -9,11 +9,6 @@ export const selectDealAdminDetailsFavorites = createSelector(
   state => state.comments
 );
 
-export const selectPeriod = createSelector(
-  selectDealAdminDetailsFavoritesState,
-  state => state.period
-);
-
 export const selectSlug = createSelector(
   selectDealAdminDetailsFavoritesState,
   state => state.slug

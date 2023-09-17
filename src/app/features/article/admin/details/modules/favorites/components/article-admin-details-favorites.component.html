@@ -1,11 +1,6 @@
-<app-date-range-filter 
-  (valueChanged)="updateParams(undefined ,$event, undefined)"
-  [queryParam]="false" [initValue]="initPeriod">
-</app-date-range-filter>
-
 <app-table 
   [data]="favorites"
   [entity]="'UserContextEntity'"
   [columns]="columns"
-  (sortPaginate)="updateParams(undefined, undefined, $event)">
+  (sortPaginate)="updateParams(undefined, $event)">
 </app-table>
