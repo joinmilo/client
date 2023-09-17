@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { filter, map, switchMap, withLatestFrom } from 'rxjs';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { AnalyticsDto } from 'src/app/core/api/generated/schema';
-import { GetOrganisationDetailsSearchStatisticsGQL } from 'src/app/features/organisation/api/generated/get-event-details-search-statistics.query.generated';
+import { GetOrganisationDetailsSearchStatisticsGQL } from 'src/app/features/organisation/api/generated/get-organisation-details-search-statistics.query.generated';
 import { OrganisationAdminDetailsSearchActions } from './organisation-admin-details-search.actions';
 import { selectParams, selectSlug } from './organisation-admin-details-search.selectors';
 

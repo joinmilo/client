@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { OrganisationEntity } from 'src/app/core/api/generated/schema';
-import { GetOrganisationDetailsLayoutGQL } from 'src/app/features/organisation/api/generated/get-event-details-layout.query.generated';
+import { GetOrganisationDetailsLayoutGQL } from 'src/app/features/organisation/api/generated/get-organisation-details-layout.query.generated';
 import { OrganisationAdminDetailsLayoutActions } from './organisation-admin-details-layout.actions';
 
 @Injectable()

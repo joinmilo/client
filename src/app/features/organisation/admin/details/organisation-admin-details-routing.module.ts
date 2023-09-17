@@ -16,30 +16,6 @@ const routes: Routes = [
       .then((imported) => imported.OrganisationAdminDetailsLandingModule),
     component: OrganisationAdminDetailsLandingComponent
   },
-    {
-    path: searchRoute,
-    loadChildren: () => import('./modules/search/organisation-admin-details-search.module')
-      .then((imported) => imported.OrganisationAdminDetailsSearchModule),
-      component: OrganisationAdminDetailsSearchComponent
-  },
-  {
-    path: commentsRoute,
-    loadChildren: () => import('./modules/comments/organisation-admin-details-comments.module')
-      .then((imported) => imported.OrganisationAdminDetailsCommentsModule),
-    component: OrganisationAdminDetailsCommentsComponent
-  },
-  {
-    path: visitorsRoute,
-    loadChildren: () => import('./modules/visitors/organisation-admin-details-visitors.module')
-      .then((imported) => imported.OrganisationAdminDetailsVisitorsModule),
-    component: OrganisationAdminDetailsVisitorsComponent
-  },
-  {
-    path: favoritesRoute,
-    loadChildren: () => import('./modules/favorites/organisation-admin-details-favorites.module')
-      .then((imported) => imported.OrganisationAdminDetailsFavoritesModule),
-    component: OrganisationAdminDetailsFavoritesComponent
-  },
   {
     path: membersRoute,
     loadChildren: () => import('./modules/members/organisation-admin-details-members.module')
@@ -51,6 +27,30 @@ const routes: Routes = [
     loadChildren: () => import('./modules/applications/organisation-admin-details-applications.module')
       .then((imported) => imported.OrganisationAdminDetailsApplicationsModule),
     component: OrganisationAdminDetailsApplicationsComponent
+  },
+  {
+    path: commentsRoute,
+    loadChildren: () => import('./modules/comments/organisation-admin-details-comments.module')
+      .then((imported) => imported.OrganisationAdminDetailsCommentsModule),
+    component: OrganisationAdminDetailsCommentsComponent
+  },
+    {
+    path: searchRoute,
+    loadChildren: () => import('./modules/search/organisation-admin-details-search.module')
+      .then((imported) => imported.OrganisationAdminDetailsSearchModule),
+      component: OrganisationAdminDetailsSearchComponent
+    },
+  {
+    path: visitorsRoute,
+    loadChildren: () => import('./modules/visitors/organisation-admin-details-visitors.module')
+      .then((imported) => imported.OrganisationAdminDetailsVisitorsModule),
+    component: OrganisationAdminDetailsVisitorsComponent
+  },
+  {
+    path: favoritesRoute,
+    loadChildren: () => import('./modules/favorites/organisation-admin-details-favorites.module')
+      .then((imported) => imported.OrganisationAdminDetailsFavoritesModule),
+    component: OrganisationAdminDetailsFavoritesComponent
   },
 ];
 

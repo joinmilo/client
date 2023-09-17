@@ -28,32 +28,6 @@ export class OrganisationAdminDetailsLayoutComponent implements OnInit, OnDestro
       value: '',
     },
     {
-      icon: ['far', 'eye'],
-      label: 'pageVisitors',
-      value: visitorsRoute
-    },
-    {
-      icon: ['fab', 'google'],
-      label: 'googleSearch',
-      value: searchRoute
-    },
-    {
-      icon: ['far', 'comment-dots'],
-      label: 'comments',
-      value: commentsRoute
-    },
-
-    {
-      icon: ['far', 'heart'],
-      label: 'favorites',
-      value: favoritesRoute
-    },
-    {
-      icon: ['far', 'star'],
-      label: 'ratings',
-      value: ratingsRoute
-    },
-    {
       icon: ['fas', 'users'],
       label: 'members',
       value: membersRoute
@@ -62,6 +36,31 @@ export class OrganisationAdminDetailsLayoutComponent implements OnInit, OnDestro
       icon: ['fas', 'user-plus'],
       label: 'applications',
       value: applicationsRoute
+    },
+    {
+      icon: ['far', 'comment-dots'],
+      label: 'comments',
+      value: commentsRoute
+    },
+    {
+      value: searchRoute,
+      icon: ['fab', 'google'],
+      label: 'googleSearch',
+    },
+    {
+      icon: ['far', 'eye'],
+      label: 'pageVisitors',
+      value: visitorsRoute
+    },
+    {
+      icon: ['far', 'star'],
+      label: 'ratings',
+      value: ratingsRoute
+    },
+    {
+      icon: ['far', 'heart'],
+      label: 'favorites',
+      value: favoritesRoute
     },
   ];
 
