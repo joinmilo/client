@@ -1,0 +1,16 @@
+query getOrganisationDetailsRating(
+    $entity: OrganisationEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getOrganisation(entity: $entity) {
+    id
+    ratingStatistics(
+      startDate: $startDate
+      endDate: $endDate
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

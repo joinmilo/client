@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { commentsRoute, favoritesRoute, searchRoute, visitorsRoute } from './constants/article-admin-details.constants';
+import { commentsRoute, favoritesRoute, ratingsRoute, searchRoute, visitorsRoute } from './constants/article-admin-details.constants';
 import { ArticleAdminDetailsCommentsComponent } from './modules/comments/components/article-admin-details-comments.component';
 import { ArticleAdminDetailsFavoritesComponent } from './modules/favorites/components/article-admin-details-favorites.component';
 import { ArticleAdminDetailsLandingComponent } from './modules/landing/components/article-admin-details-landing.component';
+import { ArticleAdminDetailsRatingComponent } from './modules/rating/component/article-admin-details-rating.component';
 import { ArticleAdminDetailsSearchComponent } from './modules/search/component/article-admin-details-search.component';
 import { ArticleAdminDetailsVisitorsComponent } from './modules/visitors/component/article-admin-details-visitors.component';
 
@@ -37,6 +38,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/favorites/article-admin-details-favorites.module')
       .then((imported) => imported.ArticleAdminDetailsFavoritesModule),
     component: ArticleAdminDetailsFavoritesComponent
+  },
+  {
+    path: ratingsRoute,
+    loadChildren: () => import('./modules/rating/article-admin-details-rating.module')
+      .then((imported) => imported.ArticleAdminDetailsRatingModule),
+    component: ArticleAdminDetailsRatingComponent
   },
 ];
 

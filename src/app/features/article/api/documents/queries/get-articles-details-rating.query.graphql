@@ -1,0 +1,16 @@
+query getArticleDetailsRating(
+    $entity: ArticleEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getArticle(entity: $entity) {
+    id
+    ratingStatistics(
+      startDate: $startDate
+      endDate: $endDate
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}
