@@ -1,11 +1,14 @@
-<div class="main-admin">
-  <app-page-title titleLabel="suburbs"></app-page-title>
-  <button mat-raised-button color="primary" [routerLink]="['form']"
-    appLabel="createSuburbs"></button>
-  <app-table 
-    [data]="suburbs"
-    [actions]="actions"
-    [columns]="columns"
-    (sortPaginate)="updateParams($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="suburbs"></app-page-title>
+
+<button mat-raised-button
+  color="primary"
+  [routerLink]="['form']"
+  appLabel="createSuburbs">
+</button>
+
+<app-table 
+  [data]="suburbs"
+  [actions]="actions"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>

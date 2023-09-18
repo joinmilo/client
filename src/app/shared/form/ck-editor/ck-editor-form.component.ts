@@ -59,8 +59,9 @@ export class CkEditorFormComponent implements ControlValueAccessor {
   }
 
   public handleEditorChange(): void {
-    const data = this.editorInstance.getData();
-    this.onChange && this.onChange(data);
+    this.onChange && this.onChange(
+      this.editorInstance.getData()
+    );
   }
 
 }

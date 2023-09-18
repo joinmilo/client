@@ -1,8 +1,13 @@
-<div class="main-admin">
-  <app-page-title titleLabel="users"></app-page-title>
-    <button mat-raised-button color="primary" [routerLink]="['form']"
-      appLabel="createUser"></button>
-  <app-table [data]="users" [actions]="actions"
-    [columns]="columns" (sortPaginate)="updateParams($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="users"></app-page-title>
+
+<button mat-raised-button
+  color="primary"
+  [routerLink]="['form']"
+  appLabel="createUser">
+</button>
+
+<app-table [data]="users"
+  [actions]="actions"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>

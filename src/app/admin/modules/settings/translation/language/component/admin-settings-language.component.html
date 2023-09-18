@@ -1,8 +1,13 @@
-<div class="main-admin">
-  <app-page-title titleLabel="languages"></app-page-title>
-  <button mat-raised-button color="primary" [routerLink]="['form']"
-    appLabel="createLanguage"></button>
-  <app-table [data]="languages" [actions]="actions" [columns]="columns"
-    (sortPaginate)="updateParams($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="languages"></app-page-title>
+
+<button mat-raised-button
+  color="primary"
+  [routerLink]="['form']"
+  appLabel="createLanguage">
+</button>
+
+<app-table [data]="languages"
+  [actions]="actions"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>

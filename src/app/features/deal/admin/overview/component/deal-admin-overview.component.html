@@ -1,17 +1,18 @@
-<div>
-  <app-page-title titleLabel="deals"></app-page-title>
-  <section>
-    <button mat-raised-button color="primary" [routerLink]="['form']"
-      appLabel="createDeal"></button>
-    <app-deal-filter
-      (paramsUpdated)="updateParams($event)"></app-deal-filter>
-  </section>
-  <app-table
-    [data]="deals"
-    [actions]="actions"
-    [entity]="'DealEntity'"
-    [columns]="columns"
-    (sortPaginate)="updateParams($event)"
-    (rowClicked)="rowClicked($event)">
-  </app-table>
-</div>
+<app-page-title titleLabel="deals"></app-page-title>
+
+<app-deal-filter (paramsUpdated)="updateParams($event)">
+  <button mat-raised-button
+    color="primary"
+    [routerLink]="['form']"
+    appLabel="createDeal">
+  </button>
+</app-deal-filter>
+
+<app-table
+  [data]="deals"
+  [actions]="actions"
+  [entity]="'DealEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)"
+  (rowClicked)="rowClicked($event)">
+</app-table>

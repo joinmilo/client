@@ -1,15 +1,12 @@
 <app-page-title titleLabel="organisations"></app-page-title>
 
-<section>
+<app-organisation-filter (paramsUpdated)="updateParams($event)">
   <button mat-raised-button
     color="primary"
     [routerLink]="['form']"
     appLabel="createOrganisation">
   </button>
-
-  <app-organisation-filter (paramsUpdated)="updateParams($event)">
-  </app-organisation-filter>
-</section>
+</app-organisation-filter>
 
 <app-table
   [data]="organisations"

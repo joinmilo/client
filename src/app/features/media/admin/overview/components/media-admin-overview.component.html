@@ -1,15 +1,12 @@
 <app-page-title titleLabel="media"></app-page-title>
 
-<section>
+<app-media-filter (paramsUpdated)="updateParams($event)">
   <button mat-raised-button
     color="primary"
     [routerLink]="['form']"
     appLabel="addMedia">
   </button>
-  
-  <app-media-filter (paramsUpdated)="updateParams($event)">
-  </app-media-filter>
-</section>
+</app-media-filter>
 
 <ng-container *ngIf="(infoMedia | async); else emptyResult">
   <app-media-admin-overview-category>
