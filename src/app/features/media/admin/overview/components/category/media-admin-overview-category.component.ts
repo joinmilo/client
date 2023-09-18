@@ -23,7 +23,7 @@ export class MediaAdminOverviewCategoryComponent {
       ?.map((item) => item?.media as MediaEntity);
   }
 
-  delete(medium: Maybe<MediaEntity>) {
+  public delete(medium: Maybe<MediaEntity>): void {
     this.store.dispatch(MediaAdminOverviewActions.deleteMedia(
       medium
     ))
