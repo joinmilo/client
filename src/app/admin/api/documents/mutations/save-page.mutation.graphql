@@ -1,0 +1,5 @@
+mutation savePage($entity: PageEntityInput!) {
+  savePage(entity: $entity) {
+    id
+  }
+}

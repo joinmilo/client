@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { AdminSettingsRoutes } from 'src/app/admin/typings/menu';
+import { AdminSettingsPageFormComponent } from './page-form/admin-settings-page-form.component';
 
 const baseRoute = 'pages';
 
@@ -19,8 +20,9 @@ const routes: AdminSettingsRoutes[] = [
   },
   {
     path: `${baseRoute}/form`,
-    loadComponent: () => import('./page-form/admin-settings-page-form.component')
-      .then((imported) => imported.AdminSettingsPageFormComponent),
+    loadChildren: () => import('./page-form/admin-settings-page-form.module')
+      .then((imported) => imported.AdminSettingsPageFormModule),
+      component: AdminSettingsPageFormComponent,
     data: {
       name: 'createNewPage',
       description: 'createNewPageDescription',

@@ -8,6 +8,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -16,17 +17,13 @@ import { CaptchaModule } from 'src/app/shared/form/captcha/captcha.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
-import { PortalGuestArticleFormComponent } from './components/form/portal-guest-article-form.component';
-import { PortalGuestArticleSuccessComponent } from './components/success/portal-guest-article-success.component';
-import { portalGuestArticleStateKey } from './constants/portal-guest-article.constants';
-import { PortalGuestArticleRoutingModule } from './portal-guest-article-routing.module';
-import { PortalGuestArticleEffects } from './state/portal-guest-article.effects';
-import { portalGuestArticleReducer } from './state/portal-guest-article.reducer';
+import { AdminSettingsPageFormComponent } from './admin-settings-page-form.component';
+import { adminSettingsPageStateKey } from './admin-settings-page-form.constants';
+import { AdminSettingsPageEffects } from './state/admin-settings-page.effects';
+import { adminSettingsPageReducer } from './state/admin-settings-page.reducer';
 
 const components = [
-  PortalGuestArticleFormComponent,
-  PortalGuestArticleSuccessComponent,
-
+  AdminSettingsPageFormComponent
 ];
 
 const framework = [
@@ -42,6 +39,7 @@ const materials = [
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
+  MatSlideToggleModule
 ];
 
 const modules = [
@@ -49,14 +47,13 @@ const modules = [
   CaptchaModule,
   CkEditorFormComponent,
   MediaModule,
-  PortalGuestArticleRoutingModule,
   TitleModule,
 ];
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(portalGuestArticleStateKey, portalGuestArticleReducer),
-  EffectsModule.forFeature([PortalGuestArticleEffects]),
+  StoreModule.forFeature(adminSettingsPageStateKey, adminSettingsPageReducer),
+  EffectsModule.forFeature([AdminSettingsPageEffects]),
 ]
 
 @NgModule({
@@ -69,4 +66,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class PortalGuestArticleModule { }
+export class AdminSettingsPageFormModule { }

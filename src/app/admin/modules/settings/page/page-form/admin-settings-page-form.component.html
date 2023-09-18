@@ -1,1 +1,74 @@
-Admin Settings Landing Form
+<app-page-title titleLabel="PageEdit"></app-page-title>
+
+<form [formGroup]="form">
+  <mat-accordion>
+
+  <mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title appLabel="content"></mat-panel-title>
+      <mat-panel-description
+        appLabel="designYourPage"></mat-panel-description>
+    </mat-expansion-panel-header>
+    <section>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="name"></mat-label>
+        <input matInput id="name" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="shortDescription"></mat-label>
+        <textarea formControlName="shortDescription" matInput
+          rows="5">
+      </textarea>
+      </mat-form-field>
+
+      <app-ck-editor-form
+        formControlName="content"></app-ck-editor-form>
+    </section>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title appLabel="informations"></mat-panel-title>
+      <mat-panel-description
+        appLabel="enterYourData"></mat-panel-description>
+    </mat-expansion-panel-header>
+    <section>
+      <div>
+        <mat-slide-toggle color="primary" formControlName="isLanding">
+        </mat-slide-toggle>
+        <span appLabel="isLanding"></span>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="callText"></mat-label>
+        <input matInput id="callText" formControlName="callText">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="callUrl"></mat-label>
+        <input matInput id="callUrl" formControlName="callUrl">
+      </mat-form-field>
+    </section>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title appLabel="uploads"></mat-panel-title>
+      <mat-panel-description
+        appLabel="uploadPicturesOrFiles"></mat-panel-description>
+    </mat-expansion-panel-header>
+    <section>
+      <app-media-form formControlName="uploads">
+      </app-media-form>
+    </section>
+  </mat-expansion-panel>
+
+  </mat-accordion>
+    <button mat-flat-button
+     color="primary" 
+     (click)="savePage()"
+     [disabled]="form.invalid">
+      <span appLabel="send"></span>
+    </button>
+</form>
