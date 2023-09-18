@@ -1,0 +1,16 @@
+query getPageDetailsSearchStatistics(
+    $entity: PageEntityInput,
+    $startDate: OffsetDateTime,
+    $endDate: OffsetDateTime,
+    $interval: IntervalFilter) {
+  getPage(entity: $entity) {
+    id
+    searchStatistics(
+      startDate: $startDate,
+      endDate: $endDate,
+      interval: $interval
+    ) {
+      ...AnalyticsDto
+    }
+  }
+}

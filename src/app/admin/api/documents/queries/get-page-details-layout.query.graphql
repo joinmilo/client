@@ -1,0 +1,15 @@
+query getPageDetailsLayout($entity: PageEntityInput) {
+  getPage(entity: $entity) {
+    id
+    slug
+    translatables {
+      id
+      name
+      content
+      shortDescription
+      language {
+        ...Language
+      }
+    }
+  }
+}

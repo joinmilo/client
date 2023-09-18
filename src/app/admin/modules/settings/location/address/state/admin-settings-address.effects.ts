@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
-import { DeleteAddressGQL } from 'src/app/admin/api/generated/delete-event.mutation.generated';
+import { DeleteAddressGQL } from 'src/app/admin/api/generated/delete-address.mutation.generated';
 import { GetAddressesGQL } from 'src/app/admin/api/generated/get-addresses.query.generated';
 import { PageableList_AddressEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';

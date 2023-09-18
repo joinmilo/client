@@ -1,0 +1,25 @@
+query getPageDetails(
+  $entity: PageEntityInput) {
+  getPage(entity: $entity) {
+    id
+    slug
+    isLanding
+
+    uploads {
+      title
+      media {
+        ...Media
+      }
+    }
+
+    translatables {
+      id
+      name
+      content
+      shortDescription
+      language {
+        ...Language
+      }
+    }
+  }
+}

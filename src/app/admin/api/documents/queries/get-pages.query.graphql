@@ -2,6 +2,7 @@ query getPages($params: FilterSortPaginateInput) {
   getPages(params: $params) {
     result {
       id
+      slug
       callText
       callUrl
       isLanding
