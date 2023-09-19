@@ -29,8 +29,8 @@ const routes: AdminSettingsRoutes[] = [
   },
   {
     path: `${baseRoute}/plugins`,
-    loadComponent: () => import('./theme/admin-settings-theme.component')
-      .then((imported) => imported.AdminSettingsThemeComponent),
+    loadChildren: () => import('./feature/admin-settings-feature.module')
+      .then((imported) => imported.AdminSettingsFeatureModule),
     data: {
       name: 'plugins',
       description: 'pluginsDescription',

@@ -1,0 +1,5 @@
+mutation saveFeature($entity: FeatureEntityInput!) {
+  saveFeature(entity: $entity) {
+    id
+  }
+}

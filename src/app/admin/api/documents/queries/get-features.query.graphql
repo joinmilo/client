@@ -6,6 +6,13 @@ query getFeatures($params: FilterSortPaginateInput) {
       icon
       name
       code
+      translatables{
+        id
+        name
+        language{
+          ...Language
+        }
+      }
     }
     total
   }

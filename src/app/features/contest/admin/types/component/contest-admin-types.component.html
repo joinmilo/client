@@ -1,0 +1,13 @@
+<app-page-title titleLabel="feedbacks"></app-page-title>
+
+  <button mat-raised-button color="primary"
+    [routerLink]="['form']"
+    appLabel="createContestType">
+  </button>
+
+<app-table
+  [data]="contests"
+  [actions]="actions"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>

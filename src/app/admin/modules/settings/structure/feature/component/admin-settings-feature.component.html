@@ -1,0 +1,8 @@
+<app-page-title titleLabel="plugins"></app-page-title>
+
+<app-table 
+  [data]="features" 
+  [actions]="actions" 
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>

@@ -19,6 +19,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.ContestAdminOverviewModule),
     data: { label: 'overview' },
   },
+  {
+    path: `${contestsFeatureKey}/types`,
+    loadChildren: () => import('src/app/features/contest/admin/types/contest-admin-types.module')
+      .then((imported) => imported.ContestAdminTypesModule),
+    data: { label: 'types' },
+  },
 ];
 
 const routes: Routes = [
