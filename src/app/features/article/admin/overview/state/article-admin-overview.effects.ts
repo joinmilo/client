@@ -12,7 +12,7 @@ import { DeleteArticleGQL } from '../../../api/generated/delete-article.mutation
 import { GetArticlesGQL } from '../../../api/generated/get-articles.query.generated';
 import { SponsorArticleGQL } from '../../../api/generated/sponsor-article.mutation.generated';
 import { ArticleAdminOverviewActions } from './article-admin-overview.actions';
-import { selectParams } from './article-portal-overview.selectors';
+import { selectParams } from './article-admin-overview.selectors';
 
 @Injectable()
 export class ArticleAdminOverviewEffects {

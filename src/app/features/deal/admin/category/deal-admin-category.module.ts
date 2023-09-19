@@ -5,17 +5,17 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { ArticleFilterModule } from 'src/app/shared/filter/article/article-filter.module';
+import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
-import { ArticleAdminOverviewRoutingModule } from './article-admin-overview-routing.module';
-import { ArticleAdminOverviewComponent } from './component/article-admin-overview.component';
-import { articleAdminOverviewStateKey } from './constants/article-admin-overview.constants';
-import { ArticleAdminOverviewEffects } from './state/article-admin-overview.effects';
-import { articleAdminOverviewReducer } from './state/article-admin-overview.reducer';
+import { DealAdminCategoryComponent } from './component/deal-admin-category.component';
+import { dealAdminCategoryStateKey } from './constants/deal-admin-category.constants';
+import { DealAdminCategoryRoutingModule } from './deal-admin-category-routing.module';
+import { DealAdminCategoryEffects } from './state/deal-admin-category.effects';
+import { dealAdminCategoryReducer } from './state/deal-admin-category.reducer';
 
 const components = [
-  ArticleAdminOverviewComponent
+  DealAdminCategoryComponent
 ]
 
 const framework = [
@@ -29,15 +29,15 @@ const materials = [
 
 const modules = [
   CoreModule,
-  ArticleFilterModule,
-  ArticleAdminOverviewRoutingModule,
+  DealFilterModule,
+  DealAdminCategoryRoutingModule,
   TableModule,
   TitleModule,
 ];
 
 const libs = [
-  StoreModule.forFeature(articleAdminOverviewStateKey, articleAdminOverviewReducer),
-  EffectsModule.forFeature([ArticleAdminOverviewEffects]),
+  StoreModule.forFeature(dealAdminCategoryStateKey, dealAdminCategoryReducer),
+  EffectsModule.forFeature([DealAdminCategoryEffects]),
 ];
 
 @NgModule({
@@ -50,4 +50,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class ArticleAdminOverviewModule { }
+export class DealAdminCategoryModule { }

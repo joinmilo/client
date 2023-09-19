@@ -25,6 +25,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.ArticleAdminFormModule),
     data: { label: 'form' },
   },
+  {
+    path: `${articlesFeatureKey}/category`,
+    loadChildren: () => import('src/app/features/article/admin/category/article-admin-category.module')
+      .then((imported) => imported.ArticleAdminCategoryModule),
+    data: { label: 'category' },
+  },
 ];
 
 const routes: Routes = [

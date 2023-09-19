@@ -1,0 +1,3 @@
+mutation deleteEventCategory($id: String) {
+  deleteEventCategory(id: $id) 
+}

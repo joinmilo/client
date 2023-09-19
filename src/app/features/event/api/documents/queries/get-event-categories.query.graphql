@@ -1,0 +1,20 @@
+query getEventCategories($params: FilterSortPaginateInput) {
+  getEventCategories(params: $params) {
+    result {
+      id
+      color
+      icon
+
+      translatables {
+        id
+        name
+        language {
+          id
+          locale
+          name
+        }
+      }
+    }
+    total
+  }
+}

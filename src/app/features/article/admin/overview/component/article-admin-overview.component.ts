@@ -5,7 +5,7 @@ import { ArticleEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { ArticleAdminOverviewActions } from '../state/article-admin-overview.actions';
-import { selectOverviewData } from '../state/article-portal-overview.selectors';
+import { selectOverviewData } from '../state/article-admin-overview.selectors';
 
 @Component({
   selector: 'app-article-admin-overview',

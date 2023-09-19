@@ -1,0 +1,10 @@
+<app-page-title titleLabel="eventTargetGroups"></app-page-title>
+
+<button mat-raised-button color="primary" 
+  [routerLink]="['form']"
+  appLabel="createTargetGroup">
+</button>
+
+<app-table [data]="targetGroups" [actions]="actions" [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>

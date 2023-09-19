@@ -20,8 +20,10 @@ import { CoreModule } from 'src/app/core/core.module';
 })
 export class ConfirmDeleteComponent {
 
+  //TODO: Add Translation service for translatable fields
   constructor(
     @Inject(MAT_DIALOG_DATA)
-    public name: Maybe<string>) { }
+    public name: Maybe<string>,
+    ) { }
 
 }

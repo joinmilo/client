@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { articleAdminOverviewStateKey } from '../constants/article-admin-overview.constants';
-import { ArticleAdminOverviewState } from './article-portal-overview.reducer';
+import { ArticleAdminOverviewState } from './article-admin-overview.reducer';
 
 export const selectArticleAdminOverviewState = createFeatureSelector<ArticleAdminOverviewState>(articleAdminOverviewStateKey);
 

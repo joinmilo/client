@@ -25,6 +25,18 @@ const menuRoutes: Routes = [
       .then((imported) => imported.EventAdminFormModule),
     data: { label: 'form' },
   },
+  {
+    path: `${eventsFeatureKey}/category`,
+    loadChildren: () => import('src/app/features/event/admin/category/event-admin-category.module')
+      .then((imported) => imported.EventAdminCategoryModule),
+    data: { label: 'category' },
+  },
+  {
+    path: `${eventsFeatureKey}/target-group`,
+    loadChildren: () => import('src/app/features/event/admin/target-group/event-admin-target-group.module')
+      .then((imported) => imported.EventAdminTargetGroupModule),
+    data: { label: 'targetGroup' },
+  },
 ];
 
 const routes: Routes = [

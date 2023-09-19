@@ -1,0 +1,3 @@
+mutation deleteArticleCategory($id: String) {
+  deleteArticleCategory(id: $id) 
+}

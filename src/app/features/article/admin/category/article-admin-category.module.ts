@@ -8,14 +8,14 @@ import { CoreModule } from 'src/app/core/core.module';
 import { ArticleFilterModule } from 'src/app/shared/filter/article/article-filter.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
-import { ArticleAdminOverviewRoutingModule } from './article-admin-overview-routing.module';
-import { ArticleAdminOverviewComponent } from './component/article-admin-overview.component';
-import { articleAdminOverviewStateKey } from './constants/article-admin-overview.constants';
-import { ArticleAdminOverviewEffects } from './state/article-admin-overview.effects';
-import { articleAdminOverviewReducer } from './state/article-admin-overview.reducer';
+import { ArticleAdminCategoryRoutingModule } from './article-admin-category-routing.module';
+import { ArticleAdminCategoryComponent } from './component/article-admin-category.component';
+import { articleAdminCategoryStateKey } from './constants/article-admin-category.constants';
+import { ArticleAdminCategoryEffects } from './state/article-admin-category.effects';
+import { articleAdminCategoryReducer } from './state/article-admin-category.reducer';
 
 const components = [
-  ArticleAdminOverviewComponent
+  ArticleAdminCategoryComponent
 ]
 
 const framework = [
@@ -30,14 +30,14 @@ const materials = [
 const modules = [
   CoreModule,
   ArticleFilterModule,
-  ArticleAdminOverviewRoutingModule,
+  ArticleAdminCategoryRoutingModule,
   TableModule,
   TitleModule,
 ];
 
 const libs = [
-  StoreModule.forFeature(articleAdminOverviewStateKey, articleAdminOverviewReducer),
-  EffectsModule.forFeature([ArticleAdminOverviewEffects]),
+  StoreModule.forFeature(articleAdminCategoryStateKey, articleAdminCategoryReducer),
+  EffectsModule.forFeature([ArticleAdminCategoryEffects]),
 ];
 
 @NgModule({
@@ -50,4 +50,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class ArticleAdminOverviewModule { }
+export class ArticleAdminCategoryModule { }

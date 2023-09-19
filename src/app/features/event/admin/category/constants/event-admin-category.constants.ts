@@ -1,0 +1,1 @@
+export const eventAdminCategoryStateKey = 'eventAdminCategoryState';

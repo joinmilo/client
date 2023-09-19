@@ -1,0 +1,3 @@
+mutation deleteEventTargetGroup($id: String) {
+  deleteEventTargetGroup(id: $id) 
+}

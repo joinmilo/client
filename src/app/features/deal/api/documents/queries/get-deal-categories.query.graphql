@@ -1,0 +1,20 @@
+query getDealCategories($params: FilterSortPaginateInput) {
+  getDealCategories(params: $params) {
+    result {
+      id
+      color
+      icon
+
+      translatables {
+        id
+        name
+        language {
+          id
+          locale
+          name
+        }
+      }
+    }
+    total
+  }
+}

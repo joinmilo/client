@@ -25,6 +25,12 @@ const menuRoutes: Routes = [
       .then((imported) => imported.DealAdminFormModule),
     data: { label: 'form' },
   },
+  {
+    path: `${dealsFeatureKey}/category`,
+    loadChildren: () => import('src/app/features/deal/admin/category/deal-admin-category.module')
+      .then((imported) => imported.DealAdminCategoryModule),
+    data: { label: 'category' },
+  },
 ];
 
 const routes: Routes = [
