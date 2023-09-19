@@ -1,0 +1,3 @@
+mutation deleteMediaCategory($id: String) {
+  deleteInfoMediaCategory(id: $id) 
+}
