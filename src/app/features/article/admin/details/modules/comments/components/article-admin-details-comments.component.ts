@@ -32,8 +32,6 @@ export class ArticleAdminDetailsCommentsComponent implements OnInit, OnDestroy {
         this.store.dispatch(ArticleAdminDetailsCommentsActions.deleteComment(comment)),
       tooltipLabel: 'delete'
     },
-
-    'SHARE',
   ];
 
   public columns: Column<ArticleCommentEntity>[] = [

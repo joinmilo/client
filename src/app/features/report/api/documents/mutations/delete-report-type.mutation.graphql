@@ -1,0 +1,3 @@
+mutation deleteReportType($id: String) {
+  deleteReportType(id: $id)
+}

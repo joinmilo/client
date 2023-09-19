@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { AuthorAdminOverviewActions } from '../state/author-admin-overview.actions';
-import { selectOverviewData } from '../state/author-portal-overview.selectors';
+import { selectOverviewData } from '../state/author-admin-overview.selectors';
 
 @Component({
   selector: 'app-author-admin-overview',

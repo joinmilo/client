@@ -1,0 +1,35 @@
+query getReports($params: FilterSortPaginateInput) {
+  getReports(params: $params) {
+    result {
+      id
+      created
+      modified
+      name
+      email
+
+      translatables {
+        id
+        content
+        language {
+          ...Language
+        }
+      }
+      uploads {
+        media {
+          ...Media
+        }
+      }
+      type {
+        id
+        translatables {
+          id
+          name
+          language {
+            ...Language
+          }
+        }
+      }
+    }
+    total
+  }
+}

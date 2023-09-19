@@ -1,0 +1,3 @@
+mutation deleteArticlePublicAuthor($id: String) {
+  deleteArticlePublicAuthor(id: $id) 
+}

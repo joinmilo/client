@@ -3,10 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs';
-import { PageableList_UserContextEntity } from 'src/app/core/api/generated/schema';
+import { PageableList_UserContextEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { GetUserContextsGQL } from '../../../api/generated/get-authors.query.generated';
 import { AuthorAdminOverviewActions } from './author-admin-overview.actions';
-import { selectParams } from './author-portal-overview.selectors';
+import { selectParams } from './author-admin-overview.selectors';
 
 @Injectable()
 export class AuthorAdminOverviewEffects {
@@ -17,7 +17,17 @@ export class AuthorAdminOverviewEffects {
       ),
     withLatestFrom(this.store.select(selectParams)),
     switchMap(([, params]) => this.getAuthorsService.watch({
-      params,
+      params:{
+        ...params,
+        expression:{
+          entity:{
+            path: 'articles.author.id',
+            operator: QueryOperator.NotEqual,
+            value: null
+          }
+        }
+      }
+      
     }).valueChanges),
     map(response => AuthorAdminOverviewActions.setOverviewData(response.data.getUserContexts as PageableList_UserContextEntity))
   ));

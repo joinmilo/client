@@ -7,15 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
-import { AuthorAdminOverviewRoutingModule } from './author-admin-overview-routing.module';
-import { AuthorAdminOverviewComponent } from './component/author-admin-overview.component';
-import { authorAdminOverviewStateKey } from './constants/author-admin-overview.constants';
-import { AuthorAdminOverviewEffects } from './state/author-admin-overview.effects';
-import { authorAdminOverviewReducer } from './state/author-admin-overview.reducer';
-
+import { ReportAdminTypesComponent } from './component/report-admin-types.component';
+import { reportAdminTypesStateKey } from './constants/report-admin-types.constants';
+import { ReportAdminTypesRoutingModule } from './report-admin-types-routing.module';
+import { ReportAdminTypesEffects } from './state/report-portal-types.effects';
+import { reportAdminTypesReducer } from './state/report-portal-types.reducer';
 
 const components = [
-  AuthorAdminOverviewComponent
+  ReportAdminTypesComponent
 ]
 
 const framework = [
@@ -29,14 +28,14 @@ const materials = [
 
 const modules = [
   CoreModule,
-  AuthorAdminOverviewRoutingModule,
+  ReportAdminTypesRoutingModule,
   TableModule,
   TitleModule,
 ];
 
 const libs = [
-  StoreModule.forFeature(authorAdminOverviewStateKey, authorAdminOverviewReducer),
-  EffectsModule.forFeature([AuthorAdminOverviewEffects]),
+  StoreModule.forFeature(reportAdminTypesStateKey, reportAdminTypesReducer),
+  EffectsModule.forFeature([ReportAdminTypesEffects]),
 ];
 
 @NgModule({
@@ -49,5 +48,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class AuthorAdminOverviewModule {
-}
+export class ReportAdminTypesModule { }

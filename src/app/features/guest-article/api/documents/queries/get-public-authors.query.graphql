@@ -1,0 +1,14 @@
+query getArticlePublicAuthors($params: FilterSortPaginateInput) {
+  getArticlePublicAuthors(params: $params) {
+    result {
+      id
+      email
+      name
+      phone
+      articles{
+        id
+      }
+    }
+    total
+  }
+}

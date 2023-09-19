@@ -8,8 +8,10 @@ import { AuthorAdminRoutingModule } from '../features/author/admin/author-admin-
 import { ContestAdminRoutingModule } from '../features/contest/admin/contest-admin-routing.module';
 import { DealAdminRoutingModule } from '../features/deal/admin/deal-admin-routing.module';
 import { EventAdminRoutingModule } from '../features/event/admin/event-admin-routing.module';
+import { GuestArticleAdminRoutingModule } from '../features/guest-article/admin/guest-article-admin-routing.module';
 import { MediaAdminRoutingModule } from '../features/media/admin/media-admin-routing.module';
 import { OrganisationAdminRoutingModule } from '../features/organisation/admin/organisation-admin-routing.module';
+import { ReportAdminRoutingModule } from '../features/report/admin/report-admin-routing.module';
 import { SurveyAdminRoutingModule } from '../features/survey/admin/survey-admin-routing.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { adminStateKey } from './constants/admin.constants';
@@ -29,6 +31,8 @@ const routes = [
   SurveyAdminRoutingModule,
   MediaAdminRoutingModule,
   DealAdminRoutingModule,
+  ReportAdminRoutingModule,
+  GuestArticleAdminRoutingModule,
   AuthorAdminRoutingModule,
   AdminRoutingModule, //TODO: always last entry duet to order and redirect to 404, Remove 404 and put in AppRouter
 ]

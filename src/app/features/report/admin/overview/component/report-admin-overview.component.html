@@ -1,0 +1,8 @@
+<app-page-title titleLabel="feedbacks"></app-page-title>
+
+<app-table
+  [data]="reports"
+  [actions]="actions"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>
