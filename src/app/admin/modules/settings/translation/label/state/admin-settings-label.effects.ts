@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { filter, map, switchMap } from 'rxjs';
+import { debounceTime, filter, map, switchMap, tap } from 'rxjs';
 import { SaveLabelGQL } from 'src/app/admin/api/generated/save-label.mutation.generated';
 import { GetLabelsGQL } from 'src/app/core/api/generated/get-labels.query.generated';
 import { LabelEntityInput, PageableList_LabelEntity } from 'src/app/core/api/generated/schema';
@@ -36,9 +36,15 @@ export class AdminSettingsLabelEffects {
     ofType(AdminSettingsLabelActions.labelSaved),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
-      labelMessage: 'dataSaved'
+      labelMessage: 'dataSavedPageReloaded'
     }))
   ));
+
+  reloadPage = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsLabelActions.labelSaved),
+    debounceTime(4000),
+    tap(() => window.location.reload())
+  ), { dispatch: false });
 
   constructor(
     private actions: Actions,
