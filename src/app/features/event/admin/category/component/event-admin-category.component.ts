@@ -40,10 +40,12 @@ export class EventAdminCategoryComponent {
     {
       field: 'icon',
       label: 'icon',
+      type: 'ICON',
     },
     {
       field: 'color',
       label: 'color',
+      type: 'COLOR',
     },
   ];
   

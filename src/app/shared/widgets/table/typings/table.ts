@@ -6,8 +6,10 @@ import { Maybe } from 'src/app/core/api/generated/schema';
 export type ColumnType = 'ADDRESS'
   | 'BOOLEAN'
   | 'CATEGORY'
+  | 'COLOR'
   | 'DATE'
   | 'DATETIME'
+  | 'ICON'
   | 'TIME'
   | 'LIST';
 

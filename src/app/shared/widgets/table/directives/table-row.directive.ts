@@ -1,10 +1,13 @@
 import { Directive, Input, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Observable, Subject, isObservable, takeUntil } from 'rxjs';
 import { AddressEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { Category } from 'src/app/core/typings/category';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
-import { TableBooleanRowComponent } from '../components/rows/table-boolean-row.component';
+import { TableRowBooleanComponent } from '../components/rows/table-row-boolean.component';
+import { TableRowColorComponent } from '../components/rows/table-row-color.component';
+import { TableRowIconComponent } from '../components/rows/table-row-icon.component';
 import { Column } from '../typings/table';
 
 @Directive({
@@ -47,6 +50,9 @@ export class RowDirective<T> implements OnInit, OnDestroy {
         case 'CATEGORY':
           this.category(value as Category);
           break;
+        case 'COLOR':
+          this.color(value as string);
+          break;
         case 'BOOLEAN':
           this.boolean(value as boolean);
           break;
@@ -55,6 +61,9 @@ export class RowDirective<T> implements OnInit, OnDestroy {
           break;
         case 'DATETIME':
           this.display = this.dateTime(value as string);
+          break;
+        case 'ICON':
+          this.icon(value as IconProp);
           break;
         case 'TIME':
           this.display = this.time(value as string);
@@ -76,16 +85,22 @@ export class RowDirective<T> implements OnInit, OnDestroy {
       .instance.address = address;
   }
 
-  private category(category: Category) {
+  private boolean(value: boolean): void {
+    this.viewContainer
+      .createComponent(TableRowBooleanComponent)
+      .instance.input = value;
+  }
+
+  private category(category: Category): void {
     this.viewContainer
       .createComponent(CategoryPieceComponent)
       .instance.category = category;
   }
 
-  private boolean(value: boolean): void {
+  private color(color: string): void {
     this.viewContainer
-      .createComponent(TableBooleanRowComponent)
-      .instance.input = value;
+      .createComponent(TableRowColorComponent)
+      .instance.input = color;
   }
 
   private dateTime(value: string): string {
@@ -94,6 +109,12 @@ export class RowDirective<T> implements OnInit, OnDestroy {
 
   private date(value: string): string {
     return new Date(value).toLocaleDateString();
+  }
+
+  private icon(icon: IconProp): void {
+    this.viewContainer
+      .createComponent(TableRowIconComponent)
+      .instance.icon = icon;
   }
 
   private time(value: string): string {

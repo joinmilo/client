@@ -1,10 +1,14 @@
 <app-page-title titleLabel="dealCategories"></app-page-title>
 
-<button mat-raised-button color="primary" 
+<button
+  mat-raised-button
+  color="primary"
   [routerLink]="['form']"
-  appLabel="createCategory">
-</button>
+  appLabel="createCategory"></button>
 
-<app-table [data]="categories" [actions]="actions" [columns]="columns"
+<app-table
+  [data]="categories"
+  [actions]="actions"
+  [columns]="columns"
   (sortPaginate)="updateParams($event)">
 </app-table>

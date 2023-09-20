@@ -21,7 +21,9 @@ import { TableCardComponent } from './components/card/table-card.component';
 import { TableDesktopComponent } from './components/desktop/table-desktop.component';
 import { TableMobileComponent } from './components/mobile/table-mobile.component';
 import { TablePaginatorComponent } from './components/paginator/table-paginator.component';
-import { TableBooleanRowComponent } from './components/rows/table-boolean-row.component';
+import { TableRowBooleanComponent } from './components/rows/table-row-boolean.component';
+import { TableRowColorComponent } from './components/rows/table-row-color.component';
+import { TableRowIconComponent } from './components/rows/table-row-icon.component';
 import { TableSortComponent } from './components/sort/table-sort.component';
 import { TableComponent } from './components/table.component';
 import { RowDirective } from './directives/table-row.directive';
@@ -30,9 +32,11 @@ import { TablePaginatorService } from './services/table-paginator.service';
 const components = [
   TableComponent,
   TableActionsComponent,
-  TableBooleanRowComponent,
   TableCardComponent,
   TableDesktopComponent,
+  TableRowBooleanComponent,
+  TableRowColorComponent,
+  TableRowIconComponent,
   TableMobileComponent,
   TablePaginatorComponent,
   TableSortComponent,

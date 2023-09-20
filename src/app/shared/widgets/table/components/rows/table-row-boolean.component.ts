@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
     </fa-icon>
   `,
 })
-export class TableBooleanRowComponent {
+export class TableRowBooleanComponent {
 
   @Input()
   public input?: boolean;
