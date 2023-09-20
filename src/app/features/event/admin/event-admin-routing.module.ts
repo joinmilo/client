@@ -7,6 +7,12 @@ import { slug } from 'src/app/core/constants/queryparam.constants';
 import { EventAdminDetailsLayoutComponent } from './details/modules/layout/components/event-admin-details-layout.component';
 
 const menuRoutes: Routes = [
+  // {
+  //   path: `${eventsFeatureKey}/dashboard`,
+  //   loadChildren: () => import('src/app/features/event/portal/details/portal-event-details.module')
+  //     .then((imported) => imported.PortalEventDetailsModule),
+  //   data: { label: 'dashboard' },
+  // },
   {
     path: `${eventsFeatureKey}`,
     loadChildren: () => import('src/app/features/event/admin/overview/event-admin-overview.module')
@@ -14,32 +20,25 @@ const menuRoutes: Routes = [
     data: { label: 'overview' },
   },
   {
-    path: `${eventsFeatureKey}/dashboard`,
-    loadChildren: () => import('src/app/features/event/portal/details/portal-event-details.module')
-      .then((imported) => imported.PortalEventDetailsModule),
-    data: { label: 'dashboard' },
-  },
-  {
-    path: `${eventsFeatureKey}/form`,
-    loadChildren: () => import('src/app/features/event/admin/form/event-admin-form.module')
-      .then((imported) => imported.EventAdminFormModule),
-    data: { label: 'form' },
-  },
-  {
     path: `${eventsFeatureKey}/category`,
     loadChildren: () => import('src/app/features/event/admin/category/event-admin-category.module')
       .then((imported) => imported.EventAdminCategoryModule),
-    data: { label: 'category' },
+    data: { label: 'categories' },
   },
   {
     path: `${eventsFeatureKey}/target-group`,
     loadChildren: () => import('src/app/features/event/admin/target-group/event-admin-target-group.module')
       .then((imported) => imported.EventAdminTargetGroupModule),
-    data: { label: 'targetGroup' },
+    data: { label: 'targetGroups' },
   },
 ];
 
 const routes: Routes = [
+  {
+    path: `${eventsFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/event/admin/form/event-admin-form.module')
+      .then((imported) => imported.EventAdminFormModule),
+  },
   {
     path: `${eventsFeatureKey}/:${slug}`,
     loadChildren: () => import('src/app/features/event/admin/details/event-admin-details.module')

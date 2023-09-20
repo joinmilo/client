@@ -5,6 +5,12 @@ import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { mediaFeatureKey } from 'src/app/core/constants/feature.constants';
 
 const menuRoutes: Routes = [
+  // {
+  //   path: `${mediaFeatureKey}/dashboard`,
+  //   loadChildren: () => import('src/app/features/media/portal/overview/portal-media-overview.module')
+  //     .then((imported) => imported.PortalMediaOverviewModule),
+  //   data: { label: 'dashboard' },
+  // },
   {
     path: `${mediaFeatureKey}`,
     loadChildren: () => import('src/app/features/media/admin/overview/media-admin-overview.module')
@@ -12,16 +18,10 @@ const menuRoutes: Routes = [
     data: { label: 'overview' },
   },
   {
-    path: `${mediaFeatureKey}/dashboard`,
-    loadChildren: () => import('src/app/features/media/portal/overview/portal-media-overview.module')
-      .then((imported) => imported.PortalMediaOverviewModule),
-    data: { label: 'dashboard' },
-  },
-  {
     path: `${mediaFeatureKey}/category`,
     loadChildren: () => import('src/app/features/media/admin/category/media-admin-category.module')
       .then((imported) => imported.MediaAdminCategoryModule),
-    data: { label: 'category' },
+    data: { label: 'categories' },
   },
 ];
 

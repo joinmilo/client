@@ -7,6 +7,12 @@ import { slug } from 'src/app/core/constants/queryparam.constants';
 import { ArticleAdminDetailsLayoutComponent } from './details/modules/layout/components/article-admin-details-layout.component';
 
 const menuRoutes: Routes = [
+  // {
+  //   path: `${articlesFeatureKey}/dashboard`,
+  //   loadChildren: () => import('src/app/features/article/portal/details/article-portal-details.module')
+  //     .then((imported) => imported.ArticlePortalDetailsModule),
+  //   data: { label: 'dashboard' },
+  // },
   {
     path: `${articlesFeatureKey}`,
     loadChildren: () => import('src/app/features/article/admin/overview/article-admin-overview.module')
@@ -14,22 +20,10 @@ const menuRoutes: Routes = [
     data: { label: 'overview' },
   },
   {
-    path: `${articlesFeatureKey}/dashboard`,
-    loadChildren: () => import('src/app/features/article/portal/details/article-portal-details.module')
-      .then((imported) => imported.ArticlePortalDetailsModule),
-    data: { label: 'dashboard' },
-  },
-  {
-    path: `${articlesFeatureKey}/form`,
-    loadChildren: () => import('src/app/features/article/admin/form/article-admin-form.module')
-      .then((imported) => imported.ArticleAdminFormModule),
-    data: { label: 'form' },
-  },
-  {
     path: `${articlesFeatureKey}/category`,
     loadChildren: () => import('src/app/features/article/admin/category/article-admin-category.module')
       .then((imported) => imported.ArticleAdminCategoryModule),
-    data: { label: 'category' },
+    data: { label: 'categories' },
   },
 ];
 
@@ -39,6 +33,11 @@ const routes: Routes = [
     loadChildren: () => import('src/app/features/article/admin/details/article-admin-details.module')
       .then((imported) => imported.ArticleAdminDetailsModule),
     component: ArticleAdminDetailsLayoutComponent
+  },
+  {
+    path: `${articlesFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/article/admin/form/article-admin-form.module')
+      .then((imported) => imported.ArticleAdminFormModule),
   },
   {
     path: `${articlesFeatureKey}/:${slug}/edit`,

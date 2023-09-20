@@ -7,23 +7,17 @@ import { slug } from 'src/app/core/constants/queryparam.constants';
 import { DealAdminDetailsLayoutComponent } from './details/modules/layout/components/deal-admin-details-layout.component';
 
 const menuRoutes: Routes = [
+  // {
+  //   path: `${dealsFeatureKey}/dashboard`,
+  //   loadChildren: () => import('src/app/features/deal/portal/details/portal-deal-details.module')
+  //     .then((imported) => imported.PortalDealDetailsModule),
+  //   data: { label: 'dashboard' },
+  // },
   {
     path: `${dealsFeatureKey}`,
     loadChildren: () => import('src/app/features/deal/admin/overview/deal-admin-overview.module')
       .then((imported) => imported.DealAdminOverviewModule),
     data: { label: 'overview' },
-  },
-  {
-    path: `${dealsFeatureKey}/dashboard`,
-    loadChildren: () => import('src/app/features/deal/portal/details/portal-deal-details.module')
-      .then((imported) => imported.PortalDealDetailsModule),
-    data: { label: 'dashboard' },
-  },
-  {
-    path: `${dealsFeatureKey}/form`,
-    loadChildren: () => import('src/app/features/deal/admin/form/deal-admin-form.module')
-      .then((imported) => imported.DealAdminFormModule),
-    data: { label: 'form' },
   },
   {
     path: `${dealsFeatureKey}/category`,
@@ -39,6 +33,11 @@ const routes: Routes = [
     loadChildren: () => import('src/app/features/deal/admin/details/deal-admin-details.module')
       .then((imported) => imported.DealAdminDetailsModule),
     component: DealAdminDetailsLayoutComponent
+  },
+  {
+    path: `${dealsFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/deal/admin/form/deal-admin-form.module')
+      .then((imported) => imported.DealAdminFormModule),
   },
 ]
 
