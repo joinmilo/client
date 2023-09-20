@@ -2,6 +2,7 @@ import { Route, Routes } from '@angular/router'
 import { IconName } from '@fortawesome/fontawesome-svg-core'
 
 export type AdminMenuItem = {
+  active?: boolean,
   childs?: AdminMenuItem[],
   description?: string,
   icon?: IconName,

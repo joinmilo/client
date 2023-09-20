@@ -20,7 +20,7 @@ export class AdminSettingsFeatureComponent {
       icon: 'toggle-off',
       callback: feature =>
         this.store.dispatch(AdminSettingsFeatureActions.toggleFeature(feature)),
-      tooltipLabel: 'toggleMemberIsPublic'
+      tooltipLabel: 'toggleActivatePlugin',
     },
   ];
 
@@ -30,10 +30,6 @@ export class AdminSettingsFeatureComponent {
       label: 'plugins',
       type: row => this.translationService.translatable(row.translatables, 'name'),
       sort: true
-    },
-    {
-      field: 'icon',
-      label: 'icon',
     },
     {
       field: 'active',

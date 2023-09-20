@@ -1,6 +1,7 @@
 <app-table-desktop
   [actions]="actions"
   [columns]="columns"
+  [clickable]="rowClicked.observed"
   [data]="data"
   [entity]="entity"
   [initParams]="initParams"
@@ -10,6 +11,7 @@
 
 <app-table-mobile
   [actions]="actions"
+  [clickable]="rowClicked.observed"
   [columns]="columns"
   [data]="data"
   [entity]="entity"

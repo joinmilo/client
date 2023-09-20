@@ -38,7 +38,6 @@ const routes: Routes = [
     path: `${contestsFeatureKey}/form`,
     loadChildren: () => import('src/app/features/contest/admin/form/contest-admin-form.module')
       .then((imported) => imported.ContestAdminFormModule),
-    data: { label: 'form' },
   },
 ]
 

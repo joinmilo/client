@@ -24,24 +24,27 @@ export const selectAdminMainMenu = createSelector(
   selectFeatures,
   selectMainRoutes,
   (features, routes) => {
-    return routes.map(mainRoute => {
-      const feature = features?.find(feature => feature.code === mainRoute.code)
+    return routes
+      .map(mainRoute => {
+        const feature = features
+          ?.find(feature => feature.code === mainRoute.code)
 
-      return {
-        icon: feature?.icon,
-        name: feature?.name, //TODO: This is a translatable!
-        route: mainRoute?.routes.length === 1
-          ? mainRoute.routes[0].path
-          : undefined,
-        childs: mainRoute?.routes.length > 1
-          ? mainRoute?.routes.map(child => ({
-              name: child?.data?.['label'],
-              route: child.path
-            }) as AdminMenuItem)
-          : undefined
-      } as AdminMenuItem
-
-    }) as AdminMenuItem[]
+        return {
+          icon: feature?.icon,
+          name: feature?.name, //TODO: This is a translatable!
+          active: feature?.active,
+          route: mainRoute?.routes.length === 1
+            ? mainRoute.routes[0].path
+            : undefined,
+          childs: mainRoute?.routes.length > 1
+            ? mainRoute?.routes.map(child => ({
+                name: child?.data?.['label'],
+                route: child.path
+              }) as AdminMenuItem)
+            : undefined
+        } as AdminMenuItem
+      })
+      .filter(route => !!route.active) as AdminMenuItem[]
   }
 );
 

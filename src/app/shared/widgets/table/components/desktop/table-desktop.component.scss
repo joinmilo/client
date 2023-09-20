@@ -3,10 +3,6 @@
   flex-flow: column;
   gap: var(--gap);
 
-  td {
-    cursor: pointer;
-  }
-
   mat-card {
     overflow: hidden;
   }
@@ -20,6 +16,10 @@
   fa-icon {
     color: var(--color-success-500);
   }
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 :host ::ng-deep {

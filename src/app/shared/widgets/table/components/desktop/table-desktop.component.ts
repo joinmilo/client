@@ -34,6 +34,9 @@ export class TableDesktopComponent<T> implements AfterViewInit, OnDestroy {
   }
 
   @Input()
+  public clickable?: boolean;
+
+  @Input()
   public data?: Observable<PageableList<T> | undefined>;
 
   @Input()

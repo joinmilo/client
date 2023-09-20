@@ -24,6 +24,9 @@ export class TableMobileComponent<T> implements AfterViewInit, OnDestroy {
   @Input()
   public entity?: ContentEntity;
 
+  @Input()
+  public clickable?: boolean;
+
   @Output()
   public sortPaginate = new EventEmitter<SortPaginate>();
 
