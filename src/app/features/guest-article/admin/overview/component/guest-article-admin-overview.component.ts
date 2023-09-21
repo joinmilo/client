@@ -16,7 +16,13 @@ export class GuestArticleAdminOverviewComponent {
 
   public guestArticles = this.store.select(selectOverviewData);
 
-  public actions: RowAction<ArticleEntity>[] = [    
+  public actions: RowAction<ArticleEntity>[] = [
+    {
+      icon: 'toggle-off',
+      callback: article =>
+        this.store.dispatch(GuestArticleAdminOverviewActions.toggleArticleApproval(article)),
+      tooltipLabel: 'changeArticleApproval',
+    },
     {
       icon: 'pen-to-square',
       callback: row =>
@@ -38,20 +44,22 @@ export class GuestArticleAdminOverviewComponent {
       type: row => this.translationService.translatable(row.translatables, 'name')
     },
     {
-      field: 'author.user.lastName',
+      field: 'publicAuthor.name',
       label: 'author',
-      type: row => `${row.author?.user?.firstName ?? ''} ${row.author?.user?.lastName ?? ''}`
     },
     {
-      field: 'modified',
-      label: 'date',
+      field: 'publicAuthor.phone',
+      label: 'phone',
+    },
+    {
+      field: 'publicAuthor.email',
+      label: 'email',
+    },
+    {
+      field: 'created',
+      label: 'created',
       type: 'DATETIME',
       sort: true,
-    },
-    {
-      field: 'category',
-      label: 'category',
-      type: 'CATEGORY',
     },
     {
       field: 'approved',

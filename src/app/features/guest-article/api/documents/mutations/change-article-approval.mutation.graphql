@@ -1,0 +1,3 @@
+mutation changeArticleApproval($articleId: String) {
+  changeArticleApproval(articleId: $articleId)
+}

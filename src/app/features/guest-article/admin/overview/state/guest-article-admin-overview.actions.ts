@@ -8,6 +8,9 @@ export const GuestArticleAdminOverviewActions = createActionGroup({
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),
 
+    'toggle article approval': (article: Maybe<ArticleEntity>) => ({ article }),
+    'approval changed': emptyProps(),
+
     'delete article': (article?: Maybe<ArticleEntity>) => ({ article }),
     'article deleted': emptyProps(),
 

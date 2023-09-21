@@ -1,0 +1,28 @@
+query getGuestArticles($params: FilterSortPaginateInput) {
+  getArticles(params: $params) {
+    result {
+      id
+      approved
+      created
+      modified
+      slug
+
+      publicAuthor {
+        id
+
+        name
+        email
+        phone
+      }
+
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+    }
+    total
+  }
+}

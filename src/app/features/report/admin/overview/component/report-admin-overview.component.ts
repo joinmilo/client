@@ -41,9 +41,9 @@ export class ReportAdminOverviewComponent {
       type: row => this.translationService.translatable(row.translatables, 'content')
     },
     {
-      field: 'translatables.name',
+      field: 'type.translatables.name',
       label: 'type',
-      type: row => this.translationService.translatable(row.translatables, 'name')
+      type: row => this.translationService.translatable(row.type?.translatables, 'name')
     },
     {
       field: 'modified',
