@@ -11,11 +11,14 @@
     </app-share-button>
 
     <ng-container *ngSwitchDefault>
-      <button mat-button
-        (click)="callback(action)"
-        [appTooltip]="tooltip(action)">
-        <fa-icon [icon]="['fas', icon(action)]"></fa-icon>
-      </button>
+      <div [class.disabled]="isDisabled(action)">
+        <button mat-button
+          [disabled]="isDisabled(action)"
+          (click)="callback(action)"
+          [appTooltip]="tooltip(action)">
+          <fa-icon [icon]="['fas', icon(action)]"></fa-icon>
+        </button>
+      </div>
     </ng-container>
     
   </ng-container>

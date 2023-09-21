@@ -10,7 +10,7 @@ export type GetFeaturesQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetFeaturesQuery = { __typename?: 'Query', getFeatures?: { __typename?: 'PageableList_FeatureEntity', total: any, result?: Array<{ __typename?: 'FeatureEntity', id?: string | null, active?: boolean | null, icon?: string | null, name?: string | null, code?: string | null, translatables?: Array<{ __typename?: 'FeatureTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetFeaturesQuery = { __typename?: 'Query', getFeatures?: { __typename?: 'PageableList_FeatureEntity', total: any, result?: Array<{ __typename?: 'FeatureEntity', id?: string | null, active?: boolean | null, code?: string | null, icon?: string | null, name?: string | null, released?: boolean | null, translatables?: Array<{ __typename?: 'FeatureTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export const GetFeaturesDocument = gql`
     query getFeatures($params: FilterSortPaginateInput) {
@@ -18,9 +18,10 @@ export const GetFeaturesDocument = gql`
     result {
       id
       active
+      code
       icon
       name
-      code
+      released
       translatables {
         id
         name

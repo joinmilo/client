@@ -20,6 +20,7 @@ export class AdminSettingsFeatureComponent {
       icon: 'toggle-off',
       callback: feature =>
         this.store.dispatch(AdminSettingsFeatureActions.toggleFeature(feature)),
+      disable: (row) => !row?.released,
       tooltipLabel: 'toggleActivatePlugin',
     },
   ];
@@ -29,6 +30,11 @@ export class AdminSettingsFeatureComponent {
       field: 'translatables.name',
       label: 'plugins',
       type: row => this.translationService.translatable(row.translatables, 'name'),
+    },
+    {
+      field: 'released',
+      label: 'released',
+      type: row => this.translationService.label(row.released ? 'yes' : 'comingSoon'),
       sort: true
     },
     {

@@ -31,12 +31,16 @@ export class TableActionsComponent<T> {
     return contentPortalDetailsUrl(this.entity, this.data as ContentData);
   }
 
-  public callback(action: RowAction<T>) {
+  public callback(action: RowAction<T>): void {
     (action as RowCustomAction<T>).callback?.(this.data)
   }
 
   public icon(action: RowAction<T>): IconName {
     return (action as RowCustomAction<T>).icon;
+  }
+
+  public isDisabled(action: RowAction<T>): boolean {
+    return !!(action as RowCustomAction<T>)?.disable?.(this.data);
   }
 
   public tooltip(action: RowAction<T>): Maybe<string> {

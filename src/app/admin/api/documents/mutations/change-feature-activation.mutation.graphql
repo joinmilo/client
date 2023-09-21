@@ -1,0 +1,8 @@
+mutation changeFeatureActivation(
+  $featureId: String,
+  $active: Boolean
+) {
+  changeActivation(
+    featureId: $featureId,
+    active: $active)
+}

@@ -3,9 +3,10 @@ query getFeatures($params: FilterSortPaginateInput) {
     result {
       id
       active
+      code
       icon
       name
-      code
+      released
       translatables{
         id
         name

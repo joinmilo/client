@@ -1271,6 +1271,7 @@ export type FeatureEntity = {
   menuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
+  released?: Maybe<Scalars['Boolean']>;
   translatables?: Maybe<Array<Maybe<FeatureTranslatableEntity>>>;
 };
 
@@ -1284,6 +1285,7 @@ export type FeatureEntityInput = {
   menuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
+  released?: InputMaybe<Scalars['Boolean']>;
   translatables?: InputMaybe<Array<InputMaybe<FeatureTranslatableEntityInput>>>;
 };
 
@@ -1684,6 +1686,7 @@ export type Mutation = {
   addFavoriteEvent?: Maybe<UserContextEntity>;
   addFavoriteOrganisation?: Maybe<UserContextEntity>;
   addUploads?: Maybe<UserEntity>;
+  changeActivation?: Maybe<Scalars['Boolean']>;
   changePassword?: Maybe<Scalars['Boolean']>;
   checkPassword?: Maybe<Scalars['Float']>;
   createToken?: Maybe<TokenDto>;
@@ -1745,8 +1748,6 @@ export type Mutation = {
   deleteEventTargetGroup?: Maybe<Scalars['Boolean']>;
   deleteEventTargetGroups?: Maybe<Scalars['Boolean']>;
   deleteEvents?: Maybe<Scalars['Boolean']>;
-  deleteFeature?: Maybe<Scalars['Boolean']>;
-  deleteFeatures?: Maybe<Scalars['Boolean']>;
   deleteFriend?: Maybe<Scalars['Boolean']>;
   deleteFriends?: Maybe<Scalars['Boolean']>;
   deleteInfoMedia?: Maybe<Scalars['Boolean']>;
@@ -2005,6 +2006,13 @@ export type MutationAddFavoriteOrganisationArgs = {
 /** Mutation root */
 export type MutationAddUploadsArgs = {
   uploads?: InputMaybe<Array<InputMaybe<UserContextMediaEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationChangeActivationArgs = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  featureId?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -2371,18 +2379,6 @@ export type MutationDeleteEventTargetGroupsArgs = {
 
 /** Mutation root */
 export type MutationDeleteEventsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** Mutation root */
-export type MutationDeleteFeatureArgs = {
-  id?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Mutation root */
-export type MutationDeleteFeaturesArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -4009,11 +4005,27 @@ export type PageEntity = {
   metaDescription?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
+  searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<PageTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<PageMediaEntity>>>;
+  visitorStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   visitors?: Maybe<Array<Maybe<PageVisitorEntity>>>;
+};
+
+
+export type PageEntitySearchStatisticsArgs = {
+  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  interval?: InputMaybe<IntervalFilter>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+};
+
+
+export type PageEntityVisitorStatisticsArgs = {
+  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  interval?: InputMaybe<IntervalFilter>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
 };
 
 export type PageEntityInput = {

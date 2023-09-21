@@ -31,6 +31,7 @@ export type RowDefaultAction = 'LIKE' | 'SHARE';
 
 export type RowCustomAction<T> = {
   callback?: (row: Maybe<T>) => void,
+  disable?: (row: Maybe<T>) => boolean,
   icon: IconName,
   tooltipLabel?: Maybe<string>,
   inlineEdit?: boolean

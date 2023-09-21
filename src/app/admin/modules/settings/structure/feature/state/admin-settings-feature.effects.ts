@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { ChangeFeatureActivationGQL } from 'src/app/admin/api/generated/change-feature-activation.mutation.generated';
 import { GetFeaturesGQL } from 'src/app/admin/api/generated/get-features.query.generated';
-import { SaveFeatureGQL } from 'src/app/admin/api/generated/save-feature.mutation.generated';
 import { PageableList_FeatureEntity } from 'src/app/core/api/generated/schema';
 import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
 import { AdminSettingsFeatureActions } from './admin-settings-feature.actions';
@@ -51,8 +51,9 @@ export class AdminSettingsFeatureEffects {
           )
         )
       ),
-      switchMap(entity => this.saveFeatureService.mutate({
-        entity
+      switchMap(entity => this.changeActivationService.mutate({
+        featureId: entity.id,
+        active: entity.active
       })),
       map(() => AdminSettingsFeatureActions.featureToggled())
     )
@@ -62,7 +63,7 @@ export class AdminSettingsFeatureEffects {
     private actions: Actions,
     private dialog: MatDialog,
     private getFeaturesService: GetFeaturesGQL,
-    private saveFeatureService: SaveFeatureGQL,
+    private changeActivationService: ChangeFeatureActivationGQL,
     private store: Store
   ) {}
 }

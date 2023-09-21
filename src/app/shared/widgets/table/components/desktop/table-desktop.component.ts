@@ -19,10 +19,11 @@ export class TableDesktopComponent<T> implements AfterViewInit, OnDestroy {
   public set actions(actions: RowAction<T>[] | undefined) {
     this._actions = actions?.filter(action => {
       const isInlineEdit = typeof action !== 'string'
-        && !!action.inlineEdit;
+        && Object.hasOwn(action, 'inlineEdit')
+        && !!(action as RowCustomAction<T>).inlineEdit
   
       if (isInlineEdit) {
-        this.inlineEditAction = action;
+        this.inlineEditAction = action as RowCustomAction<T>;
       }
   
       return !isInlineEdit;
