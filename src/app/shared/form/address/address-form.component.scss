@@ -1,0 +1,36 @@
+div {
+  display: flex;
+  flex-flow: column;
+}
+
+section {
+  display: flex;
+  gap: 1rem;
+
+  mat-form-field:first-child {
+    width: 70%;
+  }
+
+  mat-form-field:nth-child(2) {
+    width: 30%;
+  }
+}
+
+:host ::ng-deep {
+  display: flex;
+  flex-flow: column;
+
+  .wrapper {
+    margin-bottom: 1.5rem;
+
+    section {
+      .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+      }
+    }
+  }
+
+  mat-error {
+    font-size: smaller;
+  }
+}

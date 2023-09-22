@@ -33,4 +33,19 @@ export class AppValidators {
     };
   }
 
+  public static allOrNoFieldsRequired(...fields: string[]): ValidatorFn {
+    return (group: AbstractControl) => {
+      const values = fields.map((fieldName) => group?.get(fieldName)?.value);
+  
+      const areAllFieldsNullOrEmpty = values.every((value) => value == null || value === '');
+  
+      const allFieldsWithValue = values.every((value) => value != null && value !== '');
+  
+      if (areAllFieldsNullOrEmpty || allFieldsWithValue) {
+        return null; 
+      }
+      return { allFieldsRequired: true };
+    };
+  }
+
 }

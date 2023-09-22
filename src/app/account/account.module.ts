@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalFooterModule } from '../portal/modules/footer/portal-footer.module';
+import { AddressFormComponent } from '../shared/form/address/address-form.component';
 import { CaptchaModule } from '../shared/form/captcha/captcha.module';
 import { PasswordModule } from '../shared/form/password/password.module';
 import { PrivacyPolicyFormComponent } from '../shared/form/privacy-policy/privacy-policy-form.component';
@@ -63,7 +64,6 @@ const materials = [
   MatSlideToggleModule,
   MatSelectModule,
   MatAutocompleteModule,
-  MatInputModule,
 ];
 
 const modules = [
@@ -75,7 +75,8 @@ const modules = [
   TitleModule,
   UserPortalRoutingModule,
   LoadingComponent,
-  MediaModule
+  MediaModule,
+  AddressFormComponent
 ];
 
 const libs = [

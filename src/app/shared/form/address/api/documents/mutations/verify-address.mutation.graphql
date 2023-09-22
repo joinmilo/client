@@ -1,0 +1,5 @@
+mutation verifyAddress($entity: AddressEntityInput) {
+  verifyAddress(entity: $entity) {
+    ...Address
+  }
+}
