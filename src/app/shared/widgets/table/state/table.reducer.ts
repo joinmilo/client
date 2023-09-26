@@ -115,5 +115,7 @@ export const tableReducer = createReducer(
     )
   ),
 
-  on(TableActions.resetTable, (): TableState<any> => initialState),
+  on(TableActions.resetTable, (): TableState<any> => (
+    {...initialState}
+  )),
 );

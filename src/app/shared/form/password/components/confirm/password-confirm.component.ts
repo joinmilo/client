@@ -85,8 +85,8 @@ export class PasswordConfirmComponent implements ControlValueAccessor, OnDestroy
     return !this.valid
       ? {
           ...this.form.errors,
-          ...this.form.controls['confirm'].errors,
-          ...this.form.controls['password'].errors
+          ...this.form.controls.confirm.errors,
+          ...this.form.controls.password.errors
         }
       : null;
   }

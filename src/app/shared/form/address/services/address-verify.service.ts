@@ -37,8 +37,9 @@ export class AddressVerify{
         } else {
           return of(null);
         }
-      })
-    ).pipe(take(1)); 
+      }),
+      take(1)
+    ); 
   }
 
 }

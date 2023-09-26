@@ -1,0 +1,15 @@
+<app-page-title
+  [titleLabel]="form.value.id ? 'editAddress' : 'createNewAddress'">
+</app-page-title>
+
+<app-form-stepper
+  (cancelled)="cancelled()"
+  (saved)="saved()">
+  <app-form-step
+    titleLabel="address"
+    [formGroup]="form">
+    <app-form-row [columns]="2">
+      <app-address-form formControlName="address"></app-address-form>
+    </app-form-row>
+  </app-form-step>
+</app-form-stepper>

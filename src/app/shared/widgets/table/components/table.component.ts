@@ -77,6 +77,10 @@ export class TableComponent<T> implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    //TODO: This has side effects when switchin from mobile to desktop and vice versa
+    // If not called, sort props mix up for different tables
+    this.store.dispatch(TableActions.resetTable());
+
     this.destroy.next();
     this.destroy.complete();
   }

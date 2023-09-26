@@ -1,11 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminSettingsAddressComponent } from './component/admin-settings-address.component';
+import { id } from 'src/app/core/constants/queryparam.constants';
+import { AdminSettingsAddressFormComponent } from './components/form/admin-settings-address-form.component';
+import { AdminSettingsAddressOverviewComponent } from './components/overview/admin-settings-address.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminSettingsAddressComponent,
+    component: AdminSettingsAddressOverviewComponent,
+  },
+  {
+    path: `form/:${id}`,
+    component: AdminSettingsAddressFormComponent,
+  },
+  {
+    path: `form`,
+    component: AdminSettingsAddressFormComponent,
   },
 ];
 

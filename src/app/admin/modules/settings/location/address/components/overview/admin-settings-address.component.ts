@@ -3,15 +3,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AddressEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
-import { AdminSettingsAddressActions } from '../state/admin-settings-address.actions';
-import { selectAddresses } from '../state/admin-settings-address.selectors';
+import { AdminSettingsAddressActions } from '../../state/admin-settings-address.actions';
+import { selectAddresses } from '../../state/admin-settings-address.selectors';
 
 @Component({
   selector: 'app-admin-settings-address',
   templateUrl: './admin-settings-address.component.html',
   styleUrls: ['./admin-settings-address.component.scss'],
 })
-export class AdminSettingsAddressComponent {
+export class AdminSettingsAddressOverviewComponent {
 
   public addresses = this.store.select(selectAddresses);
 
@@ -19,7 +19,7 @@ export class AdminSettingsAddressComponent {
     {
       icon: 'pen-to-square',
       callback: row =>
-        this.router.navigate([row?.id, 'edit'], { relativeTo: this.activatedRoute }),
+        this.router.navigate(['form', row?.id], { relativeTo: this.activatedRoute }),
       tooltipLabel: 'edit'
     },
     {
@@ -29,25 +29,28 @@ export class AdminSettingsAddressComponent {
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
   ];
 
   public columns: Column<AddressEntity>[] = [
     {
       field: 'street',
       label: 'street',
+      sort: true,
     },
     {
       field: 'houseNumber',
-      label: 'houseNumber'
+      label: 'houseNumber',
+      sort: true,
     },
     {
       field: 'postalCode',
       label: 'postalCode',
+      sort: true,
     },
     {
       field: 'place',
       label: 'place',
+      sort: true,
     },
   ];
 
