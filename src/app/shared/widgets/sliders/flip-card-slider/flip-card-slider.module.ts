@@ -5,13 +5,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from '../../layout/title/title.module';
-import { CardModule } from '../card/card.module';
-import { RoadmapComponent } from './roadmap.component';
+
+import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { CardModule } from '../../card/card.module';
+import { FlipCardSliderComponent } from './flip-card-slider.component';
 
 const components = [
-  RoadmapComponent,
-
+  FlipCardSliderComponent
 ];
 
 const framework = [
@@ -26,8 +26,8 @@ const materials = [
 
 const modules = [
   CoreModule,
-  CardModule,
-  TitleModule
+  TitleModule,
+  CardModule
 ];
 
 const libs = [
@@ -48,4 +48,4 @@ const libs = [
     ...components,
   ],
 })
-export class RoadmapModule { }
+export class FlipCardSLiderModule { }

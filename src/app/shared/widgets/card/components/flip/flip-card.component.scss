@@ -25,12 +25,17 @@ mat-button-toggle-group {
   mat-button-toggle:last-child {
     margin-top: auto;
   }
-}
 
+  mat-button-toggle{
+    white-space: normal
+  }
+}
 
 :host::ng-deep .mat-button-toggle-standalone.mat-button-toggle-appearance-standard {
   border-radius: unset;
 }
+
+
 
 /* FLIPCARD */
 
@@ -52,8 +57,6 @@ mat-button-toggle-group {
   transform-style: preserve-3d;
 }
 
-
-
 /* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
@@ -70,6 +73,10 @@ mat-button-toggle-group {
   box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
   display: flex;
   flex-direction: column;
+}
+
+.flip-card-front{
+  cursor: pointer;
 }
 
 .flip-card-back {

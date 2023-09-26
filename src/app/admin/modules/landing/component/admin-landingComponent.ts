@@ -4,7 +4,7 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, map, takeUntil } from 'rxjs';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FlipCardSliderInput, RoadmapOutput } from 'src/app/shared/widgets/roadmap/typings/slider';
+import { FlipCardSliderInput, RoadmapOutput } from 'src/app/shared/widgets/sliders/flip-card-slider/typings/flip-card-slider';
 import { AdminLandingActions } from '../state/admin-landing.actions';
 import { selectDeveloperContact, selectMilestones, selectNewsFeeds } from '../state/admin-landing.selectors';
 

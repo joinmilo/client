@@ -8,7 +8,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { RoadmapModule } from 'src/app/shared/widgets/roadmap/roadmap.module';
+import { FlipCardSLiderModule } from 'src/app/shared/widgets/sliders/flip-card-slider/flip-card-slider.module';
 import { AdminLandingRoutingModule } from './admin-landing-routing.module';
 import { AdminLandingComponent } from './component/admin-landingComponent';
 import { adminLandingStateKey } from './constants/admin-landing.constants';
@@ -35,7 +35,7 @@ const modules = [
   TitleModule,
   MailPieceComponent,
   PhonePieceComponent,
-  RoadmapModule,
+  FlipCardSLiderModule,
 ];
 
 const libs = [

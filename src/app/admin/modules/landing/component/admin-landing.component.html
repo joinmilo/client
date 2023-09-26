@@ -3,34 +3,16 @@
 <div>
   <section class="wrapper">
     <section class="border-box">
-      <p>
-        Willkommen im Admin-Portal, Ihrem Dreh- und Angelpunkt für
-        effizientes
-        Management. Wir wissen, dass die Verwaltung komplexer
-        Unternehmensprozesse nach nahtlosem Zugang, leistungsstarken
-        Tools und
-        fundierten Daten verlangt. Unser Admin-Portal bietet Ihnen
-        genau
-        das –
-        ohne übertriebenen Schnickschnack. Egal, ob Sie ein kleines
-        Team
-        oder
-        ein großes Unternehmen führen, unsere Plattform ermöglicht es
-        Ihnen,
-        Verwaltungsaufgaben mühelos zu erledigen. Begleiten Sie uns
-        auf
-        einer
-        Reise der Effizienz, bei der jeder Klick Sie Ihrem
-        Verwaltungsziel
-        näher bringt. Willkommen im Admin-Portal, wo Verwaltung auf
-        Innovation
-        trifft.</p>
+      <p appLabel="welcomeTextBlock1"></p>
+      <p appLabel="welcomeTextBlock2"></p>
+      <p appLabel="welcomeTextBlock3"></p>
+      <p appLabel="welcomeTextBlock4"></p>
     </section>
 
     <section>
       <app-sub-title title="Roadmap"></app-sub-title>
-      <app-roadmap (elementClicked)="openHelpMenu($event)"
-        [data]="flipCardSliderData | async"></app-roadmap>
+      <app-flip-card-slider (elementClicked)="openHelpMenu($event)"
+        [data]="flipCardSliderData | async"></app-flip-card-slider>
     </section>
   </section>
 

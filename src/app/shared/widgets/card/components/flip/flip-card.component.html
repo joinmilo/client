@@ -1,6 +1,7 @@
 <div class="flip-card">
   <div class="flip-card-inner" #cardElement>
-    <div class="flip-card-front">
+
+    <div class="flip-card-front" (click)="flipCard(180)">
       <img [src]="pictureUrl" alt="flip-card-image">
       <mat-button-toggle (click)="flipCard(180)">
         <fa-icon [icon]="['fas', 'arrows-rotate']"> </fa-icon>
@@ -18,5 +19,6 @@
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>
+
   </div>
 </div>

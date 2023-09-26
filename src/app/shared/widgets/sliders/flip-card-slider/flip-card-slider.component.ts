@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Observable, Subject, isObservable, of } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { FlipCardOutput } from '../card/typings/card';
-import { FlipCardSliderInput, RoadmapOutput } from './typings/slider';
+import { FlipCardOutput } from '../../card/typings/card';
+import { FlipCardSliderInput, RoadmapOutput } from './typings/flip-card-slider';
 
 
 @Component({
-  selector: 'app-roadmap',
-  templateUrl: './roadmap.component.html',
-  styleUrls: ['./roadmap.component.scss']
+  selector: 'app-flip-card-slider',
+  templateUrl: './flip-card-slider.component.html',
+  styleUrls: ['./flip-card-slider.component.scss']
 })
-export class RoadmapComponent implements OnDestroy{
+export class FlipCardSliderComponent implements OnDestroy{
 
   @Input()
   public data?: Maybe<FlipCardSliderInput[]>;
