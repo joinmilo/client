@@ -1,0 +1,34 @@
+query getMilestones($params: FilterSortPaginateInput) {
+  getMilestones(params: $params) {
+    result {
+      id
+      order
+       translatables {
+         id
+        title
+        language {
+          ...Language          
+        }
+      }
+
+      uploads {
+        media {
+          ...Media
+        }
+      }
+
+      elements{
+        id
+        translatables {
+           id
+          name
+          description
+          language {
+           ...Language          
+          }
+        }        
+      }
+    }
+    total
+  }
+}

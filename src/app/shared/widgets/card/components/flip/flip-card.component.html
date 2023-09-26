@@ -1,0 +1,22 @@
+<div class="flip-card">
+  <div class="flip-card-inner" #cardElement>
+    <div class="flip-card-front">
+      <img [src]="pictureUrl" alt="flip-card-image">
+      <mat-button-toggle (click)="flipCard(180)">
+        <fa-icon [icon]="['fas', 'arrows-rotate']"> </fa-icon>
+      </mat-button-toggle>
+    </div>
+
+    <div class="flip-card-back">
+      <mat-button-toggle-group>
+        <mat-button-toggle
+          *ngFor="let element of getElements(elements ?? []); let i = index"
+          (click)="emit(element, i)">
+          {{ element | async }}</mat-button-toggle>
+        <mat-button-toggle (click)="flipCard(0)">
+          <fa-icon [icon]="['fas', 'arrows-rotate']"> </fa-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+</div>

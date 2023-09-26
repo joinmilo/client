@@ -19,8 +19,8 @@ const routes: Routes = [
       .then(imported => imported.AdminSettingsModule),
   },
   { path: '',
-    loadComponent: () => import('./modules/landing/admin-landing.component')
-      .then(imported => imported.AdminLandingComponent)
+    loadChildren: () => import('./modules/landing/admin-landing.module')
+      .then(imported => imported.AdminLandingModule)
   },
   {
     path: '**',

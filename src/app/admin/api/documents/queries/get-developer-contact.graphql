@@ -1,0 +1,10 @@
+query getDeveloperContact(
+  $entity: ContactEntityInput) {
+  getContact(entity: $entity) {
+    id
+    email
+    phone
+    name
+    website
+  }
+}

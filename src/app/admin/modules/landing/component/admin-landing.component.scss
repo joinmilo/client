@@ -1,0 +1,48 @@
+@import 'src/styles/mixins.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+div {
+  display: flex;
+  flex-flow: row;
+  gap: 2rem;
+
+  @include responsive(tablet) {
+    flex-flow: column;
+  }
+
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 2 2 auto;
+  max-width: calc(70% - var(--gap));
+
+  @include responsive(tablet) {
+    max-width: calc(100% - var(--gap));
+  }
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  flex: 1 1 auto;
+}
+
+ul {
+  margin: unset;
+  padding-left: 1rem;
+}

@@ -1,0 +1,15 @@
+query getNewsFeeds($params: FilterSortPaginateInput) {
+  getNewsFeeds(params: $params) {
+    result {
+      id
+      translatables {
+         id
+        content
+        language {
+          ...Language          
+        }
+      }
+    }
+    total
+  }
+}

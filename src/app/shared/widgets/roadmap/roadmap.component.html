@@ -1,0 +1,15 @@
+<div *ngFor="let element of data; let i = index">
+  <section>
+    <p class="mat-subtitle-1" >
+      {{ getTitle(element.title) | async}}</p>
+    <app-flip-card [pictureUrl]="element?.pictureUrl"
+      [elements]="element?.elements"
+      (elementClicked)="emit($event, i)"></app-flip-card>
+
+    <div *ngIf="(i + 1)< (data?.length || 0)" class="arrow">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </section>
+</div>

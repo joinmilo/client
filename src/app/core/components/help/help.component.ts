@@ -13,8 +13,6 @@ export class HelpComponent {
 
   constructor(
     private store: Store,
-  ) {
-    
-  }
+  ) { }
 
 }

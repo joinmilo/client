@@ -2,6 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
@@ -13,12 +14,15 @@ import { CategoryPieceComponent } from '../../layout/category/category-piece.com
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { MailPieceComponent } from '../../layout/mail/mail-piece.component';
 import { PhonePieceComponent } from '../../layout/phone/phone-piece.component';
+import { TitleModule } from '../../layout/title/title.module';
 import { MediaModule } from '../../media/media.module';
+import { ChartModule } from '../chart/chart.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
 import { ShareModule } from '../share/share.module';
 import { CardActionsComponent } from './components/actions/card-actions.component';
 import { ContactCardComponent } from './components/contact/contact-card.component';
 import { ContentCardComponent } from './components/content/content-card.component';
+import { FlipCardComponent } from './components/flip/flip-card.component';
 import { MemberCardComponent } from './components/member/member-card.component';
 import { SponsoredDesktopCardComponent } from './components/sponsored/desktop/sponsored-desktop-card.component';
 import { SponsoredCardComponent } from './components/sponsored/sponsored-card.component';
@@ -30,6 +34,7 @@ const components = [
   SponsoredCardComponent,
   SponsoredDesktopCardComponent,
   MemberCardComponent,
+  FlipCardComponent
 ];
 
 const framework = [
@@ -43,6 +48,7 @@ const materials = [
   MatChipsModule,
   MatMenuModule,
   ShareModule,
+  MatButtonToggleModule
 ];
 
 const modules = [
@@ -54,6 +60,8 @@ const modules = [
   MailPieceComponent,
   MediaModule,
   PhonePieceComponent,
+  TitleModule,
+  ChartModule
 ];
 
 const libs = [

@@ -1677,6 +1677,101 @@ export type MessageTemplateTranslatableEntityInput = {
   parent?: InputMaybe<MessageTemplateEntityInput>;
 };
 
+export type MilestoneElementEntity = {
+  __typename?: 'MilestoneElementEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  milestone?: Maybe<MilestoneEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  translatables?: Maybe<Array<Maybe<MilestoneElementTranslatableEntity>>>;
+};
+
+export type MilestoneElementEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  milestone?: InputMaybe<MilestoneEntityInput>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  translatables?: InputMaybe<Array<InputMaybe<MilestoneElementTranslatableEntityInput>>>;
+};
+
+export type MilestoneElementTranslatableEntity = {
+  __typename?: 'MilestoneElementTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type MilestoneElementTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  description?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type MilestoneEntity = {
+  __typename?: 'MilestoneEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  elements?: Maybe<Array<Maybe<MilestoneElementEntity>>>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  order?: Maybe<Scalars['Int']>;
+  translatables?: Maybe<Array<Maybe<MilestoneTranslatableEntity>>>;
+  uploads?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
+};
+
+export type MilestoneEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  elements?: InputMaybe<Array<InputMaybe<MilestoneElementEntityInput>>>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Scalars['Int']>;
+  translatables?: InputMaybe<Array<InputMaybe<MilestoneTranslatableEntityInput>>>;
+  uploads?: InputMaybe<Array<InputMaybe<MilestoneMediaEntityInput>>>;
+};
+
+export type MilestoneMediaEntity = {
+  __typename?: 'MilestoneMediaEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  media?: Maybe<MediaEntity>;
+  milestone?: Maybe<MilestoneEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+};
+
+export type MilestoneMediaEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  media?: InputMaybe<MediaEntityInput>;
+  milestone?: InputMaybe<MilestoneEntityInput>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+};
+
+export type MilestoneTranslatableEntity = {
+  __typename?: 'MilestoneTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+export type MilestoneTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
 /** Mutation root */
 export type Mutation = {
   __typename?: 'Mutation';
@@ -1766,6 +1861,14 @@ export type Mutation = {
   deleteMessageDefinitions?: Maybe<Scalars['Boolean']>;
   deleteMessageTemplate?: Maybe<Scalars['Boolean']>;
   deleteMessageTemplates?: Maybe<Scalars['Boolean']>;
+  deleteMilestone?: Maybe<Scalars['Boolean']>;
+  deleteMilestoneElement?: Maybe<Scalars['Boolean']>;
+  deleteMilestoneElements?: Maybe<Scalars['Boolean']>;
+  deleteMilestoneMedia?: Maybe<Scalars['Boolean']>;
+  deleteMilestoneMedium?: Maybe<Scalars['Boolean']>;
+  deleteMilestones?: Maybe<Scalars['Boolean']>;
+  deleteNewsFeed?: Maybe<Scalars['Boolean']>;
+  deleteNewsFeeds?: Maybe<Scalars['Boolean']>;
   deleteNotification?: Maybe<Scalars['Boolean']>;
   deleteNotifications?: Maybe<Scalars['Boolean']>;
   deleteOrganisation?: Maybe<Scalars['Boolean']>;
@@ -1905,6 +2008,14 @@ export type Mutation = {
   saveMessageDefinitions?: Maybe<Array<Maybe<MessageDefinitionEntity>>>;
   saveMessageTemplate?: Maybe<MessageTemplateEntity>;
   saveMessageTemplates?: Maybe<Array<Maybe<MessageTemplateEntity>>>;
+  saveMilestone?: Maybe<MilestoneEntity>;
+  saveMilestoneElement?: Maybe<MilestoneElementEntity>;
+  saveMilestoneElements?: Maybe<Array<Maybe<MilestoneElementEntity>>>;
+  saveMilestoneMedia?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
+  saveMilestoneMedium?: Maybe<MilestoneMediaEntity>;
+  saveMilestones?: Maybe<Array<Maybe<MilestoneEntity>>>;
+  saveNewsFeed?: Maybe<NewsFeedEntity>;
+  saveNewsFeeds?: Maybe<Array<Maybe<NewsFeedEntity>>>;
   saveNotification?: Maybe<NotificationEntity>;
   saveNotifications?: Maybe<Array<Maybe<NotificationEntity>>>;
   saveOrganisation?: Maybe<OrganisationEntity>;
@@ -2489,6 +2600,54 @@ export type MutationDeleteMessageTemplateArgs = {
 
 /** Mutation root */
 export type MutationDeleteMessageTemplatesArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteMilestoneArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteMilestoneElementArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteMilestoneElementsArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteMilestoneMediaArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteMilestoneMediumArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteMilestonesArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNewsFeedArgs = {
+  id?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNewsFeedsArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -3329,6 +3488,54 @@ export type MutationSaveMessageTemplatesArgs = {
 
 
 /** Mutation root */
+export type MutationSaveMilestoneArgs = {
+  entity?: InputMaybe<MilestoneEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveMilestoneElementArgs = {
+  entity?: InputMaybe<MilestoneElementEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveMilestoneElementsArgs = {
+  entities?: InputMaybe<Array<InputMaybe<MilestoneElementEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveMilestoneMediaArgs = {
+  entities?: InputMaybe<Array<InputMaybe<MilestoneMediaEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveMilestoneMediumArgs = {
+  entity?: InputMaybe<MilestoneMediaEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveMilestonesArgs = {
+  entities?: InputMaybe<Array<InputMaybe<MilestoneEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveNewsFeedArgs = {
+  entity?: InputMaybe<NewsFeedEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveNewsFeedsArgs = {
+  entities?: InputMaybe<Array<InputMaybe<NewsFeedEntityInput>>>;
+};
+
+
+/** Mutation root */
 export type MutationSaveNotificationArgs = {
   entity?: InputMaybe<NotificationEntityInput>;
 };
@@ -3721,6 +3928,39 @@ export type MutationVerifyArgs = {
 /** Mutation root */
 export type MutationVerifyAddressArgs = {
   entity?: InputMaybe<AddressEntityInput>;
+};
+
+export type NewsFeedEntity = {
+  __typename?: 'NewsFeedEntity';
+  content?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  translatables?: Maybe<Array<Maybe<NewsFeedTranslatableEntity>>>;
+};
+
+export type NewsFeedEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  translatables?: InputMaybe<Array<InputMaybe<NewsFeedTranslatableEntityInput>>>;
+};
+
+export type NewsFeedTranslatableEntity = {
+  __typename?: 'NewsFeedTranslatableEntity';
+  content?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+};
+
+export type NewsFeedTranslatableEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
 };
 
 export type NotificationEntity = {
@@ -4340,6 +4580,30 @@ export type PageableList_MessageTemplateEntity = {
   total: Scalars['Long'];
 };
 
+export type PageableList_MilestoneElementEntity = {
+  __typename?: 'PageableList_MilestoneElementEntity';
+  result?: Maybe<Array<Maybe<MilestoneElementEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_MilestoneEntity = {
+  __typename?: 'PageableList_MilestoneEntity';
+  result?: Maybe<Array<Maybe<MilestoneEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_MilestoneMediaEntity = {
+  __typename?: 'PageableList_MilestoneMediaEntity';
+  result?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_NewsFeedEntity = {
+  __typename?: 'PageableList_NewsFeedEntity';
+  result?: Maybe<Array<Maybe<NewsFeedEntity>>>;
+  total: Scalars['Long'];
+};
+
 export type PageableList_NotificationEntity = {
   __typename?: 'PageableList_NotificationEntity';
   result?: Maybe<Array<Maybe<NotificationEntity>>>;
@@ -4641,6 +4905,14 @@ export type Query = {
   getMessageDefinitions?: Maybe<PageableList_MessageDefinitionEntity>;
   getMessageTemplate?: Maybe<MessageTemplateEntity>;
   getMessageTemplates?: Maybe<PageableList_MessageTemplateEntity>;
+  getMilestone?: Maybe<MilestoneEntity>;
+  getMilestoneElement?: Maybe<MilestoneElementEntity>;
+  getMilestoneElements?: Maybe<PageableList_MilestoneElementEntity>;
+  getMilestoneMedia?: Maybe<PageableList_MilestoneMediaEntity>;
+  getMilestoneMedium?: Maybe<MilestoneMediaEntity>;
+  getMilestones?: Maybe<PageableList_MilestoneEntity>;
+  getNewsFeed?: Maybe<NewsFeedEntity>;
+  getNewsFeeds?: Maybe<PageableList_NewsFeedEntity>;
   getNotification?: Maybe<NotificationEntity>;
   getNotifications?: Maybe<PageableList_NotificationEntity>;
   getOrganisation?: Maybe<OrganisationEntity>;
@@ -5153,6 +5425,54 @@ export type QueryGetMessageTemplateArgs = {
 
 /** Query root */
 export type QueryGetMessageTemplatesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetMilestoneArgs = {
+  entity?: InputMaybe<MilestoneEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetMilestoneElementArgs = {
+  entity?: InputMaybe<MilestoneElementEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetMilestoneElementsArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetMilestoneMediaArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetMilestoneMediumArgs = {
+  entity?: InputMaybe<MilestoneMediaEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetMilestonesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetNewsFeedArgs = {
+  entity?: InputMaybe<NewsFeedEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetNewsFeedsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
 };
 
