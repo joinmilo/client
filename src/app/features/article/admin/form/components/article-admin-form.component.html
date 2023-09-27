@@ -1,1 +1,26 @@
-TEST
+<app-page-title
+  [titleLabel]="form.value.id ? 'editArticle' : 'createNewArticle'">
+</app-page-title>
+
+<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <app-form-step titleLabel="suburb" [formGroup]="form">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="name"></mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </app-row>
+
+    <app-row [columns]="8">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="longitude"></mat-label>
+        <input matInput formControlName="longitude">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="latitude"></mat-label>
+        <input matInput formControlName="latitude">
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+</app-form-stepper>

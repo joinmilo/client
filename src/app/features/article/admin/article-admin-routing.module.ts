@@ -34,15 +34,15 @@ const routes: Routes = [
       .then((imported) => imported.ArticleAdminFormModule),
   },
   {
+    path: `${articlesFeatureKey}/:${slug}/form`,
+    loadChildren: () => import('src/app/features/article/admin/form/article-admin-form.module')
+    .then((imported) => imported.ArticleAdminFormModule),
+  },
+  {
     path: `${articlesFeatureKey}/:${slug}`,
     loadChildren: () => import('src/app/features/article/admin/details/article-admin-details.module')
       .then((imported) => imported.ArticleAdminDetailsModule),
     component: ArticleAdminDetailsLayoutComponent
-  },
-  {
-    path: `${articlesFeatureKey}/:${slug}/form`,
-    loadChildren: () => import('src/app/features/article/admin/form/article-admin-form.module')
-      .then((imported) => imported.ArticleAdminFormModule),
   },
 ]
 

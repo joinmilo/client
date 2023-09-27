@@ -1,0 +1,30 @@
+query getArticleForm($entity: ArticleEntityInput) {
+  getArticle(entity: $entity) {
+    id
+    approved
+    created
+    modified
+
+    category {
+      ...ArticleCategory
+    }
+
+    uploads {
+      title
+      card
+      media {
+        ...Media
+      }
+    }
+
+    translatables {
+      id
+      content
+      shortDescription
+      name
+      language {
+        ...Language
+      }
+    }
+  }
+}
