@@ -1,27 +1,22 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppValidators {
 
-  public static same(...fields: string[]): ValidatorFn {
-    return (group: AbstractControl) => {
-      const values = fields
-        .map((i) => group?.get(i)?.value);
+    /**
+   * 
+   * CONTROL VALIDATIONS
+   * 
+   */
 
-      return values.every((i) => i === values[0])
-        ? null
-        : { notSame: true };
-    };
-  }
-
-  public static digitNumbers(): ValidatorFn {
-    return (control: AbstractControl) => {
+  public static decimal(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
       const pattern = /^-?[0-9]\d*([.,]\d+)?$/;
 
-      if (control.value === null || control.value === '') {
+      if (!control.value) {
         return null;
       }
 
@@ -33,19 +28,51 @@ export class AppValidators {
     };
   }
 
-  public static allOrNoFieldsRequired(...fields: string[]): ValidatorFn {
-    return (group: AbstractControl) => {
-      const values = fields.map((fieldName) => group?.get(fieldName)?.value);
-  
-      const areAllFieldsNullOrEmpty = values.every((value) => value == null || value === '');
-  
-      const allFieldsWithValue = values.every((value) => value != null && value !== '');
-  
-      if (areAllFieldsNullOrEmpty || allFieldsWithValue) {
-        return null; 
+  public static digits(digits: number): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const pattern = new RegExp(`^[0-9]{${digits}}$`);
+
+      if (!control.value) {
+        return null;
       }
-      return { allFieldsRequired: true };
+
+      if (!pattern.test(control.value)) {
+        return { digitsNotMatching: true };
+      }
+  
+      return null;
     };
   }
+
+  /**
+   * 
+   * GROUP VALIDATIONS
+   * 
+   */
+  
+  public static allOrNone(...fields: string[]): ValidatorFn {
+    return (group: AbstractControl): ValidationErrors | null => {
+      const values = fields.map((fieldName) => group?.get(fieldName)?.value);
+  
+      const allUnset = values.every((value) => value == null || value === '');
+      const allSet = values.every((value) => value != null && value !== '');
+  
+      return allUnset || allSet
+        ? null
+        : { allFieldsRequired: true };
+    };
+  }
+
+  public static same(...fields: string[]): ValidatorFn {
+    return (group: AbstractControl): ValidationErrors | null => {
+      const values = fields
+        .map((i) => group?.get(i)?.value);
+
+      return values.every((i) => i === values[0])
+        ? null
+        : { notSame: true };
+    };
+  }
+
 
 }

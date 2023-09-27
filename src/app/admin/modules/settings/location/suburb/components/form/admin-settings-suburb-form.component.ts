@@ -19,8 +19,8 @@ export class AdminSettingsSuburbFormComponent implements OnInit, OnDestroy {
   public form = this.fb.group({
     id: ['' as Maybe<string>],
     name: ['' as Maybe<string>, [Validators.required]],
-    longitude: ['' as Maybe<string>, [Validators.required, AppValidators.digitNumbers(),]],
-    latitude: ['' as Maybe<string>, [Validators.required, AppValidators.digitNumbers(),]],
+    longitude: ['' as Maybe<string>, [Validators.required, AppValidators.decimal(),]],
+    latitude: ['' as Maybe<string>, [Validators.required, AppValidators.decimal(),]],
   });
 
   private destroy = new Subject<void>();
@@ -41,8 +41,8 @@ export class AdminSettingsSuburbFormComponent implements OnInit, OnDestroy {
         this.form = this.fb.group({
           id: [suburb?.id],
           name: [suburb?.name, [Validators.required]],
-          longitude: [suburb?.latitude?.toString(), [Validators.required, AppValidators.digitNumbers(),]],
-          latitude: [suburb?.longitude?.toString(), [Validators.required, AppValidators.digitNumbers(),]],
+          longitude: [suburb?.latitude?.toString(), [Validators.required, AppValidators.decimal(),]],
+          latitude: [suburb?.longitude?.toString(), [Validators.required, AppValidators.decimal(),]],
         });
       }
     });

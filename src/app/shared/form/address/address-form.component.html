@@ -17,11 +17,6 @@
         <mat-label appLabel="place"></mat-label>
         <input matInput formControlName="place">
       </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="postalCode"></mat-label>
-        <input matInput formControlName="postalCode">
-      </mat-form-field>
     </section>
 
     <mat-error *ngIf="form.errors?.['allFieldsRequired']"
@@ -29,5 +24,4 @@
     <mat-error *ngIf="form.errors?.['addressInvalid']"
       appLabel="addressInvalid"></mat-error>
   </div>
-
 </form>

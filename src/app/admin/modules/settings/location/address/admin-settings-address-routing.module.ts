@@ -10,7 +10,7 @@ const routes: Routes = [
     component: AdminSettingsAddressOverviewComponent,
   },
   {
-    path: `form/:${id}`,
+    path: `:${id}/form`,
     component: AdminSettingsAddressFormComponent,
   },
   {

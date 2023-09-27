@@ -27,7 +27,7 @@ export class AdminSettingsAddressFormComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.form.statusChanges
-      .subscribe(status => console.log('status', status));
+      .subscribe(status => console.log('form state', status));
     // this.activatedRoute.params.pipe(
     //   tap(params => this.store.dispatch(AdminSettingsAddressActions.getAddress(params[id] || ''))),
     //   switchMap(() => this.store.select(selectEditableAddress)),

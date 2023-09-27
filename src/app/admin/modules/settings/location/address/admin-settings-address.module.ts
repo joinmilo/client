@@ -9,8 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormComponent } from 'src/app/shared/form/address/address-form.component';
-import { PasswordModule } from 'src/app/shared/form/password/password.module';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
+import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsAddressRoutingModule } from './admin-settings-address-routing.module';
@@ -42,7 +42,7 @@ const modules = [
   AdminSettingsAddressRoutingModule,
   CoreModule,
   FormStepperModule,
-  PasswordModule,
+  GridLayoutModule,
   TableModule,
   TitleModule,
 ];

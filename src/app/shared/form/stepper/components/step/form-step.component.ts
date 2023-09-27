@@ -76,7 +76,7 @@ export class FormStepComponent implements OnDestroy {
     if (this.index !== undefined && this.index !== null && this.formGroup) {
       this.resetValue = this.formGroup.value;
       this.store.dispatch(FormStepperActions.registerStep(this.index, this.formGroup.status));
-      this.formGroup.valueChanges
+      this.formGroup.statusChanges
         .pipe(takeUntil(this.destroy))
         .subscribe(() => this.store.dispatch(FormStepperActions.statusChanged(this.index as number, this.formGroup.status)))
     }
