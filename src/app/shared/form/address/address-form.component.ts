@@ -44,7 +44,7 @@ export class AddressFormComponent implements ControlValueAccessor, OnDestroy, As
     houseNumber: [''],
   }, {
     validators: [
-      AppValidators.allOrNone('street', 'place', 'postalCode', 'houseNumber')
+      AppValidators.allOrNone('street', 'place', 'houseNumber')
     ],
   });
 
@@ -64,12 +64,12 @@ export class AddressFormComponent implements ControlValueAccessor, OnDestroy, As
 
       this.form.valueChanges
         .pipe(
-          tap(() => this.onTouched && this.onTouched()),
-          filter(() => !this.form.errors),
-          tap(() => console.log('test', this.form.errors)),
-          debounceTime(1000),
+          tap(() => {this.onTouched && this.onTouched()}),
           filter(value => this.allSet(value)),
+          tap(() => this.form.setErrors({ intermediate: true })),
+          debounceTime(1000),
           switchMap(value => this.validationService.verify(value)),
+          tap(() => this.form.setErrors(null)),
           takeUntil(this.destroy)
         )
         .subscribe((address: Maybe<AddressEntity>) => {
