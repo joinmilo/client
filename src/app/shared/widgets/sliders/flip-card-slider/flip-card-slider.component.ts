@@ -1,41 +1,45 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { Observable, Subject, isObservable, of } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable, isObservable, of } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
+import { CoreModule } from 'src/app/core/core.module';
+import { CardModule } from '../../card/card.module';
 import { FlipCardOutput } from '../../card/typings/card';
-import { FlipCardSliderInput, RoadmapOutput } from './typings/flip-card-slider';
+import { FlipCardSliderInput, FlipCardSliderOutput } from './typings/flip-card-slider';
 
 
 @Component({
   selector: 'app-flip-card-slider',
   templateUrl: './flip-card-slider.component.html',
-  styleUrls: ['./flip-card-slider.component.scss']
+  styleUrls: ['./flip-card-slider.component.scss'],
+  standalone: true,
+  imports: [
+    CardModule,
+    CommonModule,
+    CoreModule,
+  ]
 })
-export class FlipCardSliderComponent implements OnDestroy{
+export class FlipCardSliderComponent {
 
   @Input()
   public data?: Maybe<FlipCardSliderInput[]>;
 
-  private destroy = new Subject<void>();
-
   @Output()
-  public elementClicked = new EventEmitter<RoadmapOutput>();
+  public elementClicked = new EventEmitter<FlipCardSliderOutput>();
 
-  getTitle(title: string | Observable<string>): Observable<string> {
+  public getTitle(title: string | Observable<string>): Observable<string> {
     return isObservable(title)
       ? title
       : of(title);
   }
 
-  emit(flipCardOutput: FlipCardOutput, index: number) {
-    this.elementClicked.emit({
-      milestoneindex: index,
-      elementIndex: flipCardOutput.index,
-      elementLabel: flipCardOutput.label
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy.next();
-    this.destroy.complete();
+  public emit(
+    element: FlipCardOutput,
+    cardIndex: number): void {
+      this.elementClicked.emit({
+        cardIndex,
+        elementIndex: element.index,
+        elementLabel: element.label
+      });
   }
 }

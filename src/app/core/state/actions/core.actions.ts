@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
 import { AppEntity, ConfigurationEntity, InformationDto, LabelEntity, LanguageEntity, Maybe, SocialMediaEntity, ThemeEntity } from 'src/app/core/api/generated/schema';
+import { AsideDefinition } from '../../typings/aside';
 import { Feedback } from '../../typings/feedback';
 import { Help } from '../../typings/help';
 
@@ -17,7 +18,7 @@ export const CoreActions = createActionGroup({
     'set themes': (themes: ThemeEntity[]) => ({ themes }),
 
     'set help': (help: Help) => ({ help }),
-    'set aside component': (component: unknown) => ({ component }),
+    'set aside component': (aside: AsideDefinition) => ({ aside }),
     'remove aside component': emptyProps(),
 
     'add request': emptyProps(),

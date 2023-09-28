@@ -7,9 +7,8 @@ export type FlipCardSliderInput = {
   pictureUrl: Maybe<string>
 }
 
-export type RoadmapOutput = {
+export type FlipCardSliderOutput = {
+  cardIndex: number,
   elementLabel: string,
-
-  milestoneindex: number,
   elementIndex: number
 }

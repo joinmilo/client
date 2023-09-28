@@ -4,9 +4,11 @@ import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, map, takeUntil } from 'rxjs';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FlipCardSliderInput, RoadmapOutput } from 'src/app/shared/widgets/sliders/flip-card-slider/typings/flip-card-slider';
+import { FlipCardSliderInput, FlipCardSliderOutput } from 'src/app/shared/widgets/sliders/flip-card-slider/typings/flip-card-slider';
 import { AdminLandingActions } from '../state/admin-landing.actions';
-import { selectDeveloperContact, selectMilestones, selectNewsFeeds } from '../state/admin-landing.selectors';
+import { selectDeveloperContact, selectMilestones } from '../state/admin-landing.selectors';
+import { AdminLandingContactComponent } from './contact/admin-landing-contact.component';
+import { AdminLandingMilestoneComponent } from './milestone/admin-landing-milestone.component';
 
 
 @Component({
@@ -17,8 +19,6 @@ import { selectDeveloperContact, selectMilestones, selectNewsFeeds } from '../st
 export class AdminLandingComponent implements OnInit, OnDestroy {
 
   public contact = this.store.select(selectDeveloperContact);
-
-  public newsFeeds = this.store.select(selectNewsFeeds);
 
   public milestoneTitles?: Maybe<string[]>;
 
@@ -40,38 +40,35 @@ export class AdminLandingComponent implements OnInit, OnDestroy {
     private store: Store, private translationService: TranslationService
   ) { }
 
-  ngOnInit(): void {
-    this.store.dispatch(AdminLandingActions.getNewsfeed()),
-      this.store.dispatch(AdminLandingActions.getDeveloperContact(
-        {
-          name: 'codeschluss'
-        }
-      ));
+  public ngOnInit(): void {
+    this.store.dispatch(AdminLandingActions.getDeveloperContact(
+      { name: 'codeschluss' }
+    ));
     this.store.dispatch(AdminLandingActions.getMilestones());
   }
 
-  openHelpMenu(roadmapOutput: RoadmapOutput) {
-
-    this.store.select(selectMilestones).subscribe(milestones => {
-      let titleLabel;
-      let contentLabel;
-
-      this.translationService.translatable(
-        milestones?.[roadmapOutput.milestoneindex]
-          .elements?.[roadmapOutput.elementIndex]?.translatables, 'name').pipe(takeUntil(this.destroy)).subscribe(name => titleLabel = name);
-
-      this.translationService.translatable(
-        milestones?.[roadmapOutput.milestoneindex]
-          .elements?.[roadmapOutput.elementIndex]?.translatables, 'description').pipe(takeUntil(this.destroy)).subscribe(description => contentLabel = description);
-
-      this.store.dispatch(CoreActions.setHelp({
-        titleLabel: titleLabel,
-        contentLabel: contentLabel
-      }))
-    })
+  public openContact(): void {
+    this.store.dispatch(CoreActions.setAsideComponent({
+      component: AdminLandingContactComponent
+    }));
   }
 
-  ngOnDestroy(): void {
+  public openMilestoneElement(roadmapOutput: FlipCardSliderOutput): void {
+    this.store.select(selectMilestones)
+      .pipe(
+        map(milestones => milestones?.[roadmapOutput.cardIndex]
+          .elements?.[roadmapOutput.elementIndex]),
+        takeUntil(this.destroy)
+      )
+      .subscribe(element => this.store.dispatch(CoreActions.setAsideComponent({
+        component: AdminLandingMilestoneComponent,
+        params: {
+          element
+        }
+      })))
+  }
+
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

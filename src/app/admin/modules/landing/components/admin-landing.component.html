@@ -1,0 +1,26 @@
+<app-page-title titleLabel="welcome"></app-page-title>
+
+<section class="border-box">
+  <p appLabel="welcomeTextBlock1"></p>
+  <p appLabel="welcomeTextBlock2"></p>
+  <p appLabel="welcomeTextBlock3"></p>
+  <p appLabel="welcomeTextBlock4"></p>
+  <p appLabel="welcomeTextBlock5"></p>
+
+  <mat-divider></mat-divider>
+
+  <button mat-raised-button
+    color="primary"
+    appLabel="schowContactData"
+    (click)="openContact()">
+  </button>
+</section>
+
+<section>
+  <app-sub-title titleLabel="roadmap">
+  </app-sub-title>
+
+  <app-flip-card-slider (elementClicked)="openMilestoneElement($event)"
+    [data]="flipCardSliderData | async">
+  </app-flip-card-slider>
+</section>

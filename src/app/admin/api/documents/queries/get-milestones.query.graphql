@@ -2,8 +2,21 @@ query getMilestones($params: FilterSortPaginateInput) {
   getMilestones(params: $params) {
     result {
       id
-      order
-       translatables {
+      endDate
+
+      elements {
+        id
+        translatables {
+           id
+          name
+          description
+          language {
+           ...Language          
+          }
+        }        
+      }
+
+      translatables {
          id
         title
         language {
@@ -15,18 +28,6 @@ query getMilestones($params: FilterSortPaginateInput) {
         media {
           ...Media
         }
-      }
-
-      elements{
-        id
-        translatables {
-           id
-          name
-          description
-          language {
-           ...Language          
-          }
-        }        
       }
     }
     total

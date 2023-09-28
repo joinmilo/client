@@ -1,13 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppEntity, ConfigurationEntity, InformationDto, LanguageEntity, Maybe, SocialMediaEntity, ThemeEntity } from 'src/app/core/api/generated/schema';
 import { HelpComponent } from '../../components/help/help.component';
+import { AsideDefinition } from '../../typings/aside';
 import { Help } from '../../typings/help';
 import { Translatable } from '../../typings/translatable';
 import { CoreActions } from '../actions/core.actions';
 
 export interface CoreState {
   apps?: Maybe<AppEntity[]>,
-  asideComponent?: unknown,
+  asideComponent?: AsideDefinition,
   configurations?: ConfigurationEntity[]
   currentTheme?: Maybe<ThemeEntity>,
   help?: Help,
@@ -74,12 +75,16 @@ export const coreReducer = createReducer(
   on(CoreActions.setHelp, (state, action): CoreState => (
     { ...state,
       help: action.help,
-      asideComponent: HelpComponent
+      asideComponent: {
+        component: HelpComponent
+      }
     }
   )),
 
   on(CoreActions.setAsideComponent, (state, action): CoreState => (
-    { ...state, asideComponent: action.component }
+    { ...state,
+      asideComponent: action.aside
+    }
   )),
 
   on(CoreActions.removeAsideComponent, (state): CoreState => (

@@ -1,0 +1,8 @@
+<app-details-title titleLabel="contactData">
+</app-details-title>
+
+<app-phone-piece [phone]="(contact | async)?.phone">
+</app-phone-piece>
+
+<app-mail-piece [mail]="(contact | async)?.email">
+</app-mail-piece>

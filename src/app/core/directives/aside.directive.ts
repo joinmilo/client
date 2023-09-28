@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Directive, OnDestroy, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
@@ -15,13 +16,19 @@ export class AsideDirective implements OnDestroy {
     private viewContainer: ViewContainerRef) {
       this.store.select(selectAsideComponent)
         .pipe(takeUntil(this.destroy))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .subscribe((component: any) => {
-          if (component) {
+        .subscribe(aside => {
+          if (aside) {
             this.viewContainer.clear();
   
-            this.viewContainer
-              .createComponent(component);
+            const component = this.viewContainer
+              .createComponent(aside.component)
+              .instance as any;
+            
+            if (aside.params) {
+              Object.entries(aside.params).forEach(([key, value]) => {
+                component[key] = value;
+              })
+            }
           }
         });
     }

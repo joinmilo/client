@@ -9,11 +9,6 @@ export const selectDeveloperContact = createSelector(
   state => state.contact
 );
 
-export const selectNewsFeeds = createSelector(
-  selectAdminLandingState,
-  state => state.newsFeeds
-);
-
 export const selectMilestones= createSelector(
   selectAdminLandingState,
   state => state.milestones
