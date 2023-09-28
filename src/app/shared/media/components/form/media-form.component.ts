@@ -77,6 +77,7 @@ export class MediaFormComponent implements ControlValueAccessor {
 
   public removeFile(fileIndex: number) {
     this.media.splice(fileIndex, 1);
+    this.onChange && this.onChange(this.media);
     this.uploads.emit(this.media);
   }
 

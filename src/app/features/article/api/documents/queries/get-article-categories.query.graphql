@@ -4,6 +4,7 @@ query getArticleCategories($params: FilterSortPaginateInput) {
       id
       color
       icon
+      name
 
       translatables {
         id

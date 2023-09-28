@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
-import { ArticleEntity } from 'src/app/core/api/generated/schema';
+import { ArticleCategoryEntity, ArticleEntity } from 'src/app/core/api/generated/schema';
+import { articlesFeatureKey } from 'src/app/core/constants/feature.constants';
+import { adminUrl } from 'src/app/core/constants/module.constants';
+import { CoreActions } from 'src/app/core/state/actions/core.actions';
+import { FeedbackType } from 'src/app/core/typings/feedback';
+import { GetArticleCategoriesGQL } from '../../../api/generated/get-article-categories.query.generated';
 import { GetArticleFormGQL } from '../../../api/generated/get-article-form.query.generated';
 import { SaveArticleGQL } from '../../../api/generated/save-article.mutation.generated';
 import { ArticleAdminFormActions } from './article-admin-form.actions';
@@ -23,33 +28,40 @@ export class ArticleAdminFormEffects {
       : AdminActions.notFound())
   ));
 
-  // cancelled = createEffect(() => this.actions.pipe(
-  //   ofType(ArticleAdminFormActions.cancelled),
-  //   tap(() => this.router.navigate([adminUrl, articlesFeatureKey,'forms'])),
-  // ), { dispatch: false });
+  cancelled = createEffect(() => this.actions.pipe(
+    ofType(ArticleAdminFormActions.cancelled),
+    tap(() => this.router.navigate([adminUrl, articlesFeatureKey])),
+  ), { dispatch: false });
 
 
-  // save = createEffect(() => this.actions.pipe(
-  //   ofType(ArticleAdminFormActions.save),
-  //   switchMap(action => this.saveArticleService.mutate({
-  //     entity: action.article
-  //   })),
-  //   map(() => ArticleAdminFormActions.saved())
-  // ));
+  save = createEffect(() => this.actions.pipe(
+    ofType(ArticleAdminFormActions.save),
+    switchMap(action => this.saveArticleService.mutate({
+      entity: action.article
+    })),
+    map(() => ArticleAdminFormActions.saved())
+  ));
 
-  // saved = createEffect(() => this.actions.pipe(
-  //   ofType(ArticleAdminFormActions.saved),
-  //   tap(() => this.router.navigate([adminUrl, articlesFeatureKey, 'forms'])),
-  //   map(() => CoreActions.setFeedback({
-  //     type: FeedbackType.Success,
-  //     labelMessage: 'savedSuccessfully'
-  //   }))
-  // ));
+  saved = createEffect(() => this.actions.pipe(
+    ofType(ArticleAdminFormActions.saved),
+    tap(() => this.router.navigate([adminUrl, articlesFeatureKey])),
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'savedSuccessfully'
+    }))
+  ));
+
+  getCategories = createEffect(() => this.actions.pipe(
+    ofType(ArticleAdminFormActions.getCategories),
+    switchMap(() => this.getCategoriesService.watch().valueChanges),
+    map(response => ArticleAdminFormActions.setCategories(response.data.getArticleCategories?.result as ArticleCategoryEntity[]))
+  ));
 
   constructor(
     private actions: Actions,
     private getArticleService: GetArticleFormGQL,
     private saveArticleService: SaveArticleGQL,
+    private getCategoriesService: GetArticleCategoriesGQL,
     private router: Router
   ) {}
 }

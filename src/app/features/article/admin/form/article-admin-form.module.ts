@@ -4,12 +4,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { MediaModule } from 'src/app/shared/media/media.module';
 import { ArticleAdminFormRoutingModule } from './article-admin-form-routing.module';
 import { ArticleAdminFormComponent } from './components/article-admin-form.component';
 import { articleAdminFormStateKey } from './constants/article-admin-form.constants';
@@ -27,7 +31,10 @@ const framework = [
 const materials = [
   MatButtonModule,
   MatCardModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatInputModule,
+  MatSlideToggleModule,
+  MatSelectModule
 ];
 
 const modules = [
@@ -36,7 +43,8 @@ const modules = [
   TitleModule,
   FormStepperModule,
   GridLayoutModule,
-  MatInputModule
+  CkEditorFormComponent,
+  MediaModule
 
 ];
 

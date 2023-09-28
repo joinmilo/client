@@ -9,7 +9,7 @@ export type GetArticleCategoriesQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetArticleCategoriesQuery = { __typename?: 'Query', getArticleCategories?: { __typename?: 'PageableList_ArticleCategoryEntity', total: any, result?: Array<{ __typename?: 'ArticleCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetArticleCategoriesQuery = { __typename?: 'Query', getArticleCategories?: { __typename?: 'PageableList_ArticleCategoryEntity', total: any, result?: Array<{ __typename?: 'ArticleCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, name?: string | null, translatables?: Array<{ __typename?: 'ArticleCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export const GetArticleCategoriesDocument = gql`
     query getArticleCategories($params: FilterSortPaginateInput) {
@@ -18,6 +18,7 @@ export const GetArticleCategoriesDocument = gql`
       id
       color
       icon
+      name
       translatables {
         id
         name

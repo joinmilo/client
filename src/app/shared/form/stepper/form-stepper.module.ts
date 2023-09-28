@@ -51,6 +51,7 @@ const libs = [
   ],
   exports: [
     ...components,
+    ReactiveFormsModule,
   ],
 })
 export class FormStepperModule { }

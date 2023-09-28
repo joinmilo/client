@@ -1,6 +1,6 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { ArticleEntity, ArticleEntityInput } from 'src/app/core/api/generated/schema';
+import { ArticleCategoryEntity, ArticleEntity, ArticleEntityInput } from 'src/app/core/api/generated/schema';
 
 export const ArticleAdminFormActions = createActionGroup({
   source: 'Article Admin Details Landing',
@@ -11,5 +11,8 @@ export const ArticleAdminFormActions = createActionGroup({
     'save': (article: ArticleEntityInput) => ({ article }),
     'saved': emptyProps(),
     'cancelled': emptyProps(),
+
+    'get categories': emptyProps(),
+    'set categories': (categories: Maybe<ArticleCategoryEntity[]>) => ({ categories })
   }
 });

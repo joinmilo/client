@@ -3,12 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { ArticleCategoryEntity } from 'src/app/core/api/generated/schema';
-import { slug } from 'src/app/core/constants/queryparam.constants';
+import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
+import { ArticleCategoryEntity, MediaEntity } from 'src/app/core/api/generated/schema';
 import { ArticleAdminFormActions } from '../state/article-admin-form.actions';
-import { selectEditableArticle } from '../state/article-admin-form.selectors';
-
+import { selectArticleCategories, selectEditableArticle } from '../state/article-admin-form.selectors';
+import { slug } from './../../../../../core/constants/queryparam.constants';
 
 @Component({
   selector: 'app-article-admin-form',
@@ -17,16 +16,36 @@ import { selectEditableArticle } from '../state/article-admin-form.selectors';
 })
 export class ArticleAdminFormComponent implements OnInit, OnDestroy {
 
-  public form = this.fb.group({
+  public contentForm = this.fb.group({
     id: ['' as Maybe<string>],
     name: ['' as Maybe<string>, [Validators.required]],
-    category: [undefined as Maybe<ArticleCategoryEntity>, [Validators.required]],
+    content: ['' as Maybe<string>],
+  });
+
+  public shortDescriptionForm = this.fb.group({
     shortDescription: ['' as Maybe<string>, [Validators.required]],
-    content: ['' as Maybe<string>, [Validators.required]],
-    // uploads: [[] as Maybe<MediaEntity[]>],
-    sponsored: [false as Maybe<boolean>],
+  });
+
+  public titleImageForm = this.fb.group({
+    titleImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
+  public cardImageForm = this.fb.group({
+    cardImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
+  public uploadsForm = this.fb.group({
+    uploads: [[] as MediaEntity[]],
+  });
+
+  public additionalInfoForm = this.fb.group({
+    categoryId: [undefined as Maybe<string>],
+    sponsored: [undefined as Maybe<boolean>],
     metaDescription: ['' as Maybe<string>],
   });
+
+  public categories = this.store.select(selectArticleCategories);
+  public editCategory: Maybe<ArticleCategoryEntity>;
 
   private destroy = new Subject<void>();
 
@@ -37,23 +56,47 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit(): void {
+    this.store.dispatch(ArticleAdminFormActions.getCategories());
+
     this.activatedRoute?.parent?.params.pipe(
+      filter(params => !!params[slug]),
       tap(params => this.store.dispatch(ArticleAdminFormActions.getArticle(params[slug]))),
       switchMap(() => this.store.select(selectEditableArticle)),
+      filter(article => !!article?.id),
       takeUntil(this.destroy)
     ).subscribe(article => {
-      if (article) {
-        this.form = this.fb.group({
-          id: [article?.id],
-          name: [article?.name, [Validators.required]],
-          category: [article?.category, [Validators.required]],
-          shortDescription: [article?.shortDescription, [Validators.required]],
-          content: [article?.content, [Validators.required]],
-          // uploads: [article?.uploads],
-          sponsored: [article?.sponsored],
-          metaDescription: [article?.metaDescription],
-        });
-      }
+      this.contentForm = this.fb.group({
+        id: [article?.id],
+        name: [article?.name, [Validators.required]],
+        content: [article?.content, [Validators.required]],
+      });
+
+      this.shortDescriptionForm = this.fb.group({
+        shortDescription: [article?.shortDescription, [Validators.required]],
+      });
+
+      this.titleImageForm = this.fb.group({
+        titleImage: [article?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[],
+      [Validators.required]] ,
+      });
+
+      this.cardImageForm = this.fb.group({
+        cardImage: [
+          article?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[],
+          [Validators.required]
+        ],
+      });
+
+      this.uploadsForm = this.fb.group({
+        uploads: [article?.uploads?.filter(upload => !upload?.title && !upload?.card)
+          .map(upload => upload?.media) as MediaEntity[] ],
+      });
+
+      this.additionalInfoForm = this.fb.group({
+        categoryId: [article?.category?.id],
+        sponsored: [article?.sponsored],
+        metaDescription: [article?.metaDescription],
+      });
     });
   }
 
@@ -63,13 +106,28 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
 
   public saved(): void {
     this.store.dispatch(ArticleAdminFormActions.save({
-      id: this.form.value.id,
-      name: this.form.value.name,
-      category: this.form.value.category,
-      shortDescription: this.form.value.shortDescription,
-      content: this.form.value.content,
-      sponsored: this.form.value.sponsored,
-      metaDescription: this.form.value.metaDescription
+      id: this.contentForm.value.id,
+      name: this.contentForm.value.name,
+      content: this.contentForm.value.content,
+      shortDescription: this.shortDescriptionForm.value.shortDescription,
+      category: this.additionalInfoForm.value.categoryId != null
+        ? { id: this.additionalInfoForm.value.categoryId }
+        : null,
+      sponsored: this.additionalInfoForm.value.sponsored,
+      metaDescription: this.additionalInfoForm.value.metaDescription,
+      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
+        media: media,
+      })).concat(
+        (this.cardImageForm.value.cardImage || []).map(media => ({ 
+          media: media,
+          card: true,
+        }))
+      ).concat(
+        (this.titleImageForm.value.titleImage || []).map(media => ({
+          media: media,
+          title: true,
+        }))
+      ) || null,
     }));
   }
 

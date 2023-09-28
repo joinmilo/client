@@ -4,12 +4,12 @@ import { ArticleAdminFormState } from './article-admin-form.reducer';
 
 export const selectArticleAdminFormState = createFeatureSelector<ArticleAdminFormState>(articleAdminFormStateKey);
 
-export const selectEditableArticle= createSelector(
+export const selectEditableArticle = createSelector(
   selectArticleAdminFormState,
-  state => state.article
+  state => state.editArticle
 );
 
-export const selectArticleAdminFormMedia = createSelector(
+export const selectArticleCategories = createSelector(
   selectArticleAdminFormState,
-  state => state.article?.uploads?.map(upload => upload?.media ?? {})
+  state => state.categories
 );

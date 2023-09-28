@@ -3,7 +3,12 @@ query getArticleForm($entity: ArticleEntityInput) {
     id
     approved
     created
+    sponsored
     modified
+    content
+    shortDescription
+    name
+    metaDescription
 
     category {
       ...ArticleCategory
@@ -14,16 +19,6 @@ query getArticleForm($entity: ArticleEntityInput) {
       card
       media {
         ...Media
-      }
-    }
-
-    translatables {
-      id
-      content
-      shortDescription
-      name
-      language {
-        ...Language
       }
     }
   }

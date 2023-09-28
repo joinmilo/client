@@ -5,6 +5,7 @@ query getArticleDetails($entity: ArticleEntityInput) {
     created
     modified
     slug
+    metaDescription
     author {
       slug
       user {
