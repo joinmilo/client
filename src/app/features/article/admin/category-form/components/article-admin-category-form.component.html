@@ -1,0 +1,25 @@
+<app-page-title [titleLabel]="categoryForm.value.id ? 'editCategory' : 'createNewCategory'">
+</app-page-title>
+
+<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <app-form-step titleLabel="category" [formGroup]="categoryForm">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="name"></mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </app-row>
+
+    <app-row [columns]="4">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="icon"></mat-label>
+        <input matInput formControlName="icon">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="color"></mat-label>
+        <input type="color" matInput formControlName="color">
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+</app-form-stepper>

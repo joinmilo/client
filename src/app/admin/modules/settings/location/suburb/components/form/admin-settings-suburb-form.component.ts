@@ -42,8 +42,8 @@ export class AdminSettingsSuburbFormComponent implements OnInit, OnDestroy {
       this.form = this.fb.group({
         id: [suburb?.id],
         name: [suburb?.name, [Validators.required]],
-        longitude: [suburb?.latitude?.toString(), [Validators.required, AppValidators.decimal(),]],
-        latitude: [suburb?.longitude?.toString(), [Validators.required, AppValidators.decimal(),]],
+        longitude: [suburb?.longitude?.toString(), [Validators.required, AppValidators.decimal(),]],
+        latitude: [suburb?.latitude?.toString(), [Validators.required, AppValidators.decimal(),]],
       }));
   }
 

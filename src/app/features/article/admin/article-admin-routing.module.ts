@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { articlesFeatureKey } from 'src/app/core/constants/feature.constants';
-import { slug } from 'src/app/core/constants/queryparam.constants';
+import { id, slug } from 'src/app/core/constants/queryparam.constants';
 import { ArticleAdminDetailsLayoutComponent } from './details/modules/layout/components/article-admin-details-layout.component';
 
 const menuRoutes: Routes = [
@@ -32,6 +32,16 @@ const routes: Routes = [
     path: `${articlesFeatureKey}/form`,
     loadChildren: () => import('src/app/features/article/admin/form/article-admin-form.module')
       .then((imported) => imported.ArticleAdminFormModule),
+  },
+  {
+    path: `${articlesFeatureKey}/category/form`,
+    loadChildren: () => import('src/app/features/article/admin/category-form/article-admin-category-form.module')
+      .then((imported) => imported.ArticleAdminCategoryFormModule),
+  },
+  {
+    path: `${articlesFeatureKey}/category/:${id}/form`,
+    loadChildren: () => import('src/app/features/article/admin/category-form/article-admin-category-form.module')
+      .then((imported) => imported.ArticleAdminCategoryFormModule),
   },
   {
     path: `${articlesFeatureKey}/:${slug}/form`,

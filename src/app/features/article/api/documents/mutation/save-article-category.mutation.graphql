@@ -1,0 +1,5 @@
+mutation saveArticleCategory($entity: ArticleCategoryEntityInput!) {
+  saveArticleCategory(entity: $entity) {
+    id
+  }
+}
