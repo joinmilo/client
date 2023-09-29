@@ -6,7 +6,7 @@ import { Subject, filter, switchMap, take, tap } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { id } from 'src/app/core/constants/queryparam.constants';
 import { ArticleAdminCategoryFormActions } from '../state/article-admin-category-form.actions';
-import { selectEditableArticleCategories } from '../state/article-admin-category-form.selectors';
+import { selectEditableArticleCategory } from '../state/article-admin-category-form.selectors';
 
 @Component({
   selector: 'app-article-admin-category-form',
@@ -31,19 +31,20 @@ export class ArticleAdminCategoryFormComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.activatedRoute.params.pipe(
+    this.activatedRoute?.parent?.params.pipe(
       filter(params => !!params[id]),
-      tap(() => this.store.dispatch(ArticleAdminCategoryFormActions.getCategories())),
-      switchMap(() => this.store.select(selectEditableArticleCategories)),
+      tap((params) => this.store.dispatch(ArticleAdminCategoryFormActions.getCategory(params[id]))),
+      switchMap(() => this.store.select(selectEditableArticleCategory)),
       filter(category => !!category),
       take(1)
-    ).subscribe(category =>
+    ).subscribe(category => {
       this.categoryForm = this.fb.group({
         id: [category?.id],
         name: [category?.name, [Validators.required]],
         icon: [category?.icon, [Validators.required]],
         color: [category?.color?.toString(), [Validators.required]],
-      }));
+      });
+    });
   }
 
   public cancelled(): void {
@@ -60,8 +61,10 @@ export class ArticleAdminCategoryFormComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this.store.dispatch(ArticleAdminCategoryFormActions.cancelled());
     this.destroy.next();
     this.destroy.complete();
+
   }
 
 

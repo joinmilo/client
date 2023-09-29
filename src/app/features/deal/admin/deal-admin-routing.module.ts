@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
-import { slug } from 'src/app/core/constants/queryparam.constants';
+import { id, slug } from 'src/app/core/constants/queryparam.constants';
 import { DealAdminDetailsLayoutComponent } from './details/modules/layout/components/deal-admin-details-layout.component';
 
 const menuRoutes: Routes = [
@@ -29,15 +29,25 @@ const menuRoutes: Routes = [
 
 const routes: Routes = [
   {
+    path: `${dealsFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/deal/admin/form/deal-admin-form.module')
+      .then((imported) => imported.DealAdminFormModule),
+  },
+  {
+    path: `${dealsFeatureKey}/category/form`,
+    loadChildren: () => import('src/app/features/deal/admin/category-form/deal-admin-category-form.module')
+      .then((imported) => imported.DealAdminCategoryFormModule),
+  },
+  {
+    path: `${dealsFeatureKey}/category/:${id}/form`,
+    loadChildren: () => import('src/app/features/deal/admin/category-form/deal-admin-category-form.module')
+      .then((imported) => imported.DealAdminCategoryFormModule),
+  },
+  {
     path: `${dealsFeatureKey}/:${slug}`,
     loadChildren: () => import('src/app/features/deal/admin/details/deal-admin-details.module')
       .then((imported) => imported.DealAdminDetailsModule),
     component: DealAdminDetailsLayoutComponent
-  },
-  {
-    path: `${dealsFeatureKey}/form`,
-    loadChildren: () => import('src/app/features/deal/admin/form/deal-admin-form.module')
-      .then((imported) => imported.DealAdminFormModule),
   },
 ]
 

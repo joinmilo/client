@@ -20,7 +20,7 @@ export class EventAdminTargetGroupComponent {
     {
       icon: 'pen-to-square',
       callback: row =>
-        this.router.navigate([row?.id, 'edit'], { relativeTo: this.activatedRoute }),
+        this.router.navigate([row?.id, 'form'], { relativeTo: this.activatedRoute }),
       tooltipLabel: 'edit'
     },
     {
@@ -36,17 +36,7 @@ export class EventAdminTargetGroupComponent {
       field: 'translatables.name',
       label: 'targetGroup',
       value: row => this.translationService.translatable(row.translatables, 'name')
-    },
-    {
-      field: 'icon',
-      label: 'icon',
-      type: 'ICON',
-    },
-    {
-      field: 'color',
-      label: 'color',
-      type: 'COLOR'
-    },
+    }
   ];
   
   constructor(

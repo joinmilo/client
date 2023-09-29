@@ -36,7 +36,7 @@ import { CoreModule } from 'src/app/core/core.module';
 
 export class IconFormComponent implements ControlValueAccessor {
 
-  public control = new FormControl<Maybe<IconDefinition>>(undefined);
+  public control = new FormControl<Maybe<IconProp>>(undefined);
 
   public onChange?: (value: Maybe<IconProp>) => void;
   public onTouched?: () => void;
@@ -51,16 +51,16 @@ export class IconFormComponent implements ControlValueAccessor {
     this.control.valueChanges
       .pipe(takeUntil(this.destroy))
       .subscribe(value => {
-        this.onChange?.(value?.iconName);
+        this.onChange?.(value);
         this.onTouched?.();
       });
   }
 
-  public writeValue(value?: Maybe<IconDefinition>): void {
+  public writeValue(value?: Maybe<IconProp>): void {
     this.control.patchValue(value, { emitEvent: false });
   }
 
-  public registerOnChange(onChange: (value:   Maybe<IconProp>) => void): void {
+  public registerOnChange(onChange: (value: Maybe<IconProp>) => void): void {
     this.onChange = onChange;
   }
 

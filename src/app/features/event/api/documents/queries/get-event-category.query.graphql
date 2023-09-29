@@ -1,0 +1,8 @@
+query getEventCategory($entity: EventCategoryEntityInput) {
+  getEventCategory(entity: $entity) {
+    id
+    name
+    icon
+    color
+  }
+}

@@ -1,0 +1,5 @@
+mutation saveEventTargetGroup($entity: EventTargetGroupEntityInput!) {
+  saveEventTargetGroup(entity: $entity) {
+    id
+  }
+}

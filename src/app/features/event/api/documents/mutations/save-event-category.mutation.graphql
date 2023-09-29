@@ -1,0 +1,5 @@
+mutation saveEventCategory($entity: EventCategoryEntityInput!) {
+  saveEventCategory(entity: $entity) {
+    id
+  }
+}

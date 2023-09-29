@@ -1,0 +1,6 @@
+query getContestType($entity: ContestTypeEntityInput) {
+  getContestType(entity: $entity) {
+    id
+    name
+  }
+}

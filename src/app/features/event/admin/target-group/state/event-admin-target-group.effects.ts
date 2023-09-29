@@ -8,7 +8,7 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 import { DeleteEventTargetGroupGQL } from '../../../api/generated/delete-event-target-group.mutation.generated';
-import { GetEventTargetGroupsGQL } from '../../../api/generated/get-event-target-group.query.generated';
+import { GetEventTargetGroupsGQL } from '../../../api/generated/get-event-target-groups.query.generated';
 import { EventAdminTargetGroupActions } from './event-admin-target-group.actions';
 import { selectParams } from './event-admin-target-group.selectors';
 

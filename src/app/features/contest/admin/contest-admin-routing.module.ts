@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { contestsFeatureKey } from 'src/app/core/constants/feature.constants';
-import { slug } from 'src/app/core/constants/queryparam.constants';
+import { id, slug } from 'src/app/core/constants/queryparam.constants';
 import { ContestAdminDetailsLayoutComponent } from './details/modules/layout/components/contest-admin-details-layout.component';
 
 const menuRoutes: Routes = [
@@ -28,6 +28,16 @@ const menuRoutes: Routes = [
 ];
 
 const routes: Routes = [
+  {
+  path: `${contestsFeatureKey}/types/form`,
+    loadChildren: () => import('src/app/features/contest/admin/type-form/contest-admin-type-form.module')
+      .then((imported) => imported.ContestAdminTypeFormModule),
+  },
+  {
+  path: `${contestsFeatureKey}/types/:${id}/form`,
+    loadChildren: () => import('src/app/features/contest/admin/type-form/contest-admin-type-form.module')
+      .then((imported) => imported.ContestAdminTypeFormModule),
+  },
   {
     path: `${contestsFeatureKey}/:${slug}`,
     loadChildren: () => import('src/app/features/contest/admin/details/contest-admin-details.module')

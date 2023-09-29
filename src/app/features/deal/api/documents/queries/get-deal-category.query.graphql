@@ -1,0 +1,8 @@
+query getDealCategory($entity: DealCategoryEntityInput) {
+  getDealCategory(entity: $entity) {
+    id
+    name
+    icon
+    color
+  }
+}

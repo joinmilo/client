@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
-import { slug } from 'src/app/core/constants/queryparam.constants';
+import { id, slug } from 'src/app/core/constants/queryparam.constants';
 import { EventAdminDetailsLayoutComponent } from './details/modules/layout/components/event-admin-details-layout.component';
 
 const menuRoutes: Routes = [
@@ -38,6 +38,26 @@ const routes: Routes = [
     path: `${eventsFeatureKey}/form`,
     loadChildren: () => import('src/app/features/event/admin/form/event-admin-form.module')
       .then((imported) => imported.EventAdminFormModule),
+  },
+  {
+  path: `${eventsFeatureKey}/category/form`,
+    loadChildren: () => import('src/app/features/event/admin/category-form/event-admin-category-form.module')
+      .then((imported) => imported.EventAdminCategoryFormModule),
+  },
+  {
+  path: `${eventsFeatureKey}/category/:${id}/form`,
+    loadChildren: () => import('src/app/features/event/admin/category-form/event-admin-category-form.module')
+      .then((imported) => imported.EventAdminCategoryFormModule),
+  },
+  {
+  path: `${eventsFeatureKey}/target-group/form`,
+    loadChildren: () => import('src/app/features/event/admin/target-group-form/event-admin-target-group-form.module')
+      .then((imported) => imported.EventAdminTargetGroupFormModule),
+  },
+  {
+  path: `${eventsFeatureKey}/target-group/:${id}/form`,
+    loadChildren: () => import('src/app/features/event/admin/target-group-form/event-admin-target-group-form.module')
+      .then((imported) => imported.EventAdminTargetGroupFormModule),
   },
   {
     path: `${eventsFeatureKey}/:${slug}`,

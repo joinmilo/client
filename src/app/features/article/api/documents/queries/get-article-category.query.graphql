@@ -1,0 +1,8 @@
+query getArticleCategory($entity: ArticleCategoryEntityInput) {
+  getArticleCategory(entity: $entity) {
+    id
+    name
+    icon
+    color
+  }
+}

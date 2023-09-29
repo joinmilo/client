@@ -3,13 +3,13 @@
 
   <mat-select [formControl]="control">
     <mat-select-trigger>
-      <section>
+      <section *ngIf="control.value">
         <fa-icon [icon]="control.value!"></fa-icon>
-        <span> {{ control.value?.iconName }}</span>
+        <span> {{ control.value }}</span>
       </section>
     </mat-select-trigger>
 
-    <mat-option *ngFor="let icon of icons" [value]="icon">
+    <mat-option *ngFor="let icon of icons" [value]="icon.iconName">
       <article>
         <fa-icon [icon]="icon.iconName"></fa-icon>
         <span> {{ icon.iconName }}</span>

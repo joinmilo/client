@@ -1,0 +1,5 @@
+mutation saveDealCategory($entity: DealCategoryEntityInput!) {
+  saveDealCategory(entity: $entity) {
+    id
+  }
+}

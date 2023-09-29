@@ -1,18 +1,6 @@
-query getEventTargetGroups($params: FilterSortPaginateInput) {
-  getEventTargetGroups(params: $params) {
-    result {
-      id
-
-      translatables {
-        id
-        name
-        language {
-          id
-          locale
-          name
-        }
-      }
-    }
-    total
+query getEventTargetGroup($entity: EventTargetGroupEntityInput) {
+  getEventTargetGroup(entity: $entity) {
+    id
+    name
   }
 }

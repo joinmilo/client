@@ -1,0 +1,5 @@
+mutation saveInfoMediaCategory($entity: InfoMediaCategoryEntityInput!) {
+  saveInfoMediaCategory(entity: $entity) {
+    id
+  }
+}

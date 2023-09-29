@@ -5,11 +5,11 @@ import { ArticleCategoryEntity, ArticleCategoryEntityInput } from 'src/app/core/
 export const ArticleAdminCategoryFormActions = createActionGroup({
   source: 'Article Admin Details Landing',
   events: {
-    'save': (article: ArticleCategoryEntityInput) => ({ article }),
+    'save': (category: ArticleCategoryEntityInput) => ({ category }),
     'saved': emptyProps(),
     'cancelled': emptyProps(),
 
-    'get categories': emptyProps(),
-    'set categories': (categories: Maybe<ArticleCategoryEntity[]>) => ({ categories })
+    'get category': (entityId: string) => ({ entityId }),
+    'category retrieved': (entity?: Maybe<ArticleCategoryEntity>) => ({ entity }),
   }
 });

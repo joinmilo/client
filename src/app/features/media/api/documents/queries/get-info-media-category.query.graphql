@@ -1,0 +1,6 @@
+query getInfoMediaCategory($entity: InfoMediaCategoryEntityInput) {
+  getInfoMediaCategory(entity: $entity) {
+    id
+    name
+  }
+}

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { mediaFeatureKey } from 'src/app/core/constants/feature.constants';
+import { id } from 'src/app/core/constants/queryparam.constants';
 
 const menuRoutes: Routes = [
   // {
@@ -26,6 +27,16 @@ const menuRoutes: Routes = [
 ];
 
 const routes: Routes = [
+  {
+  path: `${mediaFeatureKey}/category/form`,
+    loadChildren: () => import('src/app/features/media/admin/category-form/media-admin-category-form.module')
+      .then((imported) => imported.MediaAdminCategoryFormModule),
+  },
+  {
+  path: `${mediaFeatureKey}/category/:${id}/form`,
+    loadChildren: () => import('src/app/features/media/admin/category-form/media-admin-category-form.module')
+      .then((imported) => imported.MediaAdminCategoryFormModule),
+  },
 ]
 
 @NgModule({
