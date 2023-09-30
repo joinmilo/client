@@ -12,81 +12,78 @@ import { PortalParticipateActions } from '../../state/portal-participate.actions
 })
 export class PortalParticipateCreateOrganisationComponent {
 
-  step = 0;
-
-  setStep(index: number) {
-    this.step = index;
-  }
-
-  nextStep() {
-    this.step++;
-  }
-
-  prevStep() {
-    this.step--;
-  }
-
-  public profilePicture?: Maybe<MediaEntity>;
-  public titleImage?: Maybe<MediaEntity>;
-
-  public form = this.fb.group({
-    name: ['', [Validators.required]],
-    street: ['', [Validators.required]],
-    housenumber: ['', [Validators.required]],
-    city: ['', [Validators.required]],
-    postalcode: ['', [Validators.required]],
-    describtion: ['', [Validators.required]],
-    website: [''],
-    phone: [''],
-    email: ['', [Validators.required, Validators.email]],
-    profilePic: [{} as MediaEntity, [Validators.required]],
-    titleImg: [{} as MediaEntity, [Validators.required]],
+  public descriptionForm = this.fb.group({
+    name: ['' as Maybe<string>, [Validators.required]],
+    description: ['' as Maybe<string>, [Validators.required]],
   });
+
+  public contactForm = this.fb.group({
+    email: ['' as Maybe<string>, [Validators.required]],
+    name: ['' as Maybe<string>],
+    website: ['' as Maybe<string>],
+    phone: ['' as Maybe<string>],
+  });
+
+  public addressForm = this.fb.group({
+    street: ['' as Maybe<string>, [Validators.required]],
+    houseNumber: ['' as Maybe<string>, [Validators.required]],
+    place: ['' as Maybe<string>, [Validators.required]],
+    postalCode: ['' as Maybe<string>, [Validators.required]],
+  });
+
+  public titleImageForm = this.fb.group({
+    titleImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
+  public profileImageForm = this.fb.group({
+    cardImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
+  public uploadsForm = this.fb.group({
+    uploads: [[] as MediaEntity[]],
+  });  
 
   constructor(
     private store: Store,
     private fb: FormBuilder,
   ) { }
 
-  public addProfilePicture(uploads: MediaEntity[]): void {
-    this.profilePicture = uploads[0];
+  public cancelled(): void {
+    this.store.dispatch(PortalParticipateActions.cancelled());
   }
 
-  public addTitleImage(uploads: MediaEntity[]): void {
-    this.titleImage = uploads[0];
-  }
-
-  public onSubmit() {
-    this.store.dispatch(PortalParticipateActions.saveOrganisationApplication({
-      name: this.form.value.name,
-      address: {
-        street: this.form.value.street,
-        houseNumber: this.form.value.housenumber,
-        place: this.form.value.city,
-        postalCode: this.form.value.postalcode,
-      },
-      contact: {
-        email: this.form.value.email,
-        website: this.form.value.website,
-        phone: this.form.value.phone,
-        preferredContact: true,
-      },
-      uploads: [
-        {
-        title: false,
-        card: true,
-        media: this.form.value.profilePic,
-        },
-        {
-        title: true,
-        card: false,
-        media: this.form.value.titleImg,  
-        } 
-      ],
-      description: this.form.value.describtion,
-      slug: this.form.value.name,
-      approved: false,
-      sponsored: false,
-    })); 
+  public saved(): void {
+    this.store.dispatch(PortalParticipateActions.save({
+    name: this.descriptionForm.value.name,
+    description: this.descriptionForm.value.description,
+    contact: {
+      email: this.contactForm.value.email,
+      phone: this.contactForm.value.phone,
+      website: this.contactForm.value.website,
+      preferredContact: false
+    },
+    address: {
+      street: this.addressForm.value.street,
+      houseNumber: this.addressForm.value.houseNumber,
+      place: this.addressForm.value.place,
+      postalCode: this.addressForm.value.postalCode,
+    },
+    slug: this.descriptionForm.value.name,
+    approved: false,
+    sponsored: false,
+    uploads: (this.uploadsForm.value.uploads || []).map(media => ({
+        media: media,
+      })).concat(
+        (this.profileImageForm.value.cardImage || []).map(media => ({ 
+          media: media,
+          card: true,
+        }))
+      ).concat(
+        (this.titleImageForm.value.titleImage || []).map(media => ({
+          media: media,
+          title: true,
+        }))
+      ) || null,
+    }));
   }
 }

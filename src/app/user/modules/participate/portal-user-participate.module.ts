@@ -16,6 +16,8 @@ import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-f
 import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 
+import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
+import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
 import { PortalParticipateBecomeAuthorComponent } from './components/become-author/portal-participate-become-author.component';
 import { PortalParticipateCreateOrganisationComponent } from './components/create-organisation/portal-participate-create-organisation.component';
@@ -62,6 +64,8 @@ const modules = [
   PortalParticipateRoutingModule,
   SuccessComponent,
   TitleModule,
+  FormStepperModule,
+  GridLayoutModule,
 ];
 
 const libs = [

@@ -1,4 +1,4 @@
-import { createActionGroup } from '@ngrx/store';
+import { createActionGroup, emptyProps } from '@ngrx/store';
 import { Maybe, OrganisationEntity, OrganisationEntityInput, OrganisationMemberEntity, OrganisationMemberEntityInput, UserContextEntity, UserContextEntityInput } from 'src/app/core/api/generated/schema';
 
 export const PortalParticipateActions = createActionGroup({
@@ -14,8 +14,9 @@ export const PortalParticipateActions = createActionGroup({
     'save author application': (entity: UserContextEntityInput) => ({ entity }),
     'author application saved': (entity: UserContextEntity) => ({ entity }),
 
-    'save organisation application': (entity: OrganisationEntityInput) => ({ entity }),
-    'organisation application saved': (entity: OrganisationEntity) => ({ entity }),
+    'save': (organisation: OrganisationEntityInput) => ({ organisation }),
+    'saved': emptyProps(),
+    'cancelled': emptyProps(),
     
   }
 });

@@ -4,107 +4,80 @@
     <p appLabel="organisationText1"></p>
     <p appLabel="organisationText2"></p>
   </section>
-  <form [formGroup]="form">
-    <mat-accordion>
-  
-      <mat-expansion-panel expanded [expanded]="step === 0" (opened)="setStep(0)">
-        <mat-expansion-panel-header>
-          <mat-panel-title appLabel="informations"></mat-panel-title>
-          <mat-panel-description appLabel="enterYourData"></mat-panel-description>
-        </mat-expansion-panel-header>
-        <section>
-          <fieldset>
-            <mat-form-field appearance="outline">
-              <mat-label appLabel="fullname"></mat-label>
-              <input matInput id="name" formControlName="name" placeholder="Einrichtung Name">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label appLabel="email"></mat-label>
-              <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.de">
-            </mat-form-field>
-          </fieldset>
-          <fieldset>
-            <mat-form-field appearance="outline">
-              <mat-label appLabel="website"></mat-label>
-              <input matInput id="website" formControlName="website" placeholder="www.seitenname.de">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label appLabel="phone"></mat-label>
-              <input matInput id="phone" formControlName="phone" placeholder="0174-1234567">
-            </mat-form-field>
-          </fieldset>
-        </section>
-        <mat-action-row>
-          <button mat-button color="primary" appLabel="next" (click)="nextStep()"></button>
-        </mat-action-row>
-      </mat-expansion-panel>
-  
-      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
-        <mat-expansion-panel-header>
-          <mat-panel-title appLabel="address"></mat-panel-title>
-          <mat-panel-description appLabel="enterYourAddress"></mat-panel-description>
-        </mat-expansion-panel-header>
-        <section>
-          <fieldset>
-            <mat-form-field class="address" appearance="outline">
-              <mat-label appLabel="street"></mat-label>
-              <input matInput id="street" formControlName="street" placeholder="Straße">
-            </mat-form-field>
-            <mat-form-field class="number" appearance="outline">
-              <mat-label appLabel="housenumber"></mat-label>
-              <input matInput id="housenumber" formControlName="housenumber" placeholder="Hausnr.">
-            </mat-form-field>
-          </fieldset>
-          <fieldset>
-            <mat-form-field class="address" appearance="outline">
-              <mat-label appLabel="city"></mat-label>
-              <input matInput id="city" formControlName="city" placeholder="Stadt">
-            </mat-form-field>
-            <mat-form-field class="number" appearance="outline">
-              <mat-label appLabel="postalcode"></mat-label>
-              <input matInput id="postalcode" formControlName="postalcode" placeholder="PLZ">
-            </mat-form-field>
-          </fieldset>
-        </section>
-        <mat-action-row>
-          <button mat-button color="accent" appLabel="previous" (click)="prevStep()"></button>
-          <button mat-button color="primary" appLabel="next" (click)="nextStep()"></button>
-        </mat-action-row>
-      </mat-expansion-panel>
 
-      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
-        <mat-expansion-panel-header>
-          <mat-panel-title appLabel="describtion"></mat-panel-title>
-          <mat-panel-description appLabel="describeYourOrganisation"></mat-panel-description>
-        </mat-expansion-panel-header>
-        <section>
-          <app-ck-editor-form id="describtion" formControlName="describtion"></app-ck-editor-form>
-        </section>
-        <mat-action-row>
-          <button mat-button color="accent" appLabel="previous" (click)="prevStep()"></button>
-          <button mat-button color="primary" appLabel="next" (click)="nextStep()"></button>
-        </mat-action-row>
-      </mat-expansion-panel>
-  
-      <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
-        <mat-expansion-panel-header>
-          <mat-panel-title appLabel="uploads"></mat-panel-title>
-          <mat-panel-description appLabel="uploadPicturesOrFiles"></mat-panel-description>
-        </mat-expansion-panel-header>
-        <section>
-          <span appLabel="profilePicture"></span>
-          <app-media-form id="profilePic" formControlName="profilePic" [maxFiles]="1" (uploads)="addProfilePicture($event)"></app-media-form>
-        </section>
-        <section class="uploads">
-          <span appLabel="titelImage"></span>
-          <app-media-form id="titleImg" formControlName="titleImg" [maxFiles]="1" (uploads)="addTitleImage($event)"></app-media-form>
-        </section>
-        <mat-action-row>
-          <button mat-button color="accent" appLabel="previous" (click)="prevStep()"></button>
-          <button mat-flat-button appLabel="send" [disabled]="form.invalid" color="primary" (click)="onSubmit()"></button>
-        </mat-action-row>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </form>
+  <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+         
+    <app-form-step titleLabel="content" [formGroup]="descriptionForm" descriptionLabel="describeYourOrganisation">
+      <app-row [columns]="2">
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="organisationName"></mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </app-row>
+      <app-row [columns]="1">
+        <app-ck-editor-form formControlName="description"></app-ck-editor-form>
+      </app-row>
+    </app-form-step>
+    
+    <app-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
+      <app-row [columns]="2">
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="email"></mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="name"></mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </app-row>
 
+      <app-row [columns]="2">
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="website"></mat-label>
+          <input matInput formControlName="website">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="phone"></mat-label>
+          <input matInput formControlName="phone" type="number">
+        </mat-form-field>
+      </app-row>
+    </app-form-step>
+
+    <app-form-step titleLabel="address" [formGroup]="addressForm" descriptionLabel="enterYourAddress">
+      <app-row [columns]="8">
+        <mat-form-field appearance="outline"> [appAssignColumns]="6"
+          <mat-label appLabel="street"></mat-label>
+          <input matInput formControlName="street">
+        </mat-form-field>
+        <mat-form-field appearance="outline" [appAssignColumns]="2">
+          <mat-label appLabel="houseNumber"></mat-label>
+          <input matInput formControlName="houseNumber">
+        </mat-form-field>
+      </app-row>
+    
+      <app-row [columns]="8">
+        <mat-form-field appearance="outline" [appAssignColumns]="6">
+          <mat-label appLabel="place"></mat-label>
+          <input matInput formControlName="place">
+        </mat-form-field>
+        <mat-form-field appearance="outline" [appAssignColumns]="2">
+          <mat-label appLabel="postalCode"></mat-label>
+          <input matInput formControlName="postalCode">
+        </mat-form-field>
+      </app-row>
+    </app-form-step>
+
+    <app-form-step titleLabel="titleImage" [formGroup]="titleImageForm" descriptionLabel="uploadTitleImage">
+      <app-media-form [maxFiles]="1" formControlName="titleImage"></app-media-form>
+    </app-form-step>
+    
+    <app-form-step titleLabel="profilePicture" [formGroup]="profileImageForm" descriptionLabel="uploadProfilePicture">
+      <app-media-form formControlName="cardImage" [maxFiles]="1"></app-media-form>
+    </app-form-step>
+
+    <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm" descriptionLabel="uploadPicturesOrFiles">
+      <app-media-form formControlName="uploads"></app-media-form>
+    </app-form-step>
+
+  </app-form-stepper>  
 </div>

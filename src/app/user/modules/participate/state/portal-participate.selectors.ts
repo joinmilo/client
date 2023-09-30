@@ -8,3 +8,8 @@ export const selectJoinableOrganisations = createSelector(
   selectPortalParticipateState,
   state => state.filteredOrganisations
 );
+
+export const selectCreatingOrganisation = createSelector(
+  selectPortalParticipateState,
+  state => state.createOrganisation
+);

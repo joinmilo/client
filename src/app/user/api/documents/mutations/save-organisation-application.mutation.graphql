@@ -1,28 +1,5 @@
 mutation saveOrganisationApplication($entity: OrganisationEntityInput!) {
   saveOrganisation(entity: $entity) {
-    name
-    address {
-      street
-      houseNumber
-      place
-      postalCode
-    }
-    contact {
-      email
-      website
-      phone
-    }
-    uploads {
-      card
-      media {
-        id
-        url
-      }
-      title
-    }
-    description
-    slug
-    approved
-    sponsored
+    id
   }
 }

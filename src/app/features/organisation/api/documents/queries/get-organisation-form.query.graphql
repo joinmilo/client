@@ -1,0 +1,26 @@
+query getOrganisationForm($entity: OrganisationEntityInput) {
+  getOrganisation(entity: $entity) {
+    id
+    address {
+      ...Address
+    }
+    created
+    approved
+    contact {
+      ...Contact
+    }
+    sponsored
+    modified
+    description
+    metaDescription
+    name
+    slug
+    uploads {
+      title
+      card
+      media {
+        ...Media
+      }
+    }
+  }
+}

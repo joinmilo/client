@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs';
+import { map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, FilterSortPaginateInput, Maybe, OrganisationEntity, OrganisationMemberEntity, QueryOperator, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { userUrl } from 'src/app/core/constants/module.constants';
+import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetOrganisationsGQL } from 'src/app/user/api/generated/get-organisations.query.generated';
 import { SaveOrganisationApplicationGQL } from 'src/app/user/api/generated/save-organisation-application.mutation.generated';
 import { SaveOrganisationMembersGQL } from 'src/app/user/api/generated/save-organisation-members.mutation.generated';
@@ -85,30 +87,28 @@ export class PortalParticipateEffects {
     tap(() => this.router.navigate(['/', userUrl, 'participate', 'success-become-author'])),
   ), {dispatch: false});
 
+  cancelled = createEffect(() => this.actions.pipe(
+    ofType(PortalParticipateActions.cancelled),
+    tap(() => this.router.navigate([userUrl, 'participate'])),
+  ), { dispatch: false });
 
 
-  saveOrganisationApplication = createEffect(() => this.actions.pipe(
-    ofType(PortalParticipateActions.saveOrganisationApplication),
-      switchMap(action => this.verifyAddressService.mutate({
-          entity: action.entity.address
-        })
-        .pipe(
-          filter(response => !!response.data?.verifyAddress?.latitude),
-          map(response => ({ ...action.entity, address: response.data?.verifyAddress, }))
-        ),
-      ),
-    switchMap(entity => this.saveOrganisationApplicationService.mutate({
-      entity
+  save = createEffect(() => this.actions.pipe(
+    ofType(PortalParticipateActions.save),
+    switchMap(action => this.saveOrganisationApplicationService.mutate({
+      entity: action.organisation
     })),
-    map(response => PortalParticipateActions.organisationApplicationSaved(response.data?.saveOrganisation as OrganisationEntity))
+    map(() => PortalParticipateActions.saved())
   ));
 
-  organisationApplicationSaved = createEffect(() => this.actions.pipe(
-    ofType(PortalParticipateActions.organisationApplicationSaved),
+  saved = createEffect(() => this.actions.pipe(
+    ofType(PortalParticipateActions.saved),
     tap(() => this.router.navigate(['/', userUrl, 'participate', 'success-create-organisation'])),
-  ), {dispatch: false});
-
-
+    map(() => CoreActions.setFeedback({
+      type: FeedbackType.Success,
+      labelMessage: 'savedSuccessfully'
+    }))
+  ));
 
   constructor(
     private actions: Actions,

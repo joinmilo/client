@@ -1,13 +1,5 @@
 mutation saveOrganisationMembers($entities: [OrganisationMemberEntityInput!]) {
   saveOrganisationMembers(entities: $entities) {
-    approved
     id
-    isPublic
-    organisation{
-      id
-    }
-    userContext{
-      id
-    }
   }
 }

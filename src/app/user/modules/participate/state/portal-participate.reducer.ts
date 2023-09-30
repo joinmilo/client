@@ -4,6 +4,7 @@ import { PortalParticipateActions } from './portal-participate.actions';
 
 
 export interface PortalParticipateState {
+  createOrganisation?: Maybe<OrganisationEntity>;
   filteredOrganisations?: Maybe<OrganisationEntity[]>;
 }
 
@@ -16,5 +17,14 @@ export const portalParticipateReducer = createReducer(
   on(PortalParticipateActions.setOrganisations, (state, action): PortalParticipateState => (
     { ...state, filteredOrganisations: action.filteredOrganisations}
   )),
+
+  on(
+    PortalParticipateActions.saved,
+    PortalParticipateActions.cancelled,
+    (state): PortalParticipateState => (
+      { ...state, createOrganisation: undefined }
+    )
+  ),
+
 
 );

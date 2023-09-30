@@ -9,20 +9,12 @@ export type SaveOrganisationMembersMutationVariables = Types.Exact<{
 }>;
 
 
-export type SaveOrganisationMembersMutation = { __typename?: 'Mutation', saveOrganisationMembers?: Array<{ __typename?: 'OrganisationMemberEntity', approved?: boolean | null, id?: string | null, isPublic?: boolean | null, organisation?: { __typename?: 'OrganisationEntity', id?: string | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null } | null } | null> | null };
+export type SaveOrganisationMembersMutation = { __typename?: 'Mutation', saveOrganisationMembers?: Array<{ __typename?: 'OrganisationMemberEntity', id?: string | null } | null> | null };
 
 export const SaveOrganisationMembersDocument = gql`
     mutation saveOrganisationMembers($entities: [OrganisationMemberEntityInput!]) {
   saveOrganisationMembers(entities: $entities) {
-    approved
     id
-    isPublic
-    organisation {
-      id
-    }
-    userContext {
-      id
-    }
   }
 }
     `;

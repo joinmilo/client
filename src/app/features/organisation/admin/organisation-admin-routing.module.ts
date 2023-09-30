@@ -23,15 +23,20 @@ const menuRoutes: Routes = [
 
 const routes: Routes = [
   {
+    path: `${organisationsFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/organisation/admin/form/organisation-admin-form.module')
+      .then((imported) => imported.OrganisationAdminFormModule),
+  },
+  {
+    path: `${organisationsFeatureKey}/:${slug}/form`,
+    loadChildren: () => import('src/app/features/organisation/admin/form/organisation-admin-form.module')
+      .then((imported) => imported.OrganisationAdminFormModule),
+  },
+  {
     path: `${organisationsFeatureKey}/:${slug}`,
     loadChildren: () => import('src/app/features/organisation/admin/details/organisation-admin-details.module')
       .then((imported) => imported.OrganisationAdminDetailsModule),
     component: OrganisationAdminDetailsLayoutComponent
-  },
-  {
-    path: `${organisationsFeatureKey}/form`,
-    loadChildren: () => import('src/app/features/organisation/admin/form/organisation-admin-form.module')
-      .then((imported) => imported.OrganisationAdminFormModule),
   },
 ]
 
