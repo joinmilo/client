@@ -1,0 +1,5 @@
+mutation saveEvent($entity: EventEntityInput!) {
+  saveEvent(entity: $entity) {
+    id
+  }
+}

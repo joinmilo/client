@@ -1,0 +1,15 @@
+query getUserOrganisations($params: FilterSortPaginateInput) {
+  getOrganisations(params: $params) {
+    result {
+      id
+      created
+      modified
+      name
+
+      contact {
+        ...Contact
+      }
+    }
+    total
+  }
+}

@@ -9,7 +9,7 @@ export type GetEventCategoriesQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetEventCategoriesQuery = { __typename?: 'Query', getEventCategories?: { __typename?: 'PageableList_EventCategoryEntity', total: any, result?: Array<{ __typename?: 'EventCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetEventCategoriesQuery = { __typename?: 'Query', getEventCategories?: { __typename?: 'PageableList_EventCategoryEntity', total: any, result?: Array<{ __typename?: 'EventCategoryEntity', id?: string | null, color?: string | null, icon?: string | null, name?: string | null, translatables?: Array<{ __typename?: 'EventCategoryTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export const GetEventCategoriesDocument = gql`
     query getEventCategories($params: FilterSortPaginateInput) {
@@ -18,6 +18,7 @@ export const GetEventCategoriesDocument = gql`
       id
       color
       icon
+      name
       translatables {
         id
         name

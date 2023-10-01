@@ -8,3 +8,13 @@ export const selectEvent = createSelector(
   selectEventAdminFormState,
   state => state.event
 );
+
+export const selectCategories = createSelector(
+  selectEventAdminFormState,
+  state => state.categories
+);
+
+export const selectOrganisations = createSelector(
+  selectEventAdminFormState,
+  state => state.userOrganisations
+);

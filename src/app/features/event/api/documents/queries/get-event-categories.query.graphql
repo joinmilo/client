@@ -4,6 +4,7 @@ query getEventCategories($params: FilterSortPaginateInput) {
       id
       color
       icon
+      name
 
       translatables {
         id
