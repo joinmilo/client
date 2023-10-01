@@ -49,6 +49,11 @@ const routes: Routes = [
         .then((imported) => imported.MediaAdminCategoryFormModule),
     canActivate: [requireAnyPrivilege('media_admin')]
   },
+  {
+    path: `${mediaFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/media/admin/form/media-admin-form.module')
+      .then((imported) => imported.MediaAdminFormModule),
+  },
 ]
 
 @NgModule({
