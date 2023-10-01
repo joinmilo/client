@@ -20,8 +20,11 @@
     <mat-form-field appearance="outline">
       <mat-label appLabel="suburb"></mat-label>
       <mat-select formControlName="suburb">
+        <mat-option [value]="">
+          <span appLabel="keine Angabe"></span>
+        </mat-option>
         <mat-option [value]="suburb.id" *ngFor="let suburb of suburbs | async">
-          <p>{{ suburb.name }}</p>
+          <span>{{ suburb.name }}</span>
         </mat-option>
       </mat-select>
     </mat-form-field>

@@ -3,8 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, take, tap } from 'rxjs';
-import { AddressEntity, ContactEntity, EventMediaEntity, EventScheduleEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, ContactEntity, EventMediaEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { id, slug } from 'src/app/core/constants/queryparam.constants';
+import { Period } from 'src/app/core/typings/period';
 import { AppValidators } from 'src/app/core/validators/validators';
 import { EventAdminFormActions } from '../state/event-admin-form.actions';
 import { selectCategories, selectEvent, selectOrganisations } from '../state/event-admin-form.selectors';
@@ -29,17 +30,17 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
   public locationForm = this.fb.group({
     videoChatLink: [undefined as Maybe<string>],
-    address: [{} as Maybe<AddressEntity>],
+    address: [undefined as Maybe<AddressEntity>],
   }, {
     validators: [AppValidators.either('videoChatLink', 'address')]
   });
 
   public scheduleForm = this.fb.group({
-    schedules: [undefined as Maybe<EventScheduleEntity[]>],
+    schedules: undefined as Maybe<Period[]>,
   });
 
   public uploadsForm = this.fb.group({
-    uploads: [undefined as Maybe<EventMediaEntity[]>],
+    uploads: undefined as Maybe<EventMediaEntity[]>,
   });
 
   public additionalInfoForm = this.fb.group({
@@ -82,6 +83,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       filter(event => !!event),
       take(1)
     ).subscribe(event => {
+      console.log(event);
       this.contentForm = this.fb.group({
         id: [event?.id],
         name: [event?.name, [Validators.required]],
@@ -89,11 +91,16 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       });
 
       this.scheduleForm = this.fb.group({
-        schedules: [event?.schedules as Maybe<EventScheduleEntity[]>],
+        schedules: this.scheduleForm.value.schedules
       });
 
       this.shortDescriptionForm = this.fb.group({
         shortDescription: [event?.shortDescription, [Validators.required]],
+      });
+
+      this.locationForm = this.fb.group({
+        address: event?.address,
+        videoChatLink: event?.videoChatLink
       });
 
       this.additionalInfoForm = this.fb.group({
@@ -121,9 +128,38 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   }
 
   public saved(): void {
-    console.log(this.contactAndOrganisationForm.value.contact);
     console.log(this.locationForm.value.address);
-    //TODO: Save
+    this.store.dispatch(EventAdminFormActions.save({
+      id: this.contentForm.value.id,
+      name: this.contentForm.value.name,
+      content: this.contentForm.value.content,
+
+      shortDescription: this.shortDescriptionForm.value.shortDescription,
+
+      videoChatLink: this.locationForm.value.videoChatLink,
+      address: this.locationForm.value.address,
+
+      schedules: this.scheduleForm.value.schedules,
+
+      uploads: this.uploadsForm.value.uploads,
+
+      category: this.additionalInfoForm.value.categoryId != null
+        ? { id: this.additionalInfoForm.value.categoryId }
+        : null,
+      entryFee: this.additionalInfoForm.value.entryFee,
+      sponsored: this.additionalInfoForm.value.sponsored ?? false,
+      metaDescription: this.additionalInfoForm.value.metaDescription,
+
+      attendeeConfiguration: {
+        approval: this.attendeeConfigForm.value.approval ?? false,
+        maxAttendees: this.attendeeConfigForm.value.maxAttendees
+      },
+
+      organisation: this.contactAndOrganisationForm.value.organisation?.id != null
+        ? { id: this.contactAndOrganisationForm.value.organisation?.id }
+        : null,
+      contact: this.contactAndOrganisationForm.value.contact
+    }))
   }
 
   public ngOnDestroy(): void {

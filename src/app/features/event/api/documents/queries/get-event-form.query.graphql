@@ -1,10 +1,53 @@
 query getEventForm($entity: EventEntityInput) {
   getEvent(entity: $entity) {
-    id
-    schedules {
-      id
-      startDate
-      endDate
-    }
+   id
+   entryFee
+   hasSchedules
+   slug
+   videoChatLink
+   modified
+   name
+
+  address {
+    ...Address
   }
+
+  attendeeConfiguration {
+    approval
+    maxAttendees  
+  }
+
+  category {
+    ...EventCategory
+  }
+
+  contact {
+    ...Contact
+  }  
+
+  organisation {
+    ...EventOrganisation
+  }  
+
+  schedules {
+    ...Schedule
+  }  
+
+  translatables {
+    id
+    content
+    shortDescription
+    language {
+      ...Language
+    }
+  }  
+
+  uploads {
+    title
+    card
+    media {
+      ...Media
+    }
+  }  
+ }
 }
