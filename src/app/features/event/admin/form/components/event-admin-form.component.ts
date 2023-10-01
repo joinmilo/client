@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, filter, switchMap, take, tap } from 'rxjs';
+import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
 import { AddressEntity, ContactEntity, EventMediaEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { id, slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
@@ -71,56 +71,88 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private store: Store
-  ) { }
+    private store: Store,
+  ) {}
+
+  disableEnableVideoChatLink() {
+      if (this.locationForm.value.address) {
+        this.locationForm.controls.videoChatLink.setValue(null);
+        this.locationForm.controls.videoChatLink.disable();
+      } else {
+        this.locationForm.controls.videoChatLink.enable();
+      }
+  }  
 
   public ngOnInit(): void {
+    this.locationForm.controls.address.valueChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => this.handleFormChanges());
+
+    this.locationForm.controls.videoChatLink.valueChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => this.handleFormChanges());
+
     this.store.dispatch(EventAdminFormActions.getCategories());
     this.activatedRoute.params.pipe(
       filter(params => !!params[slug]),
       tap(params => this.store.dispatch(EventAdminFormActions.getEvent(params[id]))),
       switchMap(() => this.store.select(selectEvent)),
-      filter(event => !!event),
+      filter(event => !!event?.id),
       take(1)
     ).subscribe(event => {
-      console.log(event);
-      this.contentForm = this.fb.group({
-        id: [event?.id],
-        name: [event?.name, [Validators.required]],
-        content: [event?.content, [Validators.required]],
+      this.contentForm.patchValue({
+        id: event?.id,
+        name: event?.name,
+        content: event?.content, 
+      }, { emitEvent: false});
+    
+      this.scheduleForm.patchValue({
+        schedules: event?.schedules?.map(schedule => ({
+          startDate: schedule?.startDate,
+          endDate: schedule?.endDate,
+        }) as Period)
+      }, { emitEvent: false })
+
+      this.shortDescriptionForm.patchValue({
+        shortDescription: event?.shortDescription,
       });
 
-      this.scheduleForm = this.fb.group({
-        schedules: this.scheduleForm.value.schedules
-      });
-
-      this.shortDescriptionForm = this.fb.group({
-        shortDescription: [event?.shortDescription, [Validators.required]],
-      });
-
-      this.locationForm = this.fb.group({
+      this.locationForm.patchValue({
         address: event?.address,
         videoChatLink: event?.videoChatLink
       });
 
-      this.additionalInfoForm = this.fb.group({
-        categoryId: [event?.category?.id],
-        entryFee: [event?.entryFee],
-        sponsored: [event?.sponsored],
-        metaDescription: [event?.metaDescription],
+      this.additionalInfoForm.patchValue({
+        categoryId: event?.category?.id,
+        entryFee: event?.entryFee,
+        sponsored: event?.sponsored,
+        metaDescription: event?.metaDescription,
       });
 
-      this.contactAndOrganisationForm = this.fb.group({
-        organisation: [event?.organisation],
-        contact: [event?.contact]
+      this.contactAndOrganisationForm.patchValue({
+        organisation: event?.organisation,
+        contact: event?.contact
       });
 
-      this.attendeeConfigForm = this.fb.group({
-        approval: [event?.attendeeConfiguration?.approval],
-        maxAttendees: [event?.attendeeConfiguration?.maxAttendees]
+      this.attendeeConfigForm.patchValue({
+        approval: event?.attendeeConfiguration?.approval,
+        maxAttendees: event?.attendeeConfiguration?.maxAttendees
       });
     }
     );
+  }
+
+  private handleFormChanges() {
+    if (this.locationForm.value.address) {
+      this.locationForm.controls.videoChatLink.setValue(null);
+      this.locationForm.controls.videoChatLink.disable();
+    } else if (this.locationForm.value.videoChatLink) {
+      this.locationForm.controls.address.setValue(null);
+      this.locationForm.controls.address.disable();
+    } else {
+      this.locationForm.controls.videoChatLink.enable();
+      this.locationForm.controls.address.enable();
+    }
   }
 
   public cancelled(): void {
@@ -128,7 +160,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   }
 
   public saved(): void {
-    console.log(this.locationForm.value.address);
     this.store.dispatch(EventAdminFormActions.save({
       id: this.contentForm.value.id,
       name: this.contentForm.value.name,

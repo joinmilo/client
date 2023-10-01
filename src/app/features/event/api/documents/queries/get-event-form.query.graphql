@@ -7,6 +7,8 @@ query getEventForm($entity: EventEntityInput) {
    videoChatLink
    modified
    name
+   shortDescription
+   content
 
   address {
     ...Address
@@ -36,6 +38,7 @@ query getEventForm($entity: EventEntityInput) {
   translatables {
     id
     content
+    name
     shortDescription
     language {
       ...Language
