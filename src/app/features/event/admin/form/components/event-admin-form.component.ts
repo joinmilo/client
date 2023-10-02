@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
 import { AddressEntity, ContactEntity, EventMediaEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
-import { id, slug } from 'src/app/core/constants/queryparam.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
 import { AppValidators } from 'src/app/core/validators/validators';
 import { EventAdminFormActions } from '../state/event-admin-form.actions';
@@ -86,20 +86,20 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.locationForm.controls.address.valueChanges
       .pipe(takeUntil(this.destroy))
-      .subscribe(() => this.handleFormChanges());
-
-    this.locationForm.controls.videoChatLink.valueChanges
-      .pipe(takeUntil(this.destroy))
-      .subscribe(() => this.handleFormChanges());
+      .subscribe(() => {
+        this.disableEnableVideoChatLink()
+      });
 
     this.store.dispatch(EventAdminFormActions.getCategories());
     this.activatedRoute.params.pipe(
       filter(params => !!params[slug]),
-      tap(params => this.store.dispatch(EventAdminFormActions.getEvent(params[id]))),
+      tap(params => this.store.dispatch(EventAdminFormActions.getEvent(params[slug]))),
       switchMap(() => this.store.select(selectEvent)),
       filter(event => !!event?.id),
       take(1)
     ).subscribe(event => {
+      console.log(event?.schedules);
+
       this.contentForm.patchValue({
         id: event?.id,
         name: event?.name,
@@ -142,24 +142,12 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     );
   }
 
-  private handleFormChanges() {
-    if (this.locationForm.value.address) {
-      this.locationForm.controls.videoChatLink.setValue(null);
-      this.locationForm.controls.videoChatLink.disable();
-    } else if (this.locationForm.value.videoChatLink) {
-      this.locationForm.controls.address.setValue(null);
-      this.locationForm.controls.address.disable();
-    } else {
-      this.locationForm.controls.videoChatLink.enable();
-      this.locationForm.controls.address.enable();
-    }
-  }
-
   public cancelled(): void {
     this.store.dispatch(EventAdminFormActions.cancelled());
   }
 
   public saved(): void {
+    console.log(this.scheduleForm.value.schedules);
     this.store.dispatch(EventAdminFormActions.save({
       id: this.contentForm.value.id,
       name: this.contentForm.value.name,
@@ -170,7 +158,10 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       videoChatLink: this.locationForm.value.videoChatLink,
       address: this.locationForm.value.address,
 
-      schedules: this.scheduleForm.value.schedules,
+      schedules: this.scheduleForm.value.schedules?.map(schedule => ({
+        startDate: schedule.startDate,
+        endDate: schedule.endDate
+      })),
 
       uploads: this.uploadsForm.value.uploads,
 
@@ -189,7 +180,10 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       organisation: this.contactAndOrganisationForm.value.organisation?.id != null
         ? { id: this.contactAndOrganisationForm.value.organisation?.id }
         : null,
-      contact: this.contactAndOrganisationForm.value.contact
+
+      contact: this.contactAndOrganisationForm.value.contact?.id != null
+        ? { id: this.contactAndOrganisationForm.value.contact?.id }
+        : null,
     }))
   }
 

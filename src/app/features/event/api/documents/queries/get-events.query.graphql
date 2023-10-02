@@ -6,7 +6,7 @@ query getEvents($params: FilterSortPaginateInput) {
       modified
       slug
       sponsored
-
+      name
       category {
         id
         icon
