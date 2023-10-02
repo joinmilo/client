@@ -29,19 +29,6 @@ export class PortalGuestArticleEffects {
     tap(() => this.router.navigate(['/', portalUrl, 'guestarticle', 'success'])),
   ), {dispatch: false});
 
-  // saveReport = createEffect(() => this.actions.pipe(
-  //   ofType(PortalGuestArticleActions.saveArticle),
-  //   switchMap((action) => this.saveArticleService.mutate({
-  //     entity: action.entity
-  //   })),
-  //   map(response => PortalGuestArticleActions.articleSaved(response.data?.saveArticle as ArticleEntity))
-  // ));
-
-  // articleSaved = createEffect(() => this.actions.pipe(
-  //   ofType(PortalGuestArticleActions.articleSaved),
-  //   tap(() => this.router.navigate(['/', portalUrl, 'guestarticle', 'success'])),
-  // ), {dispatch: false});
-
   constructor(
     private actions: Actions,
     private router: Router,
