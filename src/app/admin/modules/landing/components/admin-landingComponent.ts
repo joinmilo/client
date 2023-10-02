@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, map, takeUntil } from 'rxjs';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FlipCardSliderInput, FlipCardSliderOutput } from 'src/app/shared/widgets/sliders/flip-card-slider/typings/flip-card-slider';
@@ -9,7 +9,6 @@ import { AdminLandingActions } from '../state/admin-landing.actions';
 import { selectDeveloperContact, selectMilestones } from '../state/admin-landing.selectors';
 import { AdminLandingContactComponent } from './contact/admin-landing-contact.component';
 import { AdminLandingMilestoneComponent } from './milestone/admin-landing-milestone.component';
-
 
 @Component({
   selector: 'app-admin-landing',

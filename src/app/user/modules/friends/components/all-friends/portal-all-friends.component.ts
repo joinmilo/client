@@ -1,8 +1,7 @@
 import { Component, OnDestroy } from "@angular/core";
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, map, takeUntil } from 'rxjs';
-import { UserContextEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectAcceptedFriendUsers, selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';

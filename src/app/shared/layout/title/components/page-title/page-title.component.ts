@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Maybe } from 'graphql/jsutils/Maybe';
+import { Maybe } from 'src/app/core/api/generated/schema';
 
 @Component({
   selector: 'app-page-title',

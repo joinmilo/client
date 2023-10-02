@@ -16,5 +16,9 @@ export const authorReducer = createReducer(
   on(PortalAuthorDetailsActions.setDetails, (state, action): PortalAuthorDetailsState => (
     { ...state, details: action.author }
   )),
+
+  on(PortalAuthorDetailsActions.reset, (): PortalAuthorDetailsState => (
+    { ...initialState }
+  )),
   
 );

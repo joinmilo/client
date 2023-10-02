@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { slug } from '../core/constants/queryparam.constants';
+import { UnauthGuardService } from '../core/guards/unauth-guard.service';
 import { NotFoundComponent } from '../shared/pages/not-found/component/not-found.component';
 import { FirstLoginFormComponent } from './components/first-login-form/first-login-form.component';
 import { LoginRequiredComponent } from './components/login-required/login-required.component';
@@ -19,10 +20,12 @@ const routes: Routes = [
   {
     path: 'login-required',
     component: LoginRequiredComponent,
+    canActivate: [UnauthGuardService]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [UnauthGuardService]
   },
   {
     path: 'login-stepper',

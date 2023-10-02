@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, combineLatest, takeUntil } from 'rxjs';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { MapEmbeddingActions } from '../state/map-embedding.actions';
 import { selectSponsoredDeal, selectSponsoredEvent, selectSponsoredOrganisation } from '../state/map-embedding.selectors';

@@ -44,6 +44,7 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this.store.dispatch(PortalAuthorDetailsActions.reset());
     this.destroy.next();
     this.destroy.complete();
   }

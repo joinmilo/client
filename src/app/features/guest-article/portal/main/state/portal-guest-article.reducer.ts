@@ -3,7 +3,7 @@ import { ArticleEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { PortalGuestArticleActions } from './portal-guest-article.actions';
 
 export interface PortalGuestArticleState {
-  savedArticle?: Maybe<ArticleEntity>;
+  editArticle?: Maybe<ArticleEntity>;
 }
 
 export const initialState: PortalGuestArticleState = {};
@@ -11,8 +11,12 @@ export const initialState: PortalGuestArticleState = {};
 export const portalGuestArticleReducer = createReducer(
   initialState,
 
-  on(PortalGuestArticleActions.saveArticle, (state, action): PortalGuestArticleState => (
-    { ...state, savedArticle: action.entity }
-  )),
+  on(
+    PortalGuestArticleActions.saved,
+    PortalGuestArticleActions.cancelled,
+    (state): PortalGuestArticleState => (
+      { ...state, editArticle: undefined }
+    )
+  ),
 
 );

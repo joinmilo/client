@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
-import { EventEntity } from 'src/app/core/api/generated/schema';
+import { EventEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { selectEventDetails } from '../../state/portal-event-details.selectors';
 
 @Component({

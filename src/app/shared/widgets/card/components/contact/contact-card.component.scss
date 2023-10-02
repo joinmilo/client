@@ -21,6 +21,16 @@ mat-card {
     object-fit: cover;
   }
 
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12.25rem;
+    height: 12.25rem;
+    color: var(--color-accent-contrast-900);
+    background: linear-gradient(135deg, var(--color-accent-900), var(--color-accent-400));
+  }
+
   figure {
     align-self: center;
     position: relative;

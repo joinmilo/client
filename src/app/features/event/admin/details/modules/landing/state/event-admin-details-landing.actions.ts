@@ -1,6 +1,5 @@
 import { createActionGroup } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { EventEntity, EventScheduleEntity } from 'src/app/core/api/generated/schema';
+import { EventEntity, EventScheduleEntity, Maybe } from 'src/app/core/api/generated/schema';
 
 export const EventAdminDetailsLandingActions = createActionGroup({
   source: 'Event Admin Details Landing',

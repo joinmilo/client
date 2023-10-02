@@ -1,6 +1,5 @@
 import { createActionGroup } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { FilterSortPaginateInput, PageableList_UserContextEntity } from 'src/app/core/api/generated/schema';
+import { FilterSortPaginateInput, Maybe, PageableList_UserContextEntity } from 'src/app/core/api/generated/schema';
 
 
 

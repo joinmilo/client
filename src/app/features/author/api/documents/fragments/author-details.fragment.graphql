@@ -20,7 +20,7 @@ fragment AuthorDetails on UserContextEntity {
   }
 
   articles {
-    id
+    ...ArticleCard
   }
 
   user {

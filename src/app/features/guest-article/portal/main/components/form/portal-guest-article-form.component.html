@@ -6,61 +6,43 @@
     <p appLabel="guestArticleIncentive"></p>
     <p appLabel="guestArticleHowTo"></p>
   </div>
-  <form [formGroup]="form">
-    <mat-accordion>
+  <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+    <app-form-step titleLabel="content" [formGroup]="contentForm">
+      <app-row [columns]="2">
+        <mat-form-field appearance="outline">
+          <mat-label appLabel="name"></mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </app-row>
 
-      <mat-expansion-panel expanded>
-        <mat-expansion-panel-header>
-          <mat-panel-title appLabel="content"></mat-panel-title>
-          <mat-panel-description appLabel="writeYourStory"></mat-panel-description>
-        </mat-expansion-panel-header>
-        <section>
-          <mat-form-field appearance="outline">
-            <mat-label appLabel="title"></mat-label>
-            <input matInput id="name" formControlName="title">
-          </mat-form-field>
-          <app-ck-editor-form formControlName="content"></app-ck-editor-form>
-        </section>
-      </mat-expansion-panel>
+      <app-row [columns]="1">
+        <app-ck-editor-form formControlName="content"></app-ck-editor-form>
+      </app-row>
+    </app-form-step>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title appLabel="informations"></mat-panel-title>
-          <mat-panel-description appLabel="enterYourData"></mat-panel-description>
-        </mat-expansion-panel-header>
-        <section>
-          <mat-form-field appearance="outline">
-            <mat-label appLabel="fullname"></mat-label>
-            <input matInput id="name" formControlName="name" placeholder="Max Mustermann">
-          </mat-form-field>
-          <fieldset>
-            <mat-form-field appearance="outline">
-              <mat-label appLabel="email"></mat-label>
-              <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label appLabel="phone"></mat-label>
-              <input matInput id="phone" formControlName="phone" placeholder="0174-1234567">
-            </mat-form-field>
-          </fieldset>
-        </section>
-      </mat-expansion-panel>
+    <app-form-step titleLabel="userInformation" [formGroup]="infomationForm">
+      <app-row [columns]="2">
+        <mat-form-field appearance="outline" [appAssignColumns]="1">
+          <mat-label appLabel="userName"></mat-label>
+          <input matInput formControlName="userName">
+        </mat-form-field>
+        <mat-form-field appearance="outline" [appAssignColumns]="1">
+          <mat-label appLabel="email"></mat-label>
+          <input matInput formControlName="email" type="email">
+        </mat-form-field>
+      </app-row>
+    </app-form-step>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title appLabel="uploads"></mat-panel-title>
-          <mat-panel-description appLabel="uploadPicturesOrFiles"></mat-panel-description>
-        </mat-expansion-panel-header>
-        <section>
-          <app-media-form
-            formControlName="uploads">
-          </app-media-form>
-        </section>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <app-captcha-submit
-      [disabled]="form.invalid"
-      (verified)="onSubmit($event)">
-    </app-captcha-submit>
-  </form>
+    <app-form-step titleLabel="titleImage" [formGroup]="titleImageForm">
+      <app-media-form [maxFiles]="1" formControlName="titleImage"></app-media-form>
+    </app-form-step>
+
+    <app-form-step titleLabel="cardImage" [formGroup]="cardImageForm">
+      <app-media-form formControlName="cardImage" [maxFiles]="1"></app-media-form>
+    </app-form-step>
+
+    <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
+      <app-media-form formControlName="uploads"></app-media-form>
+    </app-form-step>
+  </app-form-stepper>
 </div>

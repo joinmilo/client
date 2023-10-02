@@ -26,13 +26,10 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
     phone: [''],
-    street: [''],
-    houseNumber: [''],
-    postalCode: [''],
-    place: [''],
     content: [''],
     author: [false],
-    organisations: [[] as OrganisationEntity[]]
+    organisations: [[] as OrganisationEntity[]],
+    uploads: [[] as MediaEntity[]],
   });
 
   private destroy = new Subject<void>();
@@ -63,12 +60,6 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(AccountActions.saveFirstLogin({
       id: this.currentUser?.id,
-      uploads: [{
-        title: false,
-        profilePicture: true,
-        userContext: { id: this.currentUser?.id },
-        media: this.profilePicture,
-      }],
       user: {
         id: this.currentUser?.user?.id,
         lastLogin: new Date().toISOString(),
@@ -85,7 +76,15 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
                 content: this.form.value.content ?? ''
               }
             ]
-            : []
+            : [],
+        userContext: {
+          uploads: (this.form.value.uploads || []).map(media => ({
+            media: media,
+            profilePicture: true,
+            title: false,
+            userContext: { id: this.currentUser?.id}
+          }))
+        }
       },
       members: memberEntities
     }

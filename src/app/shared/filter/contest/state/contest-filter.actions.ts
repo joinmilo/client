@@ -1,7 +1,6 @@
 import { Params } from '@angular/router';
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { ContestTypeEntity } from 'src/app/core/api/generated/schema';
+import { ContestTypeEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { ContestFilterQueryParams } from 'src/app/core/typings/filter-params/contest-filter-param';
 
 export const ContestFilterActions = createActionGroup({

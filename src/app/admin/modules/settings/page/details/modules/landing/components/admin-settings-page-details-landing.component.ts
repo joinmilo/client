@@ -1,9 +1,8 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { MediaEntity, PageEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, MediaEntity, PageEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { AdminSettingsPageDetailsLandingActions } from '../state/admin-settings-page-details-landing.actions';
 import { selectAdminSettingsPageDetailsLanding } from '../state/admin-settings-page-details-landing.selectors';

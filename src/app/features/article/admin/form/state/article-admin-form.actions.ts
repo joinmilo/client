@@ -1,6 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { ArticleCategoryEntity, ArticleEntity, ArticleEntityInput } from 'src/app/core/api/generated/schema';
+import { ArticleCategoryEntity, ArticleEntity, ArticleEntityInput, Maybe } from 'src/app/core/api/generated/schema';
 
 export const ArticleAdminFormActions = createActionGroup({
   source: 'Article Admin Details Landing',

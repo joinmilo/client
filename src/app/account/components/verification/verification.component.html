@@ -18,17 +18,17 @@
     <button *ngIf="(verified | async)"
       mat-raised-button
       color="primary"
-      [routerLink]="['../login']">
+      [routerLink]="['/account/login']">
         <span appLabel="login"></span>
     </button>
     <button *ngIf="(verified | async) === false"
       mat-raised-button
       color="primary"
-      [routerLink]="['../verification']">
+      [routerLink]="['/account/verification']">
         <span appLabel="sendNewMail"></span>
     </button>
     <small *ngIf="(verified | async) === false">
-      <a [routerLink]="['../login']" appLabel="backToLogin"></a>
+      <a [routerLink]="['/account/login']" appLabel="backToLogin"></a>
     </small>
   </section>
 </div>

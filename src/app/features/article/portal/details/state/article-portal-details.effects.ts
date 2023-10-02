@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { map, switchMap, withLatestFrom } from 'rxjs';
-import { ArticleCommentEntity, ArticleEntity, ArticleRatingEntity, QueryOperator } from 'src/app/core/api/generated/schema';
+import { ArticleCommentEntity, ArticleEntity, ArticleRatingEntity, Maybe, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';

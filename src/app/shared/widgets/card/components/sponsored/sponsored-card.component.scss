@@ -4,6 +4,10 @@
   app-sponsored-desktop-card {
     display: none;
   }
+  app-content-card {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @include responsive(tablet-desktop) {

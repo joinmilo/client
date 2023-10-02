@@ -34,6 +34,8 @@ mat-form-field {
 
 :host::ng-deep .mat-vertical-content{
   margin: 1rem auto;
+
+  padding-bottom: 0;
 }
 
 section {
@@ -41,4 +43,12 @@ section {
   flex-flow: row wrap;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+app-media-form {
+  margin-bottom: 1rem;
+}
+
+button {
+  margin-bottom: 0;
 }

@@ -1,6 +1,5 @@
 import { createActionGroup } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { SurveyEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, SurveyEntity } from 'src/app/core/api/generated/schema';
 
 export const SurveyAdminDetailsLandingActions = createActionGroup({
   source: 'Survey Admin Details Landing',

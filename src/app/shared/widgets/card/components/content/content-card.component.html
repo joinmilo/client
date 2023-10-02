@@ -37,8 +37,10 @@
     </span>
   </mat-card-content>
   <mat-card-actions *ngIf="element?.creator">
-    <img class="border-image" alt="content-card" [src]="element?.creatorImage ? '' : '/assets/placeholder.webp'"
-      [src]="element?.creatorImage?.url">
+    <img class="border-image" *ngIf="element?.creatorImage" [src]="element?.creatorImage?.url">
+    <span class="border-image" *ngIf="!element?.creatorImage">
+      {{ element?.avatarPlaceholder }}
+    </span>
     <span>{{element?.creator}}</span>
   </mat-card-actions>
 </mat-card>

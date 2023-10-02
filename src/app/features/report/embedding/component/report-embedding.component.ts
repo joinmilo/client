@@ -36,6 +36,7 @@ export class ReportEmbeddingComponent implements OnDestroy {
       //TODO translatables content
       name: this.form.value.name,
       email: this.form.value.email,
+      content: this.form.value.content,
       type: {
         id: this.form.value.type?.id
       },

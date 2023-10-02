@@ -2,8 +2,4 @@ div {
   display: flex;
   flex-flow: column;
   gap: var(--gap);
-
-  app-sponsored-card {
-    margin: auto;
-  }
 }

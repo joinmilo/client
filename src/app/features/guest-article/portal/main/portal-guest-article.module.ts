@@ -14,6 +14,8 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CaptchaModule } from 'src/app/shared/form/captcha/captcha.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
+import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
+import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
 import { PortalGuestArticleFormComponent } from './components/form/portal-guest-article-form.component';
@@ -51,6 +53,8 @@ const modules = [
   MediaModule,
   PortalGuestArticleRoutingModule,
   TitleModule,
+  GridLayoutModule,
+  FormStepperModule,
 ];
 
 const libs = [

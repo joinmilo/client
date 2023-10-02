@@ -8,6 +8,13 @@ query getArticleDetails($entity: ArticleEntityInput) {
     metaDescription
     author {
       slug
+      uploads {
+        id
+        profilePicture
+        media {
+          ...Media
+        }
+      }
       user {
         firstName
         lastName

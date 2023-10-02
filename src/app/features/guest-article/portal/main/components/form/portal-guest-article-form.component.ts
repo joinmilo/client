@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { MediaEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { PortalGuestArticleActions } from '../../state/portal-guest-article.actions';
 
 @Component({
@@ -11,12 +11,26 @@ import { PortalGuestArticleActions } from '../../state/portal-guest-article.acti
 })
 export class PortalGuestArticleFormComponent {
 
-  public form = this.fb.group({
-    title: ['', [Validators.required]],
-    content: ['', [Validators.required]],
-    name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    phone: [''],
+  public contentForm = this.fb.group({
+    id: ['' as Maybe<string>],
+    name: ['' as Maybe<string>, [Validators.required]],
+    content: ['' as Maybe<string>],
+  });
+
+  public infomationForm = this.fb.group({
+    userName: ['' as Maybe<string>, [Validators.required]],
+    email: ['' as Maybe<string>, [Validators.required]],
+  });
+
+  public titleImageForm = this.fb.group({
+    titleImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
+  public cardImageForm = this.fb.group({
+    cardImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
+  public uploadsForm = this.fb.group({
     uploads: [[] as MediaEntity[]],
   });
 
@@ -25,22 +39,32 @@ export class PortalGuestArticleFormComponent {
     private fb: FormBuilder,
   ) { }
 
-  public onSubmit(captchaToken: string) {
-    this.store.dispatch(PortalGuestArticleActions.saveArticle({
-      name: this.form.value.title,
-      content: this.form.value.content, 
-      publicAuthor: {
-        name: this.form.value.name,
-        email: this.form.value.email,
-        phone: this.form.value.phone
-      },
-      uploads: this.form.value.uploads?.map(media => ({
-        media
-      })),
-      captchaToken,
-    }));
-    
+  public cancelled(): void {
+    this.store.dispatch(PortalGuestArticleActions.cancelled());
   }
 
+  public saved(): void {
+    this.store.dispatch(PortalGuestArticleActions.save({
+      id: this.contentForm.value.id,
+      name: this.contentForm.value.name,
+      content: this.contentForm.value.content,
+      publicAuthor: {
+        name: this.infomationForm.value.userName,
+        email: this.infomationForm.value.email,
+      },
+      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
+        media: media,
+      })).concat(
+        (this.cardImageForm.value.cardImage || []).map(media => ({ 
+          media: media,
+          card: true,
+        }))
+      ).concat(
+        (this.titleImageForm.value.titleImage || []).map(media => ({
+          media: media,
+          title: true,
+        }))
+      ) || null,
+    }));
+  }
 }
-

@@ -3,7 +3,7 @@
   <div class="border-box">
     <!-- TODO: Mark as read -->
     <button mat-button>
-      <label appLabel="markAsRead"></label>
+      <span appLabel="markAsRead"></span>
     </button>
     <section *ngFor="let notification of currentUser?.user?.notifications?.slice()?.reverse(); let last = last"
       [ngClass]="{'unread-notification': !notification?.read}">
@@ -16,7 +16,7 @@
     </section>
     <!-- TODO: Delete All -->
     <button mat-flat-button color="primary">
-      <label appLabel="deleteAll"></label>
+      <span appLabel="deleteAll"></span>
     </button>
   </div>
 </div>

@@ -85,4 +85,15 @@ mat-card-actions {
     aspect-ratio: 1/1;
     object-fit: cover;
   }
+
+  .border-image {
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    color: var(--color-accent-contrast-900);
+    background: linear-gradient(135deg, var(--color-accent-900), var(--color-accent-400));
+  }
 }

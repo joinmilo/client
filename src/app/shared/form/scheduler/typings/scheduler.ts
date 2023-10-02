@@ -1,4 +1,4 @@
-import { Maybe } from 'graphql/jsutils/Maybe';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { Period } from 'src/app/core/typings/period';
 
 export type Recurrence = 'noRecurrence'

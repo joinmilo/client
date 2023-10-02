@@ -1,10 +1,13 @@
-import { createActionGroup } from '@ngrx/store';
-import { ArticleEntity, ArticleEntityInput } from 'src/app/core/api/generated/schema';
+import { createActionGroup, emptyProps } from '@ngrx/store';
+import { ArticleEntityInput } from 'src/app/core/api/generated/schema';
 
 export const PortalGuestArticleActions = createActionGroup({
   source: 'Portal Guest Article',
   events: {
-    'save article': (entity: ArticleEntityInput) => ({ entity }),
-    'article saved': (entity: ArticleEntity) => ({ entity }),
+    
+    'save': (guestArticle: ArticleEntityInput) => ({ guestArticle }),
+    'saved': emptyProps(),
+    'cancelled': emptyProps(),
+    
   }
 });

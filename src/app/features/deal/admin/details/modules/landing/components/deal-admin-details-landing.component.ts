@@ -1,9 +1,8 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { DealEntity, MediaEntity } from 'src/app/core/api/generated/schema';
+import { DealEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { DealAdminDetailsLandingActions } from '../state/deal-admin-details-landing.actions';
 import { selectDealAdminDetailsLanding } from '../state/deal-admin-details-landing.selectors';

@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
-import { ContestEntity } from 'src/app/core/api/generated/schema';
+import { ContestEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
 import { commentsRoute, searchRoute } from '../../../constants/contest-admin-details.constants';

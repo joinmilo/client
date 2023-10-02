@@ -1,7 +1,6 @@
 import { Params } from '@angular/router';
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { DealCategoryEntity } from 'src/app/core/api/generated/schema';
+import { DealCategoryEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { DealFilterQueryParams } from 'src/app/core/typings/filter-params/deal-filter-param';
 
 export const DealFilterActions = createActionGroup({

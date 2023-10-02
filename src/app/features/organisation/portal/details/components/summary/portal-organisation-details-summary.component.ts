@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
-import { OrganisationEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { selectOrganisationDetails } from '../../state/portal-organisation-details.selectors';
 
 

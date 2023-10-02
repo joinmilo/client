@@ -1,6 +1,5 @@
 import { createActionGroup } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
-import { OrganisationEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 
 export const OrganisationAdminDetailsLandingActions = createActionGroup({
   source: 'Organisation Admin Details Landing',

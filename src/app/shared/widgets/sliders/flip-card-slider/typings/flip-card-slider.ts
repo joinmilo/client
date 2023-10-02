@@ -1,5 +1,5 @@
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Observable } from 'rxjs';
+import { Maybe } from 'src/app/core/api/generated/schema';
 
 export type FlipCardSliderInput = {
   title: string | Observable<string>,

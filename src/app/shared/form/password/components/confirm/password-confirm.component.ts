@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, takeUntil } from 'rxjs';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { AppValidators } from 'src/app/core/validators/validators';
 import { PasswordValidator } from '../../services/password-validator.service';
 import { PasswordActions } from '../../state/password.actions';

@@ -44,6 +44,8 @@ export type CardElement = {
   titleTranslatableField?: Maybe<string>,
 
   translatables?: Maybe<Maybe<Translatable>[]>,
+
+  avatarPlaceholder?: Maybe<string>
 }
 
 export type FlipCardOutput = {

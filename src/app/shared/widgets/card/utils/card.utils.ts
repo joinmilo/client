@@ -31,13 +31,13 @@ export const articleToCard = (entity?: Maybe<ArticleEntity>): CardElement => ({
   date: entity?.created,
   dateTime: false,
   creator: entity?.publicAuthor?.name ?? `${entity?.author?.user?.firstName} ${entity?.author?.user?.lastName}`,
-  // creator: entity?.publicAuthor?.name ?? entity?.author?.user?.firstName,
   creatorImage: entity?.author?.uploads?.find(upload => upload?.profilePicture)?.media,
   url: ['/portal', articlesFeatureKey, entity?.slug],
   image: entity?.uploads?.find(upload => upload?.card)?.media,
   textTranslatableField: 'shortDescription',
   titleTranslatableField: 'name',
   translatables: entity?.translatables,
+  avatarPlaceholder: (entity?.author?.user?.firstName?.charAt(0) || entity?.author?.user?.lastName?.charAt(0)) ?? entity?.publicAuthor?.name?.charAt(0),
 });
 
 export const contestsToCards = (entities?: Maybe<ContestEntity[]>): CardElement[] | undefined => 
@@ -61,6 +61,7 @@ export const dealsToCards = (entities?: Maybe<DealEntity[]>): CardElement[] => {
 export const dealToCard = (entity: Maybe<DealEntity>): CardElement => ({
   id: entity?.id,
   address: entity?.address,
+  category: entity?.category,
   creator: entity?.contact?.name,
   date: entity?.created,
   dateTime: true,
@@ -106,6 +107,7 @@ export const organisationToCard = (entity?: Maybe<OrganisationEntity>): CardElem
   titleTranslatableField: 'name',
   translatables: entity?.translatables,
   url: ['/portal', organisationsFeatureKey, entity?.slug],
+  avatarPlaceholder: entity?.name?.charAt(0) 
 });
 
 export const surveysToCards = (entities?: Maybe<SurveyEntity[]>): CardElement[] | undefined => 
@@ -131,7 +133,9 @@ export const userToCard = (entity?: Maybe<UserContextEntity>): CardElement => ({
   email: entity?.user?.email,
   creator: `${entity?.user?.firstName} ${entity?.user?.lastName}`,
   creatorImage: entity?.uploads?.find(upload => upload?.profilePicture)?.media,
+  image: entity?.uploads?.find(upload => upload?.profilePicture)?.media,  
   dateTime: true,
   phone: entity?.user?.phone,
+  avatarPlaceholder: entity?.user?.firstName?.charAt(0) || entity?.user?.lastName?.charAt(0),
   url: ['/portal', authorsFeatureKey, entity?.slug],
 });
