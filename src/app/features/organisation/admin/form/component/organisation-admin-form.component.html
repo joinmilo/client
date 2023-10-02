@@ -41,26 +41,9 @@
   </app-form-step>
 
   <app-form-step titleLabel="address" [formGroup]="addressForm" descriptionLabel="enterYourAddress">
-    <app-row [columns]="8">
-      <mat-form-field appearance="outline" [appAssignColumns]="6">
-        <mat-label appLabel="street"></mat-label>
-        <input matInput formControlName="street">
-      </mat-form-field>
-      <mat-form-field appearance="outline" [appAssignColumns]="2">
-        <mat-label appLabel="houseNumber"></mat-label>
-        <input matInput formControlName="houseNumber">
-      </mat-form-field>
-    </app-row>
-
-    <app-row [columns]="8">
-      <mat-form-field appearance="outline" [appAssignColumns]="6">
-        <mat-label appLabel="place"></mat-label>
-        <input matInput formControlName="place">
-      </mat-form-field>
-      <mat-form-field appearance="outline" [appAssignColumns]="2">
-        <mat-label appLabel="postalCode"></mat-label>
-        <input matInput formControlName="postalCode">
-      </mat-form-field>
+    <app-row>
+      <app-address-form formControlName="address">
+      </app-address-form>
     </app-row>
   </app-form-step>
 

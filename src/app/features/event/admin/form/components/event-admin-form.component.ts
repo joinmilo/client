@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
-import { AddressEntity, ContactEntity, EventMediaEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, ContactEntity, Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
 import { AppValidators } from 'src/app/core/validators/validators';
@@ -39,8 +39,16 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     schedules: undefined as Maybe<Period[]>,
   });
 
+  public titleImageForm = this.fb.group({
+    titleImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
+  public cardImageForm = this.fb.group({
+    cardImage: [[] as MediaEntity[], [Validators.required]],
+  });
+
   public uploadsForm = this.fb.group({
-    uploads: undefined as Maybe<EventMediaEntity[]>,
+    uploads: [[] as MediaEntity[]],
   });
 
   public additionalInfoForm = this.fb.group({
@@ -98,7 +106,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       filter(event => !!event?.id),
       take(1)
     ).subscribe(event => {
-      console.log(event?.schedules);
+      console.log(event?.uploads);
 
       this.contentForm.patchValue({
         id: event?.id,
@@ -129,6 +137,20 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         metaDescription: event?.metaDescription,
       });
 
+      this.titleImageForm.patchValue({
+        titleImage: event?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[]
+      });
+
+      this.cardImageForm.patchValue({
+        cardImage:
+          event?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
+      });
+
+      this.uploadsForm.patchValue({
+        uploads: event?.uploads?.filter(upload => !upload?.title && !upload?.card)
+          .map(upload => upload?.media) as MediaEntity[]
+      });      
+
       this.contactAndOrganisationForm.patchValue({
         organisation: event?.organisation,
         contact: event?.contact
@@ -141,13 +163,12 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     }
     );
   }
-
   public cancelled(): void {
     this.store.dispatch(EventAdminFormActions.cancelled());
   }
 
   public saved(): void {
-    console.log(this.scheduleForm.value.schedules);
+    console.log(this.titleImageForm.value.titleImage);
     this.store.dispatch(EventAdminFormActions.save({
       id: this.contentForm.value.id,
       name: this.contentForm.value.name,
@@ -162,8 +183,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         startDate: schedule.startDate,
         endDate: schedule.endDate
       })),
-
-      uploads: this.uploadsForm.value.uploads,
 
       category: this.additionalInfoForm.value.categoryId != null
         ? { id: this.additionalInfoForm.value.categoryId }
@@ -184,6 +203,20 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       contact: this.contactAndOrganisationForm.value.contact?.id != null
         ? { id: this.contactAndOrganisationForm.value.contact?.id }
         : null,
+
+      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
+        media: media,
+      })).concat(
+        (this.cardImageForm.value.cardImage || []).map(media => ({
+          media: media,
+          card: true,
+        }))
+      ).concat(
+        (this.titleImageForm.value.titleImage || []).map(media => ({
+          media: media,
+          title: true,
+        }))
+      ) || null,        
     }))
   }
 

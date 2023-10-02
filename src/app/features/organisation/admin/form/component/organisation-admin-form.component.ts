@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { OrganisationAdminFormActions } from '../state/organisation-admin-form.actions';
 import { selectEditableOrganisation } from '../state/organisation-portal-form.selectors';
@@ -30,10 +30,7 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
   });
 
   public addressForm = this.fb.group({
-    street: ['' as Maybe<string>, [Validators.required]],
-    houseNumber: ['' as Maybe<string>, [Validators.required]],
-    place: ['' as Maybe<string>, [Validators.required]],
-    postalCode: ['' as Maybe<string>, [Validators.required]],
+    address: [undefined as Maybe<AddressEntity>],
   });
 
   public titleImageForm = this.fb.group({
@@ -64,43 +61,36 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
       filter(organisation => !!organisation?.id),
       takeUntil(this.destroy)
     ).subscribe(organisation => {
-      this.descriptionForm = this.fb.group({
-        id: [organisation?.id],
-        name: [organisation?.name, [Validators.required]],
-        description: [organisation?.description, [Validators.required]],
+      this.descriptionForm.patchValue({
+        id: organisation?.id,
+        name: organisation?.name,
+        description: organisation?.description
       });
 
-      this.contactForm = this.fb.group({
-        email: [organisation?.contact?.email, [Validators.required]],
-        name: [organisation?.contact?.name],
-        website: [organisation?.contact?.website],
-        phone: [organisation?.contact?.phone],
+      this.contactForm.patchValue({
+        email: organisation?.contact?.email,
+        name: organisation?.contact?.name,
+        website: organisation?.contact?.website,
+        phone: organisation?.contact?.phone,
       });
 
-      this.addressForm = this.fb.group({
-        street: [organisation?.address?.street, [Validators.required]],
-        houseNumber: [organisation?.address?.houseNumber],
-        place: [organisation?.address?.place],
-        postalCode: [organisation?.address?.postalCode],
+      this.addressForm.patchValue({
+        address: organisation?.address
       });
 
-      this.titleImageForm = this.fb.group({
-        titleImage: [
-          organisation?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[],
-          [Validators.required]
-        ],
+      this.titleImageForm.patchValue({
+        titleImage: 
+          organisation?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
       });
 
-      this.profileImageForm = this.fb.group({
-        cardImage: [
-          organisation?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[],
-          [Validators.required]
-        ],
+      this.profileImageForm.patchValue({
+        cardImage: 
+          organisation?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
       });
 
-      this.uploadsForm = this.fb.group({
-        uploads: [organisation?.uploads?.filter(upload => !upload?.title && !upload?.card)
-          .map(upload => upload?.media) as MediaEntity[] ],
+      this.uploadsForm.patchValue({
+        uploads: organisation?.uploads?.filter(upload => !upload?.title && !upload?.card)
+          .map(upload => upload?.media) as MediaEntity[]
       });
     });
   }  
@@ -119,12 +109,8 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
       website: this.contactForm.value.website,
       preferredContact: false
     },
-    address: {
-      street: this.addressForm.value.street,
-      houseNumber: this.addressForm.value.houseNumber,
-      place: this.addressForm.value.place,
-      postalCode: this.addressForm.value.postalCode,
-    },
+    address: this.addressForm.value.address,
+    
     slug: this.descriptionForm.value.name,
     approved: false,
     sponsored: false,

@@ -51,9 +51,19 @@
     </app-row>
   </app-form-step>
 
-  <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
-    <app-media-form formControlName="uploads"></app-media-form>
-  </app-form-step>
+<app-form-step titleLabel="titleImage" [formGroup]="titleImageForm">
+  <app-media-form [maxFiles]="1"
+    formControlName="titleImage"></app-media-form>
+</app-form-step>
+
+<app-form-step titleLabel="cardImage" [formGroup]="cardImageForm">
+  <app-media-form formControlName="cardImage"
+    [maxFiles]="1"></app-media-form>
+</app-form-step>
+
+<app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
+  <app-media-form formControlName="uploads"></app-media-form>
+</app-form-step>
 
   <app-form-step titleLabel="additionalInfo"
     [formGroup]="additionalInfoForm">

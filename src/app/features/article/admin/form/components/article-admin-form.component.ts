@@ -65,37 +65,34 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       filter(article => !!article?.id),
       takeUntil(this.destroy)
     ).subscribe(article => {
-      this.contentForm = this.fb.group({
-        id: [article?.id],
-        name: [article?.name, [Validators.required]],
-        content: [article?.content, [Validators.required]],
+      this.contentForm.patchValue({
+        id: article?.id,
+        name: article?.name,
+        content: article?.content,
       });
 
-      this.shortDescriptionForm = this.fb.group({
-        shortDescription: [article?.shortDescription, [Validators.required]],
+      this.shortDescriptionForm.patchValue({
+        shortDescription: article?.shortDescription,
       });
 
-      this.titleImageForm = this.fb.group({
-        titleImage: [article?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[],
-      [Validators.required]] ,
+      this.titleImageForm.patchValue({
+        titleImage: article?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[]
       });
 
-      this.cardImageForm = this.fb.group({
-        cardImage: [
-          article?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[],
-          [Validators.required]
-        ],
+      this.cardImageForm.patchValue({
+        cardImage: 
+          article?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
       });
 
-      this.uploadsForm = this.fb.group({
-        uploads: [article?.uploads?.filter(upload => !upload?.title && !upload?.card)
-          .map(upload => upload?.media) as MediaEntity[] ],
+      this.uploadsForm.patchValue({
+        uploads: article?.uploads?.filter(upload => !upload?.title && !upload?.card)
+          .map(upload => upload?.media) as MediaEntity[]
       });
 
-      this.additionalInfoForm = this.fb.group({
-        categoryId: [article?.category?.id],
-        sponsored: [article?.sponsored],
-        metaDescription: [article?.metaDescription],
+      this.additionalInfoForm.patchValue({
+        categoryId: article?.category?.id,
+        sponsored: article?.sponsored,
+        metaDescription: article?.metaDescription,
       });
     });
   }
