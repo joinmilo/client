@@ -1,27 +1,26 @@
 <mat-form-field appearance="outline">
   <mat-label appLabel="icons"></mat-label>
 
-  <mat-select [formControl]="control">
-    <mat-select-trigger>
-      <section *ngIf="control.value">
-        <fa-icon [icon]="control.value!"></fa-icon>
-        <span> {{ control.value }}</span>
-      </section>
-    </mat-select-trigger>
+  <input [formControl]="control"
+    type="text" 
+    placeholder="Pick one"
+    aria-label="Number"
+    matInput 
+    [matAutocomplete]="auto">
 
-    <mat-option *ngFor="let icon of icons" [value]="icon.iconName">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let icon of filteredIcons" [value]="icon.iconName">
       <article>
         <fa-icon [icon]="icon.iconName"></fa-icon>
         <span> {{ icon.iconName }}</span>
       </article>
     </mat-option>
-  </mat-select>
+  </mat-autocomplete>
 
   <mat-hint>
-    <a mat-button
-      href="https://fontawesome.com/search?o=r&m=free"
+    <a mat-button href="https://fontawesome.com/search?o=r&m=free"
       target="_blank">
-        <span appLabel="iconList"></span>
+      <span appLabel="iconList"></span>
     </a>
   </mat-hint>
 </mat-form-field>
