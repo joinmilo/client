@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -49,7 +50,12 @@ const libs = [
   }),
   EffectsModule.forRoot([]),
   //TODO: https://github.com/swimlane/ngx-charts/issues/1733
-  NgxChartsModule
+  NgxChartsModule,
+
+  //TODO: 
+  NgHcaptchaModule.forRoot({
+    languageCode: 'de' //TODO
+  }),
 ];
 
 //TODO: Breaks scrolling Angular:
