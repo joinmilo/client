@@ -24,7 +24,7 @@ export class AdminMenuComponent {
   public homeRoute = ['/', adminUrl];
   
   public menuItems = this.store.select(selectAdminMainMenu)
-    .pipe(map(routes => this.allowedRoutes(routes)));
+    .pipe(map(routes => this.allowedRoutes(routes)));    
 
   public settingsAllowed = this.store.select(selectAdminSettingsMenu)
     .pipe(map(routes => !!this.allowedRoutes(routes)?.length));

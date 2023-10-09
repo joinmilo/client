@@ -6,6 +6,8 @@ export const UserSettingsActions = createActionGroup({
   source: 'Portal Settings',
   events: {
     'save personal data': (entity: UserContextEntityInput) => ({ entity }),
+    'saved': emptyProps(),
+    'cancelled': emptyProps(),
     'personal data saved': emptyProps(),
    
     'get user deletion types': emptyProps(),

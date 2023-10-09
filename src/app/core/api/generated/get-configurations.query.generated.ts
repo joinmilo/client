@@ -10,7 +10,7 @@ export type GetConfigurationsQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetConfigurationsQuery = { __typename?: 'Query', getConfigurations?: { __typename?: 'PageableList_ConfigurationEntity', total: any, result?: Array<{ __typename?: 'ConfigurationEntity', id?: string | null, code?: string | null, value?: string | null, media?: { __typename?: 'MediaEntity', id?: string | null, created?: any | null, extension?: string | null, mimeType?: string | null, modified?: any | null, name?: string | null, size?: any | null, url?: string | null, attribution?: { __typename?: 'MediaAttributionEntity', id?: string | null, title?: string | null, author?: string | null, source?: string | null, license?: string | null } | null } | null } | null> | null } | null };
+export type GetConfigurationsQuery = { __typename?: 'Query', getConfigurations?: { __typename?: 'PageableList_ConfigurationEntity', total: any, result?: Array<{ __typename?: 'ConfigurationEntity', id?: string | null, code?: string | null, value?: string | null, media?: { __typename?: 'MediaEntity', id?: string | null, created?: any | null, extension?: string | null, mimeType?: string | null, modified?: any | null, name?: string | null, size?: any | null, url?: string | null, base64?: string | null, attribution?: { __typename?: 'MediaAttributionEntity', id?: string | null, title?: string | null, author?: string | null, source?: string | null, license?: string | null } | null } | null } | null> | null } | null };
 
 export const GetConfigurationsDocument = gql`
     query getConfigurations($params: FilterSortPaginateInput) {

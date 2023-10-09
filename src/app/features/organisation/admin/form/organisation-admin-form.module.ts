@@ -18,8 +18,8 @@ import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminFormComponent } from './component/organisation-admin-form.component';
 import { organisationAdminFormStateKey } from './constants/organisation-admin-form.constants';
 import { OrganisationAdminFormRoutingModule } from './organisation-admin-form-routing.module';
-import { OrganisationAdminFormEffects } from './state/organisation-portal-form.effects';
-import { organisationAdminFormReducer } from './state/organisation-portal-form.reducer';
+import { OrganisationAdminFormEffects } from './state/organisation-admin-form.effects';
+import { organisationAdminFormReducer } from './state/organisation-admin-form.reducer';
 
 const components = [
   OrganisationAdminFormComponent

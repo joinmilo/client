@@ -205,15 +205,15 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         : null,
 
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        media: media,
+        media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
       })).concat(
         (this.cardImageForm.value.cardImage || []).map(media => ({
-          media: media,
+          media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
           card: true,
         }))
       ).concat(
         (this.titleImageForm.value.titleImage || []).map(media => ({
-          media: media,
+          media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
           title: true,
         }))
       ) || null,        

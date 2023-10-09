@@ -6,7 +6,7 @@ import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { OrganisationAdminFormActions } from '../state/organisation-admin-form.actions';
-import { selectEditableOrganisation } from '../state/organisation-portal-form.selectors';
+import { selectEditableOrganisation } from '../state/organisation-admin-form.selectors';
 
 
 @Component({

@@ -7,6 +7,10 @@
   height: auto;
 }
 
+app-form-stepper{
+  width: 100%;
+}
+
 .sticky-container {
   position: sticky;
   bottom: 1rem;
@@ -27,87 +31,16 @@
   }
 }
 
-form {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  width: -webkit-fill-available;
-  width: -moz-available;
-  background-color: white;
-  border-radius: var(--mdc-shape-small);
-  border: 1px solid var(--color-border);
-  box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
-}
+:host ::ng-deep {
 
-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0 1rem 1rem;
-}
-
-.title-area {
-  width: 100%;
-  height: 25rem;
-  position: relative;
-  margin-bottom: 4rem;
-
-  .border-image {
-    width: 7.5rem;
-    height: 7.5rem;
-    position: absolute;
-    top: 95%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
   }
-}
 
-.mediaTitleButton {
-  position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;    
-  z-index: 2;
-  right: .5rem;
-  bottom: .5rem;
-  outline: 1px solid var(--color-dark-gray);
-  background-color: rgba(255, 255, 255, 0.868);
-  box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
-}
-
-.mediaAvatarButton {
-  position: absolute;
-  width: 2.5rem;
-  height: 2.5rem;;
-  z-index: 2;
-  left: 53%;
-  border-radius: 50%;
-  outline: 1px solid var(--color-dark-gray);
-  background-color: rgba(255, 255, 255, 0.868);
-  box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
 }
 
 .mat-mdc-icon-button {
   --mdc-icon-button-icon-size: .875rem; 
-}
-
-fieldset {
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  
-  .address {
-    flex-grow: 1;
-    @include responsive(phone) {
-      max-width: 55%;
-    }
-  }
-  
-  .number {
-    flex-shrink: 2;
-    @include responsive(phone) {
-      width: 6rem;
-    }
-  }  
 }
 
 button {

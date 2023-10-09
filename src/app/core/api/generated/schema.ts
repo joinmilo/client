@@ -12,7 +12,6 @@ export type Scalars = {
   Int: number;
   Float: number;
   Long: any;
-  Map_String_StringScalar: any;
   OffsetDateTime: any;
 };
 
@@ -271,7 +270,6 @@ export type ArticleEntity = {
   shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
   sponsored?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
   translatables?: Maybe<Array<Maybe<ArticleTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<ArticleMediaEntity>>>;
   visitorStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
@@ -323,7 +321,6 @@ export type ArticleEntityInput = {
   shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;
-  title?: InputMaybe<Scalars['String']>;
   translatables?: InputMaybe<Array<InputMaybe<ArticleTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<ArticleMediaEntityInput>>>;
   visitors?: InputMaybe<Array<InputMaybe<ArticleVisitorEntityInput>>>;
@@ -1472,7 +1469,6 @@ export type LanguageEntity = {
   locale?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
-  users?: Maybe<Array<Maybe<UserEntity>>>;
 };
 
 export type LanguageEntityInput = {
@@ -1482,7 +1478,6 @@ export type LanguageEntityInput = {
   locale?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
-  users?: InputMaybe<Array<InputMaybe<UserEntityInput>>>;
 };
 
 export type MediaAttributionEntity = {
@@ -1626,21 +1621,6 @@ export type MessageDefinitionTranslatableEntityInput = {
   parent?: InputMaybe<MessageDefinitionEntityInput>;
 };
 
-export type MessageDto = {
-  __typename?: 'MessageDto';
-  content?: Maybe<Scalars['String']>;
-  data?: Maybe<Scalars['Map_String_StringScalar']>;
-  title?: Maybe<Scalars['String']>;
-  type?: Maybe<NotificationType>;
-};
-
-export type MessageDtoInput = {
-  content?: InputMaybe<Scalars['String']>;
-  data?: InputMaybe<Scalars['Map_String_StringScalar']>;
-  title?: InputMaybe<Scalars['String']>;
-  type?: InputMaybe<NotificationType>;
-};
-
 export type MessageTemplateEntity = {
   __typename?: 'MessageTemplateEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
@@ -1722,10 +1702,10 @@ export type MilestoneEntity = {
   __typename?: 'MilestoneEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
   elements?: Maybe<Array<Maybe<MilestoneElementEntity>>>;
+  endDate?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
   translatables?: Maybe<Array<Maybe<MilestoneTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
 };
@@ -1733,10 +1713,10 @@ export type MilestoneEntity = {
 export type MilestoneEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   elements?: InputMaybe<Array<InputMaybe<MilestoneElementEntityInput>>>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Scalars['Int']>;
   translatables?: InputMaybe<Array<InputMaybe<MilestoneTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<MilestoneMediaEntityInput>>>;
 };
@@ -1869,8 +1849,6 @@ export type Mutation = {
   deleteMilestoneMedia?: Maybe<Scalars['Boolean']>;
   deleteMilestoneMedium?: Maybe<Scalars['Boolean']>;
   deleteMilestones?: Maybe<Scalars['Boolean']>;
-  deleteNewsFeed?: Maybe<Scalars['Boolean']>;
-  deleteNewsFeeds?: Maybe<Scalars['Boolean']>;
   deleteNotification?: Maybe<Scalars['Boolean']>;
   deleteNotifications?: Maybe<Scalars['Boolean']>;
   deleteOrganisation?: Maybe<Scalars['Boolean']>;
@@ -1995,6 +1973,7 @@ export type Mutation = {
   saveFeatures?: Maybe<Array<Maybe<FeatureEntity>>>;
   saveFriend?: Maybe<FriendEntity>;
   saveFriends?: Maybe<Array<Maybe<FriendEntity>>>;
+  saveGuestArticle?: Maybe<ArticleEntity>;
   saveInfoMedia?: Maybe<Array<Maybe<InfoMediaEntity>>>;
   saveInfoMediaCategories?: Maybe<Array<Maybe<InfoMediaCategoryEntity>>>;
   saveInfoMediaCategory?: Maybe<InfoMediaCategoryEntity>;
@@ -2016,8 +1995,6 @@ export type Mutation = {
   saveMilestoneMedia?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
   saveMilestoneMedium?: Maybe<MilestoneMediaEntity>;
   saveMilestones?: Maybe<Array<Maybe<MilestoneEntity>>>;
-  saveNewsFeed?: Maybe<NewsFeedEntity>;
-  saveNewsFeeds?: Maybe<Array<Maybe<NewsFeedEntity>>>;
   saveNotification?: Maybe<NotificationEntity>;
   saveNotifications?: Maybe<Array<Maybe<NotificationEntity>>>;
   saveOrganisation?: Maybe<OrganisationEntity>;
@@ -2073,7 +2050,6 @@ export type Mutation = {
   saveUserDeletions?: Maybe<Array<Maybe<UserDeletionEntity>>>;
   saveUsers?: Maybe<Array<Maybe<UserEntity>>>;
   sendError?: Maybe<Scalars['Boolean']>;
-  sendGlobalPush?: Maybe<Scalars['Boolean']>;
   sendPasswordReset?: Maybe<Scalars['Boolean']>;
   sendVerification?: Maybe<Scalars['Boolean']>;
   sponsorArticle?: Maybe<Scalars['Boolean']>;
@@ -2638,18 +2614,6 @@ export type MutationDeleteMilestoneMediumArgs = {
 
 /** Mutation root */
 export type MutationDeleteMilestonesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-/** Mutation root */
-export type MutationDeleteNewsFeedArgs = {
-  id?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Mutation root */
-export type MutationDeleteNewsFeedsArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -3400,6 +3364,12 @@ export type MutationSaveFriendsArgs = {
 
 
 /** Mutation root */
+export type MutationSaveGuestArticleArgs = {
+  entity?: InputMaybe<ArticleEntityInput>;
+};
+
+
+/** Mutation root */
 export type MutationSaveInfoMediaArgs = {
   entities?: InputMaybe<Array<InputMaybe<InfoMediaEntityInput>>>;
 };
@@ -3522,18 +3492,6 @@ export type MutationSaveMilestoneMediumArgs = {
 /** Mutation root */
 export type MutationSaveMilestonesArgs = {
   entities?: InputMaybe<Array<InputMaybe<MilestoneEntityInput>>>;
-};
-
-
-/** Mutation root */
-export type MutationSaveNewsFeedArgs = {
-  entity?: InputMaybe<NewsFeedEntityInput>;
-};
-
-
-/** Mutation root */
-export type MutationSaveNewsFeedsArgs = {
-  entities?: InputMaybe<Array<InputMaybe<NewsFeedEntityInput>>>;
 };
 
 
@@ -3868,12 +3826,6 @@ export type MutationSendErrorArgs = {
 
 
 /** Mutation root */
-export type MutationSendGlobalPushArgs = {
-  message?: InputMaybe<MessageDtoInput>;
-};
-
-
-/** Mutation root */
 export type MutationSendPasswordResetArgs = {
   email?: InputMaybe<Scalars['String']>;
 };
@@ -3932,39 +3884,6 @@ export type MutationVerifyAddressArgs = {
   entity?: InputMaybe<AddressEntityInput>;
 };
 
-export type NewsFeedEntity = {
-  __typename?: 'NewsFeedEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  translatables?: Maybe<Array<Maybe<NewsFeedTranslatableEntity>>>;
-};
-
-export type NewsFeedEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  translatables?: InputMaybe<Array<InputMaybe<NewsFeedTranslatableEntityInput>>>;
-};
-
-export type NewsFeedTranslatableEntity = {
-  __typename?: 'NewsFeedTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-};
-
-export type NewsFeedTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-};
-
 export type NotificationEntity = {
   __typename?: 'NotificationEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
@@ -4004,15 +3923,6 @@ export type NotificationTranslatableEntityInput = {
   parent?: InputMaybe<NotificationEntityInput>;
   title?: InputMaybe<Scalars['String']>;
 };
-
-export enum NotificationType {
-  Chat = 'chat',
-  DeletedUser = 'deletedUser',
-  Evaluation = 'evaluation',
-  Event = 'event',
-  Global = 'global',
-  JobAd = 'jobAd'
-}
 
 export type OrganisationCommentEntity = {
   __typename?: 'OrganisationCommentEntity';
@@ -4600,12 +4510,6 @@ export type PageableList_MilestoneMediaEntity = {
   total: Scalars['Long'];
 };
 
-export type PageableList_NewsFeedEntity = {
-  __typename?: 'PageableList_NewsFeedEntity';
-  result?: Maybe<Array<Maybe<NewsFeedEntity>>>;
-  total: Scalars['Long'];
-};
-
 export type PageableList_NotificationEntity = {
   __typename?: 'PageableList_NotificationEntity';
   result?: Maybe<Array<Maybe<NotificationEntity>>>;
@@ -4913,8 +4817,6 @@ export type Query = {
   getMilestoneMedia?: Maybe<PageableList_MilestoneMediaEntity>;
   getMilestoneMedium?: Maybe<MilestoneMediaEntity>;
   getMilestones?: Maybe<PageableList_MilestoneEntity>;
-  getNewsFeed?: Maybe<NewsFeedEntity>;
-  getNewsFeeds?: Maybe<PageableList_NewsFeedEntity>;
   getNotification?: Maybe<NotificationEntity>;
   getNotifications?: Maybe<PageableList_NotificationEntity>;
   getOrganisation?: Maybe<OrganisationEntity>;
@@ -5463,18 +5365,6 @@ export type QueryGetMilestoneMediumArgs = {
 
 /** Query root */
 export type QueryGetMilestonesArgs = {
-  params?: InputMaybe<FilterSortPaginateInput>;
-};
-
-
-/** Query root */
-export type QueryGetNewsFeedArgs = {
-  entity?: InputMaybe<NewsFeedEntityInput>;
-};
-
-
-/** Query root */
-export type QueryGetNewsFeedsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
 };
 
@@ -6056,25 +5946,6 @@ export type SocialMediaEntityInput = {
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   name?: InputMaybe<Scalars['String']>;
   url?: InputMaybe<Scalars['String']>;
-};
-
-/** Subscription root */
-export type Subscription = {
-  __typename?: 'Subscription';
-  addChatListener?: Maybe<MessageDto>;
-  addListener?: Maybe<MessageDto>;
-};
-
-
-/** Subscription root */
-export type SubscriptionAddChatListenerArgs = {
-  token?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Subscription root */
-export type SubscriptionAddListenerArgs = {
-  token?: InputMaybe<Scalars['String']>;
 };
 
 export type SubscriptionEntity = {
