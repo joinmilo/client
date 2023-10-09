@@ -1,0 +1,52 @@
+query getDeal($entity: DealEntityInput) {
+  getDeal(entity: $entity) {
+    address {
+      ...Address
+    }
+    category {
+      id
+      icon
+      color
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+    }
+    contact {
+      ...Contact
+    }
+    content
+    created
+    id
+    offer
+    request
+    price
+    modified
+    name
+    slug
+    shortDescription
+    isPublic
+    sponsored
+
+    uploads {
+      title
+      card
+      media {
+        ...Media
+      }
+    }  
+
+    translatables {
+      id
+      name
+      content
+      shortDescription
+      language {
+        ...Language
+      }
+    }
+  }
+}

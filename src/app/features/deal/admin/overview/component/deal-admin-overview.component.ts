@@ -20,7 +20,7 @@ export class DealAdminOverviewComponent {
     {
       icon: 'pen-to-square',
       callback: row =>
-        this.router.navigate([row?.slug, 'edit'], { relativeTo: this.activatedRoute }),
+        this.router.navigate([row?.slug, 'form'], { relativeTo: this.activatedRoute }),
       tooltipLabel: 'edit'
     },
     {

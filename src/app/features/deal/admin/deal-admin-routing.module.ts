@@ -63,6 +63,11 @@ const routes: Routes = [
     component: DealAdminDetailsLayoutComponent,
     canActivate: [requireAnyPrivilege('deals_admin')]
   },
+  {
+    path: `${dealsFeatureKey}/:${slug}/form`,
+    loadChildren: () => import('src/app/features/deal/admin/form/deal-admin-form.module')
+      .then((imported) => imported.DealAdminFormModule),
+  },
 ]
 
 @NgModule({

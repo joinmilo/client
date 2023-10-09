@@ -1,1 +1,98 @@
-FORM IS HERE
+<app-page-title [titleLabel]="contentForm.value.id ? 'editDeal' : 'createNewDeal'">
+</app-page-title>
+
+<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <app-form-step titleLabel="content" [formGroup]="contentForm">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="name"></mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </app-row>
+
+    <app-row [columns]="1">
+      <app-ck-editor-form formControlName="content"></app-ck-editor-form>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="shortDescription" [formGroup]="shortDescriptionForm">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="shortDescription"></mat-label>
+        <textarea matInput formControlName="shortDescription" rows="5" required>
+              </textarea>
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="contactInfo" [formGroup]="contactForm">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="email"></mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="phone"></mat-label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
+    </app-row>
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="name"></mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="website"></mat-label>
+        <input matInput formControlName="website">
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
+    <app-row [columns]="2">
+      <div>
+        <mat-radio-group>
+          <mat-radio-button color="primary" [value]="true"> Angebot
+          </mat-radio-button> 
+          <mat-radio-button color="primary" [value]="false"> Gesuch
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+        <span appLabel="dealIsPublic"></span>
+        <mat-slide-toggle color="primary" formControlName="isPublic">
+        </mat-slide-toggle>
+      </div>
+    </app-row>
+  
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="category"></mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option [value]="category.id" *ngFor="let category of categories | async">
+            <p>{{category | translatable: "name" | async}}</p>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-row>
+  
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="price"></mat-label>
+        <input matInput formControlName="price" type="number">
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="titleImage" [formGroup]="titleImageForm">
+    <app-media-form [maxFiles]="1" formControlName="titleImage"></app-media-form>
+  </app-form-step>
+
+  <app-form-step titleLabel="cardImage" [formGroup]="cardImageForm">
+    <app-media-form formControlName="cardImage" [maxFiles]="1"></app-media-form>
+  </app-form-step>
+
+  <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
+    <app-media-form formControlName="uploads"></app-media-form>
+  </app-form-step>
+</app-form-stepper>

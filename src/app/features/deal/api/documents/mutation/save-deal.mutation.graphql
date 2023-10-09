@@ -1,0 +1,5 @@
+mutation saveDeal($entity: DealEntityInput!) {
+  saveDeal(entity: $entity) {
+    id
+  }
+}
