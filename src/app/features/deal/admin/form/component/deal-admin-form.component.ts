@@ -30,8 +30,7 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
     categoryId: [undefined as Maybe<string>],
     price: [undefined as Maybe<number>],
     isPublic: [true as Maybe<boolean>],
-    offer: [undefined as Maybe<boolean>],
-    request: [undefined as Maybe<boolean>]
+    selectedType: ['offer' as Maybe<string>]
   });
 
   public contactForm = this.fb.group({
@@ -73,46 +72,42 @@ public ngOnInit(): void {
       filter(deal => !!deal?.id),
       takeUntil(this.destroy)
     ).subscribe(deal => {
-      this.contentForm = this.fb.group({
-        id: [deal?.id],
-        name: [deal?.name, [Validators.required]],
-        content: [deal?.content, [Validators.required]],
+      this.contentForm.patchValue({
+        id: deal?.id,
+        name: deal?.name,
+        content: deal?.content,
       });
 
-      this.shortDescriptionForm = this.fb.group({
-        shortDescription: [deal?.shortDescription, [Validators.required]],
+      this.shortDescriptionForm.patchValue({
+        shortDescription: deal?.shortDescription,
       });
 
-      this.additionalInfoForm = this.fb.group({
-        categoryId: [deal?.category?.id,[Validators.required]],
-        price: [deal?.price],
-        isPublic: [deal?.isPublic, [Validators.required]],
-        offer: [deal?.offer],
-        request: [deal?.request]
+      this.additionalInfoForm.patchValue({
+        categoryId: deal?.category?.id,
+        price: deal?.price,
+        isPublic: deal?.isPublic,
+        selectedType: deal?.offer ? 'offer' : 'request'
       });
 
-      this.contactForm = this.fb.group({
-        email: [deal?.contact?.email, [Validators.required]],
-        phone: [deal?.contact?.phone],
-        name: [deal?.contact?.name],
-        website: [deal?.contact?.website],
+      this.contactForm.patchValue({
+        email: deal?.contact?.email,
+        phone: deal?.contact?.phone,
+        name: deal?.contact?.name,
+        website: deal?.contact?.website
       });
 
-      this.titleImageForm = this.fb.group({
-        titleImage: [deal?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[],
-      [Validators.required]] ,
+      this.titleImageForm.patchValue({
+        titleImage: deal?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[],
       });
 
-      this.cardImageForm = this.fb.group({
-        cardImage: [
+      this.cardImageForm.patchValue({
+        cardImage: 
           deal?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[],
-          [Validators.required]
-        ],
       });
 
-      this.uploadsForm = this.fb.group({
-        uploads: [deal?.uploads?.filter(upload => !upload?.title && !upload?.card)
-          .map(upload => upload?.media) as MediaEntity[] ],
+      this.uploadsForm.patchValue({
+        uploads: deal?.uploads?.filter(upload => !upload?.title && !upload?.card)
+          .map(upload => upload?.media) as MediaEntity[],
       });
     });
   }
@@ -122,8 +117,7 @@ public ngOnInit(): void {
   }
 
   public saved(): void {
-    console.log('offer',this.additionalInfoForm.value.offer),
-    console.log('request',this.additionalInfoForm.value.request)
+    console.log(this.additionalInfoForm.value.selectedType);
     this.store.dispatch(DealAdminFormActions.save({
       id: this.contentForm.value.id,
       name: this.contentForm.value.name,
@@ -141,9 +135,7 @@ public ngOnInit(): void {
       },
       price: this.additionalInfoForm.value.price,
       isPublic: this.additionalInfoForm.value.isPublic,
-      offer: this.additionalInfoForm.value.offer,
-      request: this.additionalInfoForm.value.request,
-    
+      offer: this.additionalInfoForm.value.selectedType === 'offer' ? true : false,
       sponsored: false,
       
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({

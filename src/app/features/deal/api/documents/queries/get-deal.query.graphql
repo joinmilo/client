@@ -22,7 +22,6 @@ query getDeal($entity: DealEntityInput) {
     created
     id
     offer
-    request
     price
     modified
     name

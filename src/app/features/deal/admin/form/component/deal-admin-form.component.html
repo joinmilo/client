@@ -49,15 +49,16 @@
   </app-form-step>
 
   <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
-    <app-row [columns]="2">
-      <div>
-        <mat-radio-group>
-          <mat-radio-button color="primary" [value]="true"> Angebot
-          </mat-radio-button> 
-          <mat-radio-button color="primary" [value]="false"> Gesuch
-          </mat-radio-button>
-        </mat-radio-group>
-      </div>
+    <app-row [columns]="4">
+      <mat-radio-group formControlName="selectedType">
+        <mat-radio-button color="primary" value="offer" [checked]="this.additionalInfoForm.value.selectedType === 'offer'">
+          <span appLabel="offer"></span>
+        </mat-radio-button>
+        <mat-radio-button color="primary" value="request" [checked]="this.additionalInfoForm.value.selectedType === 'request'">
+          <span appLabel="request"></span>
+        </mat-radio-button>
+      </mat-radio-group>
+
       <div>
         <span appLabel="dealIsPublic"></span>
         <mat-slide-toggle color="primary" formControlName="isPublic">
