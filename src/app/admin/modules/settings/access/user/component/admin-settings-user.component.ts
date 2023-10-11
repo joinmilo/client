@@ -36,27 +36,33 @@ export class AdminSettingsUserComponent {
     {
       field: 'firstName',
       label: 'firstName',
+      sort: true
     },
     {
       field: 'lastName',
-      label: 'lastName'
+      label: 'lastName',
+      sort: true
     },
     {
       field: 'email',
       label: 'email',
+      sort: true
     },
     {
       field: 'phone',
       label: 'phone',
+      sort: true
     },
     {
       field: 'lastLogin',
       label: 'lastLogin',
+      sort: true
     },
     {
       field: 'verified',
       label: 'verified',
-      type: 'BOOLEAN'
+      type: 'BOOLEAN',
+      sort: true
     },
   ];
 

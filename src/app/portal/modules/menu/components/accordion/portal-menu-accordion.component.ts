@@ -16,7 +16,7 @@ export class PortalMenuAccordionComponent {
   public boldTitle = false;
 
   @Output()
-  public itemSelected = new EventEmitter<Maybe<MenuItemEntity>>();
+  public itemSelected = new EventEmitter();
 
   public menu = this.store.select(selectPortalMenu);
 
@@ -28,7 +28,6 @@ export class PortalMenuAccordionComponent {
   ) { }
   
   public navigate(item: Maybe<MenuItemEntity>) {
-    this.itemSelected.emit(item);
     this.panel?.closeAll();
     this.store.dispatch(PortalActions.navigateMenu(item));
   }

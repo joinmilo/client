@@ -18,7 +18,7 @@
     </button>
     <mat-menu #menu="matMenu">
       <div class="mobile-menu">
-        <app-portal-menu-accordion (itemSelected)="trigger.closeMenu()"></app-portal-menu-accordion>
+        <app-portal-menu-accordion></app-portal-menu-accordion>
         <mat-divider></mat-divider>
 
         <ng-container *ngIf="currentUser?.user?.roles?.length">
