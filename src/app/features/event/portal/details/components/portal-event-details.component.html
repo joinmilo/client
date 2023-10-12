@@ -21,7 +21,7 @@
   </div>
   <section class="content-area">
     <section>
-      <h2 class="mat-headline-4">{{event | translatable: 'name' | async}}</h2>
+      <span class="details-headline">{{event | translatable: 'name' | async}}</span>
 
       <p class="details-content"
         [innerHtml]="event | translatable: 'shortDescription' | async">
@@ -31,7 +31,8 @@
         (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
       </app-portal-event-details-summary>
 
-      <p [innerHtml]="event | translatable : 'content' | async"></p>
+      <p class="details-content" 
+        [innerHtml]="event | translatable : 'content' | async"></p>
     </section>
 
     <app-portal-event-details-organisation *ngIf="event?.organisation">

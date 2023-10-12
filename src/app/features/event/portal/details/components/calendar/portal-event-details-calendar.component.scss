@@ -1,6 +1,7 @@
+@import 'src/styles/mixins.scss';
+
 section {
   display: flex;
-  flex-flow: row wrap;
   gap: 1rem;
   align-items: center;
 }

@@ -16,9 +16,9 @@
   </div>
   <section class="content-area">
     <section>
-      <h2 class="mat-headline-4">
+      <span class="details-headline">
         {{deal | translatable: 'name' | async}}
-      </h2>
+      </span>
 
       <app-portal-deal-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
       </app-portal-deal-details-summary>

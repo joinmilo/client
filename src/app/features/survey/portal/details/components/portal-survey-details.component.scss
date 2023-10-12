@@ -19,12 +19,17 @@
   .content-area {
     display: flex;
     flex-flow: column;
-    gap: 5rem;
-    width: 80%;
+    gap: 2.5rem;
     margin: var(--gap) auto;
-
-    h2 {
-      margin: unset;
+    width: 80%;
+  
+    @include responsive(phone) {
+      margin: 1.5rem;
+      width: 85%;
+    }
+  
+    span {
+      margin: 0;
     }
 
     div {

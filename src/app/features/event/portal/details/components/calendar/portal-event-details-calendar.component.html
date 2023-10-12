@@ -1,13 +1,13 @@
 <div *ngIf="event?.hasSchedules; else noSchedules">
   <section>
     <fa-icon size="lg" [icon]="['far', 'calendar']"></fa-icon>
-    <button mat-button
+    <button *ngIf="event?.schedule" mat-button
       [matMenuTriggerFor]="menu"
       (menuClosed)="this.selectedSchedule = undefined;">
 
-      <i *ngIf="event?.schedule">{{event?.schedule?.startDate| date: 'short' }}</i>
-      <i *ngIf="!event?.schedule" appLabel="schedulesInThePast"></i>
+      <i>{{event?.schedule?.startDate| date: 'short' }}</i>
     </button>
+    <span class="piece" *ngIf="!event?.schedule" appLabel="schedulesInThePast"></span>
   </section>
 </div>
 

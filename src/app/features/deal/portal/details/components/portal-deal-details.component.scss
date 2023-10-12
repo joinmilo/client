@@ -25,13 +25,16 @@
  .content-area {
     display: flex;
     flex-flow: column;
-    justify-content: center;
-    gap: 5rem;
-    margin: 1rem auto;
-
+    gap: 2.5rem;
+    margin: var(--gap) auto;
     width: 80%;
-
-    h2 {
+  
+    @include responsive(phone) {
+      margin: 1.5rem;
+      width: 85%;
+    }
+  
+    span {
       margin: 0;
     }
 
@@ -39,7 +42,7 @@
       width: 100%;
       display: flex;
       flex-flow: column;
-      gap: 3rem;
+      gap: 2.5rem;
 
       * {
         width: 100%;
@@ -50,6 +53,7 @@
   .map-area {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     height: 35rem;
 
     app-map {

@@ -47,9 +47,49 @@ body {
   box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
 }
 
+.piece {
+  font-size: 1rem;
+  word-break: break-all;
+  cursor: pointer;
+  font-style: italic;
+      
+  @include responsive(phone) {
+    font-size: .875rem;
+    word-break: break-all;
+    font-style: italic;
+  }
+}
+
 .details-content {
   font-size: var(--details-content-font-size);
   line-height: var(--details-content-line-height);
+  overflow-wrap: break-word;
+  hyphens: auto;
+
+    @include responsive(phone) {
+      font-size: 1rem;
+      line-height: 1.6;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+}
+
+.details-headline {
+  font-size: 2.125rem;
+  line-height: 3.1875rem;
+  font-weight: 600;
+  letter-spacing: 0.015625em;
+  overflow-wrap: break-word;
+  hyphens: auto;
+
+  @include responsive(phone) {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+    letter-spacing: 0em;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 }
 
 .card-box {

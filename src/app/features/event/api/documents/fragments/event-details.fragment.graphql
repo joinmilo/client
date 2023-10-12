@@ -5,6 +5,7 @@ fragment EventDetails on EventEntity {
   slug
   modified
   videoChatLink
+  name
 
   address {
     ...Address
@@ -56,6 +57,7 @@ fragment EventDetails on EventEntity {
   translatables {
     id
     content
+    name
     shortDescription
     language {
       ...Language

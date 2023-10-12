@@ -1,13 +1,16 @@
+<section>
 <img class="border-image" *ngIf="profilePicture"
   [src]="profilePicture.url"
   alt="profile-picture">
-<section>
+<span class="border-image" *ngIf="!profilePicture">
+  <app-media-avatar [user]="authorAvatar"></app-media-avatar>
+</span>
   <div>
     <app-details-title titleLabel="from"></app-details-title>
     <app-details-title [title]="author()"></app-details-title>
   </div>
-  <button mat-stroked-button color="primary"
-      [routerLink]="['/', portalUrl, authorsFeatureKey, article?.author?.slug]">
-    <span appLabel="toAuthor"></span>
-  </button>
 </section>
+<button mat-stroked-button color="primary"
+    [routerLink]="['/', portalUrl, authorsFeatureKey, article?.author?.slug]">
+  <span appLabel="toAuthor"></span>
+</button>

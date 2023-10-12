@@ -1,4 +1,7 @@
 div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   div {
     display: flex;
     flex-direction: column;

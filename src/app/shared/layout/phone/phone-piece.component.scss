@@ -1,15 +1,12 @@
+@import 'src/styles/mixins.scss';
+
 div {
   display: flex;
   gap: 1rem;
-
-  span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
 }
 
 fa-icon {
+  display: flex;
   align-self: center;
 }
 

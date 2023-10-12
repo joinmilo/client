@@ -1,6 +1,6 @@
 <div *ngIf="address">
   <fa-icon size="xl" [icon]="['fas', 'location-dot']"></fa-icon>
-  <address [innerHtml]="address | address" (click)="onClick()">
+  <address class="piece" [innerHtml]="address | address" (click)="onClick()">
   </address>
 </div>
 

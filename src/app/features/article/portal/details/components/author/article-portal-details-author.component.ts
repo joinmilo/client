@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { ArticleEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { ArticleEntity, Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { authorsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { selectArticleDetails } from '../../state/article-portal-details.selectors';
@@ -14,6 +14,8 @@ import { selectArticleDetails } from '../../state/article-portal-details.selecto
 export class ArticlePortalDetailsAuthorComponent implements OnInit, OnDestroy {
 
   public article?: Maybe<ArticleEntity> | undefined;
+
+  public authorAvatar?: Maybe<UserContextEntity>;
 
   public profilePicture?: Maybe<MediaEntity> | undefined;
 

@@ -1,9 +1,13 @@
-h1 {
-  margin-bottom: 1rem !important;
+@import 'src/styles/mixins.scss';
 
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+h1 {
+  margin-bottom: 0 !important;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  
+  @include responsive(phone) {
+    font-size: 1.125rem !important;  
+  }
 }
 
 div {

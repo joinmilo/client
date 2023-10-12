@@ -1,27 +1,42 @@
+@import 'src/styles/mixins.scss';
+
 :host {
   display: flex;
   gap: var(--gap);
   flex-flow: wrap;
 
-  img {
-    width: 6rem;
-    height: 6rem;
-    object-fit: cover;
-  }
-
   section {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    gap: var(--gap);
+    align-items: center !important;
+    width: 45rem;
+
+    @include responsive(phone) {
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    img {
+        width: 6rem;
+        height: 6rem;
+        object-fit: cover;
+      }
+
+    app-media-avatar {
+      display: flex;
+      width: 6rem;
+      height: 6rem;
+      object-fit: cover;
+    }
 
     div {
       display: flex;
       flex-flow: wrap;
       gap: .5rem;
     }
+  }
 
-    button {
-      width: max-content;
-    }
+  button {
+    width: max-content;
   }
 }

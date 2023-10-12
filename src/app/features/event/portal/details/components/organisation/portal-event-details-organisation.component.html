@@ -1,13 +1,10 @@
 <div>
-  <img 
-    class="border-image" 
-    [src]="media?.url" alt="organisation-image">
   <section>
+    <img class="border-image" [src]="media?.url" alt="organisation-image">
     <app-details-title [title]="event?.organisation?.name"></app-details-title>
-    <button 
-      mat-stroked-button color="primary"
-      [routerLink]="['/', portalUrl, 'organisations', event?.organisation?.slug]">
-      <span appLabel="toTheOrganisation"></span>
-    </button>
   </section>
+  <button mat-stroked-button color="primary"
+    [routerLink]="['/', portalUrl, 'organisations', event?.organisation?.slug]">
+    <span appLabel="toTheOrganisation"></span>
+  </button>
 </div>
