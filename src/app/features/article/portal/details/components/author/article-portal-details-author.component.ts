@@ -33,6 +33,7 @@ export class ArticlePortalDetailsAuthorComponent implements OnInit, OnDestroy {
       .subscribe((article) => {
         this.article = article;
         this.profilePicture = article?.author?.uploads?.find(upload => upload?.profilePicture)?.media;
+        this.authorAvatar = article?.author
       });
   }
 

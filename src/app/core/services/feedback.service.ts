@@ -28,7 +28,7 @@ export class FeedbackService {
       case FeedbackType.Info:
         return 15000;
       default:
-        return 10000;
+        return 3000;
     }
   }
 }

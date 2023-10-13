@@ -1,8 +1,14 @@
+@import 'src/styles/mixins.scss';
+
 div {
   display: flex;
   gap: 1rem;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @include responsive(phone) {
+    flex-direction: column;
+  }
 
   section {
     display: flex;

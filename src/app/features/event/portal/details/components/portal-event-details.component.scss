@@ -22,6 +22,7 @@ app-category-piece {
   @include responsive(phone) {
     margin: 1.5rem;
     width: 85%;
+    gap: 2rem;
   }
 
   span {
@@ -34,6 +35,10 @@ app-category-piece {
     flex-flow: column;
     gap: 2.5rem;
     margin: unset;
+
+    @include responsive(phone) {
+      gap: 1.5rem;
+    }
 
     * {
       width: 100%;

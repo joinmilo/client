@@ -14,7 +14,7 @@ $typography: (
   $subtitle-1: mat.define-typography-level(1rem, 1.5rem, 600, $letter-spacing: 0.009375em),
   $body-1: mat.define-typography-level(1rem, 1.4rem, 400, $letter-spacing: 0.015625em),
   $subtitle-2: mat.define-typography-level(1rem, 1.3125rem, 500, $letter-spacing: 0.00625em),
-  $body-2: mat.define-typography-level(1rem, 1.225rem, 400, $letter-spacing: 0.015625em),
+  $body-2: mat.define-typography-level(1rem, 1.4rem, 400, $letter-spacing: 0.015625em),
   $caption: mat.define-typography-level(0.75rem, 1.125rem, 400, $letter-spacing: 0.025em),
   $button: mat.define-typography-level(1rem, 1.3125rem, 500, $letter-spacing: 0.078125em))
 );

@@ -1,7 +1,7 @@
 <div>
   <section>
     <fa-icon size="lg" [icon]="['far', 'calendar']"></fa-icon>
-    <time *ngIf="dateTime">{{date | date: 'short' }}</time>
-    <time *ngIf="!dateTime">{{date | date: 'shortDate' }}</time>
+    <time class="piece" *ngIf="dateTime">{{date | date: 'short' }}</time>
+    <time class="piece" *ngIf="!dateTime">{{date | date: 'shortDate' }}</time>
   </section>
 </div>

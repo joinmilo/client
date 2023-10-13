@@ -32,6 +32,7 @@
     @include responsive(phone) {
       margin: 1.5rem;
       width: 85%;
+      gap: 2rem;
     }
   
     span {
@@ -43,6 +44,10 @@
       display: flex;
       flex-flow: column;
       gap: 2.5rem;
+    
+      @include responsive(phone) {
+        gap: 1.5rem;
+      }
 
       * {
         width: 100%;

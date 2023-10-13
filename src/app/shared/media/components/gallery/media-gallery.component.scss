@@ -1,3 +1,5 @@
+@import 'src/styles/mixins.scss';
+
 .main {
   display: flex;
   flex-flow: column;
@@ -7,7 +9,11 @@
 section {
   display: flex;
   flex-flow: row wrap;
-  gap: 1rem;
+  gap: 1.5rem;
+
+  @include responsive(phone) {
+    justify-content: center;
+  }
 }
 
 section:first-of-type {

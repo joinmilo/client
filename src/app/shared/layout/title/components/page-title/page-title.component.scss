@@ -6,8 +6,9 @@ h1 {
 
 .mat-headline-3 {
   @include responsive(phone) {
-    font-size: 2rem;
-    line-height: 2.25rem;
+    font-size: 2.125rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.015625em;
   }
 }
 
