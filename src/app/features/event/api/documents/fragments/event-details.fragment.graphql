@@ -11,6 +11,7 @@ fragment EventDetails on EventEntity {
     ...Address
   }
   attendeeConfiguration {
+    id
     approval
     maxAttendees
     attendees {

@@ -1,4 +1,4 @@
-div {
+:host {
   display: flex;
   flex-flow: column;
 }
@@ -12,4 +12,9 @@ section {
     white-space: nowrap;
     min-width: 5rem;
   }
+}
+
+div{
+  display: flex;
+  gap: .5rem;
 }

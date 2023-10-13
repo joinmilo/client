@@ -190,7 +190,8 @@ export class PortalEventDetailsEffects {
         },
         userContext: {
           id: currentUser?.id
-        }
+        },
+        approved: false
       }
     })),
     map(response => PortalEventDetailsActions.attendeeSaved(response.data?.saveEventAttendee))

@@ -46,7 +46,7 @@ export const contestsToCards = (entities?: Maybe<ContestEntity[]>): CardElement[
 export const contestToCard = (entity: Maybe<ContestEntity>): CardElement => ({
   id: entity?.id,
   image: entity?.uploads?.find(upload => upload?.card)?.media,
-  date: entity?.modified,
+  date: entity?.participationEndDate,
   dateTime: true,
   url: ['/portal', contestsFeatureKey, entity?.slug],
   translatables: entity?.translatables,

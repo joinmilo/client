@@ -1,6 +1,6 @@
 <mat-card [routerLink]="element?.url">
   <mat-card-header>
-    <app-category-piece *ngIf="element?.category"
+    <app-category-piece class="test" *ngIf="element?.category"
       [category]="element?.category">
     </app-category-piece>
 
@@ -26,7 +26,7 @@
         }}
       </h1>
     </section>
-    <app-date-piece *ngIf="element?.date" [date]="element?.date" [dateTime]="element?.dateTime"></app-date-piece>
+    <app-date-piece [date]="element?.date" [dateTime]="element?.dateTime"></app-date-piece>
     <app-address-piece *ngIf="element?.address" [address]="element?.address"></app-address-piece>
     <span>
       {{
