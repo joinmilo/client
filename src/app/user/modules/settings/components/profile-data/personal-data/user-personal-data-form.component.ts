@@ -120,11 +120,13 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
         description: this.additionalInfoForm.value.description,
         uploads: (
           (this.ProfilePictureForm.value.profilePicture || []).map(media => ({
+            id: this.user?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
             media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
             profilePicture: true,
             title: false
           })).concat(
             (this.titleImageForm.value.titleImage || []).map(media => ({
+              id: this.user?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
               media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
               title: true,
               profilePicture: false

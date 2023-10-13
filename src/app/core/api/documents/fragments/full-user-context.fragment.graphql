@@ -80,6 +80,7 @@ fragment FullUserContext on UserContextEntity {
   }
 
   uploads {
+    id
     profilePicture
     title
     media {

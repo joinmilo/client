@@ -791,7 +791,6 @@ export type DealEntity = {
   name?: Maybe<Scalars['String']>;
   offer?: Maybe<Scalars['Boolean']>;
   price?: Maybe<Scalars['Float']>;
-  request?: Maybe<Scalars['Boolean']>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   shortDescription?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
@@ -831,7 +830,6 @@ export type DealEntityInput = {
   name?: InputMaybe<Scalars['String']>;
   offer?: InputMaybe<Scalars['Boolean']>;
   price?: InputMaybe<Scalars['Float']>;
-  request?: InputMaybe<Scalars['Boolean']>;
   shortDescription?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   sponsored?: InputMaybe<Scalars['Boolean']>;

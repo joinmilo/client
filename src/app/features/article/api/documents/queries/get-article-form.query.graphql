@@ -9,12 +9,14 @@ query getArticleForm($entity: ArticleEntityInput) {
     shortDescription
     name
     metaDescription
+    sponsored
 
     category {
       ...ArticleCategory
     }
 
     uploads {
+      id
       title
       card
       media {

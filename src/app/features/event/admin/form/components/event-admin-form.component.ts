@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
-import { AddressEntity, ContactEntity, Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, ContactEntity, EventEntity, Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
 import { AppValidators } from 'src/app/core/validators/validators';
@@ -74,6 +74,8 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
   public currentUser?: Maybe<UserContextEntity>;
 
+  private event?: Maybe<EventEntity>;
+
   private destroy = new Subject<void>();
 
   constructor(
@@ -106,7 +108,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       filter(event => !!event?.id),
       take(1)
     ).subscribe(event => {
-      console.log(event?.uploads);
+      this.event = event;
 
       this.contentForm.patchValue({
         id: event?.id,
@@ -205,14 +207,17 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         : null,
 
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
+        id: this.event?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
+        media: media.id ? {id: media.id, mimeType: media.mimeType} : media 
       })).concat(
         (this.cardImageForm.value.cardImage || []).map(media => ({
+          id: this.event?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
           media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
           card: true,
         }))
       ).concat(
         (this.titleImageForm.value.titleImage || []).map(media => ({
+          id: this.event?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
           media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
           title: true,
         }))

@@ -28,6 +28,7 @@ import { TooltipDirective } from './directives/tooltip.directive';
 import { AddressPipe } from './pipes/address.pipe';
 import { FileSizePipe } from './pipes/file-size.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { LocalDatePipe } from './pipes/localDate.pipe ';
 import { StripTagsPipe } from './pipes/strip-tags.pipe';
 import { TranslatablePipe } from './pipes/translatable.pipe';
 import { TruncateWordsPipe } from './pipes/truncate-words.pipe';
@@ -57,6 +58,7 @@ const pipes = [
   StripTagsPipe,
   TranslatablePipe,
   TruncateWordsPipe,
+  LocalDatePipe
 ];
 
 const framework = [

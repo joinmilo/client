@@ -9,6 +9,7 @@ query getEventForm($entity: EventEntityInput) {
    name
    shortDescription
    content
+   sponsored
 
   address {
     ...Address
@@ -46,6 +47,7 @@ query getEventForm($entity: EventEntityInput) {
   }  
 
   uploads {
+    id
     title
     card
     media {

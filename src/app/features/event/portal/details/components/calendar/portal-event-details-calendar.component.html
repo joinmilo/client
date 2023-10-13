@@ -5,7 +5,7 @@
       [matMenuTriggerFor]="menu"
       (menuClosed)="this.selectedSchedule = undefined;">
 
-      <i>{{event?.schedule?.startDate| date: 'short' }}</i>
+      <i>{{event?.schedule?.startDate| localDate: 'medium' }}</i>
     </button>
     <span class="piece" *ngIf="!event?.schedule" appLabel="schedulesInThePast"></span>
   </section>
@@ -28,9 +28,9 @@
       (daySelected)="daySelected($event)">
     </app-calendar>
     <div class="date" *ngIf="selectedSchedule">
-      <span>{{selectedSchedule.startDate | date: 'short'}}</span>
+      <span>{{selectedSchedule.startDate | localDate: 'calendar'}}</span>
       <span appLabel="to"></span>
-      <span>{{selectedSchedule.endDate | date: 'short'}}</span>
+      <span>{{selectedSchedule.endDate | localDate: 'calendar'}}</span>
     </div>
   </div>
 </mat-menu>

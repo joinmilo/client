@@ -25,4 +25,5 @@ export class DatePieceComponent {
 
   @Input()
   public label = 'date';
+
 }

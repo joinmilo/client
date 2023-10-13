@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { ArticleCategoryEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { ArticleCategoryEntity, ArticleEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { ArticleAdminFormActions } from '../state/article-admin-form.actions';
 import { selectArticleCategories, selectEditableArticle } from '../state/article-admin-form.selectors';
 import { slug } from './../../../../../core/constants/queryparam.constants';
@@ -45,6 +45,7 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
 
   public categories = this.store.select(selectArticleCategories);
   public editCategory: Maybe<ArticleCategoryEntity>;
+  public article?: Maybe<ArticleEntity>;
 
   private destroy = new Subject<void>();
 
@@ -64,6 +65,8 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       filter(article => !!article?.id),
       takeUntil(this.destroy)
     ).subscribe(article => {
+      
+
       this.contentForm.patchValue({
         id: article?.id,
         name: article?.name,
@@ -112,14 +115,17 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       sponsored: this.additionalInfoForm.value.sponsored,
       metaDescription: this.additionalInfoForm.value.metaDescription,
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({
+        id: this.article?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
         media: media,
       })).concat(
         (this.cardImageForm.value.cardImage || []).map(media => ({ 
+          id: this.article?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
           media: media,
           card: true,
         }))
       ).concat(
         (this.titleImageForm.value.titleImage || []).map(media => ({
+          id: this.article?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
           media: media,
           title: true,
         }))

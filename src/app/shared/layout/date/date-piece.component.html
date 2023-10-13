@@ -1,8 +1,8 @@
 <section>
   <fa-icon size="lg" [icon]="['far', 'calendar']"></fa-icon>
   <div *ngIf="date">
-    <time *ngIf="dateTime">{{ date | date : "short" }}</time>
-    <time *ngIf="!dateTime">{{ date | date : "shortDate" }}</time>
+    <time *ngIf="dateTime">{{ date | localDate: 'medium' }}</time>
+    <time *ngIf="!dateTime">{{ date | localDate: 'short' }}</time>
   </div>
   <span *ngIf="!date" appLabel="schedulesInThePast"></span>
 </section>

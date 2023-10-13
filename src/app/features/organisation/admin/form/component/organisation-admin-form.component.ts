@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, Maybe, MediaEntity, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { OrganisationAdminFormActions } from '../state/organisation-admin-form.actions';
 import { selectEditableOrganisation } from '../state/organisation-admin-form.selectors';
@@ -46,6 +46,7 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
   });  
 
   private destroy = new Subject<void>();  
+  private organisation?: Maybe<OrganisationEntity>;
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -61,6 +62,8 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
       filter(organisation => !!organisation?.id),
       takeUntil(this.destroy)
     ).subscribe(organisation => {
+      this.organisation = organisation;
+
       this.descriptionForm.patchValue({
         id: organisation?.id,
         name: organisation?.name,
@@ -115,14 +118,17 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
     approved: false,
     sponsored: false,
     uploads: (this.uploadsForm.value.uploads || []).map(media => ({
+        id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
         media: media,
       })).concat(
         (this.profileImageForm.value.cardImage || []).map(media => ({ 
+          id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
           media: media,
           card: true,
         }))
       ).concat(
         (this.titleImageForm.value.titleImage || []).map(media => ({
+          id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
           media: media,
           title: true,
         }))

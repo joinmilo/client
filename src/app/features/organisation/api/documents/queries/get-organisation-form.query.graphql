@@ -16,6 +16,7 @@ query getOrganisationForm($entity: OrganisationEntityInput) {
     name
     slug
     uploads {
+      id
       title
       card
       media {
