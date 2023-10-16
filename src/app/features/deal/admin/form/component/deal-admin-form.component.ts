@@ -165,17 +165,21 @@ public ngOnInit(): void {
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({
         id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
         media: media,
+        card: false,
+        title: false
       })).concat(
         (this.cardImageForm.value.cardImage || []).map(media => ({ 
           id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
           media: media,
           card: true,
+          title: false
         }))
       ).concat(
         (this.titleImageForm.value.titleImage || []).map(media => ({
           id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
           media: media,
           title: true,
+          card: false
         }))
       ) || null,
     }));
