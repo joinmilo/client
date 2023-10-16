@@ -22,7 +22,7 @@ const routes: AdminSettingsRoute[] = [
   },
   {
     path: `${baseRoute}/role`,
-    loadComponent: () => import('src/app/admin/modules/settings/access/role/admin-settings-role.module')
+    loadChildren: () => import('src/app/admin/modules/settings/access/role/admin-settings-role.module')
       .then((imported) => imported.AdminSettingsRoleModule),
     data: {
       name: 'roles',

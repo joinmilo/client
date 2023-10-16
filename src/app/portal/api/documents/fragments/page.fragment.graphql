@@ -3,6 +3,7 @@ fragment Page on PageEntity {
   callUrl
   slug
   uploads {
+    id
     title
     media {
       ...Media

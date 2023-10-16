@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { InfoMediaCategoryEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { InfoMediaCategoryEntity, InfoMediaEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { MediaAdminOverviewActions } from '../../state/media-admin-overview.actions';
 import { selectOverviewDataCategories } from '../../state/media-admin-overview.selectors';
 
@@ -34,8 +34,8 @@ export class MediaAdminOverviewCategoryComponent implements OnDestroy {
     this.store.dispatch(MediaAdminOverviewActions.deleteMedia(
       this.categories
         ?.flatMap(category => category.infoMedia)
-        ?.find(infoMedia => infoMedia?.media?.id === medium?.id)
-    ))
+        ?.find(infoMedia => infoMedia?.media?.id == medium?.id) as InfoMediaEntity
+    ));
   }
 
   public ngOnDestroy(): void {

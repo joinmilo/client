@@ -32,6 +32,8 @@ export class PortalPageComponent implements OnInit, OnDestroy {
       switchMap(() => this.store.select(selectPage)),
       takeUntil(this.destroy)
     ).subscribe(page => {
+
+      console.log(page);
       this.page = page;
 
       this.mediaTitle = page?.uploads?.find(upload => upload?.title)?.media;

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AdminSettingsAccessRoutingModule } from './access/admin-settings-access.module';
+import { AdminSettingsAccessRoutingModule } from './access/admin-settings-access-routing.module';
 import { AdminSettingsRoutingModule } from './admin-settings-routing.module';
 import { AdminSettingsLocationRoutingModule } from './location/admin-settings-location.routing.module';
 import { AdminSettingsPageRoutingModule } from './page/admin-settings-page.routing.module';

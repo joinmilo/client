@@ -8,7 +8,7 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 import { GetInfoMediaCardsGQL } from 'src/app/shared/widgets/card/api/generated/get-info-media-cards.query.generated';
-import { DeleteInfoMediaGQL } from '../../../api/generated/delete-medium.mutation.generated';
+import { DeleteInfoMediumGQL } from '../../../api/generated/delete-medium.mutation.generated';
 import { MediaAdminOverviewActions } from './media-admin-overview.actions';
 import { selectParams } from './media-admin-overview.selectors';
 
@@ -54,7 +54,7 @@ export class MediaAdminOverviewEffects {
   constructor(
     private actions: Actions,
     private getInfoMediaService: GetInfoMediaCardsGQL,
-    private deleteInfoMediaService: DeleteInfoMediaGQL,
+    private deleteInfoMediaService: DeleteInfoMediumGQL,
     private dialog: MatDialog,
     private store: Store
   ) {}
