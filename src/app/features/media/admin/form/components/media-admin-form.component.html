@@ -29,7 +29,7 @@
       </mat-form-field>
     </app-row>
     <app-row>
-      <app-media-form formControlName="uploads"></app-media-form>
+      <app-media-form [maxFiles]="1" formControlName="uploads"></app-media-form>
     </app-row>
   </app-form-step>
 </app-form-stepper>

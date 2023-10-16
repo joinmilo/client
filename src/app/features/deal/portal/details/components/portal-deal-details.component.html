@@ -34,10 +34,12 @@
     <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </app-media-slider>
 
-    <div class="map-area" #map>
-      <app-details-title titleLabel="mapView"></app-details-title>
-      <app-map [queryParams]="false" [markerDefinition]="marker">
-      </app-map>
+    <div #map>
+      <div *ngIf="deal?.address" class="map-area" >
+        <app-details-title titleLabel="mapView"></app-details-title>
+        <app-map [queryParams]="false" [markerDefinition]="marker">
+        </app-map>
+      </div>
     </div>
   </section>
 </div>

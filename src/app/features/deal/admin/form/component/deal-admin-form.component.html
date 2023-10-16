@@ -25,40 +25,19 @@
     </app-row>
   </app-form-step>
 
-  <app-form-step titleLabel="contactInfo" [formGroup]="contactForm">
-    <app-row [columns]="2">
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="email"></mat-label>
-        <input matInput formControlName="email">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="phone"></mat-label>
-        <input matInput formControlName="phone">
-      </mat-form-field>
-    </app-row>
-    <app-row [columns]="2">
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="name"></mat-label>
-        <input matInput formControlName="name">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="website"></mat-label>
-        <input matInput formControlName="website">
-      </mat-form-field>
-    </app-row>
-  </app-form-step>
-
   <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
-    <app-row [columns]="4">
+    <app-row [columns]="2">
       <mat-radio-group formControlName="selectedType">
-        <mat-radio-button color="primary" value="offer" [checked]="this.additionalInfoForm.value.selectedType === 'offer'">
+        <mat-radio-button color="primary" value="offer"
+          [checked]="this.additionalInfoForm.value.selectedType === 'offer'">
           <span appLabel="offer"></span>
         </mat-radio-button>
-        <mat-radio-button color="primary" value="request" [checked]="this.additionalInfoForm.value.selectedType === 'request'">
+        <mat-radio-button color="primary" value="request"
+          [checked]="this.additionalInfoForm.value.selectedType === 'request'">
           <span appLabel="request"></span>
         </mat-radio-button>
       </mat-radio-group>
-
+  
       <div>
         <span appLabel="dealIsPublic"></span>
         <mat-slide-toggle color="primary" formControlName="isPublic">
@@ -82,6 +61,36 @@
         <mat-label appLabel="price"></mat-label>
         <input matInput formControlName="price" type="number">
       </mat-form-field>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="contactInfo" [formGroup]="contactForm">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="email"></mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="phone"></mat-label>
+        <input matInput formControlName="phone">
+      </mat-form-field>
+    </app-row>
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="name"></mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="website"></mat-label>
+        <input matInput formControlName="website">
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step [formGroup]="locationForm" titleLabel="location">
+    <app-row>
+      <app-address-form formControlName="address">
+      </app-address-form>
     </app-row>
   </app-form-step>
 

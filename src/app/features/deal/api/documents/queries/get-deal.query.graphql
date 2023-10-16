@@ -31,6 +31,7 @@ query getDeal($entity: DealEntityInput) {
     sponsored
 
     uploads {
+      id
       title
       card
       media {

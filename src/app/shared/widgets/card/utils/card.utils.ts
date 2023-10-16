@@ -62,7 +62,7 @@ export const dealToCard = (entity: Maybe<DealEntity>): CardElement => ({
   id: entity?.id,
   address: entity?.address,
   category: entity?.category,
-  creator: entity?.contact?.name,
+  creator: `${entity?.creator?.user?.firstName} ${entity?.creator?.user?.lastName}`,
   date: entity?.created,
   dateTime: true,
   creatorImage: entity?.creator?.uploads?.find(upload => upload?.profilePicture)?.media,

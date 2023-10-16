@@ -16,9 +16,8 @@ export class MediaAdminFormComponent implements OnInit, OnDestroy {
   public contentForm = this.fb.group({
     id: ['' as Maybe<string>],
     name: ['' as Maybe<string>, [Validators.required]],
-    mimeType: ['' as Maybe<string>],
     url: ['' as Maybe<string>],
-    uploads: [[] as MediaEntity, [Validators.required]],
+    uploads: [[] as MediaEntity[], [Validators.required]],
     categoryId: [undefined as Maybe<string>, [Validators.required]],
     author: ['' as Maybe<string>],
   });
@@ -42,19 +41,11 @@ export class MediaAdminFormComponent implements OnInit, OnDestroy {
 
   public saved(): void {
     this.store.dispatch(MediaAdminFormActions.save({
-      id: this.contentForm.value.id,
-      media: {
-        id: this.contentForm.value.id,
-        mimeType: this.contentForm.value.mimeType,
-        name: this.contentForm.value.name,
-        url: this.contentForm.value.url,
-        attribution: {
-          author: this.contentForm.value.author
-        }
-      },
-      category: {
-        id: this.contentForm.value.categoryId 
-      }
+      id: this.contentForm.value.id ?? null,
+      media: this.contentForm.value.uploads?.[0],     
+      category: this.contentForm.value.categoryId ?
+      { id: this.contentForm.value.categoryId}
+      :null
     }));
   }
 

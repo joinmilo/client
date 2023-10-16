@@ -11,6 +11,7 @@ fragment DealDetails on DealEntity {
     id
 
     uploads {
+      id
       profilePicture
       title
       media {
@@ -25,6 +26,7 @@ fragment DealDetails on DealEntity {
     }
   }
   uploads {
+    id
     title
     card
     media {

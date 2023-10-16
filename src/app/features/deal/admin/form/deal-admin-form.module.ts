@@ -11,6 +11,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
+import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
@@ -49,7 +50,8 @@ const modules = [
   FormStepperModule,
   GridLayoutModule,
   CkEditorFormComponent,
-  MediaModule
+  MediaModule,
+  AddressFormModule,
 ];
 
 const libs = [

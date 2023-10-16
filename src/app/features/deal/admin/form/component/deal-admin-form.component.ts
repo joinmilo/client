@@ -3,8 +3,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, DealEntity, Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { DealAdminFormActions } from '../state/deal-admin-form.actions';
 import { selectCategories, selectDeal } from '../state/deal-portal-form.selectors';
 
@@ -33,6 +34,10 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
     selectedType: ['offer' as Maybe<string>]
   });
 
+  public locationForm = this.fb.group({
+    address: [undefined as Maybe<AddressEntity>],
+  });
+
   public contactForm = this.fb.group({
     email: [undefined as Maybe<string>, [Validators.required]],
     phone: [undefined as Maybe<string>],
@@ -53,6 +58,8 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public categories = this.store.select(selectCategories);
+  private currentUser?: Maybe<UserContextEntity>; 
+  public deal?: Maybe<DealEntity>;
 
   private destroy = new Subject<void>();
 
@@ -64,6 +71,9 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
 
 public ngOnInit(): void {
     this.store.dispatch(DealAdminFormActions.getCategories());
+    this.store.select(selectCurrentUser)
+      .pipe(takeUntil(this.destroy))
+      .subscribe(user => this.currentUser = user);
 
     this.activatedRoute?.parent?.params.pipe(
       filter(params => !!params[slug]),
@@ -72,6 +82,8 @@ public ngOnInit(): void {
       filter(deal => !!deal?.id),
       takeUntil(this.destroy)
     ).subscribe(deal => {
+      this.deal = deal;
+      console.log(this.deal);
       this.contentForm.patchValue({
         id: deal?.id,
         name: deal?.name,
@@ -89,6 +101,10 @@ public ngOnInit(): void {
         selectedType: deal?.offer ? 'offer' : 'request'
       });
 
+      this.locationForm.patchValue({
+        address: deal?.address,
+      });
+
       this.contactForm.patchValue({
         email: deal?.contact?.email,
         phone: deal?.contact?.phone,
@@ -97,7 +113,8 @@ public ngOnInit(): void {
       });
 
       this.titleImageForm.patchValue({
-        titleImage: deal?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[],
+        titleImage: 
+        deal?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[],
       });
 
       this.cardImageForm.patchValue({
@@ -117,7 +134,6 @@ public ngOnInit(): void {
   }
 
   public saved(): void {
-    console.log(this.additionalInfoForm.value.selectedType);
     this.store.dispatch(DealAdminFormActions.save({
       id: this.contentForm.value.id,
       name: this.contentForm.value.name,
@@ -126,6 +142,7 @@ public ngOnInit(): void {
       category: this.additionalInfoForm.value.categoryId != null
         ? { id: this.additionalInfoForm.value.categoryId }
         : null,
+      address: this.locationForm.value.address,
       contact: {
         email: this.contactForm.value.email,
         phone: this.contactForm.value.phone,
@@ -133,20 +150,30 @@ public ngOnInit(): void {
         website: this.contactForm.value.website,
         preferredContact: true
       },
+      creator: {
+        id: this.currentUser?.id,
+        user: {
+          firstName: this.currentUser?.user?.firstName,
+          lastName: this.currentUser?.user?.lastName,
+        }
+      },
       price: this.additionalInfoForm.value.price,
       isPublic: this.additionalInfoForm.value.isPublic,
       offer: this.additionalInfoForm.value.selectedType === 'offer' ? true : false,
       sponsored: false,
       
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({
+        id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
         media: media,
       })).concat(
         (this.cardImageForm.value.cardImage || []).map(media => ({ 
+          id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
           media: media,
           card: true,
         }))
       ).concat(
         (this.titleImageForm.value.titleImage || []).map(media => ({
+          id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
           media: media,
           title: true,
         }))

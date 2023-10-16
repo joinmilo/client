@@ -35,13 +35,17 @@ export class DealAdminFormEffects {
     tap(() => this.router.navigate([adminUrl, dealsFeatureKey])),
   ), { dispatch: false });
 
-  save = createEffect(() => this.actions.pipe(
-    ofType(DealAdminFormActions.save),
-    switchMap(action => this.saveDealService.mutate({
+save = createEffect(() => this.actions.pipe(
+  ofType(DealAdminFormActions.save),
+  switchMap(action => {
+    console.log('action.deal:', action.deal); // Add this line to log action.deal
+    return this.saveDealService.mutate({
       entity: action.deal
-    })),
-    map(() => DealAdminFormActions.saved())
-  ));
+    })
+  }),
+  map(() => DealAdminFormActions.saved())
+));
+
 
   saved = createEffect(() => this.actions.pipe(
     ofType(DealAdminFormActions.saved),

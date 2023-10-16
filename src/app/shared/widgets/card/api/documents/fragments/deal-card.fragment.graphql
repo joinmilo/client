@@ -30,6 +30,12 @@ fragment DealCard on DealEntity {
 
   creator {
     id
+    user {
+      id
+      firstName
+      lastName
+    }
+
 
     uploads {
       profilePicture
