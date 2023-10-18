@@ -1,6 +1,9 @@
+import { ViewportScroller } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { Event, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Maybe } from 'graphql/jsutils/Maybe';
 import { FavIconService } from './core/services/favicon.service';
 import { ThemeService } from './core/services/theme.service';
 import { BrowserTitleService } from './core/services/title.service';
@@ -14,27 +17,37 @@ import { selectAsideComponent } from './core/state/selectors/core.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
+  @ViewChild(MatDrawer) sidenav?: MatDrawer;
 
-  @ViewChild(MatDrawer)
-  public sidenav?: MatDrawer;
+  private previousUrl?: Maybe<string>;
+  private currentUrl?: Maybe<string>;
 
-  //TODO: Find a place to init them properly
   constructor(
     public browserTitleService: BrowserTitleService,
     public themeService: ThemeService,
     public favIconService: FavIconService,
-
-    private store: Store
+    private store: Store,
+    private router: Router,
+    private viewportScroller: ViewportScroller
   ) {
     this.store.select(selectAsideComponent)
-      .subscribe(component => component
-        ? this.sidenav?.open()
-        : this.sidenav?.close());
+      .subscribe(component => component ? this.sidenav?.open() : this.sidenav?.close());
+
+    router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.previousUrl = this.currentUrl;
+        this.currentUrl = event.url.split('?')[0];
+        console.log(this.previousUrl);
+        console.log(this.currentUrl);
+        if (this.previousUrl !== this.currentUrl) {
+
+          this.viewportScroller.scrollToPosition([0, 0]);
+        }
+      }
+    });
   }
 
-  public removeAside(): void  {
+  public removeAside(): void {
     this.store.dispatch(CoreActions.removeAsideComponent());
   }
-
-
 }
