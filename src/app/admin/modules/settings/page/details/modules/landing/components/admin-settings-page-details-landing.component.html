@@ -1,7 +1,7 @@
 <section>
   <div class="media-container">
     <section class="border-box">
-      <app-details-title titleLabel="media" [link]="['./edit']"
+      <app-details-title titleLabel="media" [link]="['./form']"
         linkIcon="pen-to-square">
       </app-details-title>
       <app-media-slider *ngIf="media && media.length"
@@ -12,7 +12,7 @@
   <div>
     <section class="border-box">
       <app-details-title titleLabel="shortDescription"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <p
         [innerHtml]="page | translatable : 'shortDescription' | async">
@@ -21,7 +21,7 @@
 
     <section class="border-box">
       <app-details-title titleLabel="description"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <p #contentParagraph
         [innerHtml]="page | translatable : 'content' | async"></p>

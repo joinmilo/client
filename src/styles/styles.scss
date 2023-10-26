@@ -185,3 +185,11 @@ figure {
     }
   }
 }
+
+.dashboard-right-column {
+  min-width: max-content;
+  
+  @include responsive(phone) {
+    min-width: 15rem;
+  }
+}

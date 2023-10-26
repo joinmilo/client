@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { ArticleEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
+import { ArticleEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { GuestArticleAdminOverviewActions } from '../state/guest-article-admin-overview.actions';
@@ -78,5 +78,9 @@ export class GuestArticleAdminOverviewComponent {
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(GuestArticleAdminOverviewActions.updateParams(params));
+  }
+
+  public rowClicked(article: Maybe<ArticleEntity>): void {
+    this.router.navigate([article?.slug], { relativeTo: this.activatedRoute })
   }
 }

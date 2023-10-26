@@ -4,5 +4,6 @@
   [data]="reports"
   [actions]="actions"
   [columns]="columns"
-  (sortPaginate)="updateParams($event)">
+  (sortPaginate)="updateParams($event)"
+  (rowClicked)="rowClicked($event)">
 </app-table>

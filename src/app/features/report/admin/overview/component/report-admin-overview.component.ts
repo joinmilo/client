@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { FilterSortPaginateInput, ReportEntity } from 'src/app/core/api/generated/schema';
+import { FilterSortPaginateInput, Maybe, ReportEntity } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { ReportAdminOverviewActions } from '../state/report-admin-overview.actions';
@@ -54,11 +55,17 @@ export class ReportAdminOverviewComponent {
   ];
   
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private store: Store,
     private translationService: TranslationService,
   ) { }
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(ReportAdminOverviewActions.updateParams(params));
+  }
+
+  public rowClicked(report: Maybe<ReportEntity>): void {
+    this.router.navigate([report?.id], { relativeTo: this.activatedRoute })
   }
 }

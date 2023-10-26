@@ -1,7 +1,7 @@
 <section>
   <div class="media-container">
     <section class="border-box">
-      <app-details-title titleLabel="media" [link]="['./edit']"
+      <app-details-title titleLabel="media" [link]="['./form']"
         linkIcon="pen-to-square">
       </app-details-title>
       <app-media-slider *ngIf="media && media.length"
@@ -12,7 +12,7 @@
   <div>
     <section class="border-box">
       <app-details-title titleLabel="shortDescription"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <p
         [innerHtml]="article | translatable : 'shortDescription' | async">
@@ -21,7 +21,7 @@
 
     <section class="border-box">
       <app-details-title titleLabel="description"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <p #contentParagraph
         [innerHtml]="article | translatable : 'content' | async"></p>
@@ -36,10 +36,10 @@
     </section>
   </div>
 
-  <div>
-    <!-- <section class="border-box">
+  <!-- <div>
+    <section class="border-box">
       <app-details-title titleLabel="contactData"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <app-address-piece [address]="article?.address"
         [link]="article?.videoChatLink">
@@ -48,6 +48,6 @@
       </app-phone-piece>
       <app-mail-piece [mail]="article?.contact?.email">
       </app-mail-piece>
-    </section> -->
-  </div>
+    </section>
+  </div> -->
 </section>

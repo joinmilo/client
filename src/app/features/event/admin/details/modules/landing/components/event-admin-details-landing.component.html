@@ -1,7 +1,7 @@
 <section>
   <div class="media-container">
     <section class="border-box">
-      <app-details-title titleLabel="media" [link]="['./edit']"
+      <app-details-title titleLabel="media" [link]="['./form']"
         linkIcon="pen-to-square">
       </app-details-title>
       <app-media-slider *ngIf="media && media.length"
@@ -12,7 +12,7 @@
   <div>
     <section class="border-box">
       <app-details-title titleLabel="shortDescription"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <p
         [innerHtml]="event | translatable : 'shortDescription' | async">
@@ -21,7 +21,7 @@
 
     <section class="border-box">
       <app-details-title titleLabel="description"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <p #contentParagraph
         [innerHtml]="event | translatable : 'content' | async"></p>
@@ -36,10 +36,10 @@
     </section>
   </div>
 
-  <div>
+  <div class="dashboard-right-column">
     <section class="border-box">
       <app-details-title titleLabel="contactData"
-        [link]="['./edit']" linkIcon="pen-to-square">
+        [link]="['./form']" linkIcon="pen-to-square">
       </app-details-title>
       <app-address-piece [address]="event?.address"
         [link]="event?.videoChatLink">
@@ -51,7 +51,7 @@
     </section>
 
     <section class="border-box">
-      <app-details-title titleLabel="calendar" [link]="['./edit']"
+      <app-details-title titleLabel="calendar" [link]="['./form']"
         linkIcon="pen-to-square">
       </app-details-title>
       <app-event-admin-details-landing-calendar></app-event-admin-details-landing-calendar>
