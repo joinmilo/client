@@ -28,7 +28,7 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    categoryId: [undefined as Maybe<string>],
+    categoryId: [undefined as Maybe<string>, [Validators.required]],
     price: [undefined as Maybe<number>],
     isPublic: [true as Maybe<boolean>],
     selectedType: ['offer' as Maybe<string>]
@@ -160,7 +160,6 @@ public ngOnInit(): void {
       price: this.additionalInfoForm.value.price,
       isPublic: this.additionalInfoForm.value.isPublic,
       offer: this.additionalInfoForm.value.selectedType === 'offer' ? true : false,
-      sponsored: false,
       
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({
         id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,

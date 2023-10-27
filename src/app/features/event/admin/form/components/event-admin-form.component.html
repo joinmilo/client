@@ -67,14 +67,6 @@
 
   <app-form-step titleLabel="additionalInfo"
     [formGroup]="additionalInfoForm">
-    <app-row [columns]="1">
-      <div>
-        <span appLabel="articleIsSponsored"></span>
-        <mat-slide-toggle color="primary" formControlName="sponsored">
-        </mat-slide-toggle>
-      </div>
-    </app-row>
-
     <app-row [columns]="8">
         <mat-form-field appearance="outline">
           <mat-label appLabel="entryFee"></mat-label>

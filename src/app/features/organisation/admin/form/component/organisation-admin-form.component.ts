@@ -8,7 +8,6 @@ import { slug } from 'src/app/core/constants/queryparam.constants';
 import { OrganisationAdminFormActions } from '../state/organisation-admin-form.actions';
 import { selectEditableOrganisation } from '../state/organisation-admin-form.selectors';
 
-
 @Component({
   selector: 'app-organisation-admin-form',
   templateUrl: './organisation-admin-form.component.html',
@@ -116,7 +115,6 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
     
     slug: this.descriptionForm.value.name,
     approved: false,
-    sponsored: false,
     uploads: (this.uploadsForm.value.uploads || []).map(media => ({
         id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
         media: media,

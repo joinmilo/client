@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
-import { DeleteLanguageGQL } from 'src/app/admin/api/generated/delete-laguage.mutation.generated';
 import { GetLanguagesGQL } from 'src/app/admin/api/generated/get-languages.query.generated';
 import { PageableList_LanguageEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
@@ -11,6 +10,7 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 import { AdminSettingsLanguageActions } from './admin-settings-language.actions';
 import { selectParams } from './admin-settings-language.selectors';
+import { DeleteLanguageGQL } from 'src/app/admin/api/generated/delete-laguage.mutation.generated';
 
 @Injectable()
 export class AdminSettingsLanguageEffects {

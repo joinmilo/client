@@ -54,7 +54,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   public additionalInfoForm = this.fb.group({
     categoryId: [undefined as Maybe<string>],
     entryFee: [undefined as Maybe<number>],
-    sponsored: [undefined as Maybe<boolean>],
     metaDescription: [undefined as Maybe<string>],
   });
 
@@ -135,7 +134,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       this.additionalInfoForm.patchValue({
         categoryId: event?.category?.id,
         entryFee: event?.entryFee,
-        sponsored: event?.sponsored,
         metaDescription: event?.metaDescription,
       });
 
@@ -189,7 +187,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         ? { id: this.additionalInfoForm.value.categoryId }
         : null,
       entryFee: this.additionalInfoForm.value.entryFee,
-      sponsored: this.additionalInfoForm.value.sponsored ?? false,
       metaDescription: this.additionalInfoForm.value.metaDescription,
 
       attendeeConfiguration: {
