@@ -14,7 +14,6 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
@@ -63,7 +62,6 @@ const modules = [
   MediaModule,
   PortalParticipateRoutingModule,
   SuccessComponent,
-  TitleModule,
   FormStepperModule,
   GridLayoutModule,
 ];

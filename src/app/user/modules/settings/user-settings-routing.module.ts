@@ -30,7 +30,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: UserPersonalDataFormComponent,
+    pathMatch: 'full',
+    redirectTo: 'personal-data',
   },
 ];
 
