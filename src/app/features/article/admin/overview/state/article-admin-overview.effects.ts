@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
-import { PageableList_ArticleEntity } from 'src/app/core/api/generated/schema';
+import { PageableList_ArticleEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
@@ -25,7 +25,22 @@ export class ArticleAdminOverviewEffects {
     ),
     withLatestFrom(this.store.select(selectParams)),
     switchMap(([, params]) => this.getArticlesService.watch({ 
-      params,
+      params: {
+        ...params,
+        expression: {
+          conjunction: {
+            operands: [
+              {
+                entity: {
+                  path: 'approved',
+                  operator: QueryOperator.Equal,
+                  value: "true"
+                }
+              }
+            ]
+          }
+        }
+      },
     }).valueChanges),
     map(response => ArticleAdminOverviewActions.setOverviewData(response.data.getArticles as PageableList_ArticleEntity))
   ));

@@ -37,8 +37,6 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         this.previousUrl = this.currentUrl;
         this.currentUrl = event.url.split('?')[0];
-        console.log(this.previousUrl);
-        console.log(this.currentUrl);
         if (this.previousUrl !== this.currentUrl) {
 
           this.viewportScroller.scrollToPosition([0, 0]);

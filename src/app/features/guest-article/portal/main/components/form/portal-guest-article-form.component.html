@@ -6,7 +6,7 @@
     <p appLabel="guestArticleIncentive"></p>
     <p appLabel="guestArticleHowTo"></p>
   </div>
-  <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <app-form-stepper [captchaRequired]="true" (cancelled)="cancelled()" (saved)="saved($event)">
     <app-form-step titleLabel="content" [formGroup]="contentForm">
       <app-row [columns]="2">
         <mat-form-field appearance="outline">
@@ -31,18 +31,6 @@
           <input matInput formControlName="email" type="email">
         </mat-form-field>
       </app-row>
-    </app-form-step>
-
-    <app-form-step titleLabel="titleImage" [formGroup]="titleImageForm">
-      <app-media-form [maxFiles]="1" formControlName="titleImage"></app-media-form>
-    </app-form-step>
-
-    <app-form-step titleLabel="cardImage" [formGroup]="cardImageForm">
-      <app-media-form formControlName="cardImage" [maxFiles]="1"></app-media-form>
-    </app-form-step>
-
-    <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
-      <app-media-form formControlName="uploads"></app-media-form>
     </app-form-step>
   </app-form-stepper>
 </div>

@@ -1,4 +1,5 @@
 fragment ArticleCard on ArticleEntity {
+  approved
   id
   created
   modified

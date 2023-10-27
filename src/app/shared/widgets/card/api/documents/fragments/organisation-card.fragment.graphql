@@ -1,4 +1,5 @@
 fragment OrganisationCard on OrganisationEntity {
+  approved
   id
   name
   slug

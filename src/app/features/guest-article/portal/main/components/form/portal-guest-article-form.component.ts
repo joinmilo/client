@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { PortalGuestArticleActions } from '../../state/portal-guest-article.actions';
 
 @Component({
@@ -22,18 +22,6 @@ export class PortalGuestArticleFormComponent {
     email: ['' as Maybe<string>, [Validators.required]],
   });
 
-  public titleImageForm = this.fb.group({
-    titleImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
-  public cardImageForm = this.fb.group({
-    cardImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
-  public uploadsForm = this.fb.group({
-    uploads: [[] as MediaEntity[]],
-  });
-
   constructor(
     private store: Store,
     private fb: FormBuilder,
@@ -43,28 +31,16 @@ export class PortalGuestArticleFormComponent {
     this.store.dispatch(PortalGuestArticleActions.cancelled());
   }
 
-  public saved(): void {
+  public saved(captchaToken: Maybe<string>): void {
     this.store.dispatch(PortalGuestArticleActions.save({
       id: this.contentForm.value.id,
+      captchaToken,
       name: this.contentForm.value.name,
       content: this.contentForm.value.content,
       publicAuthor: {
         name: this.infomationForm.value.userName,
         email: this.infomationForm.value.email,
       },
-      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        media: media,
-      })).concat(
-        (this.cardImageForm.value.cardImage || []).map(media => ({ 
-          media: media,
-          card: true,
-        }))
-      ).concat(
-        (this.titleImageForm.value.titleImage || []).map(media => ({
-          media: media,
-          title: true,
-        }))
-      ) || null,
     }));
   }
 }

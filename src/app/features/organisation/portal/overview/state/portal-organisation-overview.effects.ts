@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs';
-import { OrganisationEntity, PageableList_OrganisationEntity } from 'src/app/core/api/generated/schema';
+import { OrganisationEntity, PageableList_OrganisationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { GetOrganisationCardGQL } from 'src/app/shared/widgets/card/api/generated/get-organisation-card.query.generated';
 import { GetOrganisationCardsGQL } from 'src/app/shared/widgets/card/api/generated/get-organisation-cards.query.generated';
 import { PortalOrganisationOverviewActions } from './portal-organisation-overview.actions';
@@ -25,7 +25,22 @@ export class PortalOrganisationOverviewEffects {
     ofType(PortalOrganisationOverviewActions.updateParams),
     withLatestFrom(this.store.select(selectParams)),
     switchMap(([, params]) => this.getOrganisationCardsService.watch({ 
-      params,
+      params: {
+        ...params,
+        expression: {
+          conjunction: {
+            operands: [
+              {
+                entity: {
+                  path: 'approved',
+                  operator: QueryOperator.Equal,
+                  value: "true"
+                }
+              }
+            ]
+          }
+        }
+      }
     }).valueChanges),
     map(response => PortalOrganisationOverviewActions.setOverviewData(response.data.getOrganisations as PageableList_OrganisationEntity))
   ));
