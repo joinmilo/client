@@ -11,9 +11,9 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetOrganisationsGQL } from 'src/app/user/api/generated/get-organisations.query.generated';
 import { SaveOrganisationApplicationGQL } from 'src/app/user/api/generated/save-organisation-application.mutation.generated';
 import { SaveOrganisationMembersGQL } from 'src/app/user/api/generated/save-organisation-members.mutation.generated';
-import { SaveUserContextGQL } from 'src/app/user/api/generated/save-user-context.mutation.generated';
 import { VerifyAddressGQL } from 'src/app/user/api/generated/verify-address.mutation.generated';
 import { PortalParticipateActions } from './portal-participate.actions';
+import { SaveMeGQL } from 'src/app/user/api/generated/save-user-context.mutation.generated';
 
 @Injectable()
 export class PortalParticipateEffects {
@@ -79,7 +79,7 @@ export class PortalParticipateEffects {
     switchMap((action) => this.saveUserContextService.mutate({
       entity: action.entity
     })),
-    map(response => PortalParticipateActions.authorApplicationSaved(response.data?.saveUserContext as UserContextEntity))
+    map(response => PortalParticipateActions.authorApplicationSaved(response.data?.saveMe as UserContextEntity))
   ));
 
   authorApplicationSaved = createEffect(() => this.actions.pipe(
@@ -116,9 +116,8 @@ export class PortalParticipateEffects {
     private router: Router,
     private saveOrganisationApplicationService: SaveOrganisationApplicationGQL,
     private saveOrganisationMembersService: SaveOrganisationMembersGQL,
-    private saveUserContextService: SaveUserContextGQL,
+    private saveUserContextService: SaveMeGQL,
     private store: Store,
-    private verifyAddressService: VerifyAddressGQL,
   ) {}
 
 }
