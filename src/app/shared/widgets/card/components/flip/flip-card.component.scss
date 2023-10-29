@@ -35,6 +35,9 @@ mat-button-toggle-group {
   border-radius: unset;
 }
 
+.mat-button-toggle-group-appearance-standard .mat-button-toggle+.mat-button-toggle {
+  border-left: none;
+}
 
 
 /* FLIPCARD */

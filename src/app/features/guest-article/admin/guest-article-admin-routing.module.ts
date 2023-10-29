@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { AdminFeatureRoute } from 'src/app/admin/typings/menu';
-import { guestArticlesFeatureKey } from 'src/app/core/constants/feature.constants';
+import { articlesFeatureKey, guestArticlesFeatureKey } from 'src/app/core/constants/feature.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
 import { requireAnyPrivilege } from 'src/app/core/utils/privilege.utils';
 
 const menuRoutes: AdminFeatureRoute[] = [
@@ -30,6 +31,12 @@ const menuRoutes: AdminFeatureRoute[] = [
 ];
 
 const routes: Routes = [
+  {
+    path: `${articlesFeatureKey}/:${slug}/form`,
+    loadChildren: () => import('src/app/features/article/admin/form/article-admin-form.module')
+      .then((imported) => imported.ArticleAdminFormModule),
+    canActivate: [requireAnyPrivilege('articles_admin')]
+  },
 ]
 
 @NgModule({

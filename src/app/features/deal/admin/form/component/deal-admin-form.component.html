@@ -26,7 +26,7 @@
   </app-form-step>
 
   <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
-    <app-row [columns]="2">
+    <app-row [columns]="4">
       <mat-radio-group formControlName="selectedType">
         <mat-radio-button color="primary" value="offer"
           [checked]="this.additionalInfoForm.value.selectedType === 'offer'">
@@ -44,22 +44,19 @@
         </mat-slide-toggle>
       </div>
     </app-row>
-  
-    <app-row [columns]="2">
-      <mat-form-field appearance="outline">
+    
+    <app-row [columns]="8">
+      <mat-form-field appearance="outline" [appAssignColumns]="1">
+        <mat-label appLabel="price"></mat-label>
+        <input formControlName="price" matInput placeholder="&euro;">
+      </mat-form-field>
+      <mat-form-field appearance="outline" [appAssignColumns]="3">
         <mat-label appLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
           <mat-option [value]="category.id" *ngFor="let category of categories | async">
             <span>{{category | translatable: "name" | async}}</span>
           </mat-option>
         </mat-select>
-      </mat-form-field>
-    </app-row>
-  
-    <app-row [columns]="2">
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="price"></mat-label>
-        <input matInput formControlName="price" type="number">
       </mat-form-field>
     </app-row>
   </app-form-step>

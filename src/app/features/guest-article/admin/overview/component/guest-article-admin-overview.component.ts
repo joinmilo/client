@@ -26,7 +26,7 @@ export class GuestArticleAdminOverviewComponent {
     {
       icon: 'pen-to-square',
       callback: row =>
-        this.router.navigate([row?.slug, 'edit'], { relativeTo: this.activatedRoute }),
+        this.router.navigate(['admin/articles', row?.slug, 'form']),
       tooltipLabel: 'edit'
     },
     {
