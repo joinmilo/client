@@ -50,7 +50,7 @@
         <mat-label appLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
           <mat-option [value]="category.id" *ngFor="let category of categories | async">
-            <p>{{category | translatable: "name" | async}}</p>
+            <span>{{category | translatable: "name" | async}}</span>
           </mat-option>
         </mat-select>
       </mat-form-field>

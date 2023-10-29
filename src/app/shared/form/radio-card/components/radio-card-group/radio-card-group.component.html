@@ -1,7 +1,5 @@
-<section>
-  <app-radio-card *ngFor="let input of inputs"
-    [input]="input"
-    [value]="value"
-    (valueChanged)="next($event)">
-  </app-radio-card>
-</section>
+<app-radio-card *ngFor="let input of inputs"
+  [input]="input"
+  [value]="value"
+  (valueChanged)="next($event)">
+</app-radio-card>

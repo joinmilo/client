@@ -89,7 +89,7 @@
         <mat-select formControlName="categoryId">
           <mat-option [value]="category.id"
             *ngFor="let category of categories | async">
-            <p>{{category | translatable: "name" | async}}</p>
+              {{category | translatable: "name" | async}}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -111,10 +111,11 @@
       <mat-label appLabel="organisation"></mat-label>
       <mat-select formControlName="organisation">
         <mat-option [value]="null" selected
-          appLabel="NoOrganisation"></mat-option>
+          appLabel="NoOrganisation">
+        </mat-option>
         <mat-option [value]="organisation"
           *ngFor="let organisation of userOrganisations | async">
-          <p>{{ organisation.name }}</p>
+            {{ organisation.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>

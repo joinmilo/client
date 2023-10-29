@@ -48,7 +48,7 @@ export class AdminMenuComponent {
         ? this.authService.hasAnyPrivileges(child.privileges)
         : true)
       }
-    )).filter(route => !!route.childs?.length)
+    ))
   }
 
 }

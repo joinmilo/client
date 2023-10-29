@@ -2,51 +2,28 @@
 
 :host {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   gap: 1rem;
+  width: 100%;
 
-  button, a {
-    align-self: flex-end;
-
-    fa-icon {
-      color: var(--color-primary-contrast-500);
-      margin-right: .5rem;
-    }
-  }
-
-  section {
-    display: flex;
-    gap: 1rem;
-    max-width: 100%;
-
-    @include responsive(dashboard) {
-      flex-direction: column;
-    }
-
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-
-      @include responsive(dashboard) {
-        max-width: unset;
-      }
-
-      section {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
+  @include responsive(tablet) {
+    flex-flow: column;
   }
 }
 
-.media-container {
-  min-width: 31rem;
+div {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+}
 
-  @include responsive(phone) {
-    min-width: 100%;
-  }
+div:nth-child(1) {
+  flex: 1 0 calc(33% - 1rem);
+  min-width: 32rem;
+}
+
+div:nth-child(2) {
+  flex: 2 1 calc(33% - 1rem);
 }
 
 p {

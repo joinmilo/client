@@ -8,12 +8,6 @@ import { slug } from 'src/app/core/constants/queryparam.constants';
 import { OrganisationAdminDetailsLayoutComponent } from './details/modules/layout/components/organisation-admin-details-layout.component';
 
 const menuRoutes: AdminFeatureRoute[] = [
-  // {
-  //   path: `${organisationsFeatureKey}/dashboard`,
-  //   loadChildren: () => import('src/app/features/organisation/portal/details/portal-organisation-details.module')
-  //     .then((imported) => imported.PortalOrganisationDetailsModule),
-  //   data: { label: 'dashboard' },
-  // },
   {
     path: `${organisationsFeatureKey}`,
     loadChildren: () => import('src/app/features/organisation/admin/overview/organisation-admin-overview.module')

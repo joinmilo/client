@@ -5,7 +5,7 @@
       <mat-select formControlName="contactOption">
         <mat-option [value]="contactOption"
           *ngFor="let contactOption of contactOptions">
-          <p [appLabel]="contactOption"></p>
+          <span [appLabel]="contactOption"></span>
         </mat-option>
       </mat-select>
     </mat-form-field>

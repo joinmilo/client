@@ -41,12 +41,12 @@ export class EventAdminDetailsLandingComponent implements OnInit, OnDestroy {
     });
   }
 
-  toggleShowMore() {
+  public toggleShowMore(): void {
     this.contentParagraph?.nativeElement.classList.toggle('expanded');
     this.expanded = !this.expanded;
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

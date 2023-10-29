@@ -1,7 +1,7 @@
 <app-page-title [title]="survey | translatable: 'name' | async">
 </app-page-title>
 
-<button mat-flat-button color="primary">
+<button mat-flat-button color="primary" [routerLink]="['form']">
   <fa-icon size="1x" [icon]="['fas', 'pen-to-square']"></fa-icon>
   <span appLabel="editSurvey"></span>
 </button>

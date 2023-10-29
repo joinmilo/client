@@ -178,18 +178,18 @@ figure {
   }
 }
 
-.mat-mdc-option {
-  span {
-    p {
-      margin: 0;
-    }
-  }
+::-webkit-scrollbar {
+  height: .25em;
+  width: .25em;
 }
 
-.dashboard-right-column {
-  min-width: max-content;
-  
-  @include responsive(phone) {
-    min-width: 15rem;
-  }
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(90deg, var(--color-dark-gray), var(--color-gray));
+  border-radius: 100vw;
 }

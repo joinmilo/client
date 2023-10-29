@@ -28,10 +28,4 @@
       @content;
     }
   }
-
-  @if $breakpoint == dashboard {
-    @media (max-width: 1428px) {
-      @content;
-    }
-  }
 }
