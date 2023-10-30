@@ -52,8 +52,20 @@ const menuRoutes: AdminSettingsRoute[] = [
 
 const routes: Routes = [
   {
+    path: `${baseRoute}/overview/form`,
+    loadChildren: () => import('./page-form/admin-settings-page-form.module')
+      .then((imported) => imported.AdminSettingsPageFormModule),
+    canActivate: [requireAnyPrivilege('cms_admin')]
+  },
+  {
+    path: `${baseRoute}/:${slug}/form`,
+    loadChildren: () => import('./page-form/admin-settings-page-form.module')
+      .then((imported) => imported.AdminSettingsPageFormModule),
+    canActivate: [requireAnyPrivilege('cms_admin')]
+  },
+  {
     path: `${baseRoute}/:${slug}`,
-    loadChildren: () => import('src/app/admin/modules/settings/page/details/admin-settings-page-details.module')
+    loadChildren: () => import('./details/admin-settings-page-details.module')
       .then((imported) => imported.AdminSettingsPageDetailsModule),
     component: AdminSettingsPageDetailsLayoutComponent,
     canActivate: [requireAnyPrivilege('cms_admin')]

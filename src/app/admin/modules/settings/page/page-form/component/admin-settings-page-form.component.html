@@ -1,74 +1,60 @@
-<app-page-title titleLabel="PageEdit"></app-page-title>
+<app-page-title 
+  [titleLabel]="contentForm.value.id ? 'editPage' : 'createNewPage'">
+</app-page-title>
 
-<form [formGroup]="form">
-  <mat-accordion>
-
-  <mat-expansion-panel expanded>
-    <mat-expansion-panel-header>
-      <mat-panel-title appLabel="content"></mat-panel-title>
-      <mat-panel-description
-        appLabel="designYourPage"></mat-panel-description>
-    </mat-expansion-panel-header>
-    <section>
+<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <app-form-step titleLabel="content" [formGroup]="contentForm">
+    <app-row [columns]="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
-        <input matInput id="name" formControlName="name">
+        <input matInput formControlName="name">
       </mat-form-field>
+    </app-row>
 
+    <app-row [columns]="1">
+      <app-ck-editor-form formControlName="content"></app-ck-editor-form>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="shortDescription" [formGroup]="shortDescriptionForm">
+    <app-row [columns]="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="shortDescription"></mat-label>
-        <textarea formControlName="shortDescription" matInput
-          rows="5">
-      </textarea>
+        <textarea matInput formControlName="shortDescription" rows="5">
+        </textarea>
       </mat-form-field>
+    </app-row>
+  </app-form-step>
 
-      <app-ck-editor-form
-        formControlName="content"></app-ck-editor-form>
-    </section>
-  </mat-expansion-panel>
+  <app-form-step titleLabel="titleImage" [formGroup]="titleImageForm">
+    <app-media-form [maxFiles]="1" formControlName="titleImage"></app-media-form>
+  </app-form-step>
 
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title appLabel="informations"></mat-panel-title>
-      <mat-panel-description
-        appLabel="enterYourData"></mat-panel-description>
-    </mat-expansion-panel-header>
-    <section>
-      <div>
-        <mat-slide-toggle color="primary" formControlName="isLanding">
-        </mat-slide-toggle>
-        <span appLabel="isLanding"></span>
-      </div>
+  <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
+    <app-media-form formControlName="uploads"></app-media-form>
+  </app-form-step>
 
+  <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
+
+        <app-row [columns]="2">
+          <mat-form-field appearance="outline">
+            <mat-label appLabel="callText"></mat-label>
+            <input matInput formControlName="callText">
+          </mat-form-field>
+        </app-row>
+            <app-row [columns]="2">
+              <mat-form-field appearance="outline">
+                <mat-label appLabel="callUrl"></mat-label>
+                <input matInput formControlName="callUrl">
+              </mat-form-field>
+            </app-row>
+    <app-row [columns]="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="callText"></mat-label>
-        <input matInput id="callText" formControlName="callText">
+        <mat-label appLabel="metaDescription"></mat-label>
+        <textarea matInput formControlName="metaDescription" rows="5">
+        </textarea>
       </mat-form-field>
+    </app-row>
+  </app-form-step>
 
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="callUrl"></mat-label>
-        <input matInput id="callUrl" formControlName="callUrl">
-      </mat-form-field>
-    </section>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title appLabel="uploads"></mat-panel-title>
-      <mat-panel-description
-        appLabel="uploadPicturesOrFiles"></mat-panel-description>
-    </mat-expansion-panel-header>
-    <section>
-      <app-media-form formControlName="uploads">
-      </app-media-form>
-    </section>
-  </mat-expansion-panel>
-
-  </mat-accordion>
-    <button mat-flat-button
-     color="primary" 
-     (click)="savePage()"
-     [disabled]="form.invalid">
-      <span appLabel="send"></span>
-    </button>
-</form>
+</app-form-stepper>

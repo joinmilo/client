@@ -15,12 +15,15 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CaptchaModule } from 'src/app/shared/form/captcha/captcha.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
+import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
+import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
+import { AdminSettingsPageFormRoutingModule } from './admin-settings-page-form.module-routing.module';
 import { AdminSettingsPageFormComponent } from './component/admin-settings-page-form.component';
 import { adminSettingsPageStateKey } from './constants/admin-settings-page-form.constants';
-import { AdminSettingsPageEffects } from './state/admin-settings-page.effects';
-import { adminSettingsPageReducer } from './state/admin-settings-page.reducer';
+import { AdminSettingsPageEffects } from './state/admin-settings-page-form.effects';
+import { adminSettingsPageReducer } from './state/admin-settings-page-form.reducer';
 
 const components = [
   AdminSettingsPageFormComponent
@@ -43,9 +46,12 @@ const materials = [
 ];
 
 const modules = [
+  AdminSettingsPageFormRoutingModule,
   CoreModule,
   CaptchaModule,
   CkEditorFormComponent,
+  GridLayoutModule,
+  FormStepperModule,
   MediaModule,
   TitleModule,
 ];

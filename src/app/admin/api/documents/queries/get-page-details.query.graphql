@@ -4,8 +4,14 @@ query getPageDetails(
     id
     slug
     isLanding
+    name
+    content
+    shortDescription
+    metaDescription
+
 
     uploads {
+      id
       title
       media {
         ...Media

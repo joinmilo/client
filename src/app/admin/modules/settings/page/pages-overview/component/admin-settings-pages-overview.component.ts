@@ -21,7 +21,7 @@ export class AdminSettingsPagesOverviewComponent {
     {
       icon: 'pen-to-square',
       callback: row =>
-        this.router.navigate([row?.id, 'edit'], { relativeTo: this.activatedRoute }),
+        this.router.navigate(['admin/settings/pages', row?.slug, 'form']),
       tooltipLabel: 'edit'
     },
     {
