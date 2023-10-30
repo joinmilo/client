@@ -81,7 +81,7 @@ export const eventToCard = (entity?: Maybe<EventEntity>): CardElement => ({
   address: entity?.address,
   category: entity?.category,
   creator: entity?.organisation?.name ?? entity?.contact?.name,
-  creatorImage: entity?.organisation?.uploads?.find(upload => upload?.media)?.media || entity?.creator?.uploads?.find(upload => upload?.profilePicture)?.media,
+  creatorImage: entity?.organisation?.uploads?.find(upload => upload?.card)?.media || entity?.creator?.uploads?.find(upload => upload?.profilePicture)?.media,
   date: entity?.schedule?.startDate,
   dateTime: true,
   image: entity?.uploads?.find(upload => upload?.card)?.media,
