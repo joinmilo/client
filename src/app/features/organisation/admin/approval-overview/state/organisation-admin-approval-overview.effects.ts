@@ -30,9 +30,9 @@ export class OrganisationAdminOverviewEffects {
         ...params,
         expression:{
           entity:{
-            path: 'author.id',
+            path: 'approved',
             operator: QueryOperator.Equal,
-            value: null
+            value: "false"
           }
         }
       }

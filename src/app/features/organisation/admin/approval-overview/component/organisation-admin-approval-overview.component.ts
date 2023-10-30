@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 
 import { OrganisationAdminApprovalOverviewActions } from '../state/organisation-admin-approval-overview.actions';
@@ -40,21 +39,18 @@ export class OrganisationAdminApprovalOverviewComponent {
 
   public columns: Column<OrganisationEntity>[] = [
     {
-      field: 'translatables.name',
-      label: 'title',
-      value: row => this.translationService.translatable(row.translatables, 'name')
+      field: 'name',
+      label: 'name',
+      sort: true,
     },
     {
-      field: 'publicAuthor.name',
-      label: 'author',
+      field: 'contact.name',
+      label: 'contact',
     },
     {
-      field: 'publicAuthor.phone',
-      label: 'phone',
-    },
-    {
-      field: 'publicAuthor.email',
+      field: 'contact.email',
       label: 'email',
+      sort: true,
     },
     {
       field: 'created',
@@ -74,7 +70,6 @@ export class OrganisationAdminApprovalOverviewComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private store: Store,
-    private translationService: TranslationService,
   ) { }
 
   public updateParams(params: FilterSortPaginateInput) {
