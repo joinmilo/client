@@ -1,0 +1,10 @@
+<app-page-title titleLabel="organisationApproval"></app-page-title>
+
+<app-table
+  [data]="organisation"
+  [actions]="actions"
+  [entity]="'OrganisationEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)"
+  (rowClicked)="rowClicked($event)">
+</app-table>

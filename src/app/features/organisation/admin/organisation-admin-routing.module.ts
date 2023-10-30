@@ -5,6 +5,7 @@ import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { AdminFeatureRoute } from 'src/app/admin/typings/menu';
 import { organisationsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { requireAnyPrivilege } from 'src/app/core/utils/privilege.utils';
 import { OrganisationAdminDetailsLayoutComponent } from './details/modules/layout/components/organisation-admin-details-layout.component';
 
 const menuRoutes: AdminFeatureRoute[] = [
@@ -15,6 +16,16 @@ const menuRoutes: AdminFeatureRoute[] = [
     data: {
       label: 'overview',
     },
+  },
+  {
+    path: `${organisationsFeatureKey}/category`,
+    loadChildren: () => import('src/app/features/organisation/admin/approval-overview/organisation-admin-approval-overview.module')
+      .then((imported) => imported.OrganisationAdminApprovalOverviewModule),
+    data: { 
+      label: 'newOrganisations',
+      privileges: ['organisations_admin'],
+    },
+    canActivate: [requireAnyPrivilege('organisations_admin')]
   },
 ];
 
