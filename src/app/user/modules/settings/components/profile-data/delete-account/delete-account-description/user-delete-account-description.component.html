@@ -1,22 +1,19 @@
 <div class="main">
   <app-page-title titleLabel="settings"></app-page-title>
-
+  <app-user-settings-menu-mobile class="sticky-container"></app-user-settings-menu-mobile>
   <div class="settings">
     <app-user-settings-menu></app-user-settings-menu>
-
     <div class="border-box">
       <h2 class="mat-headline-6" appLabel="deleteAccount"></h2>
       <div>
         <p appLabel="deleteAccountText1"></p>
       </div>
-    
       <form [formGroup]="form">
         <mat-form-field appearance="outline">
           <mat-label appLabel="reasonsTextarea"></mat-label>
           <textarea formControlName="description" matInput rows="5"></textarea>
         </mat-form-field>
       </form>
-    
       <button mat-flat-button color="primary" appLabel="continue" [routerLink]="['../delete-account-confirmation']" (click)="onSubmit()"></button>
     </div>
     <app-user-settings-menu-mobile class="sticky-container"></app-user-settings-menu-mobile>
