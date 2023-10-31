@@ -2,6 +2,7 @@ fragment OrganisationDetails on OrganisationEntity {
   id
   name
   slug
+  commentsAllowed
 
   address {
     ...Address

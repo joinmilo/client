@@ -2,6 +2,7 @@ query getArticleDetails($entity: ArticleEntityInput) {
   getArticle(entity: $entity) {
     id
     approved
+    commentsAllowed
     created
     modified
     slug

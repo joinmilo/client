@@ -5,6 +5,7 @@ query getEventForm($entity: EventEntityInput) {
    hasSchedules
    slug
    videoChatLink
+   commentsAllowed
    modified
    name
    shortDescription

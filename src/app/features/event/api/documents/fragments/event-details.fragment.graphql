@@ -1,6 +1,7 @@
 fragment EventDetails on EventEntity {
   id
   entryFee
+  commentsAllowed
   hasSchedules
   slug
   modified

@@ -53,6 +53,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
   public additionalInfoForm = this.fb.group({
     categoryId: [undefined as Maybe<string>],
+    commentsAllowed: [undefined as Maybe<boolean>],
     entryFee: [undefined as Maybe<number>],
     metaDescription: [undefined as Maybe<string>],
   });
@@ -132,6 +133,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       });
 
       this.additionalInfoForm.patchValue({
+        commentsAllowed: event?.commentsAllowed,
         categoryId: event?.category?.id,
         entryFee: event?.entryFee,
         metaDescription: event?.metaDescription,
@@ -188,6 +190,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         : null,
       entryFee: this.additionalInfoForm.value.entryFee,
       metaDescription: this.additionalInfoForm.value.metaDescription,
+      commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
 
       attendeeConfiguration: {
         approval: this.attendeeConfigForm.value.approval ?? false,

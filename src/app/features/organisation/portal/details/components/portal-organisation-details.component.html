@@ -34,7 +34,7 @@
     <app-portal-organisation-details-rating>
     </app-portal-organisation-details-rating>
 
-    <app-portal-organisation-details-comment>
+    <app-portal-organisation-details-comment *ngIf="organisation?.commentsAllowed">
     </app-portal-organisation-details-comment>
 
     <div class="map-area" #map>
@@ -43,5 +43,4 @@
       </app-map>
     </div>
   </section>
-
 </div>
