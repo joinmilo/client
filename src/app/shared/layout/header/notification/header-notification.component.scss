@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-flow: column wrap;
-  width: 25rem;
+  // width: 25rem;
 }
 
 .padding {
@@ -12,22 +12,37 @@
   margin-left: auto;
 }
 
-section {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+// section {
+//   padding-top: .5rem;
+//   padding-bottom: .5rem;
 
-  .entry {
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-    gap: .5rem;
+//   .entry {
+//     display: flex;
+//     flex-flow: column;
+//     width: 100%;
+//     gap: .5rem;
 
-    small {
-      align-self: flex-end;
-    }
-  }
-}
+//     small {
+//       align-self: flex-end;
+//     }
+//   }
+// }
 
 .center {
   margin: auto;
+}
+
+section {
+  display: flex;
+  align-items: center;
+
+  span {
+    font-style: italic;
+    color: var(--color-dark-gray)
+  }
+}
+
+img {
+  padding: 1rem;
+  width: 6rem;
 }

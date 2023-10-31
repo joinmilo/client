@@ -17,12 +17,12 @@ export class ReportAdminTypesComponent {
   public reports = this.store.select(selectTypesData);
 
   public actions: RowAction<ReportTypeEntity>[] = [    
-    {
-      icon: 'pen-to-square',
-      callback: row =>
-        this.router.navigate([row?.id, 'edit'], { relativeTo: this.activatedRoute }),
-      tooltipLabel: 'edit'
-    },
+    // {
+    //   icon: 'pen-to-square',
+    //   callback: row =>
+    //     this.router.navigate([row?.id, 'edit'], { relativeTo: this.activatedRoute }),
+    //   tooltipLabel: 'edit'
+    // },
     {
       icon: 'trash',
       callback: type =>

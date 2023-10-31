@@ -21,7 +21,7 @@ import { UserSettingsActions } from '../../../state/user-settings.actions';
 })
 export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
 
-  
+
   public userForm = this.fb.group({
     firstName: [undefined as Maybe<string>, [Validators.required]],
     lastName: [undefined as Maybe<string>, [Validators.required]],
@@ -74,6 +74,9 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
           phone: currentUser?.user?.phone,
         });
 
+        console.log('Profile Picture Form:', this.ProfilePictureForm.value);
+console.log('Title Image Form:', this.titleImageForm.value);
+
         this.ProfilePictureForm.patchValue({
           profilePicture: currentUser?.uploads?.filter(upload =>
             upload?.profilePicture).map(upload => upload?.media) as MediaEntity[],
@@ -100,6 +103,9 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
   }
 
   public saved(): void {
+
+    console.log('Profile Picture Form:', this.ProfilePictureForm.value);
+console.log('Title Image Form:', this.titleImageForm.value);
     this.store.dispatch(
       UserSettingsActions.savePersonalData({
         id: this.user?.id,

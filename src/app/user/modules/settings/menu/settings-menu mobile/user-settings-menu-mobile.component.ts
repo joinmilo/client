@@ -9,6 +9,12 @@ import { userUrl } from 'src/app/core/constants/module.constants';
 })
 export class UserSettingsMenuMobileComponent {
 
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
   public route(route?: string): void {
     this.router.navigate([userUrl, 'settings', route])  
   }
@@ -16,9 +22,4 @@ export class UserSettingsMenuMobileComponent {
   constructor(
     private router: Router
   ){}
-
-
-
 }
-
-

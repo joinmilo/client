@@ -55,4 +55,7 @@ export class HeaderNotificationComponent implements OnInit, OnDestroy {
     this.destroy.next();
     this.destroy.complete();
   }
+
+  public images = { path: 'assets/under_construction.svg' }
+  
 }

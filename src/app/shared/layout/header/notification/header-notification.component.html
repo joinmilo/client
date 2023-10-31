@@ -10,8 +10,12 @@
 <mat-menu #userNotification="matMenu">
   <div class="container">
     <strong class="padding" appLabel="notifications"></strong>
-    <mat-divider></mat-divider>
-    <!-- TODO: Save Notifications -->
+    <section>
+      <span class="padding" appLabel="comingSoon"></span>
+      <img [src]="images.path">
+    </section>
+    <!-- <mat-divider></mat-divider>
+    TODO: Save Notifications
     <button mat-button class="padding align-end">
       <small appLabel="markAsRead"></small>
     </button>
@@ -30,6 +34,6 @@
     </section>
     <mat-divider></mat-divider>
     <a class="padding" [routerLink]="['/', portalUrl, 'notifications']"
-      appLabel="allNotifications" suffix="»"></a>
+      appLabel="allNotifications" suffix="»"></a> -->
   </div>
 </mat-menu>

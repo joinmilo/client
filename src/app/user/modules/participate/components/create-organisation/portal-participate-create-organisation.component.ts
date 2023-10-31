@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { PortalParticipateActions } from '../../state/portal-participate.actions';
 
 
@@ -25,10 +25,7 @@ export class PortalParticipateCreateOrganisationComponent {
   });
 
   public addressForm = this.fb.group({
-    street: ['' as Maybe<string>, [Validators.required]],
-    houseNumber: ['' as Maybe<string>, [Validators.required]],
-    place: ['' as Maybe<string>, [Validators.required]],
-    postalCode: ['' as Maybe<string>, [Validators.required]],
+    address: [undefined as Maybe<AddressEntity>, [Validators.required]],
   });
 
   public titleImageForm = this.fb.group({
@@ -62,12 +59,7 @@ export class PortalParticipateCreateOrganisationComponent {
       website: this.contactForm.value.website,
       preferredContact: false
     },
-    address: {
-      street: this.addressForm.value.street,
-      houseNumber: this.addressForm.value.houseNumber,
-      place: this.addressForm.value.place,
-      postalCode: this.addressForm.value.postalCode,
-    },
+    address: this.addressForm.value.address,
     slug: this.descriptionForm.value.name,
     approved: false,
     sponsored: false,

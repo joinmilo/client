@@ -15,6 +15,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
 
+import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
@@ -64,6 +65,7 @@ const modules = [
   SuccessComponent,
   FormStepperModule,
   GridLayoutModule,
+  AddressFormModule
 ];
 
 const libs = [

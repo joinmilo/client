@@ -29,13 +29,18 @@ section {
   }
 
   div {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 0 2.5%;
-    cursor: pointer;
+       
+    label {
+      display: flex;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+      cursor: pointer;
+      gap: 1rem;
+      align-items: center;
+      padding: 0 2.5%;
+    }
+      
 
     span {
       overflow: hidden;

@@ -14,10 +14,10 @@
       <form [formGroup]="form">
         <app-password-field formControlName="password"></app-password-field>
       </form>
-
+      
       <button mat-flat-button [disabled]="form.invalid" color="primary" appLabel="deleteAccount" 
       (click)="onSubmit()"></button>
+      <!-- <app-user-settings-menu-mobile class="sticky-container"></app-user-settings-menu-mobile> -->
     </div>
   </div>
-  <app-user-settings-menu-mobile class="sticky-container"></app-user-settings-menu-mobile>
 </div>

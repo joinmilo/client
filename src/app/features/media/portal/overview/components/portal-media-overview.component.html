@@ -5,7 +5,7 @@
     (paramsUpdated)="updateParams($event)">
   </app-media-filter>
 
-  <ng-container *ngIf="(infoMedia | async); else emptyResult">
+  <ng-container *ngIf="(infoMedia | async)?.total; else emptyResult">
     <app-portal-media-overview-category>
     </app-portal-media-overview-category>
   </ng-container>

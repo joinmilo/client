@@ -23,9 +23,9 @@
     <section>
       <span class="details-headline">{{event | translatable: 'name' | async}}</span>
 
-      <p class="details-content"
+      <!-- <p class="details-content"
         [innerHtml]="event | translatable: 'shortDescription' | async">
-      </p>
+      </p> -->
 
       <app-portal-event-details-summary
         (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">

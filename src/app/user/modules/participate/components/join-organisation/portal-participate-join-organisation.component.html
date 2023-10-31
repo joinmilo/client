@@ -19,12 +19,14 @@
 
   <div class="scroll">
     <div *ngFor="let organisation of joinableOrganisations">
-    <img  *ngIf="organisation.uploads && organisation.uploads.length > 0" class="border-image" 
-    [src]="(organisation.uploads | filter: { card: true })[0].media.url">
-    <span>{{organisation?.name}}</span>
-    <mat-checkbox [checked]="selectedOrganisations.includes(organisation)"
-      (change)="toggleSelectedOrganisation(organisation, $event.checked)">
-    </mat-checkbox>
+      <label>
+        <img  *ngIf="organisation.uploads && organisation.uploads.length > 0" class="border-image" 
+        [src]="(organisation.uploads | filter: { card: true })[0].media.url">
+        <span>{{organisation?.name}}</span>
+        <mat-checkbox [checked]="selectedOrganisations.includes(organisation)"
+          (change)="toggleSelectedOrganisation(organisation, $event.checked)">
+        </mat-checkbox>
+      </label>
     </div>
   </div>
 

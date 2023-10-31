@@ -19,15 +19,16 @@
           <button mat-button appLabel="pushNotifications"></button>
         </section>
       </mat-expansion-panel> -->
-      <mat-expansion-panel (click)="$event.stopPropagation()">
+      <!-- <mat-expansion-panel (click)="$event.stopPropagation()">
         <mat-expansion-panel-header>
           <span>
             <fa-icon [icon]="['fas', 'lock']"></fa-icon>
             <mat-panel-title appLabel="dataProtection"></mat-panel-title>
           </span>
         </mat-expansion-panel-header>
-      </mat-expansion-panel>
-      <mat-expansion-panel (click)="$event.stopPropagation()">
+      </mat-expansion-panel> -->
+      <mat-expansion-panel (click)="$event.stopPropagation()"
+      [expanded]="step === 0" (opened)="setStep(0)" routerLinkActive="active">
         <mat-expansion-panel-header>
           <span>
             <fa-icon [icon]="['fas', 'user']"></fa-icon>
@@ -35,9 +36,15 @@
           </span>
         </mat-expansion-panel-header>
         <section>
-          <button mat-button appLabel="personalData" (click)="route('personal-data')"></button>
-          <button mat-button appLabel="changePassword" (click)="route('change-password')"></button>
-          <button mat-button appLabel="deleteAccount" (click)="route('delete-account-reason')"></button>
+          <button mat-button appLabel="personalData" [routerLink]="['/user/settings/personal-data'] || ['/user/settings']"
+            routerLinkActive="menu-active">
+          </button>
+          <button mat-button appLabel="changePassword" [routerLink]="['/user/settings/change-password']"
+            routerLinkActive="menu-active">
+          </button>
+          <button mat-button appLabel="deleteAccount" [routerLink]="['/user/settings/delete-account-reason']"
+            routerLinkActive="menu-active">
+          </button>
         </section>
       </mat-expansion-panel>
     </mat-accordion>
