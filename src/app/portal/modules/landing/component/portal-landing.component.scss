@@ -52,7 +52,6 @@ header {
   white-space: nowrap;
   max-width: 35vw;
   height: fit-content;
-  margin-bottom: 1rem;
 
   @include responsive(phone) {
     max-width: 90vw;

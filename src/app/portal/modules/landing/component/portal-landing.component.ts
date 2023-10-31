@@ -5,7 +5,6 @@ import { Maybe, MediaEntity, PageEntity } from 'src/app/core/api/generated/schem
 import { PortalLandingActions } from '../state/portal-landing.actions';
 import { selectLandingPage } from '../state/portal-landing.selectors';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-portal-landing',
@@ -44,14 +43,14 @@ export class PortalLandingComponent implements OnInit, OnDestroy {
   
   private resize2fit(title: Maybe<string>): void {
     const container = document.querySelector<HTMLElement>("#container");
-    if (!container) return;
+    if (!container || !title) return;
     container.children[0].textContent = title ?? null;
     container.style.setProperty('font-size', "1em");
     const {width, height} = container.children[0].getBoundingClientRect();
     const {width: max_width, height: max_height} = container.getBoundingClientRect();
     const fontSize = Math.min(max_width/width, max_height/height);
     container.style.setProperty('font-size', fontSize + "em");
-    container.style.setProperty('line-height', fontSize * 1.5 + "em");
+    container.style.setProperty('line-height', 9 * fontSize + "rem");
   }
 
   ngOnDestroy(): void {
