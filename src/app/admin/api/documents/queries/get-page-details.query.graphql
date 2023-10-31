@@ -8,7 +8,8 @@ query getPageDetails(
     content
     shortDescription
     metaDescription
-
+    callText
+    callUrl
 
     uploads {
       id
