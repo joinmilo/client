@@ -2,7 +2,11 @@
   <img [src]="media?.url" alt="hero-section">
   <section>
     <div>
-      <div class="title title-gradient">{{page | translatable: "name" | async}}</div>
+      <div id="wrapper">
+      <div id="container">
+        <span id="text">{{page | translatable: "name" | async}}</span>
+      </div>
+    </div>
       <p>{{page | translatable: "shortDescription" | async}}</p>
       <button mat-raised-button color="primary" *ngIf="page?.callUrl" [routerLink]="page?.callUrl">
         {{page | translatable: "callText" | async}}
@@ -11,7 +15,6 @@
   </section>
 </header>
 <div class="main">
-  <app-portal-page-embeddings *ngIf="page?.embeddings?.length"
-    [embeddings]="page?.embeddings">
+  <app-portal-page-embeddings *ngIf="page?.embeddings?.length" [embeddings]="page?.embeddings">
   </app-portal-page-embeddings>
 </div>

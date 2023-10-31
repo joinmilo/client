@@ -2,25 +2,38 @@
 
 header {
   display: flex;
-  flex-flow: row-reverse wrap;
   align-items: stretch;
+  justify-content: space-around;
   min-height: 80vh;
-  padding-bottom: var(--gap);
+  padding-bottom: 1rem;
+  flex-flow: row-reverse;
+
+  @include responsive(phone) {
+    flex-flow: row-reverse wrap;
+  }
 
   img {
-    flex: 2 1 25rem;
     position: relative;
     clip-path: polygon(0 0, 100% 0%, 100% 95%, 0 100%);
     object-fit: cover;
+    width: 50%;
+
+    @include responsive(phone) {
+      width: 100%;
+    }
   }
 
   section {
     display: flex;
     align-self: center;
     justify-content: center;
-    flex: 2 1 10rem;
-    padding: 5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    width: 45%;
 
+    @include responsive(phone) {
+      width: 100%;
+    }
     button {
       color: var(--color-primary-contrast-700);
       background-color: var(--color-primary-700);
@@ -29,4 +42,23 @@ header {
   }
 }
 
+#wrapper {
+  font-size: 6rem;
+}
 
+#container {
+  font-size: 1em;
+  font-weight: 600;
+  height: 6rem;
+  white-space: nowrap;
+  max-width: 35vw;
+
+  @include responsive(phone) {
+    max-width: 90vw;
+    height: 4rem;
+  }
+}
+
+#text {
+  display: inline-block;
+}
