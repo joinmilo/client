@@ -49,13 +49,13 @@ header {
 #container {
   font-size: 1em;
   font-weight: 600;
-  height: 6rem;
   white-space: nowrap;
   max-width: 35vw;
+  height: fit-content;
+  margin-bottom: 1rem;
 
   @include responsive(phone) {
     max-width: 90vw;
-    height: 4rem;
   }
 }
 

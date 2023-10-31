@@ -51,7 +51,7 @@ export class PortalLandingComponent implements OnInit, OnDestroy {
     const {width: max_width, height: max_height} = container.getBoundingClientRect();
     const fontSize = Math.min(max_width/width, max_height/height);
     container.style.setProperty('font-size', fontSize + "em");
-    container.style.setProperty('letter-spacing', fontSize * 0.5 + "rem");
+    container.style.setProperty('line-height', fontSize * 1.5 + "em");
   }
 
   ngOnDestroy(): void {
