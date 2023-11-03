@@ -1,5 +1,4 @@
-<app-page-title 
-  [titleLabel]="descriptionForm.value.id ? 'editOrganisation' : 'createNewOrganisation'">
+<app-page-title [titleLabel]="descriptionForm.value.id ? 'editOrganisation' : 'createNewOrganisation'">
 </app-page-title>
 
 <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
@@ -57,6 +56,16 @@
 
   <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm" descriptionLabel="uploadPicturesOrFiles">
     <app-media-form formControlName="uploads"></app-media-form>
+  </app-form-step>
+
+  <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
+    <app-row [columns]="1">
+      <div>
+        <span appLabel="commentsAllowed"></span>
+        <mat-slide-toggle color="primary" formControlName="commentsAllowed">
+        </mat-slide-toggle>
+      </div>
+    </app-row>
   </app-form-step>
 
 </app-form-stepper>

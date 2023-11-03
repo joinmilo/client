@@ -40,6 +40,7 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
   public additionalInfoForm = this.fb.group({
     categoryId: [undefined as Maybe<string>],
     metaDescription: ['' as Maybe<string>],
+    commentsAllowed: [undefined as Maybe<boolean>],
   });
 
   public categories = this.store.select(selectArticleCategories);
@@ -65,7 +66,6 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy)
     ).subscribe(article => {
       
-
       this.contentForm.patchValue({
         id: article?.id,
         name: article?.name,
@@ -93,6 +93,7 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       this.additionalInfoForm.patchValue({
         categoryId: article?.category?.id,
         metaDescription: article?.metaDescription,
+        commentsAllowed: article?.commentsAllowed
       });
     });
   }
@@ -111,6 +112,7 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
         ? { id: this.additionalInfoForm.value.categoryId }
         : null,
       metaDescription: this.additionalInfoForm.value.metaDescription,
+      commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({
         id: this.article?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
         media: media,

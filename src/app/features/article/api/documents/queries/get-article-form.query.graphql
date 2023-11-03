@@ -10,6 +10,7 @@ query getArticleForm($entity: ArticleEntityInput) {
     name
     metaDescription
     sponsored
+    commentsAllowed
 
     category {
       ...ArticleCategory

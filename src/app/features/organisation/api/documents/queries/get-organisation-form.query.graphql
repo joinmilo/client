@@ -1,6 +1,7 @@
 query getOrganisationForm($entity: OrganisationEntityInput) {
   getOrganisation(entity: $entity) {
     id
+    commentsAllowed
     address {
       ...Address
     }

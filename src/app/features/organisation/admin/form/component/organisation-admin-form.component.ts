@@ -44,6 +44,10 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
     uploads: [[] as MediaEntity[]],
   });  
 
+  public additionalInfoForm = this.fb.group({
+    commentsAllowed: [undefined as Maybe<boolean>],
+  });
+
   private destroy = new Subject<void>();  
   private organisation?: Maybe<OrganisationEntity>;
   
@@ -94,6 +98,10 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
         uploads: organisation?.uploads?.filter(upload => !upload?.title && !upload?.card)
           .map(upload => upload?.media) as MediaEntity[]
       });
+
+      this.additionalInfoForm.patchValue({
+        commentsAllowed: organisation?.commentsAllowed
+      })
     });
   }  
 
@@ -103,6 +111,7 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
 
   public saved(): void {
     this.store.dispatch(OrganisationAdminFormActions.save({
+    id: this.organisation?.id,
     name: this.descriptionForm.value.name,
     description: this.descriptionForm.value.description,
     contact: {
@@ -115,6 +124,8 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
     
     slug: this.descriptionForm.value.name,
     approved: false,
+    commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
+
     uploads: (this.uploadsForm.value.uploads || []).map(media => ({
         id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
         media: media,

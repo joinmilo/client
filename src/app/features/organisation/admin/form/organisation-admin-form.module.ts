@@ -20,6 +20,7 @@ import { organisationAdminFormStateKey } from './constants/organisation-admin-fo
 import { OrganisationAdminFormRoutingModule } from './organisation-admin-form-routing.module';
 import { OrganisationAdminFormEffects } from './state/organisation-admin-form.effects';
 import { organisationAdminFormReducer } from './state/organisation-admin-form.reducer';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const components = [
   OrganisationAdminFormComponent
@@ -46,7 +47,8 @@ const modules = [
   GridLayoutModule,
   MediaModule,
   CkEditorFormComponent,
-  AddressFormModule
+  AddressFormModule,
+  MatSlideToggleModule
 ];
 
 const libs = [
