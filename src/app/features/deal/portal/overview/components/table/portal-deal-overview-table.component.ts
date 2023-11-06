@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { DealEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
+import { DealEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowDefaultAction, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
 import { PortalDealOverviewActions } from '../../state/portal-deal-overview.actions';
 import { selectOverviewData } from '../../state/portal-deal-overview.selectors';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-portal-deal-overview-table',
@@ -52,13 +53,19 @@ export class PortalDealOverviewTableComponent {
       type: 'CATEGORY',
     },
   ];
-  
-  constructor(
-    private store: Store,
-    private translationService: TranslationService,
-  ) { }
 
+  public rowClicked(deal: Maybe<DealEntity>): void {
+    this.router.navigate([deal?.slug], { relativeTo: this.activatedRoute })
+  }
+  
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalDealOverviewActions.updateParams(params));
   }
+
+  constructor(
+    private store: Store,
+    private translationService: TranslationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 }

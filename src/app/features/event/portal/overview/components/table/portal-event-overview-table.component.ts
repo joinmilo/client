@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { EventEntity } from 'src/app/core/api/generated/schema';
+import { EventEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowDefaultAction, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
 import { selectOverviewData } from '../../state/portal-event-overview.selectors';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-portal-event-overview-table',
@@ -43,9 +44,15 @@ export class PortalEventOverviewTableComponent {
       type: 'CATEGORY',
     },
   ];
+
+  public rowClicked(event: Maybe<EventEntity>): void {
+    this.router.navigate([event?.slug], { relativeTo: this.activatedRoute })
+  }
   
   constructor(
     private store: Store,
     private translationService: TranslationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 }

@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { OrganisationEntity } from 'src/app/core/api/generated/schema';
+import { EventEntity, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { Column, RowDefaultAction, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
 import { selectOverviewData } from '../../state/portal-organisation-overview.selectors';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-portal-organisation-overview-table',
@@ -19,6 +20,12 @@ export class PortalOrganisationOverviewTableComponent {
   public actions: RowDefaultAction[] = [
     'LIKE', 'SHARE'
   ];
+  
+  constructor(
+    private store: Store,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   public columns: Column<OrganisationEntity>[] = [
     {
@@ -42,8 +49,8 @@ export class PortalOrganisationOverviewTableComponent {
       type: 'ADDRESS'
     },
   ];
-  
-  constructor(
-    private store: Store,
-  ) { }
+
+  public rowClicked(organisation: Maybe<OrganisationEntity>): void {
+    this.router.navigate([organisation?.slug], { relativeTo: this.activatedRoute })
+  }
 }

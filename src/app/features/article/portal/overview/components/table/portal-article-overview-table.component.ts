@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ArticleEntity } from 'src/app/core/api/generated/schema';
+import { ArticleEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowDefaultAction, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
 import { selectOverviewData } from '../../state/portal-article-overview.selectors';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-portal-article-overview-table',
@@ -44,9 +45,15 @@ export class PortalArticleOverviewTableComponent {
       type: 'CATEGORY',
     },
   ];
+
+  public rowClicked(article: Maybe<ArticleEntity>): void {
+    this.router.navigate([article?.slug], { relativeTo: this.activatedRoute })
+  }
   
   constructor(
     private store: Store,
     private translationService: TranslationService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 }

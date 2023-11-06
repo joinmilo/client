@@ -35,6 +35,8 @@ export class CaptchaSubmitComponent implements OnDestroy {
   ) { }
 
   public submit(): void {
+    window.scrollTo(0,0);
+    
     this.dialog.open(CaptchaDialogComponent, {
       panelClass: 'media-dialog'
     }).afterClosed()

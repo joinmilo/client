@@ -16,4 +16,9 @@
   .mat-mdc-table > thead {
     background-color: var(--color-light) !important;
   }
+
+  .mat-mdc-table .mat-mdc-row:hover{
+    background-color: var(--color-lightest);
+  }
 }
+

@@ -3,5 +3,6 @@
   [actions]="actions"
   [entity]="'DealEntity'"
   [columns]="columns"
-  (sortPaginate)="sortPaginate.emit($event)">
+  (sortPaginate)="sortPaginate.emit($event)"
+  (rowClicked)="rowClicked($event)">
 </app-table>

@@ -4,9 +4,11 @@
     [actions]="actions"
     [entity]="'EventEntity'"
     [columns]="columns"
-    (sortPaginate)="sortPaginate.emit($event)">
+    (sortPaginate)="sortPaginate.emit($event)"
+    (rowClicked)="rowClicked($event)">
   </app-table>
 </ng-container>
 <ng-template #emptyResult>
   <app-portal-event-overview-empty></app-portal-event-overview-empty>
 </ng-template>
+

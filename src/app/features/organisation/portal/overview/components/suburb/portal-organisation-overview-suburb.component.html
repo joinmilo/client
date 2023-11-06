@@ -1,6 +1,6 @@
 <div>
   <app-card-slider *ngFor="let suburb of suburbs | async"
-    entity="EventEntity"
+    entity="OrganisationEntity"
     [data]="suburb.organisations"
     [cardType]="cardType"
     [title]="suburb.name">
