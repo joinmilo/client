@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { SurveyFilterModule } from 'src/app/shared/filter/survey/survey-filter.module';
+import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
@@ -38,6 +39,7 @@ const modules = [
   SurveyFilterModule,
   TableModule,
   TitleModule,
+  NoDataComponent
 ];
 
 const libs = [

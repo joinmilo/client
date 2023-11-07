@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs';
-import { ArticleEntity, PageableList_ArticleEntity, QueryOperator } from 'src/app/core/api/generated/schema';
+import { ArticleEntity, FilterSortPaginateInput, PageableList_ArticleEntity, QueryExpressionInput, QueryOperator } from 'src/app/core/api/generated/schema';
 import { GetArticleCardGQL } from 'src/app/shared/widgets/card/api/generated/get-article-card.query.generated';
 import { GetArticleCardsGQL } from 'src/app/shared/widgets/card/api/generated/get-article-cards.query.generated';
 import { PortalArticleOverviewActions } from './portal-article-overview.actions';
@@ -20,13 +20,12 @@ export class PortalArticleOverviewEffects {
     }).valueChanges),
     map(response => PortalArticleOverviewActions.setSponsoredArticle(response.data.getArticle as ArticleEntity))
   ));
-
+  
   updateParams = createEffect(() => this.actions.pipe(
     ofType(PortalArticleOverviewActions.updateParams),
     withLatestFrom(this.store.select(selectParams)),
-    switchMap(([, params]) => this.getArticlesService.watch({
-      params: {
-        ...params,
+    map(([,params]) => {
+      const articles = ({
         expression: {
           conjunction: {
             operands: [
@@ -40,8 +39,13 @@ export class PortalArticleOverviewEffects {
             ]
           }
         }
-      }
-    }).valueChanges),
+      } as FilterSortPaginateInput)
+
+      articles?.expression?.conjunction?.operands?.push(params.expression as QueryExpressionInput)
+
+      return articles;
+    }),
+    switchMap((params) => this.getArticlesService.watch({ params }).valueChanges),
     map(response => PortalArticleOverviewActions.setOverviewData(response.data.getArticles as PageableList_ArticleEntity))
   ));
 

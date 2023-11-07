@@ -1,0 +1,21 @@
+@import 'src/styles/mixins.scss';
+
+:host {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+img {
+  width: 35vw;
+  @include responsive(phone) {
+    display: none;
+  }
+}

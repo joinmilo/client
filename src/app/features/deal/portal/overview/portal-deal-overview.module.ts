@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
+import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
@@ -49,6 +50,7 @@ const modules = [
   RadioButtonFormModule,
   TableModule,
   TitleModule,
+  NoDataComponent
 ];
 
 const libs = [
