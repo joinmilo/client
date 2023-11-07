@@ -97,6 +97,18 @@
 
     <app-row [columns]="2">
       <mat-form-field appearance="outline">
+        <mat-label appLabel="targetGroup"></mat-label>
+        <mat-select formControlName="targetGroups" multiple>
+          <mat-option [value]="targetGroup.id"
+            *ngFor="let targetGroup of targetGroups | async">
+              {{targetGroup | translatable: "name" | async}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-row>    
+
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
         <mat-label appLabel="metaDescription"></mat-label>
         <textarea matInput formControlName="metaDescription" rows="5">
           </textarea>

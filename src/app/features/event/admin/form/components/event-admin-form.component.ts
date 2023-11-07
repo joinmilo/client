@@ -8,7 +8,7 @@ import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
 import { AppValidators } from 'src/app/core/validators/validators';
 import { EventAdminFormActions } from '../state/event-admin-form.actions';
-import { selectCategories, selectEvent, selectOrganisations } from '../state/event-admin-form.selectors';
+import { selectCategories, selectEvent, selectOrganisations, selectTargetGroups } from '../state/event-admin-form.selectors';
 
 
 @Component({
@@ -31,7 +31,8 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   public locationForm = this.fb.group({
     videoChatLink: [undefined as Maybe<string>],
     address: [undefined as Maybe<AddressEntity>],
-  }, {
+  }, 
+  {
     validators: [AppValidators.either('videoChatLink', 'address')]
   });
 
@@ -53,6 +54,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
   public additionalInfoForm = this.fb.group({
     categoryId: [undefined as Maybe<string>],
+    targetGroups: this.fb.control(null as Maybe<string[]>),
     commentsAllowed: [undefined as Maybe<boolean>],
     entryFee: [undefined as Maybe<number>],
     metaDescription: [undefined as Maybe<string>],
@@ -64,11 +66,14 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public attendeeConfigForm = this.fb.group({
+    id: [undefined as Maybe<string>],
     approval: [undefined as Maybe<boolean>],
     maxAttendees: [undefined as Maybe<number>]
   });
 
   public categories = this.store.select(selectCategories);
+
+  public targetGroups = this.store.select(selectTargetGroups);
 
   public userOrganisations = this.store.select(selectOrganisations);
 
@@ -101,6 +106,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       });
 
     this.store.dispatch(EventAdminFormActions.getCategories());
+    this.store.dispatch(EventAdminFormActions.getTargetGroups());
     this.activatedRoute.params.pipe(
       filter(params => !!params[slug]),
       tap(params => this.store.dispatch(EventAdminFormActions.getEvent(params[slug]))),
@@ -137,6 +143,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         categoryId: event?.category?.id,
         entryFee: event?.entryFee,
         metaDescription: event?.metaDescription,
+        targetGroups: event?.targetGroups?.map(targetGroup => targetGroup?.id as string) as string[],
       });
 
       this.titleImageForm.patchValue({
@@ -159,6 +166,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       });
 
       this.attendeeConfigForm.patchValue({
+        id: event?.attendeeConfiguration?.id,
         approval: event?.attendeeConfiguration?.approval,
         maxAttendees: event?.attendeeConfiguration?.maxAttendees
       });
@@ -191,8 +199,12 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       entryFee: this.additionalInfoForm.value.entryFee,
       metaDescription: this.additionalInfoForm.value.metaDescription,
       commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
+      targetGroups: this.additionalInfoForm.value.targetGroups?.map(id => ({
+        id
+      })),
 
       attendeeConfiguration: {
+        id: this.attendeeConfigForm.value.id,
         approval: this.attendeeConfigForm.value.approval ?? false,
         maxAttendees: this.attendeeConfigForm.value.maxAttendees
       },
@@ -201,8 +213,15 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         ? { id: this.contactAndOrganisationForm.value.organisation?.id }
         : null,
 
-      contact: this.contactAndOrganisationForm.value.contact?.id != null
-        ? { id: this.contactAndOrganisationForm.value.contact?.id }
+      contact: this.contactAndOrganisationForm.value.contact
+        ? { 
+          id: this.contactAndOrganisationForm.value.contact?.id,
+          name: this.contactAndOrganisationForm.value.contact.name,
+          email: this.contactAndOrganisationForm.value.contact.email,
+          phone: this.contactAndOrganisationForm.value.contact.phone,
+          website: this.contactAndOrganisationForm.value.contact.website,
+          preferredContact: this.contactAndOrganisationForm.value.contact.preferredContact ?? true
+         }
         : null,
 
       uploads: (this.uploadsForm.value.uploads || []).map(media => ({

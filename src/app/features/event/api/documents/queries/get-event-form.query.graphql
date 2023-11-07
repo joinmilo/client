@@ -16,7 +16,12 @@ query getEventForm($entity: EventEntityInput) {
     ...Address
   }
 
+  targetGroups{
+    ...TargetGroups
+  }
+
   attendeeConfiguration {
+    id
     approval
     maxAttendees  
   }

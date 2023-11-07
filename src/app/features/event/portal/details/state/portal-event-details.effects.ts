@@ -191,7 +191,7 @@ export class PortalEventDetailsEffects {
         userContext: {
           id: currentUser?.id
         },
-        approved: false
+        approved: configuration?.approval ? false : true
       }
     })),
     map(response => PortalEventDetailsActions.attendeeSaved(response.data?.saveEventAttendee))

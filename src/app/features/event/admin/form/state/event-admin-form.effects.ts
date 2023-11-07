@@ -3,17 +3,18 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, tap, withLatestFrom } from 'rxjs';
-import { EventCategoryEntity, EventEntity, OrganisationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
+import { EventCategoryEntity, EventEntity, EventTargetGroupEntity, OrganisationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetEventCategoriesGQL } from 'src/app/shared/filter/event/api/generated/get-event-categories.query.generated';
+import { EventAdminFormActions } from './event-admin-form.actions';
 import { GetEventFormGQL } from '../../../api/generated/get-event-form.query.generated';
 import { GetUserOrganisationsGQL } from '../../../api/generated/get-organisations.query.generated';
 import { SaveEventGQL } from '../../../api/generated/save-event.mutation.generated';
-import { EventAdminFormActions } from './event-admin-form.actions';
+import { GetEventTargetGroupsGQL } from '../../../api/generated/get-event-target-groups.query.generated';
 
 @Injectable()
 export class EventAdminFormEffects {
@@ -30,6 +31,13 @@ export class EventAdminFormEffects {
     ofType(EventAdminFormActions.getCategories),
     switchMap(() => this.getCategoriesService.watch().valueChanges),
     map(response => EventAdminFormActions.setCategories(response.data.getEventCategories?.result as EventCategoryEntity[]))
+  ));
+
+
+  getTargetGroups = createEffect(() => this.actions.pipe(
+    ofType(EventAdminFormActions.getTargetGroups),
+    switchMap(() => this.getEventTargetGroupsService.watch().valueChanges),
+    map(response => EventAdminFormActions.setTargetGroups(response.data.getEventTargetGroups?.result as EventTargetGroupEntity[]))
   ));
 
   getOrganisations = createEffect(() => this.actions.pipe(
@@ -80,6 +88,7 @@ export class EventAdminFormEffects {
     private getOrganisationsService: GetUserOrganisationsGQL,
     private store: Store,
     private router: Router,
-    private saveEventService: SaveEventGQL
+    private saveEventService: SaveEventGQL,
+    private getEventTargetGroupsService: GetEventTargetGroupsGQL
   ) {}
 }

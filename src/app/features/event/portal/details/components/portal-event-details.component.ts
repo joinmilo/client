@@ -57,7 +57,6 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
         ?.map(eventMedia => eventMedia?.media)
         ?.slice(0, 10) as MediaEntity[];
     });
-
   }
 
   ngOnDestroy(): void {

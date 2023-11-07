@@ -20,7 +20,7 @@ export class AdminSettingsRoleFormComponent implements OnInit, OnDestroy {
     name: ['' as Maybe<string>, [Validators.required]],
     privileges: this.fb.control(null as Maybe<string[]>, [Validators.required]),
     users: this.fb.control(null as Maybe<string[]>),
-  })
+  });
 
   public privileges = this.store.select(selectPrivileges);
   public users = this.store.select(selectUsers);
