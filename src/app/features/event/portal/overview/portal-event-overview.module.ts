@@ -15,7 +15,6 @@ import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalEventOverviewCalendarComponent } from './components/calendar/portal-event-overview-calendar.component';
 import { PortalEventOverviewCategoryComponent } from './components/category/portal-event-overview-category.component';
-import { PortalEventOverviewEmptyComponent } from './components/empty/portal-event-overview-empty.component';
 import { PortalEventOverviewMapComponent } from './components/map/portal-event-overview-map.component';
 import { PortalEventOverviewComponent } from './components/portal-event-overview.component';
 import { PortalEventOverviewTableComponent } from './components/table/portal-event-overview-table.component';
@@ -28,7 +27,6 @@ const components = [
   PortalEventOverviewComponent,
   PortalEventOverviewCalendarComponent,
   PortalEventOverviewCategoryComponent,
-  PortalEventOverviewEmptyComponent,
   PortalEventOverviewMapComponent,
   PortalEventOverviewTableComponent,
 ];

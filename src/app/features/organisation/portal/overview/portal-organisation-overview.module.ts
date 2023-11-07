@@ -17,7 +17,6 @@ import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalOrganisationOverviewCardComponent } from './components/card/portal-organisation-overview-card.component';
-import { PortalOrganisationOverviewEmptyComponent } from './components/empty/portal-organisation-overview-empty.component';
 import { PortalOrganisationOverviewMapComponent } from './components/map/portal-organisation-overview-map.component';
 import { PortalOrganisationOverviewComponent } from './components/portal-organisation-overview.component';
 import { PortalOrganisationOverviewSuburbComponent } from './components/suburb/portal-organisation-overview-suburb.component';
@@ -30,7 +29,6 @@ import { portalOrganisationOverviewReducer } from './state/portal-organisation-o
 const components = [
   PortalOrganisationOverviewComponent,
   PortalOrganisationOverviewCardComponent,
-  PortalOrganisationOverviewEmptyComponent,
   PortalOrganisationOverviewMapComponent,
   PortalOrganisationOverviewTableComponent,
   PortalOrganisationOverviewSuburbComponent,

@@ -10,7 +10,6 @@ import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaModule } from 'src/app/shared/media/media.module';
 import { PortalMediaOverviewCategoryComponent } from './components/category/portal-media-overview-category.component';
-import { PortalMediaOverviewEmptyComponent } from './components/empty/portal-media-overview-empty.component';
 import { PortalMediaOverviewComponent } from './components/portal-media-overview.component';
 import { portalMediaOverviewStateKey } from './constants/portal-media-overview.constants';
 import { PortalMediaOverviewRoutingModule } from './portal-media-overview-routing.module';
@@ -20,7 +19,6 @@ import { portalMediaOverviewReducer } from './state/portal-media-overview.reduce
 const components = [
   PortalMediaOverviewComponent,
   PortalMediaOverviewCategoryComponent,
-  PortalMediaOverviewEmptyComponent
 ]
 
 const framework = [

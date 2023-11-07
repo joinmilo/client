@@ -12,7 +12,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { PortalContestOverviewActiveComponent } from './components/active/portal-contest-overview-active.component';
 import { PortalContestOverviewCompletedComponent } from './components/completed/portal-contest-overview-completed.component';
-import { PortalContestOverviewEmptyComponent } from './components/empty/portal-contest-overview-empty.component';
 import { PortalContestOverviewComponent } from './components/portal-contest-overview.component';
 import { PortalContestOverviewVoteableComponent } from './components/voteable/portal-contest-overview-voteable.component';
 import { portalContestOverviewStateKey } from './constants/portal-contest-overview.constants';
@@ -24,7 +23,6 @@ const components = [
   PortalContestOverviewComponent,
   PortalContestOverviewActiveComponent,
   PortalContestOverviewCompletedComponent,
-  PortalContestOverviewEmptyComponent,
   PortalContestOverviewVoteableComponent,
 ]
 
