@@ -15,10 +15,11 @@ mat-card-header {
   button {
     position: absolute;
     right: 1rem;
-    top: 1rem;
+    top: .75rem;
     background-color: white;
     min-width: 2.5rem !important;
     border-radius: 50%;
+    z-index: 2;
   }
 
   .image-wrapper {
