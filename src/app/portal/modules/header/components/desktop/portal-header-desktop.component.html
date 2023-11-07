@@ -10,12 +10,12 @@
 
     <ng-container *ngIf="!currentUser?.id">
       <div *ngIf="(isSearching | async) === false" [@fadeIn]>
-        <button mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'register']">
+        <a mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'register']">
           <span appLabel="register"></span>
-        </button>
-        <button mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'login']">
+        </a>
+        <a mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'login']">
             <span appLabel="login"></span>
-        </button>
+        </a>
       </div>
     </ng-container>
 

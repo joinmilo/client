@@ -8,9 +8,9 @@
       </div>
     </div>
       <p>{{page | translatable: "shortDescription" | async}}</p>
-      <button mat-raised-button color="primary" *ngIf="page?.callUrl" [routerLink]="page?.callUrl">
+      <a mat-raised-button color="primary" *ngIf="page?.callUrl" [routerLink]="page?.callUrl">
         {{page | translatable: "callText" | async}}
-      </button>
+      </a>
     </div>
   </section>
 </header>

@@ -5,7 +5,7 @@
       : poi?.translatables | translatable: poi?.titleTranslatableField | async
   }}
 </h3>
-<app-address-piece *ngIf="poi?.address" [address]="poi?.address"
+<app-address-piece class="a-piece" *ngIf="poi?.address" [address]="poi?.address"
   (addressClicked)="openGoogleMaps($event)">
 </app-address-piece>
 

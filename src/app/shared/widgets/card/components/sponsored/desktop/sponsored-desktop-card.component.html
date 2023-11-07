@@ -1,7 +1,9 @@
-<mat-card [routerLink]="element?.url">
-  <app-category-piece *ngIf="element?.category"
-    [category]="element?.category">
-  </app-category-piece>
+<mat-card>
+  <a [routerLink]="element?.url">
+    <app-category-piece *ngIf="element?.category"
+      [category]="element?.category">
+    </app-category-piece>
+  </a>
 
   <app-card-actions
     [actions]="actions"
@@ -11,11 +13,14 @@
   </app-card-actions>
 
   <figure>
+    <a [routerLink]="element?.url">
     <img [src]="element?.image ? element?.image?.url : '/assets/placeholder.webp'"
       alt="content-card"
       [appAttribution]="element?.image?.attribution">
+    </a>
   </figure>
   <mat-card-content>
+    <a [routerLink]="element?.url">
     <header>
       <h1>
         {{
@@ -38,5 +43,6 @@
       <img *ngIf="element?.creatorImage" class="border-image" alt="content-card" [src]="element?.creatorImage?.url">
       <span>{{element?.creator}}</span>
     </section>
+    </a>
   </mat-card-content>
 </mat-card>

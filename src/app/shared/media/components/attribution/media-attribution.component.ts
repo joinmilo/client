@@ -35,7 +35,7 @@ export class MediaAttributionComponent implements OnInit {
         return 'bottom: 3px; left: 3px';
       case 'BOTTOM-RIGHT':
       default:
-        return 'bottom: 1px; right: 1px;';
+        return 'bottom: 4px; right: 4px;';
     }
   }
 

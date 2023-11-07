@@ -10,4 +10,8 @@ section {
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
+
+  a {
+    color: var(--color-accent-900);
+  }
 }

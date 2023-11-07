@@ -15,7 +15,7 @@ section {
 }
 
 span{
-  color: black;
+  color: var(--color-black);
 }
 
 ::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface{

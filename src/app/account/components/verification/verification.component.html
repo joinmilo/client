@@ -28,7 +28,7 @@
         <span appLabel="sendNewMail"></span>
     </button>
     <small *ngIf="(verified | async) === false">
-      <a [routerLink]="['/account/login']" appLabel="backToLogin"></a>
+      <a class="a-button" [routerLink]="['/account/login']" appLabel="backToLogin"></a>
     </small>
   </section>
 </div>

@@ -4,17 +4,17 @@
     <app-portal-event-details-calendar>
     </app-portal-event-details-calendar>
 
-    <app-address-piece *ngIf="event?.address"
+    <app-address-piece class="a-piece" *ngIf="event?.address"
       [address]="event?.address"
       [link]="event?.videoChatLink"
       (addressClicked)="onAddressClicked()">
     </app-address-piece>
 
-    <app-mail-piece *ngIf="event?.contact?.email"
+    <app-mail-piece class="a-piece" *ngIf="event?.contact?.email"
       [mail]="event?.contact?.email">
     </app-mail-piece>
 
-    <app-phone-piece *ngIf="event?.contact?.phone"
+    <app-phone-piece class="a-piece" *ngIf="event?.contact?.phone"
       [phone]="event?.contact?.phone">
     </app-phone-piece>
   </section>

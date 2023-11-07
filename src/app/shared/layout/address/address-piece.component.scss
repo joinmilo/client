@@ -11,13 +11,9 @@ fa-icon {
 }
 
 a {
-  color: black;
+  color: var(--color-black);
 }
 
 address {
   width: max-content;
-}
-
-address:hover {
-  text-decoration: underline;
 }

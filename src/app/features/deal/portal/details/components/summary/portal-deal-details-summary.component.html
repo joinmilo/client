@@ -1,15 +1,15 @@
 <div>
   <section>      
-    <app-address-piece *ngIf="deal?.address"
+    <app-address-piece class="a-piece" *ngIf="deal?.address"
       [address]="deal?.address"
       (addressClicked)="onAddressClicked()">
     </app-address-piece>
 
-    <app-mail-piece *ngIf="deal?.contact?.email"
+    <app-mail-piece class="a-piece" *ngIf="deal?.contact?.email"
       [mail]="deal?.contact?.email">
     </app-mail-piece>
 
-    <app-phone-piece *ngIf="deal?.contact?.phone"
+    <app-phone-piece class="a-piece" *ngIf="deal?.contact?.phone"
       [phone]="deal?.contact?.phone">
     </app-phone-piece>
   </section>

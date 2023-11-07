@@ -2,6 +2,10 @@
   max-width: 100% !important;
 }
 
+a {
+  color: var(--color-black);
+}
+
 mat-card {
   cursor: pointer;
   user-select: none;
@@ -24,7 +28,7 @@ mat-card-header {
 
   img {
     object-fit: cover;
-    width: 100%;
+    width: 18rem;
     height: 100%;
   }
 

@@ -76,6 +76,24 @@ body {
       overflow-wrap: break-word;
       hyphens: auto;
     }
+
+  a {
+    cursor: pointer;
+    text-decoration: under;
+    color: var(--color-link);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active {
+      color: var(--color-link-active);
+    }
+
+    &:visited {
+      color: var(--color-link-visited);
+    }
+  }
 }
 
 .details-headline {
@@ -128,6 +146,19 @@ button {
 }
 
 a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.a-piece {
+  cursor: pointer;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.a-button {
   cursor: pointer;
   text-decoration: none;
   color: var(--color-accent-900);
