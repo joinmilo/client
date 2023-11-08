@@ -10,7 +10,6 @@ import { AppValidators } from 'src/app/core/validators/validators';
 import { EventAdminFormActions } from '../state/event-admin-form.actions';
 import { selectCategories, selectEvent, selectOrganisations, selectTargetGroups } from '../state/event-admin-form.selectors';
 
-
 @Component({
   selector: 'app-event-admin-form',
   templateUrl: './event-admin-form.component.html',
@@ -75,7 +74,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
   public targetGroups = this.store.select(selectTargetGroups);
 
-  public userOrganisations = this.store.select(selectOrganisations);
+  public organisations = this.store.select(selectOrganisations);
 
   public currentUser?: Maybe<UserContextEntity>;
 
@@ -107,6 +106,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(EventAdminFormActions.getCategories());
     this.store.dispatch(EventAdminFormActions.getTargetGroups());
+    this.store.dispatch(EventAdminFormActions.getOrganisations());
     this.activatedRoute.params.pipe(
       filter(params => !!params[slug]),
       tap(params => this.store.dispatch(EventAdminFormActions.getEvent(params[slug]))),
@@ -209,7 +209,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         maxAttendees: this.attendeeConfigForm.value.maxAttendees
       },
 
-      organisation: this.contactAndOrganisationForm.value.organisation?.id != null
+      organisation: this.contactAndOrganisationForm.value.organisation?.id
         ? { id: this.contactAndOrganisationForm.value.organisation?.id }
         : null,
 

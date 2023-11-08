@@ -20,7 +20,12 @@ export const selectTargetGroups = createSelector(
   state => state.targetGroups
 );
 
-export const selectOrganisations = createSelector(
+export const selectUserOrganisations = createSelector(
   selectEventAdminFormState,
   state => state.userOrganisations
+);
+
+export const selectOrganisations = createSelector(
+  selectEventAdminFormState,
+  state => state.organisations
 );

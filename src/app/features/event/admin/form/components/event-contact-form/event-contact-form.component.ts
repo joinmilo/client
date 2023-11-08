@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { ContactEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { selectCategories, selectOrganisations } from '../../state/event-admin-form.selectors';
+import { selectCategories, selectUserOrganisations } from '../../state/event-admin-form.selectors';
 
 @Component({
   selector: 'app-event-contact-form',
@@ -51,7 +51,7 @@ export class EventContactFormComponent implements ControlValueAccessor,OnInit, O
 
   public categories = this.store.select(selectCategories);
 
-  public userOrganisations = this.store.select(selectOrganisations);
+  public userOrganisations = this.store.select(selectUserOrganisations);
 
   public currentUser?: Maybe<UserContextEntity>;
 

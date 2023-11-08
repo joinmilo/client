@@ -118,7 +118,7 @@
 
   <app-form-step titleLabel="contactAndOrganisation"
     [formGroup]="contactAndOrganisationForm">
-  <app-row [columns]="2" *ngIf="(userOrganisations | async)?.length">
+  <app-row [columns]="2" *ngIf="(organisations | async)?.length">
     <mat-form-field appearance="outline">
       <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
       <mat-select formControlName="organisation">
@@ -126,7 +126,7 @@
           appLabel="NoOrganisation">
         </mat-option>
         <mat-option [value]="organisation"
-          *ngFor="let organisation of userOrganisations | async">
+          *ngFor="let organisation of organisations | async">
             {{ organisation.name }}
         </mat-option>
       </mat-select>

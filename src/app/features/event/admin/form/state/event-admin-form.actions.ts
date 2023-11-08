@@ -10,6 +10,9 @@ export const EventAdminFormActions = createActionGroup({
     'get categories': emptyProps(),
     'set categories': (categories: Maybe<EventCategoryEntity[]>) => ({ categories }),
 
+    'get organisations': emptyProps(),
+    'set organisations': (organisations: Maybe<OrganisationEntity[]>) => ({ organisations }),
+
     'get targetGroups': emptyProps(),
     'set targetGroups': (targetGroups: Maybe<EventTargetGroupEntity[]>) => ({ targetGroups }),
 

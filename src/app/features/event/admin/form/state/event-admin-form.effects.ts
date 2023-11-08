@@ -41,6 +41,12 @@ export class EventAdminFormEffects {
   ));
 
   getOrganisations = createEffect(() => this.actions.pipe(
+    ofType(EventAdminFormActions.getTargetGroups),
+    switchMap(() => this.getOrganisationsService.watch().valueChanges),
+    map(response => EventAdminFormActions.setOrganisations(response.data.getOrganisations?.result as OrganisationEntity[]))
+  ));
+
+  getUserOrganisations = createEffect(() => this.actions.pipe(
     ofType(EventAdminFormActions.getCategories),
     withLatestFrom(this.store.select(selectCurrentUser)),
     switchMap(([, user]) => this.getOrganisationsService.watch(
