@@ -171,22 +171,22 @@ export class CoreUserEffects {
     map(() => CoreUserActions.updateUser()),
   ));
 
-  saveLanguageChange = createEffect(() =>
-  this.actions.pipe(
+  saveLanguageChange = createEffect(() => this.actions.pipe(
     ofType(CoreActions.changeLanguage),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    switchMap(([action, userContext]) => {
-      if (!userContext) {
-        return EMPTY; 
-      }
-      return this.saveUserContextService.mutate({
-        entity: {
-          id: userContext?.id,
-          user: { id: userContext?.user?.id, language: action.language }
+    filter(([, userContext]) => !!userContext),
+    switchMap(([action, userContext]) => this.saveUserContextService.mutate({
+      entity:
+      {
+        id: userContext?.id,
+        user: {
+          id: userContext?.user?.id,
+          language: action.language
         }
-      }).pipe(map(() => UserSettingsActions.saved()));
-    }))
-);
+      }
+    })),
+    map(() => UserSettingsActions.saved())
+  ));
 
   constructor(
     private actions: Actions,

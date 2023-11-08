@@ -29,18 +29,18 @@ export class UserSettingsEffects {
     map(() => UserSettingsActions.saved())
   ));
 
-  updateUser = createEffect(() => this.actions.pipe(
-    ofType(UserSettingsActions.saved),
-    map(() => CoreUserActions.updateUser())
-  ));
-
-  openFeedback = createEffect(() => this.actions.pipe(
-    ofType(UserSettingsActions.saved),
-    map(() => CoreActions.setFeedback({
-      type: FeedbackType.Success,
-      labelMessage: 'savedSuccessfully'
-    }))
-  ));
+  saved = createEffect(() =>
+    this.actions.pipe(
+      ofType(UserSettingsActions.saved),
+      switchMap(() => [
+        CoreActions.setFeedback({
+          type: FeedbackType.Success,
+          labelMessage: 'savedSuccessfully'
+        }),
+        CoreUserActions.updateUser()
+      ])
+    )
+  );
 
   cancelled = createEffect(() => this.actions.pipe(
     ofType(UserSettingsActions.cancelled),
@@ -72,11 +72,11 @@ export class UserSettingsEffects {
       this.store.select(selectUserDeletionDescription),
       this.store.select(selectUserDeletionTypes),),
     switchMap(([action, description, types]) => this.deleteUserEntityService.mutate({
-     password: action.password,
-     userDeletion: {
-      content: description,
-      types: types
-     }
+      password: action.password,
+      userDeletion: {
+        content: description,
+        types: types
+      }
     })),
     map((response) => UserSettingsActions.userDeleted(response.data?.deleteMe))
   ));
