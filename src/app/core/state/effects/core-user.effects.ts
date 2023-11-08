@@ -25,7 +25,9 @@ import { FeedbackService } from '../../services/feedback.service';
 import { FeedbackType } from '../../typings/feedback';
 import { CoreUserActions } from '../actions/core-user.actions';
 import { CoreActions } from '../actions/core.actions';
-import { selectCookieSettings } from '../selectors/user.selectors';
+import { selectCookieSettings, selectCurrentUser } from '../selectors/user.selectors';
+import { SaveMeGQL } from 'src/app/user/api/generated/save-user-context.mutation.generated';
+import { UserSettingsActions } from 'src/app/user/modules/settings/state/user-settings.actions';
 
 @Injectable()
 export class CoreUserEffects {
@@ -169,6 +171,23 @@ export class CoreUserEffects {
     map(() => CoreUserActions.updateUser()),
   ));
 
+  saveLanguageChange = createEffect(() =>
+  this.actions.pipe(
+    ofType(CoreActions.changeLanguage),
+    withLatestFrom(this.store.select(selectCurrentUser)),
+    switchMap(([action, userContext]) => {
+      if (!userContext) {
+        return EMPTY; 
+      }
+      return this.saveUserContextService.mutate({
+        entity: {
+          id: userContext?.id,
+          user: { id: userContext?.user?.id, language: action.language }
+        }
+      }).pipe(map(() => UserSettingsActions.saved()));
+    }))
+);
+
   constructor(
     private actions: Actions,
     private authService: AuthService,
@@ -186,6 +205,7 @@ export class CoreUserEffects {
     private getMeService: GetMeGQL,
     private router: Router,
     private store: Store,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private saveUserContextService: SaveMeGQL
   ) { }
 }
