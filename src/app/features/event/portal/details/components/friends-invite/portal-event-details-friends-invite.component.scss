@@ -4,18 +4,19 @@ mat-dialog-content {
   gap: 1rem;
   max-width: 100%;
   overflow: hidden;
+  padding-top: .5rem !important;
 }
 
-div {
+label {
   gap: 1rem;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   app-media-avatar {
     min-width: 3rem;
     height: 3rem;
   }
-
 }
 
 mat-checkbox {

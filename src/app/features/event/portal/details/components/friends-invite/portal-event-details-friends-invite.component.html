@@ -12,22 +12,26 @@
     </button>
   </mat-form-field>
   <div>
-    <span>
-      <span appLabel="friends"></span>
-      ({{ filteredFriends.length }})
-    </span>
-    <mat-checkbox [checked]="friends.length === selectedFriends.length"
-      (change)="toggleAllFriends($event.checked)">
-    </mat-checkbox>
+    <label>
+      <span>
+        <span appLabel="friends"></span>
+        ({{ filteredFriends.length }})
+      </span>
+      <mat-checkbox [checked]="friends.length === selectedFriends.length"
+        (change)="toggleAllFriends($event.checked)">
+      </mat-checkbox>
+    </label>
   </div>
 
   <mat-divider></mat-divider>
 
   <div *ngFor="let friend of filteredFriends">
-    <app-media-avatar [user]="friend"></app-media-avatar>
-    <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
-    <mat-checkbox [checked]="selectedFriends.includes(friend)" (change)="toggleSelectedFriend(friend, $event.checked)">
-    </mat-checkbox>
+    <label>
+      <app-media-avatar [user]="friend"></app-media-avatar>
+      <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
+      <mat-checkbox [checked]="selectedFriends.includes(friend)" (change)="toggleSelectedFriend(friend, $event.checked)">
+      </mat-checkbox>
+    </label>
   </div>
 
   <mat-divider></mat-divider>
