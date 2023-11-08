@@ -7,6 +7,7 @@ export interface EventAdminFormState {
   categories?: Maybe<EventCategoryEntity[]>,
   userOrganisations?: Maybe<OrganisationEntity[]>,
   targetGroups?: Maybe<EventTargetGroupEntity[]>,
+  organisations?: Maybe<OrganisationEntity[]>
 }
 
 export const initialState: EventAdminFormState = { };
@@ -24,6 +25,10 @@ export const eventAdminFormReducer = createReducer(
 
   on(EventAdminFormActions.setUserOrganisations, (state, action): EventAdminFormState => (
     { ...state, userOrganisations: action.organisations }
+  )),
+
+  on(EventAdminFormActions.setOrganisations, (state, action): EventAdminFormState => (
+    { ...state, organisations: action.organisations }
   )),
 
   on(EventAdminFormActions.setTargetGroups, (state, action): EventAdminFormState => (
