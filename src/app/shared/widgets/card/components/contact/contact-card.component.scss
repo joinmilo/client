@@ -1,9 +1,11 @@
 a {
   color: var(--color-black);
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 mat-card {
-  padding: 1rem;
   display: flex;
   justify-content: center;
   width: 20rem;
@@ -31,6 +33,7 @@ mat-card {
   }
 
   figure {
+    padding-top: 1rem;
     align-self: center;
     position: relative;
     max-height: 12rem;
@@ -52,5 +55,9 @@ mat-card {
     position: absolute;
     top: 1rem;
     right: .25rem;
+  }
+
+  section {
+    padding-bottom: 1rem;
   }
 }

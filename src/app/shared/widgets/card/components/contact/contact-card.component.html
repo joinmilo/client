@@ -1,15 +1,17 @@
-<a [routerLink]="element?.url">
 <mat-card>
+  <a [routerLink]="element?.url">
   <figure [routerLink]="element?.url">
-<img class="border-image" *ngIf="element?.image" [src]="element?.image?.url">
-<span class="border-image" *ngIf="!element?.image">
-  {{ element?.avatarPlaceholder }}
-</span>
+    <img class="border-image" *ngIf="element?.image" [src]="element?.image?.url">
+    <span class="border-image" *ngIf="!element?.image">
+      {{ element?.avatarPlaceholder }}
+    </span>
   </figure>
-
-  <h1 [routerLink]="element?.url">
-    {{element?.creator ? element?.creator: ''}}
-  </h1>
+  </a>
+  <a [routerLink]="element?.url">
+    <h1 [routerLink]="element?.url">
+      {{element?.creator ? element?.creator: ''}}
+    </h1>
+  </a>
 
   <app-card-actions
     [actions]="actions"
@@ -18,19 +20,19 @@
     (actionClicked)="emit($event)">
   </app-card-actions>
 
-  <section (click)="$event.stopPropagation();">
-    <button mat-button *ngIf="element?.email">
-      <a href="mailto:{{element?.email}}">
-        <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
-      </a>
-    </button>
+  <a [routerLink]="element?.url">
+    <section (click)="$event.stopPropagation();">
+      <button mat-button *ngIf="element?.email">
+        <a href="mailto:{{element?.email}}">
+          <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+        </a>
+      </button>
 
-    <button mat-button *ngIf="element?.phone">
-      <a href="tel:{{element?.phone}}">
-        <fa-icon [icon]="['fas', 'phone']"></fa-icon>
-      </a>
-    </button>
-  </section>
-
+      <button mat-button *ngIf="element?.phone">
+        <a href="tel:{{element?.phone}}">
+          <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+        </a>
+      </button>
+    </section>
+  </a>
 </mat-card>
-</a>
