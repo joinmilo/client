@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -11,7 +10,7 @@ import { AddressPieceComponent } from 'src/app/shared/layout/address/address-pie
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminDetailsLandingComponent } from './components/organisation-admin-details-landing.component';
@@ -30,24 +29,23 @@ const framework = [
 const materials = [
   MatButtonModule,
   MatCardModule,
-  FontAwesomeModule,
-  MediaModule,
-  MatGridListModule,
 ];
 
 const modules = [
+  AddressPieceComponent,
+  CalendarModule,
   CoreModule,
+  MailPieceComponent,
+  MediaWidgetsModule,
+  PhonePieceComponent,
   TableModule,
   TitleModule,
-  CalendarModule,
-  AddressPieceComponent,
-  PhonePieceComponent,
-  MailPieceComponent,
 ];
 
 const libs = [
   StoreModule.forFeature(organisationAdminDetailsLandingStateKey, organisationAdminDetailsLandingReducer),
   EffectsModule.forFeature([OrganisationAdminDetailsLandingEffects]),
+  FontAwesomeModule,
 ];
 
 @NgModule({

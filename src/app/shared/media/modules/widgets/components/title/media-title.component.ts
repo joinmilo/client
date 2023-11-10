@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
-import { MediaService } from '../../services/media.service';
-import { MimeTypeDefinition } from '../../typings/media';
+import { MediaService } from '../../../../services/media.service';
+import { MimeTypeDefinition } from '../../../../typings/media';
 
 @Component({
   selector: 'app-media-title',

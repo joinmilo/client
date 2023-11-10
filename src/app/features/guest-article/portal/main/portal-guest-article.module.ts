@@ -17,7 +17,7 @@ import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-f
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalGuestArticleFormComponent } from './components/form/portal-guest-article-form.component';
 import { PortalGuestArticleSuccessComponent } from './components/success/portal-guest-article-success.component';
 import { portalGuestArticleStateKey } from './constants/portal-guest-article.constants';
@@ -50,11 +50,11 @@ const modules = [
   CoreModule,
   CaptchaModule,
   CkEditorFormComponent,
-  MediaModule,
+  FormStepperModule,
+  GridLayoutModule,
+  MediaWidgetsModule,
   PortalGuestArticleRoutingModule,
   TitleModule,
-  GridLayoutModule,
-  FormStepperModule,
 ];
 
 const libs = [

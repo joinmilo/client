@@ -13,7 +13,7 @@ import { AddressPieceComponent } from 'src/app/shared/layout/address/address-pie
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsPageDetailsLayoutComponent } from './components/admin-settings-page-details-layout.component';
@@ -34,7 +34,6 @@ const materials = [
   MatButtonModule,
   MatCardModule,
   FontAwesomeModule,
-  MediaModule,
   MatGridListModule,
 ];
 
@@ -43,6 +42,7 @@ const modules = [
   CalendarModule,
   CoreModule,
   MailPieceComponent,
+  MediaFormModule,
   PhonePieceComponent,
   RadioCardFormModule,
   TableModule,

@@ -1,26 +1,33 @@
 import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
-import { MediaService } from '../../services/media.service';
+import { MediaService } from 'src/app/shared/media/services/media.service';
 
 @Component({
-  selector: 'app-media-upload',
-  templateUrl: './media-upload.component.html',
-  styleUrls: ['./media-upload.component.scss'],
+  selector: 'app-media-form-upload',
+  templateUrl: './media-form-upload.component.html',
+  styleUrls: ['./media-form-upload.component.scss'],
 })
 export class MediaUploadComponent {
 
-  @Output()
-  public uploads: EventEmitter<MediaEntity[]> = new EventEmitter();
-
   @Input()
   public disabled: Maybe<boolean> = false;
+
+  @Output()
+  public uploads = new EventEmitter<MediaEntity[]>();
+
+  @Output()
+  public back = new EventEmitter<void>();
 
   public isDraggedOver = false;
 
   constructor(
     private mediaService: MediaService
   ) {}
+
+  public onBack(): void {
+    this.back.emit();
+  }
 
   @HostListener('dragover', ['$event'])
   public onDragOver(evt: DragEvent) {

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { selectCookieSettings } from 'src/app/core/state/selectors/user.selectors';
-import { MediaService, } from '../../services/media.service';
+import { MediaService, } from '../../../../services/media.service';
 
 @Component({
   selector: 'app-media-video',

@@ -19,6 +19,7 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
+import { MediaFormModule } from '../../media/modules/form/media-form.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
 import { TableActionsComponent } from './components/actions/table-actions.component';
 import { TableCardComponent } from './components/card/table-card.component';
@@ -92,6 +93,7 @@ const modules = [
   CategoryPieceComponent,
   CoreModule,
   FavoriteComponent,
+  MediaFormModule,
   ShareModule,
 ];
 

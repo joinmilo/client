@@ -16,7 +16,8 @@ import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-f
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { DealAdminFormComponent } from './component/deal-admin-form.component';
 import { dealAdminFormStateKey } from './constants/deal-admin-form.constants';
 import { DealAdminFormRoutingModule } from './deal-admin-form-routing.module';
@@ -43,15 +44,16 @@ const materials = [
 ];
 
 const modules = [
+  AddressFormModule,
+  CkEditorFormComponent,
   CoreModule,
   DealFilterModule,
   DealAdminFormRoutingModule,
-  TitleModule,
   FormStepperModule,
   GridLayoutModule,
-  CkEditorFormComponent,
-  MediaModule,
-  AddressFormModule,
+  MediaFormModule,
+  MediaWidgetsModule,
+  TitleModule,
 ];
 
 const libs = [

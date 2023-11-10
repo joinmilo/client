@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
@@ -34,16 +34,16 @@ const materials = [
 ];
 
 const modules = [
-  CoreModule,
+  CardSliderComponent,
   CardModule,
+  CoreModule,
   FavoriteComponent,
-  MediaModule,
-  RadioButtonFormModule,
+  MediaWidgetsModule,
   PortalAuthorDetailsRoutingModule,
+  RadioButtonFormModule,
   ShareModule,
   TableModule,
   TitleModule,
-  CardSliderComponent,
 ];
 
 const libs = [

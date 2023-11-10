@@ -19,7 +19,8 @@ import { PasswordModule } from 'src/app/shared/form/password/password.module';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { UserLayoutComponent } from './components/layout/user-layout.component';
 import { UserChangePasswordComponent } from './components/profile-data/change-password/user-change-password.component';
@@ -62,24 +63,22 @@ const materials = [
   MatMenuModule,
   MatSelectModule,
   MatOptionModule
-
 ];
 
 const routes = [
   UserSettingsRoutingModule, //TODO: always last entry duet to order and redirect to 404, Remove 404 and put in AppRouter
-]
-
-
+];
 
 const modules = [
+  AddressFormModule,
   CardModule,
   CoreModule,
-  MediaModule,
+  FormStepperModule,
+  GridLayoutModule,
+  MediaFormModule,
+  MediaWidgetsModule,
   PasswordModule,
   TitleModule,
-  FormStepperModule,
-  AddressFormModule,
-  GridLayoutModule
 ];
 
 const libs = [

@@ -1,6 +1,6 @@
 import { Directive, Input, OnChanges, ViewContainerRef } from '@angular/core';
 import { Maybe, MediaAttributionEntity } from 'src/app/core/api/generated/schema';
-import { MediaAttributionComponent } from '../components/attribution/media-attribution.component';
+import { MediaAttributionComponent } from '../modules/widgets/components/attribution/media-attribution.component';
 import { AttributionDirection } from '../typings/media';
 
 @Directive({

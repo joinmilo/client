@@ -19,7 +19,7 @@ import { DatePieceComponent } from 'src/app/shared/layout/date/date-piece.compon
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
@@ -69,9 +69,9 @@ const modules = [
   CommentModule,
   DatePieceComponent,
   FavoriteComponent,
-  MediaModule,
   MailPieceComponent,
   MapModule,
+  MediaWidgetsModule,
   PhonePieceComponent,
   PortalContestDetailsRoutingModule,
   RadioButtonFormModule,

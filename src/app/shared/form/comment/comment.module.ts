@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from '../../../core/core.module';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
-import { MediaModule } from '../../media/media.module';
+import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { CaptchaModule } from '../captcha/captcha.module';
 import { CommentDialogComponent } from './components/dialog/comment-dialog.component';
 import { CommentEntryComponent } from './components/entry/comment-entry.component';
@@ -47,7 +47,7 @@ const materials = [
 const modules = [
   CoreModule,
   DatePieceComponent,
-  MediaModule,
+  MediaWidgetsModule,
   TitleModule,
 ];
 

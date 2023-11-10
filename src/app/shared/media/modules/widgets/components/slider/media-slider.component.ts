@@ -2,8 +2,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
-import { MediaService } from '../../services/media.service';
-import { FileAction, MediaViewerData, MimeTypeDefinition } from '../../typings/media';
+import { MediaService } from '../../../../services/media.service';
+import { FileAction, MediaViewerData, MimeTypeDefinition } from '../../../../typings/media';
 import { MediaViewerComponent } from '../viewer/media-viewer.component';
 
 @Component({

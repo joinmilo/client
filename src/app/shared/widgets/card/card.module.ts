@@ -15,7 +15,7 @@ import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { MailPieceComponent } from '../../layout/mail/mail-piece.component';
 import { PhonePieceComponent } from '../../layout/phone/phone-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
-import { MediaModule } from '../../media/media.module';
+import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { ChartModule } from '../chart/chart.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
 import { ShareModule } from '../share/share.module';
@@ -58,7 +58,7 @@ const modules = [
   DatePieceComponent,
   FavoriteComponent,
   MailPieceComponent,
-  MediaModule,
+  MediaWidgetsModule,
   PhonePieceComponent,
   TitleModule,
   ChartModule

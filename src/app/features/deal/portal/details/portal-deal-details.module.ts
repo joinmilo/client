@@ -21,7 +21,7 @@ import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.compon
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
@@ -71,7 +71,7 @@ const modules = [
   CommentModule,
   FavoriteComponent,
   MailPieceComponent,
-  MediaModule,
+  MediaWidgetsModule,
   RadioButtonFormModule,
   PhonePieceComponent,
   PortalDealDetailsRoutingModule,

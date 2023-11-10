@@ -1,0 +1,27 @@
+<ng-container *ngIf="!mode">
+  <div>
+    <section
+      (click)="mode = 'UPLOAD'"
+      appLabel="uploadFile">
+    </section>
+    
+    <mat-divider></mat-divider>
+    
+    <section
+      (click)="mode = 'URL'"
+      appLabel="includeExternalMedia">
+    </section>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="mode === 'UPLOAD'">
+  <app-media-form-upload
+    (back)="mode = undefined">
+  </app-media-form-upload>
+</ng-container>
+
+<ng-container *ngIf="mode === 'URL'">
+  <!-- <app-media-url
+    (back)="mode = undefined">
+  </app-media-url> -->
+</ng-container>

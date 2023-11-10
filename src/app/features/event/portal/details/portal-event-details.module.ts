@@ -21,7 +21,7 @@ import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.compon
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
@@ -88,7 +88,7 @@ const modules = [
   CardModule,
   FavoriteComponent,
   MailPieceComponent,
-  MediaModule,
+  MediaWidgetsModule,
   PhonePieceComponent,
   PortalEventDetailsRoutingModule,
   PriceComponent,

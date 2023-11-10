@@ -1,8 +1,8 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
-import { MediaService } from '../../services/media.service';
-import { MediaViewerData, MimeTypeDefinition } from '../../typings/media';
+import { MediaService } from '../../../../services/media.service';
+import { MediaViewerData, MimeTypeDefinition } from '../../../../typings/media';
 
 @Component({
   selector: 'app-media-viewer',

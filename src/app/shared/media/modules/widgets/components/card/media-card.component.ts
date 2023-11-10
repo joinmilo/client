@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { mediaDownloadApi } from 'src/app/core/constants/url.constants';
-import { MediaService } from '../../services/media.service';
-import { MimeTypeDefinition } from '../../typings/media';
+import { MediaService } from '../../../../services/media.service';
+import { MimeTypeDefinition } from '../../../../typings/media';
 
 @Component({
   selector: 'app-media-card',

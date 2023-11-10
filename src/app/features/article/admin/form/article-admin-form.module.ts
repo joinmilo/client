@@ -13,7 +13,8 @@ import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-f
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { ArticleAdminFormRoutingModule } from './article-admin-form-routing.module';
 import { ArticleAdminFormComponent } from './components/article-admin-form.component';
 import { articleAdminFormStateKey } from './constants/article-admin-form.constants';
@@ -44,8 +45,8 @@ const modules = [
   FormStepperModule,
   GridLayoutModule,
   CkEditorFormComponent,
-  MediaModule
-
+  MediaFormModule,
+  MediaWidgetsModule,
 ];
 
 const libs = [

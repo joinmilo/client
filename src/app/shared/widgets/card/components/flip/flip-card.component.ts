@@ -14,6 +14,7 @@ export class FlipCardComponent implements OnDestroy{
   flipCard(degrees: number) {
     this.renderer.setStyle(this.cardElement?.nativeElement, 'transform', `rotateY(${degrees}deg)`);
   }
+
   @Output()
   public elementClicked = new EventEmitter<FlipCardOutput>();
 

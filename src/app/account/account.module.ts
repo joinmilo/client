@@ -20,7 +20,8 @@ import { PasswordModule } from '../shared/form/password/password.module';
 import { PrivacyPolicyFormComponent } from '../shared/form/privacy-policy/privacy-policy-form.component';
 import { LoadingComponent } from '../shared/layout/loading/loading.component';
 import { TitleModule } from '../shared/layout/title/title.module';
-import { MediaModule } from '../shared/media/media.module';
+import { MediaFormModule } from '../shared/media/modules/form/media-form.module';
+import { MediaWidgetsModule } from '../shared/media/modules/widgets/media-widgets.module';
 import { UserPortalRoutingModule } from './account-routing.module';
 import { FirstLoginFormComponent } from './components/first-login-form/first-login-form.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
@@ -75,7 +76,8 @@ const modules = [
   TitleModule,
   UserPortalRoutingModule,
   LoadingComponent,
-  MediaModule,
+  MediaFormModule,
+  MediaWidgetsModule,
   AddressFormModule,
 ];
 

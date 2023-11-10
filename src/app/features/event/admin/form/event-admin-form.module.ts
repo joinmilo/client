@@ -17,7 +17,8 @@ import { SchedulerModule } from 'src/app/shared/form/scheduler/scheduler.module'
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { EventAdminFormComponent } from './components/event-admin-form.component';
 import { EventContactFormComponent } from './components/event-contact-form/event-contact-form.component';
 import { eventAdminFormStateKey } from './constants/event-admin-form.constants';
@@ -46,16 +47,17 @@ const materials = [
 ]
 
 const modules = [
+  AddressFormModule,
+  CkEditorFormComponent,
   CoreModule,
   EventAdminFormRoutingModule,
   FormStepperModule,
   GridLayoutModule,
+  IconFormComponent,
+  MediaFormModule,
+  MediaWidgetsModule,
   SchedulerModule,
   TitleModule,
-  IconFormComponent,
-  CkEditorFormComponent,
-  AddressFormModule,
-  MediaModule
 ];
 
 const libs = [

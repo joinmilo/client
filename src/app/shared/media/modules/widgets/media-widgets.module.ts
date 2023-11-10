@@ -9,35 +9,29 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from '../form/radio-button/radio-button-form.module';
-import { TitleModule } from '../layout/title/title.module';
-import { SliderHeaderComponent } from '../widgets/sliders/slider-header/slider-header.component';
-import { SliderComponent } from '../widgets/sliders/slider/slider.component';
+import { RadioButtonFormModule } from '../../../form/radio-button/radio-button-form.module';
+import { TitleModule } from '../../../layout/title/title.module';
+import { SliderHeaderComponent } from '../../../widgets/sliders/slider-header/slider-header.component';
+import { SliderComponent } from '../../../widgets/sliders/slider/slider.component';
+import { MediaAttributionDirective } from '../../directives/media-attribution.directive';
+import { MediaService } from '../../services/media.service';
 import { MediaAttributionComponent } from './components/attribution/media-attribution.component';
 import { MediaAvatarComponent } from './components/avatar/media-avatar.component';
 import { MediaCardComponent } from './components/card/media-card.component';
 import { MediaExternalConsentComponent } from './components/consent/media-external-consent.component';
-import { MediaFormDialogComponent } from './components/form-dialog/media-form-dialog.component';
-import { MediaFormComponent } from './components/form/media-form.component';
 import { MediaGalleryComponent } from './components/gallery/media-gallery.component';
 import { MediaSliderComponent } from './components/slider/media-slider.component';
 import { MediaTitleComponent } from './components/title/media-title.component';
-import { MediaUploadComponent } from './components/upload/media-upload.component';
 import { MediaVideoComponent } from './components/video/media-video.component';
 import { MediaViewerComponent } from './components/viewer/media-viewer.component';
-import { MediaAttributionDirective } from './directives/media-attribution.directive';
-import { MediaService } from './services/media.service';
 
 const components = [
   MediaAvatarComponent,
   MediaAttributionComponent,
   MediaCardComponent,
-  MediaFormComponent,
-  MediaFormDialogComponent,
+  MediaExternalConsentComponent,
   MediaGalleryComponent,
   MediaSliderComponent,
-  MediaExternalConsentComponent,
-  MediaUploadComponent,
   MediaViewerComponent,
   MediaVideoComponent,
   MediaTitleComponent
@@ -97,4 +91,4 @@ const providers = [
     ...providers,
   ]
 })
-export class MediaModule { }
+export class MediaWidgetsModule { }

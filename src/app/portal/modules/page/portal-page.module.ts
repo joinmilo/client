@@ -7,7 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalPageEmbeddingsComponent } from '../page-embeddings/portal-page-embeddings.component';
 import { PortalPageMediaComponent } from './components/media/portal-page-media.component';
 import { PortalPageComponent } from './components/portal-page.component';
@@ -33,7 +33,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaModule,
+  MediaWidgetsModule,
   PortalPageEmbeddingsComponent,
   PortalPageRoutingModule,
   TitleModule,

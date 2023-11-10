@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Maybe, MediaAttributionEntity } from 'src/app/core/api/generated/schema';
-import { AttributionDirection } from '../../typings/media';
+import { AttributionDirection } from '../../../../typings/media';
 
 @Component({
   selector: 'app-media-attribution',

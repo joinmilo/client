@@ -8,7 +8,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { MediaFilterModule } from 'src/app/shared/filter/media/media-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalMediaOverviewCategoryComponent } from './components/category/portal-media-overview-category.component';
 import { PortalMediaOverviewComponent } from './components/portal-media-overview.component';
 import { portalMediaOverviewStateKey } from './constants/portal-media-overview.constants';
@@ -33,10 +33,10 @@ const materials = [
 const modules = [
   CoreModule,
   PortalMediaOverviewRoutingModule,
-  TitleModule,
-  MediaModule,
+  MediaWidgetsModule,
   MediaFilterModule,
-  NoDataComponent
+  NoDataComponent,
+  TitleModule,
 ];
 
 const libs = [

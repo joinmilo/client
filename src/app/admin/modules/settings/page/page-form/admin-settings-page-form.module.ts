@@ -18,7 +18,7 @@ import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-f
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { AdminSettingsPageFormRoutingModule } from './admin-settings-page-form.module-routing.module';
 import { AdminSettingsPageFormComponent } from './component/admin-settings-page-form.component';
 import { adminSettingsPageStateKey } from './constants/admin-settings-page-form.constants';
@@ -52,7 +52,7 @@ const modules = [
   CkEditorFormComponent,
   GridLayoutModule,
   FormStepperModule,
-  MediaModule,
+  MediaFormModule,
   TitleModule,
 ];
 

@@ -9,7 +9,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { MediaFilterModule } from 'src/app/shared/filter/media/media-filter.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaModule } from 'src/app/shared/media/media.module';
+import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { MediaAdminOverviewCategoryComponent } from './components/category/media-admin-overview-category.component';
 import { MediaAdminOverviewEmptyComponent } from './components/empty/media-admin-overview-empty.component';
@@ -23,8 +23,7 @@ import { mediaAdminOverviewReducer } from './state/media-admin-overview.reducer'
 const components = [
   MediaAdminOverviewCategoryComponent,
   MediaAdminOverviewEmptyComponent,
-  MediaAdminOverviewComponent
-
+  MediaAdminOverviewComponent,
 ]
 
 const framework = [
@@ -38,12 +37,12 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaModule,
+  MediaWidgetsModule,
   MediaFilterModule,
   MediaAdminOverviewRoutingModule,
+  RadioButtonFormModule,
   TableModule,
   TitleModule,
-  RadioButtonFormModule
 ];
 
 const libs = [
