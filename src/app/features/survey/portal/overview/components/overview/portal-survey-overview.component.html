@@ -10,18 +10,19 @@
     (paramsUpdated)="updateParams($event)">
   </app-survey-filter>
 
-  <ng-container *ngIf="(surveys | async)?.total; else emptyResult">
+  <ng-container *ngIf="(surveys | async)?.total">
     <app-table-card 
       entity="SurveyEntity" 
       [data]="surveys"
+      noDataLabel="noData"
       [cardType]="cardType" 
       [sortOptions]="sortOptions"
       (sortPaginate)="updateParams($event)">
     </app-table-card>
   </ng-container>
   
-  <ng-template #emptyResult>
+  <!-- <ng-template #emptyResult>
     <app-no-data></app-no-data>
-  </ng-template>
+  </ng-template> -->
 
 </div>

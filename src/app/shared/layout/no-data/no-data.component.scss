@@ -11,10 +11,16 @@ section {
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
+  width: 35vw;
+
+  @include responsive(phone) {
+    width: unset;
+  }
 }
 
 img {
   width: 35vw;
+  height: 45vh;
   @include responsive(phone) {
     display: none;
   }
