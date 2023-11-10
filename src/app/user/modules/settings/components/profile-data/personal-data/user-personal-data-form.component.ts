@@ -12,6 +12,7 @@ import {
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 
+import { AppValidators } from 'src/app/core/validators/validators';
 import { UserSettingsActions } from '../../../state/user-settings.actions';
 
 @Component({
@@ -27,9 +28,9 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
     lastName: [undefined as Maybe<string>, [Validators.required]],
     email: [
       undefined as Maybe<string>,
-      [Validators.required, Validators.email],
+      [Validators.required, AppValidators.email()],
     ],
-    phone: [undefined as Maybe<string>],
+    phone: [undefined as Maybe<string>, [AppValidators.phone()]],
   });
 
   public ProfilePictureForm = this.fb.group({

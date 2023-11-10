@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { ContactEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { selectCategories, selectOrganisations } from '../../state/event-admin-form.selectors';
 
 @Component({
@@ -26,8 +27,8 @@ export class EventContactFormComponent implements ControlValueAccessor,OnInit, O
   public form = this.fb.group({
     contactOption: [null as Maybe<string>],
     name: ['' as Maybe<string>],
-    email: ['' as Maybe<string>],
-    phone: ['' as Maybe<string>],
+    email: ['' as Maybe<string>, [AppValidators.email()]],
+    phone: ['' as Maybe<string>, [AppValidators.phone()]],
     website: ['' as Maybe<string>]
   });
 

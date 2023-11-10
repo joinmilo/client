@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { AccountActions } from '../../state/account.actions';
 import { selectOrganisations } from '../../state/account.selectors';
 
@@ -25,7 +26,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
   public form = this.fb.group({
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    phone: [''],
+    phone: ['', [AppValidators.phone()]],
     content: [''],
     author: [false],
     organisations: [[] as OrganisationEntity[]],
@@ -38,6 +39,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
     private store: Store,
     private fb: FormBuilder,
   ) { }
+ 
 
   public ngOnInit(): void {
     this.store.dispatch(AccountActions.getOrganisations());

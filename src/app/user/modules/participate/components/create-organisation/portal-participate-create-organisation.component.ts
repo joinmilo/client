@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { PortalParticipateActions } from '../../state/portal-participate.actions';
 
 
@@ -18,10 +19,10 @@ export class PortalParticipateCreateOrganisationComponent {
   });
 
   public contactForm = this.fb.group({
-    email: ['' as Maybe<string>, [Validators.required]],
+    email: ['' as Maybe<string>, [Validators.required, AppValidators.email()]],
     name: ['' as Maybe<string>],
     website: ['' as Maybe<string>],
-    phone: ['' as Maybe<string>],
+    phone: ['' as Maybe<string>, [AppValidators.phone()]],
   });
 
   public addressForm = this.fb.group({

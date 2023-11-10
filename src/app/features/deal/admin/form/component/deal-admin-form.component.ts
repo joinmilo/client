@@ -6,6 +6,7 @@ import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AddressEntity, DealEntity, Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { DealAdminFormActions } from '../state/deal-admin-form.actions';
 import { selectCategories, selectDeal } from '../state/deal-portal-form.selectors';
 
@@ -39,8 +40,8 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public contactForm = this.fb.group({
-    email: [undefined as Maybe<string>, [Validators.required]],
-    phone: [undefined as Maybe<string>],
+    email: [undefined as Maybe<string>, [Validators.required, AppValidators.email()]],
+    phone: [undefined as Maybe<string>, [AppValidators.phone()]],
     name: [undefined as Maybe<string>],
     website: [undefined as Maybe<string>],
   });

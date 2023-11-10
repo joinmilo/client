@@ -1,3 +1,5 @@
+@import 'src/styles/mixins.scss';
+
 :host {
   display: flex;
   flex-flow: column;
@@ -17,4 +19,26 @@ section {
   gap: 1rem;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+#noData {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  @include responsive(phone) {
+    flex-direction: column;
+    gap: var(--gap);
+
+    text-align: center;
+  }
+  img {
+    width: 35vw;
+    height: 45vh;
+
+    @include responsive(phone) {
+      height: unset;
+    }
+  }
+
 }

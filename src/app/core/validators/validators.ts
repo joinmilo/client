@@ -7,11 +7,10 @@ import { MediaService } from 'src/app/shared/media/services/media.service';
   providedIn: 'root',
 })
 export class AppValidators {
-
   /**
-   * 
+   *
    * CONTROL VALIDATIONS
-   * 
+   *
    */
 
   public static decimal(): ValidatorFn {
@@ -41,14 +40,44 @@ export class AppValidators {
       if (!pattern.test(control.value)) {
         return { digitsNotMatching: true };
       }
-  
+
+      return null;
+    };
+  }
+
+  public static email(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+      if (!control.value) {
+        return null;
+      }
+
+      if (!pattern.test(control.value)) {
+        return { invalidEmail: true };
+      }
+
+      return null;
+    };
+  }
+
+  public static phone(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const pattern = /^[+]*[0-9]+$/;
+      if (!control.value) {
+        return null;
+      }
+
+      if (!pattern.test(control.value)) {
+        return { numbersOnly: true };
+      }
+
       return null;
     };
   }
 
   public static validUrl(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-  
       if (!MediaService.isValidUrl(control.value)) {
         return { invalidUrl: true };
       }
@@ -58,20 +87,18 @@ export class AppValidators {
   }
 
   /**
-   * 
+   *
    * GROUP VALIDATIONS
-   * 
+   *
    */
   public static allOrNone(...controls: string[]): ValidatorFn {
     return (group: AbstractControl): ValidationErrors | null => {
       const values = controls.map((fieldName) => group?.get(fieldName)?.value);
-  
+
       const allUnset = values.every((value) => value == null || value === '');
       const allSet = values.every((value) => value != null && value !== '');
-  
-      return allUnset || allSet
-        ? null
-        : { allOrNoneFieldsRequired: true };
+
+      return allUnset || allSet ? null : { allOrNoneFieldsRequired: true };
     };
   }
 
@@ -86,8 +113,8 @@ export class AppValidators {
       return !startDate || !endDate
         ? null
         : startDate > endDate
-          ? { startNotBeforeEnd: true }
-          : null;
+        ? { startNotBeforeEnd: true }
+        : null;
     };
   }
 
@@ -99,25 +126,24 @@ export class AppValidators {
     };
   }
 
-  static ifMatchValueOtherFilled(control: string, value: any, otherControl: string): ValidatorFn {
+  static ifMatchValueOtherFilled(
+    control: string,
+    value: any,
+    otherControl: string
+  ): ValidatorFn {
     return (group: AbstractControl): ValidationErrors | null => {
-      return group?.get(control)?.value === value
-        && !group?.get(otherControl)?.value
-          ? { otherNotFilled: true }
-          : null;
+      return group?.get(control)?.value === value &&
+        !group?.get(otherControl)?.value
+        ? { otherNotFilled: true }
+        : null;
     };
   }
 
   public static same(...controls: string[]): ValidatorFn {
     return (group: AbstractControl): ValidationErrors | null => {
-      const values = controls
-        .map((i) => group?.get(i)?.value);
+      const values = controls.map((i) => group?.get(i)?.value);
 
-      return values.every((i) => i === values[0])
-        ? null
-        : { notSame: true };
+      return values.every((i) => i === values[0]) ? null : { notSame: true };
     };
   }
-
-
 }

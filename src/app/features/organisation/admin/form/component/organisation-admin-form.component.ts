@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AddressEntity, Maybe, MediaEntity, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { OrganisationAdminFormActions } from '../state/organisation-admin-form.actions';
 import { selectEditableOrganisation } from '../state/organisation-admin-form.selectors';
 
@@ -22,10 +23,10 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
   });
 
   public contactForm = this.fb.group({
-    email: ['' as Maybe<string>, [Validators.required]],
+    email: ['' as Maybe<string>, [Validators.required, AppValidators.email()]],
     name: ['' as Maybe<string>],
     website: ['' as Maybe<string>],
-    phone: ['' as Maybe<string>],
+    phone: ['' as Maybe<string>, [AppValidators.phone()]],
   });
 
   public addressForm = this.fb.group({

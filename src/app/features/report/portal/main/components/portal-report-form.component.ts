@@ -3,6 +3,7 @@ import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { ReportTypeEntity } from 'src/app/core/api/generated/schema';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { ReportActions } from '../state/report.actions';
 import { selectReportTypes, selectSavedReport } from '../state/report.selectors';
 
@@ -16,7 +17,7 @@ export class PortalReportFormComponent implements OnDestroy {
   public form = this.fb.group({
     type: [{} as ReportTypeEntity, [Validators.required]],
     name: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, AppValidators.email()]],
     content: ['', [Validators.required]],
   });
 

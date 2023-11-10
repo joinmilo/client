@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { AccountActions } from '../../state/account.actions';
 
 
@@ -15,7 +16,7 @@ import { AccountActions } from '../../state/account.actions';
 export class VerificationSendMailComponent {
 
   public form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, AppValidators.email()]],
   });
 
   constructor(

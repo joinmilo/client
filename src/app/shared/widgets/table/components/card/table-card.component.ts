@@ -53,6 +53,8 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
   @ViewChild(TablePaginatorComponent)
   public paginator!: TablePaginatorComponent;
 
+  public images = { path: 'assets/no_data.svg' }
+
   private sort?: Sort;
 
   public types = {

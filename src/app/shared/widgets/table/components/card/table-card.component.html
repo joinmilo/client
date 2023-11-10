@@ -36,7 +36,10 @@
 </ng-container>
 
 <ng-template #noData>
-  <span [appLabel]="noDataLabel"></span>
+  <div id="noData">
+    <span [appLabel]="noDataLabel"></span>
+    <img [src]="images.path">
+  </div>
 </ng-template>
 
 <mat-card *ngIf="paginate">

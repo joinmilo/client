@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
+import { AppValidators } from 'src/app/core/validators/validators';
 
 @Component({
   selector: 'app-login-required',
@@ -15,7 +16,7 @@ import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 export class LoginRequiredComponent {
 
   public form = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, AppValidators.email()]],
     password: ['', [Validators.required]],
   });
 
