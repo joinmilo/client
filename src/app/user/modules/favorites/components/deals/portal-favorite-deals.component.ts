@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CardType } from 'src/app/shared/widgets/card/typings/card';
 import { SortPaginate } from 'src/app/shared/widgets/table/typings/table';
@@ -10,7 +10,7 @@ import { selectFavoriteDeals } from '../../state/portal-favorites.selectors';
   templateUrl: './portal-favorite-deals.component.html',
   styleUrls: ['./portal-favorite-deals.component.scss']
 })
-export class PortalFavoriteDealsComponent {
+export class PortalFavoriteDealsComponent implements OnInit{
 
   @Output()
   public sortPaginate = new EventEmitter<SortPaginate>();
@@ -22,6 +22,10 @@ export class PortalFavoriteDealsComponent {
   constructor(
     public store: Store
   ) { }
+
+  ngOnInit(): void {
+    this.store.dispatch(PortalFavoritesActions.getFavoriteDeals());
+  }
   
   public updateParams(params: SortPaginate) {
     this.store.dispatch(PortalFavoritesActions.getFavoriteDeals(params));

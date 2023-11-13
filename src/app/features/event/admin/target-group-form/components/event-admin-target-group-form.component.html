@@ -1,8 +1,8 @@
-<app-page-title [titleLabel]="targetGroupForm.value.id ? 'editCategory' : 'createNewCategory'">
+<app-page-title [titleLabel]="targetGroupForm.value.id ? 'editTargetGroup' : 'createNewTargetGroup'">
 </app-page-title>
 
 <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-  <app-form-step titleLabel="category" [formGroup]="targetGroupForm">
+  <app-form-step titleLabel="targetGroup" [formGroup]="targetGroupForm">
     <app-row [columns]="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>

@@ -33,9 +33,6 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
   };
 
   @Input()
-  public noDataLabel = 'noData';
-
-  @Input()
   public queryParams = true;
 
   @Input()
@@ -52,8 +49,6 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild(TablePaginatorComponent)
   public paginator!: TablePaginatorComponent;
-
-  public images = { path: 'assets/no_data.svg' }
 
   private sort?: Sort;
 

@@ -1,7 +1,15 @@
-<app-table-card 
-  entity="ArticleEntity"
-  [data]="favoriteArticles" 
-  noDataLabel="noFavorites"
-  [cardType]="cardType"
-  (sortPaginate)="updateParams($event)">
-</app-table-card>
+<ng-container *ngIf="(favoriteArticles | async)?.total; else emptyResult">
+  <app-table-card 
+    entity="ArticleEntity"
+    [data]="favoriteArticles" 
+    [cardType]="cardType"
+    (sortPaginate)="updateParams($event)">
+  </app-table-card>
+</ng-container>
+
+<ng-template #emptyResult>
+  <app-no-data
+    titleLabel="noData"
+    text="noFavorites">
+  </app-no-data>
+</ng-template>

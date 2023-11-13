@@ -1,1 +1,12 @@
-<span>Not Found</span>
+<div>
+  <img [src]="images.path">
+  <span class="mat-headline-6" appLabel="pageNotFound"></span>
+  <span appLabel="pageNotFoundText1"></span>
+  <span appLabel="pageNotFoundText2"></span>
+  <button mat-flat-button 
+    color="primary"
+    appLabel="toPortal"
+    [routerLink]="['/']">
+  </button>
+
+</div>

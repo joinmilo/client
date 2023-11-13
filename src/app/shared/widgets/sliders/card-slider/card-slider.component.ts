@@ -6,6 +6,7 @@ import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
 import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
+import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { CardType } from 'src/app/shared/widgets/card/typings/card';
 import { TitleModule } from '../../../layout/title/title.module';
 import { CardModule } from '../../card/card.module';
@@ -28,6 +29,7 @@ import { SliderComponent } from '../slider/slider.component';
     SliderComponent,
     SliderHeaderComponent,
     TitleModule,
+    NoDataComponent,
   ]
 })
 export class CardSliderComponent {

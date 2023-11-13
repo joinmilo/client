@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CoreModule } from 'src/app/core/core.module';
 
 @Component({
@@ -16,4 +16,9 @@ export class NoDataComponent {
 
   public images = { path: 'assets/no_data.svg' }
 
+  @Input()
+  public titleLabel?: string;
+
+  @Input()
+  public text?: string;
 }

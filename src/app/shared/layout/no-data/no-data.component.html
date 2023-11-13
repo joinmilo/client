@@ -1,5 +1,7 @@
-<section>
-  <span class="mat-headline-6" appLabel="noData"></span> 
-  <span appLabel="noDataContent"></span>
-</section>
-<img [src]="images.path">
+<div class="border-box">
+  <img [src]="images.path">
+  <section>
+    <span class="mat-headline-6" *ngIf="titleLabel" [appLabel]="titleLabel"></span>
+    <span *ngIf="text" [appLabel]="text"></span>
+  </section>
+</div>
