@@ -1,8 +1,8 @@
-<div>
-  <!-- <app-media-upload
+<!-- <div>
+  <app-media-upload
     [disabled]="!!maxFiles && media.length >= maxFiles"
     (uploads)="addFiles($event)">
-  </app-media-upload> -->
+  </app-media-upload>
   <small [appLabel]="notMoreThanLabel" [variables]="labelVariables"></small>
   <small [appLabel]="notBeLargerLabel" [variables]="labelVariables"></small>
 </div>
@@ -12,10 +12,21 @@
   </app-details-title>
 
   <section>
-    <app-media-card *ngFor="let file of media; let i = index;"
+    <app-media-view-card *ngFor="let file of media; let i = index;"
       [media]="file"
       [showDelete]="true"
       (deleted)="removeFile(i)">
-    </app-media-card>
+    </app-media-view-card>
   </section>
-</div>
+</div> -->
+
+<app-media-action-card *ngFor="let file of media; let i = index;"
+  actionLabel="edit"
+  [media]="file"
+  [showDelete]="true"
+  (deleted)="removeFile(i)">
+</app-media-action-card>
+
+<app-media-form-entry
+  (uploads)="addFiles($event)">
+</app-media-form-entry>

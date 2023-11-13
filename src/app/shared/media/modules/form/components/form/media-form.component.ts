@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { MediaUploadComponent } from '../upload/media-form-upload.component';
+import { MediaFormUploadComponent } from '../upload/media-form-upload.component';
 
 @Component({
   selector: 'app-media-form',
@@ -39,8 +39,8 @@ export class MediaFormComponent implements ControlValueAccessor {
   public notBeLargerLabel = 'filesCannotBeLargerThanX';
   public notMoreThanLabel = 'notMoreThanXFiles';
 
-  @ViewChild(MediaUploadComponent)
-  private uploadComponent?: MediaUploadComponent;
+  @ViewChild(MediaFormUploadComponent)
+  private uploadComponent?: MediaFormUploadComponent;
 
   private onChange?: (value?: Maybe<MediaEntity[]>) => void;
   private onTouched?: () => void;

@@ -2,8 +2,8 @@
 <div
   [class.dragged]="isDraggedOver"
   [class.disabled]="disabled">
-  <button mat-stroked-button
-    (click)="onBack()">
+  <button mat-icon-button
+    (click)="back.emit()">
     <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
   </button>
   <input type="file"

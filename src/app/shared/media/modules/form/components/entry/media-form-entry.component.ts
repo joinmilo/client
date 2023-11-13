@@ -3,7 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { MediaFormMode } from 'src/app/shared/media/typings/media';
-import { MediaUploadComponent } from '../upload/media-form-upload.component';
+import { MediaFormUploadComponent } from '../upload/media-form-upload.component';
 
 @Component({
   selector: 'app-media-form-entry',
@@ -40,8 +40,8 @@ export class MediaFormEntryComponent implements ControlValueAccessor {
   public notBeLargerLabel = 'filesCannotBeLargerThanX';
   public notMoreThanLabel = 'notMoreThanXFiles';
 
-  @ViewChild(MediaUploadComponent)
-  private uploadComponent?: MediaUploadComponent;
+  @ViewChild(MediaFormUploadComponent)
+  private uploadComponent?: MediaFormUploadComponent;
 
   private onChange?: (value?: Maybe<MediaEntity[]>) => void;
   private onTouched?: () => void;
@@ -49,6 +49,11 @@ export class MediaFormEntryComponent implements ControlValueAccessor {
   constructor(
     private store: Store,
   ) { }
+
+  public emit($event: MediaEntity[]) {
+    this.uploads.emit($event);
+    this.mode = undefined;
+  }
 
   public removeFile(fileIndex: number) {
     this.media.splice(fileIndex, 1);

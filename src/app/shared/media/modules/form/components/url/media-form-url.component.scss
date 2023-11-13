@@ -1,0 +1,20 @@
+mat-card {
+  height: 20rem;
+  height: 20rem;
+}
+
+mat-card-content {
+  display: flex;
+  flex-flow: column;
+  gap: 1rem;
+  justify-content: space-between;
+  height: 100%;
+}
+
+mat-form-field, button {
+  width: 100%;
+}
+
+app-media-element, span {
+  flex: 2 1 auto;
+}

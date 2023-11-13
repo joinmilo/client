@@ -26,7 +26,7 @@ export class MediaVideoComponent implements OnChanges, OnDestroy {
     }
   }
 
-  public isYoutube = false;
+  public youtubeUrl?: Maybe<string>;
 
   public url?: SafeResourceUrl;
 
@@ -42,9 +42,9 @@ export class MediaVideoComponent implements OnChanges, OnDestroy {
     }
 
   public ngOnChanges(): void {
-    this.isYoutube = this.mediaService.isValidYoutubeUrl(this.media?.url);
+    this.youtubeUrl = this.mediaService.parseYoutubeUrl(this.media?.url);
 
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.media?.url as string);
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeUrl ?? this.media?.url as string);
     if (this.videoElement) {
       this.videoElement.load();
     }

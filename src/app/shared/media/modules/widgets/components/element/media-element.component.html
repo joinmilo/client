@@ -1,0 +1,29 @@
+<ng-container [ngSwitch]="mimeType">
+  <div *ngSwitchCase="'IMAGE'"
+    (click)="click()"
+    class="image-wrapper">
+    <img alt="media-card"
+      [src]="media?.url"
+      [appAttribution]="media?.attribution" />
+  </div>
+
+  <app-media-video *ngSwitchCase="'VIDEO'"
+    (click)="click()"
+    [media]="media">
+  </app-media-video>
+
+  <fa-icon *ngSwitchCase="'WORD'"
+    [icon]="['far', 'file-word']"
+    [size]="iconSize" class="word">
+  </fa-icon>
+
+  <fa-icon *ngSwitchCase="'PDF'"
+    [icon]="['far', 'file-pdf']"
+    [size]="iconSize" class="pdf">
+  </fa-icon>
+
+  <fa-icon *ngSwitchDefault
+    [icon]="['far', 'file']"
+    [size]="iconSize">
+  </fa-icon>
+</ng-container>

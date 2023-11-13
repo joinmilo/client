@@ -8,7 +8,7 @@ import { MediaService } from 'src/app/shared/media/services/media.service';
   templateUrl: './media-form-upload.component.html',
   styleUrls: ['./media-form-upload.component.scss'],
 })
-export class MediaUploadComponent {
+export class MediaFormUploadComponent {
 
   @Input()
   public disabled: Maybe<boolean> = false;
@@ -24,10 +24,6 @@ export class MediaUploadComponent {
   constructor(
     private mediaService: MediaService
   ) {}
-
-  public onBack(): void {
-    this.back.emit();
-  }
 
   @HostListener('dragover', ['$event'])
   public onDragOver(evt: DragEvent) {

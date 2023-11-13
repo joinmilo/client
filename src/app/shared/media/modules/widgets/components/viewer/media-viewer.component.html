@@ -18,13 +18,13 @@
         [src]="currentMedia?.url"
         [appAttribution]="currentMedia?.attribution"/>
   
-      <app-media-card *ngSwitchCase="'PDF'"
+      <app-media-view-card *ngSwitchCase="'PDF'"
         [media]="currentMedia">
-      </app-media-card>
+      </app-media-view-card>
   
-      <app-media-card *ngSwitchCase="'WORD'"
+      <app-media-view-card *ngSwitchCase="'WORD'"
         [media]="currentMedia">
-      </app-media-card>
+      </app-media-view-card>
   
       <app-media-video [media]="currentMedia"
       *ngSwitchCase="'VIDEO'">

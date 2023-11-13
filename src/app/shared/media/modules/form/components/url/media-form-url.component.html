@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-content>
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="enterUrl"></mat-label>
+      <input matInput [formControl]="control">
+      <button matSuffix mat-icon-button
+        (click)="back.emit()">
+        <fa-icon *ngIf="!media"
+          matSuffix
+          [icon]="['fas', 'arrow-left']">
+        </fa-icon>
+        <fa-icon *ngIf="media"
+          matSuffix
+          [icon]="['fas', 'trash']">
+        </fa-icon>
+      </button>
+    </mat-form-field>
+  
+    <app-media-element *ngIf="media"
+      [media]="media">
+    </app-media-element>
+  
+    <span *ngIf="!media && control.value"
+      appLabel="enterValidUrl">
+    </span>
+
+    <button *ngIf="media"
+      mat-flat-button
+      color="primary"
+      appLabel="edit">
+    </button>
+  </mat-card-content>
+</mat-card>

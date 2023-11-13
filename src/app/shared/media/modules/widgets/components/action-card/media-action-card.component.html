@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <button *ngIf="showDelete"
+      mat-icon-button
+      (click)="delete($event)">
+      <fa-icon [icon]="['fas', 'trash']"></fa-icon>
+    </button>
+
+    <app-media-element
+      [media]="media">
+    </app-media-element>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <span>{{ media?.name }}</span>
+    <button mat-flat-button
+      color="primary"
+      [appLabel]="actionLabel"
+      (click)="action.emit(media)">
+    </button>
+  </mat-card-content>
+</mat-card>

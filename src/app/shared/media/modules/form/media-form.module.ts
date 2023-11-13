@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
@@ -15,13 +17,15 @@ import { MediaWidgetsModule } from '../widgets/media-widgets.module';
 import { MediaFormEntryComponent } from './components/entry/media-form-entry.component';
 import { MediaFormDialogComponent } from './components/form-dialog/media-form-dialog.component';
 import { MediaFormComponent } from './components/form/media-form.component';
-import { MediaUploadComponent } from './components/upload/media-form-upload.component';
+import { MediaFormUploadComponent } from './components/upload/media-form-upload.component';
+import { MediaFormUrlComponent } from './components/url/media-form-url.component';
 
 const components = [
-  MediaFormEntryComponent,
   MediaFormComponent,
   MediaFormDialogComponent,
-  MediaUploadComponent,
+  MediaFormEntryComponent,
+  MediaFormUploadComponent,
+  MediaFormUrlComponent,
 ];
 
 const framework = [
@@ -37,6 +41,8 @@ const materials = [
   MatCheckboxModule,
   MatDialogModule,
   MatDividerModule,
+  MatFormFieldModule,
+  MatInputModule,
 ];
 
 const modules = [

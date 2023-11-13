@@ -1,5 +1,5 @@
 :host {
-  width: 15rem;
+  width: 20rem;
   height: 20rem;
 }
 
@@ -12,7 +12,7 @@ div {
   height: 100%;
 
   border: 1px solid var(--color-border);
-  border-radius: var(--mdc-shape-smallest);
+  border-radius: var(--mdc-shape-small);
   box-shadow: 0px 2px 4px 0px var(--color-box-shadow);
 
   section {
@@ -34,12 +34,12 @@ div {
   }
   
   section:first-of-type {
-    border-top-left-radius: var(--mdc-shape-smallest);
-    border-top-right-radius: var(--mdc-shape-smallest);
+    border-top-left-radius: var(--mdc-shape-small);
+    border-top-right-radius: var(--mdc-shape-small);
   }
   
   section:last-of-type {
-    border-bottom-left-radius: var(--mdc-shape-smallest);
-    border-bottom-right-radius: var(--mdc-shape-smallest);
+    border-bottom-left-radius: var(--mdc-shape-small);
+    border-bottom-right-radius: var(--mdc-shape-small);
   }
 }

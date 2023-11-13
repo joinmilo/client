@@ -52,9 +52,27 @@ export class MediaService {
     return null;
   }
 
-  public isValidYoutubeUrl(url?: Maybe<string>): boolean {
-    const youtubeRegex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/|v\/)?([a-zA-Z0-9_-]{11})/;
-    return !!url && youtubeRegex.test(url);
+  public isValidUrl(value: Maybe<string>): boolean {
+    try {
+      if (value && new URL(value)) {
+        return true;
+      }
+    } catch(_) {
+      return false;
+    }
+    return false;
+  }
+
+  public parseYoutubeUrl(url?: Maybe<string>): Maybe<string> {
+    if (url) {
+      const youtubeRegex = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+      const match = url.match(youtubeRegex);
+
+      if (match && match[2].length == 11) {
+        return `https://www.youtube.com/embed/${match[2]}`
+      }
+    }
+    return null;
   }
 
   public getUrlHost(url: string): string {

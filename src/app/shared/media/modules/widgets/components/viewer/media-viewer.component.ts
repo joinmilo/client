@@ -24,9 +24,9 @@ export class MediaViewerComponent implements OnInit{
 
   public ngOnInit(): void {
     if (!isNaN(this.data.currentIndex as number)) {
-        this.currentIndex = this.data.currentIndex as number;
-        this.setCurrentMedia();
+      this.currentIndex = this.data.currentIndex as number;
     }
+    this.setCurrentMedia();
   }
 
   @HostListener('document:keydown', ['$event'])

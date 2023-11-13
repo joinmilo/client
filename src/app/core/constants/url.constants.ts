@@ -19,3 +19,4 @@ export const mediaDownloadBaseApi = `${mediaBaseApi}/download`;
 export const mediaExportBaseApi = `${mediaBaseApi}/export`;
 export const mediaDownloadApi = (media?: Maybe<MediaEntity>): string => `${mediaDownloadBaseApi}/${media?.id}`
 export const mediaExportApi = `${mediaBaseApi}/export`;
+export const mediaMimeTypeApi = `${mediaBaseApi}/mimetype`
