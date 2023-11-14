@@ -14,3 +14,18 @@ section {
   align-items: center;
   justify-content: center;
 }
+
+
+button {
+  padding: 0;
+  color: var(--color-black);
+
+  i {
+    font-weight: 400;
+      @include responsive(phone) {
+        font-size: .875rem;
+      }
+    }
+}
+
+

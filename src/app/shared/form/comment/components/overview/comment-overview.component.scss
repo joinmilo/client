@@ -6,11 +6,20 @@
   section:first-of-type {
     display: flex;
     justify-content: space-between;
+    gap: 1rem;
   }
 
   section:last-of-type {
     display: flex;
     flex-flow: column wrap;
     gap: 1rem;
+  }
+
+  button:last-of-type {
+    color: var(--color-dark-gray);
+
+    fa-icon {
+      padding-right: .5rem;
+    }
   }
 }

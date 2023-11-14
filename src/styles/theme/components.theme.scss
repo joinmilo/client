@@ -79,3 +79,8 @@ mat-card {
 mat-drawer-container {
   background-color: var(--color-background) !important;
 }
+
+button {
+  min-height: 2.25rem !important;
+  height: fit-content !important;
+}
