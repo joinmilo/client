@@ -16,6 +16,9 @@ export class MediaFormUrlComponent implements OnDestroy {
   @Output()
   public back = new EventEmitter<void>();
 
+  @Output()
+  public upload = new EventEmitter<MediaEntity>();
+
   public control = new FormControl<string>('');
 
   public isYoutube = false;
@@ -40,7 +43,7 @@ export class MediaFormUrlComponent implements OnDestroy {
               })
             : this.httpClient.post(mediaMimeTypeApi, url, { responseType: 'text' })
               .pipe(
-                switchMap(mimeType => mimeType
+                switchMap(mimeType => mimeType 
                   ? of ({
                       url,
                       mimeType
@@ -51,7 +54,10 @@ export class MediaFormUrlComponent implements OnDestroy {
 
         }),
         takeUntil(this.destroy)
-      ).subscribe(media => this.media = media)
+      ).subscribe(media => {
+        this.media = media;
+        this.upload.emit(this.media);
+      })
   }
 
   public ngOnDestroy(): void {

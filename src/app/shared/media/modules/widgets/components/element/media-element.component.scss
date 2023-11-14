@@ -26,6 +26,8 @@ app-media-video {
   height: 100%;
   border-top-left-radius: var(--mdc-shape-small);
   border-top-right-radius: var(--mdc-shape-small);
+
+  overflow: hidden;
 }
 
 .pdf {

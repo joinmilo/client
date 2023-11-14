@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: calc(100% - 1rem);
+  padding: 0.5rem;
 }
 
 section {
@@ -10,7 +11,6 @@ section {
   text-overflow: ellipsis;
   display: flex;
   flex-flow: column;
-  padding: 0.5rem;
   border-radius: var(--mdc-shape-small);
 
   p, div{

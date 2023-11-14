@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
@@ -11,7 +11,7 @@ import { MediaViewerComponent } from '../viewer/media-viewer.component';
   templateUrl: './media-element.component.html',
   styleUrls: ['./media-element.component.scss'],
 })
-export class MediaElementComponent implements OnInit {
+export class MediaElementComponent implements OnInit, OnChanges {
 
   @Input()
   public media?: Maybe<MediaEntity>;
@@ -32,8 +32,11 @@ export class MediaElementComponent implements OnInit {
     this.mimeType = this.mediaService.mimeTypeDefinition(this.media);
   }
 
+  public ngOnChanges(): void {
+    this.mimeType = this.mediaService.mimeTypeDefinition(this.media);
+  }
+
   public click(): void {
-    console.log('observerd', this.clicked.observed)
     this.clicked.observed
       ? this.clicked.emit()
       : this.dialog.open(MediaViewerComponent, {

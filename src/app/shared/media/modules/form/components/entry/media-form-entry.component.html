@@ -23,6 +23,7 @@
 
 <ng-container *ngIf="mode === 'URL'">
   <app-media-form-url
-    (back)="mode = undefined">
+    (back)="mode = undefined"
+    (upload)="emit([$event])">
   </app-media-form-url>
 </ng-container>
