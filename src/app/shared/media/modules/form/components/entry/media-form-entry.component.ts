@@ -1,9 +1,7 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Store } from '@ngrx/store';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { MediaFormMode } from 'src/app/shared/media/typings/media';
-import { MediaFormUploadComponent } from '../upload/media-form-upload.component';
 
 @Component({
   selector: 'app-media-form-entry',
@@ -22,40 +20,23 @@ export class MediaFormEntryComponent implements ControlValueAccessor {
   @Output()
   public uploads: EventEmitter<MediaEntity[]> = new EventEmitter();
 
-  @Input()
-  public maxFiles?: number;
-
-  @Input()
-  public maxFileSize = 1024 * 1024 * 10 //10mb
+  public isDisabled = false;
 
   public media: MediaEntity[] = [];
 
   public mode?: MediaFormMode;
 
-  public labelVariables = new Map([
-    ['maxFiles', this.maxFiles?.toString()],
-    ['maxFileSize', '10mb'],
-  ]);
-
-  public notBeLargerLabel = 'filesCannotBeLargerThanX';
-  public notMoreThanLabel = 'notMoreThanXFiles';
-
-  @ViewChild(MediaFormUploadComponent)
-  private uploadComponent?: MediaFormUploadComponent;
-
   private onChange?: (value?: Maybe<MediaEntity[]>) => void;
   private onTouched?: () => void;
 
-  constructor(
-    private store: Store,
-  ) { }
-
   public emit($event: MediaEntity[]) {
+    this.onTouched?.();
     this.uploads.emit($event);
     this.mode = undefined;
   }
 
   public removeFile(fileIndex: number) {
+    this.onTouched?.();
     this.media.splice(fileIndex, 1);
     this.onChange?.(this.media);
     this.uploads.emit(this.media);
@@ -74,7 +55,9 @@ export class MediaFormEntryComponent implements ControlValueAccessor {
   }
 
   public setDisabledState?(isDisabled: boolean): void {
-    this.uploadComponent
-      && (this.uploadComponent.disabled = isDisabled);
+    this.isDisabled = isDisabled;
+    if (isDisabled) {
+      this.mode = undefined;
+    }
   }
 }

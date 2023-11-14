@@ -1,10 +1,9 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { MediaFormUploadComponent } from '../upload/media-form-upload.component';
 
 @Component({
   selector: 'app-media-form',
@@ -31,16 +30,8 @@ export class MediaFormComponent implements ControlValueAccessor {
 
   public media: MediaEntity[] = [];
 
-  public labelVariables = new Map([
-    ['maxFiles', this.maxFiles?.toString()],
-    ['maxFileSize', '10mb'],
-  ]);
-
   public notBeLargerLabel = 'filesCannotBeLargerThanX';
   public notMoreThanLabel = 'notMoreThanXFiles';
-
-  @ViewChild(MediaFormUploadComponent)
-  private uploadComponent?: MediaFormUploadComponent;
 
   private onChange?: (value?: Maybe<MediaEntity[]>) => void;
   private onTouched?: () => void;
@@ -59,14 +50,18 @@ export class MediaFormComponent implements ControlValueAccessor {
         type: FeedbackType.Error,
         labelMessage: this.notBeLargerLabel,
         labelAction: 'chooseOtherFile',
-        labelVariables: this.labelVariables,
+        labelVariables: new Map([
+          ['maxFileSize', '10mb'],
+        ]),
       }));
     } else if (this.maxFiles && media?.length > this.maxFiles) {
       this.store.dispatch(CoreActions.setFeedback({
         type: FeedbackType.Error,
         labelMessage: this.notMoreThanLabel,
         labelAction: 'chooseLessFiles',
-        labelVariables: this.labelVariables,
+        labelVariables: new Map([
+          ['maxFiles', this.maxFiles?.toString()],
+        ]),
       }));
     } else {
       this.media = media;
@@ -93,8 +88,4 @@ export class MediaFormComponent implements ControlValueAccessor {
     this.onTouched = onTouched;
   }
 
-  public setDisabledState?(isDisabled: boolean): void {
-    this.uploadComponent
-      && (this.uploadComponent.disabled = isDisabled);
-  }
 }

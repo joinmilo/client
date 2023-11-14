@@ -1,17 +1,19 @@
 <ng-container *ngIf="!mode">
-  <div>
+  <mat-card>
     <section
       (click)="mode = 'UPLOAD'"
-      appLabel="uploadFile">
+      appLabel="uploadFile"
+      [class.disabled]="isDisabled">
     </section>
     
     <mat-divider></mat-divider>
     
     <section
       (click)="mode = 'URL'"
-      appLabel="includeMediaViaMedia">
+      appLabel="includeMediaViaMedia"
+      [class.disabled]="isDisabled">
     </section>
-  </div>
+  </mat-card>
 </ng-container>
 
 <ng-container *ngIf="mode === 'UPLOAD'">
