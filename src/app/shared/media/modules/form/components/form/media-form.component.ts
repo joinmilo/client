@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, filter, takeUntil } from 'rxjs';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
@@ -16,13 +16,18 @@ import { MediaFormEditComponent } from '../edit/media-form-edit.component';
   styleUrls: ['./media-form.component.scss'],
   providers: [
     {
+      provide: NG_VALIDATORS,
+      multi: true,
+      useExisting: MediaFormComponent
+    },
+    {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
       useExisting: MediaFormComponent,
     }
   ],
 })
-export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
+export class MediaFormComponent implements ControlValueAccessor, Validator, OnDestroy {
 
   @Input()
   public maxFiles?: number;
@@ -44,6 +49,8 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
 
   private onChange?: (value?: Maybe<(MediaEntity | MediaEnhancedEntity)[]>) => void;
   private onTouched?: () => void;
+
+  public validationErrors: string[] = [];
 
   private destroy = new Subject<void>();
 
@@ -103,7 +110,8 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
         displayCardToggle: this.cardToggle,
         displayTitleToggle: this.titleToggle,
       } as MediaEditDialogData
-    }).afterClosed();
+    }).afterClosed()
+      .pipe(filter(edited => !!edited));
   }
 
   public remove(index: number): void {
@@ -122,23 +130,41 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
     this.media = [...newMedia];
     this.uploads.emit(this.media);
     this.onChange?.(this.media);
+    this.checkErrors();
 
     //TODO: This needs to be set because view is not updating. Needs debugging
     this.cdr.detectChanges();
   }
 
-  public retrieveMedia(element: MediaEntity | MediaEnhancedEntity): Maybe<MediaEntity> {
-    console.log('test', Object.hasOwn(element, 'media')
-      ? (element as MediaEnhancedEntity).media
-      : element as MediaEntity)
+  private checkErrors(): void {
+    this.validationErrors = [];
 
-    return Object.hasOwn(element, 'media')
+    if (this.cardToggle && !this.media.some(element => (element as MediaEnhancedEntity).card)) {
+      this.validationErrors.push('oneCardRequired');
+    }
+
+    if (this.titleToggle && !this.media.some(element => (element as MediaEnhancedEntity).title)) {
+      this.validationErrors.push('oneTitleRequired');
+    }
+  }
+
+  public retrieveMedia(element: MediaEntity | MediaEnhancedEntity): Maybe<MediaEntity> {
+    return element && Object.hasOwn(element, 'media')
       ? (element as MediaEnhancedEntity).media
       : element as MediaEntity;
   }
 
   public writeValue(media: (MediaEntity | MediaEnhancedEntity)[]): void {
     this.media = media;
+  }
+
+  public validate(): ValidationErrors | null {
+    return this.validationErrors.length 
+      ? this.validationErrors.reduce((acc, curr) => {
+          acc[curr] = true;
+          return acc;
+        }, {} as ValidationErrors)
+      : null;
   }
 
   public registerOnChange(onChange: (value?: Maybe<(MediaEntity | MediaEnhancedEntity)[]>) => void): void {
@@ -148,6 +174,14 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
   public registerOnTouched(onTouched?: () => void): void {
     this.onTouched = onTouched;
   }
+
+  // public registerOnValidatorChange?(fn: () => void): void {
+  //   throw new Error('Method not implemented.');
+  // }
+
+  // public setDisabledState?(isDisabled: boolean): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
   public ngOnDestroy(): void {
     this.destroy.next();

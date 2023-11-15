@@ -17,16 +17,12 @@
     </app-row>
   </app-form-step>
 
-  <app-form-step [formGroup]="shortDescriptionForm"
-    titleLabel="shortDescription">
-    <app-row [columns]="2">
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="shortDescription"></mat-label>
-        <textarea formControlName="shortDescription" rows="5"
-          matInput>
-        </textarea>
-      </mat-form-field>
-    </app-row>
+  <app-form-step titleLabel="media" [formGroup]="uploadsForm">
+    <app-media-form
+      [cardToggle]="true"
+      [titleToggle]="true"
+      formControlName="uploads">
+    </app-media-form>
   </app-form-step>
 
   <app-form-step
@@ -46,6 +42,18 @@
     </app-row>
   </app-form-step>
 
+  <app-form-step [formGroup]="shortDescriptionForm"
+    titleLabel="shortDescription">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="shortDescription"></mat-label>
+        <textarea formControlName="shortDescription" rows="5"
+          matInput>
+        </textarea>
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+
   <app-form-step titleLabel="time" descriptionLabel="createSchedules"
     [formGroup]="scheduleForm">
     <app-row [columns]="2">
@@ -53,24 +61,6 @@
       </app-scheduler-form>
     </app-row>
   </app-form-step>
-
-<app-form-step titleLabel="titleImage" [formGroup]="titleImageForm">
-  <app-media-form [maxFiles]="1"
-    formControlName="titleImage"></app-media-form>
-</app-form-step>
-
-<app-form-step titleLabel="cardImage" [formGroup]="cardImageForm">
-  <app-media-form formControlName="cardImage"
-    [maxFiles]="1"></app-media-form>
-</app-form-step>
-
-<app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
-  <app-media-form
-    [cardToggle]="true"
-    [titleToggle]="true"
-    formControlName="uploads">
-  </app-media-form>
-</app-form-step>
 
   <app-form-step titleLabel="additionalInfo"
     [formGroup]="additionalInfoForm">

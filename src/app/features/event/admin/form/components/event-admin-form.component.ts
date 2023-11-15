@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
-import { AddressEntity, ContactEntity, EventEntity, Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, ContactEntity, EventEntity, EventMediaEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
 import { AppValidators } from 'src/app/core/validators/validators';
@@ -40,16 +40,8 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     schedules: undefined as Maybe<Period[]>,
   });
 
-  public titleImageForm = this.fb.group({
-    titleImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
-  public cardImageForm = this.fb.group({
-    cardImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
   public uploadsForm = this.fb.group({
-    uploads: [[] as MediaEntity[]],
+    uploads: [[] as Maybe<EventMediaEntity>[], [Validators.required]],
   });
 
   public additionalInfoForm = this.fb.group({
@@ -89,24 +81,16 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     private store: Store,
   ) {}
 
-  disableEnableVideoChatLink() {
-      if (this.locationForm.value.address) {
-        this.locationForm.controls.videoChatLink.setValue(null);
-        this.locationForm.controls.videoChatLink.disable();
-      } else {
-        this.locationForm.controls.videoChatLink.enable();
-      }
-  }  
-
   public ngOnInit(): void {
-    this.locationForm.controls.address.valueChanges
-      .pipe(takeUntil(this.destroy))
-      .subscribe(() => {
-        this.disableEnableVideoChatLink()
-      });
+    this.locationChange();
+    
+    this.init();
 
     this.store.dispatch(EventAdminFormActions.getCategories());
     this.store.dispatch(EventAdminFormActions.getTargetGroups());
+  }
+
+  private init(): void {
     this.activatedRoute.params.pipe(
       filter(params => !!params[slug]),
       tap(params => this.store.dispatch(EventAdminFormActions.getEvent(params[slug]))),
@@ -146,19 +130,9 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         targetGroups: event?.targetGroups?.map(targetGroup => targetGroup?.id as string) as string[],
       });
 
-      this.titleImageForm.patchValue({
-        titleImage: event?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[]
-      });
-
-      this.cardImageForm.patchValue({
-        cardImage:
-          event?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
-      });
-
       this.uploadsForm.patchValue({
-        uploads: event?.uploads?.filter(upload => !upload?.title && !upload?.card)
-          .map(upload => upload?.media) as MediaEntity[]
-      });      
+        uploads: event?.uploads
+      });
 
       this.contactAndOrganisationForm.patchValue({
         organisation: event?.organisation,
@@ -170,9 +144,22 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         approval: event?.attendeeConfiguration?.approval,
         maxAttendees: event?.attendeeConfiguration?.maxAttendees
       });
-    }
-    );
+    });
   }
+
+  private locationChange(): void {
+    this.locationForm.controls.address.valueChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => {
+        if (this.locationForm.value.address) {
+          this.locationForm.controls.videoChatLink.setValue(null);
+          this.locationForm.controls.videoChatLink.disable();
+        } else {
+          this.locationForm.controls.videoChatLink.enable();
+        }
+      });
+  }
+
   public cancelled(): void {
     this.store.dispatch(EventAdminFormActions.cancelled());
   }
@@ -224,22 +211,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
          }
         : null,
 
-      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        id: this.event?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-        media: media.id ? {id: media.id, mimeType: media.mimeType} : media 
-      })).concat(
-        (this.cardImageForm.value.cardImage || []).map(media => ({
-          id: this.event?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-          media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
-          card: true,
-        }))
-      ).concat(
-        (this.titleImageForm.value.titleImage || []).map(media => ({
-          id: this.event?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-          media: media.id ? {id: media.id, mimeType: media.mimeType} : media,
-          title: true,
-        }))
-      ) || null,        
+      uploads: this.uploadsForm.value.uploads
     }))
   }
 
