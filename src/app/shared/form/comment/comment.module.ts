@@ -28,7 +28,7 @@ const components = [
 const framework = [
   CommonModule,
   RouterModule,
-  CaptchaModule,
+  ReactiveFormsModule
 ];
 
 const libs = [
@@ -41,10 +41,10 @@ const materials = [
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  ReactiveFormsModule
 ];
 
 const modules = [
+  CaptchaModule,
   CoreModule,
   DatePieceComponent,
   MediaWidgetsModule,

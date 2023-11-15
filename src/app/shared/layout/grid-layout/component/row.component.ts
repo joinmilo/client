@@ -1,5 +1,5 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, ElementRef, Input, OnDestroy, QueryList, Renderer2, ViewChild } from '@angular/core';
 import { Subject, filter, map, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { maxMobileSize } from 'src/app/core/constants/core.constants';
@@ -20,6 +20,9 @@ export class RowComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('container')
   public container?: ElementRef;
+
+  @ContentChildren(ColumnDirective)
+  public assignedColumns?: QueryList<ColumnDirective>;
 
   public maxMobileSize = maxMobileSize;
 
@@ -44,8 +47,8 @@ export class RowComponent implements AfterViewInit, OnDestroy {
         : 100 / childsAmount;
   
       Array.from(this.container?.nativeElement.children as HTMLCollection)
-        .forEach((element: Element) => {
-          const cellColumns = element.attributes.getNamedItem(ColumnDirective.namedAttribute)?.value;
+        .forEach((element: Element, index: number) => {
+          const cellColumns = this.assignedColumns?.get(index)?.appAssignColumns;
 
           cellColumns
             ? this.setStyle(element, cellWidth * Number(cellColumns))
