@@ -34,10 +34,40 @@ header {
     @include responsive(phone) {
       width: 100%;
     }
-    button {
-      color: var(--color-primary-contrast-700);
-      background-color: var(--color-primary-700);
-      margin-top: 1rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+
+    a {
+      padding: 1.75rem;
+      width: fit-content;
+      color: var(--color-primary-contrast-900);
+      background-image: var(--hero-gradient);
+      background-size: 300%;
+      background-position: left;
+      transition: background-position .5s;
+    }
+
+    a:hover {
+      background-position: right;
+    }
+
+    p {
+      color: var(--color-dark-gray);
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5;
+      max-width: 35vw;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+
+      @include responsive(phone) {
+        max-width: 90vw;
+      }
     }
   }
 }
@@ -48,7 +78,7 @@ header {
 
 #container {
   font-size: 1em;
-  font-weight: 600;
+  font-weight: 900;
   white-space: nowrap;
   max-width: 35vw;
   height: fit-content;
@@ -56,8 +86,28 @@ header {
   @include responsive(phone) {
     max-width: 90vw;
   }
+
+  display: inline-block;
+  // font-style: italic;
+  
+  background-image: var(--hero-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: hero-animation 10s ease-in-out infinite alternate;
+  background-size: 300%;
 }
 
 #text {
   display: inline-block;
+}
+
+@keyframes hero-animation {
+  0% {
+    background-position: left;
+  }
+
+  100% {
+    background-position: right;
+  }
 }

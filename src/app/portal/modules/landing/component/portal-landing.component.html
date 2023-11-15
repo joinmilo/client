@@ -3,12 +3,12 @@
   <section>
     <div>
       <div id="wrapper">
-      <div class="title-gradient" id="container">
-        <span id="text">{{page | translatable: "name" | async}}</span>
+        <div id="container">
+          <span id="text">{{page | translatable: "name" | async}}</span>
+        </div>
       </div>
-    </div>
       <p>{{page | translatable: "shortDescription" | async}}</p>
-      <a mat-raised-button color="primary" *ngIf="page?.callUrl" [routerLink]="page?.callUrl">
+      <a mat-raised-button *ngIf="page?.callUrl" [routerLink]="page?.callUrl">
         {{page | translatable: "callText" | async}}
       </a>
     </div>
