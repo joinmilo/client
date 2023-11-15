@@ -8,7 +8,7 @@ a {
 mat-card {
   display: flex;
   justify-content: center;
-  width: 20rem;
+  width: 18rem;
   cursor: pointer;
 
   * {
@@ -43,6 +43,7 @@ mat-card {
 
   h1 {
     height: 4.5rem;
+    padding: 0 1rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
