@@ -1,9 +1,10 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MediaEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { mediaBaseApi } from 'src/app/core/constants/url.constants';
 import { AppValidators } from 'src/app/core/validators/validators';
+import { MediaService } from 'src/app/shared/media/services/media.service';
 import { MediaEditDialogData, MediaEnhancedEntity } from 'src/app/shared/media/typings/media';
 
 @Component({
@@ -33,6 +34,8 @@ export class MediaFormEditComponent {
 
   private media?: MediaEntity;
 
+  public isMediaMimeType = false;
+
   public displayUrl = false;
   public urlError = false;
 
@@ -40,9 +43,11 @@ export class MediaFormEditComponent {
     @Inject(MAT_DIALOG_DATA)
     public data: MediaEditDialogData,
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<MediaFormEditComponent>
+    private dialogRef: MatDialogRef<MediaFormEditComponent>,
+    private mediaService: MediaService,
   ) {
     this.media = this.extractMedia();
+    this.isMediaMimeType = this.checkIsMediaMimeType(this.media);
 
     this.displayUrl = typeof this.media.url === 'string' && !this.media.url.includes(mediaBaseApi),
     this.form.patchValue({
@@ -70,25 +75,49 @@ export class MediaFormEditComponent {
       : this.data.element as MediaEntity;
   }
 
+  private checkIsMediaMimeType(media: Maybe<MediaEntity>): boolean {
+    const mimeType = this.mediaService.mimeTypeDefinition(media);
+    return mimeType === 'IMAGE' || mimeType === 'VIDEO';
+  }
+
   public onSubmit(): void {
-    const value = this.hasAttributionValues()
-      ? this.form.value
+    this.dialogRef.close(this.data.displayCardToggle || this.data.displayTitleToggle
+      ? this.mapEnhancedMedia()
+      : this.mapMedia());
+  }
+  
+  // TODO: way to complex...
+  // Alternative could be put every media field in forms without displaying, so that deep copying is not necessary
+  private mapEnhancedMedia(): Partial<MediaEnhancedEntity> {
+    const result = Object.hasOwn(this.data.element, 'media')
+      ? { ...{ ...this.data.element, ...this.form.value },
+          media: { ...(this.data.element as MediaEnhancedEntity).media, ...this.form.value.media }
+        }
+      : { ...this.form.value, media: {...this.data.element, ...this.form.value.media } };
+
+    return this.hasAttributionValues()
+      ? result
       : {
-          ...this.form.value, media: { 
-            ...this.form.value.media, attribution: undefined
+          ...result, media: {
+            ...result.media, attribution: undefined
           } 
         };
+  }
 
-    this.dialogRef.close(this.data.displayCardToggle || this.data.displayTitleToggle
-      ? value as MediaEnhancedEntity
-      : value.media as MediaEntity)
+  private mapMedia(): MediaEntity {
+    const result = { ...this.data.element, ...this.form.value.media };
+
+    return this.hasAttributionValues()
+      ? result
+      : { ...result, attribution: undefined };
   }
 
   private hasAttributionValues(): boolean {
     let hasValues = false;
+    const attributionForm = this.form.controls.media.controls.attribution;
 
-    Object.keys(this.form.controls.media.controls.attribution).forEach(controlName => {
-      const control = this.form.get(controlName);
+    Object.keys(attributionForm.value).forEach(controlName => {
+      const control = attributionForm.get(controlName);
       if (control?.value) {
         hasValues = true;
         return;

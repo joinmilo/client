@@ -65,7 +65,11 @@
 </app-form-step>
 
 <app-form-step titleLabel="mediathek" [formGroup]="uploadsForm">
-  <app-media-form formControlName="uploads"></app-media-form>
+  <app-media-form
+    [cardToggle]="true"
+    [titleToggle]="true"
+    formControlName="uploads">
+  </app-media-form>
 </app-form-step>
 
   <app-form-step titleLabel="additionalInfo"

@@ -6,6 +6,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
+import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 import { MediaEditDialogData, MediaEnhancedEntity } from 'src/app/shared/media/typings/media';
 import { MediaFormEditComponent } from '../edit/media-form-edit.component';
 
@@ -52,7 +53,7 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
     private cdr: ChangeDetectorRef,
   ) { }
 
-  public addFiles(newMedia: MediaEntity[]) {
+  public add(newMedia: MediaEntity[]) {
     this.onTouched?.();
 
     if (newMedia.some(element => element.size > this.maxFileSize)) {
@@ -74,22 +75,24 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
         ]),
       }));
     } else {
-      this.addDetails(newMedia);
+      newMedia.length === 1
+        ? this.openDetails(newMedia[0])
+            .pipe(takeUntil(this.destroy))
+            .subscribe(edited => {
+              this.emit([...this.media, ...[edited]])
+            })
+        : this.emit([...this.media, ...newMedia]);
     }
-  }
-
-  private addDetails(newMedia: MediaEntity[]): void {
-    newMedia.length === 1
-      ? this.openDetails(newMedia[0])
-          .pipe(takeUntil(this.destroy))
-          .subscribe(edited => this.storeMedia([{...newMedia[0], ...edited}]))
-      : this.storeMedia(newMedia);
   }
 
   public edit(index: number): void {
     this.openDetails(this.media[index])
       .pipe(takeUntil(this.destroy))
-      // .subscribe(edited => this.storeMedia([{...newMedia[0], ...edited}]))
+      .subscribe(edited => {
+        const media = [...this.media];
+        media[index] = edited;
+        this.emit(media);
+      })
   }
 
   public openDetails(media: MediaEntity | MediaEnhancedEntity): Observable<MediaEntity | MediaEnhancedEntity> {
@@ -97,14 +100,26 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
       panelClass: 'media-form-dialog',
       data: {   
         element: media,
-        card: this.cardToggle,
-        title: this.titleToggle,
+        displayCardToggle: this.cardToggle,
+        displayTitleToggle: this.titleToggle,
       } as MediaEditDialogData
     }).afterClosed();
   }
 
-  private storeMedia(newMedia: (MediaEntity | MediaEnhancedEntity)[]): void {
-    this.media = [...this.media, ...newMedia];
+  public remove(index: number): void {
+    this.dialog.open(ConfirmDeleteComponent)
+      .afterClosed()
+      .subscribe(confirmed => {
+        if (confirmed) {
+          const media = [...this.media];
+          media.splice(index, 1);
+          this.emit(media);
+        }
+      })
+  }
+
+  private emit(newMedia: (MediaEntity | MediaEnhancedEntity)[]): void {
+    this.media = [...newMedia];
     this.uploads.emit(this.media);
     this.onChange?.(this.media);
 
@@ -112,17 +127,21 @@ export class MediaFormComponent implements ControlValueAccessor, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  public removeFile(fileIndex: number) {
-    this.media.splice(fileIndex, 1);
-    this.onChange?.(this.media);
-    this.uploads.emit(this.media);
+  public retrieveMedia(element: MediaEntity | MediaEnhancedEntity): Maybe<MediaEntity> {
+    console.log('test', Object.hasOwn(element, 'media')
+      ? (element as MediaEnhancedEntity).media
+      : element as MediaEntity)
+
+    return Object.hasOwn(element, 'media')
+      ? (element as MediaEnhancedEntity).media
+      : element as MediaEntity;
   }
 
-  public writeValue(media: MediaEntity[]): void {
+  public writeValue(media: (MediaEntity | MediaEnhancedEntity)[]): void {
     this.media = media;
   }
 
-  public registerOnChange(onChange: (value?: Maybe<MediaEntity[]>) => void): void {
+  public registerOnChange(onChange: (value?: Maybe<(MediaEntity | MediaEnhancedEntity)[]>) => void): void {
     this.onChange = onChange;
   }
 

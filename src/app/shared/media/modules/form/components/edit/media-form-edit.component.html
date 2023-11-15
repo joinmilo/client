@@ -27,18 +27,21 @@
           </mat-error>
         </ng-container>
       
-        <mat-divider *ngIf="data.displayCardToggle || data.displayTitleToggle">
-        </mat-divider>
+        <ng-container *ngIf="(data.displayCardToggle || data.displayTitleToggle) && isMediaMimeType">
+          <mat-divider>
+          </mat-divider>
+
+          <mat-slide-toggle *ngIf="data?.displayCardToggle"
+            formControlName="card">
+            <span appLabel="displayAsCardImage"></span>
+          </mat-slide-toggle>
+        
+          <mat-slide-toggle *ngIf="data?.displayTitleToggle"
+            formControlName="title">
+            <span appLabel="displayAsTitleImage"></span>
+          </mat-slide-toggle>
+        </ng-container>
       
-        <mat-slide-toggle *ngIf="data?.displayCardToggle"
-          formControlName="card">
-          <span appLabel="displayAsCardImage"></span>
-        </mat-slide-toggle>
-      
-        <mat-slide-toggle *ngIf="data?.displayTitleToggle"
-          formControlName="title">
-          <span appLabel="displayAsTitleImage"></span>
-        </mat-slide-toggle>
       </div>
     </mat-expansion-panel>
 
