@@ -33,7 +33,7 @@ export class MediaFormUrlComponent implements OnDestroy {
   ) {
     this.control.valueChanges
       .pipe(
-        filter(value => this.mediaService.isValidUrl(value)),
+        filter(value => MediaService.isValidUrl(value)),
         switchMap(url => {
           const youtubeUrl = this.mediaService.parseYoutubeUrl(url);
           return youtubeUrl

@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { MediaService } from 'src/app/shared/media/services/media.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppValidators {
-    /**
+
+  /**
    * 
    * CONTROL VALIDATIONS
    * 
@@ -40,6 +42,17 @@ export class AppValidators {
         return { digitsNotMatching: true };
       }
   
+      return null;
+    };
+  }
+
+  public static validUrl(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+  
+      if (!MediaService.isValidUrl(control.value)) {
+        return { invalidUrl: true };
+      }
+
       return null;
     };
   }

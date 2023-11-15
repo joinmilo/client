@@ -1,17 +1,16 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { MediaService } from '../../../../services/media.service';
-import { MediaViewerData, MimeTypeDefinition } from '../../../../typings/media';
-import { MediaViewerComponent } from '../viewer/media-viewer.component';
+import { MimeTypeDefinition } from '../../../../typings/media';
 
 @Component({
   selector: 'app-media-action-card',
   templateUrl: './media-action-card.component.html',
   styleUrls: ['./media-action-card.component.scss'],
 })
-export class MediaActionCardComponent implements OnInit {
+export class MediaActionCardComponent implements OnInit, OnChanges {
 
   @Input()
   public actionLabel?: Maybe<string>;
@@ -41,14 +40,8 @@ export class MediaActionCardComponent implements OnInit {
     this.mimeType = this.mediaService.mimeTypeDefinition(this.media);
   }
 
-  public openViewer(): void {
-    this.dialog.open(MediaViewerComponent, {
-      data: {
-        media: [this.media],
-      } as MediaViewerData,
-      panelClass: 'media-dialog',
-      autoFocus: false,
-    });
+  public ngOnChanges(): void {
+    this.mimeType = this.mediaService.mimeTypeDefinition(this.media);
   }
 
   public delete(event: MouseEvent): void {

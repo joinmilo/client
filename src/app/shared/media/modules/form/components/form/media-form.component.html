@@ -1,10 +1,11 @@
-<app-media-action-card *ngFor="let file of media; let i = index;"
-  actionLabel="edit"
-  [media]="file"
+<app-media-action-card *ngFor="let element of media; let i = index;"
+  actionLabel="details"
+  [media]="element"
   [showDelete]="true"
+  (action)="edit(i)"
   (deleted)="removeFile(i)">
 </app-media-action-card>
 
-<app-media-form-entry
+<app-media-form-entry *ngIf="!this.maxFiles || this.media.length < this.maxFiles"
   (uploads)="addFiles($event)">
 </app-media-form-entry>

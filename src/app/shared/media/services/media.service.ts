@@ -8,7 +8,7 @@ import { MimeTypeDefinition } from '../typings/media';
   providedIn: 'root'
 })
 export class MediaService {
-
+  
   constructor(
     private sanitizer: DomSanitizer
   ) { }
@@ -52,7 +52,7 @@ export class MediaService {
     return null;
   }
 
-  public isValidUrl(value: Maybe<string>): boolean {
+  public static isValidUrl(value: Maybe<string>): boolean {
     try {
       if (value && new URL(value)) {
         return true;

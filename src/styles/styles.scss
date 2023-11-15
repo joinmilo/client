@@ -209,6 +209,12 @@ figure {
   }
 }
 
+.media-form-dialog {
+  .mat-mdc-dialog-container .mat-mdc-dialog-surface {
+    background-color: var(--color-background);
+  }
+}
+
 ::-webkit-scrollbar {
   height: .25em;
   width: .25em;

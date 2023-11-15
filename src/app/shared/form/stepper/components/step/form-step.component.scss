@@ -34,18 +34,18 @@
     margin-right: 0;
   }
 
-}
-
-:host ::ng-deep .mat-expansion-panel-header {
-  @include responsive(phone) {
-
-    .mat-content {
-      display: block !important;
-    }
-
-    mat-panel-description {
-      font-size: .875rem;
-      line-height: 1.5;
+  .mat-expansion-panel-header {
+    @include responsive(phone) {
+  
+      .mat-content {
+        display: block !important;
+      }
+  
+      mat-panel-description {
+        font-size: .875rem;
+        line-height: 1.5;
+      }
     }
   }
+
 }
