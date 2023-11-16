@@ -45,7 +45,13 @@ header {
       padding: 1.75rem;
       width: fit-content;
       color: var(--color-primary-contrast-900);
-      background-image: var(--hero-gradient);
+      background-image: linear-gradient(45deg,
+        var(--color-primary-900),
+        var(--color-primary-700),
+        var(--color-primary-500),
+        var(--color-accent-500),
+        var(--color-accent-700),
+        var(--color-accent-900));
       background-size: 300%;
       background-position: left;
       transition: background-position .5s;
@@ -89,7 +95,13 @@ header {
 
   display: inline-block;
     
-  background-image: var(--hero-gradient);
+  background-image: linear-gradient(45deg,
+    var(--color-primary-900),
+    var(--color-primary-700),
+    var(--color-primary-500),
+    var(--color-accent-500),
+    var(--color-accent-700),
+    var(--color-accent-900));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
