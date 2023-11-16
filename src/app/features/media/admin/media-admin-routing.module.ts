@@ -38,9 +38,21 @@ const menuRoutes: AdminFeatureRoute[] = [
 
 const routes: Routes = [
   {
+    path: `${mediaFeatureKey}/form`,
+    loadChildren: () => import('src/app/features/media/admin/form/media-admin-form.module')
+      .then((imported) => imported.MediaAdminFormModule),
+    canActivate: [requireAnyPrivilege('media_admin')]
+  },
+  {
     path: `${mediaFeatureKey}/category/form`,
       loadChildren: () => import('src/app/features/media/admin/category-form/media-admin-category-form.module')
         .then((imported) => imported.MediaAdminCategoryFormModule),
+    canActivate: [requireAnyPrivilege('media_admin')]
+  },
+  {
+    path: `${mediaFeatureKey}/:${id}/form`,
+    loadChildren: () => import('src/app/features/media/admin/form/media-admin-form.module')
+      .then((imported) => imported.MediaAdminFormModule),
     canActivate: [requireAnyPrivilege('media_admin')]
   },
   {
@@ -48,11 +60,6 @@ const routes: Routes = [
       loadChildren: () => import('src/app/features/media/admin/category-form/media-admin-category-form.module')
         .then((imported) => imported.MediaAdminCategoryFormModule),
     canActivate: [requireAnyPrivilege('media_admin')]
-  },
-  {
-    path: `${mediaFeatureKey}/form`,
-    loadChildren: () => import('src/app/features/media/admin/form/media-admin-form.module')
-      .then((imported) => imported.MediaAdminFormModule),
   },
 ]
 

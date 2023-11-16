@@ -8,11 +8,11 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { MediaFilterModule } from 'src/app/shared/filter/media/media-filter.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
+import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { MediaAdminOverviewCategoryComponent } from './components/category/media-admin-overview-category.component';
-import { MediaAdminOverviewEmptyComponent } from './components/empty/media-admin-overview-empty.component';
 import { MediaAdminOverviewComponent } from './components/media-admin-overview.component';
 import { mediaAdminOverviewStateKey } from './constants/media-admin-overview.constants';
 import { MediaAdminOverviewRoutingModule } from './media-admin-overview-routing.module';
@@ -22,7 +22,6 @@ import { mediaAdminOverviewReducer } from './state/media-admin-overview.reducer'
 
 const components = [
   MediaAdminOverviewCategoryComponent,
-  MediaAdminOverviewEmptyComponent,
   MediaAdminOverviewComponent,
 ]
 
@@ -40,6 +39,7 @@ const modules = [
   MediaWidgetsModule,
   MediaFilterModule,
   MediaAdminOverviewRoutingModule,
+  NoDataComponent,
   RadioButtonFormModule,
   TableModule,
   TitleModule,

@@ -1,0 +1,12 @@
+fragment MediaEntity on MediaEntity {
+  attribution {
+    author
+    id
+    license
+    source
+    title
+  }
+  mimeType
+  name
+  url
+}

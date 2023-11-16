@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { InfoMediaCategoryEntity, InfoMediaEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
@@ -17,7 +18,9 @@ export class MediaAdminOverviewCategoryComponent implements OnDestroy {
   private destroy = new Subject<void>();
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private store: Store,
+    private router: Router,
   ) {
     this.store.select(selectOverviewDataCategories)
       .pipe(takeUntil(this.destroy))
@@ -30,11 +33,19 @@ export class MediaAdminOverviewCategoryComponent implements OnDestroy {
       ?.map((item) => item?.media as MediaEntity);
   }
 
+  public edit(media: Maybe<MediaEntity>): void {
+    const infoMedia = this.categories
+        ?.flatMap(category => category.infoMedia)
+        ?.find(infoMedia => infoMedia?.media?.id === media?.id) as InfoMediaEntity;
+
+    this.router.navigate([infoMedia?.id, 'form'], { relativeTo: this.activatedRoute })
+  }
+
   public delete(medium: Maybe<MediaEntity>): void {
     this.store.dispatch(MediaAdminOverviewActions.deleteMedia(
       this.categories
         ?.flatMap(category => category.infoMedia)
-        ?.find(infoMedia => infoMedia?.media?.id == medium?.id) as InfoMediaEntity
+        ?.find(infoMedia => infoMedia?.media?.id === medium?.id) as InfoMediaEntity
     ));
   }
 

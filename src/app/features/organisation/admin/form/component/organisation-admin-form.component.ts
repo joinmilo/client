@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { AddressEntity, Maybe, MediaEntity, OrganisationEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, Maybe, OrganisationEntity, OrganisationMediaEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { AppValidators } from 'src/app/core/validators/validators';
 import { OrganisationAdminFormActions } from '../state/organisation-admin-form.actions';
@@ -33,17 +33,9 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
     address: [undefined as Maybe<AddressEntity>],
   });
 
-  public titleImageForm = this.fb.group({
-    titleImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
-  public profileImageForm = this.fb.group({
-    cardImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
   public uploadsForm = this.fb.group({
-    uploads: [[] as MediaEntity[]],
-  });  
+    uploads: [[] as Maybe<OrganisationMediaEntity>[], [Validators.required]],
+  });
 
   public additionalInfoForm = this.fb.group({
     commentsAllowed: [undefined as Maybe<boolean>],
@@ -85,19 +77,8 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
         address: organisation?.address
       });
 
-      this.titleImageForm.patchValue({
-        titleImage: 
-          organisation?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
-      });
-
-      this.profileImageForm.patchValue({
-        cardImage: 
-          organisation?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
-      });
-
       this.uploadsForm.patchValue({
-        uploads: organisation?.uploads?.filter(upload => !upload?.title && !upload?.card)
-          .map(upload => upload?.media) as MediaEntity[]
+        uploads: organisation?.uploads
       });
 
       this.additionalInfoForm.patchValue({
@@ -126,23 +107,8 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
     slug: this.descriptionForm.value.name,
     approved: false,
     commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
-
-    uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-        media: media,
-      })).concat(
-        (this.profileImageForm.value.cardImage || []).map(media => ({ 
-          id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-          media: media,
-          card: true,
-        }))
-      ).concat(
-        (this.titleImageForm.value.titleImage || []).map(media => ({
-          id: this.organisation?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-          media: media,
-          title: true,
-        }))
-      ) || null,
+    
+    uploads: this.uploadsForm.value.uploads
     }));
   }
 

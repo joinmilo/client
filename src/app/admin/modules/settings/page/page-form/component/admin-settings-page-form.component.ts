@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { Maybe, MediaEntity, PageEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, PageEntity, PageMediaEntity } from 'src/app/core/api/generated/schema';
 
 import { ActivatedRoute } from '@angular/router';
 import { slug } from 'src/app/core/constants/queryparam.constants';
@@ -26,12 +26,8 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
     shortDescription: ['' as Maybe<string>],
   });
 
-  public titleImageForm = this.fb.group({
-    titleImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
   public uploadsForm = this.fb.group({
-    uploads: [[] as MediaEntity[]],
+    uploads: [[] as Maybe<PageMediaEntity>[], [Validators.required]],
   });
 
   public additionalInfoForm = this.fb.group({
@@ -69,13 +65,8 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
         shortDescription: page?.shortDescription,
       });
 
-      this.titleImageForm.patchValue({
-        titleImage: page?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[]
-      });
-
       this.uploadsForm.patchValue({
-        uploads: page?.uploads?.filter(upload => !upload?.media)
-          .map(upload => upload?.media) as MediaEntity[]
+        uploads: page?.uploads
       });
 
       this.additionalInfoForm.patchValue({
@@ -101,16 +92,7 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
       callText: this.additionalInfoForm.value.callText,
       callUrl: this.additionalInfoForm.value.callUrl,
       isLanding: false,
-      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        id: this.page?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-        media: media,
-      })).concat(
-        (this.titleImageForm.value.titleImage || []).map(media => ({
-          id: this.page?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-          media: media,
-          title: true,
-        }))
-      ) || null,
+      uploads: this.uploadsForm.value.uploads
     }));
   }
 

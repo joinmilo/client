@@ -1,10 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
+import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { InfoMediaCategoryEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { id } from 'src/app/core/constants/queryparam.constants';
 import { MediaAdminFormActions } from '../state/media-admin-form.actions';
-import { selectMediaCategories } from '../state/media-admin-form.selectors';
+import { selectEditableMedia, selectMediaCategories } from '../state/media-admin-form.selectors';
 
 @Component({
   selector: 'app-media-admin-form',
@@ -15,11 +17,8 @@ export class MediaAdminFormComponent implements OnInit, OnDestroy {
 
   public contentForm = this.fb.group({
     id: ['' as Maybe<string>],
-    name: ['' as Maybe<string>, [Validators.required]],
-    url: ['' as Maybe<string>],
-    uploads: [[] as MediaEntity[], [Validators.required]],
+    media: [[] as Maybe<MediaEntity>[], [Validators.required]],
     categoryId: [undefined as Maybe<string>, [Validators.required]],
-    author: ['' as Maybe<string>],
   });
 
   public categories = this.store.select(selectMediaCategories);
@@ -28,31 +27,46 @@ export class MediaAdminFormComponent implements OnInit, OnDestroy {
   private destroy = new Subject<void>();
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private store: Store,
   ) { }
+  
+  public ngOnInit(): void {
+    this.store.dispatch(MediaAdminFormActions.getCategories());
+    
+    this.activatedRoute?.parent?.params.pipe(
+      filter(params => !!params[id]),
+      tap(params => this.store.dispatch(MediaAdminFormActions.getMedia(params[id]))),
+      switchMap(() => this.store.select(selectEditableMedia)),
+      filter(media => !!media?.id),
+      takeUntil(this.destroy)
+    ).subscribe(infoMedia => {
+
+      this.contentForm.patchValue({
+        id: infoMedia?.id,
+        categoryId: infoMedia?.category?.id,
+        media: [infoMedia?.media]
+      })
+    }) 
+  }
 
   public cancelled(): void {
     this.store.dispatch(MediaAdminFormActions.cancelled());
   }
 
-  public ngOnInit(): void {
-    this.store.dispatch(MediaAdminFormActions.getCategories());}
-
   public saved(): void {
     this.store.dispatch(MediaAdminFormActions.save({
       id: this.contentForm.value.id ?? null,
-      media: this.contentForm.value.uploads?.[0],     
       category: this.contentForm.value.categoryId ?
       { id: this.contentForm.value.categoryId}
-      :null
-    }));
+      :null,
+      media: this.contentForm.value.media?.[0],     
+    }))
   }
 
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }
-
-
 }

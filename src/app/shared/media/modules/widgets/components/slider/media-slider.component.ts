@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
 import { MediaService } from '../../../../services/media.service';
-import { FileAction, MediaViewerData, MimeTypeDefinition } from '../../../../typings/media';
+import { MediaCardType, MediaViewerData, MimeTypeDefinition } from '../../../../typings/media';
 import { MediaViewerComponent } from '../viewer/media-viewer.component';
 
 @Component({
@@ -14,7 +14,7 @@ import { MediaViewerComponent } from '../viewer/media-viewer.component';
 export class MediaSliderComponent {
 
   @Input()
-  public action?: FileAction;
+  public actionLabel?: string;
 
   @Input()
   public media?: Maybe<(Maybe<MediaEntity> | undefined)[]>;
@@ -26,6 +26,9 @@ export class MediaSliderComponent {
   public linkLabel?: string = 'allMedia';
   
   @Input()
+  public mediaCardType: MediaCardType = 'VIEW';
+  
+  @Input()
   public titleLabel?: string = 'media';
 
   @Input()
@@ -33,6 +36,9 @@ export class MediaSliderComponent {
 
   @Input()
   public titleType: SliderTitleType = 'DETAILS';
+
+  @Output()
+  public actionClicked = new EventEmitter<Maybe<MediaEntity>>();
 
   @Output()
   public deleted = new EventEmitter<Maybe<MediaEntity>>();
@@ -44,6 +50,10 @@ export class MediaSliderComponent {
   public mimeType(element?: Maybe<MediaEntity>): Maybe<MimeTypeDefinition> {
     return this.mediaService.mimeTypeDefinition(element);
   }
+
+  public action(media?: Maybe<MediaEntity>) {
+    this.actionClicked.emit(media);
+  } 
 
   public delete(event: Maybe<MediaEntity>) {
     this.deleted.emit(event);

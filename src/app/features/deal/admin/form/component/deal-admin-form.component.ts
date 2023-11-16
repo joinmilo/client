@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { AddressEntity, DealEntity, Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, DealEntity, DealMediaEntity, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { AppValidators } from 'src/app/core/validators/validators';
@@ -46,16 +46,8 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
     website: [undefined as Maybe<string>],
   });
 
-  public titleImageForm = this.fb.group({
-    titleImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
-  public cardImageForm = this.fb.group({
-    cardImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
   public uploadsForm = this.fb.group({
-    uploads: [[] as MediaEntity[]],
+    uploads: [[] as Maybe<DealMediaEntity>[], [Validators.required]],
   });
 
   public categories = this.store.select(selectCategories);
@@ -113,19 +105,8 @@ public ngOnInit(): void {
         website: deal?.contact?.website
       });
 
-      this.titleImageForm.patchValue({
-        titleImage: 
-        deal?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[],
-      });
-
-      this.cardImageForm.patchValue({
-        cardImage: 
-          deal?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[],
-      });
-
       this.uploadsForm.patchValue({
-        uploads: deal?.uploads?.filter(upload => !upload?.title && !upload?.card)
-          .map(upload => upload?.media) as MediaEntity[],
+        uploads: deal?.uploads
       });
     });
   }
@@ -162,26 +143,7 @@ public ngOnInit(): void {
       isPublic: this.additionalInfoForm.value.isPublic,
       offer: this.additionalInfoForm.value.selectedType === 'offer' ? true : false,
       
-      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
-        media: media,
-        card: false,
-        title: false
-      })).concat(
-        (this.cardImageForm.value.cardImage || []).map(media => ({ 
-          id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
-          media: media,
-          card: true,
-          title: false
-        }))
-      ).concat(
-        (this.titleImageForm.value.titleImage || []).map(media => ({
-          id: this.deal?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id ?? null,
-          media: media,
-          title: true,
-          card: false
-        }))
-      ) || null,
+      uploads: this.uploadsForm.value.uploads
     }));
   }
 

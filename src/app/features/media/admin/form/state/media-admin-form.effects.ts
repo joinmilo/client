@@ -3,17 +3,37 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { map, switchMap, tap } from 'rxjs';
-import { InfoMediaCategoryEntity } from 'src/app/core/api/generated/schema';
+import { AdminActions } from 'src/app/admin/state/admin.actions';
+import { InfoMediaCategoryEntity, InfoMediaEntity } from 'src/app/core/api/generated/schema';
 import { mediaFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetMediaCategoriesGQL } from '../../../api/generated/get-media-categories.query.generated';
+
+import { GetMediaFormGQL } from '../../../api/generated/get-media-form.query.generated';
 import { SaveInfoMediumGQL } from '../../../api/generated/save-media.mutation.generated';
 import { MediaAdminFormActions } from './media-admin-form.actions';
 
 @Injectable()
 export class MediaAdminFormEffects {
+
+  getMedia = createEffect(() => this.actions.pipe(
+    ofType(MediaAdminFormActions.getMedia),
+    switchMap((action) => this.getMediaService.watch({
+      entity: {
+        id: action.id
+      }
+    }).valueChanges),
+    map(response => response.data.getInfoMedium?.id
+      ? MediaAdminFormActions.setMedia(response.data.getInfoMedium as InfoMediaEntity)
+      : AdminActions.notFound())
+  ));
+
+  cancelled = createEffect(() => this.actions.pipe(
+    ofType(MediaAdminFormActions.cancelled),
+    tap(() => this.router.navigate([adminUrl, mediaFeatureKey])),
+  ), { dispatch: false });
 
   save = createEffect(() => this.actions.pipe(
     ofType(MediaAdminFormActions.save),
@@ -40,6 +60,7 @@ export class MediaAdminFormEffects {
 
   constructor(
     private actions: Actions,
+    private getMediaService: GetMediaFormGQL,
     private saveMediaService: SaveInfoMediumGQL,
     private getCategoriesService: GetMediaCategoriesGQL,
     private router: Router

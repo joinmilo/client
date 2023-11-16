@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, Maybe, OrganisationMediaEntity } from 'src/app/core/api/generated/schema';
 import { AppValidators } from 'src/app/core/validators/validators';
 import { PortalParticipateActions } from '../../state/portal-participate.actions';
 
@@ -29,17 +29,9 @@ export class PortalParticipateCreateOrganisationComponent {
     address: [undefined as Maybe<AddressEntity>, [Validators.required]],
   });
 
-  public titleImageForm = this.fb.group({
-    titleImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
-  public profileImageForm = this.fb.group({
-    cardImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
   public uploadsForm = this.fb.group({
-    uploads: [[] as MediaEntity[]],
-  });  
+    uploads: [[] as Maybe<OrganisationMediaEntity>[], [Validators.required]],
+  }); 
 
   constructor(
     private store: Store,
@@ -64,19 +56,7 @@ export class PortalParticipateCreateOrganisationComponent {
     slug: this.descriptionForm.value.name,
     approved: false,
     sponsored: false,
-    uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        media: media,
-      })).concat(
-        (this.profileImageForm.value.cardImage || []).map(media => ({ 
-          media: media,
-          card: true,
-        }))
-      ).concat(
-        (this.titleImageForm.value.titleImage || []).map(media => ({
-          media: media,
-          title: true,
-        }))
-      ) || null,
+    uploads: this.uploadsForm.value.uploads
     }));
   }
 }

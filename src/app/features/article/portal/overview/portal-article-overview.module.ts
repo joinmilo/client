@@ -36,15 +36,15 @@ const materials = [
 ];
 
 const modules = [
+  ArticleFilterModule,
   CoreModule,
   CardModule,
   CardSliderComponent,
-  ArticleFilterModule,
+  NoDataComponent,
   PortalArticleOverviewRoutingModule,
   RadioButtonFormModule,
   TableModule,
   TitleModule,
-  NoDataComponent
 ];
 
 const libs = [

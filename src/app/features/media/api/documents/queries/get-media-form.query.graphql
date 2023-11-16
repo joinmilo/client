@@ -1,0 +1,11 @@
+query getMediaForm($entity: InfoMediaEntityInput) {
+  getInfoMedium(entity: $entity) {
+    category {
+      ...MediaCategory
+    }
+    id
+    media {
+      ...MediaEntity
+    }
+  }
+}

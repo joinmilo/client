@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { ArticleCategoryEntity, ArticleEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
+import { ArticleCategoryEntity, ArticleEntity, ArticleMediaEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { ArticleAdminFormActions } from '../state/article-admin-form.actions';
 import { selectArticleCategories, selectEditableArticle } from '../state/article-admin-form.selectors';
 import { slug } from './../../../../../core/constants/queryparam.constants';
@@ -25,16 +25,8 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
     shortDescription: ['' as Maybe<string>, [Validators.required]],
   });
 
-  public titleImageForm = this.fb.group({
-    titleImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
-  public cardImageForm = this.fb.group({
-    cardImage: [[] as MediaEntity[], [Validators.required]],
-  });
-
   public uploadsForm = this.fb.group({
-    uploads: [[] as MediaEntity[]],
+    uploads: [[] as Maybe<ArticleMediaEntity>[], [Validators.required]],
   });
 
   public additionalInfoForm = this.fb.group({
@@ -76,18 +68,8 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
         shortDescription: article?.shortDescription,
       });
 
-      this.titleImageForm.patchValue({
-        titleImage: article?.uploads?.filter(upload => upload?.title).map(upload => upload?.media) as MediaEntity[]
-      });
-
-      this.cardImageForm.patchValue({
-        cardImage: 
-          article?.uploads?.filter(upload => upload?.card).map(upload => upload?.media) as MediaEntity[]
-      });
-
       this.uploadsForm.patchValue({
-        uploads: article?.uploads?.filter(upload => !upload?.title && !upload?.card)
-          .map(upload => upload?.media) as MediaEntity[]
+        uploads: article?.uploads
       });
 
       this.additionalInfoForm.patchValue({
@@ -113,22 +95,7 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
         : null,
       metaDescription: this.additionalInfoForm.value.metaDescription,
       commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
-      uploads: (this.uploadsForm.value.uploads || []).map(media => ({
-        id: this.article?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-        media: media,
-      })).concat(
-        (this.cardImageForm.value.cardImage || []).map(media => ({ 
-          id: this.article?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-          media: media,
-          card: true,
-        }))
-      ).concat(
-        (this.titleImageForm.value.titleImage || []).map(media => ({
-          id: this.article?.uploads?.filter(upload => upload?.media?.id == media.id)[0]?.id,
-          media: media,
-          title: true,
-        }))
-      ) || null,
+      uploads: this.uploadsForm.value.uploads
     }));
   }
 
