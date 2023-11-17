@@ -73,6 +73,28 @@
       </div>
     </mat-step>
 
+    <mat-step [stepControl]="form" [completed]="false">
+      <ng-template matStepLabel>
+        <span appLabel="language"></span>
+      </ng-template>
+      <div>
+        <mat-form-field class="content-full-width" appearance="outline">
+          <mat-label appLabel="language"></mat-label>
+          <mat-select formControlName="languageId">
+            <mat-option 
+              [value]="language.id" 
+              *ngFor="let language of languages | async">
+              {{ language.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious appLabel="previous"></button>
+        <button mat-button matStepperNext appLabel="continue"></button>
+      </div>
+    </mat-step>
+
     <mat-step [completed]="false">
       <ng-template matStepLabel>
         <span appLabel="done"></span>

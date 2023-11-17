@@ -4,10 +4,9 @@ import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import {
   AddressEntity,
-  LanguageEntity,
   Maybe,
   MediaEntity,
-  UserContextEntity,
+  UserContextEntity
 } from 'src/app/core/api/generated/schema';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
@@ -94,10 +93,6 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
           languageId: currentUser?.user?.language?.id,
         });
       });
-  }
-
-  compareLanguages(language1: LanguageEntity, language2: LanguageEntity) {
-    return language1?.id === language2?.id;
   }
 
   public saved(): void {

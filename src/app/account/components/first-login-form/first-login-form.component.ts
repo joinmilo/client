@@ -2,7 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { LanguageEntity, Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { AppValidators } from 'src/app/core/validators/validators';
 import { AccountActions } from '../../state/account.actions';
@@ -20,6 +21,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
 
   private currentUser?: Maybe<UserContextEntity>;
 
+  public languages = this.store.select(selectLanguages);
   public organisations = this.store.select(selectOrganisations);
   public profilePicture?: Maybe<MediaEntity>;
 
@@ -31,6 +33,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
     author: [false],
     organisations: [[] as OrganisationEntity[]],
     uploads: [[] as MediaEntity[]],
+    languageId: [undefined as Maybe<string>]
   });
 
   private destroy = new Subject<void>();
@@ -45,7 +48,17 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
     this.store.dispatch(AccountActions.getOrganisations());
     this.store.select(selectCurrentUser)
       .pipe(takeUntil(this.destroy))
-      .subscribe(user => this.currentUser = user);
+      .subscribe(user => {
+        this.currentUser = user
+
+        this.form.patchValue({
+          languageId: user?.user?.language?.id
+        })
+      });
+  }
+
+  compareLanguages(language1: LanguageEntity, language2: LanguageEntity) {
+    return language1?.id === language2?.id;
   }
 
   public addUploads(uploads: MediaEntity[]): void {
@@ -86,8 +99,12 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
               }
             ]
             : [],        
+        language:
+          this.form.value.languageId != null
+            ? { id: this.form.value.languageId }
+            : null,
       },
-      members: memberEntities
+      members: memberEntities,
     }
     ))
   }
