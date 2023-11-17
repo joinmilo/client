@@ -45,7 +45,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    categoryId: [undefined as Maybe<string>],
+    categoryId: [undefined as Maybe<string>, [Validators.required]],
     targetGroups: this.fb.control(null as Maybe<string[]>),
     commentsAllowed: [undefined as Maybe<boolean>],
     entryFee: [undefined as Maybe<string>],
@@ -58,6 +58,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public attendeeConfigForm = this.fb.group({
+    configureAttendance: [false as boolean],
     id: [undefined as Maybe<string>],
     approval: [undefined as Maybe<boolean>],
     maxAttendees: [undefined as Maybe<number>]
@@ -186,12 +187,14 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       targetGroups: this.additionalInfoForm.value.targetGroups?.map(id => ({
         id
       })),
-
-      attendeeConfiguration: {
+      
+      attendeeConfiguration: this.attendeeConfigForm.value.configureAttendance ?
+      {
         id: this.attendeeConfigForm.value.id,
         approval: this.attendeeConfigForm.value.approval ?? false,
         maxAttendees: this.attendeeConfigForm.value.maxAttendees
-      },
+      }
+      : null,
 
       organisation: this.contactAndOrganisationForm.value.organisation?.id != null
         ? { id: this.contactAndOrganisationForm.value.organisation?.id }
