@@ -6,12 +6,12 @@ export const selectOrganisationAdminDetailsEventsState = createFeatureSelector<O
 
 export const selectOrganisationAdminDetailsEvents = createSelector(
   selectOrganisationAdminDetailsEventsState,
-  state => state.comments
+  state => state.events
 );
 
 export const selectSlug = createSelector(
   selectOrganisationAdminDetailsEventsState,
-  state => state.slug
+  state => state.id
 );
 
 export const selectParams = createSelector(

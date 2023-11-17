@@ -1,6 +1,7 @@
 <app-table 
   [data]="events"
-  [entity]="'UserContextEntity'"
+  [actions]="actions"
+  [entity]="'EventEntity'"
   [columns]="columns"
   (sortPaginate)="updateParams(undefined, $event)">
 </app-table>

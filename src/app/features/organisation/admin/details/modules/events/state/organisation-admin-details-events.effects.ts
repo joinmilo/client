@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, switchMap, withLatestFrom } from 'rxjs';
-import { PageableList_UserContextEntity, QueryOperator } from 'src/app/core/api/generated/schema';
-import { GetFavoritingUsersGQL } from 'src/app/features/organisation/api/generated/get-favoriting-users.query.generated';
+import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { PageableList_EventEntity, QueryOperator } from 'src/app/core/api/generated/schema';
+import { DeleteEventGQL } from 'src/app/features/organisation/api/generated/delete-event.mutation.generated';
+import { GetOrganisationEventsGQL } from 'src/app/features/organisation/api/generated/get-organisation-events.query.generated';
+import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 import { OrganisationAdminDetailsEventsActions } from './organisation-admin-details-events.actions';
 import { selectParams, selectSlug } from './organisation-admin-details-events.selectors';
 
@@ -13,28 +16,47 @@ export class OrganisationAdminDetailsEventsEffects {
   updateParams = createEffect(() => this.actions.pipe(
     ofType(
       OrganisationAdminDetailsEventsActions.updateParams,
+      OrganisationAdminDetailsEventsActions.eventDeleted
     ),
     withLatestFrom(
       this.store.select(selectSlug),
       this.store.select(selectParams)),
-    switchMap(([, slug, params]) => this.getFavoritingUsersService.watch({
+    switchMap(([, id, params]) => this.getOrganisationEventsService.watch({
       params: {
         ...params,
         expression: {
           entity: {
-            path: 'favoriteOrganisations.slug',
+            path: 'organisation.id',
             operator: QueryOperator.Equal,
-            value: slug
+            value: id
           }
         }
       }
     }).valueChanges),
-    map(response => OrganisationAdminDetailsEventsActions.setEvents(response.data.getUserContexts as PageableList_UserContextEntity))
+    map(response => OrganisationAdminDetailsEventsActions.setEvents(response.data.getEvents as PageableList_EventEntity))
+  ));
+
+  deleteEvent = createEffect(() => this.actions.pipe(
+    ofType(OrganisationAdminDetailsEventsActions.deleteEvent),
+    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.event?.name })
+      .afterClosed().pipe(
+        switchMap(confirmed => confirmed
+          ? of(action.event)
+          : EMPTY
+        )
+      )
+    ),
+    switchMap(event => this.deleteEventService.mutate({
+      id: event?.id
+    })),
+    map(() => OrganisationAdminDetailsEventsActions.eventDeleted())
   ));
 
   constructor(
     private actions: Actions,
-    private getFavoritingUsersService: GetFavoritingUsersGQL,
+    private dialog: MatDialog,
+    private getOrganisationEventsService: GetOrganisationEventsGQL,
+    private deleteEventService: DeleteEventGQL,
     private store: Store,
   ) { }
 }

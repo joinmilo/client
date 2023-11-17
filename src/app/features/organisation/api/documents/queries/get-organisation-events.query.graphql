@@ -1,0 +1,29 @@
+query getOrganisationEvents($params: FilterSortPaginateInput) {
+  getEvents(params: $params) {
+    result {
+      id
+      slug
+      name
+      sponsored
+      category {
+        id
+        icon
+        color
+        name
+          translatables {
+          id
+          name
+          language {
+            ...Language
+          }
+        }
+      }
+      created
+      modified
+      organisation {
+        id
+      }
+    }
+    total
+  }
+}

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { applicationsRoute, commentsRoute, favoritesRoute, membersRoute, ratingsRoute, searchRoute, visitorsRoute } from './constants/organisation-admin-details.constants';
+import { applicationsRoute, commentsRoute, eventsRoute, favoritesRoute, membersRoute, ratingsRoute, searchRoute, visitorsRoute } from './constants/organisation-admin-details.constants';
 import { OrganisationAdminDetailsApplicationsComponent } from './modules/applications/components/organisation-admin-details-applications.component';
 import { OrganisationAdminDetailsCommentsComponent } from './modules/comments/components/organisation-admin-details-comments.component';
+import { OrganisationAdminDetailsEventsComponent } from './modules/events/components/organisation-admin-details-events.component';
 import { OrganisationAdminDetailsFavoritesComponent } from './modules/favorites/components/organisation-admin-details-favorites.component';
 import { OrganisationAdminDetailsLandingComponent } from './modules/landing/components/organisation-admin-details-landing.component';
 import { OrganisationAdminDetailsMembersComponent } from './modules/members/components/organisation-admin-details-members.component';
@@ -23,11 +24,17 @@ const routes: Routes = [
       .then((imported) => imported.OrganisationAdminDetailsMembersModule),
     component: OrganisationAdminDetailsMembersComponent
   },
-    {
+  {
     path: applicationsRoute,
     loadChildren: () => import('./modules/applications/organisation-admin-details-applications.module')
       .then((imported) => imported.OrganisationAdminDetailsApplicationsModule),
     component: OrganisationAdminDetailsApplicationsComponent
+  },    
+  {
+    path: eventsRoute,
+    loadChildren: () => import('./modules/events/organisation-admin-details-events.module')
+      .then((imported) => imported.OrganisationAdminDetailsEventsModule),
+    component: OrganisationAdminDetailsEventsComponent
   },
   {
     path: commentsRoute,

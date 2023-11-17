@@ -1,12 +1,15 @@
-import { createActionGroup } from '@ngrx/store';
-import { FilterSortPaginateInput, Maybe, PageableList_UserContextEntity } from 'src/app/core/api/generated/schema';
+import { createActionGroup, emptyProps } from '@ngrx/store';
+import { EventEntity, FilterSortPaginateInput, Maybe, PageableList_EventEntity } from 'src/app/core/api/generated/schema';
 
 
 
 export const OrganisationAdminDetailsEventsActions = createActionGroup({
   source: 'Organisation Admin Details Events',
   events: {
-    'set events': (comments: PageableList_UserContextEntity) => ({ comments }),
-    'update params': (slug: Maybe<string> , params?: FilterSortPaginateInput) => ({ slug, params }),
+    'set events': (events: PageableList_EventEntity) => ({ events }),
+    'update params': (id: Maybe<string> , params?: FilterSortPaginateInput) => ({ id, params }),
+
+    'delete event': (event?: Maybe<EventEntity>) => ({ event }),
+    'event deleted': emptyProps(),
   }
 });

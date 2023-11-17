@@ -1,10 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { FilterSortPaginateInput, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
-import { Column } from 'src/app/shared/widgets/table/typings/table';
-import { slug } from '../../../../../../../core/constants/queryparam.constants';
+import { EventEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
+import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
+import { adminUrl } from 'src/app/core/constants/module.constants';
+import { TranslationService } from 'src/app/core/services/translation.service';
+import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { id } from '../../../../../../../core/constants/queryparam.constants';
 import { OrganisationAdminDetailsEventsActions } from '../state/organisation-admin-details-events.actions';
 import { selectOrganisationAdminDetailsEvents } from '../state/organisation-admin-details-events.selectors';
 
@@ -20,42 +23,76 @@ export class OrganisationAdminDetailsEventsComponent implements OnInit, OnDestro
 
   public events = this.store.select(selectOrganisationAdminDetailsEvents);
 
-  public slug?: Maybe<string>;
+  public id?: Maybe<string>;
 
   private destroy = new Subject<void>();
 
-  public columns: Column<UserContextEntity>[] = [
+  public actions: RowAction<EventEntity>[] = [
     {
-      field: 'user.firstName',
-      label: 'firstName',
+      icon: 'pen-to-square',
+      callback: row =>
+        this.router.navigate([adminUrl, eventsFeatureKey, row?.slug, 'form']),
+      tooltipLabel: 'edit'
+    },
+    {
+      icon: 'trash',
+      callback: event =>
+        this.store.dispatch(OrganisationAdminDetailsEventsActions.deleteEvent(event)),
+      tooltipLabel: 'delete'
+    },
+
+    'SHARE',
+  ];
+
+  public columns: Column<EventEntity>[] = [
+    {
+      field: 'name',
+      label: 'activities',
+      // value: row => this.translationService.translatable(row.translatables, 'name')
+    },
+    {
+      field: 'contact.name',
+      label: 'contact',
+    },
+    {
+      field: 'modified',
+      label: 'lastModified',
+      type: 'DATETIME',
       sort: true,
     },
     {
-      field: 'user.lastName',
-      label: 'lastName',
-      sort: true,
+      field: 'category',
+      label: 'category',
+      type: 'CATEGORY',
     },
     {
-      field: 'user.email',
-      label: 'email',
+      field: 'sponsored',
+      label: 'sponsored',
+      type: 'BOOLEAN',
       sort: true,
     },
   ];
 
+  
+
   constructor(
-    private store: Store,
     private activatedRoute: ActivatedRoute,
-  ) { }
+    private store: Store,
+    private router: Router,
+    private translationService: TranslationService,
+  ) { 
+    console.log('herer')
+  }
 
   public ngOnInit(): void {
     this.activatedRoute.parent?.params.pipe(takeUntil(this.destroy)).subscribe(params => {
-      this.slug = params[slug],
-        this.updateParams(params[slug])
+      this.id = params[id],
+        this.updateParams(params[id])
     })
   }
 
-  public updateParams(slug?: Maybe<string>, params?: FilterSortPaginateInput) {
-    this.store.dispatch(OrganisationAdminDetailsEventsActions.updateParams(this.slug ?? slug, params));
+  public updateParams(id?: Maybe<string>, params?: FilterSortPaginateInput) {
+    this.store.dispatch(OrganisationAdminDetailsEventsActions.updateParams(this.id ?? id, params));
   }
   
   ngOnDestroy(): void {
