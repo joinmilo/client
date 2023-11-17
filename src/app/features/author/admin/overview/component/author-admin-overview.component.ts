@@ -37,7 +37,7 @@ export class AuthorAdminOverviewComponent {
       type: 'LIST'
     },
     {
-      field: 'lastLogin',
+      field: 'user.lastLogin',
       label: 'lastLogin',
       type: 'DATETIME',
       sort: true,

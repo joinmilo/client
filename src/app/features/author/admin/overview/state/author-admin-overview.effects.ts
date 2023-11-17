@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, withLatestFrom } from 'rxjs';
@@ -34,7 +33,6 @@ export class AuthorAdminOverviewEffects {
   
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
     private getAuthorsService: GetUserContextsGQL,
     private store: Store,
   ) {}
