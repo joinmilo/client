@@ -25,7 +25,6 @@ export class PortalFavoriteAuthorsComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.dispatch(PortalFavoritesActions.getFavoriteAuthors());
-    this.store.select(selectFavoriteAuthors).subscribe((users => console.log("users", users)));
   }
 
   public updateParams(params: SortPaginate) {
