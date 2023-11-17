@@ -14,7 +14,7 @@
   margin: var(--gap);
   max-width: calc(100% - var(--gap));
   text-align: center;
-  gap: 1rem;
+  gap: var(--gap);
 
   section {
     display: flex;

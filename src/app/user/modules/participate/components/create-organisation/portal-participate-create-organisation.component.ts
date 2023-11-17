@@ -26,7 +26,7 @@ export class PortalParticipateCreateOrganisationComponent {
   });
 
   public addressForm = this.fb.group({
-    address: [undefined as Maybe<AddressEntity>, [Validators.required]],
+    address: [undefined as Maybe<AddressEntity>],
   });
 
   public uploadsForm = this.fb.group({

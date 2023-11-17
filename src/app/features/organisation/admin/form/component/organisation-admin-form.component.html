@@ -15,6 +15,11 @@
     </app-row>
   </app-form-step>
 
+  <app-form-step titleLabel="media" [formGroup]="uploadsForm">
+    <app-media-form [cardToggle]="true" [titleToggle]="true" formControlName="uploads">
+    </app-media-form>
+  </app-form-step>
+
   <app-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
     <app-row [columns]="2">
       <mat-form-field appearance="outline">
@@ -44,14 +49,6 @@
       <app-address-form formControlName="address">
       </app-address-form>
     </app-row>
-  </app-form-step>
-
-  <app-form-step titleLabel="media" [formGroup]="uploadsForm">
-    <app-media-form 
-      [cardToggle]="true" 
-      [titleToggle]="true" 
-      formControlName="uploads">
-    </app-media-form>
   </app-form-step>
 
   <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
