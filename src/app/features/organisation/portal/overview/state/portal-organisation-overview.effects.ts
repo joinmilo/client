@@ -40,10 +40,8 @@ export class PortalOrganisationOverviewEffects {
           }
         }
       } as FilterSortPaginateInput)
-
       organisations?.expression?.conjunction?.operands?.push(params.expression as QueryExpressionInput)
-
-      return organisations;
+      return {...params, ...organisations} as FilterSortPaginateInput;
     }),
     switchMap((params) => this.getOrganisationCardsService.watch({ params }).valueChanges),
     map(response => PortalOrganisationOverviewActions.setOverviewData(response.data.getOrganisations as PageableList_OrganisationEntity))

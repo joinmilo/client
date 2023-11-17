@@ -82,6 +82,8 @@ export class TableCardComponent implements AfterViewInit, OnDestroy {
 
           this.sortPaginate.emit(this.initParams);
         });
+
+        console.log("data",this.data);
     }
 
     this.paginator?.page
