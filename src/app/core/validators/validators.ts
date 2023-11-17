@@ -76,6 +76,21 @@ export class AppValidators {
     };
   }
 
+  public static number(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const pattern = /^[0-9]+$/;
+      if (!control.value) {
+        return null;
+      }
+
+      if (!pattern.test(control.value)) {
+        return { numbersOnly: true };
+      }
+
+      return null;
+    };
+  }
+
   public static validUrl(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!MediaService.isValidUrl(control.value)) {

@@ -10,7 +10,7 @@ button {
 
 div {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
 }
 
@@ -24,5 +24,6 @@ div {
 
 mat-radio-group {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem
 }

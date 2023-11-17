@@ -26,7 +26,7 @@
   </app-form-step>
 
   <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
-    <app-row [columns]="4">
+    <app-row [columns]="2">
       <mat-radio-group formControlName="selectedType">
         <mat-radio-button color="primary" value="offer"
           [checked]="this.additionalInfoForm.value.selectedType === 'offer'">
@@ -37,12 +37,6 @@
           <span appLabel="request"></span>
         </mat-radio-button>
       </mat-radio-group>
-  
-      <div>
-        <span appLabel="dealIsPublic"></span>
-        <mat-slide-toggle color="primary" formControlName="isPublic">
-        </mat-slide-toggle>
-      </div>
     </app-row>
     
     <app-row [columns]="8">
@@ -58,6 +52,14 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </app-row>
+
+    <app-row>
+      <div>
+        <span appLabel="dealIsPublic"></span>
+        <mat-slide-toggle color="primary" formControlName="isPublic">
+        </mat-slide-toggle>
+      </div>
     </app-row>
   </app-form-step>
 
