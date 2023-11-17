@@ -21,6 +21,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   public contentForm = this.fb.group({
     id: [undefined as Maybe<string>],
     name: [undefined as Maybe<string>, [Validators.required]],
+    categoryId: [undefined as Maybe<string>, [Validators.required]],
     content: [undefined as Maybe<string>, [Validators.required]],
   });
 
@@ -45,7 +46,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    categoryId: [undefined as Maybe<string>, [Validators.required]],
     targetGroups: this.fb.control(null as Maybe<string[]>),
     commentsAllowed: [undefined as Maybe<boolean>],
     entryFee: [undefined as Maybe<string>],
@@ -101,6 +101,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       this.contentForm.patchValue({
         id: event?.id,
         name: event?.name,
+        categoryId: event?.category?.id,
         content: event?.content, 
       }, { emitEvent: false});
     
@@ -122,7 +123,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
       this.additionalInfoForm.patchValue({
         commentsAllowed: event?.commentsAllowed,
-        categoryId: event?.category?.id,
         entryFee: event?.entryFee?.toString(),
         metaDescription: event?.metaDescription,
         targetGroups: event?.targetGroups?.map(targetGroup => targetGroup?.id as string) as string[],
@@ -166,6 +166,9 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     this.store.dispatch(EventAdminFormActions.save({
       id: this.contentForm.value.id,
       name: this.contentForm.value.name,
+      category: this.contentForm.value.categoryId != null
+        ? { id: this.contentForm.value.categoryId }
+        : null,
       content: this.contentForm.value.content,
 
       shortDescription: this.shortDescriptionForm.value.shortDescription,
@@ -178,9 +181,6 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         endDate: schedule.endDate
       })),
 
-      category: this.additionalInfoForm.value.categoryId != null
-        ? { id: this.additionalInfoForm.value.categoryId }
-        : null,
       entryFee: Number(this.additionalInfoForm.value.entryFee?.replace(',','.')),
       metaDescription: this.additionalInfoForm.value.metaDescription,
       commentsAllowed: this.additionalInfoForm.value.commentsAllowed,

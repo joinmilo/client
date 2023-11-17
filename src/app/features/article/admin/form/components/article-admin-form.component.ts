@@ -18,11 +18,12 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
   public contentForm = this.fb.group({
     id: ['' as Maybe<string>],
     name: ['' as Maybe<string>, [Validators.required]],
+    categoryId: [undefined as Maybe<string>],
     content: ['' as Maybe<string>],
   });
 
   public shortDescriptionForm = this.fb.group({
-    shortDescription: ['' as Maybe<string>, [Validators.required]],
+    shortDescription: ['' as Maybe<string>],
   });
 
   public uploadsForm = this.fb.group({
@@ -30,7 +31,6 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    categoryId: [undefined as Maybe<string>],
     metaDescription: ['' as Maybe<string>],
     commentsAllowed: [undefined as Maybe<boolean>],
   });
@@ -61,6 +61,7 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       this.contentForm.patchValue({
         id: article?.id,
         name: article?.name,
+        categoryId: article?.category?.id,
         content: article?.content,
       });
 
@@ -73,7 +74,6 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       });
 
       this.additionalInfoForm.patchValue({
-        categoryId: article?.category?.id,
         metaDescription: article?.metaDescription,
         commentsAllowed: article?.commentsAllowed
       });
@@ -88,11 +88,11 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
     this.store.dispatch(ArticleAdminFormActions.save({
       id: this.contentForm.value.id,
       name: this.contentForm.value.name,
+      category: this.contentForm.value.categoryId != null
+        ? { id: this.contentForm.value.categoryId }
+        : null,
       content: this.contentForm.value.content,
       shortDescription: this.shortDescriptionForm.value.shortDescription,
-      category: this.additionalInfoForm.value.categoryId != null
-        ? { id: this.additionalInfoForm.value.categoryId }
-        : null,
       metaDescription: this.additionalInfoForm.value.metaDescription,
       commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
       uploads: this.uploadsForm.value.uploads

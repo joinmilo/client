@@ -21,6 +21,7 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   public contentForm = this.fb.group({
     id: [undefined as Maybe<string>],
     name: [undefined as Maybe<string>, [Validators.required]],
+    categoryId: [undefined as Maybe<string>, [Validators.required]],
     content: [undefined as Maybe<string>, [Validators.required]],
   });
 
@@ -29,7 +30,6 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    categoryId: [undefined as Maybe<string>, [Validators.required]],
     price: ['' as Maybe<string>, [AppValidators.number()]],
     isPublic: [true as Maybe<boolean>],
     selectedType: ['offer' as Maybe<string>]
@@ -80,6 +80,7 @@ public ngOnInit(): void {
       this.contentForm.patchValue({
         id: deal?.id,
         name: deal?.name,
+        categoryId: deal?.category?.id,
         content: deal?.content,
       });
 
@@ -88,7 +89,6 @@ public ngOnInit(): void {
       });
 
       this.additionalInfoForm.patchValue({
-        categoryId: deal?.category?.id,
         price: deal?.price?.toString(),
         isPublic: deal?.isPublic,
         selectedType: deal?.offer ? 'offer' : 'request'
@@ -121,8 +121,8 @@ public ngOnInit(): void {
       name: this.contentForm.value.name,
       content: this.contentForm.value.content,
       shortDescription: this.shortDescriptionForm.value.shortDescription,
-      category: this.additionalInfoForm.value.categoryId != null
-        ? { id: this.additionalInfoForm.value.categoryId }
+      category: this.contentForm.value.categoryId != null
+        ? { id: this.contentForm.value.categoryId }
         : null,
       address: this.locationForm.value.address,
       contact: {
