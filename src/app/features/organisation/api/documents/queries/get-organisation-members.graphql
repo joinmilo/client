@@ -4,7 +4,9 @@ query getOrganisationMembers($params: FilterSortPaginateInput) {
       id
       approved
       isPublic
-      userContext {
+      created
+      modified
+      userContext{
         user{
           id
           firstName
