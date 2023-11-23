@@ -55,7 +55,7 @@ export class ArticleAdminFormComponent implements OnInit, OnDestroy {
       tap(params => this.store.dispatch(ArticleAdminFormActions.getArticle(params[slug]))),
       switchMap(() => this.store.select(selectEditableArticle)),
       filter(article => !!article?.id),
-      takeUntil(this.destroy)
+      takeUntil(this.destroy),
     ).subscribe(article => {
       
       this.contentForm.patchValue({

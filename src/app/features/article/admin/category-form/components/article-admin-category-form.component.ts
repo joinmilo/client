@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, filter, switchMap, take, tap } from 'rxjs';
+import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { id } from 'src/app/core/constants/queryparam.constants';
 import { ArticleAdminCategoryFormActions } from '../state/article-admin-category-form.actions';
@@ -36,7 +36,7 @@ export class ArticleAdminCategoryFormComponent implements OnInit, OnDestroy {
       tap((params) => this.store.dispatch(ArticleAdminCategoryFormActions.getCategory(params[id]))),
       switchMap(() => this.store.select(selectEditableArticleCategory)),
       filter(category => !!category),
-      take(1)
+      takeUntil(this.destroy)
     ).subscribe(category => {
       this.categoryForm = this.fb.group({
         id: [category?.id],

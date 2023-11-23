@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, filter, switchMap, take, takeUntil, tap } from 'rxjs';
+import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AddressEntity, ContactEntity, EventMediaEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
@@ -95,7 +95,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       tap(params => this.store.dispatch(EventAdminFormActions.getEvent(params[slug]))),
       switchMap(() => this.store.select(selectEvent)),
       filter(event => !!event?.id),
-      take(1)
+      takeUntil(this.destroy)
     ).subscribe(event => {
 
       this.contentForm.patchValue({
