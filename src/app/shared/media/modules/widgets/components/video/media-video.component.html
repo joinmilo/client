@@ -1,7 +1,7 @@
 <ng-container *ngIf="media">
   <ng-container *ngIf="youtubeUrl; else videoTemplate">
     <ng-container *ngIf="allowExternalContent; else frameTemplate">
-      <iframe [src]="url" frameborder="0">
+      <iframe [src]="url" frameborder="0" allow="fullscreen;">
       </iframe>
     </ng-container>
     <ng-template  #frameTemplate>

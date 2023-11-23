@@ -14,6 +14,7 @@
     
     <a [routerLink]="element?.url">
       <app-media-element *ngIf="element?.image"
+        [clickable]="false"
         [media]="element?.image">
       </app-media-element>
       <img *ngIf="!element?.image" [src]="'/assets/placeholder.webp'"

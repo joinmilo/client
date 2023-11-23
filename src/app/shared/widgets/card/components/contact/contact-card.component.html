@@ -3,6 +3,7 @@
   <figure [routerLink]="element?.url">
     <app-media-element *ngIf="element?.image"
       class="border-image"
+      [clickable]="false"
       [media]="element?.image">
     </app-media-element>
     <span class="border-image" *ngIf="!element?.image">

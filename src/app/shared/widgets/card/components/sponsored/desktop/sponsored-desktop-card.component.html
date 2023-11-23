@@ -14,9 +14,13 @@
 
   <figure>
     <a [routerLink]="element?.url">
-    <img [src]="element?.image ? element?.image?.url : '/assets/placeholder.webp'"
-      alt="content-card"
-      [appAttribution]="element?.image?.attribution">
+      <app-media-element *ngIf="element?.image"
+      [clickable]="false"
+      [media]="element?.image">
+      </app-media-element>
+      <img *ngIf="!element?.image" [src]="'/assets/placeholder.webp'"
+        alt="content-card"
+        [appAttribution]="element?.image?.attribution">
     </a>
   </figure>
   <mat-card-content>

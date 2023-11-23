@@ -19,6 +19,9 @@ export class MediaElementComponent implements OnInit, OnChanges {
   @Input()
   public attributionDirection: AttributionDirection = 'BOTTOM-RIGHT';
 
+  @Input()
+  public clickable = true;
+
   @Output()
   public clicked = new EventEmitter<MediaEntity>();
 
@@ -42,13 +45,15 @@ export class MediaElementComponent implements OnInit, OnChanges {
   public click(): void {
     this.clicked.observed
       ? this.clicked.emit()
-      : this.dialog.open(MediaViewerComponent, {
-          data: {
-            media: [this.media],
-          } as MediaViewerData,
-          panelClass: 'media-dialog',
-          autoFocus: false,
-        });
+      : this.clickable
+        ? this.dialog.open(MediaViewerComponent, {
+            data: {
+              media: [this.media],
+            } as MediaViewerData,
+            panelClass: 'media-dialog',
+            autoFocus: false,
+          })
+        : null;
   }
 
 }
