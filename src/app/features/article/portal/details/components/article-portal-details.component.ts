@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
@@ -6,6 +6,7 @@ import { ArticleEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/sc
 import { articlesFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { ArticleFilterQueryDefinition } from 'src/app/core/typings/filter-params/article-filter-param';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { ArticlePortalDetailsActions } from '../state/article-portal-details.actions';
@@ -36,7 +37,12 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store) { }
+    private store: Store,
+    private schemaService: SchemaService,
+    private renderer: Renderer2,
+    ) {
+      
+     }
 
   public ngOnInit(): void {
     this.activatedRoute.params.pipe(
@@ -51,6 +57,14 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(articleMedia => articleMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
+
+      console.log(this.article)
+      console.log('category',this.article?.category?.name)
+      console.log('name',this.article?.name)
+
+      if (this.article) {
+        this.schemaService.setJsonLd(this.renderer, this.article);
+      }
     });
 
   }

@@ -19,6 +19,8 @@ query getArticleDetails($entity: ArticleEntityInput) {
       user {
         firstName
         lastName
+        email
+        phone
       }
     }
 
@@ -76,5 +78,8 @@ query getArticleDetails($entity: ArticleEntityInput) {
         ...Language
       }
     }
+    name
+    content
+    shortDescription
   }
 }

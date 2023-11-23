@@ -10,4 +10,8 @@ fragment EventOrganisation on OrganisationEntity {
       ...Media
     }
   }
+
+  address {
+    ...Address
+  }
 }

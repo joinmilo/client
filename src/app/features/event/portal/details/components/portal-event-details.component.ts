@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
@@ -6,6 +6,7 @@ import { EventEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/sche
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-params/event-filter-param';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { PortalEventDetailsActions } from '../state/portal-event-details.actions';
@@ -36,7 +37,9 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store) { }
+    private store: Store,
+    private schemaService: SchemaService,
+    private renderer: Renderer2,) { }
 
   public ngOnInit(): void {
     this.activatedRoute.params.pipe(
@@ -56,6 +59,13 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(eventMedia => eventMedia?.media)
         ?.slice(0, 10) as MediaEntity[];
+
+      console.log(this.event?.address?.postalCode)
+      console.log(this.event)
+
+      if (this.event) {
+        this.schemaService.setJsonLd(this.renderer, this.event);
+      }
     });
   }
 

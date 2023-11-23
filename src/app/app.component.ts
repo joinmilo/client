@@ -3,6 +3,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { FavIconService } from './core/services/favicon.service';
+import { SchemaService } from './core/services/schema.service';
 import { ThemeService } from './core/services/theme.service';
 import { BrowserTitleService } from './core/services/title.service';
 import { CoreActions } from './core/state/actions/core.actions';
@@ -25,6 +26,7 @@ export class AppComponent implements OnDestroy {
     public browserTitleService: BrowserTitleService,
     public themeService: ThemeService,
     public favIconService: FavIconService,
+    public schemaService: SchemaService,
     private store: Store,
   ) {
 
