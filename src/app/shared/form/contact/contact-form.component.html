@@ -1,11 +1,11 @@
 <form [formGroup]="form">
-  <app-row [columns]="2">
+  <app-row *ngIf="contactOptions?.length" [columns]="2">
     <mat-form-field appearance="outline">
       <mat-label appLabel="importContact"></mat-label>
       <mat-select formControlName="contactOption">
-        <mat-option [value]="contactOption"
+        <mat-option [value]="contactOption" 
           *ngFor="let contactOption of contactOptions">
-          <span [appLabel]="contactOption"></span>
+          <span [appLabel]="contactOption?.label"></span>
         </mat-option>
       </mat-select>
     </mat-form-field>

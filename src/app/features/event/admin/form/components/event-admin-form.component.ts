@@ -7,6 +7,7 @@ import { AddressEntity, ContactEntity, EventMediaEntity, Maybe, OrganisationEnti
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { Period } from 'src/app/core/typings/period';
 import { AppValidators } from 'src/app/core/validators/validators';
+import { ContactOptionEntity } from 'src/app/shared/form/contact/typings/contact-form';
 import { EventAdminFormActions } from '../state/event-admin-form.actions';
 import { selectCategories, selectEvent, selectOrganisations, selectTargetGroups } from '../state/event-admin-form.selectors';
 
@@ -65,6 +66,8 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public categories = this.store.select(selectCategories);
+  
+  public contactOptionEntity?: ContactOptionEntity[];
 
   public targetGroups = this.store.select(selectTargetGroups);
 
@@ -84,6 +87,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     this.locationChange();
     
     this.init();
+    this.updateOrganisation();
 
     this.store.dispatch(EventAdminFormActions.getCategories());
     this.store.dispatch(EventAdminFormActions.getTargetGroups());
@@ -155,6 +159,21 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         } else {
           this.locationForm.controls.videoChatLink.enable();
         }
+      });
+  }
+
+  private updateOrganisation(): void {
+    this.contactAndOrganisationForm.controls.organisation.valueChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe((organisation) => {
+        organisation?.contact
+          ? (this.contactOptionEntity = [
+              {
+                label: 'createContactWithOrganisationData',
+                contact: organisation?.contact,
+              },
+            ])
+          : (this.contactOptionEntity = undefined);
       });
   }
 

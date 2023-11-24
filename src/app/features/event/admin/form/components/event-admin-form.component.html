@@ -75,31 +75,32 @@
   </app-form-step>
 
   <app-form-step
-    titleLabel="contactAndOrganisation"
-    [formGroup]="contactAndOrganisationForm">
-    <app-row [columns]="2" *ngIf="(userOrganisations | async)?.length">
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
-        <mat-select formControlName="organisation">
-          <mat-option [value]="null" selected appLabel="NoOrganisation">
-          </mat-option>
-          <mat-option
-            [value]="organisation"
-            *ngFor="let organisation of userOrganisations | async">
-            {{ organisation.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </app-row>
+  titleLabel="contactAndOrganisation"
+  [formGroup]="contactAndOrganisationForm">
+  <app-row [columns]="2" *ngIf="(userOrganisations | async)?.length">
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
+      <mat-select formControlName="organisation">
+        <mat-option 
+          [value]="null"
+          appLabel="NoOrganisation">
+        </mat-option>
+        <mat-option
+          [value]="organisation"
+          *ngFor="let organisation of userOrganisations | async">
+          {{ organisation.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </app-row>
 
     <mat-divider></mat-divider>
 
     <app-row>
-      <app-event-contact-form
+      <app-contact-form
         formControlName="contact"
-        [selectedOrganisation]="
-          contactAndOrganisationForm.value.organisation
-        "></app-event-contact-form>
+        [inputOptions]="contactOptionEntity">
+      </app-contact-form>
     </app-row>
   </app-form-step>
 
