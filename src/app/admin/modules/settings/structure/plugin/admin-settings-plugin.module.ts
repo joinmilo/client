@@ -7,14 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
-import { AdminSettingsFeatureRoutingModule } from './admin-settings-feature-routing.module';
-import { AdminSettingsFeatureComponent } from './component/admin-settings-feature.component';
-import { adminSettingsFeatureStateKey } from './constants/admin-settings-feature.constants';
-import { AdminSettingsFeatureEffects } from './state/admin-settings-feature.effects';
-import { adminSettingsFeatureReducer } from './state/admin-settings-feature.reducer';
+import { AdminSettingsPluginRoutingModule } from './admin-settings-plugin-routing.module';
+import { AdminSettingsPluginComponent } from './component/admin-settings-plugin.component';
+import { adminSettingsPluginStateKey } from './constants/admin-settings-plugin.constants';
+import { AdminSettingsPluginEffects } from './state/admin-settings-plugin.effects';
+import { adminSettingsPluginReducer } from './state/admin-settings-plugin.reducer';
 
 const components = [
-  AdminSettingsFeatureComponent
+  AdminSettingsPluginComponent
 ]
 
 const framework = [
@@ -28,14 +28,14 @@ const materials = [
 
 const modules = [
   CoreModule,
-  AdminSettingsFeatureRoutingModule,
+  AdminSettingsPluginRoutingModule,
   TableModule,
   TitleModule,
 ];
 
 const libs = [
-  StoreModule.forFeature(adminSettingsFeatureStateKey, adminSettingsFeatureReducer),
-  EffectsModule.forFeature([AdminSettingsFeatureEffects]),
+  StoreModule.forFeature(adminSettingsPluginStateKey, adminSettingsPluginReducer),
+  EffectsModule.forFeature([AdminSettingsPluginEffects]),
 ];
 
 @NgModule({
@@ -48,4 +48,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class AdminSettingsFeatureModule { }
+export class AdminSettingsPluginModule { }

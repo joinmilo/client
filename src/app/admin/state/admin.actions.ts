@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { FeatureEntity } from 'src/app/core/api/generated/schema';
+import { PluginEntity } from 'src/app/core/api/generated/schema';
 import { AdminMenuItem, AdminRoutes } from '../typings/menu';
 
 export const AdminActions = createActionGroup({
@@ -13,7 +13,7 @@ export const AdminActions = createActionGroup({
     'add settings menu': (item: AdminMenuItem) => ({ item }),
 
     'get features': emptyProps(),
-    'set features': (features?: FeatureEntity[]) => ({ features }),
+    'set features': (features?: PluginEntity[]) => ({ features }),
 
     'not found': emptyProps(),
   }

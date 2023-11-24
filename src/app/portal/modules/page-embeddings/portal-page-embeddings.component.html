@@ -1,6 +1,6 @@
 <div>
   <ng-container *ngFor="let embedding of embeddings">
-    <ng-container [ngSwitch]="embedding?.feature?.code">
+    <ng-container [ngSwitch]="embedding?.plugin?.code">
       <app-article-embedding *ngSwitchCase="features.articles"></app-article-embedding>
       <app-calendar-embedding *ngSwitchCase="features.calendar"></app-calendar-embedding>
       <app-event-embedding *ngSwitchCase="features.events"></app-event-embedding>

@@ -49,7 +49,7 @@ export class SearchInputComponent implements AfterViewInit, OnDestroy {
 
   public navigateDetails(event: MouseEvent,  entity: Maybe<SearchDto>): void {
     event.stopPropagation();
-    this.store.dispatch(PortalActions.navigateDetails(entity?.slug, entity?.feature));
+    this.store.dispatch(PortalActions.navigateDetails(entity?.slug, entity?.plugin));
   }
 
   public navigateResultPage(event: MouseEvent): void {

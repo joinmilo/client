@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminSettingsFeatureComponent } from './component/admin-settings-feature.component';
+import { AdminSettingsPluginComponent } from './component/admin-settings-plugin.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminSettingsFeatureComponent,
+    component: AdminSettingsPluginComponent,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminSettingsFeatureRoutingModule { }
+export class AdminSettingsPluginRoutingModule { }

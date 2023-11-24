@@ -1,31 +1,31 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { FeatureEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
+import { FilterSortPaginateInput, PluginEntity } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
-import { AdminSettingsFeatureActions } from '../state/admin-settings-feature.actions';
-import { selectFeatures } from '../state/admin-settings-feature.selectors';
+import { AdminSettingsPluginActions } from '../state/admin-settings-plugin.actions';
+import { selectPlugins } from '../state/admin-settings-plugin.selectors';
 
 @Component({
-  selector: 'app-admin-settings-feature',
-  templateUrl: './admin-settings-feature.component.html',
-  styleUrls: ['./admin-settings-feature.component.scss'],
+  selector: 'app-admin-settings-plugin',
+  templateUrl: './admin-settings-plugin.component.html',
+  styleUrls: ['./admin-settings-plugin.component.scss'],
 })
-export class AdminSettingsFeatureComponent {
+export class AdminSettingsPluginComponent {
 
-  public features = this.store.select(selectFeatures);
+  public features = this.store.select(selectPlugins);
 
-  public actions: RowAction<FeatureEntity>[] = [
+  public actions: RowAction<PluginEntity>[] = [
     {
       icon: 'toggle-off',
       callback: feature =>
-        this.store.dispatch(AdminSettingsFeatureActions.toggleFeature(feature)),
+        this.store.dispatch(AdminSettingsPluginActions.togglePlugin(feature)),
       disable: (row) => !row?.released,
       tooltipLabel: 'toggleActivatePlugin',
     },
   ];
 
-  public columns: Column<FeatureEntity>[] = [
+  public columns: Column<PluginEntity>[] = [
     {
       field: 'translatables.name',
       label: 'plugins',
@@ -51,6 +51,6 @@ export class AdminSettingsFeatureComponent {
   ) { }
 
   public updateParams(params: FilterSortPaginateInput) {
-    this.store.dispatch(AdminSettingsFeatureActions.updateParams(params));
+    this.store.dispatch(AdminSettingsPluginActions.updateParams(params));
   }
 }

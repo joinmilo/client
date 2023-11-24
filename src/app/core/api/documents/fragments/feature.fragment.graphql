@@ -1,4 +1,4 @@
-fragment Feature on FeatureEntity {
+fragment Plugin on PluginEntity {
   id
   active
   icon

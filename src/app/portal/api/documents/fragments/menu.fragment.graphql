@@ -3,8 +3,8 @@ fragment MenuItem on MenuItemEntity {
   header
   order
   icon
-  feature {
-    ...Feature
+  plugin {
+    ...Plugin
   }
   parent {
     id
@@ -24,8 +24,8 @@ fragment MenuItem on MenuItemEntity {
     id
     order
     icon
-    feature {
-      ...Feature
+    plugin {
+      ...Plugin
     }
     page {
       id

@@ -1,10 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { FeatureEntity, Maybe, PageableList_AddressEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, PageableList_AddressEntity, PluginEntity } from 'src/app/core/api/generated/schema';
 import { AdminMenuItem, AdminRoutes } from '../typings/menu';
 import { AdminActions } from './admin.actions';
 
 export interface AdminState {
-  features?: Maybe<FeatureEntity[]>,
+  features?: Maybe<PluginEntity[]>,
   menuOpen?: boolean,
   mainRoutes: AdminRoutes[],
   settingsMenu: AdminMenuItem[],

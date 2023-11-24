@@ -12,8 +12,8 @@ fragment Page on PageEntity {
   embeddings {
     id
     order
-    feature {
-      ...Feature
+    plugin {
+      ...Plugin
     }
   }
   translatables {

@@ -1,0 +1,8 @@
+mutation changePluginActivation(
+  $pluginId: String,
+  $active: Boolean
+) {
+  changePluginActivation(
+    pluginId: $pluginId,
+    active: $active)
+}

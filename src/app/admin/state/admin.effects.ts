@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { Actions, OnInitEffects, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { map, switchMap, tap } from 'rxjs';
-import { FeatureEntity, QueryOperator } from 'src/app/core/api/generated/schema';
+import { PluginEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { adminUrl } from 'src/app/core/constants/module.constants';
+import { GetPluginsGQL } from '../api/generated/get-plugins.query.generated';
 import { AdminActions } from './admin.actions';
-import { GetFeaturesGQL } from '../api/generated/get-features.query.generated';
 
 @Injectable()
 export class AdminEffects implements OnInitEffects {
@@ -17,7 +17,7 @@ export class AdminEffects implements OnInitEffects {
 
   getFeatures = createEffect(() => this.actions.pipe(
     ofType(AdminActions.init),
-    switchMap(() => this.getFeatureService.watch({
+    switchMap(() => this.getPluginsService.watch({
       params: {
         expression: {
           entity: {
@@ -28,7 +28,7 @@ export class AdminEffects implements OnInitEffects {
         }
       }
     }).valueChanges),
-    map(response => AdminActions.setFeatures(response.data.getFeatures?.result as FeatureEntity[])),
+    map(response => AdminActions.setFeatures(response.data.getPlugins?.result as PluginEntity[])),
   ));
 
   notFound = createEffect(() => this.actions.pipe(
@@ -38,7 +38,7 @@ export class AdminEffects implements OnInitEffects {
 
   constructor(
     private actions: Actions,
-    private getFeatureService: GetFeaturesGQL,
+    private getPluginsService: GetPluginsGQL,
     private router: Router,
   ) { }
 }

@@ -2,7 +2,7 @@
 import * as Types from '../../../../../core/api/generated/schema';
 
 import { gql } from 'apollo-angular';
-import { FeatureFragmentDoc } from '../../../../../core/api/generated/feature.fragment.generated';
+import { PluginFragmentDoc } from '../../../../../core/api/generated/feature.fragment.generated';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type SearchQueryVariables = Types.Exact<{
@@ -10,19 +10,19 @@ export type SearchQueryVariables = Types.Exact<{
 }>;
 
 
-export type SearchQuery = { __typename?: 'Query', search?: Array<{ __typename?: 'SearchDto', slug?: string | null, name?: string | null, feature?: { __typename?: 'FeatureEntity', id?: string | null, active?: boolean | null, icon?: string | null, name?: string | null, code?: string | null } | null } | null> | null };
+export type SearchQuery = { __typename?: 'Query', search?: Array<{ __typename?: 'SearchDto', slug?: string | null, name?: string | null, plugin?: { __typename?: 'PluginEntity', id?: string | null, active?: boolean | null, icon?: string | null, name?: string | null, code?: string | null } | null } | null> | null };
 
 export const SearchDocument = gql`
     query search($params: FilterSortPaginateInput) {
   search(params: $params) {
     slug
     name
-    feature {
-      ...Feature
+    plugin {
+      ...Plugin
     }
   }
 }
-    ${FeatureFragmentDoc}`;
+    ${PluginFragmentDoc}`;
 
   @Injectable({
     providedIn: 'root'

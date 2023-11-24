@@ -2,8 +2,8 @@ query search($params: FilterSortPaginateInput) {
   search(params: $params) {
     slug
     name
-    feature {
-      ...Feature
+    plugin {
+      ...Plugin
     }
   }
 }

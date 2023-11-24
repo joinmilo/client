@@ -1261,51 +1261,6 @@ export type EventVisitorEntityInput = {
   visits?: InputMaybe<Scalars['Int']>;
 };
 
-export type FeatureEntity = {
-  __typename?: 'FeatureEntity';
-  active?: Maybe<Scalars['Boolean']>;
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  embeddings?: Maybe<Array<Maybe<PageEmbeddingEntity>>>;
-  icon?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  menuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  released?: Maybe<Scalars['Boolean']>;
-  translatables?: Maybe<Array<Maybe<FeatureTranslatableEntity>>>;
-};
-
-export type FeatureEntityInput = {
-  active?: InputMaybe<Scalars['Boolean']>;
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  embeddings?: InputMaybe<Array<InputMaybe<PageEmbeddingEntityInput>>>;
-  icon?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  menuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  released?: InputMaybe<Scalars['Boolean']>;
-  translatables?: InputMaybe<Array<InputMaybe<FeatureTranslatableEntityInput>>>;
-};
-
-export type FeatureTranslatableEntity = {
-  __typename?: 'FeatureTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-};
-
-export type FeatureTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-};
-
 export type FilterSortPaginateInput = {
   dir?: InputMaybe<Scalars['String']>;
   expression?: InputMaybe<QueryExpressionInput>;
@@ -1537,7 +1492,6 @@ export type MediaEntityInput = {
 export type MenuItemEntity = {
   __typename?: 'MenuItemEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
-  feature?: Maybe<FeatureEntity>;
   header?: Maybe<Scalars['Boolean']>;
   icon?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['String']>;
@@ -1546,6 +1500,7 @@ export type MenuItemEntity = {
   order?: Maybe<Scalars['Int']>;
   page?: Maybe<PageEntity>;
   parent?: Maybe<MenuItemEntity>;
+  plugin?: Maybe<PluginEntity>;
   shortDescription?: Maybe<Scalars['String']>;
   subMenuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
   translatables?: Maybe<Array<Maybe<MenuItemTranslatableEntity>>>;
@@ -1553,7 +1508,6 @@ export type MenuItemEntity = {
 
 export type MenuItemEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
-  feature?: InputMaybe<FeatureEntityInput>;
   header?: InputMaybe<Scalars['Boolean']>;
   icon?: InputMaybe<Scalars['String']>;
   id?: InputMaybe<Scalars['String']>;
@@ -1562,6 +1516,7 @@ export type MenuItemEntityInput = {
   order?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<PageEntityInput>;
   parent?: InputMaybe<MenuItemEntityInput>;
+  plugin?: InputMaybe<PluginEntityInput>;
   shortDescription?: InputMaybe<Scalars['String']>;
   subMenuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<MenuItemTranslatableEntityInput>>>;
@@ -1766,10 +1721,10 @@ export type Mutation = {
   addFavoriteDeal?: Maybe<UserContextEntity>;
   addFavoriteEvent?: Maybe<UserContextEntity>;
   addFavoriteOrganisation?: Maybe<UserContextEntity>;
-  changeActivation?: Maybe<Scalars['Boolean']>;
   changeArticleApproval?: Maybe<Scalars['Boolean']>;
   changeOrganisationApproval?: Maybe<Scalars['Boolean']>;
   changePassword?: Maybe<Scalars['Boolean']>;
+  changePluginActivation?: Maybe<Scalars['Boolean']>;
   checkPassword?: Maybe<Scalars['Float']>;
   createToken?: Maybe<TokenDto>;
   deleteAddress?: Maybe<Scalars['Boolean']>;
@@ -1976,8 +1931,6 @@ export type Mutation = {
   saveEventTargetGroup?: Maybe<EventTargetGroupEntity>;
   saveEventTargetGroups?: Maybe<Array<Maybe<EventTargetGroupEntity>>>;
   saveEvents?: Maybe<Array<Maybe<EventEntity>>>;
-  saveFeature?: Maybe<FeatureEntity>;
-  saveFeatures?: Maybe<Array<Maybe<FeatureEntity>>>;
   saveFriend?: Maybe<FriendEntity>;
   saveFriends?: Maybe<Array<Maybe<FriendEntity>>>;
   saveGuestArticle?: Maybe<ArticleEntity>;
@@ -2018,6 +1971,8 @@ export type Mutation = {
   saveOrganisations?: Maybe<Array<Maybe<OrganisationEntity>>>;
   savePage?: Maybe<PageEntity>;
   savePages?: Maybe<Array<Maybe<PageEntity>>>;
+  savePlugin?: Maybe<PluginEntity>;
+  savePlugins?: Maybe<Array<Maybe<PluginEntity>>>;
   savePrivilegeApplication?: Maybe<PrivilegeApplicationEntity>;
   savePrivilegeApplications?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
   saveQuestionOption?: Maybe<SurveyQuestionOptionEntity>;
@@ -2105,13 +2060,6 @@ export type MutationAddFavoriteOrganisationArgs = {
 
 
 /** Mutation root */
-export type MutationChangeActivationArgs = {
-  active?: InputMaybe<Scalars['Boolean']>;
-  featureId?: InputMaybe<Scalars['String']>;
-};
-
-
-/** Mutation root */
 export type MutationChangeArticleApprovalArgs = {
   articleId?: InputMaybe<Scalars['String']>;
 };
@@ -2126,6 +2074,13 @@ export type MutationChangeOrganisationApprovalArgs = {
 /** Mutation root */
 export type MutationChangePasswordArgs = {
   newPassword?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Mutation root */
+export type MutationChangePluginActivationArgs = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  pluginId?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -3369,18 +3324,6 @@ export type MutationSaveEventsArgs = {
 
 
 /** Mutation root */
-export type MutationSaveFeatureArgs = {
-  entity?: InputMaybe<FeatureEntityInput>;
-};
-
-
-/** Mutation root */
-export type MutationSaveFeaturesArgs = {
-  entities?: InputMaybe<Array<InputMaybe<FeatureEntityInput>>>;
-};
-
-
-/** Mutation root */
 export type MutationSaveFriendArgs = {
   entity?: InputMaybe<FriendEntityInput>;
 };
@@ -3617,6 +3560,18 @@ export type MutationSavePageArgs = {
 /** Mutation root */
 export type MutationSavePagesArgs = {
   entities?: InputMaybe<Array<InputMaybe<PageEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSavePluginArgs = {
+  entity?: InputMaybe<PluginEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSavePluginsArgs = {
+  entities?: InputMaybe<Array<InputMaybe<PluginEntityInput>>>;
 };
 
 
@@ -4207,20 +4162,20 @@ export type OrganisationVisitorEntityInput = {
 export type PageEmbeddingEntity = {
   __typename?: 'PageEmbeddingEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
-  feature?: Maybe<FeatureEntity>;
   id?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   order?: Maybe<Scalars['Int']>;
   page?: Maybe<PageEntity>;
+  plugin?: Maybe<PluginEntity>;
 };
 
 export type PageEmbeddingEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
-  feature?: InputMaybe<FeatureEntityInput>;
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   order?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<PageEntityInput>;
+  plugin?: InputMaybe<PluginEntityInput>;
 };
 
 export type PageEntity = {
@@ -4510,12 +4465,6 @@ export type PageableList_EventTargetGroupEntity = {
   total: Scalars['Long'];
 };
 
-export type PageableList_FeatureEntity = {
-  __typename?: 'PageableList_FeatureEntity';
-  result?: Maybe<Array<Maybe<FeatureEntity>>>;
-  total: Scalars['Long'];
-};
-
 export type PageableList_FriendEntity = {
   __typename?: 'PageableList_FriendEntity';
   result?: Maybe<Array<Maybe<FriendEntity>>>;
@@ -4627,6 +4576,12 @@ export type PageableList_OrganisationRatingEntity = {
 export type PageableList_PageEntity = {
   __typename?: 'PageableList_PageEntity';
   result?: Maybe<Array<Maybe<PageEntity>>>;
+  total: Scalars['Long'];
+};
+
+export type PageableList_PluginEntity = {
+  __typename?: 'PageableList_PluginEntity';
+  result?: Maybe<Array<Maybe<PluginEntity>>>;
   total: Scalars['Long'];
 };
 
@@ -4773,6 +4728,51 @@ export type PasswordResetEntityInput = {
   user?: InputMaybe<UserEntityInput>;
 };
 
+export type PluginEntity = {
+  __typename?: 'PluginEntity';
+  active?: Maybe<Scalars['Boolean']>;
+  code?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  embeddings?: Maybe<Array<Maybe<PageEmbeddingEntity>>>;
+  icon?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  menuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+  released?: Maybe<Scalars['Boolean']>;
+  translatables?: Maybe<Array<Maybe<PluginTranslatableEntity>>>;
+};
+
+export type PluginEntityInput = {
+  active?: InputMaybe<Scalars['Boolean']>;
+  code?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  embeddings?: InputMaybe<Array<InputMaybe<PageEmbeddingEntityInput>>>;
+  icon?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']>;
+  menuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+  released?: InputMaybe<Scalars['Boolean']>;
+  translatables?: InputMaybe<Array<InputMaybe<PluginTranslatableEntityInput>>>;
+};
+
+export type PluginTranslatableEntity = {
+  __typename?: 'PluginTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type PluginTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 export type PrivilegeApplicationEntity = {
   __typename?: 'PrivilegeApplicationEntity';
   accepted?: Maybe<Scalars['Boolean']>;
@@ -4876,8 +4876,6 @@ export type Query = {
   getEventTargetGroup?: Maybe<EventTargetGroupEntity>;
   getEventTargetGroups?: Maybe<PageableList_EventTargetGroupEntity>;
   getEvents?: Maybe<PageableList_EventEntity>;
-  getFeature?: Maybe<FeatureEntity>;
-  getFeatures?: Maybe<PageableList_FeatureEntity>;
   getFriend?: Maybe<FriendEntity>;
   getFriends?: Maybe<PageableList_FriendEntity>;
   getInfoMedia?: Maybe<PageableList_InfoMediaEntity>;
@@ -4917,6 +4915,8 @@ export type Query = {
   getOrganisations?: Maybe<PageableList_OrganisationEntity>;
   getPage?: Maybe<PageEntity>;
   getPages?: Maybe<PageableList_PageEntity>;
+  getPlugin?: Maybe<PluginEntity>;
+  getPlugins?: Maybe<PageableList_PluginEntity>;
   getPrivilegeApplication?: Maybe<PrivilegeApplicationEntity>;
   getPrivilegeApplications?: Maybe<PageableList_PrivilegeApplicationEntity>;
   getQuestionOption?: Maybe<SurveyQuestionOptionEntity>;
@@ -5314,18 +5314,6 @@ export type QueryGetEventsArgs = {
 
 
 /** Query root */
-export type QueryGetFeatureArgs = {
-  entity?: InputMaybe<FeatureEntityInput>;
-};
-
-
-/** Query root */
-export type QueryGetFeaturesArgs = {
-  params?: InputMaybe<FilterSortPaginateInput>;
-};
-
-
-/** Query root */
 export type QueryGetFriendArgs = {
   entity?: InputMaybe<FriendEntityInput>;
 };
@@ -5549,6 +5537,18 @@ export type QueryGetPageArgs = {
 
 /** Query root */
 export type QueryGetPagesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetPluginArgs = {
+  entity?: InputMaybe<PluginEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetPluginsArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
 };
 
@@ -6036,8 +6036,8 @@ export enum SearchConsoleDimension {
 
 export type SearchDto = {
   __typename?: 'SearchDto';
-  feature?: Maybe<FeatureEntity>;
   name?: Maybe<Scalars['String']>;
+  plugin?: Maybe<PluginEntity>;
   slug?: Maybe<Scalars['String']>;
 };
 

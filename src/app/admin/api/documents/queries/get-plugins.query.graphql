@@ -1,5 +1,5 @@
-query getFeatures($params: FilterSortPaginateInput) {
-  getFeatures(params: $params) {
+query getPlugins($params: FilterSortPaginateInput) {
+  getPlugins(params: $params) {
     result {
       id
       active
