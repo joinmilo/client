@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe, MediaEntity, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { organisationsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { PortalOrganisationDetailsActions } from '../state/portal-organisation-details.actions';
 import { selectOrganisationDetails } from '../state/portal-organisation-details.selectors';
@@ -30,7 +31,10 @@ export class PortalOrganisationDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store) { }
+    private store: Store,
+    private schemaService: SchemaService,
+    private renderer: Renderer2,
+  ) { }
 
   public ngOnInit(): void {
     this.activatedRoute.params.pipe(
@@ -50,6 +54,12 @@ export class PortalOrganisationDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(organisationMedia => organisationMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
+
+      console.log(this.organisation)
+
+      if (this.organisation) {
+        this.schemaService.setJsonLd(this.renderer, this.organisation);
+      }
     });
 
   }

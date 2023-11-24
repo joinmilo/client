@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
@@ -6,6 +6,7 @@ import { DealEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schem
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-params/deal-filter-param';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { PortalDealDetailsActions } from '../state/portal-deal-details.actions';
@@ -36,7 +37,10 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store) { }
+    private renderer: Renderer2,
+    private schemaService: SchemaService,
+    private store: Store,
+    ) { }
 
   public ngOnInit(): void {
     this.activatedRoute.params.pipe(
@@ -56,6 +60,12 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(dealMedia => dealMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
+
+        console.log(this.deal)
+        
+        if (this.deal) {
+          this.schemaService.setJsonLd(this.renderer, this.deal);
+        }
     });
   }
 

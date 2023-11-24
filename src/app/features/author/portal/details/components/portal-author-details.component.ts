@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { PortalAuthorDetailsActions } from '../state/portal-author-details.actions';
 import { selectAuthorDetails } from '../state/portal-author-details.selectors';
 
@@ -25,6 +26,8 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private renderer: Renderer2,
+    private schemaService: SchemaService,
     private store: Store) { }
 
   public ngOnInit(): void {
@@ -40,6 +43,12 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.profilePicture && !upload?.title)
         ?.map(eventMedia => eventMedia?.media)
         ?.slice(0, 10) as MediaEntity[];
+
+      console.log(this.author)
+
+      if (this.author) {
+        this.schemaService.setJsonLd(this.renderer, this.author);
+      }
     })
   }
 

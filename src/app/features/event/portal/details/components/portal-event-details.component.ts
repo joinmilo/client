@@ -39,7 +39,8 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private store: Store,
     private schemaService: SchemaService,
-    private renderer: Renderer2,) { }
+    private renderer: Renderer2,
+  ) { }
 
   public ngOnInit(): void {
     this.activatedRoute.params.pipe(
@@ -59,9 +60,6 @@ export class PortalEventDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(eventMedia => eventMedia?.media)
         ?.slice(0, 10) as MediaEntity[];
-
-      console.log(this.event?.address?.postalCode)
-      console.log(this.event)
 
       if (this.event) {
         this.schemaService.setJsonLd(this.renderer, this.event);

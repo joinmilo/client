@@ -37,9 +37,9 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store,
-    private schemaService: SchemaService,
     private renderer: Renderer2,
+    private schemaService: SchemaService,
+    private store: Store,
     ) {
       
      }

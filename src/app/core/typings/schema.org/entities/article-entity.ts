@@ -4,7 +4,7 @@ import { CommentSchema } from '../comment'
 import { OrganisationSchema } from '../organisation'
 import { PersonSchema } from '../person'
 
-export type ArticleSchema = {
+export type ArticleEntitySchema = {
   '@context': string,
   '@type': string,
   articleBody?: Maybe<string>,

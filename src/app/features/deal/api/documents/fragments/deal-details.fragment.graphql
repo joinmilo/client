@@ -23,6 +23,8 @@ fragment DealDetails on DealEntity {
       id
       firstName
       lastName
+      email
+      phone
     }
   }
   uploads {
@@ -51,4 +53,7 @@ fragment DealDetails on DealEntity {
       name
     }
   }
+
+  content
+  name
 }
