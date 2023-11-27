@@ -55,8 +55,6 @@ export class PortalOrganisationDetailsComponent implements OnInit, OnDestroy {
         ?.map(organisationMedia => organisationMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
 
-      console.log(this.organisation)
-
       if (this.organisation) {
         this.schemaService.setJsonLd(this.renderer, this.organisation);
       }

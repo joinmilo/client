@@ -59,8 +59,6 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
         ?.slice(0, 5) as MediaEntity[];
 
       console.log(this.article)
-      console.log('category',this.article?.category?.name)
-      console.log('name',this.article?.name)
 
       if (this.article) {
         this.schemaService.setJsonLd(this.renderer, this.article);

@@ -1,10 +1,10 @@
-import { Maybe } from '../../api/generated/schema';
+import { ListItemSchema } from './list-item';
 
 export type BreadcrumbSchema = {
   '@context': string,
   '@type': string,
-  itemListElement?: Maybe<string>,
-  itemListOrder?: Maybe<number>,
-  description?: Maybe<string>,
+  itemListElement?: ListItemSchema,
+  // itemListOrder?: Maybe<number>,
+  // description?: Maybe<string>,
   // sameAs
 }

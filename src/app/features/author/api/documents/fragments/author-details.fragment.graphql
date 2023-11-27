@@ -33,4 +33,10 @@ fragment AuthorDetails on UserContextEntity {
   address {
     ...Address
   }
+
+  members {
+    organisation {
+      name
+    }
+  }
 }

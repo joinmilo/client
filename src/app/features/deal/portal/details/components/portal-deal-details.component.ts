@@ -60,9 +60,7 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
         ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(dealMedia => dealMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
-
-        console.log(this.deal)
-        
+       
         if (this.deal) {
           this.schemaService.setJsonLd(this.renderer, this.deal);
         }

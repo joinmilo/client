@@ -9,7 +9,7 @@ export type UserContextEntitySchema = {
   email: Maybe<string>,
   familyName: Maybe<string>,
   givenName: Maybe<string>,
-  // memberOf: OrganisationSchema,
+  memberOf: Maybe<string>[],
   telephone: Maybe<string>,
   // image:
   url: Maybe<string>,

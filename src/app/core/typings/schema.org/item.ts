@@ -1,7 +1,7 @@
 import { Maybe } from '../../api/generated/schema';
 
-export type CategorySchema = {
+export type ItemSchema = {
   '@context': string,
   '@type': string,
-  category?: Maybe<string>,
+  name?: Maybe<string>,
 }

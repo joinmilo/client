@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe, PageEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { PortalPageActions } from '../state/portal-page.actions';
 import { selectPage } from '../state/portal-page.selectors';
 
@@ -20,6 +21,8 @@ export class PortalPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private renderer: Renderer2,
+    private schemaService: SchemaService,
     private store: Store) { }
 
   public ngOnInit(): void {
@@ -31,7 +34,13 @@ export class PortalPageComponent implements OnInit, OnDestroy {
       )),
       switchMap(() => this.store.select(selectPage)),
       takeUntil(this.destroy)
-    ).subscribe(page => this.page = page)
+    ).subscribe(page => {
+      this.page = page;
+
+      if (this.page) {
+        this.schemaService.setJsonLd(this.renderer, this.page);
+      }
+    })
   }
 
   public ngOnDestroy(): void {

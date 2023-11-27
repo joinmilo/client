@@ -1,5 +1,4 @@
 import { Maybe } from '../../../api/generated/schema'
-import { CategorySchema } from '../category'
 import { CommentSchema } from '../comment'
 import { OrganisationSchema } from '../organisation'
 import { PersonSchema } from '../person'
@@ -8,7 +7,7 @@ export type ArticleEntitySchema = {
   '@context': string,
   '@type': string,
   articleBody?: Maybe<string>,
-  articleSection?: CategorySchema,
+  articleSection?: Maybe<string>,
   // associatedMedia?: MediaSchema[], //problem with array
   author?: OrganisationSchema | PersonSchema,
   creator?: OrganisationSchema | PersonSchema,

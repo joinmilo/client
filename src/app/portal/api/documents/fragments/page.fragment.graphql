@@ -1,7 +1,9 @@
 fragment Page on PageEntity {
   id
+  created
   label
   slug
+
   embeddings {
     id
     order
@@ -38,4 +40,5 @@ fragment Page on PageEntity {
       code
     }
   }
+
 }

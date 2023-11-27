@@ -44,7 +44,7 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
         ?.map(eventMedia => eventMedia?.media)
         ?.slice(0, 10) as MediaEntity[];
 
-      console.log(this.author)
+      console.log('membership',this.author?.members?.filter(organisation => organisation?.organisation?.name))
 
       if (this.author) {
         this.schemaService.setJsonLd(this.renderer, this.author);
