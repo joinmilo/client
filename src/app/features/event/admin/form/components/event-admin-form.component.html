@@ -107,13 +107,24 @@
   <app-form-step titleLabel="attendance" [formGroup]="attendeeConfigForm">
     <app-row [columns]="1">
       <div>
+        <span appLabel="configureAttendance"></span>
+        <mat-slide-toggle color="primary" formControlName="configureAttendance">
+        </mat-slide-toggle>
+      </div>
+    </app-row>
+
+    <mat-divider
+      *ngIf="attendeeConfigForm.value.configureAttendance"></mat-divider>
+
+    <app-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="1">
+      <div>
         <span appLabel="attandanceNeedsApproval"></span>
         <mat-slide-toggle color="primary" formControlName="approval">
         </mat-slide-toggle>
       </div>
     </app-row>
 
-    <app-row [columns]="5">
+    <app-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="5">
       <mat-form-field appearance="outline">
         <mat-label appLabel="maxAttendees"></mat-label>
         <input formControlName="maxAttendees" matInput />

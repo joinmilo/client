@@ -71,6 +71,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public attendeeConfigForm = this.fb.group({
+    configureAttendance: [undefined as Maybe<boolean>],
     id: [undefined as Maybe<string>],
     approval: [undefined as Maybe<boolean>],
     maxAttendees: [undefined as Maybe<number>],
@@ -177,6 +178,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         });
 
         this.attendeeConfigForm.patchValue({
+          configureAttendance: !!event?.attendeeConfiguration?.id,
           id: event?.attendeeConfiguration?.id,
           approval: event?.attendeeConfiguration?.approval,
           maxAttendees: event?.attendeeConfiguration?.maxAttendees,
@@ -247,8 +249,8 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         targetGroups: this.additionalInfoForm.value.targetGroups?.map((id) => ({
           id,
         })),
-        attendeeConfiguration: (this.attendeeConfigForm.value.approval ||
-          this.attendeeConfigForm.value.maxAttendees)
+
+        attendeeConfiguration: this.attendeeConfigForm.value.configureAttendance 
           ? {
               id: this.attendeeConfigForm.value.id,
               approval: this.attendeeConfigForm.value.approval,
