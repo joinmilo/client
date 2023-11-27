@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   Input,
@@ -12,24 +13,18 @@ import {
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { Subject, filter, takeUntil } from 'rxjs';
-import {
-  ContactEntity,
-  Maybe,
-  UserContextEntity,
-} from 'src/app/core/api/generated/schema';
-import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { FormStepperModule } from '../stepper/form-stepper.module';
-import { GridLayoutModule } from '../../layout/grid-layout/grid-layout.module';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
-import { CoreModule } from 'src/app/core/core.module';
-import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { Store } from '@ngrx/store';
+import { Subject, takeUntil } from 'rxjs';
+import { ContactEntity, Maybe } from 'src/app/core/api/generated/schema';
+import { CoreModule } from 'src/app/core/core.module';
+import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { GridLayoutModule } from '../../layout/grid-layout/grid-layout.module';
+import { FormStepperModule } from '../stepper/form-stepper.module';
 import { ContactOptionEntity } from './typings/contact-form';
-
 
 @Component({
   selector: 'app-contact-form',
@@ -58,16 +53,17 @@ import { ContactOptionEntity } from './typings/contact-form';
 export class ContactFormComponent
   implements ControlValueAccessor, OnInit, OnDestroy, OnChanges
 {
-  @Input() inputOptions?: Maybe<Maybe<ContactOptionEntity>[]>;
+  @Input()
+  public inputOptions?: Maybe<Maybe<ContactOptionEntity>[]>;
 
   public form = this.fb.group({
-    contactOption: [undefined as Maybe<ContactOptionEntity>],
+    contactOptionLabel: [undefined as Maybe<string>],
     name: ['' as Maybe<string>],
     email: ['' as Maybe<string>],
     phone: ['' as Maybe<string>],
     website: ['' as Maybe<string>],
   });
-  
+
   public contactOptions?: Maybe<Maybe<ContactOptionEntity>[]>;
 
   private baseOption = {
@@ -82,15 +78,17 @@ export class ContactFormComponent
 
   private userOption?: Maybe<ContactOptionEntity> | null;
 
-
   private onChange?: (value?: Maybe<ContactEntity>) => void;
+
   private onTouched?: () => void;
 
   private destroy = new Subject<void>();
 
   constructor(private fb: FormBuilder, private store: Store) {
-    this.form.controls.contactOption.valueChanges.subscribe((selectedOption) =>
-      this.updateFormControls(selectedOption)
+    this.form.controls.contactOptionLabel.valueChanges.pipe(takeUntil(this.destroy)).subscribe(
+      (selectedOption) => {
+        this.updateFormControls(selectedOption);
+      }
     );
 
     this.form.valueChanges.pipe(takeUntil(this.destroy)).subscribe(() => {
@@ -107,20 +105,18 @@ export class ContactFormComponent
   ngOnInit(): void {
     this.store
       .select(selectCurrentUser)
-      .pipe(
-        takeUntil(this.destroy),
-        filter((userContext) => !!userContext)
-      )
+      .pipe(takeUntil(this.destroy),
+       takeUntil(this.destroy))
       .subscribe((userContext) => {
-        this.userOption =
-        {
-          label: 'createContactWithOwnData',
-          contact: {
-            name:
-              userContext?.user?.firstName + ' ' + userContext?.user?.lastName,
-            email: userContext?.user?.email,
-            phone: userContext?.user?.phone,
-          },
+        if (userContext) {
+          this.userOption = {
+            label: 'createContactWithOwnData',
+            contact: {
+              name: `${userContext?.user?.firstName} ${userContext?.user?.lastName}`,
+              email: userContext?.user?.email,
+              phone: userContext?.user?.phone,
+            },
+          };
         }
         this.updateOptions();
       });
@@ -131,13 +127,27 @@ export class ContactFormComponent
   }
 
   updateOptions(): void {
-    this.contactOptions =
-      [...(this.inputOptions ?? []), this.baseOption, this.userOption];
-      this.writeValue(null);
+    this.contactOptions = [
+      ...(this.inputOptions ?? []),
+      this.baseOption,
+      this.userOption,
+    ];
+    if (
+      this.form.value.contactOptionLabel !== 'createNewContact' &&
+      this.form.value.contactOptionLabel !== 'createContactWithOwnData' &&
+      this.form.value.contactOptionLabel !== null
+     ) {
+      this.inputOptions?.map((option) => {
+        this.updateFormControls(option?.label);
+      });
+    }
   }
 
-  private updateFormControls(selectedOption: Maybe<ContactOptionEntity>) {
-    if (selectedOption) {
+  private updateFormControls(selectedOptionLabel: Maybe<string>) {
+    const selectedOption = this.contactOptions?.filter(
+      (option) => option?.label === selectedOptionLabel
+    )?.[0];
+    if (selectedOptionLabel) {
       this.form.patchValue({
         name: selectedOption?.contact?.name,
         email: selectedOption?.contact?.email,

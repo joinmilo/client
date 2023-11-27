@@ -77,17 +77,17 @@
   <app-form-step
   titleLabel="contactAndOrganisation"
   [formGroup]="contactAndOrganisationForm">
-  <app-row [columns]="2" *ngIf="(userOrganisations | async)?.length">
+  <app-row [columns]="2" *ngIf="userOrganisations?.length">
     <mat-form-field appearance="outline">
       <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
-      <mat-select formControlName="organisation">
+      <mat-select formControlName="organisationId">
         <mat-option 
           [value]="null"
           appLabel="NoOrganisation">
         </mat-option>
         <mat-option
-          [value]="organisation"
-          *ngFor="let organisation of userOrganisations | async">
+          [value]="organisation?.id"
+          *ngFor="let organisation of userOrganisations">
           {{ organisation.name }}
         </mat-option>
       </mat-select>
@@ -107,24 +107,13 @@
   <app-form-step titleLabel="attendance" [formGroup]="attendeeConfigForm">
     <app-row [columns]="1">
       <div>
-        <span appLabel="configureAttendance"></span>
-        <mat-slide-toggle color="primary" formControlName="configureAttendance">
-        </mat-slide-toggle>
-      </div>
-    </app-row>
-
-    <mat-divider
-      *ngIf="attendeeConfigForm.value.configureAttendance"></mat-divider>
-
-    <app-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="1">
-      <div>
         <span appLabel="attandanceNeedsApproval"></span>
         <mat-slide-toggle color="primary" formControlName="approval">
         </mat-slide-toggle>
       </div>
     </app-row>
 
-    <app-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="5">
+    <app-row [columns]="5">
       <mat-form-field appearance="outline">
         <mat-label appLabel="maxAttendees"></mat-label>
         <input formControlName="maxAttendees" matInput />

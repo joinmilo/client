@@ -2,8 +2,8 @@
   <app-row *ngIf="contactOptions?.length" [columns]="2">
     <mat-form-field appearance="outline">
       <mat-label appLabel="importContact"></mat-label>
-      <mat-select formControlName="contactOption">
-        <mat-option [value]="contactOption" 
+      <mat-select formControlName="contactOptionLabel">
+        <mat-option [value]="contactOption?.label" 
           *ngFor="let contactOption of contactOptions">
           <span [appLabel]="contactOption?.label"></span>
         </mat-option>
