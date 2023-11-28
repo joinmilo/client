@@ -99,7 +99,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
     this.locationChange();
 
     this.init();
-    this.updateOrganisation();
+    this.organisationChange();
 
     this.store.dispatch(EventAdminFormActions.getCategories());
     this.store.dispatch(EventAdminFormActions.getTargetGroups());
@@ -199,7 +199,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       });
   }
 
-  private updateOrganisation(): void {
+  private organisationChange(): void {
     this.contactAndOrganisationForm.controls.organisationId.valueChanges
       .pipe(takeUntil(this.destroy))
       .subscribe((organisationId) => {

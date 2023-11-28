@@ -4,8 +4,7 @@ import {
   Input,
   OnChanges,
   OnDestroy,
-  OnInit,
-  SimpleChanges,
+  OnInit
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -50,11 +49,10 @@ import { ContactOptionEntity } from './typings/contact-form';
     MatSelectModule,
   ],
 })
-export class ContactFormComponent
-  implements ControlValueAccessor, OnInit, OnDestroy, OnChanges
-{
+export class ContactFormComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
+
   @Input()
-  public inputOptions?: Maybe<Maybe<ContactOptionEntity>[]>;
+  public inputOptions?: ContactOptionEntity[];
 
   public form = this.fb.group({
     contactOptionLabel: [undefined as Maybe<string>],
@@ -64,9 +62,9 @@ export class ContactFormComponent
     website: ['' as Maybe<string>],
   });
 
-  public contactOptions?: Maybe<Maybe<ContactOptionEntity>[]>;
+  public contactOptions?: ContactOptionEntity[];
 
-  private baseOption = {
+  private baseOptions: ContactOptionEntity[] = [{
     label: 'createNewContact',
     contact: {
       name: '',
@@ -74,64 +72,63 @@ export class ContactFormComponent
       phone: '',
       website: '',
     },
-  };
-
-  private userOption?: Maybe<ContactOptionEntity> | null;
+  }];
 
   private onChange?: (value?: Maybe<ContactEntity>) => void;
-
   private onTouched?: () => void;
 
   private destroy = new Subject<void>();
 
-  constructor(private fb: FormBuilder, private store: Store) {
-    this.form.controls.contactOptionLabel.valueChanges.pipe(takeUntil(this.destroy)).subscribe(
-      (selectedOption) => {
-        this.updateFormControls(selectedOption);
-      }
-    );
+  constructor(
+    private fb: FormBuilder,
+    private store: Store) {
 
-    this.form.valueChanges.pipe(takeUntil(this.destroy)).subscribe(() => {
-      this.onTouched?.();
-      this.onChange?.({
-        name: this.form.value.name,
-        email: this.form.value.email,
-        phone: this.form.value.phone,
-        website: this.form.value.website,
+      this.form.controls.contactOptionLabel.valueChanges
+        .pipe(takeUntil(this.destroy))
+        .subscribe(selectedOption => this.updateFormControls(selectedOption));
+
+      this.form.valueChanges
+        .pipe(takeUntil(this.destroy))
+        .subscribe(() => {
+          this.onTouched?.();
+          this.onChange?.({
+            name: this.form.value.name,
+            email: this.form.value.email,
+            phone: this.form.value.phone,
+            website: this.form.value.website,
+          });
       });
-    });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.store
       .select(selectCurrentUser)
-      .pipe(takeUntil(this.destroy),
-       takeUntil(this.destroy))
-      .subscribe((userContext) => {
+      .pipe(takeUntil(this.destroy))
+      .subscribe(userContext => {
         if (userContext) {
-          this.userOption = {
+          this.baseOptions = [...this.baseOptions, {
             label: 'createContactWithOwnData',
             contact: {
               name: `${userContext?.user?.firstName} ${userContext?.user?.lastName}`,
               email: userContext?.user?.email,
               phone: userContext?.user?.phone,
             },
-          };
+          }];
         }
         this.updateOptions();
       });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(): void {
     this.updateOptions();
   }
 
-  updateOptions(): void {
+  private updateOptions(): void {
     this.contactOptions = [
-      ...(this.inputOptions ?? []),
-      this.baseOption,
-      this.userOption,
+      ...this.baseOptions,
+      ...(this.inputOptions ?? [])
     ];
+
     if (
       this.form.value.contactOptionLabel !== 'createNewContact' &&
       this.form.value.contactOptionLabel !== 'createContactWithOwnData' &&
@@ -144,9 +141,9 @@ export class ContactFormComponent
   }
 
   private updateFormControls(selectedOptionLabel: Maybe<string>) {
-    const selectedOption = this.contactOptions?.filter(
-      (option) => option?.label === selectedOptionLabel
-    )?.[0];
+    const selectedOption = this.contactOptions
+      ?.filter(option => option?.label === selectedOptionLabel)?.[0];
+
     if (selectedOptionLabel) {
       this.form.patchValue({
         name: selectedOption?.contact?.name,
@@ -157,7 +154,7 @@ export class ContactFormComponent
     }
   }
 
-  writeValue(contact: Maybe<ContactEntity>): void {
+  public writeValue(contact: Maybe<ContactEntity>): void {
     this.form.patchValue({
       name: contact?.name,
       email: contact?.email,
@@ -166,9 +163,7 @@ export class ContactFormComponent
     });
   }
 
-  public registerOnChange(
-    onChange: (value?: Maybe<ContactEntity>) => void
-  ): void {
+  public registerOnChange(onChange: (value?: Maybe<ContactEntity>) => void): void {
     this.onChange = onChange;
   }
 
@@ -180,4 +175,5 @@ export class ContactFormComponent
     this.destroy.next();
     this.destroy.complete();
   }
+
 }
