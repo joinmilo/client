@@ -1,1 +1,1 @@
-export const adminSettingsPageStateKey = 'adminSettingsPageState';
+export const adminSettingsPageFormStateKey = 'adminSettingsPageFormState';

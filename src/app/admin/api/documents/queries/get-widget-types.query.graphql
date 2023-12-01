@@ -1,14 +1,11 @@
-query getPlugins($params: FilterSortPaginateInput) {
-  getPlugins(params: $params) {
+query getWidgetTypes($params: FilterSortPaginateInput) {
+  getPageWidgetTypes(params: $params) {
     result {
       id
-      active
       code
-      icon
-      name
-      released
       translatables {
         id
+        description
         name
         language {
           ...Language

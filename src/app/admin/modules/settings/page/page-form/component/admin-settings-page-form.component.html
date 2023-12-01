@@ -32,19 +32,20 @@
   </app-form-step>
 
   <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="callText"></mat-label>
+        <input matInput formControlName="callText">
+      </mat-form-field>
+    </app-row>
 
-        <app-row [columns]="2">
-          <mat-form-field appearance="outline">
-            <mat-label appLabel="callText"></mat-label>
-            <input matInput formControlName="callText">
-          </mat-form-field>
-        </app-row>
-            <app-row [columns]="2">
-              <mat-form-field appearance="outline">
-                <mat-label appLabel="callUrl"></mat-label>
-                <input matInput formControlName="callUrl">
-              </mat-form-field>
-            </app-row>
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="callUrl"></mat-label>
+        <input matInput formControlName="callUrl">
+      </mat-form-field>
+    </app-row>
+
     <app-row [columns]="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="metaDescription"></mat-label>
@@ -52,6 +53,11 @@
         </textarea>
       </mat-form-field>
     </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="pageContent" [formGroup]="additionalInfoForm">
+    <app-admin-settings-page-embedding>
+    </app-admin-settings-page-embedding>
   </app-form-step>
 
 </app-form-stepper>

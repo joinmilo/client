@@ -1,10 +1,8 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-
 import { Maybe, PageEntity, PageEntityInput } from 'src/app/core/api/generated/schema';
 
-
 export const AdminSettingsPageFormActions = createActionGroup({
-  source: 'Admin Settings Create Page',
+  source: 'Admin Settings Page Form',
   events: {
     'get page': (slug: Maybe<string>) => ({ slug }),
     'set page': (page: Maybe<PageEntity>) => ({ page }),

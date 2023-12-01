@@ -19,11 +19,12 @@ import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.modu
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
+import { AdminSettingsPageEmbeddingModule } from '../embedding/admin-settings-page-embedding.module';
 import { AdminSettingsPageFormRoutingModule } from './admin-settings-page-form.module-routing.module';
 import { AdminSettingsPageFormComponent } from './component/admin-settings-page-form.component';
-import { adminSettingsPageStateKey } from './constants/admin-settings-page-form.constants';
-import { AdminSettingsPageEffects } from './state/admin-settings-page-form.effects';
-import { adminSettingsPageReducer } from './state/admin-settings-page-form.reducer';
+import { adminSettingsPageFormStateKey } from './constants/admin-settings-page-form.constants';
+import { AdminSettingsPageFormEffects } from './state/admin-settings-page-form.effects';
+import { adminSettingsPageFormReducer } from './state/admin-settings-page-form.reducer';
 
 const components = [
   AdminSettingsPageFormComponent
@@ -46,6 +47,7 @@ const materials = [
 ];
 
 const modules = [
+  AdminSettingsPageEmbeddingModule,
   AdminSettingsPageFormRoutingModule,
   CoreModule,
   CaptchaModule,
@@ -58,8 +60,8 @@ const modules = [
 
 const libs = [
   FontAwesomeModule,
-  StoreModule.forFeature(adminSettingsPageStateKey, adminSettingsPageReducer),
-  EffectsModule.forFeature([AdminSettingsPageEffects]),
+  StoreModule.forFeature(adminSettingsPageFormStateKey, adminSettingsPageFormReducer),
+  EffectsModule.forFeature([AdminSettingsPageFormEffects]),
 ]
 
 @NgModule({

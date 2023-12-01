@@ -4159,23 +4159,64 @@ export type OrganisationVisitorEntityInput = {
   visits?: InputMaybe<Scalars['Int']>;
 };
 
+export type PageAttributeTypeEntity = {
+  __typename?: 'PageAttributeTypeEntity';
+  code?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  translatables?: Maybe<Array<Maybe<PageAttributeTypeTranslatableEntity>>>;
+  widgetAttributes?: Maybe<Array<Maybe<PageWidgetAttributeEntity>>>;
+  widgetTypes?: Maybe<Array<Maybe<PageWidgetTypeEntity>>>;
+};
+
+export type PageAttributeTypeEntityInput = {
+  code?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  translatables?: InputMaybe<Array<InputMaybe<PageAttributeTypeTranslatableEntityInput>>>;
+  widgetAttributes?: InputMaybe<Array<InputMaybe<PageWidgetAttributeEntityInput>>>;
+  widgetTypes?: InputMaybe<Array<InputMaybe<PageWidgetTypeEntityInput>>>;
+};
+
+export type PageAttributeTypeTranslatableEntity = {
+  __typename?: 'PageAttributeTypeTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type PageAttributeTypeTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 export type PageEmbeddingEntity = {
   __typename?: 'PageEmbeddingEntity';
   created?: Maybe<Scalars['OffsetDateTime']>;
   id?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
   modified?: Maybe<Scalars['OffsetDateTime']>;
   order?: Maybe<Scalars['Int']>;
   page?: Maybe<PageEntity>;
   plugin?: Maybe<PluginEntity>;
+  widget?: Maybe<PageWidgetEntity>;
 };
 
 export type PageEmbeddingEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']>;
   id?: InputMaybe<Scalars['String']>;
+  label?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   order?: InputMaybe<Scalars['Int']>;
   page?: InputMaybe<PageEntityInput>;
   plugin?: InputMaybe<PluginEntityInput>;
+  widget?: InputMaybe<PageWidgetEntityInput>;
 };
 
 export type PageEntity = {
@@ -4289,6 +4330,97 @@ export type PageVisitorEntityInput = {
   id?: InputMaybe<Scalars['String']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']>;
   visits?: InputMaybe<Scalars['Int']>;
+};
+
+export type PageWidgetAttributeEntity = {
+  __typename?: 'PageWidgetAttributeEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  media?: Maybe<Array<Maybe<PageAttributeTypeEntity>>>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  translatables?: Maybe<Array<Maybe<PageWidgetAttributeTranslatableEntity>>>;
+  type?: Maybe<PageAttributeTypeEntity>;
+  widgets?: Maybe<Array<Maybe<PageWidgetEntity>>>;
+};
+
+export type PageWidgetAttributeEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  media?: InputMaybe<Array<InputMaybe<PageAttributeTypeEntityInput>>>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  translatables?: InputMaybe<Array<InputMaybe<PageWidgetAttributeTranslatableEntityInput>>>;
+  type?: InputMaybe<PageAttributeTypeEntityInput>;
+  widgets?: InputMaybe<Array<InputMaybe<PageWidgetEntityInput>>>;
+};
+
+export type PageWidgetAttributeTranslatableEntity = {
+  __typename?: 'PageWidgetAttributeTranslatableEntity';
+  content?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+};
+
+export type PageWidgetAttributeTranslatableEntityInput = {
+  content?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+};
+
+export type PageWidgetEntity = {
+  __typename?: 'PageWidgetEntity';
+  attributes?: Maybe<Array<Maybe<PageWidgetAttributeEntity>>>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  type?: Maybe<PageWidgetTypeEntity>;
+};
+
+export type PageWidgetEntityInput = {
+  attributes?: InputMaybe<Array<InputMaybe<PageWidgetAttributeEntityInput>>>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  type?: InputMaybe<PageWidgetTypeEntityInput>;
+};
+
+export type PageWidgetTypeEntity = {
+  __typename?: 'PageWidgetTypeEntity';
+  code?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  media?: Maybe<Array<Maybe<PageMediaEntity>>>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  translatables?: Maybe<Array<Maybe<PageWidgetTypeTranslatableEntity>>>;
+  widgets?: Maybe<Array<Maybe<PageWidgetEntity>>>;
+};
+
+export type PageWidgetTypeEntityInput = {
+  code?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  media?: InputMaybe<Array<InputMaybe<PageMediaEntityInput>>>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  translatables?: InputMaybe<Array<InputMaybe<PageWidgetTypeTranslatableEntityInput>>>;
+  widgets?: InputMaybe<Array<InputMaybe<PageWidgetEntityInput>>>;
+};
+
+export type PageWidgetTypeTranslatableEntity = {
+  __typename?: 'PageWidgetTypeTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type PageWidgetTypeTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
 export type PageableList_AddressEntity = {

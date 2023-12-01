@@ -10,10 +10,8 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { AdminSettingsPageFormActions } from './admin-settings-page-form.actions';
 
-
-
 @Injectable()
-export class AdminSettingsPageEffects {
+export class AdminSettingsPageFormEffects {
 
   getPage = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPageFormActions.getPage),

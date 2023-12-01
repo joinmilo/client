@@ -10,7 +10,7 @@ export interface AdminSettingsPageFormState {
 export const initialState: AdminSettingsPageFormState = {
 };
 
-export const adminSettingsPageReducer = createReducer(
+export const adminSettingsPageFormReducer = createReducer(
   initialState,
 
   on(

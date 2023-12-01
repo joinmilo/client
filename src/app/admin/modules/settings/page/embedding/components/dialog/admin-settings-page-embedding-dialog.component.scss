@@ -1,0 +1,22 @@
+mat-dialog-content {
+  padding: 1.5rem !important;
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+}
+
+strong {
+  color: var(--color-black);
+}
+
+mat-card {
+  cursor: pointer;
+  user-select: none;
+
+  max-width: 50rem;
+
+  &:hover {
+    background-color: var(--color-light);
+    color: var(--color-black);
+  }
+}
