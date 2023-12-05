@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AdminSettingsPageEmbeddingActions } from '../../state/admin-settings-page-embedding.actions';
-import { selectWidgetTypes } from '../../state/admin-settings-page-embedding.selectors';
+import { selectEmbeddingTypes } from '../../state/admin-settings-page-embedding.selectors';
 
 @Component({
   selector: 'app-admin-settings-page-embedding-dialog',
@@ -10,11 +10,11 @@ import { selectWidgetTypes } from '../../state/admin-settings-page-embedding.sel
 })
 export class AdminSettingsPageEmbeddingDialogComponent {
 
-  public widgetTypes = this.store.select(selectWidgetTypes);
+  public widgetTypes = this.store.select(selectEmbeddingTypes);
 
   constructor(
     private store: Store
   ) {
-    this.store.dispatch(AdminSettingsPageEmbeddingActions.getWidgetTypes());
+    this.store.dispatch(AdminSettingsPageEmbeddingActions.getEmbeddingTypes());
   }
 }

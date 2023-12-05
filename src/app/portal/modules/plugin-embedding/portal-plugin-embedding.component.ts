@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
-import { Maybe, PageEmbeddingEntity } from 'src/app/core/api/generated/schema';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { Maybe, PageEmbeddingEntity, PluginEntity } from 'src/app/core/api/generated/schema';
 import { articlesFeatureKey, authorsFeatureKey, calendarFeatureKey, contestsFeatureKey, dealsFeatureKey, eventsFeatureKey, formsFeatureKey, guestArticlesFeatureKey, mapFeatureKey, mediaFeatureKey, organisationsFeatureKey, reportsFeatureKey, surveysFeatureKey } from 'src/app/core/constants/feature.constants';
 import { ArticleEmbeddingModule } from 'src/app/features/article/embedding/article-embedding.module';
 import { AuthorEmbeddingModule } from 'src/app/features/author/embedding/author-embedding.module';
@@ -14,11 +15,12 @@ import { MediaEmbeddingModule } from 'src/app/features/media/embedding/media-emb
 import { OrganisationEmbeddingModule } from 'src/app/features/organisation/embedding/organisation-embedding.module';
 import { ReportEmbeddingModule } from 'src/app/features/report/embedding/report-embedding.module';
 import { SurveyEmbeddingModule } from 'src/app/features/survey/embedding/survey-embedding.module';
+import { GetPluginGQL } from '../../api/generated/get-plugin.query.generated';
 
 @Component({
-  selector: 'app-portal-page-embeddings',
-  templateUrl: './portal-page-embeddings.component.html',
-  styleUrls: ['./portal-page-embeddings.component.scss'],
+  selector: 'app-portal-plugin-embedding',
+  templateUrl: './portal-plugin-embedding.component.html',
+  styleUrls: ['./portal-plugin-embedding.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -37,10 +39,14 @@ import { SurveyEmbeddingModule } from 'src/app/features/survey/embedding/survey-
     SurveyEmbeddingModule,
   ],
 })
-export class PortalPageEmbeddingsComponent implements OnInit {
+export class PortalPluginEmbeddingComponent implements OnInit, OnChanges {
+  
+  @Input({ required: true })
+  public embedding?: Maybe<PageEmbeddingEntity>;
 
-  @Input()
-  public embeddings?: Maybe<Maybe<PageEmbeddingEntity>[]>;
+  public plugin?: Maybe<PluginEntity>;
+
+  private destroy = new Subject<void>();
 
   public features = {
     articles: articlesFeatureKey,
@@ -56,10 +62,28 @@ export class PortalPageEmbeddingsComponent implements OnInit {
     organisations: organisationsFeatureKey,
     reports: reportsFeatureKey,
     surveys: surveysFeatureKey,
-  }
+  };
+
+  constructor(
+    private getPluginService: GetPluginGQL,
+  ) { }
 
   public ngOnInit(): void {
-    this.embeddings = [...(this.embeddings || [])].sort((f1, f2) => (f1?.order || 0) - (f2?.order || 0));
+    this.retrievePlugin(); 
+  }
+
+  public ngOnChanges(): void {
+    this.retrievePlugin();
+  }
+
+  private retrievePlugin(): void {
+    this.getPluginService.watch({
+      entity: {
+        id: this.embedding?.attributes?.[0]?.references?.[0]?.referenceId
+      }
+    }).valueChanges
+    .pipe(takeUntil(this.destroy))
+    .subscribe(response => this.plugin = response.data.getPlugin)
   }
 
 }

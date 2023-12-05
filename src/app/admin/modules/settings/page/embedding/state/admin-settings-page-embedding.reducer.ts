@@ -1,10 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { Maybe, PageWidgetTypeEntity, PluginEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, PageEmbeddingTypeEntity, PluginEntity } from 'src/app/core/api/generated/schema';
 import { AdminSettingsPageEmbeddingActions } from './admin-settings-page-embedding.actions';
 
 export interface AdminSettingsPageEmbeddingState {
   plugins?: Maybe<PluginEntity[]>;
-  widgetTypes?: Maybe<PageWidgetTypeEntity[]>;
+  embeddingTypes?: Maybe<PageEmbeddingTypeEntity[]>;
 }
 
 export const initialState: AdminSettingsPageEmbeddingState = {};
@@ -16,8 +16,8 @@ export const adminSettingsPageEmbeddingReducer = createReducer(
     ...state, plugins: action.plugins
   })),
 
-  on(AdminSettingsPageEmbeddingActions.widgetTypesRetrieved, (state, action): AdminSettingsPageEmbeddingState => ({
-    ...state, widgetTypes: action.widgetTypes
+  on(AdminSettingsPageEmbeddingActions.embeddingTypesRetrieved, (state, action): AdminSettingsPageEmbeddingState => ({
+    ...state, embeddingTypes: action.embeddingTypes
   })),
 
 );

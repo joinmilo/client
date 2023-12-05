@@ -1,0 +1,5 @@
+query getPlugin($entity: PluginEntityInput) {
+  getPlugin(entity: $entity) {
+    ...Plugin
+  }
+}

@@ -9,7 +9,7 @@ export const selectPlugins = createSelector(
   state => state.plugins
 );
 
-export const selectWidgetTypes = createSelector(
+export const selectEmbeddingTypes = createSelector(
   selectAdminSettingsPageEmbeddingState,
-  state => state.widgetTypes
+  state => state.embeddingTypes
 );

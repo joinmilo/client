@@ -12,8 +12,23 @@ fragment Page on PageEntity {
   embeddings {
     id
     order
-    plugin {
-      ...Plugin
+    attributes {
+      id
+      translatables {
+        id
+        content
+        language {
+          ...Language
+        }
+      }
+      references {
+        id
+        referenceId
+      }
+    }
+    type {
+      id
+      code
     }
   }
   translatables {

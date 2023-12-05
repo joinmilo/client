@@ -1,5 +1,5 @@
-query getWidgetTypes($params: FilterSortPaginateInput) {
-  getPageWidgetTypes(params: $params) {
+query getEmbeddingTypes($params: FilterSortPaginateInput) {
+  getPageEmbeddingTypes(params: $params) {
     result {
       id
       code
