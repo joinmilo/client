@@ -1,23 +1,22 @@
 import { Maybe } from 'src/app/core/api/generated/schema'
-import { AggregateRatingSchema } from '../aggregate-rating'
-import { PostalSchema } from '../postal'
+import { AggregateRatingSchema } from '../properties/aggregate-rating'
+import { PersonSchema } from '../properties/person'
+import { PostalSchema } from '../properties/postal'
+import { Schema } from '../schema-class'
 
-export type OrganisationEntitySchema = {
-  '@context': string,
-  '@type': string,
-  
-  aggregateRating?: AggregateRatingSchema,
-  email: Maybe<string>,
-  // event: EventEntitySchema,
-  legalName: Maybe<string>,
-  location?: PostalSchema,
-  // member: PersonSchema, //problem with array
-  telephone: Maybe<string>,
+export class OrganisationEntitySchema extends Schema {
 
-  description: Maybe<string>,
-  // image: 
-  // logo:
-  sameAs: Maybe<string>,
-  url: Maybe<string>,
-  
+  constructor(
+    public aggregateRating: AggregateRatingSchema,
+    public email: Maybe<string>,
+    public legalName: Maybe<string>,
+    public location: PostalSchema,
+    public member: PersonSchema[],
+    public telephone: Maybe<string>,
+    public description: Maybe<string>,
+    public sameAs: Maybe<string>,
+    public url: Maybe<string>,
+  ) {
+    super('Organization');
+  }
 }

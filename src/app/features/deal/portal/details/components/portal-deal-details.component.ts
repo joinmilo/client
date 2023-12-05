@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
@@ -8,6 +8,7 @@ import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-params/deal-filter-param';
+import { SchemaEntity } from 'src/app/core/typings/schema.org/schema';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { PortalDealDetailsActions } from '../state/portal-deal-details.actions';
 import { selectDealDetails } from '../state/portal-deal-details.selectors';
@@ -35,9 +36,10 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
 
   public portalUrl = portalUrl;
 
+  private entity = 'DealEntity'; 
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private renderer: Renderer2,
     private schemaService: SchemaService,
     private store: Store,
     ) { }
@@ -62,7 +64,7 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
         ?.slice(0, 5) as MediaEntity[];
        
         if (this.deal) {
-          this.schemaService.setJsonLd(this.renderer, this.deal);
+          this.schemaService.singleJsonLd(this.deal, this.entity as SchemaEntity);
         }
     });
   }

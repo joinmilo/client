@@ -48,4 +48,6 @@ fragment MenuItem on MenuItemEntity {
       }
     }
   }
+
+  shortDescription
 }

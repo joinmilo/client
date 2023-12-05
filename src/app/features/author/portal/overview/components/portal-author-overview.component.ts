@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SchemaService } from 'src/app/core/services/schema.service';
+import { SchemaEntityArray } from 'src/app/core/typings/schema.org/schema';
 import { CardType } from 'src/app/shared/widgets/card/typings/card';
 import { SortOption, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
 import { PortalAuthorOverviewActions } from '../state/portal-author-overview.actions';
@@ -16,6 +18,8 @@ export class PortalAuthorOverviewComponent {
 
   public cardType = CardType.Contact;
 
+  private entity = 'PageableList_UserContextEntity'; 
+
   public sortOptions: SortOption[] = [
     {
       label: 'name',
@@ -29,11 +33,15 @@ export class PortalAuthorOverviewComponent {
   ];
 
   constructor(
+    private schemaService: SchemaService, 
     private store: Store,
   ) {}
 
   public updateParams(params: SortPaginate) {
     this.store.dispatch(PortalAuthorOverviewActions.updateParams(params));
+    this.authors?.subscribe(authors => {
+      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, authors);
+    })
   }
 
 }

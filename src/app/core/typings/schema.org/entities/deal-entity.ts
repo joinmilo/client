@@ -1,13 +1,15 @@
-import { Maybe } from 'src/app/core/api/generated/schema'
-import { OfferSchema } from '../offer'
+import { Maybe } from 'src/app/core/api/generated/schema';
+import { OfferSchema } from '../properties/offer';
+import { Schema } from '../schema-class';
+export class DealEntitySchema extends Schema {
 
-export type DealEntitySchema = {
-  '@context': string,
-  '@type': string,
-  category: Maybe<string>,
-  description: Maybe<string>,
-  name: Maybe<string>,
-  offers: OfferSchema
-  // owns: PersonSchema,
-  url: Maybe<string>,
+  constructor(
+    public category: Maybe<string>,
+    public description: Maybe<string>,
+    public name: Maybe<string>,
+    public offers: Maybe<OfferSchema>,
+    public url: Maybe<string>
+  ) {
+    super('Product');
+  }
 }

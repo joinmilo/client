@@ -5,7 +5,6 @@ export type ContentEntity = 'ArticleEntity'
   | 'DealEntity'
   | 'EventEntity'
   | 'OrganisationEntity'
-  // | 'PageEntity'
   | 'SurveyEntity'
   | 'UserContextEntity';
 
@@ -14,7 +13,6 @@ export type ContentData = Maybe<ArticleEntity>
   | Maybe<DealEntity>
   | Maybe<EventEntity>
   | Maybe<OrganisationEntity>
-  // | Maybe<PageEntity>
   | Maybe<SurveyEntity>
   | Maybe<UserContextEntity>
   | undefined;

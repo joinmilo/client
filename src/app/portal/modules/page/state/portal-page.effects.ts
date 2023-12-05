@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { PageEntity } from 'src/app/core/api/generated/schema';
+
 import { GetPageGQL } from 'src/app/portal/api/generated/get-page.query.generated';
 import { PortalActions } from '../../../state/portal.actions';
 import { PortalPageActions } from './portal-page.actions';

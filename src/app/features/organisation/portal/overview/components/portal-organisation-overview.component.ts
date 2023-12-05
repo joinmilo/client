@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
+import { SchemaEntityArray } from 'src/app/core/typings/schema.org/schema';
 import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalOrganisationOverviewActions } from '../state/portal-organisation-overview.actions';
 import { selectOverviewData, selectSponsoredOrganisation } from '../state/portal-organisation-overview.selectors';
@@ -17,6 +19,8 @@ export class PortalOrganisationOverviewComponent {
   public displayType = OverviewDisplayType.Card;
 
   public displayQueryParam = displayQueryParam;
+
+  private entity = 'PageableList_OrganisationEntity'; 
 
   public inputs: RadioButtonInput[] = [
     {
@@ -46,9 +50,13 @@ export class PortalOrganisationOverviewComponent {
   public sponsored = this.store.select(selectSponsoredOrganisation);
   
   constructor(
+    private schemaService: SchemaService,
     private store: Store,
   ) {
     this.store.dispatch(PortalOrganisationOverviewActions.getSponsoredOrganisation());
+    this.organisations?.subscribe(organisations => {
+      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, organisations);
+    })
   }
 
   public updateParams(params: FilterSortPaginateInput) {

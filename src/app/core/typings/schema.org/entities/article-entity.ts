@@ -1,21 +1,24 @@
 import { Maybe } from '../../../api/generated/schema'
-import { CommentSchema } from '../comment'
-import { OrganisationSchema } from '../organisation'
-import { PersonSchema } from '../person'
+import { CommentSchema } from '../properties/comment'
+import { OrganisationSchema } from '../properties/organisation'
+import { PersonSchema } from '../properties/person'
+import { Schema } from '../schema-class'
 
-export type ArticleEntitySchema = {
-  '@context': string,
-  '@type': string,
-  articleBody?: Maybe<string>,
-  articleSection?: Maybe<string>,
-  // associatedMedia?: MediaSchema[], //problem with array
-  author?: OrganisationSchema | PersonSchema,
-  creator?: OrganisationSchema | PersonSchema,
-  contentRating?: Maybe<number>,
-  comment?: CommentSchema, 
-  datePublished?: Maybe<string>,
-  dateModified?: Maybe<string>,
-  description: Maybe<string>,
-  headline?: Maybe<string>,
-  url?: Maybe<string>,
+export class ArticleEntitySchema extends Schema {
+
+  constructor(
+    public articleBody: Maybe<string>,
+    public articleSection: Maybe<string>,
+    public author: OrganisationSchema | PersonSchema,
+    public creator: OrganisationSchema | PersonSchema,
+    public contentRating: Maybe<number>,
+    public comment: CommentSchema, 
+    public datePublished: Maybe<string>,
+    public dateModified: Maybe<string>,
+    public description: Maybe<string>,
+    public headline: Maybe<string>,
+    public url: Maybe<string>,
+  ) {
+    super('Article');
+  }
 }

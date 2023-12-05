@@ -1,17 +1,18 @@
-import { Maybe } from 'graphql/jsutils/Maybe'
+import { Maybe } from 'graphql/jsutils/Maybe';
+import { Schema } from '../schema-class';
 
-export type PageEntitySchema = {
-  '@context': string,
-  '@type': string,
-  // breadcrumb: BreadcrumbSchema  
-  // primaryImageOfPage - uploads //img
-  
-  abstract: Maybe<string>,
-  dateCreated: Maybe<string>,
-  description: Maybe<string>,
-  lastReviewed: Maybe<string>,
-  mainContentOfPage: Maybe<string>,
-  name: Maybe<string>, 
-  significantLink: Maybe<string>,
-  url: Maybe<string>, // slug
+export class PageEntitySchema extends Schema {
+
+  constructor(
+  public abstract: Maybe<string>,
+  public dateCreated: Maybe<string>,
+  public description: Maybe<string>,
+  public lastReviewed: Maybe<string>,
+  public mainContentOfPage: Maybe<string>,
+  public name: Maybe<string>, 
+  public significantLink: Maybe<string>,
+  public url: Maybe<string>,
+  ) {
+    super('WebPage');
+  }
 }

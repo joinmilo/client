@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
@@ -8,6 +8,7 @@ import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { ArticleFilterQueryDefinition } from 'src/app/core/typings/filter-params/article-filter-param';
+import { SchemaEntity } from 'src/app/core/typings/schema.org/schema';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { ArticlePortalDetailsActions } from '../state/article-portal-details.actions';
 import { selectArticleDetails } from '../state/article-portal-details.selectors';
@@ -35,9 +36,10 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
+  private entity = 'ArticleEntity'; 
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private renderer: Renderer2,
     private schemaService: SchemaService,
     private store: Store,
     ) {
@@ -58,10 +60,8 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
         ?.map(articleMedia => articleMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
 
-      console.log(this.article)
-
       if (this.article) {
-        this.schemaService.setJsonLd(this.renderer, this.article);
+        this.schemaService.singleJsonLd(this.article, this.entity as SchemaEntity);
       }
     });
 

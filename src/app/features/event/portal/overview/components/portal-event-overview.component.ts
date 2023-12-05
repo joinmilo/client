@@ -2,8 +2,11 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
+
+import { SchemaEntityArray } from 'src/app/core/typings/schema.org/schema';
 import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalEventOverviewActions } from '../state/portal-event-overview.actions';
 import { selectOverviewData, selectSponsoredEvent } from '../state/portal-event-overview.selectors';
@@ -18,6 +21,8 @@ export class PortalEventOverviewComponent {
   public displayType = OverviewDisplayType.Category;
 
   public displayQueryParam = displayQueryParam;
+
+  private entity = 'PageableList_EventEntity'; 
 
   public inputs: RadioButtonInput[] = [
     {
@@ -47,9 +52,13 @@ export class PortalEventOverviewComponent {
   public sponsored = this.store.select(selectSponsoredEvent);
   
   constructor(
+    private schemaService: SchemaService,
     private store: Store,
   ) {
     this.store.dispatch(PortalEventOverviewActions.getSponsoredEvent());
+    this.events?.subscribe(events => {
+      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, events);
+    })
   }
 
   public updateParams(params: FilterSortPaginateInput) {

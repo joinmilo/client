@@ -1,16 +1,19 @@
-import { Maybe } from 'graphql/jsutils/Maybe'
-import { PostalSchema } from '../postal'
+import { Maybe } from 'graphql/jsutils/Maybe';
+import { PostalSchema } from '../properties/postal';
+import { Schema } from '../schema-class';
 
-export type UserContextEntitySchema = {
-  '@context': string,
-  '@type': string,
-  address: PostalSchema,
-  description: Maybe<string>,
-  email: Maybe<string>,
-  familyName: Maybe<string>,
-  givenName: Maybe<string>,
-  memberOf: Maybe<string>[],
-  telephone: Maybe<string>,
-  // image:
-  url: Maybe<string>,
+export class UserContextEntitySchema extends Schema {
+
+  constructor(
+  public address: PostalSchema,
+  public description: Maybe<string>,
+  public email: Maybe<string>,
+  public familyName: Maybe<string>,
+  public givenName: Maybe<string>,
+  public memberOf: Maybe<string>[],
+  public telephone: Maybe<string>,
+  public url: Maybe<string>,
+  ) {
+    super('Person');
+  }
 }
