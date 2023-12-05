@@ -10,7 +10,7 @@ import { selectWidgetTypes } from '../../state/admin-settings-page-embedding.sel
 })
 export class AdminSettingsPageEmbeddingDialogComponent {
 
-  public options = this.store.select(selectWidgetTypes);
+  public widgetTypes = this.store.select(selectWidgetTypes);
 
   constructor(
     private store: Store
