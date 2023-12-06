@@ -140,6 +140,10 @@
 
   --color-link: #247294;
 
+  /* CKEditor */
+  --ck-border-radius: 1rem !important;
+  --ck-color-base-border: var(--mdc-outlined-text-field-outline-color) !important;
+
   /* Custom */
   --gap: 2rem;
   --header-height: 4rem;

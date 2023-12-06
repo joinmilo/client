@@ -1,14 +1,11 @@
-<div class="container" cdkDropList (cdkDropListDropped)="drop($event)">
-  <mat-card *ngFor="let element of elements" cdkDrag cdkDragLockAxis="y">
-      {{ element }}
-    <span class="drag-placeholder" *cdkDragPlaceholder></span>
-    <span *cdkDragPreview></span>
-  </mat-card>
-</div>
+<app-drag-drop
+  [elements]="elements"
+  [component]="component">
+</app-drag-drop>
 
 
 <button mat-stroked-button
   class="add-new-button"
-  (click)="selectEmbedding()">
-  Neues Seitenelement hinzufügen
+  (click)="selectEmbedding()"
+  appLabel="addNewElement">
 </button>

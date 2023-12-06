@@ -50,6 +50,7 @@ mat-card {
 }
 
 /* CKEditor */
+
 .ck-editor__editable_inline {
   min-height: 500px;
 }
@@ -57,8 +58,11 @@ mat-card {
 /* Form Fields*/
 .mdc-text-field {
   background-color: var(--color-lightest) !important;
-  border-bottom-right-radius: var(--mdc-shape-small) !important;
-  border-bottom-left-radius: var(--mdc-shape-small) !important;
+  border-radius: var(--mdc-shape-small) !important;
+}
+
+.mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: var(--mdc-shape-small) !important;
 }
 
 /* Menu */

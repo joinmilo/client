@@ -1,0 +1,11 @@
+<div class="container" cdkDropList (cdkDropListDropped)="drop($event)">
+  <mat-card *ngFor="let element of elements" cdkDrag cdkDragLockAxis="y">
+    <fa-icon icon="grip-vertical"></fa-icon>
+
+    <ng-container *ngComponentOutlet="component; inputs: inputs">
+    </ng-container>
+
+    <span class="drag-placeholder" *cdkDragPlaceholder></span>
+    <span *cdkDragPreview></span>
+  </mat-card>
+</div>

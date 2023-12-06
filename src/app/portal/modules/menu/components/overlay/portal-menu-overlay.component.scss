@@ -7,17 +7,21 @@
   width: 20rem;
 }
 
-::ng-deep .mdc-list-item__primary-text {
-  display: flex;
-  width: inherit;
-  padding: .5rem 0;
-}
-
 fa-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-primary-900);
+}
+
+::ng-deep {
+
+  .mat-mdc-menu-item-text {
+    display: flex;
+    gap: 1rem;
+    padding: .5rem 0;
+    width: 100%;
+  }
 }
 
 .subItem {
@@ -31,7 +35,6 @@ fa-icon {
 
   fa-icon:first-of-type {
     width: 1.5rem;
-    margin-right: 1rem;
   }
 
   fa-icon:last-of-type {

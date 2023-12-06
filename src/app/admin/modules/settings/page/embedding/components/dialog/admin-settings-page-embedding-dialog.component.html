@@ -1,11 +1,11 @@
 <h2 mat-dialog-title appLabel="chooseContentType"></h2>
 
 <mat-dialog-content>
-  <mat-card *ngFor="let widgetType of widgetTypes | async"
-    [mat-dialog-close]="widgetType">
+  <mat-card *ngFor="let embeddingType of embeddingTypes | async"
+    [mat-dialog-close]="embeddingType">
     <mat-card-content>
-      <h3>{{ widgetType | translatable: 'name' | async }}</h3>
-      <span>{{ widgetType | translatable: 'description' | async }}</span>
+      <h3>{{ embeddingType | translatable: 'name' | async }}</h3>
+      <span>{{ embeddingType | translatable: 'description' | async }}</span>
     </mat-card-content>
   </mat-card>
 </mat-dialog-content>

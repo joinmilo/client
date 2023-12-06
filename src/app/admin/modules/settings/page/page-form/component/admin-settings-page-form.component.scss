@@ -18,28 +18,16 @@ section {
   gap: 1rem;
 }
 
-mat-form-field {
-  width: calc(50% - 1rem);
-
-  @include responsive(tablet) {
-    width: 100%;
-  }
-}
-
-div{
+div {
   display: flex;
   gap: .5rem;
 }
 
-button{
+button {
   width: max-content;
 }
 
 :host ::ng-deep {
-
-  mat-expansion-panel.mat-expanded {
-    border-left: solid var(--color-primary-600);
-  }
 
   .mat-mdc-form-field-subscript-wrapper {
     display: none;

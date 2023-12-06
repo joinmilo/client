@@ -11,15 +11,18 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
+import { DragDropComponent } from 'src/app/shared/widgets/drag-drop/drag-drop.component';
 import { AdminSettingsPageEmbeddingComponent } from './components/admin-settings-page-embedding.component';
 import { AdminSettingsPageEmbeddingDialogComponent } from './components/dialog/admin-settings-page-embedding-dialog.component';
+import { AdminSettingsPageEmbeddingFormComponent } from './components/form/admin-settings-page-embedding-form.component';
 import { adminSettingsPageEmbeddingStateKey } from './constants/admin-settings-page-emedding.constants';
 import { AdminSettingsPageEmbeddingEffects } from './state/admin-settings-page-embedding.effects';
 import { adminSettingsPageEmbeddingReducer } from './state/admin-settings-page-embedding.reducer';
 
 const components = [
+  AdminSettingsPageEmbeddingComponent,
   AdminSettingsPageEmbeddingDialogComponent,
-  AdminSettingsPageEmbeddingComponent
+  AdminSettingsPageEmbeddingFormComponent,
 ];
 
 const framework = [
@@ -38,6 +41,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  DragDropComponent,
 ];
 
 const libs = [

@@ -1,7 +1,9 @@
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subject, takeUntil } from 'rxjs';
+import { PageEmbeddingEntity } from 'src/app/core/api/generated/schema';
 import { AdminSettingsPageEmbeddingDialogComponent } from './dialog/admin-settings-page-embedding-dialog.component';
+import { AdminSettingsPageEmbeddingFormComponent } from './form/admin-settings-page-embedding-form.component';
 
 @Component({
   selector: 'app-admin-settings-page-embedding',
@@ -10,21 +12,36 @@ import { AdminSettingsPageEmbeddingDialogComponent } from './dialog/admin-settin
 })
 export class AdminSettingsPageEmbeddingComponent {
 
-  public elements: string[] = [
-    'test1',
-    'test2',
-    'test3'
+  public elements: PageEmbeddingEntity[] = [
+    {
+      label: 'test1'
+    },
+    {
+      label: 'test2'
+    },
+    {
+      label: 'test3'
+    },
   ];
+
+  public component = AdminSettingsPageEmbeddingFormComponent;
+
+  private destroy = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,
+    private cdr: ChangeDetectorRef,
   ) {}
 
-  public drop(event: CdkDragDrop<string[]>): void {
-    moveItemInArray(this.elements, event.previousIndex, event.currentIndex);
-  }
-
   public selectEmbedding(): void {
-    this.dialog.open(AdminSettingsPageEmbeddingDialogComponent);
+    this.dialog.open(AdminSettingsPageEmbeddingDialogComponent)
+      .afterClosed()
+      .pipe(takeUntil(this.destroy))
+      .subscribe(embeddingType => {
+        this.elements.push({
+          type: embeddingType
+        });
+        this.cdr.detectChanges();
+      });
   }
 }
