@@ -25,11 +25,11 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   private handleError(response: HttpEvent<ApiResponse>): void {
-    if (response instanceof HttpResponse<ApiResponse> 
+    if (response instanceof HttpResponse 
       && response?.body?.errors?.length
-      && response.body?.errors?.every(error => error.extensions.exception !== accessDeniedError)) {
+      && response.body?.errors?.every((error: any) => error.extensions.exception !== accessDeniedError)) {
 
-        if (response.body?.errors?.some(error => error.extensions.exception === tokenExpiredError)) {
+        if (response.body?.errors?.some((error: any)  => error.extensions.exception === tokenExpiredError)) {
           this.store.dispatch(CoreUserActions.refreshExpired());
         }
         

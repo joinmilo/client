@@ -25,8 +25,8 @@ export class AuthInterceptor implements HttpInterceptor {
       request: HttpRequest<unknown>,
       next: HttpHandler,
       response: HttpEvent<ApiResponse>): Observable<HttpEvent<ApiResponse>> {
-    return response instanceof HttpResponse<ApiResponse> 
-        && response.body?.errors?.find(error => error.extensions.exception === 'AccessDeniedException')
+    return (response instanceof HttpResponse)
+        && response.body?.errors?.find((error: any) => error.extensions.exception === 'AccessDeniedException')
       ? this.authService.refresh().pipe(
           switchMap(() => next.handle(request.clone({
             headers: request.headers.set('Authorization', `Bearer ${this.authService.tokens?.access}`)

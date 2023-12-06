@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "wooportal:build:production"
+              "buildTarget": "wooportal:build:production"
             },
             "development": {
-              "browserTarget": "wooportal:build:development"
+              "buildTarget": "wooportal:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wooportal:build"
+            "buildTarget": "wooportal:build"
           }
         },
         "test": {
