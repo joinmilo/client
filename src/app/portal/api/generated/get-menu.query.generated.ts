@@ -6,7 +6,7 @@ import { MenuItemFragmentDoc } from './menu.fragment.generated';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type GetMenuQueryVariables = Types.Exact<{
-  parent?: Types.InputMaybe<Types.Scalars['String']>;
+  parent?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

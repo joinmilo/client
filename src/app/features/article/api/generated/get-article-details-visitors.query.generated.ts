@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type GetArticleDetailsVisitorQueryVariables = Types.Exact<{
   entity?: Types.InputMaybe<Types.ArticleEntityInput>;
-  startDate?: Types.InputMaybe<Types.Scalars['OffsetDateTime']>;
-  endDate?: Types.InputMaybe<Types.Scalars['OffsetDateTime']>;
+  startDate?: Types.InputMaybe<Types.Scalars['OffsetDateTime']['input']>;
+  endDate?: Types.InputMaybe<Types.Scalars['OffsetDateTime']['input']>;
   interval?: Types.InputMaybe<Types.IntervalFilter>;
 }>;
 

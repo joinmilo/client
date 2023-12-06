@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type ChangePasswordMutationVariables = Types.Exact<{
-  newPassword?: Types.InputMaybe<Types.Scalars['String']>;
+  newPassword?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

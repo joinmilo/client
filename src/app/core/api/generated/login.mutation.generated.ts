@@ -5,8 +5,8 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type LoginMutationVariables = Types.Exact<{
-  email: Types.Scalars['String'];
-  password: Types.Scalars['String'];
+  email: Types.Scalars['String']['input'];
+  password: Types.Scalars['String']['input'];
 }>;
 
 

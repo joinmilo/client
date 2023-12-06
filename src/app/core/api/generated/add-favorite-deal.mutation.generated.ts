@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type AddFavoriteDealMutationVariables = Types.Exact<{
-  dealId?: Types.InputMaybe<Types.Scalars['String']>;
+  dealId?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

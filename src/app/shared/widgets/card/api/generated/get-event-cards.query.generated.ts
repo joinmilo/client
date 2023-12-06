@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type GetEventCardsQueryVariables = Types.Exact<{
   params?: Types.InputMaybe<Types.FilterSortPaginateInput>;
-  scheduleBegin?: Types.InputMaybe<Types.Scalars['OffsetDateTime']>;
-  scheduleEnd?: Types.InputMaybe<Types.Scalars['OffsetDateTime']>;
+  scheduleBegin?: Types.InputMaybe<Types.Scalars['OffsetDateTime']['input']>;
+  scheduleEnd?: Types.InputMaybe<Types.Scalars['OffsetDateTime']['input']>;
 }>;
 
 

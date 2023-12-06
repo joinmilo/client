@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type SendVerificationMutationVariables = Types.Exact<{
-  email?: Types.InputMaybe<Types.Scalars['String']>;
+  email?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

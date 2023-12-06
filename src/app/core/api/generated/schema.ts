@@ -4,129 +4,131 @@ export type InputMaybe<T> = T | null | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  Long: any;
-  OffsetDateTime: any;
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
+  Long: { input: any; output: any; }
+  OffsetDateTime: { input: any; output: any; }
 };
 
 export type AddressEntity = {
   __typename?: 'AddressEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  houseNumber?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  place?: Maybe<Scalars['String']>;
-  postalCode?: Maybe<Scalars['String']>;
-  street?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  houseNumber?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  latitude?: Maybe<Scalars['Float']['output']>;
+  longitude?: Maybe<Scalars['Float']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  place?: Maybe<Scalars['String']['output']>;
+  postalCode?: Maybe<Scalars['String']['output']>;
+  street?: Maybe<Scalars['String']['output']>;
   suburb?: Maybe<SuburbEntity>;
 };
 
 export type AddressEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  houseNumber?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  latitude?: InputMaybe<Scalars['Float']>;
-  longitude?: InputMaybe<Scalars['Float']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  place?: InputMaybe<Scalars['String']>;
-  postalCode?: InputMaybe<Scalars['String']>;
-  street?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  houseNumber?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  latitude?: InputMaybe<Scalars['Float']['input']>;
+  longitude?: InputMaybe<Scalars['Float']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  place?: InputMaybe<Scalars['String']['input']>;
+  postalCode?: InputMaybe<Scalars['String']['input']>;
+  street?: InputMaybe<Scalars['String']['input']>;
   suburb?: InputMaybe<SuburbEntityInput>;
 };
 
 export type AdminFooterItemEntity = {
   __typename?: 'AdminFooterItemEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   parent?: Maybe<AdminFooterParentEntity>;
   translatables?: Maybe<Array<Maybe<AdminFooterItemTranslatableEntity>>>;
-  url?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 export type AdminFooterItemEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   parent?: InputMaybe<AdminFooterParentEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<AdminFooterItemTranslatableEntityInput>>>;
-  url?: InputMaybe<Scalars['String']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type AdminFooterItemTranslatableEntity = {
   __typename?: 'AdminFooterItemTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type AdminFooterItemTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type AdminFooterParentEntity = {
   __typename?: 'AdminFooterParentEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   items?: Maybe<Array<Maybe<AdminFooterItemEntity>>>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<AdminFooterParentTranslatableEntity>>>;
 };
 
 export type AdminFooterParentEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   items?: InputMaybe<Array<InputMaybe<AdminFooterItemEntityInput>>>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<AdminFooterParentTranslatableEntityInput>>>;
 };
 
 export type AdminFooterParentTranslatableEntity = {
   __typename?: 'AdminFooterParentTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type AdminFooterParentTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type AnalyticsDto = {
   __typename?: 'AnalyticsDto';
-  average?: Maybe<Scalars['Float']>;
+  average?: Maybe<Scalars['Float']['output']>;
   entryOperation?: Maybe<AnalyticsOperation>;
-  name?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']['output']>;
   series?: Maybe<Array<Maybe<AnalyticsEntry>>>;
-  sum?: Maybe<Scalars['Float']>;
+  sum?: Maybe<Scalars['Float']['output']>;
 };
 
 export type AnalyticsEntry = {
   __typename?: 'AnalyticsEntry';
-  name?: Maybe<Scalars['String']>;
-  value?: Maybe<Scalars['Float']>;
+  name?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['Float']['output']>;
 };
 
 export enum AnalyticsOperation {
@@ -139,138 +141,138 @@ export enum AnalyticsOperation {
 
 export type AppEntity = {
   __typename?: 'AppEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   platform?: Maybe<AppPlatformEntity>;
-  url?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 export type AppEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   platform?: InputMaybe<AppPlatformEntityInput>;
-  url?: InputMaybe<Scalars['String']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type AppPlatformEntity = {
   __typename?: 'AppPlatformEntity';
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type AppPlatformEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ArticleCategoryEntity = {
   __typename?: 'ArticleCategoryEntity';
   articles?: Maybe<Array<Maybe<ArticleEntity>>>;
-  color?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  icon?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  color?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<ArticleCategoryTranslatableEntity>>>;
 };
 
 export type ArticleCategoryEntityInput = {
   articles?: InputMaybe<Array<InputMaybe<ArticleEntityInput>>>;
-  color?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  icon?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  color?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ArticleCategoryTranslatableEntityInput>>>;
 };
 
 export type ArticleCategoryTranslatableEntity = {
   __typename?: 'ArticleCategoryTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type ArticleCategoryTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ArticleCommentEntity = {
   __typename?: 'ArticleCommentEntity';
   article?: Maybe<ArticleEntity>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   translatables?: Maybe<Array<Maybe<ArticleCommentTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type ArticleCommentEntityInput = {
   article?: InputMaybe<ArticleEntityInput>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ArticleCommentTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type ArticleCommentTranslatableEntity = {
   __typename?: 'ArticleCommentTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type ArticleCommentTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type ArticleEntity = {
   __typename?: 'ArticleEntity';
-  approved?: Maybe<Scalars['Boolean']>;
+  approved?: Maybe<Scalars['Boolean']['output']>;
   author?: Maybe<UserContextEntity>;
-  captchaToken?: Maybe<Scalars['String']>;
+  captchaToken?: Maybe<Scalars['String']['output']>;
   category?: Maybe<ArticleCategoryEntity>;
   comments?: Maybe<Array<Maybe<ArticleCommentEntity>>>;
-  commentsAllowed?: Maybe<Scalars['Boolean']>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  commentsAllowed?: Maybe<Scalars['Boolean']['output']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   favoritingUsers?: Maybe<Array<Maybe<UserContextEntity>>>;
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']['output']>;
   lastArticleComment?: Maybe<ArticleCommentEntity>;
-  metaDescription?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   publicAuthor?: Maybe<ArticlePublicAuthorEntity>;
   ratingDistribution?: Maybe<AnalyticsDto>;
   ratingStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   ratings?: Maybe<Array<Maybe<ArticleRatingEntity>>>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  shortDescription?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  sponsored?: Maybe<Scalars['Boolean']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  sponsored?: Maybe<Scalars['Boolean']['output']>;
   translatables?: Maybe<Array<Maybe<ArticleTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<ArticleMediaEntity>>>;
   visitorStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
@@ -279,50 +281,50 @@ export type ArticleEntity = {
 
 
 export type ArticleEntityRatingDistributionArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type ArticleEntityRatingStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type ArticleEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type ArticleEntityVisitorStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type ArticleEntityInput = {
-  approved?: InputMaybe<Scalars['Boolean']>;
+  approved?: InputMaybe<Scalars['Boolean']['input']>;
   author?: InputMaybe<UserContextEntityInput>;
-  captchaToken?: InputMaybe<Scalars['String']>;
+  captchaToken?: InputMaybe<Scalars['String']['input']>;
   category?: InputMaybe<ArticleCategoryEntityInput>;
   comments?: InputMaybe<Array<InputMaybe<ArticleCommentEntityInput>>>;
-  commentsAllowed?: InputMaybe<Scalars['Boolean']>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  commentsAllowed?: InputMaybe<Scalars['Boolean']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   favoritingUsers?: InputMaybe<Array<InputMaybe<UserContextEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   publicAuthor?: InputMaybe<ArticlePublicAuthorEntityInput>;
   ratings?: InputMaybe<Array<InputMaybe<ArticleRatingEntityInput>>>;
-  shortDescription?: InputMaybe<Scalars['String']>;
-  slug?: InputMaybe<Scalars['String']>;
-  sponsored?: InputMaybe<Scalars['Boolean']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  sponsored?: InputMaybe<Scalars['Boolean']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ArticleTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<ArticleMediaEntityInput>>>;
   visitors?: InputMaybe<Array<InputMaybe<ArticleVisitorEntityInput>>>;
@@ -331,135 +333,135 @@ export type ArticleEntityInput = {
 export type ArticleMediaEntity = {
   __typename?: 'ArticleMediaEntity';
   article?: Maybe<ArticleEntity>;
-  card?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  card?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  title?: Maybe<Scalars['Boolean']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type ArticleMediaEntityInput = {
   article?: InputMaybe<ArticleEntityInput>;
-  card?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  card?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ArticlePublicAuthorEntity = {
   __typename?: 'ArticlePublicAuthorEntity';
   articles?: Maybe<Array<Maybe<ArticleEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  email?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
 };
 
 export type ArticlePublicAuthorEntityInput = {
   articles?: InputMaybe<Array<InputMaybe<ArticleEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ArticleRatingEntity = {
   __typename?: 'ArticleRatingEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<ArticleEntity>;
-  score?: Maybe<Scalars['Int']>;
+  score?: Maybe<Scalars['Int']['output']>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type ArticleRatingEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   parent?: InputMaybe<ArticleEntityInput>;
-  score?: InputMaybe<Scalars['Int']>;
+  score?: InputMaybe<Scalars['Int']['input']>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type ArticleTranslatableEntity = {
   __typename?: 'ArticleTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  shortDescription?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
 };
 
 export type ArticleTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ArticleVisitorEntity = {
   __typename?: 'ArticleVisitorEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<ArticleEntity>;
   visitor?: Maybe<VisitorEntity>;
-  visits?: Maybe<Scalars['Int']>;
+  visits?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ArticleVisitorEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  visits?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  visits?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ChannelEntity = {
   __typename?: 'ChannelEntity';
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type ChannelEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ConfigurationEntity = {
   __typename?: 'ConfigurationEntity';
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  value?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 export type ConfigurationEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  value?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
 export enum ConjunctionOperator {
@@ -471,310 +473,310 @@ export enum ConjunctionOperator {
 
 export type ContactEntity = {
   __typename?: 'ContactEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  email?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  preferredContact?: Maybe<Scalars['Boolean']>;
-  website?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  preferredContact?: Maybe<Scalars['Boolean']['output']>;
+  website?: Maybe<Scalars['String']['output']>;
 };
 
 export type ContactEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
-  preferredContact?: InputMaybe<Scalars['Boolean']>;
-  website?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  preferredContact?: InputMaybe<Scalars['Boolean']['input']>;
+  website?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ContestCommentEntity = {
   __typename?: 'ContestCommentEntity';
-  content?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
   contest?: Maybe<ContestEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   translatables?: Maybe<Array<Maybe<ContestCommentTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type ContestCommentEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
   contest?: InputMaybe<ContestEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestCommentTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type ContestCommentTranslatableEntity = {
   __typename?: 'ContestCommentTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type ContestCommentTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type ContestEntity = {
   __typename?: 'ContestEntity';
   contact?: Maybe<ContactEntity>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   lastContestComment?: Maybe<ContestCommentEntity>;
-  metaDescription?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  multiSubmission?: Maybe<Scalars['Boolean']>;
-  multiVote?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  offer?: Maybe<Scalars['Boolean']>;
-  participationEndDate?: Maybe<Scalars['OffsetDateTime']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  multiSubmission?: Maybe<Scalars['Boolean']['output']>;
+  multiVote?: Maybe<Scalars['Boolean']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  offer?: Maybe<Scalars['Boolean']['output']>;
+  participationEndDate?: Maybe<Scalars['OffsetDateTime']['output']>;
   participations?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  shortDescription?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  sponsored?: Maybe<Scalars['Boolean']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  sponsored?: Maybe<Scalars['Boolean']['output']>;
   translatables?: Maybe<Array<Maybe<ContestTranslatableEntity>>>;
   type?: Maybe<ContestTypeEntity>;
   uploads?: Maybe<Array<Maybe<ContestMediaEntity>>>;
-  voteEndDate?: Maybe<Scalars['OffsetDateTime']>;
+  voteEndDate?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 
 export type ContestEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type ContestEntityInput = {
   contact?: InputMaybe<ContactEntityInput>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  multiSubmission?: InputMaybe<Scalars['Boolean']>;
-  multiVote?: InputMaybe<Scalars['Boolean']>;
-  name?: InputMaybe<Scalars['String']>;
-  offer?: InputMaybe<Scalars['Boolean']>;
-  participationEndDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  multiSubmission?: InputMaybe<Scalars['Boolean']['input']>;
+  multiVote?: InputMaybe<Scalars['Boolean']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  offer?: InputMaybe<Scalars['Boolean']['input']>;
+  participationEndDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   participations?: InputMaybe<Array<InputMaybe<ContestParticipationEntityInput>>>;
-  shortDescription?: InputMaybe<Scalars['String']>;
-  slug?: InputMaybe<Scalars['String']>;
-  sponsored?: InputMaybe<Scalars['Boolean']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  sponsored?: InputMaybe<Scalars['Boolean']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestTranslatableEntityInput>>>;
   type?: InputMaybe<ContestTypeEntityInput>;
   uploads?: InputMaybe<Array<InputMaybe<ContestMediaEntityInput>>>;
-  voteEndDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  voteEndDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type ContestMediaEntity = {
   __typename?: 'ContestMediaEntity';
-  card?: Maybe<Scalars['Boolean']>;
+  card?: Maybe<Scalars['Boolean']['output']>;
   contest?: Maybe<ContestEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  title?: Maybe<Scalars['Boolean']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type ContestMediaEntityInput = {
-  card?: InputMaybe<Scalars['Boolean']>;
+  card?: InputMaybe<Scalars['Boolean']['input']>;
   contest?: InputMaybe<ContestEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ContestParticipationEntity = {
   __typename?: 'ContestParticipationEntity';
   contest?: Maybe<ContestEntity>;
   contestVotes?: Maybe<Array<Maybe<ContestVoteEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   mediaSubmissions?: Maybe<Array<Maybe<ContestParticipationMediaEntity>>>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  textSubmission?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  textSubmission?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<ContestParticipationTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
-  winner?: Maybe<Scalars['Boolean']>;
+  winner?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type ContestParticipationEntityInput = {
   contest?: InputMaybe<ContestEntityInput>;
   contestVotes?: InputMaybe<Array<InputMaybe<ContestVoteEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   mediaSubmissions?: InputMaybe<Array<InputMaybe<ContestParticipationMediaEntityInput>>>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  textSubmission?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  textSubmission?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestParticipationTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
-  winner?: InputMaybe<Scalars['Boolean']>;
+  winner?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ContestParticipationMediaEntity = {
   __typename?: 'ContestParticipationMediaEntity';
   contestParticipation?: Maybe<ContestParticipationEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type ContestParticipationMediaEntityInput = {
   contestParticipation?: InputMaybe<ContestParticipationEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type ContestParticipationTranslatableEntity = {
   __typename?: 'ContestParticipationTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  textSubmission?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  textSubmission?: Maybe<Scalars['String']['output']>;
 };
 
 export type ContestParticipationTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  textSubmission?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  textSubmission?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ContestTranslatableEntity = {
   __typename?: 'ContestTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  shortDescription?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
 };
 
 export type ContestTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ContestTypeEntity = {
   __typename?: 'ContestTypeEntity';
-  code?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']['output']>;
   contests?: Maybe<Array<Maybe<ContestEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<ContestTypeTranslatableEntity>>>;
 };
 
 export type ContestTypeEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']['input']>;
   contests?: InputMaybe<Array<InputMaybe<ContestEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestTypeTranslatableEntityInput>>>;
 };
 
 export type ContestTypeTranslatableEntity = {
   __typename?: 'ContestTypeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type ContestTypeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ContestVoteEntity = {
   __typename?: 'ContestVoteEntity';
   contestParticipation?: Maybe<ContestParticipationEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type ContestVoteEntityInput = {
   contestParticipation?: InputMaybe<ContestParticipationEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type DealCategoryEntity = {
   __typename?: 'DealCategoryEntity';
-  color?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  color?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   deals?: Maybe<Array<Maybe<DealEntity>>>;
-  icon?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<DealCategoryTranslatableEntity>>>;
 };
 
 export type DealCategoryEntityInput = {
-  color?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  color?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   deals?: InputMaybe<Array<InputMaybe<DealEntityInput>>>;
-  icon?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<DealCategoryTranslatableEntityInput>>>;
 };
 
 export type DealCategoryTranslatableEntity = {
   __typename?: 'DealCategoryTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type DealCategoryTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DealEntity = {
@@ -782,21 +784,21 @@ export type DealEntity = {
   address?: Maybe<AddressEntity>;
   category?: Maybe<DealCategoryEntity>;
   contact?: Maybe<ContactEntity>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   creator?: Maybe<UserContextEntity>;
   favoritingUsers?: Maybe<Array<Maybe<UserContextEntity>>>;
-  id?: Maybe<Scalars['String']>;
-  isPublic?: Maybe<Scalars['Boolean']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  offer?: Maybe<Scalars['Boolean']>;
-  price?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isPublic?: Maybe<Scalars['Boolean']['output']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  offer?: Maybe<Scalars['Boolean']['output']>;
+  price?: Maybe<Scalars['Float']['output']>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  shortDescription?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  sponsored?: Maybe<Scalars['Boolean']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  sponsored?: Maybe<Scalars['Boolean']['output']>;
   translatables?: Maybe<Array<Maybe<DealTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<DealMediaEntity>>>;
   visitorStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
@@ -805,36 +807,36 @@ export type DealEntity = {
 
 
 export type DealEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type DealEntityVisitorStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type DealEntityInput = {
   address?: InputMaybe<AddressEntityInput>;
   category?: InputMaybe<DealCategoryEntityInput>;
   contact?: InputMaybe<ContactEntityInput>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   creator?: InputMaybe<UserContextEntityInput>;
   favoritingUsers?: InputMaybe<Array<InputMaybe<UserContextEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  isPublic?: InputMaybe<Scalars['Boolean']>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  offer?: InputMaybe<Scalars['Boolean']>;
-  price?: InputMaybe<Scalars['Float']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
-  slug?: InputMaybe<Scalars['String']>;
-  sponsored?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  isPublic?: InputMaybe<Scalars['Boolean']['input']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  offer?: InputMaybe<Scalars['Boolean']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  sponsored?: InputMaybe<Scalars['Boolean']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<DealTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<DealMediaEntityInput>>>;
   visitors?: InputMaybe<Array<InputMaybe<DealVisitorEntityInput>>>;
@@ -842,195 +844,195 @@ export type DealEntityInput = {
 
 export type DealMediaEntity = {
   __typename?: 'DealMediaEntity';
-  card?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  card?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   deal?: Maybe<DealEntity>;
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  title?: Maybe<Scalars['Boolean']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type DealMediaEntityInput = {
-  card?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  card?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   deal?: InputMaybe<DealEntityInput>;
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type DealTranslatableEntity = {
   __typename?: 'DealTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  shortDescription?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
 };
 
 export type DealTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DealVisitorEntity = {
   __typename?: 'DealVisitorEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<DealEntity>;
   visitor?: Maybe<VisitorEntity>;
-  visits?: Maybe<Scalars['Int']>;
+  visits?: Maybe<Scalars['Int']['output']>;
 };
 
 export type DealVisitorEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  visits?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  visits?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ErrorMessageEntity = {
   __typename?: 'ErrorMessageEntity';
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  message?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  message?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type ErrorMessageEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  message?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  message?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type EventAttendeeConfigurationEntity = {
   __typename?: 'EventAttendeeConfigurationEntity';
-  approval?: Maybe<Scalars['Boolean']>;
+  approval?: Maybe<Scalars['Boolean']['output']>;
   attendees?: Maybe<Array<Maybe<EventAttendeeEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   events?: Maybe<Array<Maybe<EventEntity>>>;
-  id?: Maybe<Scalars['String']>;
-  maxAttendees?: Maybe<Scalars['Int']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']['output']>;
+  maxAttendees?: Maybe<Scalars['Int']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type EventAttendeeConfigurationEntityInput = {
-  approval?: InputMaybe<Scalars['Boolean']>;
+  approval?: InputMaybe<Scalars['Boolean']['input']>;
   attendees?: InputMaybe<Array<InputMaybe<EventAttendeeEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   events?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  maxAttendees?: InputMaybe<Scalars['Int']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  maxAttendees?: InputMaybe<Scalars['Int']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type EventAttendeeEntity = {
   __typename?: 'EventAttendeeEntity';
-  approved?: Maybe<Scalars['Boolean']>;
+  approved?: Maybe<Scalars['Boolean']['output']>;
   configuration?: Maybe<EventAttendeeConfigurationEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type EventAttendeeEntityInput = {
-  approved?: InputMaybe<Scalars['Boolean']>;
+  approved?: InputMaybe<Scalars['Boolean']['input']>;
   configuration?: InputMaybe<EventAttendeeConfigurationEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type EventCategoryEntity = {
   __typename?: 'EventCategoryEntity';
-  color?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  color?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   events?: Maybe<Array<Maybe<EventEntity>>>;
-  icon?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<EventCategoryTranslatableEntity>>>;
 };
 
 export type EventCategoryEntityInput = {
-  color?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  color?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   events?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
-  icon?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<EventCategoryTranslatableEntityInput>>>;
 };
 
 export type EventCategoryTranslatableEntity = {
   __typename?: 'EventCategoryTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type EventCategoryTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EventCommentEntity = {
   __typename?: 'EventCommentEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   event?: Maybe<EventEntity>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   translatables?: Maybe<Array<Maybe<EventCommentTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type EventCommentEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   event?: InputMaybe<EventEntityInput>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<EventCommentTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type EventCommentTranslatableEntity = {
   __typename?: 'EventCommentTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type EventCommentTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type EventEntity = {
@@ -1039,19 +1041,19 @@ export type EventEntity = {
   attendeeConfiguration?: Maybe<EventAttendeeConfigurationEntity>;
   category?: Maybe<EventCategoryEntity>;
   comments?: Maybe<Array<Maybe<EventCommentEntity>>>;
-  commentsAllowed?: Maybe<Scalars['Boolean']>;
+  commentsAllowed?: Maybe<Scalars['Boolean']['output']>;
   contact?: Maybe<ContactEntity>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   creator?: Maybe<UserContextEntity>;
-  entryFee?: Maybe<Scalars['Float']>;
+  entryFee?: Maybe<Scalars['Float']['output']>;
   favoritingUsers?: Maybe<Array<Maybe<UserContextEntity>>>;
-  hasSchedules?: Maybe<Scalars['Boolean']>;
-  id?: Maybe<Scalars['String']>;
+  hasSchedules?: Maybe<Scalars['Boolean']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   lastEventComment?: Maybe<EventCommentEntity>;
-  metaDescription?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   organisation?: Maybe<OrganisationEntity>;
   ratingDistribution?: Maybe<AnalyticsDto>;
   ratingStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
@@ -1059,48 +1061,48 @@ export type EventEntity = {
   schedule?: Maybe<EventScheduleEntity>;
   schedules?: Maybe<Array<Maybe<EventScheduleEntity>>>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  shortDescription?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
-  sponsored?: Maybe<Scalars['Boolean']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  sponsored?: Maybe<Scalars['Boolean']['output']>;
   targetGroups?: Maybe<Array<Maybe<EventTargetGroupEntity>>>;
   translatables?: Maybe<Array<Maybe<EventTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<EventMediaEntity>>>;
-  videoChatLink?: Maybe<Scalars['String']>;
+  videoChatLink?: Maybe<Scalars['String']['output']>;
   visitorStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   visitors?: Maybe<Array<Maybe<EventVisitorEntity>>>;
 };
 
 
 export type EventEntityRatingDistributionArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type EventEntityRatingStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type EventEntityScheduleArgs = {
-  begin?: InputMaybe<Scalars['OffsetDateTime']>;
-  end?: InputMaybe<Scalars['OffsetDateTime']>;
+  begin?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  end?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type EventEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type EventEntityVisitorStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type EventEntityInput = {
@@ -1108,275 +1110,275 @@ export type EventEntityInput = {
   attendeeConfiguration?: InputMaybe<EventAttendeeConfigurationEntityInput>;
   category?: InputMaybe<EventCategoryEntityInput>;
   comments?: InputMaybe<Array<InputMaybe<EventCommentEntityInput>>>;
-  commentsAllowed?: InputMaybe<Scalars['Boolean']>;
+  commentsAllowed?: InputMaybe<Scalars['Boolean']['input']>;
   contact?: InputMaybe<ContactEntityInput>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   creator?: InputMaybe<UserContextEntityInput>;
-  entryFee?: InputMaybe<Scalars['Float']>;
+  entryFee?: InputMaybe<Scalars['Float']['input']>;
   favoritingUsers?: InputMaybe<Array<InputMaybe<UserContextEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   organisation?: InputMaybe<OrganisationEntityInput>;
   ratings?: InputMaybe<Array<InputMaybe<EventRatingEntityInput>>>;
   schedules?: InputMaybe<Array<InputMaybe<EventScheduleEntityInput>>>;
-  shortDescription?: InputMaybe<Scalars['String']>;
-  slug?: InputMaybe<Scalars['String']>;
-  sponsored?: InputMaybe<Scalars['Boolean']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  sponsored?: InputMaybe<Scalars['Boolean']['input']>;
   targetGroups?: InputMaybe<Array<InputMaybe<EventTargetGroupEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<EventTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<EventMediaEntityInput>>>;
-  videoChatLink?: InputMaybe<Scalars['String']>;
+  videoChatLink?: InputMaybe<Scalars['String']['input']>;
   visitors?: InputMaybe<Array<InputMaybe<EventVisitorEntityInput>>>;
 };
 
 export type EventMediaEntity = {
   __typename?: 'EventMediaEntity';
-  card?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  card?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   event?: Maybe<EventEntity>;
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  title?: Maybe<Scalars['Boolean']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type EventMediaEntityInput = {
-  card?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  card?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   event?: InputMaybe<EventEntityInput>;
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type EventRatingEntity = {
   __typename?: 'EventRatingEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<EventEntity>;
-  score?: Maybe<Scalars['Int']>;
+  score?: Maybe<Scalars['Int']['output']>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type EventRatingEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   parent?: InputMaybe<EventEntityInput>;
-  score?: InputMaybe<Scalars['Int']>;
+  score?: InputMaybe<Scalars['Int']['input']>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type EventScheduleEntity = {
   __typename?: 'EventScheduleEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  endDate?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  endDate?: Maybe<Scalars['OffsetDateTime']['output']>;
   event?: Maybe<EventEntity>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  startDate?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  startDate?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type EventScheduleEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   event?: InputMaybe<EventEntityInput>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type EventTargetGroupEntity = {
   __typename?: 'EventTargetGroupEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<EventTargetGroupTranslatableEntity>>>;
 };
 
 export type EventTargetGroupEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<EventTargetGroupTranslatableEntityInput>>>;
 };
 
 export type EventTargetGroupTranslatableEntity = {
   __typename?: 'EventTargetGroupTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type EventTargetGroupTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EventTranslatableEntity = {
   __typename?: 'EventTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  shortDescription?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
 };
 
 export type EventTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EventVisitorEntity = {
   __typename?: 'EventVisitorEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<EventEntity>;
   visitor?: Maybe<VisitorEntity>;
-  visits?: Maybe<Scalars['Int']>;
+  visits?: Maybe<Scalars['Int']['output']>;
 };
 
 export type EventVisitorEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  visits?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  visits?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type FilterSortPaginateInput = {
-  dir?: InputMaybe<Scalars['String']>;
+  dir?: InputMaybe<Scalars['String']['input']>;
   expression?: InputMaybe<QueryExpressionInput>;
-  page?: InputMaybe<Scalars['Int']>;
-  search?: InputMaybe<Scalars['String']>;
-  size?: InputMaybe<Scalars['Int']>;
-  sort?: InputMaybe<Scalars['String']>;
+  page?: InputMaybe<Scalars['Int']['input']>;
+  search?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['Int']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type FormTemplateTypeEntity = {
   __typename?: 'FormTemplateTypeEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<FormTemplateTypeTranslatableEntity>>>;
 };
 
 export type FormTemplateTypeEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<FormTemplateTypeTranslatableEntityInput>>>;
 };
 
 export type FormTemplateTypeTranslatableEntity = {
   __typename?: 'FormTemplateTypeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type FormTemplateTypeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type FriendEntity = {
   __typename?: 'FriendEntity';
-  accepted?: Maybe<Scalars['Boolean']>;
+  accepted?: Maybe<Scalars['Boolean']['output']>;
   addressee?: Maybe<UserContextEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   requester?: Maybe<UserContextEntity>;
 };
 
 export type FriendEntityInput = {
-  accepted?: InputMaybe<Scalars['Boolean']>;
+  accepted?: InputMaybe<Scalars['Boolean']['input']>;
   addressee?: InputMaybe<UserContextEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   requester?: InputMaybe<UserContextEntityInput>;
 };
 
 export type InfoMediaCategoryEntity = {
   __typename?: 'InfoMediaCategoryEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   infoMedia?: Maybe<Array<Maybe<InfoMediaEntity>>>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<InfoMediaCategoryTranslatableEntity>>>;
 };
 
 export type InfoMediaCategoryEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   infoMedia?: InputMaybe<Array<InputMaybe<InfoMediaEntityInput>>>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<InfoMediaCategoryTranslatableEntityInput>>>;
 };
 
 export type InfoMediaCategoryTranslatableEntity = {
   __typename?: 'InfoMediaCategoryTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type InfoMediaCategoryTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type InfoMediaEntity = {
   __typename?: 'InfoMediaEntity';
   category?: Maybe<InfoMediaCategoryEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type InfoMediaEntityInput = {
   category?: InputMaybe<InfoMediaCategoryEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type InformationDto = {
   __typename?: 'InformationDto';
-  version?: Maybe<Scalars['String']>;
+  version?: Maybe<Scalars['String']['output']>;
 };
 
 export enum IntervalFilter {
@@ -1387,165 +1389,165 @@ export enum IntervalFilter {
 
 export type LabelEntity = {
   __typename?: 'LabelEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  tagId?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  tagId?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<LabelTranslatablesEntity>>>;
 };
 
 export type LabelEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  tagId?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  tagId?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<LabelTranslatablesEntityInput>>>;
 };
 
 export type LabelTranslatablesEntity = {
   __typename?: 'LabelTranslatablesEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type LabelTranslatablesEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type LanguageEntity = {
   __typename?: 'LanguageEntity';
-  active?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  active?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  locale?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type LanguageEntityInput = {
-  active?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  locale?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MediaAttributionEntity = {
   __typename?: 'MediaAttributionEntity';
-  author?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  license?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  source?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
+  author?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  license?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  source?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 export type MediaAttributionEntityInput = {
-  author?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  license?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  source?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
+  author?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  license?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  source?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MediaEntity = {
   __typename?: 'MediaEntity';
   attribution?: Maybe<MediaAttributionEntity>;
-  base64?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  extension?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  mimeType?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  size?: Maybe<Scalars['Long']>;
+  base64?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  extension?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  mimeType?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  size?: Maybe<Scalars['Long']['output']>;
   thumbnail?: Maybe<MediaEntity>;
-  url?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 export type MediaEntityInput = {
   attribution?: InputMaybe<MediaAttributionEntityInput>;
-  base64?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  extension?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  mimeType?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  size?: InputMaybe<Scalars['Long']>;
+  base64?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  extension?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  mimeType?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  size?: InputMaybe<Scalars['Long']['input']>;
   thumbnail?: InputMaybe<MediaEntityInput>;
-  url?: InputMaybe<Scalars['String']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MenuItemEntity = {
   __typename?: 'MenuItemEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  header?: Maybe<Scalars['Boolean']>;
-  icon?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  header?: Maybe<Scalars['Boolean']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Int']['output']>;
   page?: Maybe<PageEntity>;
   parent?: Maybe<MenuItemEntity>;
   plugin?: Maybe<PluginEntity>;
-  shortDescription?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
   subMenuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
   translatables?: Maybe<Array<Maybe<MenuItemTranslatableEntity>>>;
 };
 
 export type MenuItemEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  header?: InputMaybe<Scalars['Boolean']>;
-  icon?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  order?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  header?: InputMaybe<Scalars['Boolean']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
   page?: InputMaybe<PageEntityInput>;
   parent?: InputMaybe<MenuItemEntityInput>;
   plugin?: InputMaybe<PluginEntityInput>;
-  shortDescription?: InputMaybe<Scalars['String']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
   subMenuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<MenuItemTranslatableEntityInput>>>;
 };
 
 export type MenuItemTranslatableEntity = {
   __typename?: 'MenuItemTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  shortDescription?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
 };
 
 export type MenuItemTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MessageDefinitionEntity = {
   __typename?: 'MessageDefinitionEntity';
   channels?: Maybe<Array<Maybe<ChannelEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   template?: Maybe<MessageTemplateEntity>;
   translatables?: Maybe<Array<Maybe<MessageDefinitionTranslatableEntity>>>;
   users?: Maybe<Array<Maybe<UserEntity>>>;
@@ -1553,9 +1555,9 @@ export type MessageDefinitionEntity = {
 
 export type MessageDefinitionEntityInput = {
   channels?: InputMaybe<Array<InputMaybe<ChannelEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   template?: InputMaybe<MessageTemplateEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<MessageDefinitionTranslatableEntityInput>>>;
   users?: InputMaybe<Array<InputMaybe<UserEntityInput>>>;
@@ -1563,154 +1565,154 @@ export type MessageDefinitionEntityInput = {
 
 export type MessageDefinitionTranslatableEntity = {
   __typename?: 'MessageDefinitionTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   parent?: Maybe<MessageDefinitionEntity>;
 };
 
 export type MessageDefinitionTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   parent?: InputMaybe<MessageDefinitionEntityInput>;
 };
 
 export type MessageTemplateEntity = {
   __typename?: 'MessageTemplateEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   definitions?: Maybe<Array<Maybe<MessageDefinitionEntity>>>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<MessageTemplateTranslatableEntity>>>;
 };
 
 export type MessageTemplateEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   definitions?: InputMaybe<Array<InputMaybe<MessageDefinitionEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<MessageTemplateTranslatableEntityInput>>>;
 };
 
 export type MessageTemplateTranslatableEntity = {
   __typename?: 'MessageTemplateTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<MessageTemplateEntity>;
 };
 
 export type MessageTemplateTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   parent?: InputMaybe<MessageTemplateEntityInput>;
 };
 
 export type MilestoneElementEntity = {
   __typename?: 'MilestoneElementEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   milestone?: Maybe<MilestoneEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<MilestoneElementTranslatableEntity>>>;
 };
 
 export type MilestoneElementEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   milestone?: InputMaybe<MilestoneEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<MilestoneElementTranslatableEntityInput>>>;
 };
 
 export type MilestoneElementTranslatableEntity = {
   __typename?: 'MilestoneElementTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type MilestoneElementTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MilestoneEntity = {
   __typename?: 'MilestoneEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   elements?: Maybe<Array<Maybe<MilestoneElementEntity>>>;
-  endDate?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  endDate?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<MilestoneTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
 };
 
 export type MilestoneEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   elements?: InputMaybe<Array<InputMaybe<MilestoneElementEntityInput>>>;
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<MilestoneTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<MilestoneMediaEntityInput>>>;
 };
 
 export type MilestoneMediaEntity = {
   __typename?: 'MilestoneMediaEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
   milestone?: Maybe<MilestoneEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type MilestoneMediaEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
   milestone?: InputMaybe<MilestoneEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type MilestoneTranslatableEntity = {
   __typename?: 'MilestoneTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  title?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 export type MilestoneTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  title?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Mutation root */
@@ -1721,160 +1723,160 @@ export type Mutation = {
   addFavoriteDeal?: Maybe<UserContextEntity>;
   addFavoriteEvent?: Maybe<UserContextEntity>;
   addFavoriteOrganisation?: Maybe<UserContextEntity>;
-  changeArticleApproval?: Maybe<Scalars['Boolean']>;
-  changeOrganisationApproval?: Maybe<Scalars['Boolean']>;
-  changePassword?: Maybe<Scalars['Boolean']>;
-  changePluginActivation?: Maybe<Scalars['Boolean']>;
-  checkPassword?: Maybe<Scalars['Float']>;
+  changeArticleApproval?: Maybe<Scalars['Boolean']['output']>;
+  changeOrganisationApproval?: Maybe<Scalars['Boolean']['output']>;
+  changePassword?: Maybe<Scalars['Boolean']['output']>;
+  changePluginActivation?: Maybe<Scalars['Boolean']['output']>;
+  checkPassword?: Maybe<Scalars['Float']['output']>;
   createToken?: Maybe<TokenDto>;
-  deleteAddress?: Maybe<Scalars['Boolean']>;
-  deleteAddresses?: Maybe<Scalars['Boolean']>;
-  deleteAdminFooterItem?: Maybe<Scalars['Boolean']>;
-  deleteAdminFooterItems?: Maybe<Scalars['Boolean']>;
-  deleteAdminFooterParent?: Maybe<Scalars['Boolean']>;
-  deleteAdminFooterParents?: Maybe<Scalars['Boolean']>;
-  deleteApp?: Maybe<Scalars['Boolean']>;
-  deleteApps?: Maybe<Scalars['Boolean']>;
-  deleteArticle?: Maybe<Scalars['Boolean']>;
-  deleteArticleCategories?: Maybe<Scalars['Boolean']>;
-  deleteArticleCategory?: Maybe<Scalars['Boolean']>;
-  deleteArticleComment?: Maybe<Scalars['Boolean']>;
-  deleteArticleComments?: Maybe<Scalars['Boolean']>;
-  deleteArticleMedia?: Maybe<Scalars['Boolean']>;
-  deleteArticleMedium?: Maybe<Scalars['Boolean']>;
-  deleteArticlePublicAuthor?: Maybe<Scalars['Boolean']>;
-  deleteArticlePublicAuthors?: Maybe<Scalars['Boolean']>;
-  deleteArticleRating?: Maybe<Scalars['Boolean']>;
-  deleteArticleRatings?: Maybe<Scalars['Boolean']>;
-  deleteArticles?: Maybe<Scalars['Boolean']>;
-  deleteConfiguration?: Maybe<Scalars['Boolean']>;
-  deleteConfigurations?: Maybe<Scalars['Boolean']>;
-  deleteContact?: Maybe<Scalars['Boolean']>;
-  deleteContacts?: Maybe<Scalars['Boolean']>;
-  deleteContest?: Maybe<Scalars['Boolean']>;
-  deleteContestComment?: Maybe<Scalars['Boolean']>;
-  deleteContestComments?: Maybe<Scalars['Boolean']>;
-  deleteContestParticipation?: Maybe<Scalars['Boolean']>;
-  deleteContestParticipations?: Maybe<Scalars['Boolean']>;
-  deleteContestType?: Maybe<Scalars['Boolean']>;
-  deleteContestTypes?: Maybe<Scalars['Boolean']>;
-  deleteContestVote?: Maybe<Scalars['Boolean']>;
-  deleteContestVotes?: Maybe<Scalars['Boolean']>;
-  deleteContests?: Maybe<Scalars['Boolean']>;
-  deleteDeal?: Maybe<Scalars['Boolean']>;
-  deleteDealCategories?: Maybe<Scalars['Boolean']>;
-  deleteDealCategory?: Maybe<Scalars['Boolean']>;
-  deleteDealMedia?: Maybe<Scalars['Boolean']>;
-  deleteDealMedium?: Maybe<Scalars['Boolean']>;
-  deleteDeals?: Maybe<Scalars['Boolean']>;
-  deleteErrorMessage?: Maybe<Scalars['Boolean']>;
-  deleteErrorMessages?: Maybe<Scalars['Boolean']>;
-  deleteEvent?: Maybe<Scalars['Boolean']>;
-  deleteEventAttendee?: Maybe<Scalars['Boolean']>;
-  deleteEventAttendees?: Maybe<Scalars['Boolean']>;
-  deleteEventCategories?: Maybe<Scalars['Boolean']>;
-  deleteEventCategory?: Maybe<Scalars['Boolean']>;
-  deleteEventComment?: Maybe<Scalars['Boolean']>;
-  deleteEventComments?: Maybe<Scalars['Boolean']>;
-  deleteEventMedia?: Maybe<Scalars['Boolean']>;
-  deleteEventMedium?: Maybe<Scalars['Boolean']>;
-  deleteEventRating?: Maybe<Scalars['Boolean']>;
-  deleteEventRatings?: Maybe<Scalars['Boolean']>;
-  deleteEventSchedule?: Maybe<Scalars['Boolean']>;
-  deleteEventSchedules?: Maybe<Scalars['Boolean']>;
-  deleteEventTargetGroup?: Maybe<Scalars['Boolean']>;
-  deleteEventTargetGroups?: Maybe<Scalars['Boolean']>;
-  deleteEvents?: Maybe<Scalars['Boolean']>;
-  deleteFriend?: Maybe<Scalars['Boolean']>;
-  deleteFriends?: Maybe<Scalars['Boolean']>;
-  deleteInfoMedia?: Maybe<Scalars['Boolean']>;
-  deleteInfoMediaCategories?: Maybe<Scalars['Boolean']>;
-  deleteInfoMediaCategory?: Maybe<Scalars['Boolean']>;
-  deleteInfoMedium?: Maybe<Scalars['Boolean']>;
-  deleteLabel?: Maybe<Scalars['Boolean']>;
-  deleteLabels?: Maybe<Scalars['Boolean']>;
-  deleteLanguage?: Maybe<Scalars['Boolean']>;
-  deleteLanguages?: Maybe<Scalars['Boolean']>;
-  deleteMe?: Maybe<Scalars['Boolean']>;
-  deleteMenuItem?: Maybe<Scalars['Boolean']>;
-  deleteMenuItems?: Maybe<Scalars['Boolean']>;
-  deleteMessageDefinition?: Maybe<Scalars['Boolean']>;
-  deleteMessageDefinitions?: Maybe<Scalars['Boolean']>;
-  deleteMessageTemplate?: Maybe<Scalars['Boolean']>;
-  deleteMessageTemplates?: Maybe<Scalars['Boolean']>;
-  deleteMilestone?: Maybe<Scalars['Boolean']>;
-  deleteMilestoneElement?: Maybe<Scalars['Boolean']>;
-  deleteMilestoneElements?: Maybe<Scalars['Boolean']>;
-  deleteMilestoneMedia?: Maybe<Scalars['Boolean']>;
-  deleteMilestoneMedium?: Maybe<Scalars['Boolean']>;
-  deleteMilestones?: Maybe<Scalars['Boolean']>;
-  deleteNotification?: Maybe<Scalars['Boolean']>;
-  deleteNotifications?: Maybe<Scalars['Boolean']>;
-  deleteOrganisation?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationComment?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationComments?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationConfiguration?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationConfigurations?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationMedia?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationMedium?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationMember?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationMembers?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationRating?: Maybe<Scalars['Boolean']>;
-  deleteOrganisationRatings?: Maybe<Scalars['Boolean']>;
-  deleteOrganisations?: Maybe<Scalars['Boolean']>;
-  deletePage?: Maybe<Scalars['Boolean']>;
-  deletePageEmbeddingType?: Maybe<Scalars['Boolean']>;
-  deletePageEmbeddingTypes?: Maybe<Scalars['Boolean']>;
-  deletePages?: Maybe<Scalars['Boolean']>;
-  deletePrivilegeApplication?: Maybe<Scalars['Boolean']>;
-  deletePrivilegeApplications?: Maybe<Scalars['Boolean']>;
-  deleteQuestionOption?: Maybe<Scalars['Boolean']>;
-  deleteQuestionOptions?: Maybe<Scalars['Boolean']>;
-  deleteQuestionType?: Maybe<Scalars['Boolean']>;
-  deleteQuestionTypes?: Maybe<Scalars['Boolean']>;
-  deleteReport?: Maybe<Scalars['Boolean']>;
-  deleteReportType?: Maybe<Scalars['Boolean']>;
-  deleteReportTypes?: Maybe<Scalars['Boolean']>;
-  deleteReports?: Maybe<Scalars['Boolean']>;
-  deleteRole?: Maybe<Scalars['Boolean']>;
-  deleteRolePrivilege?: Maybe<Scalars['Boolean']>;
-  deleteRolePrivileges?: Maybe<Scalars['Boolean']>;
-  deleteRoles?: Maybe<Scalars['Boolean']>;
-  deleteSocialMedia?: Maybe<Scalars['Boolean']>;
-  deleteSocialMedias?: Maybe<Scalars['Boolean']>;
-  deleteSubscription?: Maybe<Scalars['Boolean']>;
-  deleteSubscriptions?: Maybe<Scalars['Boolean']>;
-  deleteSuburb?: Maybe<Scalars['Boolean']>;
-  deleteSuburbs?: Maybe<Scalars['Boolean']>;
-  deleteSurvey?: Maybe<Scalars['Boolean']>;
-  deleteSurveyAnswer?: Maybe<Scalars['Boolean']>;
-  deleteSurveyAnswers?: Maybe<Scalars['Boolean']>;
-  deleteSurveyAssignment?: Maybe<Scalars['Boolean']>;
-  deleteSurveyAssignments?: Maybe<Scalars['Boolean']>;
-  deleteSurveyQuestion?: Maybe<Scalars['Boolean']>;
-  deleteSurveyQuestions?: Maybe<Scalars['Boolean']>;
-  deleteSurveyResult?: Maybe<Scalars['Boolean']>;
-  deleteSurveyResults?: Maybe<Scalars['Boolean']>;
-  deleteSurveyState?: Maybe<Scalars['Boolean']>;
-  deleteSurveyStates?: Maybe<Scalars['Boolean']>;
-  deleteSurveys?: Maybe<Scalars['Boolean']>;
-  deleteTheme?: Maybe<Scalars['Boolean']>;
-  deleteThemes?: Maybe<Scalars['Boolean']>;
-  deleteUser?: Maybe<Scalars['Boolean']>;
-  deleteUserContext?: Maybe<Scalars['Boolean']>;
-  deleteUserContexts?: Maybe<Scalars['Boolean']>;
-  deleteUserDeletion?: Maybe<Scalars['Boolean']>;
-  deleteUserDeletionType?: Maybe<Scalars['Boolean']>;
-  deleteUserDeletionTypes?: Maybe<Scalars['Boolean']>;
-  deleteUserDeletions?: Maybe<Scalars['Boolean']>;
-  deleteUsers?: Maybe<Scalars['Boolean']>;
+  deleteAddress?: Maybe<Scalars['Boolean']['output']>;
+  deleteAddresses?: Maybe<Scalars['Boolean']['output']>;
+  deleteAdminFooterItem?: Maybe<Scalars['Boolean']['output']>;
+  deleteAdminFooterItems?: Maybe<Scalars['Boolean']['output']>;
+  deleteAdminFooterParent?: Maybe<Scalars['Boolean']['output']>;
+  deleteAdminFooterParents?: Maybe<Scalars['Boolean']['output']>;
+  deleteApp?: Maybe<Scalars['Boolean']['output']>;
+  deleteApps?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticle?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleCategories?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleCategory?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleComment?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleComments?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleMedia?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleMedium?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticlePublicAuthor?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticlePublicAuthors?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleRating?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticleRatings?: Maybe<Scalars['Boolean']['output']>;
+  deleteArticles?: Maybe<Scalars['Boolean']['output']>;
+  deleteConfiguration?: Maybe<Scalars['Boolean']['output']>;
+  deleteConfigurations?: Maybe<Scalars['Boolean']['output']>;
+  deleteContact?: Maybe<Scalars['Boolean']['output']>;
+  deleteContacts?: Maybe<Scalars['Boolean']['output']>;
+  deleteContest?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestComment?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestComments?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestParticipation?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestParticipations?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestType?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestTypes?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestVote?: Maybe<Scalars['Boolean']['output']>;
+  deleteContestVotes?: Maybe<Scalars['Boolean']['output']>;
+  deleteContests?: Maybe<Scalars['Boolean']['output']>;
+  deleteDeal?: Maybe<Scalars['Boolean']['output']>;
+  deleteDealCategories?: Maybe<Scalars['Boolean']['output']>;
+  deleteDealCategory?: Maybe<Scalars['Boolean']['output']>;
+  deleteDealMedia?: Maybe<Scalars['Boolean']['output']>;
+  deleteDealMedium?: Maybe<Scalars['Boolean']['output']>;
+  deleteDeals?: Maybe<Scalars['Boolean']['output']>;
+  deleteErrorMessage?: Maybe<Scalars['Boolean']['output']>;
+  deleteErrorMessages?: Maybe<Scalars['Boolean']['output']>;
+  deleteEvent?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventAttendee?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventAttendees?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventCategories?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventCategory?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventComment?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventComments?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventMedia?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventMedium?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventRating?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventRatings?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventSchedule?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventSchedules?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventTargetGroup?: Maybe<Scalars['Boolean']['output']>;
+  deleteEventTargetGroups?: Maybe<Scalars['Boolean']['output']>;
+  deleteEvents?: Maybe<Scalars['Boolean']['output']>;
+  deleteFriend?: Maybe<Scalars['Boolean']['output']>;
+  deleteFriends?: Maybe<Scalars['Boolean']['output']>;
+  deleteInfoMedia?: Maybe<Scalars['Boolean']['output']>;
+  deleteInfoMediaCategories?: Maybe<Scalars['Boolean']['output']>;
+  deleteInfoMediaCategory?: Maybe<Scalars['Boolean']['output']>;
+  deleteInfoMedium?: Maybe<Scalars['Boolean']['output']>;
+  deleteLabel?: Maybe<Scalars['Boolean']['output']>;
+  deleteLabels?: Maybe<Scalars['Boolean']['output']>;
+  deleteLanguage?: Maybe<Scalars['Boolean']['output']>;
+  deleteLanguages?: Maybe<Scalars['Boolean']['output']>;
+  deleteMe?: Maybe<Scalars['Boolean']['output']>;
+  deleteMenuItem?: Maybe<Scalars['Boolean']['output']>;
+  deleteMenuItems?: Maybe<Scalars['Boolean']['output']>;
+  deleteMessageDefinition?: Maybe<Scalars['Boolean']['output']>;
+  deleteMessageDefinitions?: Maybe<Scalars['Boolean']['output']>;
+  deleteMessageTemplate?: Maybe<Scalars['Boolean']['output']>;
+  deleteMessageTemplates?: Maybe<Scalars['Boolean']['output']>;
+  deleteMilestone?: Maybe<Scalars['Boolean']['output']>;
+  deleteMilestoneElement?: Maybe<Scalars['Boolean']['output']>;
+  deleteMilestoneElements?: Maybe<Scalars['Boolean']['output']>;
+  deleteMilestoneMedia?: Maybe<Scalars['Boolean']['output']>;
+  deleteMilestoneMedium?: Maybe<Scalars['Boolean']['output']>;
+  deleteMilestones?: Maybe<Scalars['Boolean']['output']>;
+  deleteNotification?: Maybe<Scalars['Boolean']['output']>;
+  deleteNotifications?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisation?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationComment?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationComments?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationConfiguration?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationConfigurations?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationMedia?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationMedium?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationMember?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationMembers?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationRating?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisationRatings?: Maybe<Scalars['Boolean']['output']>;
+  deleteOrganisations?: Maybe<Scalars['Boolean']['output']>;
+  deletePage?: Maybe<Scalars['Boolean']['output']>;
+  deletePageEmbeddingType?: Maybe<Scalars['Boolean']['output']>;
+  deletePageEmbeddingTypes?: Maybe<Scalars['Boolean']['output']>;
+  deletePages?: Maybe<Scalars['Boolean']['output']>;
+  deletePrivilegeApplication?: Maybe<Scalars['Boolean']['output']>;
+  deletePrivilegeApplications?: Maybe<Scalars['Boolean']['output']>;
+  deleteQuestionOption?: Maybe<Scalars['Boolean']['output']>;
+  deleteQuestionOptions?: Maybe<Scalars['Boolean']['output']>;
+  deleteQuestionType?: Maybe<Scalars['Boolean']['output']>;
+  deleteQuestionTypes?: Maybe<Scalars['Boolean']['output']>;
+  deleteReport?: Maybe<Scalars['Boolean']['output']>;
+  deleteReportType?: Maybe<Scalars['Boolean']['output']>;
+  deleteReportTypes?: Maybe<Scalars['Boolean']['output']>;
+  deleteReports?: Maybe<Scalars['Boolean']['output']>;
+  deleteRole?: Maybe<Scalars['Boolean']['output']>;
+  deleteRolePrivilege?: Maybe<Scalars['Boolean']['output']>;
+  deleteRolePrivileges?: Maybe<Scalars['Boolean']['output']>;
+  deleteRoles?: Maybe<Scalars['Boolean']['output']>;
+  deleteSocialMedia?: Maybe<Scalars['Boolean']['output']>;
+  deleteSocialMedias?: Maybe<Scalars['Boolean']['output']>;
+  deleteSubscription?: Maybe<Scalars['Boolean']['output']>;
+  deleteSubscriptions?: Maybe<Scalars['Boolean']['output']>;
+  deleteSuburb?: Maybe<Scalars['Boolean']['output']>;
+  deleteSuburbs?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurvey?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyAnswer?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyAnswers?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyAssignment?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyAssignments?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyQuestion?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyQuestions?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyResult?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyResults?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyState?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveyStates?: Maybe<Scalars['Boolean']['output']>;
+  deleteSurveys?: Maybe<Scalars['Boolean']['output']>;
+  deleteTheme?: Maybe<Scalars['Boolean']['output']>;
+  deleteThemes?: Maybe<Scalars['Boolean']['output']>;
+  deleteUser?: Maybe<Scalars['Boolean']['output']>;
+  deleteUserContext?: Maybe<Scalars['Boolean']['output']>;
+  deleteUserContexts?: Maybe<Scalars['Boolean']['output']>;
+  deleteUserDeletion?: Maybe<Scalars['Boolean']['output']>;
+  deleteUserDeletionType?: Maybe<Scalars['Boolean']['output']>;
+  deleteUserDeletionTypes?: Maybe<Scalars['Boolean']['output']>;
+  deleteUserDeletions?: Maybe<Scalars['Boolean']['output']>;
+  deleteUsers?: Maybe<Scalars['Boolean']['output']>;
   refreshToken?: Maybe<TokenDto>;
   removeFavoriteArticle?: Maybe<UserContextEntity>;
   removeFavoriteAuthor?: Maybe<UserContextEntity>;
   removeFavoriteDeal?: Maybe<UserContextEntity>;
   removeFavoriteEvent?: Maybe<UserContextEntity>;
   removeFavoriteOrganisation?: Maybe<UserContextEntity>;
-  resetPassword?: Maybe<Scalars['Boolean']>;
+  resetPassword?: Maybe<Scalars['Boolean']['output']>;
   saveAddress?: Maybe<AddressEntity>;
   saveAddresses?: Maybe<Array<Maybe<AddressEntity>>>;
   saveAdminFooterItem?: Maybe<AdminFooterItemEntity>;
@@ -2019,15 +2021,15 @@ export type Mutation = {
   saveUserDeletionTypes?: Maybe<Array<Maybe<UserDeletionTypeEntity>>>;
   saveUserDeletions?: Maybe<Array<Maybe<UserDeletionEntity>>>;
   saveUsers?: Maybe<Array<Maybe<UserEntity>>>;
-  sendError?: Maybe<Scalars['Boolean']>;
-  sendPasswordReset?: Maybe<Scalars['Boolean']>;
-  sendVerification?: Maybe<Scalars['Boolean']>;
-  sponsorArticle?: Maybe<Scalars['Boolean']>;
-  sponsorContest?: Maybe<Scalars['Boolean']>;
-  sponsorDeal?: Maybe<Scalars['Boolean']>;
-  sponsorEvent?: Maybe<Scalars['Boolean']>;
-  sponsorOrganisation?: Maybe<Scalars['Boolean']>;
-  sponsorSurvey?: Maybe<Scalars['Boolean']>;
+  sendError?: Maybe<Scalars['Boolean']['output']>;
+  sendPasswordReset?: Maybe<Scalars['Boolean']['output']>;
+  sendVerification?: Maybe<Scalars['Boolean']['output']>;
+  sponsorArticle?: Maybe<Scalars['Boolean']['output']>;
+  sponsorContest?: Maybe<Scalars['Boolean']['output']>;
+  sponsorDeal?: Maybe<Scalars['Boolean']['output']>;
+  sponsorEvent?: Maybe<Scalars['Boolean']['output']>;
+  sponsorOrganisation?: Maybe<Scalars['Boolean']['output']>;
+  sponsorSurvey?: Maybe<Scalars['Boolean']['output']>;
   verify?: Maybe<UserEntity>;
   verifyAddress?: Maybe<AddressEntity>;
 };
@@ -2035,959 +2037,959 @@ export type Mutation = {
 
 /** Mutation root */
 export type MutationAddFavoriteArticleArgs = {
-  articleId?: InputMaybe<Scalars['String']>;
+  articleId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationAddFavoriteAuthorArgs = {
-  userContextId?: InputMaybe<Scalars['String']>;
+  userContextId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationAddFavoriteDealArgs = {
-  dealId?: InputMaybe<Scalars['String']>;
+  dealId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationAddFavoriteEventArgs = {
-  eventId?: InputMaybe<Scalars['String']>;
+  eventId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationAddFavoriteOrganisationArgs = {
-  organisationId?: InputMaybe<Scalars['String']>;
+  organisationId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationChangeArticleApprovalArgs = {
-  articleId?: InputMaybe<Scalars['String']>;
+  articleId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationChangeOrganisationApprovalArgs = {
-  organisationId?: InputMaybe<Scalars['String']>;
+  organisationId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationChangePasswordArgs = {
-  newPassword?: InputMaybe<Scalars['String']>;
+  newPassword?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationChangePluginActivationArgs = {
-  active?: InputMaybe<Scalars['Boolean']>;
-  pluginId?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  pluginId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationCheckPasswordArgs = {
-  password?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationCreateTokenArgs = {
-  email?: InputMaybe<Scalars['String']>;
-  password?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAddressArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAddressesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAdminFooterItemArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAdminFooterItemsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAdminFooterParentArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAdminFooterParentsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAppArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteAppsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleCategoriesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleCategoryArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleCommentArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleCommentsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleMediaArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleMediumArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticlePublicAuthorArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticlePublicAuthorsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleRatingArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticleRatingsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteArticlesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteConfigurationArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteConfigurationsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContactArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContactsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestCommentArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestCommentsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestParticipationArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestParticipationsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestTypeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestTypesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestVoteArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestVotesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteContestsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteDealArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteDealCategoriesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteDealCategoryArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteDealMediaArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteDealMediumArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteDealsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteErrorMessageArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteErrorMessagesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventAttendeeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventAttendeesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventCategoriesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventCategoryArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventCommentArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventCommentsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventMediaArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventMediumArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventRatingArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventRatingsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventScheduleArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventSchedulesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventTargetGroupArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventTargetGroupsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteEventsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteFriendArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteFriendsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteInfoMediaArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteInfoMediaCategoriesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteInfoMediaCategoryArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteInfoMediumArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteLabelArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteLabelsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteLanguageArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteLanguagesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMeArgs = {
-  password?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']['input']>;
   userDeletion?: InputMaybe<UserDeletionEntityInput>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMenuItemArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMenuItemsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMessageDefinitionArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMessageDefinitionsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMessageTemplateArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMessageTemplatesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMilestoneArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMilestoneElementArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMilestoneElementsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMilestoneMediaArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMilestoneMediumArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteMilestonesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteNotificationArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteNotificationsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationCommentArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationCommentsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationConfigurationArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationConfigurationsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationMediaArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationMediumArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationMemberArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationMembersArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationRatingArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationRatingsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteOrganisationsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeletePageArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeletePageEmbeddingTypeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeletePageEmbeddingTypesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeletePagesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeletePrivilegeApplicationArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeletePrivilegeApplicationsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteQuestionOptionArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteQuestionOptionsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteQuestionTypeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteQuestionTypesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteReportArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteReportTypeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteReportTypesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteReportsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteRoleArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteRolePrivilegeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteRolePrivilegesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteRolesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSocialMediaArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSocialMediasArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSubscriptionArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSubscriptionsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSuburbArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSuburbsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyAnswerArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyAnswersArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyAssignmentArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyAssignmentsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyQuestionArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyQuestionsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyResultArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyResultsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyStateArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveyStatesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteSurveysArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteThemeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteThemesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUserArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUserContextArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUserContextsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUserDeletionArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUserDeletionTypeArgs = {
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUserDeletionTypesArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUserDeletionsArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationDeleteUsersArgs = {
-  ids?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
 /** Mutation root */
 export type MutationRefreshTokenArgs = {
-  refreshToken?: InputMaybe<Scalars['String']>;
+  refreshToken?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationRemoveFavoriteArticleArgs = {
-  articleId?: InputMaybe<Scalars['String']>;
+  articleId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationRemoveFavoriteAuthorArgs = {
-  userContextId?: InputMaybe<Scalars['String']>;
+  userContextId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationRemoveFavoriteDealArgs = {
-  dealId?: InputMaybe<Scalars['String']>;
+  dealId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationRemoveFavoriteEventArgs = {
-  eventId?: InputMaybe<Scalars['String']>;
+  eventId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationRemoveFavoriteOrganisationArgs = {
-  organisationId?: InputMaybe<Scalars['String']>;
+  organisationId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationResetPasswordArgs = {
-  password?: InputMaybe<Scalars['String']>;
-  token?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -3857,61 +3859,61 @@ export type MutationSaveUsersArgs = {
 
 /** Mutation root */
 export type MutationSendErrorArgs = {
-  stackTrace?: InputMaybe<Scalars['String']>;
+  stackTrace?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSendPasswordResetArgs = {
-  email?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSendVerificationArgs = {
-  email?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSponsorArticleArgs = {
-  articleId?: InputMaybe<Scalars['String']>;
+  articleId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSponsorContestArgs = {
-  contestId?: InputMaybe<Scalars['String']>;
+  contestId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSponsorDealArgs = {
-  dealId?: InputMaybe<Scalars['String']>;
+  dealId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSponsorEventArgs = {
-  eventId?: InputMaybe<Scalars['String']>;
+  eventId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSponsorOrganisationArgs = {
-  organisationId?: InputMaybe<Scalars['String']>;
+  organisationId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationSponsorSurveyArgs = {
-  surveyId?: InputMaybe<Scalars['String']>;
+  surveyId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 /** Mutation root */
 export type MutationVerifyArgs = {
-  token?: InputMaybe<Scalars['String']>;
+  token?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -3922,60 +3924,60 @@ export type MutationVerifyAddressArgs = {
 
 export type NotificationEntity = {
   __typename?: 'NotificationEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  read?: Maybe<Scalars['Boolean']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  read?: Maybe<Scalars['Boolean']['output']>;
   translatables?: Maybe<Array<Maybe<NotificationTranslatableEntity>>>;
   user?: Maybe<UserEntity>;
 };
 
 export type NotificationEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  read?: InputMaybe<Scalars['Boolean']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  read?: InputMaybe<Scalars['Boolean']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<NotificationTranslatableEntityInput>>>;
   user?: InputMaybe<UserEntityInput>;
 };
 
 export type NotificationTranslatableEntity = {
   __typename?: 'NotificationTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<NotificationEntity>;
-  title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']['output']>;
 };
 
 export type NotificationTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   parent?: InputMaybe<NotificationEntityInput>;
-  title?: InputMaybe<Scalars['String']>;
+  title?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type OrganisationCommentEntity = {
   __typename?: 'OrganisationCommentEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   organisation?: Maybe<OrganisationEntity>;
   translatables?: Maybe<Array<Maybe<OrganisationCommentTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type OrganisationCommentEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   organisation?: InputMaybe<OrganisationEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<OrganisationCommentTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
@@ -3983,60 +3985,60 @@ export type OrganisationCommentEntityInput = {
 
 export type OrganisationCommentTranslatableEntity = {
   __typename?: 'OrganisationCommentTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type OrganisationCommentTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type OrganisationConfigurationEntity = {
   __typename?: 'OrganisationConfigurationEntity';
-  approvalRequired?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  approvalRequired?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   memberRole?: Maybe<RoleEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type OrganisationConfigurationEntityInput = {
-  approvalRequired?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  approvalRequired?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   memberRole?: InputMaybe<RoleEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type OrganisationEntity = {
   __typename?: 'OrganisationEntity';
   address?: Maybe<AddressEntity>;
-  approved?: Maybe<Scalars['Boolean']>;
+  approved?: Maybe<Scalars['Boolean']['output']>;
   comments?: Maybe<Array<Maybe<OrganisationCommentEntity>>>;
-  commentsAllowed?: Maybe<Scalars['Boolean']>;
+  commentsAllowed?: Maybe<Scalars['Boolean']['output']>;
   contact?: Maybe<ContactEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
   events?: Maybe<Array<Maybe<EventEntity>>>;
   favoritingUsers?: Maybe<Array<Maybe<UserContextEntity>>>;
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']['output']>;
   lastOrganisationComment?: Maybe<OrganisationCommentEntity>;
   members?: Maybe<Array<Maybe<OrganisationMemberEntity>>>;
-  metaDescription?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   ratingDistribution?: Maybe<AnalyticsDto>;
   ratingStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
   ratings?: Maybe<Array<Maybe<OrganisationRatingEntity>>>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  slug?: Maybe<Scalars['String']>;
-  sponsored?: Maybe<Scalars['Boolean']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  sponsored?: Maybe<Scalars['Boolean']['output']>;
   translatables?: Maybe<Array<Maybe<OrganisationTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<OrganisationMediaEntity>>>;
   visitorStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
@@ -4045,49 +4047,49 @@ export type OrganisationEntity = {
 
 
 export type OrganisationEntityRatingDistributionArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type OrganisationEntityRatingStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type OrganisationEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type OrganisationEntityVisitorStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type OrganisationEntityInput = {
   address?: InputMaybe<AddressEntityInput>;
-  approved?: InputMaybe<Scalars['Boolean']>;
+  approved?: InputMaybe<Scalars['Boolean']['input']>;
   comments?: InputMaybe<Array<InputMaybe<OrganisationCommentEntityInput>>>;
-  commentsAllowed?: InputMaybe<Scalars['Boolean']>;
+  commentsAllowed?: InputMaybe<Scalars['Boolean']['input']>;
   contact?: InputMaybe<ContactEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
   events?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
   favoritingUsers?: InputMaybe<Array<InputMaybe<UserContextEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   members?: InputMaybe<Array<InputMaybe<OrganisationMemberEntityInput>>>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   ratings?: InputMaybe<Array<InputMaybe<OrganisationRatingEntityInput>>>;
-  slug?: InputMaybe<Scalars['String']>;
-  sponsored?: InputMaybe<Scalars['Boolean']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  sponsored?: InputMaybe<Scalars['Boolean']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<OrganisationTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<OrganisationMediaEntityInput>>>;
   visitors?: InputMaybe<Array<InputMaybe<OrganisationVisitorEntityInput>>>;
@@ -4095,116 +4097,116 @@ export type OrganisationEntityInput = {
 
 export type OrganisationMediaEntity = {
   __typename?: 'OrganisationMediaEntity';
-  card?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  card?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   organisation?: Maybe<OrganisationEntity>;
-  title?: Maybe<Scalars['Boolean']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type OrganisationMediaEntityInput = {
-  card?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  card?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   organisation?: InputMaybe<OrganisationEntityInput>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type OrganisationMemberEntity = {
   __typename?: 'OrganisationMemberEntity';
-  approved?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  isPublic?: Maybe<Scalars['Boolean']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  approved?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isPublic?: Maybe<Scalars['Boolean']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   organisation?: Maybe<OrganisationEntity>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type OrganisationMemberEntityInput = {
-  approved?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  isPublic?: InputMaybe<Scalars['Boolean']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  approved?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  isPublic?: InputMaybe<Scalars['Boolean']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   organisation?: InputMaybe<OrganisationEntityInput>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type OrganisationRatingEntity = {
   __typename?: 'OrganisationRatingEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<OrganisationEntity>;
-  score?: Maybe<Scalars['Int']>;
+  score?: Maybe<Scalars['Int']['output']>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type OrganisationRatingEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   parent?: InputMaybe<OrganisationEntityInput>;
-  score?: InputMaybe<Scalars['Int']>;
+  score?: InputMaybe<Scalars['Int']['input']>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type OrganisationTranslatableEntity = {
   __typename?: 'OrganisationTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type OrganisationTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type OrganisationVisitorEntity = {
   __typename?: 'OrganisationVisitorEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<OrganisationEntity>;
   visitor?: Maybe<VisitorEntity>;
-  visits?: Maybe<Scalars['Int']>;
+  visits?: Maybe<Scalars['Int']['output']>;
 };
 
 export type OrganisationVisitorEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  visits?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  visits?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type PageAttributeEntity = {
   __typename?: 'PageAttributeEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   embedding?: Maybe<PageEmbeddingEntity>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   references?: Maybe<Array<Maybe<PageAttributeReferenceEntity>>>;
   translatables?: Maybe<Array<Maybe<PageAttributeTranslatableEntity>>>;
   type?: Maybe<PageAttributeTypeEntity>;
 };
 
 export type PageAttributeEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   embedding?: InputMaybe<PageEmbeddingEntityInput>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   references?: InputMaybe<Array<InputMaybe<PageAttributeReferenceEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<PageAttributeTranslatableEntityInput>>>;
   type?: InputMaybe<PageAttributeTypeEntityInput>;
@@ -4213,92 +4215,92 @@ export type PageAttributeEntityInput = {
 export type PageAttributeReferenceEntity = {
   __typename?: 'PageAttributeReferenceEntity';
   attribute?: Maybe<PageAttributeEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  referenceId?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  referenceId?: Maybe<Scalars['String']['output']>;
 };
 
 export type PageAttributeReferenceEntityInput = {
   attribute?: InputMaybe<PageAttributeEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  referenceId?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  referenceId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PageAttributeTranslatableEntity = {
   __typename?: 'PageAttributeTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type PageAttributeTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type PageAttributeTypeEntity = {
   __typename?: 'PageAttributeTypeEntity';
   attributes?: Maybe<Array<Maybe<PageAttributeEntity>>>;
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   embeddingTypes?: Maybe<Array<Maybe<PageEmbeddingTypeEntity>>>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   translatables?: Maybe<Array<Maybe<PageAttributeTypeTranslatableEntity>>>;
 };
 
 export type PageAttributeTypeEntityInput = {
   attributes?: InputMaybe<Array<InputMaybe<PageAttributeEntityInput>>>;
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   embeddingTypes?: InputMaybe<Array<InputMaybe<PageEmbeddingTypeEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<PageAttributeTypeTranslatableEntityInput>>>;
 };
 
 export type PageAttributeTypeTranslatableEntity = {
   __typename?: 'PageAttributeTypeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type PageAttributeTypeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PageEmbeddingEntity = {
   __typename?: 'PageEmbeddingEntity';
   attributes?: Maybe<Array<Maybe<PageAttributeEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  order?: Maybe<Scalars['Int']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  order?: Maybe<Scalars['Int']['output']>;
   page?: Maybe<PageEntity>;
   type?: Maybe<PageEmbeddingTypeEntity>;
 };
 
 export type PageEmbeddingEntityInput = {
   attributes?: InputMaybe<Array<InputMaybe<PageAttributeEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  label?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  order?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
   page?: InputMaybe<PageEntityInput>;
   type?: InputMaybe<PageEmbeddingTypeEntityInput>;
 };
@@ -4306,62 +4308,62 @@ export type PageEmbeddingEntityInput = {
 export type PageEmbeddingTypeEntity = {
   __typename?: 'PageEmbeddingTypeEntity';
   attributes?: Maybe<Array<Maybe<PageAttributeEntity>>>;
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
   embeddings?: Maybe<Array<Maybe<PageEmbeddingEntity>>>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<PageEmbeddingTypeTranslatableEntity>>>;
 };
 
 export type PageEmbeddingTypeEntityInput = {
   attributes?: InputMaybe<Array<InputMaybe<PageAttributeEntityInput>>>;
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
   embeddings?: InputMaybe<Array<InputMaybe<PageEmbeddingEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<PageEmbeddingTypeTranslatableEntityInput>>>;
 };
 
 export type PageEmbeddingTypeTranslatableEntity = {
   __typename?: 'PageEmbeddingTypeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type PageEmbeddingTypeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PageEntity = {
   __typename?: 'PageEntity';
-  callText?: Maybe<Scalars['String']>;
-  callUrl?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  callText?: Maybe<Scalars['String']['output']>;
+  callUrl?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   embeddings?: Maybe<Array<Maybe<PageEmbeddingEntity>>>;
-  id?: Maybe<Scalars['String']>;
-  isLanding?: Maybe<Scalars['Boolean']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isLanding?: Maybe<Scalars['Boolean']['output']>;
   menuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
-  metaDescription?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  shortDescription?: Maybe<Scalars['String']>;
-  slug?: Maybe<Scalars['String']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<PageTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<PageMediaEntity>>>;
   visitorStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
@@ -4370,32 +4372,32 @@ export type PageEntity = {
 
 
 export type PageEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type PageEntityVisitorStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type PageEntityInput = {
-  callText?: InputMaybe<Scalars['String']>;
-  callUrl?: InputMaybe<Scalars['String']>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  callText?: InputMaybe<Scalars['String']['input']>;
+  callUrl?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   embeddings?: InputMaybe<Array<InputMaybe<PageEmbeddingEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
-  isLanding?: InputMaybe<Scalars['Boolean']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  isLanding?: InputMaybe<Scalars['Boolean']['input']>;
   menuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
-  slug?: InputMaybe<Scalars['String']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<PageTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<PageMediaEntityInput>>>;
   visitors?: InputMaybe<Array<InputMaybe<PageVisitorEntityInput>>>;
@@ -4403,566 +4405,566 @@ export type PageEntityInput = {
 
 export type PageMediaEntity = {
   __typename?: 'PageMediaEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   page?: Maybe<PageEntity>;
-  title?: Maybe<Scalars['Boolean']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PageMediaEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   page?: InputMaybe<PageEntityInput>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PageTranslatableEntity = {
   __typename?: 'PageTranslatableEntity';
-  callText?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  callText?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  shortDescription?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
 };
 
 export type PageTranslatableEntityInput = {
-  callText?: InputMaybe<Scalars['String']>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  shortDescription?: InputMaybe<Scalars['String']>;
+  callText?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PageVisitorEntity = {
   __typename?: 'PageVisitorEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<PageEntity>;
   visitor?: Maybe<VisitorEntity>;
-  visits?: Maybe<Scalars['Int']>;
+  visits?: Maybe<Scalars['Int']['output']>;
 };
 
 export type PageVisitorEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  visits?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  visits?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type PageableList_AddressEntity = {
   __typename?: 'PageableList_AddressEntity';
   result?: Maybe<Array<Maybe<AddressEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_AdminFooterItemEntity = {
   __typename?: 'PageableList_AdminFooterItemEntity';
   result?: Maybe<Array<Maybe<AdminFooterItemEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_AdminFooterParentEntity = {
   __typename?: 'PageableList_AdminFooterParentEntity';
   result?: Maybe<Array<Maybe<AdminFooterParentEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_AppEntity = {
   __typename?: 'PageableList_AppEntity';
   result?: Maybe<Array<Maybe<AppEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ArticleCategoryEntity = {
   __typename?: 'PageableList_ArticleCategoryEntity';
   result?: Maybe<Array<Maybe<ArticleCategoryEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ArticleCommentEntity = {
   __typename?: 'PageableList_ArticleCommentEntity';
   result?: Maybe<Array<Maybe<ArticleCommentEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ArticleEntity = {
   __typename?: 'PageableList_ArticleEntity';
   result?: Maybe<Array<Maybe<ArticleEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ArticleMediaEntity = {
   __typename?: 'PageableList_ArticleMediaEntity';
   result?: Maybe<Array<Maybe<ArticleMediaEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ArticlePublicAuthorEntity = {
   __typename?: 'PageableList_ArticlePublicAuthorEntity';
   result?: Maybe<Array<Maybe<ArticlePublicAuthorEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ArticleRatingEntity = {
   __typename?: 'PageableList_ArticleRatingEntity';
   result?: Maybe<Array<Maybe<ArticleRatingEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ConfigurationEntity = {
   __typename?: 'PageableList_ConfigurationEntity';
   result?: Maybe<Array<Maybe<ConfigurationEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ContactEntity = {
   __typename?: 'PageableList_ContactEntity';
   result?: Maybe<Array<Maybe<ContactEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ContestCommentEntity = {
   __typename?: 'PageableList_ContestCommentEntity';
   result?: Maybe<Array<Maybe<ContestCommentEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ContestEntity = {
   __typename?: 'PageableList_ContestEntity';
   result?: Maybe<Array<Maybe<ContestEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ContestParticipationEntity = {
   __typename?: 'PageableList_ContestParticipationEntity';
   result?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ContestTypeEntity = {
   __typename?: 'PageableList_ContestTypeEntity';
   result?: Maybe<Array<Maybe<ContestTypeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ContestVoteEntity = {
   __typename?: 'PageableList_ContestVoteEntity';
   result?: Maybe<Array<Maybe<ContestVoteEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_DealCategoryEntity = {
   __typename?: 'PageableList_DealCategoryEntity';
   result?: Maybe<Array<Maybe<DealCategoryEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_DealEntity = {
   __typename?: 'PageableList_DealEntity';
   result?: Maybe<Array<Maybe<DealEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_DealMediaEntity = {
   __typename?: 'PageableList_DealMediaEntity';
   result?: Maybe<Array<Maybe<DealMediaEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ErrorMessageEntity = {
   __typename?: 'PageableList_ErrorMessageEntity';
   result?: Maybe<Array<Maybe<ErrorMessageEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventAttendeeEntity = {
   __typename?: 'PageableList_EventAttendeeEntity';
   result?: Maybe<Array<Maybe<EventAttendeeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventCategoryEntity = {
   __typename?: 'PageableList_EventCategoryEntity';
   result?: Maybe<Array<Maybe<EventCategoryEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventCommentEntity = {
   __typename?: 'PageableList_EventCommentEntity';
   result?: Maybe<Array<Maybe<EventCommentEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventEntity = {
   __typename?: 'PageableList_EventEntity';
   result?: Maybe<Array<Maybe<EventEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventMediaEntity = {
   __typename?: 'PageableList_EventMediaEntity';
   result?: Maybe<Array<Maybe<EventMediaEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventRatingEntity = {
   __typename?: 'PageableList_EventRatingEntity';
   result?: Maybe<Array<Maybe<EventRatingEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventScheduleEntity = {
   __typename?: 'PageableList_EventScheduleEntity';
   result?: Maybe<Array<Maybe<EventScheduleEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_EventTargetGroupEntity = {
   __typename?: 'PageableList_EventTargetGroupEntity';
   result?: Maybe<Array<Maybe<EventTargetGroupEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_FriendEntity = {
   __typename?: 'PageableList_FriendEntity';
   result?: Maybe<Array<Maybe<FriendEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_InfoMediaCategoryEntity = {
   __typename?: 'PageableList_InfoMediaCategoryEntity';
   result?: Maybe<Array<Maybe<InfoMediaCategoryEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_InfoMediaEntity = {
   __typename?: 'PageableList_InfoMediaEntity';
   result?: Maybe<Array<Maybe<InfoMediaEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_LabelEntity = {
   __typename?: 'PageableList_LabelEntity';
   result?: Maybe<Array<Maybe<LabelEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_LanguageEntity = {
   __typename?: 'PageableList_LanguageEntity';
   result?: Maybe<Array<Maybe<LanguageEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_MenuItemEntity = {
   __typename?: 'PageableList_MenuItemEntity';
   result?: Maybe<Array<Maybe<MenuItemEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_MessageDefinitionEntity = {
   __typename?: 'PageableList_MessageDefinitionEntity';
   result?: Maybe<Array<Maybe<MessageDefinitionEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_MessageTemplateEntity = {
   __typename?: 'PageableList_MessageTemplateEntity';
   result?: Maybe<Array<Maybe<MessageTemplateEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_MilestoneElementEntity = {
   __typename?: 'PageableList_MilestoneElementEntity';
   result?: Maybe<Array<Maybe<MilestoneElementEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_MilestoneEntity = {
   __typename?: 'PageableList_MilestoneEntity';
   result?: Maybe<Array<Maybe<MilestoneEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_MilestoneMediaEntity = {
   __typename?: 'PageableList_MilestoneMediaEntity';
   result?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_NotificationEntity = {
   __typename?: 'PageableList_NotificationEntity';
   result?: Maybe<Array<Maybe<NotificationEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_OrganisationCommentEntity = {
   __typename?: 'PageableList_OrganisationCommentEntity';
   result?: Maybe<Array<Maybe<OrganisationCommentEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_OrganisationConfigurationEntity = {
   __typename?: 'PageableList_OrganisationConfigurationEntity';
   result?: Maybe<Array<Maybe<OrganisationConfigurationEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_OrganisationEntity = {
   __typename?: 'PageableList_OrganisationEntity';
   result?: Maybe<Array<Maybe<OrganisationEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_OrganisationMediaEntity = {
   __typename?: 'PageableList_OrganisationMediaEntity';
   result?: Maybe<Array<Maybe<OrganisationMediaEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_OrganisationMemberEntity = {
   __typename?: 'PageableList_OrganisationMemberEntity';
   result?: Maybe<Array<Maybe<OrganisationMemberEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_OrganisationRatingEntity = {
   __typename?: 'PageableList_OrganisationRatingEntity';
   result?: Maybe<Array<Maybe<OrganisationRatingEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_PageEmbeddingTypeEntity = {
   __typename?: 'PageableList_PageEmbeddingTypeEntity';
   result?: Maybe<Array<Maybe<PageEmbeddingTypeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_PageEntity = {
   __typename?: 'PageableList_PageEntity';
   result?: Maybe<Array<Maybe<PageEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_PluginEntity = {
   __typename?: 'PageableList_PluginEntity';
   result?: Maybe<Array<Maybe<PluginEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_PrivilegeApplicationEntity = {
   __typename?: 'PageableList_PrivilegeApplicationEntity';
   result?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ReportEntity = {
   __typename?: 'PageableList_ReportEntity';
   result?: Maybe<Array<Maybe<ReportEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ReportTypeEntity = {
   __typename?: 'PageableList_ReportTypeEntity';
   result?: Maybe<Array<Maybe<ReportTypeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_RoleEntity = {
   __typename?: 'PageableList_RoleEntity';
   result?: Maybe<Array<Maybe<RoleEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_RolePrivilegeEntity = {
   __typename?: 'PageableList_RolePrivilegeEntity';
   result?: Maybe<Array<Maybe<RolePrivilegeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SocialMediaEntity = {
   __typename?: 'PageableList_SocialMediaEntity';
   result?: Maybe<Array<Maybe<SocialMediaEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SubscriptionEntity = {
   __typename?: 'PageableList_SubscriptionEntity';
   result?: Maybe<Array<Maybe<SubscriptionEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SuburbEntity = {
   __typename?: 'PageableList_SuburbEntity';
   result?: Maybe<Array<Maybe<SuburbEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyAnswerEntity = {
   __typename?: 'PageableList_SurveyAnswerEntity';
   result?: Maybe<Array<Maybe<SurveyAnswerEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyAssignmentEntity = {
   __typename?: 'PageableList_SurveyAssignmentEntity';
   result?: Maybe<Array<Maybe<SurveyAssignmentEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyEntity = {
   __typename?: 'PageableList_SurveyEntity';
   result?: Maybe<Array<Maybe<SurveyEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyQuestionEntity = {
   __typename?: 'PageableList_SurveyQuestionEntity';
   result?: Maybe<Array<Maybe<SurveyQuestionEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyQuestionOptionEntity = {
   __typename?: 'PageableList_SurveyQuestionOptionEntity';
   result?: Maybe<Array<Maybe<SurveyQuestionOptionEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyQuestionTypeEntity = {
   __typename?: 'PageableList_SurveyQuestionTypeEntity';
   result?: Maybe<Array<Maybe<SurveyQuestionTypeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyResultEntity = {
   __typename?: 'PageableList_SurveyResultEntity';
   result?: Maybe<Array<Maybe<SurveyResultEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_SurveyStateEntity = {
   __typename?: 'PageableList_SurveyStateEntity';
   result?: Maybe<Array<Maybe<SurveyStateEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_ThemeEntity = {
   __typename?: 'PageableList_ThemeEntity';
   result?: Maybe<Array<Maybe<ThemeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_UserContextEntity = {
   __typename?: 'PageableList_UserContextEntity';
   result?: Maybe<Array<Maybe<UserContextEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_UserDeletionEntity = {
   __typename?: 'PageableList_UserDeletionEntity';
   result?: Maybe<Array<Maybe<UserDeletionEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_UserDeletionTypeEntity = {
   __typename?: 'PageableList_UserDeletionTypeEntity';
   result?: Maybe<Array<Maybe<UserDeletionTypeEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PageableList_UserEntity = {
   __typename?: 'PageableList_UserEntity';
   result?: Maybe<Array<Maybe<UserEntity>>>;
-  total: Scalars['Long'];
+  total: Scalars['Long']['output'];
 };
 
 export type PasswordResetEntity = {
   __typename?: 'PasswordResetEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  token?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
   user?: Maybe<UserEntity>;
 };
 
 export type PasswordResetEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  token?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<UserEntityInput>;
 };
 
 export type PluginEntity = {
   __typename?: 'PluginEntity';
-  active?: Maybe<Scalars['Boolean']>;
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  icon?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  active?: Maybe<Scalars['Boolean']['output']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   menuItems?: Maybe<Array<Maybe<MenuItemEntity>>>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  released?: Maybe<Scalars['Boolean']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  released?: Maybe<Scalars['Boolean']['output']>;
   translatables?: Maybe<Array<Maybe<PluginTranslatableEntity>>>;
 };
 
 export type PluginEntityInput = {
-  active?: InputMaybe<Scalars['Boolean']>;
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  icon?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
+  active?: InputMaybe<Scalars['Boolean']['input']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   menuItems?: InputMaybe<Array<InputMaybe<MenuItemEntityInput>>>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  released?: InputMaybe<Scalars['Boolean']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  released?: InputMaybe<Scalars['Boolean']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<PluginTranslatableEntityInput>>>;
 };
 
 export type PluginTranslatableEntity = {
   __typename?: 'PluginTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type PluginTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PrivilegeApplicationEntity = {
   __typename?: 'PrivilegeApplicationEntity';
-  accepted?: Maybe<Scalars['Boolean']>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  accepted?: Maybe<Scalars['Boolean']['output']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   privilege?: Maybe<RolePrivilegeEntity>;
   translatables?: Maybe<Array<Maybe<PrivilegeApplicationTranslatableEntity>>>;
   user?: Maybe<UserEntity>;
 };
 
 export type PrivilegeApplicationEntityInput = {
-  accepted?: InputMaybe<Scalars['Boolean']>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  accepted?: InputMaybe<Scalars['Boolean']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   privilege?: InputMaybe<RolePrivilegeEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<PrivilegeApplicationTranslatableEntityInput>>>;
   user?: InputMaybe<UserEntityInput>;
@@ -4970,20 +4972,20 @@ export type PrivilegeApplicationEntityInput = {
 
 export type PrivilegeApplicationTranslatableEntity = {
   __typename?: 'PrivilegeApplicationTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<PrivilegeApplicationEntity>;
 };
 
 export type PrivilegeApplicationTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   parent?: InputMaybe<PrivilegeApplicationEntityInput>;
 };
 
@@ -5826,9 +5828,9 @@ export type QueryGetRolesArgs = {
 /** Query root */
 export type QueryGetSearchStatisticsArgs = {
   dimension?: InputMaybe<SearchConsoleDimension>;
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   filter?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
@@ -6012,8 +6014,8 @@ export type QueryConjunctionInput = {
 
 export type QueryEntityInput = {
   operator?: InputMaybe<QueryOperator>;
-  path?: InputMaybe<Scalars['String']>;
-  value?: InputMaybe<Scalars['String']>;
+  path?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type QueryExpressionInput = {
@@ -6033,26 +6035,26 @@ export enum QueryOperator {
 
 export type ReportEntity = {
   __typename?: 'ReportEntity';
-  captchaToken?: Maybe<Scalars['String']>;
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  email?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  captchaToken?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<ReportTranslatableEntity>>>;
   type?: Maybe<ReportTypeEntity>;
   uploads?: Maybe<Array<Maybe<ReportMediaEntity>>>;
 };
 
 export type ReportEntityInput = {
-  captchaToken?: InputMaybe<Scalars['String']>;
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  captchaToken?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ReportTranslatableEntityInput>>>;
   type?: InputMaybe<ReportTypeEntityInput>;
   uploads?: InputMaybe<Array<InputMaybe<ReportMediaEntityInput>>>;
@@ -6060,88 +6062,88 @@ export type ReportEntityInput = {
 
 export type ReportMediaEntity = {
   __typename?: 'ReportMediaEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   report?: Maybe<ReportEntity>;
 };
 
 export type ReportMediaEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   report?: InputMaybe<ReportEntityInput>;
 };
 
 export type ReportTranslatableEntity = {
   __typename?: 'ReportTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type ReportTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type ReportTypeEntity = {
   __typename?: 'ReportTypeEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   reports?: Maybe<Array<Maybe<ReportEntity>>>;
   translatables?: Maybe<Array<Maybe<ReportTypeTranslatableEntity>>>;
 };
 
 export type ReportTypeEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   reports?: InputMaybe<Array<InputMaybe<ReportEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<ReportTypeTranslatableEntityInput>>>;
 };
 
 export type ReportTypeTranslatableEntity = {
   __typename?: 'ReportTypeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type ReportTypeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type RoleEntity = {
   __typename?: 'RoleEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   privileges?: Maybe<Array<Maybe<RolePrivilegeEntity>>>;
   translatables?: Maybe<Array<Maybe<RoleTranslatableEntity>>>;
   users?: Maybe<Array<Maybe<UserEntity>>>;
 };
 
 export type RoleEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   privileges?: InputMaybe<Array<InputMaybe<RolePrivilegeEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<RoleTranslatableEntityInput>>>;
   users?: InputMaybe<Array<InputMaybe<UserEntityInput>>>;
@@ -6150,65 +6152,65 @@ export type RoleEntityInput = {
 export type RolePrivilegeEntity = {
   __typename?: 'RolePrivilegeEntity';
   applications?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   roles?: Maybe<Array<Maybe<RoleEntity>>>;
   translatables?: Maybe<Array<Maybe<RolePrivilegeTranslatableEntity>>>;
 };
 
 export type RolePrivilegeEntityInput = {
   applications?: InputMaybe<Array<InputMaybe<PrivilegeApplicationEntityInput>>>;
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   roles?: InputMaybe<Array<InputMaybe<RoleEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<RolePrivilegeTranslatableEntityInput>>>;
 };
 
 export type RolePrivilegeTranslatableEntity = {
   __typename?: 'RolePrivilegeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   parent?: Maybe<RolePrivilegeEntity>;
 };
 
 export type RolePrivilegeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   parent?: InputMaybe<RolePrivilegeEntityInput>;
 };
 
 export type RoleTranslatableEntity = {
   __typename?: 'RoleTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   parent?: Maybe<RoleEntity>;
 };
 
 export type RoleTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   parent?: InputMaybe<RoleEntityInput>;
 };
 
@@ -6222,74 +6224,74 @@ export enum SearchConsoleDimension {
 
 export type SearchDto = {
   __typename?: 'SearchDto';
-  name?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']['output']>;
   plugin?: Maybe<PluginEntity>;
-  slug?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']['output']>;
 };
 
 export type SocialMediaEntity = {
   __typename?: 'SocialMediaEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  icon?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
-  url?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 export type SocialMediaEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  icon?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  url?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SubscriptionEntity = {
   __typename?: 'SubscriptionEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  deviceToken?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  deviceToken?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   user?: Maybe<UserEntity>;
 };
 
 export type SubscriptionEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  deviceToken?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  deviceToken?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   user?: InputMaybe<UserEntityInput>;
 };
 
 export type SuburbEntity = {
   __typename?: 'SuburbEntity';
   addresses?: Maybe<Array<Maybe<AddressEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  latitude?: Maybe<Scalars['Float']>;
-  longitude?: Maybe<Scalars['Float']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  latitude?: Maybe<Scalars['Float']['output']>;
+  longitude?: Maybe<Scalars['Float']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type SuburbEntityInput = {
   addresses?: InputMaybe<Array<InputMaybe<AddressEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  latitude?: InputMaybe<Scalars['Float']>;
-  longitude?: InputMaybe<Scalars['Float']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  latitude?: InputMaybe<Scalars['Float']['input']>;
+  longitude?: InputMaybe<Scalars['Float']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SurveyAnswerEntity = {
   __typename?: 'SurveyAnswerEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   question?: Maybe<SurveyQuestionEntity>;
   result?: Maybe<SurveyResultEntity>;
   selectedOptions?: Maybe<Array<Maybe<SurveyQuestionOptionEntity>>>;
@@ -6297,10 +6299,10 @@ export type SurveyAnswerEntity = {
 };
 
 export type SurveyAnswerEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   question?: InputMaybe<SurveyQuestionEntityInput>;
   result?: InputMaybe<SurveyResultEntityInput>;
   selectedOptions?: InputMaybe<Array<InputMaybe<SurveyQuestionOptionEntityInput>>>;
@@ -6309,33 +6311,33 @@ export type SurveyAnswerEntityInput = {
 
 export type SurveyAnswerTranslatableEntity = {
   __typename?: 'SurveyAnswerTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type SurveyAnswerTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type SurveyAssignmentEntity = {
   __typename?: 'SurveyAssignmentEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   survey?: Maybe<SurveyEntity>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type SurveyAssignmentEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   survey?: InputMaybe<SurveyEntityInput>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
@@ -6344,18 +6346,18 @@ export type SurveyEntity = {
   __typename?: 'SurveyEntity';
   assignments?: Maybe<Array<Maybe<SurveyAssignmentEntity>>>;
   contact?: Maybe<ContactEntity>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  dueDate?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  mandatory?: Maybe<Scalars['Boolean']>;
-  metaDescription?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  dueDate?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  mandatory?: Maybe<Scalars['Boolean']['output']>;
+  metaDescription?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
-  slug?: Maybe<Scalars['String']>;
-  sponsored?: Maybe<Scalars['Boolean']>;
-  startDate?: Maybe<Scalars['OffsetDateTime']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  sponsored?: Maybe<Scalars['Boolean']['output']>;
+  startDate?: Maybe<Scalars['OffsetDateTime']['output']>;
   state?: Maybe<SurveyStateEntity>;
   translatables?: Maybe<Array<Maybe<SurveyTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<SurveyMediaEntity>>>;
@@ -6365,32 +6367,32 @@ export type SurveyEntity = {
 
 
 export type SurveyEntitySearchStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 
 export type SurveyEntityVisitorStatisticsArgs = {
-  endDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  endDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   interval?: InputMaybe<IntervalFilter>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type SurveyEntityInput = {
   assignments?: InputMaybe<Array<InputMaybe<SurveyAssignmentEntityInput>>>;
   contact?: InputMaybe<ContactEntityInput>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  dueDate?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  mandatory?: InputMaybe<Scalars['Boolean']>;
-  metaDescription?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
-  slug?: InputMaybe<Scalars['String']>;
-  sponsored?: InputMaybe<Scalars['Boolean']>;
-  startDate?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  dueDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  mandatory?: InputMaybe<Scalars['Boolean']['input']>;
+  metaDescription?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  sponsored?: InputMaybe<Scalars['Boolean']['input']>;
+  startDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   state?: InputMaybe<SurveyStateEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<SurveyTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<SurveyMediaEntityInput>>>;
@@ -6399,127 +6401,127 @@ export type SurveyEntityInput = {
 
 export type SurveyMediaEntity = {
   __typename?: 'SurveyMediaEntity';
-  card?: Maybe<Scalars['Boolean']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  card?: Maybe<Scalars['Boolean']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   survey?: Maybe<SurveyEntity>;
-  title?: Maybe<Scalars['Boolean']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type SurveyMediaEntityInput = {
-  card?: InputMaybe<Scalars['Boolean']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  card?: InputMaybe<Scalars['Boolean']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   survey?: InputMaybe<SurveyEntityInput>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type SurveyQuestionEntity = {
   __typename?: 'SurveyQuestionEntity';
   answers?: Maybe<Array<Maybe<SurveyAnswerEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  order?: Maybe<Scalars['Int']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  order?: Maybe<Scalars['Int']['output']>;
   questionOptions?: Maybe<Array<Maybe<SurveyQuestionOptionEntity>>>;
-  subject?: Maybe<Scalars['String']>;
+  subject?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<SurveyQuestionTranslatableEntity>>>;
   type?: Maybe<SurveyQuestionTypeEntity>;
 };
 
 export type SurveyQuestionEntityInput = {
   answers?: InputMaybe<Array<InputMaybe<SurveyAnswerEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  order?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
   questionOptions?: InputMaybe<Array<InputMaybe<SurveyQuestionOptionEntityInput>>>;
-  subject?: InputMaybe<Scalars['String']>;
+  subject?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<SurveyQuestionTranslatableEntityInput>>>;
   type?: InputMaybe<SurveyQuestionTypeEntityInput>;
 };
 
 export type SurveyQuestionOptionEntity = {
   __typename?: 'SurveyQuestionOptionEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  order?: Maybe<Scalars['Int']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  order?: Maybe<Scalars['Int']['output']>;
   question?: Maybe<SurveyQuestionEntity>;
   translatables?: Maybe<Array<Maybe<SurveyQuestionOptionTranslatableEntity>>>;
 };
 
 export type SurveyQuestionOptionEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  label?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  order?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
   question?: InputMaybe<SurveyQuestionEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<SurveyQuestionOptionTranslatableEntityInput>>>;
 };
 
 export type SurveyQuestionOptionTranslatableEntity = {
   __typename?: 'SurveyQuestionOptionTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  label?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  label?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type SurveyQuestionOptionTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  label?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  label?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type SurveyQuestionTranslatableEntity = {
   __typename?: 'SurveyQuestionTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  subject?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  subject?: Maybe<Scalars['String']['output']>;
 };
 
 export type SurveyQuestionTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  subject?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  subject?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SurveyQuestionTypeEntity = {
   __typename?: 'SurveyQuestionTypeEntity';
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   questions?: Maybe<Array<Maybe<SurveyQuestionEntity>>>;
 };
 
 export type SurveyQuestionTypeEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   questions?: InputMaybe<Array<InputMaybe<SurveyQuestionEntityInput>>>;
 };
 
 export type SurveyResultEntity = {
   __typename?: 'SurveyResultEntity';
   answer?: Maybe<Array<Maybe<SurveyAnswerEntity>>>;
-  comment?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  comment?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   survey?: Maybe<SurveyEntity>;
   translatables?: Maybe<Array<Maybe<SurveyResultTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
@@ -6527,10 +6529,10 @@ export type SurveyResultEntity = {
 
 export type SurveyResultEntityInput = {
   answer?: InputMaybe<Array<InputMaybe<SurveyAnswerEntityInput>>>;
-  comment?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  comment?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   survey?: InputMaybe<SurveyEntityInput>;
   translatables?: InputMaybe<Array<InputMaybe<SurveyResultTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
@@ -6538,114 +6540,114 @@ export type SurveyResultEntityInput = {
 
 export type SurveyResultTranslatableEntity = {
   __typename?: 'SurveyResultTranslatableEntity';
-  comment?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  comment?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type SurveyResultTranslatableEntityInput = {
-  comment?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  comment?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type SurveyStateEntity = {
   __typename?: 'SurveyStateEntity';
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   survey?: Maybe<Array<Maybe<SurveyEntity>>>;
 };
 
 export type SurveyStateEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   survey?: InputMaybe<Array<InputMaybe<SurveyEntityInput>>>;
 };
 
 export type SurveyTranslatableEntity = {
   __typename?: 'SurveyTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type SurveyTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SurveyVisitorEntity = {
   __typename?: 'SurveyVisitorEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   parent?: Maybe<SurveyEntity>;
   visitor?: Maybe<VisitorEntity>;
-  visits?: Maybe<Scalars['Int']>;
+  visits?: Maybe<Scalars['Int']['output']>;
 };
 
 export type SurveyVisitorEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  visits?: InputMaybe<Scalars['Int']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  visits?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ThemeEntity = {
   __typename?: 'ThemeEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  isDefault?: Maybe<Scalars['Boolean']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isDefault?: Maybe<Scalars['Boolean']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   variables?: Maybe<Array<Maybe<ThemeVariableEntity>>>;
 };
 
 export type ThemeEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  isDefault?: InputMaybe<Scalars['Boolean']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  isDefault?: InputMaybe<Scalars['Boolean']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   variables?: InputMaybe<Array<InputMaybe<ThemeVariableEntityInput>>>;
 };
 
 export type ThemeVariableEntity = {
   __typename?: 'ThemeVariableEntity';
-  code?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  code?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   theme?: Maybe<ThemeEntity>;
-  value?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 export type ThemeVariableEntityInput = {
-  code?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   theme?: InputMaybe<ThemeEntityInput>;
-  value?: InputMaybe<Scalars['String']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type TokenDto = {
   __typename?: 'TokenDto';
-  access?: Maybe<Scalars['String']>;
-  refresh?: Maybe<Scalars['String']>;
+  access?: Maybe<Scalars['String']['output']>;
+  refresh?: Maybe<Scalars['String']['output']>;
 };
 
 export type UserContextEntity = {
@@ -6658,9 +6660,9 @@ export type UserContextEntity = {
   contacts?: Maybe<Array<Maybe<ContactEntity>>>;
   contestPariticpations?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
   contestVotes?: Maybe<Array<Maybe<ContestVoteEntity>>>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
   deals?: Maybe<Array<Maybe<DealEntity>>>;
-  description?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']['output']>;
   eventComment?: Maybe<Array<Maybe<EventCommentEntity>>>;
   eventRatings?: Maybe<Array<Maybe<EventRatingEntity>>>;
   events?: Maybe<Array<Maybe<EventEntity>>>;
@@ -6670,13 +6672,13 @@ export type UserContextEntity = {
   favoriteEvents?: Maybe<Array<Maybe<EventEntity>>>;
   favoriteOrganisations?: Maybe<Array<Maybe<OrganisationEntity>>>;
   favoritingUsers?: Maybe<Array<Maybe<UserContextEntity>>>;
-  id?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']['output']>;
   members?: Maybe<Array<Maybe<OrganisationMemberEntity>>>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   organisationRatings?: Maybe<Array<Maybe<OrganisationRatingEntity>>>;
   receivedFriendRequests?: Maybe<Array<Maybe<FriendEntity>>>;
   sentFriendRequests?: Maybe<Array<Maybe<FriendEntity>>>;
-  slug?: Maybe<Scalars['String']>;
+  slug?: Maybe<Scalars['String']['output']>;
   surveyResults?: Maybe<Array<Maybe<SurveyResultEntity>>>;
   translatables?: Maybe<Array<Maybe<UserContextTranslatableEntity>>>;
   uploads?: Maybe<Array<Maybe<UserContextMediaEntity>>>;
@@ -6693,9 +6695,9 @@ export type UserContextEntityInput = {
   contacts?: InputMaybe<Array<InputMaybe<ContactEntityInput>>>;
   contestPariticpations?: InputMaybe<Array<InputMaybe<ContestParticipationEntityInput>>>;
   contestVotes?: InputMaybe<Array<InputMaybe<ContestVoteEntityInput>>>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   deals?: InputMaybe<Array<InputMaybe<DealEntityInput>>>;
-  description?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']['input']>;
   eventComment?: InputMaybe<Array<InputMaybe<EventCommentEntityInput>>>;
   eventRatings?: InputMaybe<Array<InputMaybe<EventRatingEntityInput>>>;
   events?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
@@ -6705,13 +6707,13 @@ export type UserContextEntityInput = {
   favoriteEvents?: InputMaybe<Array<InputMaybe<EventEntityInput>>>;
   favoriteOrganisations?: InputMaybe<Array<InputMaybe<OrganisationEntityInput>>>;
   favoritingUsers?: InputMaybe<Array<InputMaybe<UserContextEntityInput>>>;
-  id?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   members?: InputMaybe<Array<InputMaybe<OrganisationMemberEntityInput>>>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   organisationRatings?: InputMaybe<Array<InputMaybe<OrganisationRatingEntityInput>>>;
   receivedFriendRequests?: InputMaybe<Array<InputMaybe<FriendEntityInput>>>;
   sentFriendRequests?: InputMaybe<Array<InputMaybe<FriendEntityInput>>>;
-  slug?: InputMaybe<Scalars['String']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
   surveyResults?: InputMaybe<Array<InputMaybe<SurveyResultEntityInput>>>;
   translatables?: InputMaybe<Array<InputMaybe<UserContextTranslatableEntityInput>>>;
   uploads?: InputMaybe<Array<InputMaybe<UserContextMediaEntityInput>>>;
@@ -6721,172 +6723,172 @@ export type UserContextEntityInput = {
 
 export type UserContextMediaEntity = {
   __typename?: 'UserContextMediaEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   media?: Maybe<MediaEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  profilePicture?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['Boolean']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  profilePicture?: Maybe<Scalars['Boolean']['output']>;
+  title?: Maybe<Scalars['Boolean']['output']>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type UserContextMediaEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   media?: InputMaybe<MediaEntityInput>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  profilePicture?: InputMaybe<Scalars['Boolean']>;
-  title?: InputMaybe<Scalars['Boolean']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  profilePicture?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['Boolean']['input']>;
   userContext?: InputMaybe<UserContextEntityInput>;
 };
 
 export type UserContextTranslatableEntity = {
   __typename?: 'UserContextTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  description?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type UserContextTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  description?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type UserDeletionEntity = {
   __typename?: 'UserDeletionEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   translatables?: Maybe<Array<Maybe<UserDeletionTranslatableEntity>>>;
   types?: Maybe<Array<Maybe<UserDeletionTypeEntity>>>;
 };
 
 export type UserDeletionEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<UserDeletionTranslatableEntityInput>>>;
   types?: InputMaybe<Array<InputMaybe<UserDeletionTypeEntityInput>>>;
 };
 
 export type UserDeletionTranslatableEntity = {
   __typename?: 'UserDeletionTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type UserDeletionTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type UserDeletionTypeEntity = {
   __typename?: 'UserDeletionTypeEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<UserDeletionTypeTranslatableEntity>>>;
 };
 
 export type UserDeletionTypeEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<UserDeletionTypeTranslatableEntityInput>>>;
 };
 
 export type UserDeletionTypeTranslatableEntity = {
   __typename?: 'UserDeletionTypeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
 export type UserDeletionTypeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type UserEntity = {
   __typename?: 'UserEntity';
-  captchaToken?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  email?: Maybe<Scalars['String']>;
-  firstName?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
+  captchaToken?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  firstName?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  lastLogin?: Maybe<Scalars['OffsetDateTime']>;
-  lastName?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  lastLogin?: Maybe<Scalars['OffsetDateTime']['output']>;
+  lastName?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   notifications?: Maybe<Array<Maybe<NotificationEntity>>>;
-  password?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']['output']>;
   passwordResets?: Maybe<Array<Maybe<PasswordResetEntity>>>;
-  phone?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']['output']>;
   privilegeApplications?: Maybe<Array<Maybe<PrivilegeApplicationEntity>>>;
   roles?: Maybe<Array<Maybe<RoleEntity>>>;
   subscriptions?: Maybe<Array<Maybe<SubscriptionEntity>>>;
-  termsAccepted?: Maybe<Scalars['Boolean']>;
+  termsAccepted?: Maybe<Scalars['Boolean']['output']>;
   verifications?: Maybe<Array<Maybe<VerificationEntity>>>;
-  verified?: Maybe<Scalars['Boolean']>;
+  verified?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type UserEntityInput = {
-  captchaToken?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  email?: InputMaybe<Scalars['String']>;
-  firstName?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['String']>;
+  captchaToken?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  firstName?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
   language?: InputMaybe<LanguageEntityInput>;
-  lastLogin?: InputMaybe<Scalars['OffsetDateTime']>;
-  lastName?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  lastLogin?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  lastName?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   notifications?: InputMaybe<Array<InputMaybe<NotificationEntityInput>>>;
-  password?: InputMaybe<Scalars['String']>;
+  password?: InputMaybe<Scalars['String']['input']>;
   passwordResets?: InputMaybe<Array<InputMaybe<PasswordResetEntityInput>>>;
-  phone?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
   privilegeApplications?: InputMaybe<Array<InputMaybe<PrivilegeApplicationEntityInput>>>;
   roles?: InputMaybe<Array<InputMaybe<RoleEntityInput>>>;
   subscriptions?: InputMaybe<Array<InputMaybe<SubscriptionEntityInput>>>;
-  termsAccepted?: InputMaybe<Scalars['Boolean']>;
+  termsAccepted?: InputMaybe<Scalars['Boolean']['input']>;
   verifications?: InputMaybe<Array<InputMaybe<VerificationEntityInput>>>;
-  verified?: InputMaybe<Scalars['Boolean']>;
+  verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type UserFormTemplateEntity = {
   __typename?: 'UserFormTemplateEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  name?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<UserFormTemplateTranslatableEntity>>>;
   type?: Maybe<FormTemplateTypeEntity>;
   userContext?: Maybe<UserContextEntity>;
 };
 
 export type UserFormTemplateEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  name?: InputMaybe<Scalars['String']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<UserFormTemplateTranslatableEntityInput>>>;
   type?: InputMaybe<FormTemplateTypeEntityInput>;
   userContext?: InputMaybe<UserContextEntityInput>;
@@ -6894,42 +6896,42 @@ export type UserFormTemplateEntityInput = {
 
 export type UserFormTemplateTranslatableEntity = {
   __typename?: 'UserFormTemplateTranslatableEntity';
-  content?: Maybe<Scalars['String']>;
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
+  content?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
   language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
 };
 
 export type UserFormTemplateTranslatableEntityInput = {
-  content?: InputMaybe<Scalars['String']>;
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
+  content?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
 };
 
 export type VerificationEntity = {
   __typename?: 'VerificationEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  token?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  token?: Maybe<Scalars['String']['output']>;
   user?: Maybe<UserEntity>;
 };
 
 export type VerificationEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']>;
-  id?: InputMaybe<Scalars['String']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']>;
-  token?: InputMaybe<Scalars['String']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  token?: InputMaybe<Scalars['String']['input']>;
   user?: InputMaybe<UserEntityInput>;
 };
 
 export type VisitorEntity = {
   __typename?: 'VisitorEntity';
-  created?: Maybe<Scalars['OffsetDateTime']>;
-  id?: Maybe<Scalars['String']>;
-  ipAddress?: Maybe<Scalars['String']>;
-  modified?: Maybe<Scalars['OffsetDateTime']>;
-  userAgent?: Maybe<Scalars['String']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  ipAddress?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  userAgent?: Maybe<Scalars['String']['output']>;
 };

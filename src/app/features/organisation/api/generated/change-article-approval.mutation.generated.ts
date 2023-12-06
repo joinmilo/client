@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type ChangeOrganisationApprovalMutationVariables = Types.Exact<{
-  organisationId?: Types.InputMaybe<Types.Scalars['String']>;
+  organisationId?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

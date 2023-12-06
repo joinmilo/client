@@ -36,19 +36,6 @@ mat-card {
   border-radius: var(--mdc-shape-medium) !important;
 }
 
-/* Calendar */
-.mat-calendar-body-in-range::before {
-  background: var(--color-primary-100) !important;
-}
-
-.mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
-  color: var(--color-primary-contrast-500) !important;
-}
-
-.mat-calendar-body-in-preview {
-  color: var(--color-primary-contrast-500) !important;
-}
-
 /* CKEditor */
 
 .ck-editor__editable_inline {

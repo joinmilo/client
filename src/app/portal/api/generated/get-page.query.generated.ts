@@ -6,8 +6,8 @@ import { PageFragmentDoc } from './page.fragment.generated';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type GetPageQueryVariables = Types.Exact<{
-  isLanding?: Types.InputMaybe<Types.Scalars['Boolean']>;
-  slug?: Types.InputMaybe<Types.Scalars['String']>;
+  isLanding?: Types.InputMaybe<Types.Scalars['Boolean']['input']>;
+  slug?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

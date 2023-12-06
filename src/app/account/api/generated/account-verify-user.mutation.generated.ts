@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type VerifyUserMutationVariables = Types.Exact<{
-  token?: Types.InputMaybe<Types.Scalars['String']>;
+  token?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

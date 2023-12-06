@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type DeleteMeMutationVariables = Types.Exact<{
   userDeletion?: Types.InputMaybe<Types.UserDeletionEntityInput>;
-  password?: Types.InputMaybe<Types.Scalars['String']>;
+  password?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type SponsorSurveyMutationVariables = Types.Exact<{
-  surveyId?: Types.InputMaybe<Types.Scalars['String']>;
+  surveyId?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 

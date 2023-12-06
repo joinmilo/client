@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type RefreshMutationVariables = Types.Exact<{
-  refreshToken: Types.Scalars['String'];
+  refreshToken: Types.Scalars['String']['input'];
 }>;
 
 

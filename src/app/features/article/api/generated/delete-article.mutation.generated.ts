@@ -5,7 +5,7 @@ import { gql } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type DeleteArticleMutationVariables = Types.Exact<{
-  id?: Types.InputMaybe<Types.Scalars['String']>;
+  id?: Types.InputMaybe<Types.Scalars['String']['input']>;
 }>;
 
 
