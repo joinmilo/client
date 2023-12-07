@@ -1,6 +1,8 @@
 <app-drag-drop
-  [elements]="elements"
-  [component]="component">
+  [component]="component"
+  [inputs]="elements"
+  labelField="label"
+  (deleted)="deleted($event)">
 </app-drag-drop>
 
 

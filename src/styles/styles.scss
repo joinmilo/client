@@ -14,6 +14,10 @@ body {
   font-family: Inter, "Helvetica Neue", sans-serif;
 }
 
+body.inheritCursors * {
+  cursor: inherit !important;
+}
+
 .main {
   width: 90rem;
   max-width: calc(100% - var(--gap));

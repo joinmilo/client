@@ -1,3 +1,8 @@
-<span>
-  {{ headline }}
-</span>
+<mat-form-field appearance="outline">
+  <mat-label appLabel="phone"></mat-label>
+  <input matInput [formControl]="control">
+</mat-form-field>
+
+<button mat-button (click)="send()">
+  Save
+</button>

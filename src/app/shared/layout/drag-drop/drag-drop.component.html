@@ -1,0 +1,40 @@
+<div class="container" cdkDropList (cdkDropListDropped)="drop($event)">
+  <mat-card *ngFor="let input of inputs; let index = index" cdkDrag cdkDragLockAxis="y" (cdkDragStarted)="drag()">
+    <section class="drag-handle" cdkDragHandle>
+      <fa-icon icon="grip-vertical"></fa-icon>
+    </section>
+
+    <section class="content-area">
+      <strong> {{ input.label }}</strong>
+
+      <ng-container *ngIf="input.expanded">
+        <ng-container *ngComponentOutlet="component; inputs: createInput(index)">
+        </ng-container>
+      </ng-container>
+    </section>
+
+    <section>
+      <button *ngIf="input.expanded; else expandIcon"
+        mat-button
+        (click)="collapse(index)">
+        <fa-icon icon="down-left-and-up-right-to-center"></fa-icon>
+      </button>
+
+      <ng-template #expandIcon>
+        <button mat-button
+          (click)="expand(index)">
+          <fa-icon icon="up-right-and-down-left-from-center"></fa-icon>
+        </button>
+      </ng-template>
+
+      <button mat-button
+        (click)="onDelete(index)">
+        <fa-icon icon="trash"></fa-icon>
+      </button>
+    </section>
+
+    <span class="drag-placeholder" *cdkDragPlaceholder></span>
+    <span *cdkDragPreview>
+    </span>
+  </mat-card>
+</div>
