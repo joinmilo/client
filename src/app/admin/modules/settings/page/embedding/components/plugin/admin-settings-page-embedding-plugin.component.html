@@ -8,7 +8,7 @@
   
   <app-row [columns]="2">
     <mat-form-field appearance="outline">
-      <mat-label appLabel="plugins"></mat-label>
+      <mat-label appLabel="plugin"></mat-label>
       <mat-select formControlName="pluginId">
         <mat-option *ngFor="let plugin of plugins | async"
             [value]="plugin.id">
@@ -18,7 +18,7 @@
     </mat-form-field>
   </app-row>
   
-  <button mat-button
+  <button mat-stroked-button
     appLabel="save"
     (click)="save()">
   </button>
