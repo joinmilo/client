@@ -5,10 +5,12 @@ import { TableCellComponent } from '../../typings/cell';
 @Component({
   selector: 'app-table-cell-boolean',
   template: `
-    <fa-icon [icon]="input 
-      ? ['fas', 'check'] 
-      : ['fas', 'xmark']">
-    </fa-icon>
+    <span *ngIf="input">
+      <i class="fas fa-check"></i>
+    </span>
+    <span *ngIf="!input">
+      <i class="fas fa-xmark"></i>
+    </span>
   `,
 })
 export class TableCellBooleanComponent extends TableCellComponent<boolean> {

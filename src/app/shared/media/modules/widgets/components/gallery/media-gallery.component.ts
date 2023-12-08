@@ -68,7 +68,7 @@ export class MediaGalleryComponent implements OnInit, OnChanges {
     if (this.files?.length) {
       this.fileType = MediaDisplayType.File;
       this.inputs?.push({
-        icon: ['fas', 'file'],
+        icon: 'file',
         label: 'files',
         value: MediaDisplayType.File
       });
@@ -76,7 +76,7 @@ export class MediaGalleryComponent implements OnInit, OnChanges {
     if (this.videos?.length) {
       this.fileType = MediaDisplayType.Video;
       this.inputs?.push({
-        icon: ['fas', 'video'],
+        icon: 'video',
         label: 'videos',
         value: MediaDisplayType.Video
       })
@@ -85,7 +85,7 @@ export class MediaGalleryComponent implements OnInit, OnChanges {
     if (this.images?.length) {
       this.fileType = MediaDisplayType.Image;
       this.inputs.push({
-        icon: ['fas', 'image'],
+        icon: 'image',
         label: 'images',
         value: MediaDisplayType.Image
       });

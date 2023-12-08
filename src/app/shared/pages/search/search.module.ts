@@ -7,7 +7,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
@@ -51,7 +50,6 @@ const modules = [
 ];
 
 const libs = [
-  FontAwesomeModule,
   StoreModule.forFeature(searchStateKey, searchReducer),
   EffectsModule.forFeature([SearchEffects]),
 ]

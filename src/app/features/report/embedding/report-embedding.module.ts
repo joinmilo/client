@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
@@ -41,7 +40,6 @@ const modules = [
 ];
 
 const libs = [
-  FontAwesomeModule,
   StoreModule.forFeature(reportEmbeddingStateKey, reportEmbeddingReducer),
   EffectsModule.forFeature([ReportEmbeddingEffects]),
 ]

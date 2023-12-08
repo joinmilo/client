@@ -5,12 +5,14 @@
     appTooltip="save"
     (click)="$event.stopPropagation(); save();">
     <fa-icon [icon]="['fas', 'check']"></fa-icon>
+    <i class="fas fa-check"></i>
   </button>
 
   <button mat-button
     appTooltip="cancel"
     (click)="$event.stopPropagation(); cancel();">
     <fa-icon [icon]="['fas', 'xmark']"></fa-icon>
+    <i class="fas fa-xmark"></i>
   </button>
 </ng-container>
 

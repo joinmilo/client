@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" [@growOnSides] (click)="$event.stopPropagation()">
   <button mat-icon-button matPrefix>
-    <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+    <i class="fas fa-magnifying-glass"></i>
   </button>
 
   <input matInput [formControl]="control" [matAutocomplete]="auto">
@@ -21,6 +21,6 @@
   </mat-autocomplete>
 
   <button mat-icon-button matSuffix (click)="close()">
-    <fa-icon [icon]="['fas', 'close']"></fa-icon>
+    <i class="fas fa-close"></i>
   </button>
 </mat-form-field>

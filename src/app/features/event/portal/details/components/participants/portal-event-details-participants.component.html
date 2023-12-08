@@ -7,19 +7,25 @@
         [user]="attendingFriend">
       </app-media-avatar>
       <button mat-stroked-button color="primary" (click)="showAllFriends()">
-        <fa-icon size="1x" [icon]="['fas', 'users']"></fa-icon>
-        <span appLabel="showAllFriends"></span>
+        <span>
+          <i class="fas fa-users" [style.color]="'var(--color-primary-contrast-500)'"></i>
+          <span appLabel="showAllFriends"></span>
+        </span>
       </button>
     </section>
     <section>
       <button mat-flat-button color="primary" *ngIf="(currentUser | async)?.id"
         (click)="inviteFriends()">
-        <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
-        <span appLabel="inviteFriends"></span>
+        <span>
+          <i class="fas fa-user-plus" [style.color]="'var(--color-primary-contrast-500)'"></i>
+          <span appLabel="inviteFriends"></span>
+        </span>
       </button>
       <button mat-flat-button color="primary" *ngIf="!((currentUser | async)?.id)" (click)="requireLogin()">
-        <fa-icon size="1x" [icon]="['fas', 'user-plus']"></fa-icon>
-        <span appLabel="inviteFriends"></span>
+        <span>
+          <i class="fas fa-user-plus" [style.color]="'var(--color-primary-contrast-500)'"></i>
+          <span appLabel="inviteFriends"></span>
+        </span>
       </button>
     </section>
   </div>

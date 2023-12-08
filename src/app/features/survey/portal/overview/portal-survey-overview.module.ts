@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
@@ -41,7 +40,6 @@ const modules = [
 ];
 
 const libs = [
-  FontAwesomeModule,
   StoreModule.forFeature(
     portalSurveyOverviewStateKey,
     portalSurveyOverviewReducer
@@ -51,7 +49,11 @@ const libs = [
 
 @NgModule({
   declarations: [...components],
-  imports: [...framework, ...materials, ...modules, ...libs],
+  imports: [
+    ...framework,
+    ...materials,
+    ...modules,
+    ...libs],
   exports: [...components],
 })
 export class PortalSurveyOverviewModule {}

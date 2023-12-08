@@ -12,12 +12,12 @@
       height: 100% !important;
       transition: ease-out .4s;
 
-      fa-icon {
+      svg {
         color: var(--color-gray);
       }
 
       &:hover {
-        fa-icon {
+        svg {
           color: var(--color-dark-gray);
           transform: scale(1.2);
         }

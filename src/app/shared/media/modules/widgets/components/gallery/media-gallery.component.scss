@@ -18,8 +18,10 @@ section {
   button {
     color: var(--color-dark-gray);
 
-    fa-icon {
-      padding-right: .5rem;
+    span {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
     }
   }
 }

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
@@ -24,7 +23,6 @@ const framework = [
 ];
 
 const libs = [
-  FontAwesomeModule,
   LeafletModule,
   LeafletMarkerClusterModule
 ];

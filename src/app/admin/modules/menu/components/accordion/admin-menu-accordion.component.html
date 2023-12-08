@@ -3,10 +3,10 @@
     [hideToggle]="!item?.childs?.length || item?.childs?.length === 1 "
     (opened)="click()">
     <mat-expansion-panel-header>
-      <mat-panel-title [ngClass]="{'menu-active': active }">
-        <fa-icon *ngIf="item?.icon"
-          size="lg" [icon]="['fas', item!.icon!]">
-        </fa-icon>
+      <mat-panel-title [ngClass]="{'menu-active': active }">     
+        <span *ngIf="item?.icon">
+          <i class="fas + fa-{{ item!.icon! }} fa-lg"></i>
+        </span>
         <strong [appLabel]="item?.name"></strong>
       </mat-panel-title>
     </mat-expansion-panel-header>

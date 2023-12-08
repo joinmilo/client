@@ -22,12 +22,14 @@ export class PortalArticleOverviewComponent {
 
   public inputs: RadioButtonInput[] = [
     {
-      icon: ['fas', 'shapes'],
+      style: 'fas',
+      icon: 'fa-shapes',
       label: 'category',
       value: OverviewDisplayType.Category
     },
     {
-      icon: ['fas', 'list'],
+      style: 'fas',
+      icon: 'fa-list',
       label: 'table',
       value: OverviewDisplayType.Table
     },

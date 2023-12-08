@@ -6,7 +6,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { PasswordConfirmComponent } from './components/confirm/password-confirm.component';
@@ -30,7 +29,6 @@ const framework = [
 ];
 
 const materials = [
-  FontAwesomeModule,
   MatFormFieldModule,
   MatInputModule,
   MatButtonModule,

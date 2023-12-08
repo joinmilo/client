@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { selectAdminSettingsMenu } from 'src/app/admin/state/admin.selectors';
@@ -21,7 +20,6 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
   imports: [
     CommonModule,
     CoreModule,
-    FontAwesomeModule,
 
     MatCardModule,
     MatDividerModule,

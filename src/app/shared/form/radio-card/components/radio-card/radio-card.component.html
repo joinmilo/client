@@ -4,7 +4,7 @@
     <strong [appLabel]="input?.label"></strong>
 
     <section>
-      <fa-icon size="lg" [icon]="input!.icon"></fa-icon>
+      <i class="{{input!.style}} + {{input!.icon}} fa-lg"></i>
       <span *ngIf="input?.display">{{ input?.display }}</span>
     </section>
 </div>

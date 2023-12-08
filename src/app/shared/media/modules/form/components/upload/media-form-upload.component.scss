@@ -49,7 +49,7 @@ div {
     border: dashed 2px var(--color-primary-500);
     background-color: var(--color-primary-100);
   
-    fa-icon {
+    svg {
       color: var(--color-primary-500);
     }
   }
@@ -61,7 +61,7 @@ div {
       cursor: unset;
     }
 
-    fa-icon, span {
+    svg, span {
       color: var(--color-gray);
     }
   }

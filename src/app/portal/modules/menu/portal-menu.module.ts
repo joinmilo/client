@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalMenuAccordionComponent } from './components/accordion/portal-menu-accordion.component';
 import { PortalMenuOverlayComponent } from './components/overlay/portal-menu-overlay.component';
@@ -27,10 +26,6 @@ const modules = [
   CoreModule,
 ];
 
-const libs = [
-  FontAwesomeModule,
-]
-
 @NgModule({
   declarations: [
     ...components,
@@ -39,7 +34,6 @@ const libs = [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [
     ...components,

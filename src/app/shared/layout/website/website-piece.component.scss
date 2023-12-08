@@ -1,5 +1,6 @@
 div {
   display: flex;
+  align-items: center;
   gap: 1rem;
 
   address {
@@ -8,10 +9,6 @@ div {
     white-space: nowrap;
     cursor: pointer;
   }
-}
-
-fa-icon {
-  align-self: center;
 }
 
 a {

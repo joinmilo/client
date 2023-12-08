@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';

@@ -17,6 +17,8 @@ section {
   }
 }
 
-fa-icon {
-  color: var(--color-primary-contrast-900);
+span {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }

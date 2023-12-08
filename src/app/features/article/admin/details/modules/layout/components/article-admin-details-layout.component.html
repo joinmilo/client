@@ -2,8 +2,10 @@
 </app-page-title>
 
 <button mat-flat-button color="primary" [routerLink]="['form']">
-  <fa-icon size="1x" [icon]="['fas', 'pen-to-square']"></fa-icon>
-  <span appLabel="editArticle"></span>
+  <span>
+    <i class="fas fa-pen-to-square" [style.color]="'var(--color-primary-contrast-500)'"></i>
+    <span appLabel="editArticle"></span>
+  </span>
 </button>
 
 <app-radio-card-group

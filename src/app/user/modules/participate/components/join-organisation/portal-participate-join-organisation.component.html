@@ -8,10 +8,10 @@
     <mat-label appLabel="search"></mat-label>
     <input matInput type="text" [(ngModel)]="value" (input)="filterOrganisations(value)">
     <button *ngIf="!value" matSuffix mat-icon-button>
-      <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+      <i class="fas fa-magnifying-glass"></i>
     </button>
     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" (click)="filterOrganisations(value)">
-      <fa-icon [icon]="['fas', 'close']"></fa-icon>
+      <i class="fas fa-close"></i>
     </button>
   </mat-form-field>
 

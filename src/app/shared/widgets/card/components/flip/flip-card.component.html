@@ -4,7 +4,7 @@
     <div class="flip-card-front" (click)="flipCard(180)">
       <img [src]="pictureUrl" alt="flip-card-image">
       <mat-button-toggle (click)="flipCard(180)">
-        <fa-icon [icon]="['fas', 'arrows-rotate']"> </fa-icon>
+        <i class="fas fa-arrows-rotate"></i>
       </mat-button-toggle>
     </div>
 
@@ -15,7 +15,7 @@
           (click)="emit(element, i)">
           {{ element | async }}</mat-button-toggle>
         <mat-button-toggle (click)="flipCard(0)">
-          <fa-icon [icon]="['fas', 'arrows-rotate']"> </fa-icon>
+          <i class="fas fa-arrows-rotate"></i>
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>

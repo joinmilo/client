@@ -1,7 +1,6 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
 export interface RadioButtonInput<T = unknown> {
-  icon?: IconProp;
+  style?: string,
+  icon?: string;
   label?: string;
   value?: T;
 }

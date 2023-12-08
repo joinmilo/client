@@ -21,16 +21,20 @@ export class PortalSurveyDetailsMediaComponent implements OnDestroy {
 
   public inputs: RadioButtonInput[] = [
     {
-      icon: ['fas', 'image'],
+      style: 'fas',
+      icon: 'fa-image',
       label: 'images',
       value: MediaDisplayType.Image
-    },{
-      icon: ['fas', 'video'],
+    },
+    {
+      style: 'fas',
+      icon: 'fa-video',
       label: 'videos',
       value: MediaDisplayType.Video
     },
     {
-      icon: ['fas', 'file'],
+      style: 'fas',
+      icon: 'fa-file',
       label: 'files',
       value: MediaDisplayType.File
     }

@@ -6,8 +6,10 @@
       <span appLabel="writeComment"></span>
     </button>
     <button mat-raised-button (click)="routeBack()">
-      <fa-icon size="xs" [icon]="['fas', 'arrow-left']"></fa-icon>
-      <span [appLabel]="backLabel"></span>
+      <span>
+        <i class="fas fa-arrow-left fa-xs"></i>
+        <span [appLabel]="backLabel"></span>
+      </span>
     </button>
   </section>
   

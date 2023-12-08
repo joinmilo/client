@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
@@ -49,7 +48,6 @@ const modules = [
 const libs = [
   StoreModule.forFeature(contestAdminDetailsLayoutStateKey, contestAdminDetailsLayoutReducer),
   EffectsModule.forFeature([ContestAdminDetailsLayoutEffects]),
-  FontAwesomeModule,
 ];
 
 @NgModule({

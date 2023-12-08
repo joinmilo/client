@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 
 @Component({
@@ -11,8 +10,6 @@ import { NavigationService } from 'src/app/core/services/navigation.service';
   standalone: true,
   imports: [
     CommonModule,
-
-    FontAwesomeModule,
     MatButtonModule,
   ]
 })

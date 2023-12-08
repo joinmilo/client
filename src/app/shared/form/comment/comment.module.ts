@@ -7,7 +7,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from '../../../core/core.module';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
@@ -29,10 +28,6 @@ const framework = [
   CommonModule,
   RouterModule,
   ReactiveFormsModule
-];
-
-const libs = [
-  FontAwesomeModule,
 ];
 
 const materials = [
@@ -57,7 +52,6 @@ const modules = [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [...components],
 })

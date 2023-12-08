@@ -22,22 +22,26 @@ export class DealAdminDetailsLayoutComponent implements OnInit, OnDestroy {
 
   public inputs: RadioCardInput[] = [
     {
-      icon: ['fas', 'magnifying-glass'],
+      style: 'fas',
+      icon: 'fa-magnifying-glass',
       label: 'overview',
       value: '',
     },
     {
-      icon: ['far', 'eye'],
+      style: 'far',
+      icon: 'fa-eye',
       label: 'pageVisitors',
       value: visitorsRoute
     },
     {
-      icon: ['fab', 'google'],
+      style: 'fab',
+      icon: 'fa-google',
       label: 'googleSearch',
       value: searchRoute
     },
     {
-      icon: ['far', 'heart'],
+      style: 'far',
+      icon: 'fa-heart',
       label: 'favorites',
       value: favoritesRoute
     },

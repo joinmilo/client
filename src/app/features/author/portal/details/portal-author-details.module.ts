@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
@@ -47,7 +46,6 @@ const modules = [
 ];
 
 const libs = [
-  FontAwesomeModule,
   StoreModule.forFeature(authorDetailsStateKey, authorReducer),
   EffectsModule.forFeature([AuthorDetailsEffects]),
 ]

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { mediaDownloadApi } from 'src/app/core/constants/url.constants';
 import { MediaService } from '../../../../services/media.service';
@@ -21,8 +20,6 @@ export class MediaViewCardComponent implements OnInit {
 
   @Output()
   public deleted = new EventEmitter<Maybe<MediaEntity>>();
-
-  public iconSize: SizeProp = '5x';
 
   public mimeType?: Maybe<MimeTypeDefinition>;
 

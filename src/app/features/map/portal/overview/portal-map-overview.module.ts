@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
@@ -59,10 +58,6 @@ const modules = [
   TableModule,
 ]
 
-const libs = [
-  FontAwesomeModule,
-]
-
 @NgModule({
   declarations: [
     ...components,
@@ -72,7 +67,6 @@ const libs = [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [
     ...components

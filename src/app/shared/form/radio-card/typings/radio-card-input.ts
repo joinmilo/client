@@ -1,8 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-
 export interface RadioCardInput {
   display?: string,
-  icon: IconProp;
+  style?: string,
+  icon: string;
   label?: string;
   value?: unknown;
 }

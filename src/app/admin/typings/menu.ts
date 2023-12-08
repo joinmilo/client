@@ -1,12 +1,11 @@
 import { Route } from '@angular/router'
-import { IconName } from '@fortawesome/fontawesome-svg-core'
 import { Privilege } from 'src/app/core/typings/privilege'
 
 export type AdminMenuItem = {
   active?: boolean,
   childs?: AdminMenuItem[],
   description?: string,
-  icon?: IconName,
+  // icon?: IconName,
   name?: string,
   privileges?: Privilege[],
   route?: string,

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
 import { Subject, take, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
@@ -18,7 +17,6 @@ import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity'
   imports: [
     CommonModule,
     CoreModule,
-    FontAwesomeModule,
     MatButtonModule,
   ]
 })

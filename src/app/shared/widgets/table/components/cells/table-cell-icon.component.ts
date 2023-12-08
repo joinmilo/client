@@ -6,9 +6,9 @@ import { TableCellComponent } from '../../typings/cell';
 @Component({
   selector: 'app-table-cell-icon',
   template: `
-    <fa-icon *ngIf="input"
-      [icon]="input">
-    </fa-icon>
+    <span *ngIf="input">
+      <i class="fas fa-{{input}}"></i>
+    </span>
   `,
 })
 export class TableCellIconComponent extends TableCellComponent<IconProp> {

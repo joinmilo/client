@@ -8,10 +8,10 @@
   button {
     align-self: flex-end;
 
-    fa-icon {
-      color: white;
-      margin-right: .5rem;
+    span {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
     }
   }
-
 }

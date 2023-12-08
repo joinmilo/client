@@ -5,15 +5,14 @@
     <fa-icon size="xl"
       [icon]="actions![0].icon">
     </fa-icon>
+    <i class="fas + fa-{{ actions![0].icon }}"></i>
   </button>
 </ng-container>
 
 <ng-template #menuActions>
   <button mat-button
     [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-    <fa-icon size="xl"
-      [icon]="['fas', 'ellipsis-vertical']">
-    </fa-icon>
+    <i class="fas fa-ellipsis-vertical fa-xl"></i>
   </button>
 
   <mat-menu #menu="matMenu">
@@ -21,6 +20,7 @@
       <button mat-menu-item (click)="action.clicked()">
         <div class="action-button">
           <fa-icon [icon]="action.icon"></fa-icon>
+          <i class="fas + fa-{{ action.icon }}"></i>
           <span [appLabel]="action.label"></span>
         </div>
       </button>

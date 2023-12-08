@@ -2,14 +2,16 @@
 </app-page-title>
 
 <button mat-flat-button color="primary" [routerLink]="['form']">
-  <fa-icon size="1x" [icon]="['fas', 'pen-to-square']"></fa-icon>
-  <span appLabel="editSurvey"></span>
+  <span>
+    <i class="fas fa-pen-to-square" [style.color]="'var(--color-primary-contrast-500)'"></i>
+    <span appLabel="editSurvey"></span>
+  </span>
 </button>
 
-<app-radio-card-group
+<!-- <app-radio-card-group
   [value]="initValue"
   [inputs]="inputs"
   (valueChanged)="route($event)">
-</app-radio-card-group>
+</app-radio-card-group> -->
 
 <router-outlet></router-outlet>

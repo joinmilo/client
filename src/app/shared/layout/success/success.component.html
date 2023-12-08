@@ -1,7 +1,7 @@
 <div class="border-box">
   <section>
     <h2 class="mat-headline-6" *ngIf="titleLabel" [appLabel]="titleLabel"></h2>
-    <fa-icon size="4x" [icon]="['far', 'circle-check']"></fa-icon>
+    <i class="far fa-circle-check fa-4x" [style.color]="'var(--color-success-900)'"></i>
 
     <ng-container *ngFor="let text of texts; let last = last">
       <p [appLabel]="text"></p>

@@ -2,14 +2,19 @@
   <app-page-title titleLabel="friends"></app-page-title>
 
   <section>
-    <app-radio-button-group [inputs]="inputs" [value]="displayType" [queryParamKey]="displayQueryParam"
+    <app-radio-button-group 
+      [inputs]="inputs" 
+      [value]="displayType" 
+      [queryParamKey]="displayQueryParam"
       (valueChanged)="displayType = $event">
     </app-radio-button-group>
 
     <button mat-flat-button color="primary" (click)="friendsDialog()">
       <section>
-        <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>
-        <span appLabel="addFriends"></span>
+        <span>
+          <i class="fas fa-user-plus" [style.color]="'var(--color-primary-contrast-500)'"></i>
+          <span appLabel="addFriends"></span>
+      </span>
       </section>
     </button>
   </section>

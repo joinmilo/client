@@ -5,14 +5,12 @@
       <input matInput [formControl]="control">
       <button matSuffix mat-icon-button
         (click)="back.emit()">
-        <fa-icon *ngIf="!media"
-          matSuffix
-          [icon]="['fas', 'arrow-left']">
-        </fa-icon>
-        <fa-icon *ngIf="media"
-          matSuffix
-          [icon]="['fas', 'trash']">
-        </fa-icon>
+        <span *ngIf="!media">
+          <i class="fas fa-arrow-left"></i>
+        </span>
+        <span *ngIf="media">
+          <i class="fas fa-trash"></i>
+        </span>
       </button>
     </mat-form-field>
   </mat-card-header>
@@ -21,7 +19,7 @@
     [media]="media">
   </app-media-element>
 
-  <span *ngIf="!media && control.value"
+  <span #url *ngIf="!media && control.value"
     appLabel="enterValidUrl">
   </span>
 

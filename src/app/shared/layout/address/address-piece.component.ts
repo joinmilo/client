@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddressEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 
@@ -12,8 +11,6 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     CoreModule,
-
-    FontAwesomeModule,
   ]
 })
 export class AddressPieceComponent {

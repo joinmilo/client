@@ -16,27 +16,32 @@ export class PortalFavoritesComponent {
 
   public inputs: RadioButtonInput[] = [
     {
-      icon: ['fas', 'calendar'],
+      style: 'fas',
+      icon: 'fa-calendar',
       label: 'Events',
       value: 'events'
     },
     {
-      icon: ['fas', 'tags'],
+      style: 'fas',
+      icon: 'fa-tags',
       label: 'Deals',
       value: 'deals'
     },
     {
-      icon: ['fas', 'people-group'],
+      style: 'fas',
+      icon: 'fa-people-group',
       label: 'Organisations',
       value: 'organisations'
     },
     {
-      icon: ['fas', 'newspaper'],
+      style: 'fas',
+      icon: 'fa-newspaper',
       label: 'Articles',
       value: 'articles'
     },
     {
-      icon: ['fas', 'pen-fancy'],
+      style: 'fas',
+      icon: 'fa-pen-fancy',
       label: 'Authors',
       value: 'authors'
     },

@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, NotificationEntity } from 'src/app/core/api/generated/schema';
@@ -23,7 +22,6 @@ import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
     CoreModule,
     RouterModule,
 
-    FontAwesomeModule,
     MatBadgeModule,
     MatButtonModule,
     MatDividerModule,

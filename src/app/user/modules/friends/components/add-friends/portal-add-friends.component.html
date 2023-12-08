@@ -1,6 +1,6 @@
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]="true">
-    <fa-icon [icon]="['fas', 'xmark']"></fa-icon>
+    <i class="fas fa-xmark"></i>
   </button>
 </mat-dialog-actions>
 
@@ -15,10 +15,10 @@
   <mat-label appLabel="search"></mat-label>
   <input matInput type="text" [(ngModel)]="value" (input)="filterUsers(value)">
   <button *ngIf="!value" matSuffix mat-icon-button>
-    <fa-icon [icon]="['fas', 'magnifying-glass']"></fa-icon>
+    <i class="fas fa-magnifying-glass"></i>
   </button>
   <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''" (click)="filterUsers(value)">
-    <fa-icon [icon]="['fas', 'close']"></fa-icon>
+    <i class="fas fa-close"></i>
   </button>
 </mat-form-field>
 
@@ -39,7 +39,7 @@
 <mat-dialog-actions align="center">
   <button mat-flat-button color="primary" (click)="sendFriendRequest()">
     <section>
-      <fa-icon [icon]="['fas', 'user-plus']"></fa-icon>
+      <i class="fas fa-user-plus" [style.color]="'var(--color-primary-contrast-500)'"></i>
       <span appLabel="sendFriendRequest"></span>
     </section>
   </button>

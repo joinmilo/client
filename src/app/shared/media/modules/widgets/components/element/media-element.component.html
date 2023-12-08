@@ -12,18 +12,15 @@
     [media]="media">
   </app-media-video>
 
-  <fa-icon *ngSwitchCase="'WORD'"
-    [icon]="['far', 'file-word']"
-    [size]="iconSize" class="word">
-  </fa-icon>
+  <span *ngSwitchCase="'WORD'">
+    <i class="far fa-file-word fa-5x" [style.color]="'var(--color-ms-word)'"></i>
+  </span>
 
-  <fa-icon *ngSwitchCase="'PDF'"
-    [icon]="['far', 'file-pdf']"
-    [size]="iconSize" class="pdf">
-  </fa-icon>
+  <span *ngSwitchCase="'PDF'">
+    <i class="far fa-file-pdf fa-5x" [style.color]="'var(--color-pdf)'"></i>
+  </span>
 
-  <fa-icon *ngSwitchDefault
-    [icon]="['far', 'file']"
-    [size]="iconSize">
-  </fa-icon>
+  <span *ngSwitchDefault>
+    <i class="far fa-file-pdf fa-5x"></i>
+  </span>
 </ng-container>

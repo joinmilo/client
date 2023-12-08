@@ -7,11 +7,15 @@
   width: 20rem;
 }
 
-fa-icon {
+::ng-deep .mdc-list-item__primary-text {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-primary-900);
+  width: inherit;
+  padding: .5rem 0;
+}
+
+svg {
+  align-self: center;
+  color: var(--color-primary-900)
 }
 
 ::ng-deep {
@@ -33,16 +37,16 @@ fa-icon {
     gap: .25rem;
   }
 
-  fa-icon:first-of-type {
+  svg:first-of-type {
     width: 1.5rem;
   }
 
-  fa-icon:last-of-type {
+  svg:last-of-type {
     color: transparent;
     transform: translateX(-.5rem);
   }
 
-  &:hover fa-icon:last-of-type {
+  &:hover svg:last-of-type {
     color: inherit;
     transform: translateX(0rem);
     transition: color 0.4s, transform 0.4s;

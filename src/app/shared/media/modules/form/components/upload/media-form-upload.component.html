@@ -4,14 +4,14 @@
   [class.disabled]="disabled">
   <button mat-icon-button
     (click)="back.emit()">
-    <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
+    <i class="fas fa-arrow-left"></i>
   </button>
   <input type="file"
     multiple
     [disabled]="disabled"
     (change)="onFileBrowse($event)" />
   <section>
-    <fa-icon size="3x" [icon]="['fas', 'upload']"></fa-icon>
+    <i class="fas fa-upload fa-3x"></i>
     <span appLabel="dragAndDropHere"></span>
   </section>
   <span appLabel="or"></span>

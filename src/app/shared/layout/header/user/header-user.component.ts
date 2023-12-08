@@ -3,7 +3,6 @@ import { Component, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { userUrl } from 'src/app/core/constants/module.constants';
@@ -20,7 +19,6 @@ import { selectIsAuthenticated } from 'src/app/core/state/selectors/user.selecto
     CommonModule,
     CoreModule,
 
-    FontAwesomeModule,
     MatButtonModule,
     MatMenuModule,
   ]

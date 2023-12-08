@@ -43,6 +43,11 @@
         gap: var(--gap);
         padding: 1rem;
         width: calc(50% - 1rem);
+
+        svg {
+          width: 2rem;
+          text-align: center;
+        }
   
         article {
           display: flex;

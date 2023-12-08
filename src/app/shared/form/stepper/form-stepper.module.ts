@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CaptchaModule } from '../captcha/captcha.module';
@@ -35,7 +34,6 @@ const modules = [
 ];
 
 const libs = [
-  FontAwesomeModule,
   StoreModule.forFeature(formStepperStateKey, formStepperReducer),
 ];
 

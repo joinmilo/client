@@ -1,12 +1,12 @@
 <button mat-button (click)="closeDialog()">
-  <fa-icon size="2x" [icon]="['fas', 'xmark']"></fa-icon>
+  <i class="fas fa-xmark fa-2x" [style.color]="'white'"></i>
 </button>
 
 <div (click)="closeDialog()" class="content-area">
   <button *ngIf="data.media.length > 1"
     mat-button
     (click)="previous($event)">
-    <fa-icon size="2xl" [icon]="['fas', 'chevron-left']"></fa-icon>
+    <i class="fas fa-chevron-left fa-2x" [style.color]="'white'"></i>
   </button>
 
   <div [ngSwitch]="mimeType" class="content">
@@ -34,6 +34,6 @@
   <button *ngIf="data.media.length > 1"
     mat-button
     (click)="next($event)">
-    <fa-icon size="2xl" [icon]="['fas', 'chevron-right']"></fa-icon>
+    <i class="fas fa-chevron-right fa-2x" [style.color]="'white'"></i>
   </button>
 </div>

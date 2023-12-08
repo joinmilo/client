@@ -4,7 +4,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { AdminMenuAccordionComponent } from './components/accordion/admin-menu-accordion.component';
 import { AdminMenuComponent } from './components/admin-menu.component';
@@ -32,10 +31,6 @@ const modules = [
   CoreModule,
 ];
 
-const libs = [
-  FontAwesomeModule,
-];
-
 const providers = [
   AdminMenuService,
 ]
@@ -48,7 +43,6 @@ const providers = [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [
     ...components,

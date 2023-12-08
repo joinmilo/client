@@ -32,7 +32,7 @@ body.inheritCursors * {
 .menu-active {
   color: var(--color-primary-500) !important;
 
-  fa-icon {
+  svg {
     color: var(--color-primary-500) !important;
   }
 }
@@ -179,7 +179,7 @@ footer * a {
   }
 }
 
-fa-icon {
+svg {
   color: var(--color-dark-gray);
 }
 

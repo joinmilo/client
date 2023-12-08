@@ -1,5 +1,5 @@
 <section>
-  <fa-icon size="lg" [icon]="['far', 'calendar']"></fa-icon>
+  <i class="far fa-calendar fa-lg"></i>
   <div *ngIf="date">
     <time class="piece" *ngIf="dateTime">{{ date | localDate: 'medium' }}</time>
     <time class="piece" *ngIf="!dateTime">{{ date | localDate: 'short' }}</time>

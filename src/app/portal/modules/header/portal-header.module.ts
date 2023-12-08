@@ -5,7 +5,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { HeaderBackComponent } from 'src/app/shared/layout/header/back/header-back.component';
 import { HeaderLanguageComponent } from 'src/app/shared/layout/header/language/header-language.component';
@@ -47,10 +46,6 @@ const modules = [
   PortalSearchModule,
 ];
 
-const libs = [
-  FontAwesomeModule,
-]
-
 @NgModule({
   declarations: [
     ...components,
@@ -59,7 +54,6 @@ const libs = [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [
     ...components,

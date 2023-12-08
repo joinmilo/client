@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
 import { AnalyticsDto, IntervalFilter, Maybe } from 'src/app/core/api/generated/schema';
 import { visitorsKey, visitsKey } from 'src/app/core/constants/analytics.constant';

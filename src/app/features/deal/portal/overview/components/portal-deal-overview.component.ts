@@ -21,17 +21,20 @@ export class PortalDealOverviewComponent {
 
   public inputs: RadioButtonInput[] = [
     {
-      icon: ['fas', 'shapes'],
+      style: 'fas',
+      icon: 'fa-shapes',
       label: 'category',
       value: OverviewDisplayType.Category
     },
     {
-      icon: ['fas', 'map-location-dot'],
+      style: 'fas',
+      icon: 'fa-map-location-dot',
       label: 'mapview',
       value: OverviewDisplayType.Map
     },
     {
-      icon: ['fas', 'list'],
+      style: 'fas',
+      icon: 'fa-list',
       label: 'table',
       value: OverviewDisplayType.Table
     },

@@ -11,7 +11,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaService } from '../../services/media.service';
@@ -57,10 +56,6 @@ const modules = [
   TitleModule,
 ];
 
-const libs = [
-  FontAwesomeModule,
-];
-
 const providers = [
   MediaService,
 ]
@@ -73,7 +68,6 @@ const providers = [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [
     ...components,

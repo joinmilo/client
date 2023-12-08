@@ -10,8 +10,9 @@ div {
 }
 
 button {
-  fa-icon {
-    color: var(--color-primary-contrast-500);
-    margin-right: .5rem;
+  span {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
   }
 }

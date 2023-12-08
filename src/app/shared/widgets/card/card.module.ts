@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
@@ -63,18 +62,12 @@ const modules = [
   TitleModule,
   ChartModule
 ];
-
-const libs = [
-  FontAwesomeModule,
-]
-
 @NgModule({
   declarations: [...components],
   imports: [
     ...framework,
     ...materials,
     ...modules,
-    ...libs,
   ],
   exports: [...components],
 })

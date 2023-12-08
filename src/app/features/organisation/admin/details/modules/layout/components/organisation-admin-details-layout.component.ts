@@ -22,47 +22,56 @@ export class OrganisationAdminDetailsLayoutComponent implements OnInit, OnDestro
 
   public inputs: RadioCardInput[] = [
     {
-      icon: ['fas', 'magnifying-glass'],
+      style: 'fas',
+      icon: 'fa-magnifying-glass',
       label: 'overview',
       value: '',
     },
     {
-      icon: ['fas', 'users'],
+      style: 'fas',
+      icon: 'fa-users',
       label: 'members',
       value: membersRoute
     },
     {
-      icon: ['fas', 'user-plus'],
+      style: 'fas',
+      icon: 'fa-user-plus',
       label: 'memberApplications',
       value: applicationsRoute
     },
-        {
-      icon: ['fas', 'calendar'],
+    {
+      style: 'fas',
+      icon: 'fa-calendar',
       label: 'activities',
       value: eventsRoute
     },
     {
-      icon: ['far', 'comment-dots'],
+      style: 'far',
+      icon: 'fa-comment-dots',
       label: 'comments',
       value: commentsRoute
     },
     {
-      value: searchRoute,
-      icon: ['fab', 'google'],
+      style: 'fab',
+      icon: 'fa-google',
       label: 'googleSearch',
+      value: searchRoute,
     },
     {
-      icon: ['far', 'eye'],
+      style: 'far',
+      icon: 'fa-eye',
       label: 'pageVisitors',
       value: visitorsRoute
     },
     {
-      icon: ['far', 'star'],
+      style: 'far',
+      icon: 'fa-star',
       label: 'ratings',
       value: ratingsRoute
     },
     {
-      icon: ['far', 'heart'],
+      style: 'far',
+      icon: 'fa-heart',
       label: 'favorites',
       value: favoritesRoute
     },

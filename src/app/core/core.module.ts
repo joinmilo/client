@@ -9,10 +9,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AsideComponent } from './components/aside/aside.component';
@@ -78,7 +74,6 @@ const materials = [
 ];
 
 const libs = [
-  FontAwesomeModule,
   StoreModule.forFeature(appStateKey, {
     core: appReducers.core,
     coreUser: localStorageMetaReducer(appReducers.coreUser),
@@ -103,13 +98,6 @@ const libs = [
     ...pipes,
   ],
 })
-export class CoreModule {
-
-  public constructor(
-    iconLibrary: FaIconLibrary
-  ) {
-    iconLibrary.addIconPacks(fab, far, fas);
-  }
-}
+export class CoreModule { }
 
 

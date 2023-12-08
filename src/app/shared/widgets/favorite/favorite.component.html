@@ -1,13 +1,13 @@
 <button mat-button
   (click)="changeFavorite()"
-  [ngClass]="isFavorite ? 'favorite' : ''"
   [appTooltip]="createTooltip()">
   <div>
-    <fa-icon click 
-      [icon]="isFavorite
-        ? ['fas', 'heart']
-        : ['far', 'heart']">
-    </fa-icon>
+    <span *ngIf="isFavorite">
+      <i class="fas fa-heart" [style.color]="'var(--color-warn-400)'"></i>
+    </span>
+    <span *ngIf="!isFavorite">
+      <i class="far fa-heart"></i>
+    </span>
     <ng-container *ngIf="withLabel">
       <span *ngIf="!isFavorite" [appLabel]="addToFavoritesLabel"></span>
       <span *ngIf="isFavorite" [appLabel]="removeFromFavoritesLabel"></span>

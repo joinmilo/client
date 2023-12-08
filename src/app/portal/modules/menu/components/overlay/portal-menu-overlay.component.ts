@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
 import { Observable, map, of } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
