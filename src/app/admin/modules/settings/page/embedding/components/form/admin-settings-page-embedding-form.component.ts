@@ -13,7 +13,7 @@ export class AdminSettingsPageEmbeddingFormComponent implements DragDropElementC
   @Input()
   public input?: DragDropElementInput<PageEmbeddingEntity>;
 
-  saved(value: PageEmbeddingEntity) {
+  public saved(value: PageEmbeddingEntity): void {
     this.input?.edit(
       value,
       this.input.index
