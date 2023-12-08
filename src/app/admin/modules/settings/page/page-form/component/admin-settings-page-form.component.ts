@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { Maybe, PageEntity, PageMediaEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, PageEmbeddingEntity, PageEntity, PageMediaEntity } from 'src/app/core/api/generated/schema';
 
 import { ActivatedRoute } from '@angular/router';
 import { slug } from 'src/app/core/constants/queryparam.constants';
@@ -34,6 +34,10 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
     metaDescription: ['' as Maybe<string>],
     callText: ['' as Maybe<string>], 
     callUrl: ['' as Maybe<string>], 
+  });
+
+  public embeddingsForm = this.fb.group({
+    embeddings: [[] as Maybe<PageEmbeddingEntity>[], [Validators.required]],
   });
 
   public page?: Maybe<PageEntity>;
@@ -74,6 +78,10 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
         callText: page?.callText,
         callUrl: page?.callUrl
       });
+
+      this.embeddingsForm.patchValue({
+        embeddings: page?.embeddings,
+      })
     });
   }
 
@@ -92,7 +100,8 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
       callText: this.additionalInfoForm.value.callText,
       callUrl: this.additionalInfoForm.value.callUrl,
       isLanding: false,
-      uploads: this.uploadsForm.value.uploads
+      uploads: this.uploadsForm.value.uploads,
+      embeddings: this.embeddingsForm.value.embeddings
     }));
   }
 

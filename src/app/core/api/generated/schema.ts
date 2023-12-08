@@ -4253,7 +4253,6 @@ export type PageAttributeTypeEntity = {
   embeddingTypes?: Maybe<Array<Maybe<PageEmbeddingTypeEntity>>>;
   id?: Maybe<Scalars['String']['output']>;
   modified?: Maybe<Scalars['OffsetDateTime']['output']>;
-  translatables?: Maybe<Array<Maybe<PageAttributeTypeTranslatableEntity>>>;
 };
 
 export type PageAttributeTypeEntityInput = {
@@ -4263,23 +4262,6 @@ export type PageAttributeTypeEntityInput = {
   embeddingTypes?: InputMaybe<Array<InputMaybe<PageEmbeddingTypeEntityInput>>>;
   id?: InputMaybe<Scalars['String']['input']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
-  translatables?: InputMaybe<Array<InputMaybe<PageAttributeTypeTranslatableEntityInput>>>;
-};
-
-export type PageAttributeTypeTranslatableEntity = {
-  __typename?: 'PageAttributeTypeTranslatableEntity';
-  created?: Maybe<Scalars['OffsetDateTime']['output']>;
-  id?: Maybe<Scalars['String']['output']>;
-  language?: Maybe<LanguageEntity>;
-  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
-  name?: Maybe<Scalars['String']['output']>;
-};
-
-export type PageAttributeTypeTranslatableEntityInput = {
-  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
-  id?: InputMaybe<Scalars['String']['input']>;
-  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PageEmbeddingEntity = {
@@ -4307,7 +4289,7 @@ export type PageEmbeddingEntityInput = {
 
 export type PageEmbeddingTypeEntity = {
   __typename?: 'PageEmbeddingTypeEntity';
-  attributes?: Maybe<Array<Maybe<PageAttributeEntity>>>;
+  attributes?: Maybe<Array<Maybe<PageAttributeTypeEntity>>>;
   code?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['OffsetDateTime']['output']>;
   description?: Maybe<Scalars['String']['output']>;
@@ -4319,7 +4301,7 @@ export type PageEmbeddingTypeEntity = {
 };
 
 export type PageEmbeddingTypeEntityInput = {
-  attributes?: InputMaybe<Array<InputMaybe<PageAttributeEntityInput>>>;
+  attributes?: InputMaybe<Array<InputMaybe<PageAttributeTypeEntityInput>>>;
   code?: InputMaybe<Scalars['String']['input']>;
   created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;

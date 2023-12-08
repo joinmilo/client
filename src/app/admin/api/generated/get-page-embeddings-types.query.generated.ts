@@ -10,7 +10,7 @@ export type GetEmbeddingTypesQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetEmbeddingTypesQuery = { __typename?: 'Query', getPageEmbeddingTypes?: { __typename?: 'PageableList_PageEmbeddingTypeEntity', total: any, result?: Array<{ __typename?: 'PageEmbeddingTypeEntity', id?: string | null, code?: string | null, translatables?: Array<{ __typename?: 'PageEmbeddingTypeTranslatableEntity', id?: string | null, description?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetEmbeddingTypesQuery = { __typename?: 'Query', getPageEmbeddingTypes?: { __typename?: 'PageableList_PageEmbeddingTypeEntity', total: any, result?: Array<{ __typename?: 'PageEmbeddingTypeEntity', id?: string | null, code?: string | null, attributes?: Array<{ __typename?: 'PageAttributeTypeEntity', id?: string | null, code?: string | null } | null> | null, translatables?: Array<{ __typename?: 'PageEmbeddingTypeTranslatableEntity', id?: string | null, description?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export const GetEmbeddingTypesDocument = gql`
     query getEmbeddingTypes($params: FilterSortPaginateInput) {
@@ -18,6 +18,10 @@ export const GetEmbeddingTypesDocument = gql`
     result {
       id
       code
+      attributes {
+        id
+        code
+      }
       translatables {
         id
         description

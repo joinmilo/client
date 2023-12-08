@@ -11,6 +11,38 @@ query getPageDetails(
     callText
     callUrl
 
+    embeddings {
+      order
+      label
+
+      attributes {
+        id
+
+        references {
+          id
+          referenceId
+        }
+
+        translatables {
+          id
+          content 
+          language {
+            ...Language
+          }
+        }
+
+        type {
+          id
+          code
+        }
+      }
+
+      type {
+        id
+        code
+      }
+    }
+
     uploads {
       id
       title

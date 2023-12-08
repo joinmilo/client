@@ -5,7 +5,7 @@
     </section>
 
     <section class="content-area">
-      <strong> {{ input.label }}</strong>
+      <strong (click)="changeExpansion(index)"> {{ input.label }}</strong>
 
       <ng-container *ngIf="input.expanded">
         <ng-container *ngComponentOutlet="component; inputs: createInput(index)">
@@ -13,19 +13,18 @@
       </ng-container>
     </section>
 
-    <section>
-      <button *ngIf="input.expanded; else expandIcon"
-        mat-button
-        (click)="collapse(index)">
-        <fa-icon icon="down-left-and-up-right-to-center"></fa-icon>
-      </button>
-
-      <ng-template #expandIcon>
-        <button mat-button
-          (click)="expand(index)">
-          <fa-icon icon="up-right-and-down-left-from-center"></fa-icon>
+    <section class="action-area">
+      <div (click)="changeExpansion(index)">
+        <button *ngIf="input.expanded; else expandIcon" mat-button>
+          <fa-icon icon="down-left-and-up-right-to-center"></fa-icon>
         </button>
-      </ng-template>
+  
+        <ng-template #expandIcon>
+          <button mat-button>
+            <fa-icon icon="up-right-and-down-left-from-center"></fa-icon>
+          </button>
+        </ng-template>
+      </div>
 
       <button mat-button
         (click)="onDelete(index)">

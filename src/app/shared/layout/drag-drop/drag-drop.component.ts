@@ -22,7 +22,7 @@ import { DragDropElementInput, DragDropInput } from './typings/drag-drop-input';
     MatButtonModule,
     MatCardModule,
     NgComponentOutlet,
-  ]
+  ],
 })
 export class DragDropComponent<T> implements OnDestroy {
 
@@ -33,7 +33,7 @@ export class DragDropComponent<T> implements OnDestroy {
   public inputs!: DragDropInput<T>[];
 
   @Output()
-  public deleted = new EventEmitter<number>();
+  public updated = new EventEmitter<T[]>();
 
   private bodyElement: HTMLElement = document.body;
 
@@ -41,7 +41,7 @@ export class DragDropComponent<T> implements OnDestroy {
 
   constructor(
     private dialog: MatDialog,
-    public cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef
   ) {}
 
   public drag(): void {
@@ -54,6 +54,7 @@ export class DragDropComponent<T> implements OnDestroy {
     this.bodyElement.style.cursor = 'unset';
 
     moveItemInArray(this.inputs, event.previousIndex, event.currentIndex);
+    this.emit();
   }
 
   public createInput(index: number): Record<string,unknown> | undefined {
@@ -66,30 +67,34 @@ export class DragDropComponent<T> implements OnDestroy {
     }
   }
 
-  public expand(index: number): void {
+  public changeExpansion(index: number): void {
     this.inputs[index] = {
-      ...this.inputs[index], expanded: true
-    };
-  }
-
-  public collapse(index: number): void {
-    this.inputs[index] = {
-      ...this.inputs[index], expanded: false
+      ...this.inputs[index], expanded: !this.inputs[index].expanded
     };
   }
 
   public onEdit = (element: T, index: number): void => {
     this.inputs[index] = {
-      ...this.inputs[index], element
+      ...this.inputs[index], element, expanded: false
     };
+    this.emit();
   }
 
   public onDelete(index: number) {
     this.dialog.open(ConfirmDeleteComponent)
       .afterClosed()
       .pipe(takeUntil(this.destroy))
-      .subscribe(confirmed => confirmed
-        && this.deleted.emit(index));
+      .subscribe(confirmed => {
+        if (confirmed) {
+          this.inputs.splice(index, 1);
+          this.emit();
+          this.cdr.detectChanges();
+        }
+      });
+  }
+
+  private emit(): void {
+    this.updated.emit(this.inputs.map(input => input.element));
   }
 
   public ngOnDestroy(): void {

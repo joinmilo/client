@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 import { PageEmbeddingEntity } from 'src/app/core/api/generated/schema';
 import { DragDropElementComponent } from 'src/app/shared/layout/drag-drop/typings/drag-drop-element';
 import { DragDropElementInput } from 'src/app/shared/layout/drag-drop/typings/drag-drop-input';
@@ -9,20 +8,16 @@ import { DragDropElementInput } from 'src/app/shared/layout/drag-drop/typings/dr
   templateUrl: './admin-settings-page-embedding-form.component.html',
   styleUrls: ['./admin-settings-page-embedding-form.component.scss'],
 })
-export class AdminSettingsPageEmbeddingFormComponent implements OnInit, DragDropElementComponent<PageEmbeddingEntity> {
-  ngOnInit(): void {
-    this.control.setValue(this.input?.element.label as string)
-  }
-
+export class AdminSettingsPageEmbeddingFormComponent implements DragDropElementComponent<PageEmbeddingEntity> {
+  
   @Input()
   public input?: DragDropElementInput<PageEmbeddingEntity>;
 
-  public control = new FormControl('');
-
-  send() {
-    this.input?.edit({
-      label: this.control.value,
-    }, this.input.index);
+  saved(value: PageEmbeddingEntity) {
+    this.input?.edit(
+      value,
+      this.input.index
+    );
   }
 
 }

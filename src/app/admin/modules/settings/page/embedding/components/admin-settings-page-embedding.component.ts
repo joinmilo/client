@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
-import { PageEmbeddingEntity, PageEmbeddingTypeEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, PageEmbeddingEntity, PageEmbeddingTypeEntity } from 'src/app/core/api/generated/schema';
 import { DragDropInput } from 'src/app/shared/layout/drag-drop/typings/drag-drop-input';
 import { AdminSettingsPageEmbeddingDialogComponent } from './dialog/admin-settings-page-embedding-dialog.component';
 import { AdminSettingsPageEmbeddingFormComponent } from './form/admin-settings-page-embedding-form.component';
@@ -10,31 +11,21 @@ import { AdminSettingsPageEmbeddingFormComponent } from './form/admin-settings-p
   selector: 'app-admin-settings-page-embedding',
   templateUrl: './admin-settings-page-embedding.component.html',
   styleUrls: ['./admin-settings-page-embedding.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: AdminSettingsPageEmbeddingComponent
+    }
+  ],
 })
-export class AdminSettingsPageEmbeddingComponent {
+export class AdminSettingsPageEmbeddingComponent implements ControlValueAccessor, OnDestroy {
 
-  public elements: DragDropInput<PageEmbeddingEntity>[] = [
-    {
-      element: {
-        label: 'test1'
-      },
-      label: 'test1',
-    },
-    {
-      element: {
-        label: 'test2'
-      },
-      label: 'test2',
-    },
-    {
-      element: {
-        label: 'test3'
-      },
-      label: 'test3',
-    },
-  ];
+  public elements: DragDropInput<PageEmbeddingEntity>[] = [];
 
   public component = AdminSettingsPageEmbeddingFormComponent;
+
+  private onChange?: (embeddings: Maybe<PageEmbeddingEntity[]>) => void;
 
   private destroy = new Subject<void>();
 
@@ -51,7 +42,12 @@ export class AdminSettingsPageEmbeddingComponent {
         if (embeddingType) {
           this.elements.push({
             element: {
-              type: embeddingType
+              type: embeddingType,
+              attributes: embeddingType.attributes?.map(attribute => ({
+                type: {
+                  id: attribute?.id
+                }
+              }))
             },
             expanded: true,
           });
@@ -60,7 +56,41 @@ export class AdminSettingsPageEmbeddingComponent {
       });
   }
 
-  public deleted(index: number): void {
-    this.elements.splice(index, 1);
+  public updated(embeddings: PageEmbeddingEntity[]): void {
+    this.onChange?.(embeddings.map((embedding, index) => ({
+      ...embedding, order: index
+    })));
+
+    this.elements = embeddings?.length
+      ? embeddings?.map(element => ({
+          label: element.label,
+          element,
+          expanded: false,
+        }))
+      : [];
+  }
+
+  public writeValue(value: Maybe<PageEmbeddingEntity[]>): void {
+    this.elements = value?.length
+      ? value?.map(element => ({
+          label: element.label,
+          element,
+          expanded: false,
+        }))
+      : [];
+    this.cdr.detectChanges();
+  }
+
+  public registerOnChange(onChange: (embeddings: Maybe<PageEmbeddingEntity[]>) => void): void {
+    this.onChange = onChange;
+  }
+
+  public registerOnTouched(): void {
+    return;
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

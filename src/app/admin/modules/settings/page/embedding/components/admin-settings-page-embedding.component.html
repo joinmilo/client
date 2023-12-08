@@ -1,12 +1,10 @@
 <app-drag-drop
   [component]="component"
   [inputs]="elements"
-  labelField="label"
-  (deleted)="deleted($event)">
+  (updated)="updated($event)">
 </app-drag-drop>
 
-
-<button mat-stroked-button
+<button mat-flat-button
   class="add-new-button"
   (click)="selectEmbedding()"
   appLabel="addNewElement">

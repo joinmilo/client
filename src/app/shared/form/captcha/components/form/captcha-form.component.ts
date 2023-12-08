@@ -24,7 +24,7 @@ export class CaptchaFormComponent implements ControlValueAccessor {
   @ViewChildren(NgHcaptchaComponent)
   public captchaComponents?: QueryList<NgHcaptchaComponent>;
 
-  private onChange?: (token: Maybe<string> | undefined) => void;
+  private onChange?: (token: Maybe<string>) => void;
 
   private value?: Maybe<string>;
 

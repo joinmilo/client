@@ -1,8 +1,6 @@
-<mat-form-field appearance="outline">
-  <mat-label appLabel="phone"></mat-label>
-  <input matInput [formControl]="control">
-</mat-form-field>
-
-<button mat-button (click)="send()">
-  Save
-</button>
+<ng-container [ngSwitch]="input?.element?.type?.code">
+  <app-admin-settings-page-embedding-plugin *ngSwitchCase="'plugin'"
+    [embedding]="input?.element"
+    (saved)="saved($event)">
+  </app-admin-settings-page-embedding-plugin>
+</ng-container>
