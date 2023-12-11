@@ -42,9 +42,9 @@ export class PortalMenuOverlayComponent implements OnInit {
     return [...items]?.sort((i1, i2) => (i1?.order || 0) - (i2?.order || 0));
   }
 
-  public icon(icon: Maybe<string>|undefined): IconName {
-    return icon as IconName;
-  }
+  // public icon(icon: Maybe<string>|undefined): IconName {
+  //   return icon as IconName;
+  // }
 
   public route(item: Maybe<MenuItemEntity>) {
     this.store.dispatch(PortalActions.navigateMenu(item));

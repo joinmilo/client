@@ -2,9 +2,9 @@
   <button mat-button
     (click)="actions![0].clicked()"
     [appTooltip]="actions![0].label">
-    <fa-icon size="xl"
+    <!-- <fa-icon size="xl"
       [icon]="actions![0].icon">
-    </fa-icon>
+    </fa-icon> -->
     <i class="fas + fa-{{ actions![0].icon }}"></i>
   </button>
 </ng-container>
@@ -19,7 +19,7 @@
     <ng-container *ngFor="let action of actions">
       <button mat-menu-item (click)="action.clicked()">
         <div class="action-button">
-          <fa-icon [icon]="action.icon"></fa-icon>
+          <!-- <fa-icon [icon]="action.icon"></fa-icon> -->
           <i class="fas + fa-{{ action.icon }}"></i>
           <span [appLabel]="action.label"></span>
         </div>

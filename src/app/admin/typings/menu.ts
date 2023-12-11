@@ -1,11 +1,12 @@
 import { Route } from '@angular/router'
 import { Privilege } from 'src/app/core/typings/privilege'
+import { SolidIcons } from 'src/assets/fontawesome/solid-icons'
 
 export type AdminMenuItem = {
   active?: boolean,
   childs?: AdminMenuItem[],
   description?: string,
-  // icon?: IconName,
+  icon?: SolidIcons,
   name?: string,
   privileges?: Privilege[],
   route?: string,

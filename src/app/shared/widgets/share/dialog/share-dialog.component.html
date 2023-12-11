@@ -1,12 +1,14 @@
 <mat-dialog-content class="mat-typography">
-  <share-buttons 
+  <!-- <share-buttons 
     [show]="6" 
     [include]="['whatsapp', 'telegram', 'twitter', 'email', 'facebook','copy',
     'linkedin','pinterest','reddit','tumblr','mix','viber','vk' ,'xing','line',
     'sms','print', 'messenger']" 
     [showText]="true"
+    [showIcon]="false"
     [url]="url">
-  </share-buttons>
+  </share-buttons> -->
+  <button shareButton="facebook">Share</button>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>

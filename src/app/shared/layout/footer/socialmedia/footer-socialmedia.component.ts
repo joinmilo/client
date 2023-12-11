@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { selectSocialMedia } from 'src/app/core/state/selectors/core.selectors';
+import { BrandIcons } from 'src/assets/fontawesome/brand-icons';
 
 @Component({
   selector: 'app-footer-socialmedia',
@@ -24,7 +25,7 @@ export class FooterSocialMediaComponent {
   ) { }
 
   public icon(name?: Maybe<string>) {
-    return name as IconName;
+    return name as BrandIcons;
   }
 
 }

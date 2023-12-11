@@ -4,6 +4,7 @@ import { Subject, map, takeUntil } from 'rxjs';
 import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectAcceptedFriendUsers, selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
+import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
 
 @Component({
@@ -16,7 +17,7 @@ export class PortalAllFriendsComponent implements OnDestroy {
   public actions: CardActionInput[] = [
     {
       label: 'removeFriend',
-      icon: ['fas', 'trash']
+      icon: 'trash' as SolidIcons
     }
   ];
 
