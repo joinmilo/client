@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Store } from '@ngrx/store';
+import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
 import { TableCellComponent } from '../../typings/cell';
 
 @Component({
@@ -11,7 +11,7 @@ import { TableCellComponent } from '../../typings/cell';
     </span>
   `,
 })
-export class TableCellIconComponent extends TableCellComponent<IconProp> {
+export class TableCellIconComponent extends TableCellComponent<SolidIcons> {
 
   constructor(
     store: Store,

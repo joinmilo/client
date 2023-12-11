@@ -1,8 +1,8 @@
 import { SortDirection } from '@angular/material/sort';
-import { IconName } from '@fortawesome/fontawesome-svg-core';
 import { Observable } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { Privilege } from 'src/app/core/typings/privilege';
+import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
 
 export type ColumnType = 'ADDRESS'
   | 'BOOLEAN'
@@ -34,7 +34,7 @@ export type RowDefaultAction = 'LIKE' | 'SHARE';
 export type RowCustomAction<T> = {
   callback?: (row: Maybe<T>) => void,
   disable?: (row: Maybe<T>) => boolean,
-  icon: IconName,
+  icon: SolidIcons,
   inlineEdit?: boolean,
   privileges?: Privilege[],
   tooltipLabel?: Maybe<string>,

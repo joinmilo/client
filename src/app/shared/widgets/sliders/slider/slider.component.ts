@@ -5,7 +5,6 @@ import {
   ElementRef, QueryList, TemplateRef, ViewChild
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-slider',
@@ -14,7 +13,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   standalone: true,
   imports: [
     CommonModule,
-    FontAwesomeModule,
     MatButtonModule
   ]
 })

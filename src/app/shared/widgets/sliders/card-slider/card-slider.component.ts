@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
@@ -23,7 +22,6 @@ import { SliderComponent } from '../slider/slider.component';
 
     CoreModule,
     CardModule,
-    FontAwesomeModule,
     RouterModule,
 
     SliderComponent,

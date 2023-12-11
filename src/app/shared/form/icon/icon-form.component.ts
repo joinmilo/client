@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { IconDefinition, IconProp } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { Subject, map, takeUntil } from 'rxjs';
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { IconDefinition, SolidIcons } from '@fortawesome/fontawesome-svg-core';
+import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
+import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
+
 
 @Component({
   selector: 'app-icon-form',
@@ -27,8 +28,6 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     CoreModule,
-    FontAwesomeModule,
-
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
@@ -38,18 +37,19 @@ import { CoreModule } from 'src/app/core/core.module';
   ]
 })
 
-export class IconFormComponent implements ControlValueAccessor, OnInit {
+// export class IconFormComponent implements ControlValueAccessor, OnInit {
+  export class IconFormComponent implements ControlValueAccessor {
 
-  public control = new FormControl<Maybe<IconProp>>(undefined);
+  public control = new FormControl<Maybe<SolidIcons>>(undefined);
 
-  public onChange?: (value: Maybe<IconProp>) => void;
+  public onChange?: (value: Maybe<SolidIcons>) => void;
   public onTouched?: () => void;
 
   
   private destroy = new Subject<void>();
 
-  public icons?: IconDefinition[];
-  public filteredIcons?: IconDefinition[];
+  // public icons?: IconDefinition[];
+  public solidIcons?: SolidIcons;
 
   constructor() {
     this.control.valueChanges
@@ -60,24 +60,24 @@ export class IconFormComponent implements ControlValueAccessor, OnInit {
       });
   }
 
-  ngOnInit(): void {
-    this.filteredIcons = Object.values(fas);
-    this.icons = Object.values(fas);
+  // ngOnInit(): void {
+  //   // this.solidIcons = Object.values('fas');
+  //   // this.icons = Object.values('fas');
 
-    this.control.valueChanges.pipe(
-      takeUntil(this.destroy),
-      map(value => this.filteredIcons = this.icons?.filter(icon => value
-        ? icon.iconName.toLocaleLowerCase().includes(value.toString())
-        : true
-      ))
-    ).subscribe();
-  }
+  //   this.control.valueChanges.pipe(
+  //     takeUntil(this.destroy),
+  //     map(value => this.solidIcons = this.icons?.filter(icon => value
+  //       ? icon.iconName.toLocaleLowerCase().includes(value.toString())
+  //       : true
+  //     ))
+  //   ).subscribe();
+  // }
 
-  public writeValue(value?: Maybe<IconProp>): void {
+  public writeValue(value?: Maybe<SolidIcons>): void {
     this.control.patchValue(value, { emitEvent: false });
   }
 
-  public registerOnChange(onChange: (value: Maybe<IconProp>) => void): void {
+  public registerOnChange(onChange: (value: Maybe<SolidIcons>) => void): void {
     this.onChange = onChange;
   }
 

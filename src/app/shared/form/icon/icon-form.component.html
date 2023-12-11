@@ -9,15 +9,9 @@
     [matAutocomplete]="auto">
 
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let icon of filteredIcons" [value]="icon.iconName">
-      <article>
-        <i class="fas + fa-{{ icon.iconName }}"></i>
-        <span> {{ icon.iconName }}</span>
-      </article>
-    </mat-option>
     <!-- <mat-option *ngFor="let icon of filteredIcons" [value]="icon.iconName">
       <article>
-        <i class="far + fa-{{ icon.iconName }}"></i>
+        <i class="fas + fa-{{ icon.iconName }}"></i>
         <span> {{ icon.iconName }}</span>
       </article>
     </mat-option> -->

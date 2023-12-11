@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { Subject } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 
@@ -33,8 +32,9 @@ export class RatingInputComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   public ngOnChanges(): void {
-    this.build()
+    this.build();
   }
+
 
   private build(): void {
     this.values = [];
@@ -49,17 +49,26 @@ export class RatingInputComponent implements OnInit, OnChanges, OnDestroy {
       : value;
   }
 
-  public icon(index: number): IconProp {
+  public icon(index: number): string {
     const value = this.hoveredValue ?? this.currentValue ?? 0;
-
+  
     if (index - value >= 0.5 && index - value < 1) {
-      return ['fas', 'star-half-alt']
-    } else if (value >= index) {
-      return ['fas', 'star'];
+      return 'fas fa-star-half-alt'; 
+    } else 
+    if (value >= index) {
+      return 'fas fa-star';
     } else {
-      return ['far', 'star'];
+      return 'far fa-star';
     }
+
   }
+
+  logValues(): void {
+  // console.log('hoveredValue', this.hoveredValue);
+  // console.log('values', this.values);
+  console.log('currentValue', this.currentValue);
+}
+
 
   public emit(value: number): void {
     this.valueSelected.emit(value);
