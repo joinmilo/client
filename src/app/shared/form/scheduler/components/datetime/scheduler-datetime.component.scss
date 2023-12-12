@@ -4,13 +4,6 @@ form {
   gap: var(--gap);
 }
 
-button[mat-icon-button] {
-
-  fa-icon {
-    color: var(--color-accent-500);
-  }
-}
-
 section {
   display: flex;
   flex-flow: column;

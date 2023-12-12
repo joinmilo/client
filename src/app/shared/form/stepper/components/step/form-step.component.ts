@@ -3,6 +3,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
+import { RegularIcons } from 'src/assets/fontawesome/regular-icons';
 import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
 import { FormStepperActions } from '../../state/form-stepper.actions';
 import { selectCurrentStepIdx, selectLastStepIdx } from '../../state/form-stepper.selectors';
@@ -18,7 +19,7 @@ export class FormStepComponent implements OnDestroy {
   public descriptionLabel?: string;
 
   @Input()
-  public icon?: SolidIcons;
+  public icon?: SolidIcons | RegularIcons;
 
   @Input({ required: true })
   public set formGroup(formGroup: FormGroup) {

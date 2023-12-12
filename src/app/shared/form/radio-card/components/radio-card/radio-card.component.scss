@@ -14,7 +14,7 @@ div {
   &.active {
     border: 2px solid var(--color-accent-900);
 
-    fa-icon {
+    svg {
       color: var(--color-accent-900);
     }
   }

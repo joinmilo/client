@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -37,19 +37,19 @@ import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
   ]
 })
 
-// export class IconFormComponent implements ControlValueAccessor, OnInit {
-  export class IconFormComponent implements ControlValueAccessor {
+export class IconFormComponent implements ControlValueAccessor, OnInit {
 
   public control = new FormControl<Maybe<SolidIcons>>(undefined);
 
   public onChange?: (value: Maybe<SolidIcons>) => void;
   public onTouched?: () => void;
 
+
   
   private destroy = new Subject<void>();
 
   // public icons?: IconDefinition[];
-  public solidIcons?: SolidIcons;
+  public solidIcons: SolidIcons[] = [];
 
   constructor() {
     this.control.valueChanges
@@ -58,11 +58,20 @@ import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
         this.onChange?.(value);
         this.onTouched?.();
       });
+
+    
   }
 
+
+  ngOnInit(): void {
+    console.log('icons', this.solidIcons);
+  }
+
+  
+
   // ngOnInit(): void {
-  //   // this.solidIcons = Object.values('fas');
-  //   // this.icons = Object.values('fas');
+  //   this.solidIcons = Object.values('fas');
+  //   this.icons = Object.values('fas');
 
   //   this.control.valueChanges.pipe(
   //     takeUntil(this.destroy),

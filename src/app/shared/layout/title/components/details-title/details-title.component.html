@@ -6,9 +6,8 @@
     <a [routerLink]="link" [appLabel]="linkLabel" suffix="»"></a>
   </section>
   <section *ngIf="linkIcon">
-    <!-- <fa-icon [routerLink]="link" [icon]="linkIcon"></fa-icon> -->
     <span [routerLink]="link">
-    <i class="linkIcon"></i>
+      <i class="fas fa-{{ linkIcon }}"></i>
     </span>
   </section>
 </div>

@@ -3,14 +3,14 @@
 }
 
 .save {
-  fa-icon {
+  svg {
     color: var(--color-success-500);
   }
 }
 
 .disabled {
   cursor: not-allowed;
-  fa-icon {
+  svg {
     color: var(--color-gray);
   }
 

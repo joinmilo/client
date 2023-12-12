@@ -27,7 +27,7 @@
         <button class="subItem"
           mat-menu-item
           (click)="route(subItem)">
-          <i class="fas + fa-{{ subItem?.icon }}" [style.color]="'var(--color-primary-900)'"></i>
+          <i class="fas fa-{{ subItem?.icon }}" [style.color]="'var(--color-primary-900)'"></i>
           <section>
             <span>{{ subItem | translatable: 'name' | async }}</span>
             <small>{{ subItem | translatable: 'shortDescription' | async }}</small>

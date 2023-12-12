@@ -8,7 +8,7 @@
     <ng-container *ngFor="let action of actions">
       <button mat-menu-item (click)="actionClicked.emit(action)">
         <div class="action-button">
-          <!-- <fa-icon [icon]="action.icon"></fa-icon> -->
+          <i class="fas fa-{{action.icon}}"></i>
           <span [appLabel]="action.label"></span>
         </div>
       </button>

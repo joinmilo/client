@@ -56,7 +56,6 @@ export class TableActionsComponent<T> implements OnDestroy {
     (action as RowCustomAction<T>).callback?.(this.row)
   }
 
-  // public icon(action: RowAction<T>): IconName {
   public icon(action: RowAction<T>): SolidIcons {
     return (action as RowCustomAction<T>).icon;
   }

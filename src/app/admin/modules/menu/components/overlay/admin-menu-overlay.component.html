@@ -3,7 +3,7 @@
   [ngClass]="{'menu-active': menuService.isRouteActive(this.item) }"
   (click)="click(menuTrigger)">
   <span *ngIf="item?.icon">
-    <i class="fas + fa-{{ item!.icon! }} fa-lg"></i>
+    <i class="fas fa-{{ item!.icon! }} fa-lg"></i>
   </span>
   <div #menuTrigger="matMenuTrigger" class="trigger" [matMenuTriggerFor]="menu"></div>
 </button>

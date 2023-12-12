@@ -9,12 +9,12 @@
     [matAutocomplete]="auto">
 
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <!-- <mat-option *ngFor="let icon of filteredIcons" [value]="icon.iconName">
+    <mat-option *ngFor="let icon of solidIcons" [value]="icon">
       <article>
-        <i class="fas + fa-{{ icon.iconName }}"></i>
-        <span> {{ icon.iconName }}</span>
+        <i class="fas fa-{{ icon }}"></i>
+        <span> {{ icon }}</span>
       </article>
-    </mat-option> -->
+    </mat-option>
   </mat-autocomplete>
 
   <mat-hint>

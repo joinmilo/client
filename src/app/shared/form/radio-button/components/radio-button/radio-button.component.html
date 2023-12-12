@@ -5,7 +5,7 @@
   (click)="changeSelect($event)">
     <div>
       <span *ngIf="input?.icon">
-        <i class="{{input!.style}} + {{input?.icon}}"></i>
+        <i class="{{input!.style}} + {{input?.icon}}" [style.color]="'var(--color-accent-900)'"></i>
       </span>
       <span [appLabel]="input?.label"></span>
     </div>

@@ -1,7 +1,7 @@
-import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
+import { RegularIcons } from 'src/assets/fontawesome/regular-icons';
 
 export type ChartAction = {
   label: string,
-  icon: SolidIcons,
+  icon: RegularIcons,
   clicked: () => void,
 }
