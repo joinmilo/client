@@ -14,13 +14,15 @@
         }
       </div>
       @if (!expanded) {
-        <fa-icon icon="arrow-down"
-          appTooltip="expand">
-        </fa-icon>
+        <app-icon 
+          appTooltip="expand"
+          [icon]="['fas', 'arrow-down']">
+        </app-icon>
       } @else {
-        <fa-icon icon="arrow-up"
-          appTooltip="collapse">
-        </fa-icon>
+        <app-icon 
+          appTooltip="collapse" 
+          [icon]="['fas', 'arrow-up']">
+        </app-icon>
       }
     </section>
     <!-- Parent Content-->

@@ -26,7 +26,7 @@ import { AdminSettingsPageFormEffects } from './state/admin-settings-page-form.e
 import { adminSettingsPageFormReducer } from './state/admin-settings-page-form.reducer';
 
 const components = [
-  AdminSettingsPageFormComponent
+  AdminSettingsPageFormComponent,
 ];
 
 const framework = [
