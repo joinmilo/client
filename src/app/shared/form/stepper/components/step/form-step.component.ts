@@ -3,7 +3,7 @@ import { FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 import { FormStepperActions } from '../../state/form-stepper.actions';
 import { selectCurrentStepIdx, selectLastStepIdx } from '../../state/form-stepper.selectors';
 

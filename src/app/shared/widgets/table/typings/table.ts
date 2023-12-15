@@ -2,8 +2,7 @@ import { SortDirection } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { Privilege } from 'src/app/core/typings/privilege';
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
-
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 export type ColumnType = 'ADDRESS'
   | 'BOOLEAN'
   | 'CATEGORY'

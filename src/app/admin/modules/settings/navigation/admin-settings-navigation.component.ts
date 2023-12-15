@@ -11,7 +11,7 @@ import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreModule } from 'src/app/core/core.module';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
+import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 
 @Component({
   selector: 'app-admin-settings-navigation',

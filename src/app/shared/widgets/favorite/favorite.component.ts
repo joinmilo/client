@@ -8,7 +8,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { selectIsAuthenticated, selectIsFavorite } from 'src/app/core/state/selectors/user.selectors';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
-import { IconComponent } from '../icons/icon.component';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-favorite',

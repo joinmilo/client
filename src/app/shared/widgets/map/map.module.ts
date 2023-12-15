@@ -6,7 +6,7 @@ import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluste
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
-import { IconComponent } from '../icons/icon.component';
+import { IconComponent } from '../icon/icon.component';
 import { MapAttributionComponent } from './components/attribution/map-attribution.component';
 import { MapComponent } from './components/map.component';
 import { MapMarkerComponent } from './components/marker/map-marker.component';

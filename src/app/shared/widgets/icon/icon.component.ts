@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { BrandIcon } from 'src/assets/fontawesome/brand-icons';
-import { RegularIcon } from 'src/assets/fontawesome/regular-icons';
-import { SolidIcon } from 'src/assets/fontawesome/solid-icons';
+import { BrandIcon } from './typings/brand-icons';
+import { RegularIcon } from './typings/regular-icons';
+import { SolidIcon } from './typings/solid-icons';
 
 
 @Component({

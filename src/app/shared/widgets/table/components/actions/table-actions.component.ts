@@ -5,7 +5,7 @@ import { Maybe } from 'src/app/core/api/generated/schema';
 import { contentPortalDetailsUrl } from 'src/app/core/constants/url.constants';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 import { TableActions } from '../../state/table.actions';
 import { selectActions, selectEntity, selectInlineEditAction, selectInlineEditActive, selectInlineEditRow } from '../../state/table.selectors';
 import { RowAction, RowCustomAction } from '../../typings/table';

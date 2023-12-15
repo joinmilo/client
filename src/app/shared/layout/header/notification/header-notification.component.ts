@@ -11,7 +11,7 @@ import { Maybe, NotificationEntity } from 'src/app/core/api/generated/schema';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { CoreModule } from 'src/app/core/core.module';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
+import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 
 @Component({
   selector: 'app-header-notification',

@@ -1,6 +1,6 @@
-import { BrandIcon } from 'src/assets/fontawesome/brand-icons';
-import { RegularIcon } from 'src/assets/fontawesome/regular-icons';
-import { SolidIcon } from 'src/assets/fontawesome/solid-icons';
+import { BrandIcon } from 'src/app/shared/widgets/icon/typings/brand-icons';
+import { RegularIcon } from 'src/app/shared/widgets/icon/typings/regular-icons';
+import { SolidIcon } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 export interface RadioButtonInput<T = unknown> {
   icon?: SolidIcon | RegularIcon | BrandIcon;

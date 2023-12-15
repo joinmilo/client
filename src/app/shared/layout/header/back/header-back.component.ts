@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { NavigationService } from 'src/app/core/services/navigation.service';
-import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
+import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 
 @Component({
   selector: 'app-header-back',

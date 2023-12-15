@@ -14,7 +14,7 @@ import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-bu
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
+import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalAddFriendsComponent } from './components/add-friends/portal-add-friends.component';
 import { PortalAllFriendsComponent } from './components/all-friends/portal-all-friends.component';

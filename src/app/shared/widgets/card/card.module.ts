@@ -17,7 +17,7 @@ import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { ChartModule } from '../chart/chart.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
-import { IconComponent } from '../icons/icon.component';
+import { IconComponent } from '../icon/icon.component';
 import { ShareModule } from '../share/share.module';
 import { CardActionsComponent } from './components/actions/card-actions.component';
 import { ContactCardComponent } from './components/contact/contact-card.component';

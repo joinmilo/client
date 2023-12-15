@@ -4,7 +4,8 @@ import { Observable, map, of } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { GetMenuGQL } from 'src/app/portal/api/generated/get-menu.query.generated';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
+
 
 @Component({
   selector: 'app-portal-menu-overlay',

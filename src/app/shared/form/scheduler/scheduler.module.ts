@@ -13,7 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { GridLayoutModule } from '../../layout/grid-layout/grid-layout.module';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { IconComponent } from '../../widgets/icon/icon.component';
 import { DatetimeFormComponent } from '../datetime/datetime-form.component';
 import { RadioButtonFormModule } from '../radio-button/radio-button-form.module';
 import { SchedulerDatetimeComponent } from './components/datetime/scheduler-datetime.component';

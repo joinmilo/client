@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 import { defaultMarkerColor } from '../../constants/map.constants';
 
 @Component({

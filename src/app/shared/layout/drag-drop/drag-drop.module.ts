@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { IconComponent } from '../../widgets/icon/icon.component';
 import { DragDropComponent } from './components/drag-drop.component';
 import { DragDropElementComponent } from './components/element/drag-drop-element.component';
 import { DragDropDirective } from './directive/drag-drop.directive';

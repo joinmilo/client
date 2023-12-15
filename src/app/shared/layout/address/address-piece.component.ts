@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AddressEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { IconComponent } from '../../widgets/icon/icon.component';
 
 @Component({
   selector: 'app-address-piece',

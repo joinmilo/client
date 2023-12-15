@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 import { TableCellComponent } from '../../typings/cell';
 
 @Component({

@@ -8,8 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
-import { SolidIcon, SolidIconsType, solidIcons } from 'src/assets/fontawesome/solid-icons';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { SolidIcon, SolidIconsType, solidIcons } from 'src/app/shared/widgets/icon/typings/solid-icons';
+import { IconComponent } from '../../widgets/icon/icon.component';
 
 
 @Component({

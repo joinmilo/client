@@ -17,7 +17,7 @@ import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.modu
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
+import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { PortalGuestArticleFormComponent } from './components/form/portal-guest-article-form.component';
 import { PortalGuestArticleSuccessComponent } from './components/success/portal-guest-article-success.component';
 import { portalGuestArticleStateKey } from './constants/portal-guest-article.constants';

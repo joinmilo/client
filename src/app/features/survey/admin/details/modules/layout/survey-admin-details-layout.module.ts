@@ -13,7 +13,7 @@ import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.com
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
-import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
+import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { SurveyAdminDetailsLayoutComponent } from './components/survey-admin-details-layout.component';
 import { surveyAdminDetailsLayoutStateKey } from './constants/survey-admin-details-layout.constants';

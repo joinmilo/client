@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { collapse } from 'src/app/core/animations/animations';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { IconComponent } from '../../widgets/icon/icon.component';
 
 @Component({
   selector: 'app-filter-area',

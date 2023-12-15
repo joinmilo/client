@@ -8,7 +8,7 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { Period } from 'src/app/core/typings/period';
 import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { IntervalFilterComponent } from 'src/app/shared/filter/interval/interval-filter.component';
-import { RegularIconsType } from 'src/assets/fontawesome/regular-icons';
+import { RegularIconsType } from 'src/app/shared/widgets/icon/typings/regular-icons';
 import { ChartModule } from '../../../chart/chart.module';
 import { AnalyticsParams } from '../../typings/analytics';
 

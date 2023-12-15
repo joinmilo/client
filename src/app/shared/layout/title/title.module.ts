@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { IconComponent } from '../../widgets/icon/icon.component';
 import { DetailsTitleComponent } from './components/details-title/details-title.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { SubTitleComponent } from './components/sub-title/sub-title.component';

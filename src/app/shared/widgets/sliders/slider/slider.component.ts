@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
-  AfterViewInit,
-  Component, ContentChildren,
-  ElementRef, QueryList, TemplateRef, ViewChild
+    AfterViewInit,
+    Component, ContentChildren,
+    ElementRef, QueryList, TemplateRef, ViewChild
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { IconComponent } from '../../icons/icon.component';
+import { IconComponent } from '../../icon/icon.component';
 
 @Component({
   selector: 'app-slider',

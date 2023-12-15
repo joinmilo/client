@@ -1,6 +1,6 @@
 import { Route } from '@angular/router'
 import { Privilege } from 'src/app/core/typings/privilege'
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons'
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons'
 
 export type AdminMenuItem = {
   active?: boolean,

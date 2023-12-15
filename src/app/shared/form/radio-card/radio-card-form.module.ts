@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from '../../layout/title/title.module';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { IconComponent } from '../../widgets/icon/icon.component';
 import { RadioCardGroupComponent } from './components/radio-card-group/radio-card-group.component';
 import { RadioCardComponent } from './components/radio-card/radio-card.component';
 

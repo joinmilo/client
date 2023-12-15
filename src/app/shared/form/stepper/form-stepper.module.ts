@@ -6,7 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icons/icon.component';
+import { IconComponent } from '../../widgets/icon/icon.component';
 import { CaptchaModule } from '../captcha/captcha.module';
 import { FormStepComponent } from './components/step/form-step.component';
 import { FormStepperComponent } from './components/stepper/form-stepper.component';

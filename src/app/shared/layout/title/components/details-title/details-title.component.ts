@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
-
+import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 @Component({
   selector: 'app-details-title',
   templateUrl: './details-title.component.html',

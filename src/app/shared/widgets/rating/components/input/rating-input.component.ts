@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { RegularIcon } from 'src/assets/fontawesome/regular-icons';
-import { SolidIcon } from 'src/assets/fontawesome/solid-icons';
+import { RegularIcon } from 'src/app/shared/widgets/icon/typings/regular-icons';
+import { SolidIcon } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 @Component({
   selector: 'app-rating-input',
@@ -49,7 +49,6 @@ export class RatingInputComponent implements OnInit, OnChanges, OnDestroy {
     this.hoveredValue = this.disabled
       ? undefined
       : value;
-    console.log('test333', this.hoveredValue)
   }
 
   public icon(index: number): SolidIcon | RegularIcon {
