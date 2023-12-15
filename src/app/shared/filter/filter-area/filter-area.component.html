@@ -5,11 +5,12 @@
       (click)="filtersCollapsed = !filtersCollapsed"
       [class.active] = "!filtersCollapsed">
         <div>
-          <i class="fas fa-filter" [style.color]="'var(--color-accent-900)'"></i>
+          <app-icon [icon]="['fas', 'filter']"></app-icon>
           <span appLabel="filter"></span>
-          <span *ngIf="filtersActive">
-            <i class="fas fa-check" [style.color]="'var(--color-success-500)'"></i>
-          </span>
+          <app-icon *ngIf="filtersActive"
+            class="check-icon"
+            [icon]="['fas', 'check']">
+          </app-icon>
         </div>
     </button>
 

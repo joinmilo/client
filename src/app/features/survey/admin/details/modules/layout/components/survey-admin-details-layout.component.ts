@@ -22,20 +22,17 @@ export class SurveyAdminDetailsLayoutComponent implements OnInit, OnDestroy {
 
   public inputs: RadioCardInput[] = [
     {
-      style: 'fas',
-      icon: 'fa-magnifying-glass',
+      icon: ['fas', 'magnifying-glass'],
       label: 'overview',
       value: '',
     },
     {
-      style: 'far',
-      icon: 'fa-eye',
+      icon: ['far', 'eye'],
       label: 'pageVisitors',
       value: visitorsRoute
     },
     {
-      style: 'fab',
-      icon: 'fa-google',
+      icon: ['fab', 'google'],
       label: 'googleSearch',
       value: searchRoute
     },

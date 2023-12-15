@@ -1,6 +1,6 @@
 <div *ngIf="event?.hasSchedules; else noSchedules">
   <section>
-    <i class="far fa-calendar fa-lg"></i>
+    <app-icon [icon]="['far', 'calendar']" [size]="'lg'"></app-icon>
     <button *ngIf="event?.schedule" mat-button
       [matMenuTriggerFor]="menu"
       (menuClosed)="this.selectedSchedule = undefined;">
@@ -13,7 +13,7 @@
 
 <ng-template #noSchedules>
   <section>
-    <i class="far fa-calendar fa-lg"></i>
+    <app-icon [icon]="['far', 'calendar']" [size]="'lg'"></app-icon>
     <i appLabel="noFixedDates"></i>
   </section>
 </ng-template>

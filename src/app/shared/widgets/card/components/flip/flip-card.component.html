@@ -3,8 +3,8 @@
 
     <div class="flip-card-front" (click)="flipCard(180)">
       <img [src]="pictureUrl" alt="flip-card-image">
-      <mat-button-toggle (click)="flipCard(180)">
-        <i class="fas fa-arrows-rotate"></i>
+      <mat-button-toggle (click)="flipCard(180)">       
+        <app-icon [icon]="['fas', 'arrows-rotate']"></app-icon>
       </mat-button-toggle>
     </div>
 
@@ -14,8 +14,8 @@
           *ngFor="let element of getElements(elements ?? []); let i = index"
           (click)="emit(element, i)">
           {{ element | async }}</mat-button-toggle>
-        <mat-button-toggle (click)="flipCard(0)">
-          <i class="fas fa-arrows-rotate"></i>
+        <mat-button-toggle (click)="flipCard(0)">         
+          <app-icon [icon]="['fas', 'arrows-rotate']"></app-icon>
         </mat-button-toggle>
       </mat-button-toggle-group>
     </div>

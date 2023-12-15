@@ -4,13 +4,16 @@
       [appLabel]="(verified | async)
         ? 'congratulations'
         : 'failure'"></h2>
-    <i class="fa fa-5x" 
+    <app-icon 
+      [icon]="(verified | async) 
+      ? ['fas', 'check'] 
+      : ['fas', 'xmark']" 
+      [size]="'5x'"
       [style.color]="(verified | async) 
       ? 'var(--color-success-500)' 
-      : 'var(--color-warn-500)'"
-      [ngClass]="(verified | async) 
-      ? 'fas fa-check' 
-      : 'fas fa-xmark'"></i>
+      : 'var(--color-warn-500)'">
+    </app-icon>
+
     <p [appLabel]="(verified | async)
         ? 'verificationSuccess'
         : 'verificationFailure'"></p>

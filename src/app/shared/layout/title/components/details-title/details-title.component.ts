@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
 
 @Component({
   selector: 'app-details-title',
@@ -22,6 +22,6 @@ export class DetailsTitleComponent {
   public linkLabel?: Maybe<string>;
 
   @Input()
-  public linkIcon?: SolidIcons
+  public linkIcon?: SolidIconsType
 
 }

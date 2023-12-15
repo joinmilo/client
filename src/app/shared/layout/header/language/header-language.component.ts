@@ -8,6 +8,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
 
 @Component({
   selector: 'app-header-language',
@@ -17,6 +18,7 @@ import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
   imports: [
     CommonModule,
     CoreModule,
+    IconComponent,
     MatButtonModule,
     MatMenuModule,
   ]

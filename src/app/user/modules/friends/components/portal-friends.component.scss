@@ -15,6 +15,10 @@ section {
   @include responsive(tablet) {
     justify-content: center;
   }
+
+  app-icon {
+    color: var(--color-primary-contrast-500)
+  }
 }
 
 span {

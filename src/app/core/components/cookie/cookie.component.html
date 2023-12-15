@@ -3,7 +3,7 @@
 </h1>
 <mat-dialog-content>
   <section>
-    <i class="fas fa-cookie-bite fa-10x"></i>
+    <app-icon [icon]="['fas', 'cookie-bite']" [size]="'10x'"></app-icon>
     <div>
       <span appLabel="weUseCookies"></span>
       <a class="link" [routerLink]="['/portal', (dataProtectionConfig | async)?.value]" appLabel="clickHereForDataProtection"></a>

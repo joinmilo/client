@@ -1,11 +1,11 @@
 <div *ngIf="address">
-  <i class="fas fa-location-dot fa-xl"></i>
+  <app-icon [icon]="['fas', 'location-dot']" [size]="'xl'"></app-icon>
   <address class="piece" [innerHtml]="address | address" (click)="onClick()">
   </address>
 </div>
 
 <div *ngIf="link">
-  <i class="fas fa-link fa-xl"></i>
+  <app-icon [icon]="['fas', 'link']" [size]="'xl'"></app-icon>
   <a [href]="link">
     <span appLabel="toTheRoom"></span>
   </a>

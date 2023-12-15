@@ -2,7 +2,7 @@
 
   <section>
     <button mat-button (click)="scroll()" [disabled]="disableLeft">
-      <i class="fas fa-chevron-left fa-2x"></i>
+      <app-icon [icon]="['fas', 'chevron-left']" [size]="'2x'"></app-icon>
     </button>
   </section>
 
@@ -12,7 +12,7 @@
 
   <section>
     <button mat-button (click)="scroll(true)" [disabled]="disableRight">
-      <i class="fas fa-chevron-right fa-2x"></i>
+      <app-icon [icon]="['fas', 'chevron-right']" [size]="'2x'"></app-icon>
     </button>
   </section>
 

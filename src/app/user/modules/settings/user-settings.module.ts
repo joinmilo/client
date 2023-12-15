@@ -21,6 +21,7 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
 import { UserLayoutComponent } from './components/layout/user-layout.component';
 import { UserChangePasswordComponent } from './components/profile-data/change-password/user-change-password.component';
 import { UserDeleteAccountConfirmationComponent } from './components/profile-data/delete-account/delete-account-confirmation/user-delete-account-confirmation.component';
@@ -74,6 +75,7 @@ const modules = [
   CoreModule,
   FormStepperModule,
   GridLayoutModule,
+  IconComponent,
   MediaFormModule,
   MediaWidgetsModule,
   PasswordModule,

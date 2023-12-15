@@ -8,7 +8,7 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { Period } from 'src/app/core/typings/period';
 import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { IntervalFilterComponent } from 'src/app/shared/filter/interval/interval-filter.component';
-import { RegularIcons } from 'src/assets/fontawesome/regular-icons';
+import { RegularIconsType } from 'src/assets/fontawesome/regular-icons';
 import { ChartModule } from '../../../chart/chart.module';
 import { AnalyticsParams } from '../../typings/analytics';
 
@@ -55,7 +55,7 @@ export class AnalyticsVisitorsComponent implements OnInit {
 
   public helpAction = {
     label: 'help',
-    icon: 'circle-question' as RegularIcons,
+    icon: 'circle-question' as RegularIconsType,
   };
 
   public visits?: AnalyticsDto;

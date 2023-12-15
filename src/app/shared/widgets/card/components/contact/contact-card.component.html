@@ -28,13 +28,13 @@
     <section (click)="$event.stopPropagation();">
       <button mat-button *ngIf="element?.email">
         <a href="mailto:{{element?.email}}">
-          <i class="fas fa-envelope"></i>
+          <app-icon [icon]="['fas', 'envelope']"></app-icon>
         </a>
       </button>
 
       <button mat-button *ngIf="element?.phone">
         <a href="tel:{{element?.phone}}">
-          <i class="fas fa-phone"></i>
+          <app-icon [icon]="['fas', 'phone']"></app-icon>
         </a>
       </button>
     </section>

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { selectReceivedFriendRequest } from 'src/app/core/state/selectors/user.selectors';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
-import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
 
 @Component({
@@ -19,11 +19,11 @@ export class PortalReceivedFriendRequestsComponent {
   public actions: CardActionInput[] = [
     {
       label: this.confirmLabel,
-      icon: 'check' as SolidIcons
+      icon: 'check' as SolidIconsType
     },
     {
       label: this.removeLabel,
-      icon: 'trash' as SolidIcons 
+      icon: 'trash' as SolidIconsType 
     },
   ];
 

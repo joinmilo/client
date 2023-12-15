@@ -13,14 +13,14 @@
   </app-media-video>
 
   <span *ngSwitchCase="'WORD'">
-    <i class="far fa-file-word fa-5x" [style.color]="'var(--color-ms-word)'"></i>
+    <app-icon [icon]="['far', 'file-word']" [size]="'5x'" [style.color]="'var(--color-ms-word)'"></app-icon>
   </span>
 
   <span *ngSwitchCase="'PDF'">
-    <i class="far fa-file-pdf fa-5x" [style.color]="'var(--color-pdf)'"></i>
+    <app-icon [icon]="['far', 'file-pdf']" [size]="'5x'" [style.color]="'var(--color-pdf)'"></app-icon>
   </span>
 
   <span *ngSwitchDefault>
-    <i class="far fa-file-pdf fa-5x"></i>
+    <app-icon [icon]="['far', 'file']" [size]="'5x'"></app-icon>
   </span>
 </ng-container>

@@ -10,16 +10,16 @@
     <h3>{{ media?.name }}</h3>
     <ng-container [ngSwitch]="mimeType">
       <button *ngSwitchCase="'VIDEO'" mat-button (click)="click()">
-        <i class="fas fa-play"></i>
+        <app-icon [icon]="['fas', 'play']"></app-icon>
       </button>
       <button *ngSwitchCase="'IMAGE'" mat-button (click)="click()">
-        <i class="fas fa-eye"></i>
+        <app-icon [icon]="['fas', 'eye']"></app-icon>
       </button>
       <button *ngSwitchDefault
         mat-button (click)="download($event)">
         <div>
           <span>{{ media?.size | fileSize }}</span>
-          <i class="fas fa-download"></i>
+          <app-icon [icon]="['fas', 'download']"></app-icon>
         </div>
       </button>
     </ng-container>

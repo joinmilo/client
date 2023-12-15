@@ -2,9 +2,8 @@
   (click)="changeSelect($event)"
   class="border-box">
     <strong [appLabel]="input?.label"></strong>
-
     <section>
-      <i class="{{input!.style}} + {{input!.icon}} fa-lg"></i>
+      <app-icon [icon]="input!.icon" [size]="'lg'"></app-icon>
       <span *ngIf="input?.display">{{ input?.display }}</span>
     </section>
 </div>

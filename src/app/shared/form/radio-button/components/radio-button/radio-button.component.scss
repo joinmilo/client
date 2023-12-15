@@ -6,6 +6,10 @@
 div {
   display: flex;
   gap: .5rem;
+
+  app-icon {
+    color: var(--color-accent-900)
+  }
 }
 
 :host ::ng-deep {

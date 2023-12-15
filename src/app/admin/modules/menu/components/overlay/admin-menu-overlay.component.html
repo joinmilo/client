@@ -2,9 +2,7 @@
   class="trigger-button"
   [ngClass]="{'menu-active': menuService.isRouteActive(this.item) }"
   (click)="click(menuTrigger)">
-  <span *ngIf="item?.icon">
-    <i class="fas fa-{{ item!.icon! }} fa-lg"></i>
-  </span>
+  <app-icon *ngIf="item?.icon" [icon]="['fas', item!.icon!]" [size]="'lg'"></app-icon>
   <div #menuTrigger="matMenuTrigger" class="trigger" [matMenuTriggerFor]="menu"></div>
 </button>
 <mat-menu #menu="matMenu">

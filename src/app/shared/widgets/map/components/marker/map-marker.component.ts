@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
 import { defaultMarkerColor } from '../../constants/map.constants';
 
 @Component({
@@ -18,11 +18,11 @@ export class MapMarkerComponent {
     this.stroke = this.darkenColor(this.fill);
   }
 
-  iconName: SolidIcons | null = null;
+  iconName: SolidIconsType | null = null;
 
   @Input()
   set icon(icon: string | null | undefined) {
-    this.iconName = icon ? icon as SolidIcons : null;
+    this.iconName = icon ? icon as SolidIconsType : null;
   }
 
   private darkenColor(hex: string, amount = 0x333333) {

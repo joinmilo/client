@@ -13,6 +13,7 @@ import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.com
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminDetailsLayoutComponent } from './components/organisation-admin-details-layout.component';
 import { organisationAdminDetailsLayoutStateKey } from './constants/organisation-admin-details-layout.constants';
@@ -37,6 +38,7 @@ const modules = [
   AddressPieceComponent,
   CalendarModule,
   CoreModule,
+  IconComponent,
   MailPieceComponent,
   MediaWidgetsModule,
   PhonePieceComponent,

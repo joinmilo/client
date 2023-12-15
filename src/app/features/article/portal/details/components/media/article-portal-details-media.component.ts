@@ -21,20 +21,17 @@ export class ArticlePortalDetailsMediaComponent implements OnDestroy {
 
   public inputs: RadioButtonInput[] = [
     {
-      style: 'fas',
-      icon: 'fa-image',
+      icon: ['fas', 'image'],
       label: 'images',
       value: MediaDisplayType.Image
     },
     {
-      style: 'fas',
-      icon: 'fa-video',
+      icon: ['fas', 'video'],
       label: 'videos',
       value: MediaDisplayType.Video
     },
     {
-      style: 'fas',
-      icon: 'fa-file',
+      icon: ['fas', 'file'],
       label: 'files',
       value: MediaDisplayType.File
     }

@@ -1,5 +1,5 @@
 <button mat-icon-button [matMenuTriggerFor]="userNotification">
-  <i class="fas fa-bell"></i>
+  <app-icon [icon]="['fas', 'bell']"></app-icon>
   <span *ngIf="notifications?.length"
     [matBadge]="notifications?.length ?? 0"
     matBadgePosition="after"

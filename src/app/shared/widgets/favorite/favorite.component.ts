@@ -8,6 +8,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { selectIsAuthenticated, selectIsFavorite } from 'src/app/core/state/selectors/user.selectors';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
+import { IconComponent } from '../icons/icon.component';
 
 @Component({
   selector: 'app-favorite',
@@ -17,6 +18,7 @@ import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity'
   imports: [
     CommonModule,
     CoreModule,
+    IconComponent,
     MatButtonModule,
   ]
 })

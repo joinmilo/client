@@ -1,16 +1,15 @@
 
 <div>
   <button class="button-gear" mat-icon-button [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
-    <i class="fas fa-gear"></i>
+    <app-icon [icon]="['fas', 'gear']"></app-icon>
   </button>
-
 
   <mat-menu #menu="matMenu">
     <mat-accordion multi="false">
       <!-- <mat-expansion-panel (click)="$event.stopPropagation()">
         <mat-expansion-panel-header>
           <span>
-            <i class="fas fa-bell"></i>
+            <app-icon [icon]="['fas', 'bell']"></app-icon>
             <mat-panel-title appLabel="notifications"></mat-panel-title>
           </span>
         </mat-expansion-panel-header>
@@ -22,7 +21,7 @@
       <!-- <mat-expansion-panel (click)="$event.stopPropagation()">
         <mat-expansion-panel-header>
           <span>
-            <i class="fas fa-lock"></i>
+            <app-icon [icon]="['fas', 'lock']"></app-icon>
             <mat-panel-title appLabel="dataProtection"></mat-panel-title>
           </span>
         </mat-expansion-panel-header>
@@ -31,7 +30,7 @@
       [expanded]="step === 0" (opened)="setStep(0)" routerLinkActive="active">
         <mat-expansion-panel-header>
           <span>
-            <i class="fas fa-user"></i>
+            <app-icon [icon]="['fas', 'user']"></app-icon>
             <mat-panel-title appLabel="profileData"></mat-panel-title>
           </span>
         </mat-expansion-panel-header>

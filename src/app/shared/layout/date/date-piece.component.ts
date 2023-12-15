@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
+import { IconComponent } from '../../widgets/icons/icon.component';
 
 @Component({
   selector: 'app-date-piece',
@@ -11,6 +12,7 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     CoreModule,
+    IconComponent,
   ]
 })
 export class DatePieceComponent {

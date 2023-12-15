@@ -9,7 +9,7 @@
         </app-portal-map-overview-list>
       </section>
       <button mat-button (click)="drawer.toggle(); menuToggled();">
-        <i class="fas fa-angle-left"></i>
+        <app-icon [icon]="['fas', 'angle-left']"></app-icon>
       </button>
     </div>
   </mat-drawer>
@@ -19,12 +19,8 @@
     </app-map>
   
     <button mat-mini-fab (click)="drawer.toggle(); menuToggled();">
-      <span *ngIf="drawer.opened">
-        <i class="fas fa-angle-left"></i>
-      </span>
-      <span *ngIf="!drawer.opened">
-        <i class="fas fa-angle-right"></i>
-      </span>
+      <app-icon *ngIf="drawer.opened" [icon]="['fas', 'angle-left']"></app-icon>
+      <app-icon *ngIf="!drawer.opened" [icon]="['fas', 'angle-right']"></app-icon>
     </button>
 
     <app-radio-button-group

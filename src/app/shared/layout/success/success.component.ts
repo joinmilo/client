@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
+import { IconComponent } from '../../widgets/icons/icon.component';
 
 @Component({
   selector: 'app-success',
@@ -13,6 +14,7 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     CoreModule,
+    IconComponent,
     MatButtonModule,
     MatDividerModule,
     RouterModule,

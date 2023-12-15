@@ -19,7 +19,7 @@
 
         <button mat-button *ngIf="author?.user?.email">
           <a href="mailto:{{author.user?.email}}">
-            <i class="fas fa-envelope fa-lg"></i>
+            <app-icon [icon]="['fas', 'envelope']" [size]="'lg'"></app-icon>
           </a>
         </button>
       </div>

@@ -27,6 +27,7 @@ export class AppComponent implements OnDestroy {
     public favIconService: FavIconService,
     private store: Store,
   ) {
+
     this.store.select(selectAsideComponent)
       .pipe(takeUntil(this.destroy))
       .subscribe(component => component ? this.sidenav?.open() : this.sidenav?.close());

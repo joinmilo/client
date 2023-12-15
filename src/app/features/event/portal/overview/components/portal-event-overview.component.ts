@@ -21,26 +21,22 @@ export class PortalEventOverviewComponent {
 
   public inputs: RadioButtonInput[] = [
     {
-      style: 'fas',
-      icon: 'fa-shapes',
+      icon: ['fas', 'shapes'],
       label: 'category',
       value: OverviewDisplayType.Category
     },
     {
-      style: 'fas',
-      icon: 'fa-calendar',
+      icon: ['fas', 'calendar'],
       label: 'calendar',
       value: OverviewDisplayType.Calendar
     },
     {
-      style: 'fas',
-      icon: 'fa-map-location-dot',
+      icon: ['fas', 'map-location-dot'],
       label: 'mapview',
       value: OverviewDisplayType.Map
     },
     {
-      style: 'fas',
-      icon: 'fa-list',
+      icon: ['fas', 'list'],
       label: 'table',
       value: OverviewDisplayType.Table
     },

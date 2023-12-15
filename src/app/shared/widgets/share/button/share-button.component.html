@@ -2,7 +2,7 @@
   (click)="openDialog()"
   [appTooltip]="createTooltip()">
   <div>
-    <i class="fas fa-share-nodes"></i>
+    <app-icon [icon]="['fas', 'share-nodes']" [size]="'lg'"></app-icon>
     <span *ngIf="withLabel" [appLabel]="shareWithOthersLabel"></span>
   </div>
 </button>

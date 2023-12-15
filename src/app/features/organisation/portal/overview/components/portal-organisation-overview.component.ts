@@ -20,26 +20,22 @@ export class PortalOrganisationOverviewComponent {
 
   public inputs: RadioButtonInput[] = [
     {
-      style: 'fas',
-      icon: 'fa-shapes',
+      icon: ['fas', 'shapes'],
       label: 'list',
       value: OverviewDisplayType.Card
     },
     {
-      style: 'fas',
-      icon: 'fa-map-location-dot',
+      icon: ['fas', 'map-location-dot'],
       label: 'mapview',
       value: OverviewDisplayType.Map
     },
     {
-      style: 'fas',
-      icon: 'fa-tree-city',
+      icon: ['fas', 'tree-city'],
       label: 'suburbs',
       value: OverviewDisplayType.Suburb
     },
     {
-      style: 'fas',
-      icon: 'fa-list',
+      icon: ['fas', 'list'],
       label: 'table',
       value: OverviewDisplayType.Table
     },

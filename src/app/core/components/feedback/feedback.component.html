@@ -1,19 +1,29 @@
 <div>
   <button mat-icon-button (click)="ref.dismissWithAction()">
-    <i class="fas fa-xmark"></i>
+    <app-icon [icon]="['fas', 'xmark']"></app-icon>
   </button>
   <section>
-    <span *ngIf="feedback.type === error || feedback.type === critical">
-      <i class="fas fa-circle-exclamation fa-2x" [style.color]="'var(--color-warn-900)'"></i>
-    </span>
+    
+    <app-icon 
+      *ngIf="feedback.type === error || feedback.type === critical" 
+      [icon]="['fas', 'circle-exclamation']" 
+      [size]="'2x'"
+      [style.color]="'var(--color-warn-900)'">
+    </app-icon>
+    
+    <app-icon 
+      *ngIf="feedback.type === success"
+      [icon]="['fas', 'circle-check']" 
+      [size]="'2x'"
+      [style.color]="'var(--color-success-900)'">
+    </app-icon>
 
-    <span *ngIf="feedback.type === success">
-      <i class="fas fa-circle-check fa-2x" [style.color]="'var(--color-success-900)'"></i>
-    </span>
-
-    <span *ngIf="feedback.type === info">
-      <i class="fas fa-circle-info fa-2x" [style.color]="'var(--color-warn-200)'"></i>
-    </span>
+    <app-icon 
+      *ngIf="feedback.type === info" 
+      [icon]="['fas', 'circle-info']" 
+      [size]="'2x'"
+      [style.color]="'var(--color-warn-200)'">
+    </app-icon>
     
     <span><strong *ngIf="feedback.labelMessage" [appLabel]="feedback.labelMessage"
         [variables]="feedback.labelVariables"></strong></span>

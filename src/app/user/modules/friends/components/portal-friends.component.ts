@@ -23,20 +23,17 @@ export class PortalFriendsComponent implements OnInit, OnDestroy {
 
   public inputs: RadioButtonInput[] = [
     {
-      style: 'fas',
-      icon: 'fa-users',
+      icon: ['fas', 'users'],
       label: 'allFriends',
       value: 'allFriends'
     },
     {
-      style: 'fas',
-      icon: 'fa-inbox',
+      icon: ['fas', 'inbox'],
       label: 'receivedFriendRequests',
       value: 'receivedRequests'
     },
     {
-      style: 'fas',
-      icon: 'fa-square-arrow-up-right',
+      icon: ['fas', 'square-arrow-up-right'],
       label: 'sentFriendRequests',
       value: 'sentRequests'
     },

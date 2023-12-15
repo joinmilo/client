@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
 import { RadioButtonFormModule } from '../../../form/radio-button/radio-button-form.module';
 import { TitleModule } from '../../../layout/title/title.module';
 import { SliderHeaderComponent } from '../../../widgets/sliders/slider-header/slider-header.component';
@@ -61,6 +62,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  IconComponent,
   SliderComponent,
   RadioButtonFormModule,
   SliderHeaderComponent,

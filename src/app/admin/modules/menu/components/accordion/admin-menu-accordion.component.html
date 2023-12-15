@@ -4,9 +4,7 @@
     (opened)="click()">
     <mat-expansion-panel-header>
       <mat-panel-title [ngClass]="{'menu-active': active }">     
-        <span *ngIf="item?.icon">
-          <i class="fas fa-{{ item!.icon! }} fa-lg"></i>
-        </span>
+        <app-icon *ngIf="item?.icon" [icon]="['fas', item!.icon!]" [size]="'lg'"></app-icon>
         <strong [appLabel]="item?.name"></strong>
       </mat-panel-title>
     </mat-expansion-panel-header>

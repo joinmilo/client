@@ -11,6 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from '../shared/widgets/icons/icon.component';
 import { AsideComponent } from './components/aside/aside.component';
 import { CookieComponent } from './components/cookie/cookie.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
@@ -66,6 +67,7 @@ const framework = [
 
 const materials = [
   LayoutModule,
+  IconComponent,
   MatButtonModule,
   MatDialogModule,
   MatSnackBarModule,

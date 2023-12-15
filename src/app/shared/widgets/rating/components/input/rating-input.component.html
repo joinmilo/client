@@ -2,14 +2,9 @@
   <button *ngFor="let value of values"
     mat-icon-button
     [disabled]="disabled"
-    (mouseover)="hover(value);"
-    (mouseout)="hover(undefined);"
-    (click)="emit(value); logValues()">
-    <span *ngIf="!currentValue">
-      <i [class]="icon(value)"></i>
-    </span>
-    <span *ngIf="currentValue">
-      <i [class]="icon(value)"></i>
-    </span>
+    (mouseover)="hover(value)"
+    (mouseout)="hover(undefined)"
+    (click)="emit(value)">
+    <app-icon [icon]="icon(value)"></app-icon>
   </button>
 </div>

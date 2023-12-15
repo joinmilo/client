@@ -20,6 +20,7 @@ import { AddressPieceComponent } from '../../layout/address/address-piece.compon
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
 import { MediaFormModule } from '../../media/modules/form/media-form.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
+import { IconComponent } from '../icons/icon.component';
 import { TableActionsComponent } from './components/actions/table-actions.component';
 import { TableCardComponent } from './components/card/table-card.component';
 import { TableCellAddressComponent } from './components/cells/table-cell-address.component';
@@ -92,6 +93,7 @@ const modules = [
   CategoryPieceComponent,
   CoreModule,
   FavoriteComponent,
+  IconComponent,
   MediaFormModule,
   ShareModule,
 ];

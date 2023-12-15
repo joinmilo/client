@@ -1,7 +1,7 @@
-import { RegularIcons } from 'src/assets/fontawesome/regular-icons';
+import { RegularIconsType } from 'src/assets/fontawesome/regular-icons';
 
 export type ChartAction = {
   label: string,
-  icon: RegularIcons,
+  icon: RegularIconsType,
   clicked: () => void,
 }

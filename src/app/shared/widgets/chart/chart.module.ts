@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CoreModule } from 'src/app/core/core.module';
+import { IconComponent } from '../icons/icon.component';
 import { ChartActionsComponent } from './components/actions/chart-actions.component';
 import { ChartBarVerticalComponent } from './components/bar-vertical/chart-bar-vertical.component';
 import { ChartContainerComponent } from './components/frame/chart-container.component';
@@ -29,6 +30,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  IconComponent,
 ];
 
 const libs = [

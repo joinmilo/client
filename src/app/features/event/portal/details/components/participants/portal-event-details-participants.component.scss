@@ -36,6 +36,10 @@ div:first-of-type {
         align-items: center;
         gap: .5rem;
       }
+
+      app-icon {
+        color: var(--color-primary-contrast-500);
+      }
     }
   }
 }

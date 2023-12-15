@@ -4,7 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { selectSocialMedia } from 'src/app/core/state/selectors/core.selectors';
-import { BrandIcons } from 'src/assets/fontawesome/brand-icons';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
+import { BrandIconsType } from 'src/assets/fontawesome/brand-icons';
 
 @Component({
   selector: 'app-footer-socialmedia',
@@ -13,6 +14,7 @@ import { BrandIcons } from 'src/assets/fontawesome/brand-icons';
   standalone: true,
   imports: [
     CommonModule,
+    IconComponent,
     MatButtonModule,
   ]
 })
@@ -25,7 +27,7 @@ export class FooterSocialMediaComponent {
   ) { }
 
   public icon(name?: Maybe<string>) {
-    return name as BrandIcons;
+    return name as BrandIconsType;
   }
 
 }

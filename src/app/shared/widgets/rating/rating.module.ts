@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CoreModule } from '../../../core/core.module';
 import { CaptchaModule } from '../../form/captcha/captcha.module';
+import { IconComponent } from '../icons/icon.component';
 import { RatingDistributionComponent } from './components/distribution/rating-distribution.component';
 import { RatingInputComponent } from './components/input/rating-input.component';
 import { RatingComponent } from './components/rating.component';
@@ -28,6 +29,7 @@ const framework = [
 
 const modules = [
   CoreModule,
+  IconComponent,
 ];
 
 const materials = [
@@ -40,6 +42,7 @@ const materials = [
 
 @NgModule({
   declarations: [...components],
+  
   imports: [
     ...framework,
     ...materials,

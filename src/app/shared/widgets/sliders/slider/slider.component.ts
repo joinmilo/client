@@ -5,6 +5,7 @@ import {
   ElementRef, QueryList, TemplateRef, ViewChild
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { IconComponent } from '../../icons/icon.component';
 
 @Component({
   selector: 'app-slider',
@@ -13,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [
     CommonModule,
+    IconComponent,
     MatButtonModule
   ]
 })

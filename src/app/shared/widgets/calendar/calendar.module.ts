@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import { IconComponent } from '../icons/icon.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarHeaderComponent } from './components/header/calendar-header.component';
 
@@ -26,11 +27,16 @@ const materials = [
   MatNativeDateModule,
 ];
 
+const modules = [
+  IconComponent,
+];
+
 @NgModule({
   declarations: [...components],
   imports: [
     ...framework,
     ...materials,
+    ...modules,
   ],
   exports: [...components],
 })

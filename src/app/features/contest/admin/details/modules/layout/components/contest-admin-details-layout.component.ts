@@ -22,20 +22,17 @@ export class ContestAdminDetailsLayoutComponent implements OnInit, OnDestroy {
 
   public inputs: RadioCardInput[] = [
     {
-      style: 'fas',
-      icon: 'fa-magnifying-glass',
+      icon: ['fas', 'magnifying-glass'],
       label: 'overview',
       value: '',
     },
     {
-      style: 'fab',
-      icon: 'fa-google',
+      icon: ['fab', 'google'],
       label: 'googleSearch',
       value: searchRoute
     },
     {
-      style: 'far',
-      icon: 'fa-comment-dots',
+      icon: ['far', 'comment-dots'],
       label: 'comments',
       value: commentsRoute
     },

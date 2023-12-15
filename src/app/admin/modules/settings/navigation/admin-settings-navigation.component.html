@@ -10,10 +10,7 @@
       <mat-card *ngFor="let child of item.childs"
         [routerLink]="createRouterLink(child)"
         [class.disabled]="child.comingSoon">
-        <span *ngIf="child?.icon">
-          <i class="fas fa-{{ child!.icon! }} fa-xl"></i>
-        </span>
-  
+        <app-icon *ngIf="child?.icon" [icon]="['fas', child!.icon!]" [size]="'xl'"></app-icon>
         <article>
           <strong [appLabel]="child.name"></strong>
           <small [appLabel]="child.description"></small>

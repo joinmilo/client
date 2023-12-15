@@ -5,6 +5,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
 import { AdminMenuAccordionComponent } from './components/accordion/admin-menu-accordion.component';
 import { AdminMenuComponent } from './components/admin-menu.component';
 import { AdminMenuOverlayComponent } from './components/overlay/admin-menu-overlay.component';
@@ -29,6 +30,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  IconComponent,
 ];
 
 const providers = [

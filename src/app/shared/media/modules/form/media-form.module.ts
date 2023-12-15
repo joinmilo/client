@@ -13,6 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
 import { MediaService } from '../../services/media.service';
 import { MediaWidgetsModule } from '../widgets/media-widgets.module';
 import { MediaFormEditComponent } from './components/edit/media-form-edit.component';
@@ -52,6 +53,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  IconComponent,
   MediaWidgetsModule,
   TitleModule,
 ];

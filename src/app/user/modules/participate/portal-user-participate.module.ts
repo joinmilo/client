@@ -19,6 +19,7 @@ import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.modu
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
+import { IconComponent } from 'src/app/shared/widgets/icons/icon.component';
 import { PortalParticipateBecomeAuthorComponent } from './components/become-author/portal-participate-become-author.component';
 import { PortalParticipateCreateOrganisationComponent } from './components/create-organisation/portal-participate-create-organisation.component';
 import { PortalParticipateJoinOrganisationComponent } from './components/join-organisation/portal-participate-join-organisation.component';
@@ -58,15 +59,16 @@ const materials = [
 ];
 
 const modules = [
+  AddressFormModule,
   CoreModule,
   CkEditorFormComponent,
+  FormStepperModule,
+  GridLayoutModule,
+  IconComponent,
   MediaFormModule,
   MediaWidgetsModule,
   PortalParticipateRoutingModule,
   SuccessComponent,
-  FormStepperModule,
-  GridLayoutModule,
-  AddressFormModule
 ];
 
 const libs = [

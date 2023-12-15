@@ -7,7 +7,7 @@
   </section>
   <section *ngIf="linkIcon">
     <span [routerLink]="link">
-      <i class="fas fa-{{ linkIcon }}"></i>
+      <app-icon [icon]="['fas', linkIcon ]"></app-icon>
     </span>
   </section>
 </div>

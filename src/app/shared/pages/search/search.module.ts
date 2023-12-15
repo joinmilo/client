@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
+import { IconComponent } from '../../widgets/icons/icon.component';
 import { PortalSearchButtonComponent } from './components/button/search-button.component';
 import { SearchInputComponent } from './components/input/search-input.component';
 import { PortalSearchResultComponent } from './components/result/search-result.component';
@@ -45,6 +46,7 @@ const materials = [
 const modules = [
   CoreModule,
   CardSliderComponent,
+  IconComponent,
   PortalSearchRoutingModule,
   TitleModule,
 ];

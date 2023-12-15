@@ -4,6 +4,7 @@ import { Observable, map, of } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { GetMenuGQL } from 'src/app/portal/api/generated/get-menu.query.generated';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
+import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
 
 @Component({
   selector: 'app-portal-menu-overlay',
@@ -42,9 +43,9 @@ export class PortalMenuOverlayComponent implements OnInit {
     return [...items]?.sort((i1, i2) => (i1?.order || 0) - (i2?.order || 0));
   }
 
-  // public icon(icon: Maybe<string>|undefined): IconName {
-  //   return icon as IconName;
-  // }
+  public icon(icon: Maybe<string>|undefined): SolidIconsType {
+    return icon as SolidIconsType;
+  }
 
   public route(item: Maybe<MenuItemEntity>) {
     this.store.dispatch(PortalActions.navigateMenu(item));

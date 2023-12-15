@@ -12,12 +12,12 @@
       height: 100% !important;
       transition: ease-out .4s;
 
-      svg {
+      app-icon {
         color: var(--color-gray);
       }
 
       &:hover {
-        svg {
+        app-icon {
           color: var(--color-dark-gray);
           transform: scale(1.2);
         }

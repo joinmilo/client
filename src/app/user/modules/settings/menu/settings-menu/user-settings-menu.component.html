@@ -2,7 +2,7 @@
   <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" routerLinkActive="active">
     <mat-expansion-panel-header>
       <span>
-        <i class="fas fa-user"></i>
+        <app-icon [icon]="['fas', 'user']"></app-icon>
         <mat-panel-title appLabel="profileData"></mat-panel-title>
       </span>
     </mat-expansion-panel-header>
@@ -25,7 +25,7 @@
   <!-- <mat-expansion-panel>
     <mat-expansion-panel-header>
       <span>
-        <i class="fas fa-bell"></i>
+        <app-icon [icon]="['fas', 'bell']"></app-icon>
         <mat-panel-title appLabel="notifications"></mat-panel-title>
       </span>
     </mat-expansion-panel-header>
@@ -37,7 +37,7 @@
   <!-- <mat-expansion-panel>
     <mat-expansion-panel-header>
       <span>
-        <i class="fas fa-lock"></i>
+        <app-icon [icon]="['fas', 'lock']"></app-icon>
         <mat-panel-title appLabel="dataProtection"></mat-panel-title>
       </span>
     </mat-expansion-panel-header>

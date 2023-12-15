@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Maybe } from 'src/app/core/api/generated/schema';
+import { IconComponent } from '../../widgets/icons/icon.component';
 
 @Component({
   selector: 'app-phone-piece',
@@ -9,6 +10,7 @@ import { Maybe } from 'src/app/core/api/generated/schema';
   standalone: true,
   imports: [
     CommonModule,
+    IconComponent,
   ]
 })
 export class PhonePieceComponent {

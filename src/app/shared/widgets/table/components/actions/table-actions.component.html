@@ -4,13 +4,13 @@
     class="save"
     appTooltip="save"
     (click)="$event.stopPropagation(); save();">
-    <i class="fas fa-check"></i>
+    <app-icon [icon]="['fas', 'check']"></app-icon>
   </button>
 
   <button mat-button
     appTooltip="cancel"
     (click)="$event.stopPropagation(); cancel();">
-    <i class="fas fa-xmark"></i>
+    <app-icon [icon]="['fas', 'xmark']"></app-icon>
   </button>
 </ng-container>
 
@@ -19,7 +19,7 @@
     mat-button
     [appTooltip]="inlineEditAction.tooltipLabel"
     (click)="$event.stopPropagation(); enable();">
-    <i class="fas fa-{{inlineEditAction.icon}}"></i>
+    <app-icon [icon]="['fas', inlineEditAction.icon]"></app-icon>
   </button>
 
   <ng-container *ngFor="let action of (actions | async)">
@@ -40,7 +40,7 @@
             [disabled]="isDisabled(action)"
             (click)="$event.stopPropagation(); callback(action);"
             [appTooltip]="tooltip(action)">
-            <i class="fas fa-{{icon(action)}}"></i>
+            <app-icon [icon]="['fas', icon(action)]"></app-icon>
           </button>
         </div>
       </ng-container>

@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { collapse } from 'src/app/core/animations/animations';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
+import { IconComponent } from '../../widgets/icons/icon.component';
 
 @Component({
   selector: 'app-filter-area',
@@ -17,6 +18,7 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     CoreModule,
+    IconComponent,
     MatCardModule,
     MatButtonModule,
   ]

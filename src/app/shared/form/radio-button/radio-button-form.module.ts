@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from 'src/app/core/core.module';
+import { IconComponent } from '../../widgets/icons/icon.component';
 import { RadioButtonGroupComponent } from './components/radio-button-group/radio-button-group.component';
 import { RadioButtonComponent } from './components/radio-button/radio-button.component';
 
@@ -24,6 +25,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  IconComponent,
 ];
 
 @NgModule({

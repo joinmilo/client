@@ -33,7 +33,7 @@ export class SchedulerRecurrenceEndComponent implements OnDestroy {
 
   public recurrenceEndOn: RadioButtonInput<RecurrenceEnd> = {
     label: 'on',
-    value: 'until'
+    value: 'until',
   };
 
   public recurrenceEndAfter: RadioButtonInput<RecurrenceEnd> = {

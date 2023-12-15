@@ -1,9 +1,9 @@
 <div>
   <button mat-icon-button (click)="previous()">
-    <i class="fas fa-chevron-left"></i>
+    <app-icon [icon]="['fas', 'chevron-left']"></app-icon>
   </button>
   <span>{{periodLabel}}</span>
   <button mat-icon-button (click)="next()">
-    <i class="fas fa-chevron-right"></i>
+    <app-icon [icon]="['fas', 'chevron-right']"></app-icon>
   </button>
 </div>

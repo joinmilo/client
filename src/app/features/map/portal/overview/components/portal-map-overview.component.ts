@@ -25,20 +25,17 @@ export class PortalMapOverviewComponent{
 
   public inputs: RadioButtonInput[] = [
     {
-      style: 'fas',
-      icon: 'fa-calendar',
+      icon: ['fas', 'calendar'],
       label: 'activities',
       value: MapEntityFilter.Events
     },
     {
-      style: 'fas',
-      icon: 'fa-people-group',
+      icon: ['fas', 'people-group'],
       label: 'organisations',
       value: MapEntityFilter.Organisations
     },
     {
-      style: 'fas',
-      icon: 'fa-tags',
+      icon: ['fas', 'tags'],
       label: 'deals',
       value: MapEntityFilter.Deals
     },

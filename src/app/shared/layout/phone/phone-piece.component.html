@@ -1,5 +1,5 @@
 <div *ngIf="phone">
-  <i class="fas fa-phone"></i>
+  <app-icon [icon]="['fas', 'phone']"></app-icon>
   <a [href]="'tel:' + phone">
   <span class="piece">{{phone}}</span>
   </a>

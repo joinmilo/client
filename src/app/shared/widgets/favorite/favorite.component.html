@@ -2,12 +2,17 @@
   (click)="changeFavorite()"
   [appTooltip]="createTooltip()">
   <div>
-    <span *ngIf="isFavorite">
-      <i class="fas fa-heart" [style.color]="'var(--color-warn-400)'"></i>
-    </span>
-    <span *ngIf="!isFavorite">
-      <i class="far fa-heart"></i>
-    </span>
+    <app-icon 
+      *ngIf="isFavorite" 
+      [icon]="['fas', 'heart']" 
+      [size]="'lg'" 
+      [style.color]="'var(--color-warn-400)'"
+    ></app-icon>
+    <app-icon 
+      *ngIf="!isFavorite" 
+      [icon]="['far', 'heart']" 
+      [size]="'lg'"
+    ></app-icon>
     <ng-container *ngIf="withLabel">
       <span *ngIf="!isFavorite" [appLabel]="addToFavoritesLabel"></span>
       <span *ngIf="isFavorite" [appLabel]="removeFromFavoritesLabel"></span>

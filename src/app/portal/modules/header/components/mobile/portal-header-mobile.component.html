@@ -14,7 +14,7 @@
   
   <div>
     <button mat-icon-button [matMenuTriggerFor]="menu" #trigger="matMenuTrigger">
-      <i class="fas fa-bars"></i>
+      <app-icon [icon]="['fas', 'bars']"></app-icon>
     </button>
     <mat-menu #menu="matMenu">
       <div class="mobile-menu">
@@ -24,7 +24,7 @@
         <ng-container *ngIf="currentUser?.user?.roles?.length">
           <button mat-menu-item [routerLink]="['/', adminUrl]">
             <div class="admin-button">
-              <i class="fas fa-gauge"></i>
+              <app-icon [icon]="['fas', 'gauge']"></app-icon>
               <span appLabel="toAdminArea"></span>
             </div>
           </button>

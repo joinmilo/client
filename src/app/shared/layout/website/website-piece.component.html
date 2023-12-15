@@ -1,5 +1,5 @@
 <div *ngIf="website">
-  <i class="fas fa-globe"></i>
+  <app-icon [icon]="['fas', 'globe']"></app-icon>
   <a [href]="website" target="_blank">
     <span class="piece">{{ website }}</span>
   </a>

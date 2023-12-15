@@ -1,6 +1,6 @@
 <button mat-button
   [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-  <i class="fas fa-ellipsis-vertical"></i>
+  <app-icon [icon]="['fas', 'ellipsis-vertical']"></app-icon>
 </button>
 
 <mat-menu #menu="matMenu">
@@ -8,7 +8,7 @@
     <ng-container *ngFor="let action of actions">
       <button mat-menu-item (click)="actionClicked.emit(action)">
         <div class="action-button">
-          <i class="fas fa-{{action.icon}}"></i>
+          <app-icon [icon]="['fas', action.icon ]"></app-icon>
           <span [appLabel]="action.label"></span>
         </div>
       </button>

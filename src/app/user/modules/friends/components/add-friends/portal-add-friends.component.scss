@@ -17,7 +17,11 @@
   section {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: .5rem;
+
+    app-icon {
+      color: var(--color-primary-contrast-500)
+    }
   }
 
   .scroll {

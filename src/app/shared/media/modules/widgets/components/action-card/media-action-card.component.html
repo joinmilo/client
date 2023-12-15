@@ -3,7 +3,7 @@
     <button *ngIf="showDelete"
       mat-icon-button
       (click)="delete($event)">
-      <i class="fas fa-trash"></i>
+      <app-icon [icon]="['fas', 'trash']"></app-icon>
     </button>
 
     <app-media-element

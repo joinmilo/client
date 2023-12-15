@@ -3,9 +3,9 @@
     mat-icon-button 
     [href]="item.url"
     [title]="item.name">
-    <i class="fab + fa-{{ item!.icon! }} fa-2x"></i>
+    <app-icon [icon]="['fab', icon(item!.icon!) ]" [size]="'2x'"></app-icon>
   </a>
   <button mat-icon-button>
-    <i class="fas fa-rss fa-2x"></i>
+    <app-icon [icon]="['fas', 'rss' ]" [size]="'2x'"></app-icon>
   </button>
 </nav>

@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
 import { TableCellComponent } from '../../typings/cell';
 
 @Component({
   selector: 'app-table-cell-icon',
   template: `
-    <span *ngIf="input">
-      <i class="fas fa-{{input}}"></i>
-    </span>
+    <app-icon *ngIf="input" [icon]="['fas', input]"></app-icon>
   `,
 })
-export class TableCellIconComponent extends TableCellComponent<SolidIcons> {
+export class TableCellIconComponent extends TableCellComponent<SolidIconsType> {
 
   constructor(
     store: Store,

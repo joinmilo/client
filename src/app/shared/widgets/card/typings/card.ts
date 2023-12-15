@@ -1,11 +1,11 @@
 import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { Category } from 'src/app/core/typings/category';
 import { Translatable } from 'src/app/core/typings/translatable';
-import { SolidIcons } from 'src/assets/fontawesome/solid-icons';
+import { SolidIconsType } from 'src/assets/fontawesome/solid-icons';
 
 export type CardActionInput = {
   label: string,
-  icon: SolidIcons,
+  icon: SolidIconsType,
 }
 
 export type CardActionOutput = {
