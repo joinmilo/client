@@ -1,7 +1,7 @@
 @import 'src/styles/mixins.scss';
 
 mat-drawer-container {
-  height: 100%;
+  height: 100% ;
 }
 
 mat-drawer {
@@ -54,7 +54,7 @@ mat-drawer {
 }
 
 .map-container {
-  height: 100vh;
+  height: calc(100vh - var(--header-height));
   width: 100vw;
 
   button {
@@ -78,4 +78,10 @@ mat-drawer {
     bottom: 2rem;
   }
 
+}
+
+:host ::ng-deep {
+  .mat-drawer-content {
+    overflow: unset;
+  }
 }

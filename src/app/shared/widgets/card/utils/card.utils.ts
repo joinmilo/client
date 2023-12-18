@@ -30,7 +30,10 @@ export const articleToCard = (entity?: Maybe<ArticleEntity>): CardElement => ({
   category: entity?.category,
   date: entity?.created,
   dateTime: false,
-  creator: entity?.publicAuthor?.name ?? `${entity?.author?.user?.firstName} ${entity?.author?.user?.lastName}`,
+  creator: entity?.publicAuthor?.name ??
+    (entity?.author?.user?.firstName || entity?.author?.user?.lastName
+      ? `${entity?.author?.user?.firstName} ${entity?.author?.user?.lastName}`
+      : ''),
   creatorImage: entity?.author?.uploads?.find(upload => upload?.profilePicture)?.media,
   url: ['/portal', articlesFeatureKey, entity?.slug],
   image: entity?.uploads?.find(upload => upload?.card)?.media,
