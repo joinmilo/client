@@ -140,5 +140,7 @@ export const userToCard = (entity?: Maybe<UserContextEntity>): CardElement => ({
   dateTime: true,
   phone: entity?.user?.phone,
   avatarPlaceholder: entity?.user?.firstName?.charAt(0) || entity?.user?.lastName?.charAt(0),
-  url: ['/portal', authorsFeatureKey, entity?.slug],
+  url: entity?.slug
+    ? ['/portal', authorsFeatureKey, entity.slug]
+    : undefined,
 });

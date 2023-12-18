@@ -3,13 +3,17 @@ a {
   width: 100%;
   display: flex;
   justify-content: center;
+  cursor: pointer;
+}
+
+.non-clickable {
+  cursor: default !important;
 }
 
 mat-card {
   display: flex;
   justify-content: center;
   width: 18rem;
-  cursor: pointer;
 
   * {
     text-align: center;
