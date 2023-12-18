@@ -1,7 +1,8 @@
 button[mat-button] {
   background-color: rgba(255, 255, 255, 0.868);
   min-width: 2.5rem !important;
-  border-radius: 50%;
+  min-height: 2.5rem !important;
+  border-radius: 50% !important;
 }
 
 .default-actions {
