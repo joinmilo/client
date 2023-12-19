@@ -99,6 +99,7 @@ mat-card-actions {
   .border-image {
     height: 2rem;
     width: 2rem;
+    aspect-ratio: 1/1;
     display: flex;
     overflow: revert;
     justify-content: center;
