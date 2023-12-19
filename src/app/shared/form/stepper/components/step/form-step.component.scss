@@ -24,6 +24,11 @@
   border-left: solid var(--color-warn-500) !important;
 }
 
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  flex-grow: 1;
+}
+
 :host ::ng-deep {
 
   mat-expansion-panel.mat-expanded {
