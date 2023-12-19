@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { ArticleEntity, Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
@@ -11,7 +11,7 @@ import { selectArticleDetails } from '../../state/article-portal-details.selecto
   templateUrl: './article-portal-details-author.component.html',
   styleUrls: ['./article-portal-details-author.component.scss'],
 })
-export class ArticlePortalDetailsAuthorComponent implements OnInit, OnDestroy {
+export class ArticlePortalDetailsAuthorComponent implements OnInit, OnDestroy, AfterViewInit {
 
   public article?: Maybe<ArticleEntity> | undefined;
 
@@ -25,7 +25,10 @@ export class ArticlePortalDetailsAuthorComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
   
-  constructor(private store: Store) { }
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private store: Store) { }
 
   public ngOnInit(): void {
     this.store.select(selectArticleDetails)
@@ -49,5 +52,13 @@ export class ArticlePortalDetailsAuthorComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
+  }
+
+  ngAfterViewInit() {
+    const spanElement = this.elementRef.nativeElement.querySelector('.border-image');
+    const spanWidth = spanElement.offsetWidth;
+
+    const fontSize = spanWidth * 0.025 - 1.5 + 'em' ;
+    this.renderer.setStyle(spanElement, 'font-size', fontSize);
   }
 }

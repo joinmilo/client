@@ -31,8 +31,14 @@ export class MediaAvatarComponent implements OnInit, OnChanges, AfterViewInit {
     const spanElement = this.elementRef.nativeElement.querySelector('.border-image');
     const spanWidth = spanElement.offsetWidth;
 
-    const fontSize = (spanWidth * 0.025) > 0 ?? 1 + 'em';
-    
-     this.renderer.setStyle(spanElement, 'font-size', fontSize);
+    let fontSize = parseFloat(spanWidth * 0.025 + 'rem');
+    const minFontSize = 1;
+
+    if (fontSize < minFontSize) {
+      fontSize = minFontSize;
+    }
+
+    const finalFontSize = fontSize + 'rem';
+    this.renderer.setStyle(spanElement, 'font-size', finalFontSize);
   }
 }

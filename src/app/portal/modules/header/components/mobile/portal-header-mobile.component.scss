@@ -29,15 +29,9 @@ header {
 
 section {
   display: flex;
-  gap: .25rem;
+  gap: 1rem;
   padding: .5rem 1rem 0;
   align-items: center;
-}
-
-app-media-avatar {
-  width: 2rem;
-  height: 2rem;
-  margin-right: 0.5rem;
 }
 
 .currentUser {
