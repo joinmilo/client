@@ -10,6 +10,14 @@
   object-fit: contain;
 }
 
+img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
 span {
   display: flex;
   justify-content: center;
