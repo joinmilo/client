@@ -29,8 +29,8 @@
     background-color: var(--color-lightest);
   }
 
-  .mdc-data-table__cell{
-    padding: 0 .5rem;
+  .mdc-data-table__cell, .mdc-data-table__header-cell{
+    padding: 0 .75rem;
   }
 }
 
