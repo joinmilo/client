@@ -44,6 +44,9 @@ export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
   @Input()
   public stepMinute = 15;
 
+  @Input()
+  public label = 'begin'; 
+
   public control = new FormControl(new Date());
 
   public onChange?: (value: Maybe<Date>) => void;
