@@ -3,8 +3,6 @@ span {
   padding: .25rem .5rem;
   border-radius: var(--mdc-shape-small);
   text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  width: fit-content;
   cursor: pointer;
-  width: max-content;
 }

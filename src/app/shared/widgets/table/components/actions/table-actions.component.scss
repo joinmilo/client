@@ -1,5 +1,6 @@
 :host {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .save {
@@ -14,4 +15,10 @@
     color: var(--color-gray);
   }
 
+}
+
+#button {
+  display: flex;
+  justify-content: center;
+  min-width: 2.875rem;
 }
