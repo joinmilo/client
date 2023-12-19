@@ -1,12 +1,11 @@
 <app-page-title [title]="deal | translatable: 'name' | async">
 </app-page-title>
 
-<button mat-flat-button color="primary">
+<button mat-flat-button color="primary" [routerLink]="['form']">
   <span>
     <app-icon [icon]="['fas', 'pen-to-square']"></app-icon>
     <span appLabel="editDeal"></span>
   </span>
-</button>
 
 <app-radio-card-group
   [value]="initValue"

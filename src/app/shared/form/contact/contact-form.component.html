@@ -1,15 +1,17 @@
 <form [formGroup]="form">
-  <app-row *ngIf="contactOptions?.length" [columns]="2">
-    <mat-form-field appearance="outline">
-      <mat-label appLabel="importContact"></mat-label>
-      <mat-select formControlName="contactOptionLabel">
-        <mat-option [value]="contactOption?.label" 
-          *ngFor="let contactOption of contactOptions">
-          <span [appLabel]="contactOption?.label"></span>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </app-row>
+  <ng-container *ngIf="showContactOptions">
+    <app-row *ngIf="contactOptions?.length" [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="importContact"></mat-label>
+        <mat-select formControlName="contactOptionLabel">
+          <mat-option [value]="contactOption?.label" 
+            *ngFor="let contactOption of contactOptions">
+            <span [appLabel]="contactOption?.label"></span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-row>
+  </ng-container>
 
   <app-row columns="2">
     <mat-form-field appearance="outline">

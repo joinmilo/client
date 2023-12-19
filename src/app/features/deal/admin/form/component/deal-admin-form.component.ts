@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { AddressEntity, DealEntity, DealMediaEntity, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { AddressEntity, ContactEntity, DealEntity, DealMediaEntity, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { AppValidators } from 'src/app/core/validators/validators';
@@ -40,10 +40,7 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public contactForm = this.fb.group({
-    email: [undefined as Maybe<string>, [Validators.required, AppValidators.email()]],
-    phone: [undefined as Maybe<string>, [AppValidators.phone()]],
-    name: [undefined as Maybe<string>],
-    website: [undefined as Maybe<string>],
+    contact: [undefined as Maybe<ContactEntity>],
   });
 
   public uploadsForm = this.fb.group({
@@ -99,10 +96,7 @@ public ngOnInit(): void {
       });
 
       this.contactForm.patchValue({
-        email: deal?.contact?.email,
-        phone: deal?.contact?.phone,
-        name: deal?.contact?.name,
-        website: deal?.contact?.website
+        contact: deal?.contact,
       });
 
       this.uploadsForm.patchValue({
@@ -125,13 +119,14 @@ public ngOnInit(): void {
         ? { id: this.contentForm.value.categoryId }
         : null,
       address: this.locationForm.value.address,
-      contact: {
-        email: this.contactForm.value.email,
-        phone: this.contactForm.value.phone,
-        name: this.contactForm.value.name,
-        website: this.contactForm.value.website,
-        preferredContact: true
-      },
+      contact: this.contactForm.value.contact
+        ? {
+            name: this.contactForm.value.contact.name,
+            email: this.contactForm.value.contact.email,
+            phone: this.contactForm.value.contact.phone,
+            website: this.contactForm.value.contact.website,
+          }
+        : null,
       creator: {
         id: this.currentUser?.id,
         user: {

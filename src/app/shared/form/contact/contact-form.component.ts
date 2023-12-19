@@ -11,6 +11,7 @@ import {
   FormBuilder,
   NG_VALUE_ACCESSOR,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +22,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { ContactEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { GridLayoutModule } from '../../layout/grid-layout/grid-layout.module';
 import { FormStepperModule } from '../stepper/form-stepper.module';
 import { ContactOptionEntity } from './typings/contact-form';
@@ -54,11 +56,14 @@ export class ContactFormComponent implements ControlValueAccessor, OnInit, OnDes
   @Input()
   public inputOptions?: ContactOptionEntity[];
 
+  @Input()
+  public showContactOptions = true;
+
   public form = this.fb.group({
     contactOptionLabel: [undefined as Maybe<string>],
     name: ['' as Maybe<string>],
-    email: ['' as Maybe<string>],
-    phone: ['' as Maybe<string>],
+    email: ['' as Maybe<string>, [Validators.required, AppValidators.email()]],
+    phone: ['' as Maybe<string>, [AppValidators.phone()]],
     website: ['' as Maybe<string>],
   });
 

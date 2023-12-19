@@ -21,26 +21,11 @@
   </app-form-step>
 
   <app-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
-    <app-row columns="2">
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="email"></mat-label>
-        <input matInput formControlName="email">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="name"></mat-label>
-        <input matInput formControlName="name">
-      </mat-form-field>
-    </app-row>
-
-    <app-row columns="2">
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="website"></mat-label>
-        <input matInput formControlName="website">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label appLabel="phone"></mat-label>
-        <input matInput formControlName="phone">
-      </mat-form-field>
+    <app-row>
+      <app-contact-form 
+        formControlName="contact"
+        [showContactOptions]="false">
+      </app-contact-form>
     </app-row>
   </app-form-step>
 
