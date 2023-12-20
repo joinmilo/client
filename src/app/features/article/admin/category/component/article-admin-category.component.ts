@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ArticleCategoryEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { TranslationService } from 'src/app/core/services/translation.service';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { ArticleAdminCategoryActions } from '../state/article-admin-category.actions';
 import { selectCategoryData } from '../state/article-admin-category.selectors';
@@ -12,9 +14,11 @@ import { selectCategoryData } from '../state/article-admin-category.selectors';
   templateUrl: './article-admin-category.component.html',
   styleUrls: ['./article-admin-category.component.scss']
 })
-export class ArticleAdminCategoryComponent {
+export class ArticleAdminCategoryComponent implements OnInit {
 
   public categories = this.store.select(selectCategoryData);
+
+  public isArticleAdmin = false;
 
   public actions: RowAction<ArticleCategoryEntity>[] = [    
     {
@@ -51,10 +55,20 @@ export class ArticleAdminCategoryComponent {
   
   constructor(
     private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
     private router: Router,
     private store: Store,
     private translationService: TranslationService,
   ) { }
+
+  ngOnInit() {
+    this.checkPrivileges();
+  }
+  
+  private checkPrivileges() {
+    const requiredPrivileges: Privilege[] = ['articles_admin'];
+    this.isArticleAdmin = this.authService.hasAnyPrivileges(requiredPrivileges);
+  }
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(ArticleAdminCategoryActions.updateParams(params));

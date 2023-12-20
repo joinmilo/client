@@ -1,6 +1,7 @@
 <app-page-title titleLabel="dealCategories"></app-page-title>
 
 <button
+  *ngIf="isDealAdmin"
   mat-raised-button
   color="primary"
   [routerLink]="['form']"

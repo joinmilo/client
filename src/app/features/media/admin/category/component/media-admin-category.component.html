@@ -1,6 +1,9 @@
 <app-page-title titleLabel="mediaCategories"></app-page-title>
 
-<button mat-raised-button color="primary" 
+<button 
+  *ngIf="isMediaAdmin"
+  mat-raised-button
+  color="primary" 
   [routerLink]="['form']"
   appLabel="createCategory">
 </button>

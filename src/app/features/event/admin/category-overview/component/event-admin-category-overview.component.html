@@ -1,6 +1,9 @@
 <app-page-title titleLabel="eventCategories"></app-page-title>
 
-<button mat-raised-button color="primary" 
+<button 
+  *ngIf="isEventAdmin" 
+  mat-raised-button 
+  color="primary" 
   [routerLink]="['form']"
   appLabel="createCategory">
 </button>
