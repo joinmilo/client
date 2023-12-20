@@ -24,9 +24,8 @@
   border-left: solid var(--color-warn-500) !important;
 }
 
-.mat-expansion-panel-header-title,
 .mat-expansion-panel-header-description {
-  flex-grow: 1;
+  flex-grow: 1.5;
 }
 
 :host ::ng-deep {
