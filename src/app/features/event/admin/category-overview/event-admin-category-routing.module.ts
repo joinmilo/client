@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EventAdminCategoryOverviewComponent } from './component/event-admin-category-overview.component';
+import { EventAdminCategoryComponent } from './component/event-admin-category.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: EventAdminCategoryOverviewComponent,
+    component: EventAdminCategoryComponent,
   },
 ];
 
