@@ -10,5 +10,6 @@
   <a appLabel="writeComment" suffix="»" (click)="openDialog()"></a>
   <a *ngIf="comment?.id"
     (click)="routeOverview()"
+    [routerLink]="['./comments']"
     appLabel="allComments" suffix="»"></a>
 </section>
