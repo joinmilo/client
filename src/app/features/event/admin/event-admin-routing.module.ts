@@ -27,7 +27,7 @@ const menuRoutes: AdminFeatureRoute[] = [
   },
   {
     path: `${eventsFeatureKey}/category`,
-    loadChildren: () => import('./category-overview/event-admin-category-overview.module')
+    loadChildren: () => import('./category-overview/event-admin-category.module')
       .then((imported) => imported.EventAdminCategoryModule),
     data: { 
       label: 'categories',
