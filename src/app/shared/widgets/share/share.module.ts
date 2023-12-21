@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { IconComponent } from '../icon/icon.component';
 import { ShareButtonComponent } from './button/share-button.component';
@@ -14,6 +16,11 @@ const components = [
 
 const framework = [
   CommonModule,
+];
+
+const lib = [
+  ShareButtonsModule,
+  ShareIconsModule,
 ];
 
 const materials = [
@@ -30,6 +37,7 @@ const modules = [
   declarations: [...components],
   imports: [
     ...framework,
+    ...lib,
     ...materials,
     ...modules,
   ],
