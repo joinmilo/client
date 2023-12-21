@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
@@ -9,7 +9,7 @@ import { dataToElement } from '../../utils/card.utils';
   templateUrl: './contact-card.component.html',
   styleUrls: ['./contact-card.component.scss']
 })
-export class ContactCardComponent implements OnInit, AfterViewInit {
+export class ContactCardComponent implements OnInit {
 
   @Input()
   public actions?: CardActionInput[];
@@ -25,10 +25,7 @@ export class ContactCardComponent implements OnInit, AfterViewInit {
 
   public element?: Maybe<CardElement>;
 
-  constructor(
-    private elementRef: ElementRef,
-    private renderer: Renderer2,
-    private router: Router) {}
+  constructor(private router: Router) {}
 
   public ngOnInit(): void {
     if (this.entity && this.data) {
@@ -44,14 +41,6 @@ export class ContactCardComponent implements OnInit, AfterViewInit {
   
   public emit(action: CardActionInput): void {
     this.actionClicked.emit({ ...action, element: this.element as CardElement})
-  }
-
-  ngAfterViewInit() {
-    const spanElement = this.elementRef.nativeElement.querySelector('.border-image');
-    const spanWidth = spanElement.offsetWidth;
-
-    const fontSize = spanWidth * 0.025 + 'em';
-    this.renderer.setStyle(spanElement, 'font-size', fontSize);
   }
 
 }

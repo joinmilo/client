@@ -44,6 +44,10 @@ mat-card {
     max-height: 12rem;
     max-width: 12rem;
     margin-bottom: var(--gap);
+
+    span {
+      font-size: 5rem;
+    }
   }
 
   h1 {
