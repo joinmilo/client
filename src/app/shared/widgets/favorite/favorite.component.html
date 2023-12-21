@@ -6,16 +6,15 @@
       *ngIf="isFavorite" 
       [icon]="['fas', 'heart']" 
       [size]="'lg'" 
-      [style.color]="'var(--color-warn-400)'"
-    ></app-icon>
+      [style.color]="'var(--color-warn-400)'">
+    </app-icon>
     <app-icon 
       *ngIf="!isFavorite" 
       [icon]="['far', 'heart']" 
-      [size]="'lg'"
-    ></app-icon>
+      [size]="'lg'">
+    </app-icon>
     <ng-container *ngIf="withLabel">
       <span *ngIf="!isFavorite" [appLabel]="addToFavoritesLabel"></span>
       <span *ngIf="isFavorite" [appLabel]="removeFromFavoritesLabel"></span>
     </ng-container>
   </div>
-</button>

@@ -7,15 +7,11 @@
   width: 20rem;
 }
 
-::ng-deep .mdc-list-item__primary-text {
+app-icon {
   display: flex;
-  width: inherit;
-  padding: .5rem 0;
-}
-
-svg {
-  align-self: center;
-  color: var(--color-primary-900)
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-900);
 }
 
 ::ng-deep {
@@ -35,10 +31,6 @@ svg {
     flex-direction: column;
     margin-right: auto;
     gap: .25rem;
-  }
-
-  app-icon {
-    color: var(--color-primary-900);
   }
 
   app-icon:first-of-type {

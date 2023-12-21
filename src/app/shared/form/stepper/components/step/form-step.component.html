@@ -10,9 +10,9 @@
     <mat-panel-description [appLabel]="descriptionLabel">
     </mat-panel-description>
 
-    <span *ngIf="icon">
-      <app-icon [icon]="['fas', icon]"></app-icon>
-    </span>
+    <app-icon *ngIf="icon"
+      [icon]="['fas', icon]">
+    </app-icon>
   </mat-expansion-panel-header>
 
   <div class="container">

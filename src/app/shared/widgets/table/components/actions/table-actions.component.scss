@@ -3,14 +3,14 @@
 }
 
 .save {
-  svg {
+  app-icon {
     color: var(--color-success-500);
   }
 }
 
 .disabled {
   cursor: not-allowed;
-  svg {
+  app-icon {
     color: var(--color-gray);
   }
 
