@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, InfoMediaCategoryEntity } from 'src/app/core/api/generated/schema';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { Privilege } from 'src/app/core/typings/privilege';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { MediaAdminCategoryActions } from '../state/media-admin-category.actions';
 import { selectCategoryData } from '../state/media-admin-category.selectors';
@@ -51,13 +50,12 @@ export class MediaAdminCategoryComponent implements OnInit {
     private translationService: TranslationService,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.checkPrivileges();
   }
   
-  private checkPrivileges() {
-    const requiredPrivileges: Privilege[] = ['media_admin'];
-    this.isMediaAdmin = this.authService.hasAnyPrivileges(requiredPrivileges);
+  private checkPrivileges(): void {
+    this.isMediaAdmin = this.authService.hasAnyPrivileges(['media_admin']);
   }
   
   public updateParams(params: FilterSortPaginateInput) {
