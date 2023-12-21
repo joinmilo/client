@@ -1,4 +1,4 @@
-<app-row columns="columns | async" [formGroup]="form">
+<app-row [columns]="columns | async" [formGroup]="form">
   <app-datetime-form
     [appAssignColumns]="assignedColumns | async"
     formControlName="startDate">
