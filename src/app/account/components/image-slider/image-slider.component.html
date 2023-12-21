@@ -8,8 +8,10 @@
   <div>
     <ng-container *ngFor="let img of images">
       <button mat-button (click)="onImageChange(img.path)">
-        <app-icon *ngIf="selectedImage === img.path" [icon]="['fas', 'circle']" [size]="'xs'"></app-icon>
-        <app-icon *ngIf="selectedImage !== img.path" [icon]="['far', 'circle']" [size]="'xs'"></app-icon>
+        <app-icon size="xs" [icon]="selectedImage === img.path
+          ? ['fas', 'circle']
+          : ['far', 'circle']">
+        </app-icon>
       </button>
     </ng-container>
   </div>

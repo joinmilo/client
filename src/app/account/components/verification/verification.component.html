@@ -6,12 +6,12 @@
         : 'failure'"></h2>
     <app-icon 
       [icon]="(verified | async) 
-      ? ['fas', 'check'] 
-      : ['fas', 'xmark']" 
+        ? ['fas', 'check'] 
+        : ['fas', 'xmark']" 
       [size]="'5x'"
       [style.color]="(verified | async) 
-      ? 'var(--color-success-500)' 
-      : 'var(--color-warn-500)'">
+        ? 'var(--color-success-500)' 
+        : 'var(--color-warn-500)'">
     </app-icon>
 
     <p [appLabel]="(verified | async)
