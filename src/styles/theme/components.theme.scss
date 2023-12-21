@@ -2,6 +2,10 @@
 
 /* Button */
 
+.mat-mdc-outlined-button:not(:disabled) {
+  --mat-outlined-button-ripple-color: rgba(0, 0, 0, 0.1) !important;
+}
+
 .mdc-button {
   border-radius: var(--mdc-shape-small) !important;
 }
