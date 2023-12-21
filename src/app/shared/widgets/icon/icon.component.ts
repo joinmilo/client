@@ -4,6 +4,7 @@ import { BrandIcon } from './typings/brand-icons';
 import { RegularIcon } from './typings/regular-icons';
 import { SolidIcon } from './typings/solid-icons';
 
+
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
@@ -16,12 +17,12 @@ import { SolidIcon } from './typings/solid-icons';
 export class IconComponent {
 
   @Input({ required: true })
-  public set icon(icon: SolidIcon | RegularIcon | BrandIcon) {
-    this.iconClasses = `${icon[0]} fa-${icon[1]} fa-${this.size}`;
-  }
+  public icon!: SolidIcon | RegularIcon | BrandIcon;
 
   @Input()
   public size?: string = '1x';
   
-  public iconClasses!: string;
+  get iconClasses(): string {
+    return `${this.icon[0]} fa-${this.icon[1]} fa-${this.size}`;
+  }
 }
