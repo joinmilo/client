@@ -6,7 +6,7 @@ import { LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
@@ -117,6 +117,7 @@ const providers = [
   ],
   providers: [
     ...providers,
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })

@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/wooportal",
+            "outputPath": "dist/wooportal/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -124,6 +124,67 @@
               "src/**/*.html"
             ]
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/wooportal/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "wooportal:build:development",
+              "serverTarget": "wooportal:server:development"
+            },
+            "production": {
+              "browserTarget": "wooportal:build:production",
+              "serverTarget": "wooportal:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "wooportal:build:production",
+              "serverTarget": "wooportal:server:production"
+            },
+            "development": {
+              "browserTarget": "wooportal:build:development",
+              "serverTarget": "wooportal:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
