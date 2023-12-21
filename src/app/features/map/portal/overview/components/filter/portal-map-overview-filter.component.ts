@@ -8,7 +8,8 @@ import { selectActiveEntityFilter, selectResult } from '../../state/portal-map-o
 
 @Component({
   selector: 'app-portal-map-overview-filter',
-  templateUrl: './portal-map-overview-filter.component.html'
+  templateUrl: './portal-map-overview-filter.component.html',
+  styleUrls: ['portal-map-overview-filter.component.scss']
 })
 export class PortalMapOverviewFilterComponent implements OnDestroy {
 
