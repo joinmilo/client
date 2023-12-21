@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, afterNextRender } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectTheme } from '../state/selectors/core.selectors';
 
@@ -8,10 +8,10 @@ export class ThemeService {
   constructor(
     private store: Store,
   ) {
-    this.store.select(selectTheme)
+    afterNextRender(() => this.store.select(selectTheme)
       .subscribe(theme => theme?.variables?.forEach(variable =>
         document.documentElement.style.setProperty(
-          variable?.code as string, variable?.value as string)));
+          variable?.code as string, variable?.value as string))));
   }
 
 }

@@ -23,12 +23,17 @@ export interface CoreState {
   themes?: ThemeEntity[],
 }
 
+// export const initialState: CoreState = {
+//   ongoingRequests: 0,
+//   language: { locale: localStorage.getItem(languageLocalStorage)
+//     ? localStorage.getItem(languageLocalStorage)
+//     : navigator.language.substring(0,2)
+//   },
+// };
+
 export const initialState: CoreState = {
   ongoingRequests: 0,
-  language: { locale: localStorage.getItem(languageLocalStorage)
-    ? localStorage.getItem(languageLocalStorage)
-    : navigator.language.substring(0,2)
-  },
+  language: { locale: 'de' },
 };
 
 export const coreReducer = createReducer(

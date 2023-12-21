@@ -1,4 +1,4 @@
-import { Inject, Injectable, Injector } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { FetchResult } from '@apollo/client/core';
 import { Store } from '@ngrx/store';
 import { EMPTY, Observable } from 'rxjs';
@@ -7,7 +7,6 @@ import { Maybe, TokenDto } from 'src/app/core/api/generated/schema';
 import { LoginGQL, LoginMutation } from '../api/generated/login.mutation.generated';
 import { RefreshGQL, RefreshMutation } from '../api/generated/refresh.mutation.generated';
 import { refreshKey } from '../constants/core.constants';
-import { APP_AUTH_TOKENS } from '../constants/inject-tokens';
 import { CoreUserActions } from '../state/actions/core-user.actions';
 import { Privilege } from '../typings/privilege';
 import { Token } from '../typings/token';
@@ -29,15 +28,15 @@ export class AuthService {
 
   constructor(
     private readonly injector: Injector,
-    @Inject(APP_AUTH_TOKENS)
-    public initTokens: TokenDto,
+    // @Inject(APP_AUTH_TOKENS)
+    // public initTokens: TokenDto,
     private store: Store,
   ) {
-    this.tokens = { ...initTokens };
+    // this.tokens = { ...initTokens };
 
-    if (!this.tokens.refresh) {
-      this.store.dispatch(CoreUserActions.clear());
-    }
+    // if (!this.tokens.refresh) {
+    //   this.store.dispatch(CoreUserActions.clear());
+    // }
   }
 
   public hasAnyPrivileges(privileges: Privilege[]): boolean {
@@ -52,16 +51,16 @@ export class AuthService {
       return this.callRefresh(token);
     }
 
-    const tokenStr = localStorage.getItem(refreshKey);
-    if (tokenStr) {
-      const refreshToken: Token = JSON.parse(
-        window.atob(tokenStr.split('.')[1])
-      );
+    // const tokenStr = localStorage.getItem(refreshKey);
+    // if (tokenStr) {
+    //   const refreshToken: Token = JSON.parse(
+    //     window.atob(tokenStr.split('.')[1])
+    //   );
       
-      if (!this.expired(refreshToken.exp)) {
-        return this.callRefresh(tokenStr)
-      }
-    }
+    //   if (!this.expired(refreshToken.exp)) {
+    //     return this.callRefresh(tokenStr)
+    //   }
+    // }
     
     this.clear();
     return EMPTY;
@@ -95,7 +94,7 @@ export class AuthService {
 
   public clear(): void {
     this.tokens = undefined;
-    localStorage.removeItem(refreshKey);
+    // localStorage.removeItem(refreshKey);
     this.store.dispatch(CoreUserActions.clear());
     
   }

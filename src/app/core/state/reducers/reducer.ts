@@ -1,5 +1,4 @@
 import { Action, ActionReducer } from '@ngrx/store';
-import { appStateKey } from '../../constants/core.constants';
 import { CoreUserState, coreUserReducer } from './core-user.reducer';
 import { CoreState, coreReducer } from './core.reducer';
 
@@ -17,7 +16,7 @@ export const localStorageMetaReducer = (reducer: ActionReducer<CoreUserState, Ac
   (state, action) => {
 
     const newState = reducer(state, action);
-    localStorage.setItem(appStateKey, JSON.stringify(newState));
+    // localStorage.setItem(appStateKey, JSON.stringify(newState));
 
     return newState;
   };

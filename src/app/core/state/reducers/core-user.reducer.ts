@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { UserContextEntity } from 'src/app/core/api/generated/schema';
 import { Cookie } from 'src/app/core/components/cookie/typings/cookie';
-import { appStateKey } from '../../constants/core.constants';
 import { CoreUserActions } from '../actions/core-user.actions';
 
 export interface CoreUserState {
@@ -9,11 +8,13 @@ export interface CoreUserState {
   cookieSettings?: Cookie
 }
 
-export const storedData = localStorage.getItem(appStateKey);
+// export const storedData = localStorage?.getItem(appStateKey);
 
-export const initialState: CoreUserState = storedData
-  ? JSON.parse(storedData)
-  : { cookieSettings: undefined };
+// export const initialState: CoreUserState = storedData
+//   ? JSON.parse(storedData)
+//   : { cookieSettings: undefined };
+
+export const initialState: CoreUserState = { cookieSettings: undefined };
 
 export const coreUserReducer = createReducer(
   initialState,

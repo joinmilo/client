@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, afterNextRender } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { MediaEntity } from 'src/app/core/api/generated/schema';
 import { faviconConfig } from '../constants/configuration.constants';
@@ -10,14 +10,14 @@ export class FavIconService {
   constructor(
     private store: Store,
   ) {
-    this.store.select(selectConfiguration(faviconConfig))
+    afterNextRender(() => this.store.select(selectConfiguration(faviconConfig))
       .subscribe(config => {
         const favIcon = document?.querySelector('#favicon') as HTMLLinkElement;
 
         if (favIcon?.href && config?.media?.url) {
           favIcon.href = (config?.media as MediaEntity).url as string;
         }
-      });
+      }));
   }
   
 }

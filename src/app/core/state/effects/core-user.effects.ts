@@ -18,7 +18,6 @@ import { RemoveFavoriteDealGQL } from '../../api/generated/remove-favorite-deal.
 import { RemoveFavoriteEventGQL } from '../../api/generated/remove-favorite-event.mutation.generated';
 import { RemoveFavoriteOrganisationGQL } from '../../api/generated/remove-favorite-organisation.mutation.generated';
 import { CookieComponent } from '../../components/cookie/cookie.component';
-import { refreshKey } from '../../constants/core.constants';
 import { accountUrl } from '../../constants/module.constants';
 import { AuthService } from '../../services/auth.service';
 import { FeedbackService } from '../../services/feedback.service';
@@ -39,7 +38,7 @@ export class CoreUserEffects {
       CoreUserActions.init,
       CoreUserActions.updateUser,
     ),
-    filter(() => !!localStorage.getItem(refreshKey)),
+    // filter(() => !!localStorage.getItem(refreshKey)),
     switchMap(() => this.getMeService.watch().valueChanges),
     filter(response => !!response.data.me?.id),
     map(response => CoreUserActions.getMe(response.data.me as UserContextEntity))

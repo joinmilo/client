@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, afterNextRender } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {
@@ -57,7 +57,7 @@ export class MapComponent implements OnInit, OnDestroy {
     private store: Store,
     private markerService: MapMarkerService
   ) {
-    combineLatest([
+    afterNextRender(() => combineLatest([
       this.store.select(selectConfiguration(mapLongitudeConfig)),
       this.store.select(selectConfiguration(mapLatitudeConfig)),
     ]).pipe(
@@ -74,7 +74,7 @@ export class MapComponent implements OnInit, OnDestroy {
         ...mapOptions,
         layers: [tileLayer(locationTileLayerURL, tileLayerOptions)]
       }
-    });
+    }));
   }
 
   public ngOnInit(): void {

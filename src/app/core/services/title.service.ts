@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, afterNextRender } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { portalNameConfig } from '../constants/configuration.constants';
@@ -11,8 +11,8 @@ export class BrowserTitleService {
     private store: Store,
     private title: Title,
   ) {
-    this.store.select(selectConfiguration(portalNameConfig))
-      .subscribe(config => config?.value && this.title.setTitle(config?.value));
+    afterNextRender(() => this.store.select(selectConfiguration(portalNameConfig))
+      .subscribe(config => config?.value && this.title.setTitle(config?.value)));
   }
   
 }
