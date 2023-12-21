@@ -1,14 +1,55 @@
 <mat-dialog-content class="mat-typography">
-  <button shareButton="whatsapp" [url]="url">Whatsapp</button>
-  <button shareButton="twitter" [url]="url">Tweet</button>
-  <button shareButton="email" [url]="url">Email</button>
-  <button shareButton="copy" [url]="url">Copy</button>
-  <button shareButton="telegram" [url]="url">Telegram</button>
-  <button shareButton="facebook" [url]="url">Facebook</button>
-  <button shareButton="sms" [url]="url">SMS</button>
-  <button shareButton="print" [url]="url">Print</button>
-  <button shareButton="messenger" [url]="url">messenger</button>
-  <button shareButton="linkedin" [url]="url">linkedin</button>
+  
+  <button id="whatsapp" shareButton="whatsapp" [url]="url">
+    <app-icon [icon]="['fab', 'whatsapp']" [size]="'lg'"></app-icon>
+    <span>Whatsapp</span>
+  </button>
+
+  <button id="telegram" shareButton="telegram" [url]="url">
+    <app-icon [icon]="['fab', 'telegram']" [size]="'lg'"></app-icon>
+    <span>Telegram</span>
+  </button>
+
+  <button id="messenger" shareButton="messenger" [url]="url">
+    <app-icon [icon]="['fab', 'facebook-messenger']" [size]="'lg'"></app-icon>
+    <span>messenger</span>
+  </button>
+
+  <button id="facebook" shareButton="facebook" [url]="url">
+    <app-icon [icon]="['fab', 'facebook']" [size]="'lg'"></app-icon>
+    <span>Facebook</span>
+  </button>
+
+  <button id="twitter" shareButton="twitter" [url]="url">
+    <app-icon [icon]="['fab', 'twitter']" [size]="'lg'"></app-icon>
+    <span>Tweet</span>
+  </button>
+
+  <button id="sms" shareButton="sms" [url]="url">
+    <app-icon [icon]="['fas', 'comment-sms']" [size]="'lg'"></app-icon>
+    <span>SMS</span>
+  </button>
+  
+  <button id="email" shareButton="email" [url]="url">
+    <app-icon [icon]="['fas', 'envelope']" [size]="'lg'"></app-icon>
+    <span>Email</span>
+  </button>
+  
+  <button id="copy" shareButton="copy" [url]="url">
+    <app-icon [icon]="['fas', 'copy']" [size]="'lg'"></app-icon>
+    <span>Copy</span>
+  </button>
+     
+  <button id="print" shareButton="print" [url]="url">
+    <app-icon [icon]="['fas', 'print']" [size]="'lg'"></app-icon>
+    <span>Print</span>
+  </button>
+    
+  <button id="linkedin" shareButton="linkedin" [url]="url">
+    <app-icon [icon]="['fab', 'linkedin']" [size]="'lg'"></app-icon>
+    <span>linkedin</span>
+  </button>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>
