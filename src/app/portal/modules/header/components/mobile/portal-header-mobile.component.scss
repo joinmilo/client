@@ -38,6 +38,10 @@ section {
   gap: 1rem;
   padding: .5rem 1rem 0;
   align-items: center;
+
+  app-media-avatar {
+    width: 1.75rem;
+  }
 }
 
 .currentUser {
