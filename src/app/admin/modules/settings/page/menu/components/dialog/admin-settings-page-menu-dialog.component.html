@@ -1,0 +1,56 @@
+<h2 mat-dialog-title appLabel="organizeMenu"></h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <span appLabel="chooseParentMenuItem"></span>
+
+    <mat-form-field appearance="outline">
+      <mat-label appLabel="menuItem"></mat-label>
+      <mat-select formControlName="parentId">
+        @for (parentMenuItem of parentMenuItems | async; track parentMenuItem) {
+          <mat-option [value]="parentMenuItem.id">
+            <span>{{ parentMenuItem | translatable: "name" | async }}</span>
+            @if (!parentMenuItem.header) {
+              (<span appLabel="onlyFooter"></span>)
+            }
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-divider></mat-divider>
+
+    <app-drag-drop
+      [deletable]="false"
+      (updated)="sorted($event)">
+      @for (item of form.value.items; track item; let index = $index) {
+        @if (item.newEntity) {
+          <app-drag-drop-element
+            titleLabel="yourNewPage"
+            [expanded]="true">
+            <span appLabel="orderYourPageInMenu"></span>
+          </app-drag-drop-element>
+        } @else {
+          <app-drag-drop-element
+            [title]="item.menu | translatable: 'name' | async"
+            [expandable]="false">
+          </app-drag-drop-element>
+        }
+      }
+    </app-drag-drop>
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button
+    mat-dialog-close
+    appLabel="cancel">
+  </button>
+
+  <button mat-flat-button
+    color="primary"
+    appLabel="save"
+    mat-dialog-close
+    (click)="saved()">
+  </button>
+</mat-dialog-actions>

@@ -13,11 +13,9 @@ export const initialState: AdminSettingsPageFormState = {
 export const adminSettingsPageFormReducer = createReducer(
   initialState,
 
-  on(
-    AdminSettingsPageFormActions.setPage,
-    (state, action): AdminSettingsPageFormState => ({
-      ...state, editPage: action.page
-    })),
+  on(AdminSettingsPageFormActions.setPage, (state, action): AdminSettingsPageFormState => ({
+    ...state, editPage: action.page
+  })),
 
   on(
     AdminSettingsPageFormActions.saved,

@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -19,6 +17,7 @@ import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { AdminSettingsPageEmbeddingModule } from '../embedding/admin-settings-page-embedding.module';
+import { AdminSettingsPageMenuModule } from '../menu/admin-settings-page-menu.module';
 import { AdminSettingsPageFormRoutingModule } from './admin-settings-page-form.module-routing.module';
 import { AdminSettingsPageFormComponent } from './component/admin-settings-page-form.component';
 import { adminSettingsPageFormStateKey } from './constants/admin-settings-page-form.constants';
@@ -37,8 +36,6 @@ const framework = [
 
 const materials = [
   MatButtonModule,
-  MatDividerModule,
-  MatExpansionModule,
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
@@ -48,6 +45,7 @@ const materials = [
 const modules = [
   AdminSettingsPageEmbeddingModule,
   AdminSettingsPageFormRoutingModule,
+  AdminSettingsPageMenuModule,
   CoreModule,
   CaptchaModule,
   CkEditorFormComponent,

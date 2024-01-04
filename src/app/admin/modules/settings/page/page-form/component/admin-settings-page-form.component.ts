@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
-import { Maybe, PageEmbeddingEntity, PageEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, MenuItemEntity, PageEmbeddingEntity } from 'src/app/core/api/generated/schema';
 
 import { ActivatedRoute } from '@angular/router';
 import { slug } from 'src/app/core/constants/queryparam.constants';
@@ -14,21 +14,18 @@ import { selectPageForm } from '../state/admin-settings-page-form.selectors';
   templateUrl: './admin-settings-page-form.component.html',
   styleUrls: ['./admin-settings-page-form.component.scss'],
 })
-export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
+export class AdminSettingsPageFormComponent implements OnInit, OnDestroy {
 
   public contentForm = this.fb.group({
     id: ['' as Maybe<string>],
     label: ['' as Maybe<string>, [Validators.required]],
     embeddings: [[] as Maybe<PageEmbeddingEntity>[], [Validators.required]],
+    isLanding: [false],
   });
 
-  public additionalInfoForm = this.fb.group({
-    metaDescription: ['' as Maybe<string>],
-    callText: ['' as Maybe<string>], 
-    callUrl: ['' as Maybe<string>], 
+  public menuForm = this.fb.group({
+    menuItems: [] as Maybe<Maybe<MenuItemEntity>[]>
   });
-
-  public page?: Maybe<PageEntity>;
 
   private destroy = new Subject<void>();
 
@@ -36,7 +33,8 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private store: Store,
-  ) { }
+  ) {
+  }
 
   public ngOnInit(): void {
     this.activatedRoute?.parent?.params.pipe(
@@ -51,15 +49,15 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
         id: page?.id,
         label: page?.label,
         embeddings: page?.embeddings,
+        isLanding: page?.isLanding,
       });
 
-      this.additionalInfoForm.patchValue({
-        metaDescription: page?.metaDescription,
+      this.menuForm.patchValue({
+        menuItems: page?.menuItems
       });
 
     });
   }
-
 
   public cancelled(): void {
     this.store.dispatch(AdminSettingsPageFormActions.cancelled());
@@ -69,9 +67,9 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy{
     this.store.dispatch(AdminSettingsPageFormActions.save({
       id: this.contentForm.value.id,
       label: this.contentForm.value.label,
-      metaDescription: this.additionalInfoForm.value.metaDescription,
-      isLanding: false,
-      embeddings: this.contentForm.value.embeddings
+      isLanding: this.contentForm.value.isLanding,
+      embeddings: this.contentForm.value.embeddings,
+      menuItems: this.menuForm.value.menuItems
     }));
   }
 

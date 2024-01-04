@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { ConfirmDeleteComponent } from '../../../dialogs/confirm-delete/confirm-delete.component';
 import { DragDropElement } from '../typings/drag-drop-element';
 import { DragDropElementComponent } from './element/drag-drop-element.component';
@@ -14,7 +15,10 @@ import { DragDropElementComponent } from './element/drag-drop-element.component'
 export class DragDropComponent implements OnDestroy {
 
   @Input()
-  public disabled?: boolean;
+  public disabled?: Maybe<boolean>;
+
+  @Input()
+  public deletable?: Maybe<boolean> = true;
 
   @Output()
   public deleted = new EventEmitter<number>();

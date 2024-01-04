@@ -23,7 +23,16 @@ export class DragDropElementComponent {
   @Input()
   public expanded: Maybe<boolean> = false;
 
+  @Input()
+  public expandable: Maybe<boolean> = true;
+
   @ViewChild('template')
   public template!: TemplateRef<unknown>;
+
+  public changeExpansion(): void {
+    if (this.expandable) {
+      this.expanded = !this.expanded;
+    }
+  }
 
 }

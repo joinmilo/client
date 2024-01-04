@@ -1,0 +1,30 @@
+query getMenuItems($params: FilterSortPaginateInput) {
+  getMenuItems(params: $params) {
+    result {
+      id
+      header
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+
+      subMenuItems {
+        id
+        header
+        icon
+        order
+        translatables {
+          id
+          name
+          language {
+            ...Language
+          }
+        }
+      }
+    }
+    total
+  }
+}

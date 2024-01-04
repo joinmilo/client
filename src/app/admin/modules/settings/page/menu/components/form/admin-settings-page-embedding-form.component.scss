@@ -1,0 +1,19 @@
+form {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+
+  button {
+    background-color: var(--color-lightest);
+    border: 1px solid var(--color-gray) !important;
+  }
+}
+
+
+:host ::ng-deep {
+  .text-media {
+    .media {
+      align-self: center;
+    }
+  }
+}

@@ -47,12 +47,23 @@ query getPageDetails(
         code
 
         translatables {
-            id
-            name
-            language {
-              ...Language
-            }
+          id
+          name
+          language {
+            ...Language
           }
+        }
+      }
+    }
+
+    menuItems {
+      id
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
       }
     }
   }

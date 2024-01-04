@@ -1,0 +1,5 @@
+mutation saveMenuItem($entity: MenuItemEntityInput!) {
+  saveMenuItem(entity: $entity) {
+    id
+  }
+}

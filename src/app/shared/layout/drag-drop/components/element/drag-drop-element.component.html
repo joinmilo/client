@@ -1,6 +1,6 @@
 <ng-template #template>
   <div class="container">
-    <section (click)="expanded = !expanded">
+    <section (click)="changeExpansion()">
       <div class="drop-title">
         @if (titleLabel) {
           <strong [appLabel]="titleLabel"></strong>
@@ -13,16 +13,18 @@
           <small> {{ subTitle }}</small>
         }
       </div>
-      @if (!expanded) {
-        <app-icon 
-          appTooltip="expand"
-          [icon]="['fas', 'arrow-down']">
-        </app-icon>
-      } @else {
-        <app-icon 
-          appTooltip="collapse" 
-          [icon]="['fas', 'arrow-up']">
-        </app-icon>
+      @if (expandable) {
+        @if (!expanded) {
+          <app-icon 
+            appTooltip="expand"
+            [icon]="['fas', 'arrow-down']">
+          </app-icon>
+        } @else {
+          <app-icon 
+            appTooltip="collapse" 
+            [icon]="['fas', 'arrow-up']">
+          </app-icon>
+        }
       }
     </section>
     <!-- Parent Content-->

@@ -11,7 +11,7 @@ export type GetPageDetailsQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetPageDetailsQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, slug?: string | null, isLanding?: boolean | null, label?: string | null, embeddings?: Array<{ __typename?: 'PageEmbeddingEntity', id?: string | null, order?: number | null, label?: string | null, attributes?: Array<{ __typename?: 'PageAttributeEntity', id?: string | null, translatable?: string | null, value?: string | null, references?: Array<{ __typename?: 'PageAttributeReferenceEntity', id?: string | null, plugin?: { __typename?: 'PluginEntity', id?: string | null } | null, media?: { __typename?: 'MediaEntity', id?: string | null, created?: any | null, extension?: string | null, mimeType?: string | null, modified?: any | null, name?: string | null, size?: any | null, url?: string | null, base64?: string | null, attribution?: { __typename?: 'MediaAttributionEntity', id?: string | null, title?: string | null, author?: string | null, source?: string | null, license?: string | null } | null } | null } | null> | null, translatables?: Array<{ __typename?: 'PageAttributeTranslatableEntity', id?: string | null, translatable?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, type?: { __typename?: 'PageAttributeTypeEntity', id?: string | null, code?: string | null } | null } | null> | null, type?: { __typename?: 'PageEmbeddingTypeEntity', id?: string | null, code?: string | null, translatables?: Array<{ __typename?: 'PageEmbeddingTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null } | null> | null } | null };
+export type GetPageDetailsQuery = { __typename?: 'Query', getPage?: { __typename?: 'PageEntity', id?: string | null, slug?: string | null, isLanding?: boolean | null, label?: string | null, embeddings?: Array<{ __typename?: 'PageEmbeddingEntity', id?: string | null, order?: number | null, label?: string | null, attributes?: Array<{ __typename?: 'PageAttributeEntity', id?: string | null, translatable?: string | null, value?: string | null, references?: Array<{ __typename?: 'PageAttributeReferenceEntity', id?: string | null, plugin?: { __typename?: 'PluginEntity', id?: string | null } | null, media?: { __typename?: 'MediaEntity', id?: string | null, created?: any | null, extension?: string | null, mimeType?: string | null, modified?: any | null, name?: string | null, size?: any | null, url?: string | null, base64?: string | null, attribution?: { __typename?: 'MediaAttributionEntity', id?: string | null, title?: string | null, author?: string | null, source?: string | null, license?: string | null } | null } | null } | null> | null, translatables?: Array<{ __typename?: 'PageAttributeTranslatableEntity', id?: string | null, translatable?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, type?: { __typename?: 'PageAttributeTypeEntity', id?: string | null, code?: string | null } | null } | null> | null, type?: { __typename?: 'PageEmbeddingTypeEntity', id?: string | null, code?: string | null, translatables?: Array<{ __typename?: 'PageEmbeddingTypeTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null } | null> | null, menuItems?: Array<{ __typename?: 'MenuItemEntity', id?: string | null, translatables?: Array<{ __typename?: 'MenuItemTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export const GetPageDetailsDocument = gql`
     query getPageDetails($entity: PageEntityInput) {
@@ -58,6 +58,16 @@ export const GetPageDetailsDocument = gql`
           language {
             ...Language
           }
+        }
+      }
+    }
+    menuItems {
+      id
+      translatables {
+        id
+        name
+        language {
+          ...Language
         }
       }
     }

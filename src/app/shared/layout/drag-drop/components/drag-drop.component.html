@@ -13,10 +13,12 @@
         </ng-container>
       </section>
   
-      <button mat-button
-        (click)="onDelete(index)">
-        <app-icon [icon]="['fas', 'trash']"></app-icon>
-      </button>
+      @if (deletable) {
+        <button mat-button
+          (click)="onDelete(index)">
+          <app-icon [icon]="['fas', 'trash']"></app-icon>
+        </button>
+      }
   
       <span class="drag-placeholder" *cdkDragPlaceholder></span>
       <span *cdkDragPreview></span>
