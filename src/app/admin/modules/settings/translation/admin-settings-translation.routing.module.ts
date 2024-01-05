@@ -46,7 +46,7 @@ export class AdminSettingsTranslationRoutingModule {
     public store: Store
   ) {
     this.store.dispatch(AdminActions.addSettingsMenu({
-      name: 'structure',
+      name: 'translation',
       privileges: ['translator_admin'],
       childs: routes.map(route => ({
         name: route.data?.name,
