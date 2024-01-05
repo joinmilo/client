@@ -1,0 +1,33 @@
+<mat-card [formGroup]="form">
+  <section class="content-area">
+
+    <section>
+      <strong>{{ form.value.parent | translatable: 'name' | async }}</strong>
+      <small appLabel="parentMenuItem"></small>
+    </section>
+
+    <section>
+      <strong>{{ (form.value.order || 0) + 1 }}</strong>
+      <small appLabel="menuPlacement"></small>
+    </section>
+
+    <mat-divider></mat-divider>
+
+    <app-row columns="6">
+      <mat-form-field appearance="outline" [appAssignColumns]="3">
+        <mat-label appLabel="menuName"></mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <app-icon-form formControlName="icon" [appAssignColumns]="1">
+      </app-icon-form>
+    </app-row>
+
+  </section>
+
+  <button mat-button
+    class="delete-button"
+    (click)="onDelete()">
+    <app-icon [icon]="['fas', 'trash']"></app-icon>
+  </button>
+</mat-card>

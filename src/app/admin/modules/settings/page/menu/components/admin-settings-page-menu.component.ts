@@ -1,7 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
-import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ControlValueAccessor, FormArray, FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { AdminSettingsPageMenuDialogComponent } from './dialog/admin-settings-page-menu-dialog.component';
@@ -25,11 +24,13 @@ import { AdminSettingsPageMenuDialogComponent } from './dialog/admin-settings-pa
 })
 export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Validator, OnDestroy {
 
-  public menuItems?: MenuItemEntity[];
+  public form = this.fb.group({
+    menuItems: this.fb.array([] as Maybe<MenuItemEntity>[])
+  });
 
   public disabled?: boolean;
 
-  private onChange?: (menuItems: Maybe<MenuItemEntity[]>) => void;
+  private onChange?: (menuItems: Maybe<MenuItemEntity>[]) => void;
   private onTouch?: () => void;
   private onValidate?: () => void;
 
@@ -37,8 +38,27 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
 
   constructor(
     private dialog: MatDialog,
-    private store: Store,
-  ) { }
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
+  ) {
+    this.form.controls.menuItems.valueChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe(value => {
+        this.onTouch?.();
+        if (this.form.controls.menuItems.valid) {
+          this.onTouch?.();
+          this.onChange?.(value)
+        }
+      });
+
+    this.form.controls.menuItems.statusChanges
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => this.onValidate?.())
+  }
+
+  public get menuItems(): FormArray {
+    return this.form.controls.menuItems as FormArray;
+  }
 
   public added(): void {
     this.dialog.open(AdminSettingsPageMenuDialogComponent)
@@ -46,19 +66,29 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
       .pipe(takeUntil(this.destroy))
       .subscribe((menuItem: MenuItemEntity) => {
         if (menuItem) {
-          this.menuItems?.push(menuItem);
+          this.form?.controls.menuItems.push(this.fb.control(menuItem));
+          this.cdr.detectChanges();
         }
       });
   }
 
   public validate(): ValidationErrors | null {
-    return null;
+    return this.form.controls.menuItems.invalid
+      ? { menuItemsInvalid: true }
+      : null;
   }
 
-  public writeValue(value: Maybe<MenuItemEntity[]>): void {
+  public writeValue(value: Maybe<MenuItemEntity>[]): void {
+    value?.forEach(menuItem => {
+      if (menuItem) {
+        this.form?.controls.menuItems.push(this.fb.control(menuItem));
+      }
+    });
+
+    this.cdr.detectChanges();
   }
 
-  public registerOnChange(onChange: (embeddings: Maybe<MenuItemEntity[]>) => void): void {
+  public registerOnChange(onChange: (menuItems: Maybe<MenuItemEntity>[]) => void): void {
     this.onChange = onChange;
   }
 

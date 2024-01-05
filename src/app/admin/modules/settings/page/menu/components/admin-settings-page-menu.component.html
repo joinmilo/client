@@ -1,5 +1,16 @@
+<form [formGroup]="form">
+  <div formArrayName="menuItems">
+    @for (menuItem of menuItems.controls; track menuItem; let index = $index) {
+      <app-admin-settings-page-menu-form
+        [formControlName]="index">
+      </app-admin-settings-page-menu-form>
+    }
+  </div>
+</form>
+
 <button mat-flat-button
   color="primary"
+  [disabled]="form.controls.menuItems.invalid"
   (click)="added()"
   appLabel="addToMenu">
 </button>

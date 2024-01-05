@@ -1,7 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Subject, map, switchMap, takeUntil } from 'rxjs';
+import { Subject, map, takeUntil } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { AdminSettingsPageMenuActions } from '../../state/admin-settings-page-menu.actions';
 import { selectParentMenuItems } from '../../state/admin-settings-page-menu.selectors';
@@ -21,22 +22,24 @@ export class AdminSettingsPageMenuDialogComponent implements OnDestroy {
   public parentMenuItems = this.store.select(selectParentMenuItems);
 
   public form = this.fb.group({
-    parentId: ['' as Maybe<string>],
+    parent: [undefined as Maybe<MenuItemEntity>],
     items: [[] as PageMenuFormInput[]],
   });
 
   private destroy = new Subject<void>();
 
   constructor(
+    private dialogRef: MatDialogRef<AdminSettingsPageMenuDialogComponent>,
     private fb: FormBuilder,
     private store: Store,
   ) {
     this.store.dispatch(AdminSettingsPageMenuActions.getParentMenuItems());
 
-    this.form.controls.parentId.valueChanges
+    this.form.controls.parent.valueChanges
       .pipe(
-        switchMap(id => this.store.select(selectParentMenuItems)
-          .pipe(map(parentMenu => parentMenu?.find(item => item.id === id)?.subMenuItems))),
+        map(parentMenu => parentMenu?.subMenuItems
+          ?.sort((a, b) => (a?.order || 0) - (b?.order || 0))
+        ),
         takeUntil(this.destroy)
       ).subscribe(items => this.form.patchValue({
           items: [
@@ -60,7 +63,7 @@ export class AdminSettingsPageMenuDialogComponent implements OnDestroy {
 
   public saved(): void {
     this.store.dispatch(AdminSettingsPageMenuActions.saveParentMenu({
-      id: this.form.value.parentId,
+      id: this.form.value.parent?.id,
       subMenuItems: this.form.value.items
         ?.map((item, order) => item.menu
           ? { 
@@ -71,7 +74,12 @@ export class AdminSettingsPageMenuDialogComponent implements OnDestroy {
             } as MenuItemEntity
           : undefined)
         ?.filter(item => !!item)
-    }))
+    }));
+
+    this.dialogRef.close({
+      order: this.form.value.items?.findIndex(item => item.newEntity),
+      parent: this.form.value.parent
+    } as MenuItemEntity);
   }
 
   public ngOnDestroy(): void {
