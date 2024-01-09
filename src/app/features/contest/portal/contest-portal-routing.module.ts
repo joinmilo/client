@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: `${contestsFeatureKey}/:${slug}`,
-    loadChildren: () => import('src/app/features/contest/portal/details/portal-contest-details.module')
+    loadChildren: () => import('src/app/features/contest/portal/details/contest-portal-details.module')
       .then((imported) => imported.PortalContestDetailsModule),
   },
 ];

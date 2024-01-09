@@ -1,0 +1,53 @@
+query getContestForm($entity: ContestEntityInput) {
+  getContest(entity: $entity) {
+   id
+   slug
+   commentsAllowed
+   modified
+   name
+   shortDescription
+   content
+   sponsored
+   maxVotes
+   maxParticipations
+   participationEndDate
+   voteEndDate
+   participationApproval
+   
+  type{
+    id
+    code
+    name
+    translatables{
+      id
+      name
+      language{
+        ...Language
+      }
+    }
+  }
+
+  contact {
+    ...Contact
+  }  
+
+  translatables {
+    id
+    content
+    name
+    shortDescription
+    language {
+      ...Language
+    }
+  }  
+
+  uploads {
+    id
+    title
+    card
+    media {
+      ...Media
+    }
+  }  
+ }
+}

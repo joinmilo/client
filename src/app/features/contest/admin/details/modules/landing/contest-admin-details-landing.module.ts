@@ -11,6 +11,7 @@ import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.com
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
+import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ContestAdminDetailsLandingComponent } from './components/contest-admin-details-landing.component';
 import { contestAdminDetailsLandingStateKey } from './constants/contest-admin-details-landing.constants';
@@ -39,6 +40,7 @@ const modules = [
   PhonePieceComponent,
   TableModule,
   TitleModule,
+  IconComponent
 ];
 
 const libs = [

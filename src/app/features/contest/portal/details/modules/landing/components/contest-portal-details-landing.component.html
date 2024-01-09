@@ -1,0 +1,58 @@
+<div class="details">
+  <div class="title-area">
+    <app-media-title [media]="mediaTitle"></app-media-title>
+    <div class="card-box">
+      <app-share-button> </app-share-button>
+    </div>
+  </div>
+  <div class="content-area">
+    <span class="details-headline">{{
+      contest | translatable : "name" | async
+    }}</span>
+
+    <app-contest-portal-details-summary></app-contest-portal-details-summary>
+
+    <p
+      class="details-content"
+      [innerHtml]="contest | translatable : 'content' | async"></p>
+      
+      <div id="card-wrapper">
+        <section
+          class="border-box"
+          *ngIf="checkDatePassed(contest?.participationEndDate)">
+          <img src="assets/draw.svg" />
+          <button mat-raised-button color="primary"
+            [appLabel]="maxParticipationsReached ? 'maxParticipationsReached' : 'participate'"
+           (click)="isAuthenticated()"
+           [disabled]="maxParticipationsReached"></button>
+        </section>
+        <section class="border-box" *ngIf="checkDatePassed(contest?.voteEndDate)">
+          <img src="assets/vote.svg" />
+          <button mat-raised-button color="primary"
+             appLabel="vote"
+             [routerLink]="'participations'"></button>
+        </section>
+        <section class="border-box" *ngIf="!checkDatePassed(contest?.voteEndDate) && !contestEvaluated">
+          <img src="assets/waiting.svg" />
+          <button mat-raised-button color="primary"
+             appLabel="evaluationInProgress"
+             disabled></button>
+        </section>
+        <section class="border-box" *ngIf="!checkDatePassed(contest?.voteEndDate) && contestEvaluated">
+          <img src="assets/winner.svg" />
+          <button mat-raised-button color="primary"
+             appLabel="showWinners"
+             [routerLink]="'winners'"></button>
+        </section>
+      </div>
+
+    <app-media-slider
+      *ngIf="media && media.length"
+      [media]="media"
+      [link]="['./media']">
+    </app-media-slider>
+
+    <app-portal-contest-details-comment *ngIf="contest?.commentsAllowed">
+    </app-portal-contest-details-comment>
+  </div>
+</div>

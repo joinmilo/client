@@ -1,0 +1,18 @@
+<div class="main">
+  <app-page-title titleLabel="createNewParticipation"> </app-page-title>
+
+  <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+    <app-form-step [formGroup]="uploadsForm" titleLabel="content">
+      <app-row *ngIf="contest?.type?.code === 'text'" [columns]="1">
+        <app-ck-editor-form
+          formControlName="textSubmission"></app-ck-editor-form>
+      </app-row>
+
+      <app-media-form
+        *ngIf="contest?.type?.code === 'video' || contest?.type?.code === 'image'"
+        [maxFiles]="1"
+        formControlName="mediaSubmission">
+      </app-media-form>
+    </app-form-step>
+  </app-form-stepper>
+</div>

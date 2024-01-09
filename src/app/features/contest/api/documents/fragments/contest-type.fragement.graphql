@@ -1,5 +1,7 @@
 fragment ContestType on ContestTypeEntity {
   id
+  code
+  name
   translatables {
     id
     name

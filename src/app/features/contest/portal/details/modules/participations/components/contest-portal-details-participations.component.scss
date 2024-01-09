@@ -1,0 +1,15 @@
+div {
+  display: flex;
+  flex-flow: column;
+  gap: var(--gap);
+}
+
+app-table-sort{
+  margin-left: auto;
+}
+
+section{
+  display: flex;
+  flex-flow: row wrap;
+  gap:  var(--gap);
+}

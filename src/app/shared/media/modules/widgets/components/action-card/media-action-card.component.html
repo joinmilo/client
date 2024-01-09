@@ -17,7 +17,8 @@
     <button mat-flat-button
       color="primary"
       [appLabel]="actionLabel"
-      (click)="action.emit(media)">
+      (click)="action.emit(media)"
+      [disabled]="actionDisabled">
     </button>
   </mat-card-content>
 </mat-card>

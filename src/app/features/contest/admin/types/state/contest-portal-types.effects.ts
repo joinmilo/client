@@ -7,8 +7,8 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
 import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
+import { GetContestTypesGQL } from 'src/app/shared/filter/contest/api/generated/get-contest-types.query.generated';
 import { DeleteContestTypeGQL } from '../../../api/generated/delete-report-type.mutation.generated';
-import { GetContestTypesGQL } from '../../../api/generated/get-report-types.query.generated';
 import { ContestAdminTypesActions } from './contest-admin-types.actions';
 import { selectParams } from './contest-portal-types.selectors';
 

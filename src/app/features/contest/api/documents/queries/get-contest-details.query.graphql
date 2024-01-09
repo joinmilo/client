@@ -7,9 +7,17 @@ query getContestDetails($entity: ContestEntityInput) {
     sponsored
     participationEndDate
     voteEndDate
+    participationApproval
+    maxParticipations
+    maxVotes
+    commentsAllowed
 
     participations{
       id
+      placement
+      userContext {
+        id
+      }
     }
 
     uploads {
@@ -28,7 +36,6 @@ query getContestDetails($entity: ContestEntityInput) {
       id
       name
       content
-      shortDescription
       language {
         id
         locale

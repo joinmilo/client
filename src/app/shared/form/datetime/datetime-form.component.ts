@@ -39,6 +39,11 @@ import { CoreModule } from 'src/app/core/core.module';
 export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
 
   @Input()
+  public set date(date: Maybe<string | Date>) {
+    date && this.control.patchValue(new Date(date));
+  }
+  
+  @Input()
   public minDate?: Date;
 
   @Input()
@@ -46,6 +51,7 @@ export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
 
   @Input()
   public label = 'begin'; 
+
 
   public control = new FormControl(new Date());
 

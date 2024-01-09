@@ -1,0 +1,45 @@
+query getContestParticipations($params: FilterSortPaginateInput) {
+  getContestParticipations(params: $params) {
+    result {
+      id
+      approved
+      placement
+      textSubmission
+      contest {
+        id
+        maxParticipations
+      }
+      userContext{
+        id
+        user{
+          firstName
+          lastName
+        }
+      }
+
+      contestVotes{
+        id
+        userContext{
+          id
+        }
+      }
+
+      translatables{
+        id
+        textSubmission
+        language{
+          ...Language
+        }
+      }
+
+      mediaSubmissions{
+        id
+        media{
+          ...Media
+        }
+      }
+
+    }
+    total
+  }
+}

@@ -19,6 +19,13 @@ export class TablePaginatorComponent {
     this._length = length;
   }
 
+  public _pageSizeOption = [5, 10, 25, 100];
+
+  @Input()
+  public set pageSizeOption(pageSizeOption: number[]) {
+    this._pageSizeOption = pageSizeOption;
+  }
+
   public get length(): Maybe<number> {
     return this.paginator.length;
   }

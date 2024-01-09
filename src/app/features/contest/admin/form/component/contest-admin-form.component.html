@@ -1,1 +1,115 @@
-FORM IS HERE
+<app-page-title
+  [titleLabel]="contentForm.value.id ? 'editContest' : 'createNewContest'">
+</app-page-title>
+
+<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <app-form-step [formGroup]="contentForm" titleLabel="content">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="name"></mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </app-row>
+
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="type"></mat-label>
+        <mat-select formControlName="typeId">
+          <mat-option
+            [value]="type?.id"
+            *ngFor="let type of types | async">
+            {{ type | translatable : "name" | async }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </app-row>
+    
+    <app-row [columns]="1">
+      <app-ck-editor-form formControlName="content"> </app-ck-editor-form>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="media" [formGroup]="uploadsForm">
+    <app-media-form
+      [cardToggle]="true"
+      [titleToggle]="true"
+      formControlName="uploads">
+    </app-media-form>
+  </app-form-step>
+
+  <app-form-step
+    [formGroup]="participationAndVoteForm"
+    titleLabel="voteAndParticipation"
+    [required]="true">
+    <app-row [columns]="15">
+      <app-datetime-form
+        [date]="participationAndVoteForm.value.voteEndDate"
+        [appAssignColumns]="4"
+        formControlName="voteEndDate"
+        label="voteEndDate">
+      </app-datetime-form>
+      <mat-form-field [appAssignColumns]="2" appearance="outline">
+        <mat-label appLabel="maxVotes"></mat-label>
+        <input formControlName="maxVotes" matInput />
+      </mat-form-field>
+    </app-row>
+
+    <app-row [columns]="15">
+      <app-datetime-form
+        [date]="participationAndVoteForm.value.participationEndDate"
+        [appAssignColumns]="4"
+        formControlName="participationEndDate"
+        label="participationEndDate">
+    </app-datetime-form>
+      <mat-form-field [appAssignColumns]="2" appearance="outline">
+        <mat-label appLabel="maxParticipations"></mat-label>
+        <input formControlName="maxParticipations" matInput />
+      </mat-form-field>
+    </app-row>
+
+    <app-row [columns]="1">
+      <div>
+        <span appLabel="participationApproval"></span>
+        <mat-slide-toggle color="primary" formControlName="participationApproval">
+        </mat-slide-toggle>
+      </div>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step
+    [formGroup]="shortDescriptionForm"
+    titleLabel="shortDescription">
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="shortDescription"></mat-label>
+        <textarea formControlName="shortDescription" rows="5" matInput>
+        </textarea>
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+
+
+  <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
+    <app-row [columns]="1">
+      <div>
+        <span appLabel="commentsAllowed"></span>
+        <mat-slide-toggle color="primary" formControlName="commentsAllowed">
+        </mat-slide-toggle>
+      </div>
+    </app-row>
+
+    <app-row [columns]="2">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="metaDescription"></mat-label>
+        <textarea matInput formControlName="metaDescription" rows="5">
+        </textarea>
+      </mat-form-field>
+    </app-row>
+  </app-form-step>
+
+  <app-form-step titleLabel="contact" [formGroup]="contactForm">
+    <app-row>
+      <app-contact-form formControlName="contact"></app-contact-form>
+    </app-row>
+  </app-form-step>
+</app-form-stepper>

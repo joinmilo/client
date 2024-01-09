@@ -1,0 +1,7 @@
+<app-table 
+  [data]="participations"
+  [actions]="actions"
+  [entity]="'ContestEntity'"
+  [columns]="columns"
+  (sortPaginate)="updateParams(undefined ,$event)">
+</app-table>

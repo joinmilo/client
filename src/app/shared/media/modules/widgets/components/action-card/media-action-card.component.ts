@@ -15,6 +15,9 @@ export class MediaActionCardComponent implements OnInit, OnChanges {
   public actionLabel?: Maybe<string>;
 
   @Input()
+  public actionDisabled?: Maybe<boolean>;
+
+  @Input()
   public media?: Maybe<MediaEntity>;
 
   @Input()

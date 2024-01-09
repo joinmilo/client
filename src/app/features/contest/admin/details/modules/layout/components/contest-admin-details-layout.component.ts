@@ -5,7 +5,7 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { ContestEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
-import { commentsRoute, searchRoute } from '../../../constants/contest-admin-details.constants';
+import { commentsRoute, participationsRoute, searchRoute } from '../../../constants/contest-admin-details.constants';
 import { ContestAdminDetailsLayoutActions } from '../state/contest-admin-details-layout.actions';
 import { selectContestAdminDetailsLayout } from '../state/contest-admin-details-layout.selectors';
 
@@ -35,6 +35,11 @@ export class ContestAdminDetailsLayoutComponent implements OnInit, OnDestroy {
       icon: ['far', 'comment-dots'],
       label: 'comments',
       value: commentsRoute
+    },
+    {
+      icon: ['fas', 'person-circle-check'],
+      label: 'participations',
+      value: participationsRoute
     },
   ];
 

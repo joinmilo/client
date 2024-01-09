@@ -1,0 +1,32 @@
+<section>
+  <app-mail-piece
+    class="a-piece"
+    *ngIf="(contest | async)?.contact?.email"
+    [mail]="(contest | async)?.contact?.email">
+  </app-mail-piece>
+
+  <app-phone-piece
+    class="a-piece"
+    *ngIf="(contest | async)?.contact?.phone"
+    [phone]="(contest | async)?.contact?.phone">
+  </app-phone-piece>
+
+  <app-website-piece
+    class="a-piece"
+    [website]="(contest | async)?.contact?.website">
+  </app-website-piece>
+</section>
+<section>
+  <div>
+    <span class="piece" appLabel="endOfParticipation"></span>
+    <app-date-piece
+      class="piece"
+      [date]="(contest | async)?.participationEndDate"></app-date-piece>
+  </div>
+  <div>
+    <span class="piece" appLabel="endOfVote"></span>
+    <app-date-piece
+      class="piece"
+      [date]="(contest | async)?.voteEndDate"></app-date-piece>
+  </div>
+</section>

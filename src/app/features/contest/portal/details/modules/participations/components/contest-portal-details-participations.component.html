@@ -1,0 +1,28 @@
+<div class="main">
+  <app-page-title titleLabel="yourVoteCounts"></app-page-title>
+
+  <app-table-sort
+    *ngIf="sortOptions"
+    [options]="sortOptions"
+    [queryParams]="true"
+    (sortChange)="changeSort($event)">
+  </app-table-sort>
+
+  <section>
+    <app-media-action-card
+      *ngFor="let element of actionInfos; let i = index"
+      [media]="element.media"
+      [actionLabel]="element.label"
+      [actionDisabled]="element.disabled"
+      (action)="edit(i)">
+    </app-media-action-card>
+  </section>
+
+  <app-table-paginator
+    (page)="updateParams($event)"
+    [length]="(participationsTotal | async)"
+    [pageSize]="(params | async)?.size"
+    [pageIndex]="(params | async)?.page"
+    [pageSizeOption]="pageSizeOptions">
+  </app-table-paginator>
+</div>

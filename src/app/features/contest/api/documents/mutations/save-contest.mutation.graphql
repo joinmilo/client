@@ -1,0 +1,5 @@
+mutation saveContest($entity: ContestEntityInput!) {
+  saveContest(entity: $entity) {
+    id
+  }
+}

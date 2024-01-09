@@ -1,11 +1,11 @@
 <app-page-title titleLabel="contests"></app-page-title>
 
 <app-contest-filter (paramsUpdated)="updateParams($event)">
-  <button mat-raised-button
+  <button
+    mat-raised-button
     color="primary"
     [routerLink]="['form']"
-    appLabel="createContest">
-  </button>
+    appLabel="createContest"></button>
 </app-contest-filter>
 
 <app-table

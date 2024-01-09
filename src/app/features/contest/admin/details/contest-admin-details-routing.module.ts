@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { commentsRoute, searchRoute } from './constants/contest-admin-details.constants';
+import { commentsRoute, participationsRoute, searchRoute } from './constants/contest-admin-details.constants';
 import { ContestAdminDetailsCommentsComponent } from './modules/comments/components/contest-admin-details-comments.component';
 import { ContestAdminDetailsLandingComponent } from './modules/landing/components/contest-admin-details-landing.component';
 import { ContestAdminDetailsSearchComponent } from './modules/search/component/contest-admin-details-search.component';
+import { ContestAdminDetailsParticipationComponent } from './modules/participation/components/contest-admin-details-participation.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/comments/contest-admin-details-comments.module')
       .then((imported) => imported.ContestAdminDetailsCommentsModule),
     component: ContestAdminDetailsCommentsComponent
+  },
+  {
+    path: participationsRoute,
+    loadChildren: () => import('./modules/participation/contest-admin-details-participation.module')
+      .then((imported) => imported.ContestAdminDetailsParticipationModule),
+    component: ContestAdminDetailsParticipationComponent
   },
 ];
 
