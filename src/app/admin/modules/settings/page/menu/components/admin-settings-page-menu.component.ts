@@ -45,19 +45,15 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
       .pipe(takeUntil(this.destroy))
       .subscribe(value => {
         this.onTouch?.();
-        if (this.form.controls.menuItems.valid) {
+        if (this.menuItems.valid) {
           this.onTouch?.();
           this.onChange?.(value)
         }
       });
 
-    this.form.controls.menuItems.statusChanges
+    this.menuItems.statusChanges
       .pipe(takeUntil(this.destroy))
       .subscribe(() => this.onValidate?.())
-  }
-
-  public get menuItems(): FormArray {
-    return this.form.controls.menuItems as FormArray;
   }
 
   public added(): void {
@@ -66,10 +62,15 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
       .pipe(takeUntil(this.destroy))
       .subscribe((menuItem: MenuItemEntity) => {
         if (menuItem) {
-          this.form?.controls.menuItems.push(this.fb.control(menuItem));
+          this.menuItems.push(this.fb.control(menuItem));
           this.cdr.detectChanges();
         }
       });
+  }
+
+  public onDelete(index: number): void {
+    this.menuItems.removeAt(index);
+
   }
 
   public validate(): ValidationErrors | null {
@@ -81,11 +82,15 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
   public writeValue(value: Maybe<MenuItemEntity>[]): void {
     value?.forEach(menuItem => {
       if (menuItem) {
-        this.form?.controls.menuItems.push(this.fb.control(menuItem));
+        this.menuItems.push(this.fb.control(menuItem));
       }
     });
 
     this.cdr.detectChanges();
+  }
+
+  public get menuItems(): FormArray {
+    return this.form.controls.menuItems as FormArray;
   }
 
   public registerOnChange(onChange: (menuItems: Maybe<MenuItemEntity>[]) => void): void {

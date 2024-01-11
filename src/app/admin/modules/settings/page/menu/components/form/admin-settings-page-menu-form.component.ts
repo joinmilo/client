@@ -1,7 +1,10 @@
-import { Component, OnDestroy, forwardRef } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
+import { TranslationService } from 'src/app/core/services/translation.service';
+import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 @Component({
@@ -23,10 +26,14 @@ import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons'
 })
 export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor, Validator, OnDestroy {
 
+  @Output()
+  public deleted = new EventEmitter<void>();
+
   public form = this.fb.group({
     id: ['' as Maybe<string>],
     icon: [undefined as Maybe<SolidIconsType>, [Validators.required]],
     name: ['' as Maybe<string>, [Validators.required]],
+    shortDescription: ['' as Maybe<string>],
     order: [undefined as Maybe<number>],
     parent: [undefined as Maybe<MenuItemEntity>],
   });
@@ -39,6 +46,8 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
 
   constructor(
     private fb: FormBuilder,
+    private dialog: MatDialog,
+    private translationService: TranslationService,
   ) {
     this.form.valueChanges
       .pipe(
@@ -49,6 +58,7 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
           id: value.id,
           icon: value.icon,
           name: value.name,
+          shortDescription: value.shortDescription,
           order: value.order,
           parent: {
             id: value.parent?.id
@@ -59,7 +69,16 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
   }
 
   public onDelete(): void {
-    throw new Error('Method not implemented.');
+    this.dialog.open(ConfirmDeleteComponent)
+      .afterClosed()
+      .pipe(takeUntil(this.destroy))
+      .subscribe((confirmed: boolean) => {
+        this.onTouch?.();
+
+        if (confirmed) {
+          this.deleted.emit();
+        }
+      });
   }   
 
   public writeValue(menuItem: MenuItemEntity): void {
@@ -68,7 +87,21 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
       icon: menuItem.icon as Maybe<SolidIconsType>,
       order: menuItem.order,
       parent: menuItem.parent
-    });
+    }, { emitEvent: false });
+
+    this.translationService.translatable(menuItem, 'name')
+      .pipe(takeUntil(this.destroy))
+      .subscribe(name => this.form.patchValue({
+        id: menuItem.id,
+        name
+      }, { emitEvent: false }));
+
+    this.translationService.translatable(menuItem, 'shortDescription')
+      .pipe(takeUntil(this.destroy))
+      .subscribe(shortDescription => this.form.patchValue({
+        id: menuItem.id,
+        shortDescription
+      }, { emitEvent: false }));
   }
 
   public registerOnChange(onChange: (menuItem: Maybe<MenuItemEntity>) => void): void {
@@ -90,7 +123,9 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
   }
 
   public setDisabledState?(isDisabled: boolean): void {
-    console.log('isDisabled', isDisabled)
+    isDisabled
+      ? this.form.disable()
+      : this.form.enable();
   }
 
   public ngOnDestroy(): void {

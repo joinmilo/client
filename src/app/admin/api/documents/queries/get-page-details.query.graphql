@@ -58,9 +58,24 @@ query getPageDetails(
 
     menuItems {
       id
+      order
+      icon
+
+      parent {
+        id
+        
+        translatables {
+          id 
+          name
+          language {
+            ...Language
+          }
+        }
+      }
       translatables {
         id
         name
+        shortDescription
         language {
           ...Language
         }
