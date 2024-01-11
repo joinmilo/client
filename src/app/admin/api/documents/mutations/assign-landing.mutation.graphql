@@ -1,0 +1,3 @@
+mutation assignLandingPage($pageId: String) {
+  assignLandingPage(pageId: $pageId)
+}

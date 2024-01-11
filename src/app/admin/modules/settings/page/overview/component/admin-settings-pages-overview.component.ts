@@ -24,6 +24,12 @@ export class AdminSettingsPagesOverviewComponent {
       tooltipLabel: 'edit'
     },
     {
+      icon: 'toggle-off',
+      callback: row =>
+        this.store.dispatch(AdminSettingsPageActions.assignLanding(row?.id)),
+      tooltipLabel: 'assignLandingPage',
+    },
+    {
       icon: 'trash',
       callback: page =>
         this.store.dispatch(AdminSettingsPageActions.deletePage(page)),

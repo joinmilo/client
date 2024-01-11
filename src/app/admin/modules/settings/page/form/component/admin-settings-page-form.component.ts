@@ -20,7 +20,6 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy {
     id: ['' as Maybe<string>],
     label: ['' as Maybe<string>, [Validators.required]],
     embeddings: [[] as Maybe<PageEmbeddingEntity>[], [Validators.required]],
-    isLanding: [false],
   });
 
   public menuForm = this.fb.group({
@@ -49,7 +48,6 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy {
         id: page?.id,
         label: page?.label,
         embeddings: page?.embeddings,
-        isLanding: page?.isLanding,
       });
 
       this.menuForm.patchValue({
@@ -67,7 +65,6 @@ export class AdminSettingsPageFormComponent implements OnInit, OnDestroy {
     this.store.dispatch(AdminSettingsPageFormActions.save({
       id: this.contentForm.value.id,
       label: this.contentForm.value.label,
-      isLanding: this.contentForm.value.isLanding,
       embeddings: this.contentForm.value.embeddings,
       menuItems: this.menuForm.value.menuItems
     }));
