@@ -22,7 +22,6 @@ import { SchemaData, SchemaDataArray, SchemaEntity, SchemaEntityArray, SchemaOve
 import { Schema } from '../typings/schema.org/schema-class';
 
 @Injectable({ providedIn: 'root' })
-
 export class SchemaService {
 
   private breadcrumb?: BreadcrumbList;
@@ -45,7 +44,6 @@ export class SchemaService {
       );
     }
   }
-
 
   public singleJsonLd(
     data: SchemaData, 
@@ -178,7 +176,7 @@ export class SchemaService {
 
   private articleToJSON = (entity?: Maybe<ArticleEntity>): ArticleEntitySchema => {
   
-    const articleElement = new ArticleEntitySchema (
+    const articleElement = new ArticleEntitySchema(
       entity?.content,
       this.getCategoryNameArticle(entity),
       new PersonSchema(
@@ -221,7 +219,7 @@ export class SchemaService {
   }
 
   private articleArrayToJSON = (entity?: Maybe<PageableList_ArticleEntity>): Array => {
-    const articlesArray = new Array (
+    const articlesArray = new Array(
       (entity?.result || []).map(entity => {
         const article = this.articleToJSON(entity);
         return article;
@@ -258,7 +256,7 @@ export class SchemaService {
   };
 
   private dealArrayToJSON = (entity?: Maybe<PageableList_DealEntity>): Array => {
-    const dealsArray = new Array (
+    const dealsArray = new Array(
       (entity?.result || []).map(entity => {
         const deal = this.dealToJSON(entity);
         return deal;
@@ -272,16 +270,16 @@ export class SchemaService {
 
   private eventToJSON = (entity?: Maybe<EventEntity>): EventEntitySchema => {
 
-    const eventElement = new EventEntitySchema (
+    const eventElement = new EventEntitySchema(
       this.getCategoryNameEvent(entity),
-      new AggregateRatingSchema (
+      new AggregateRatingSchema(
         entity?.ratingDistribution?.average,
         entity?.ratingDistribution?.sum,
       ),
       entity?.content,
       entity?.schedule?.endDate,
       entity?.schedule?.startDate,
-      new PostalSchema (
+      new PostalSchema(
         entity?.address?.suburb?.name,
         `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.postalCode,
@@ -289,9 +287,9 @@ export class SchemaService {
       ),
       entity?.attendeeConfiguration?.maxAttendees,
       entity?.name,
-      new OrganisationSchema (
+      new OrganisationSchema(
       entity?.organisation?.name,
-        new PostalSchema (
+        new PostalSchema(
           entity?.organisation?.address?.suburb?.name,
           entity?.organisation?.address?.street,
           entity?.organisation?.address?.postalCode,
@@ -313,7 +311,7 @@ export class SchemaService {
   };
 
   private eventArrayToJSON = (entity?: Maybe<PageableList_EventEntity>): Array => {
-    const eventsArray = new Array (
+    const eventsArray = new Array(
       (entity?.result || []).map(entity => {
         const event = this.eventToJSON(entity);
         return event;
@@ -327,8 +325,8 @@ export class SchemaService {
 
   private menuItemToJSON = (entity?: Maybe<MenuItemEntity>): ListItemSchema => {    
 
-    const menuItemElement = new ListItemSchema (
-        new ItemSchema (
+    const menuItemElement = new ListItemSchema(
+        new ItemSchema(
           this.getMenuNames(entity),
           this.getMenuDescription(entity)
         ),
@@ -380,14 +378,14 @@ export class SchemaService {
 
   private organisationToJSON = (entity?: Maybe<OrganisationEntity>): OrganisationEntitySchema => {
     
-    const organisationElement = new OrganisationEntitySchema (
-      new AggregateRatingSchema (
+    const organisationElement = new OrganisationEntitySchema(
+      new AggregateRatingSchema(
         entity?.ratingDistribution?.average,
         entity?.ratingDistribution?.sum,
       ),
       entity?.contact?.email,
       entity?.name,
-      new PostalSchema (
+      new PostalSchema(
         entity?.address?.suburb?.name,
         `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.postalCode,
@@ -423,7 +421,7 @@ export class SchemaService {
   };
 
   private organisationArrayToJSON = (entity?: Maybe<PageableList_OrganisationEntity>): Array => {
-    const organisationsArray = new Array (
+    const organisationsArray = new Array(
       (entity?.result || []).map(entity => {
         const organisation = this.organisationToJSON(entity);
         return organisation;
@@ -436,21 +434,21 @@ export class SchemaService {
 
   private pageToJSON = (entity?: Maybe<PageEntity>): PageEntitySchema => {
     
-    const pageElement = new PageEntitySchema (
+    const pageElement = new PageEntitySchema(
       entity?.shortDescription,
       entity?.created,
-      entity?.callText,
+      '', //entity?.callText,
       entity?.modified,
-      entity?.content,
-      entity?.name,
-      entity?.callUrl,
+      '', // entity?.content,
+      '', //entity?.name,
+      '', //entity?.callUrl,
       entity?.slug
     )
     return pageElement;
   };
 
   private pageArrayToJSON = (entity?: Maybe<PageableList_PageEntity>): Array => {
-    const pagesArray = new Array (
+    const pagesArray = new Array(
       (entity?.result || []).map(entity => {
         const page = this.pageToJSON(entity);
         return page;
@@ -464,8 +462,8 @@ export class SchemaService {
 
   private userContextToJSON = (entity?: Maybe<UserContextEntity>): UserContextEntitySchema => {
 
-    const userContextElement = new UserContextEntitySchema (
-      new PostalSchema (
+    const userContextElement = new UserContextEntitySchema(
+      new PostalSchema(
         entity?.address?.suburb?.name,
         `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.postalCode,
@@ -492,7 +490,7 @@ export class SchemaService {
   };
 
   private userContextArrayToJSON = (entity?: Maybe<PageableList_UserContextEntity>): Array => {
-    const userContextsArray = new Array (
+    const userContextsArray = new Array(
       (entity?.result || []).map(entity => {
         const userContext = this.userContextToJSON(entity);
         return userContext;
