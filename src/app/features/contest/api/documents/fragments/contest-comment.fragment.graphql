@@ -2,6 +2,12 @@ fragment ContestComment on ContestCommentEntity {
   id
   created
   modified
+  content
+
+  contest {
+    id
+    slug
+  }
 
   userContext {
     ...Commentator

@@ -55,7 +55,6 @@ export class ContestAdminFormComponent implements OnInit {
     metaDescription: [undefined as Maybe<string>],
   });
 
-
   public contest?: Maybe<ContestEntity>;
 
   public types = this.store.select(selectContestTypes);
@@ -128,7 +127,6 @@ export class ContestAdminFormComponent implements OnInit {
         content: this.contentForm.value.content,
         shortDescription: this.shortDescriptionForm.value.shortDescription,
         uploads: this.uploadsForm.value.uploads,
-
 
         maxVotes: this.participationAndVoteForm.value.maxVotes,
         maxParticipations: this.participationAndVoteForm.value.maxParticipations,

@@ -6,11 +6,9 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import {
   ContestEntity,
   Maybe,
-  MediaEntity,
-  UserContextEntity
+  MediaEntity
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { ContestPortalDetailsLandingActions } from '../../landing/state/portal-contest-details-landing.actions';
 import { selectContestDetails } from '../../landing/state/portal-contest-details-landing.selectors';
 import { ContestPortalDetailsParticipationFormActions } from '../state/contest-portal-details-participation-form.actions';
@@ -21,12 +19,11 @@ import { ContestPortalDetailsParticipationFormActions } from '../state/contest-p
   styleUrls: ['./portal-contest-details-participation-form.component.scss'],
 })
 export class ContestPortalDetailsParticipationFormComponent {
+
   public uploadsForm = this.fb.group({
     textSubmission: [undefined as Maybe<string>],
     mediaSubmission: [[] as Maybe<MediaEntity>[]],
   });
-
-  public user?: Maybe<UserContextEntity>;
 
   public contest: Maybe<ContestEntity>;
 
@@ -39,23 +36,14 @@ export class ContestPortalDetailsParticipationFormComponent {
   ) {}
 
   public ngOnInit(): void {
-    this.store
-      .select(selectCurrentUser)
-      .pipe(takeUntil(this.destroy))
-      .subscribe((currentUser) => {
-        this.user = currentUser;
-      });
-
     this.activatedRoute.params
       .pipe(
         tap((params) =>
           this.store.dispatch(
             ContestPortalDetailsLandingActions.getDetails(params[slug] || '')
-          )
-        ),
+          )),
         switchMap(() => this.store.select(selectContestDetails)),
-        takeUntil(this.destroy)
-      )
+        takeUntil(this.destroy))
       .subscribe((contest) => {
         this.contest = contest;
       });
@@ -64,13 +52,15 @@ export class ContestPortalDetailsParticipationFormComponent {
   public saved(): void {
     this.store.dispatch(
       ContestPortalDetailsParticipationFormActions.saveParticipation({
-        userContext: { id: this.user?.id },
         textSubmission: this.uploadsForm.value.textSubmission,
         mediaSubmissions: [{
           id: undefined,
           media: this.uploadsForm.value.mediaSubmission?.[0]
         }], 
-        contest: { id: this.contest?.id },
+        contest: { 
+          id: this.contest?.id,
+          maxParticipations: this.contest?.maxParticipations
+        },
       })
     );
   }

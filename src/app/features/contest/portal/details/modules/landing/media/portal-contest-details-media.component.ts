@@ -5,9 +5,8 @@ import { Subject, takeUntil } from 'rxjs';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
 import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
-import { PortalContestDetailsActions } from '../state/portal-contest-details-landing.actions';
+import { ContestPortalDetailsLandingActions } from '../state/portal-contest-details-landing.actions';
 import { selectContestMedia } from '../state/portal-contest-details-landing.selectors';
-
 
 @Component({
   selector: 'app-portal-contest-details-media',
@@ -46,12 +45,11 @@ export class PortalContestDetailsMediaComponent implements OnDestroy {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy))
       .subscribe(params => this.store.dispatch(
-        PortalContestDetailsActions.getDetails(params.get(slug) || '')));
+        ContestPortalDetailsLandingActions.getDetails(params.get(slug) || '')));
   }
 
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }
-
 }

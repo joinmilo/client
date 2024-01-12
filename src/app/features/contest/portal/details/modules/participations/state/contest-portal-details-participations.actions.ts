@@ -10,7 +10,7 @@ export const ContestPortalDetailsParticipationsActions = createActionGroup({
 
     'update params': (params?: FilterSortPaginateInput) => ({ params }),
 
-    'save vote': (entity: ContestVoteEntityInput) => ({ entity }),
+    'save vote': (entity: ContestVoteEntityInput, remainingVotes: Maybe<number>) => ({ entity, remainingVotes }),
     'vote saved': (entity: ContestVoteEntity) => ({ entity }),
   }
 });

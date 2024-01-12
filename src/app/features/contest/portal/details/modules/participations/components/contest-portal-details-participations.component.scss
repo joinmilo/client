@@ -9,6 +9,7 @@ app-table-sort{
 }
 
 section{
+  justify-content: center;
   display: flex;
   flex-flow: row wrap;
   gap:  var(--gap);

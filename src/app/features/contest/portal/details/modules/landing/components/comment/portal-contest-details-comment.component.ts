@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { ContestPortalDetailsLandingActions } from '../../state/portal-contest-details-landing.actions';
@@ -10,13 +10,16 @@ import { selectContestDetails } from '../../state/portal-contest-details-landing
   templateUrl: './portal-contest-details-comment.component.html',
   styleUrls: ['./portal-contest-details-comment.component.scss']
 })
-export class ContestPortalDetailsCommentComponent {
+export class ContestPortalDetailsCommentComponent implements OnInit{
 
   public lastComment = this.store.select(selectContestDetails)
     .pipe(map(contest => contest?.lastContestComment));
 
   constructor(
     private store: Store) { }
+  ngOnInit(): void {
+    this.lastComment.subscribe(bla => console.log(bla));
+  }
 
   public saveComment(content: string): void {
     this.store.dispatch(ContestPortalDetailsLandingActions.saveContestComment({

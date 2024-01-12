@@ -9,6 +9,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
+import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
@@ -18,7 +19,7 @@ import { ContestPortalDetailsParticipationFormEffects } from './state/contest-po
 import { contestPortalDetailsParticipationFormReducer } from './state/contest-portal-details-participation-form.reducer';
 
 const components = [
-  ContestPortalDetailsParticipationFormComponent,
+  ContestPortalDetailsParticipationFormComponent
 ]
 
 const framework = [
@@ -37,7 +38,8 @@ const modules = [
   TitleModule,
   GridLayoutModule,
   FormStepperModule,
-  MediaFormModule
+  MediaFormModule,
+  SuccessComponent
 ];
 
 const libs = [

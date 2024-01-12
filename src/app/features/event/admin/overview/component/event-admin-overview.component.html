@@ -1,7 +1,9 @@
 <app-page-title titleLabel="activities"></app-page-title>
 
 <app-event-filter (paramsUpdated)="updateParams($event)">
-  <button mat-raised-button color="primary"
+  <button
+    mat-raised-button
+    color="primary"
     [routerLink]="['form']"
     appLabel="createEvent">
   </button>

@@ -53,6 +53,7 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
       )
       .subscribe((contest) => {
         this.contest = contest;
+        console.log(this.contest);
         this.mediaTitle = contest?.uploads?.find(
           (upload) => upload?.title
         )?.media;
@@ -78,7 +79,7 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
       .pipe(take(1))
       .subscribe((isAuthenticated) =>
         isAuthenticated
-          ? this.router.navigate(['participation-form'], {
+          ? this.router.navigate(['participationForm'], {
               relativeTo: this.activatedRoute,
             })
           : this.store.dispatch(CoreUserActions.requireLogin())

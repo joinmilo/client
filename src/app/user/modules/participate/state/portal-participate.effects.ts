@@ -5,9 +5,7 @@ import { Store } from '@ngrx/store';
 import { map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, FilterSortPaginateInput, Maybe, OrganisationEntity, OrganisationMemberEntity, PrivilegeApplicationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { userUrl } from 'src/app/core/constants/module.constants';
-import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetOrganisationsGQL } from 'src/app/user/api/generated/get-organisations.query.generated';
 import { SaveOrganisationApplicationGQL } from 'src/app/user/api/generated/save-organisation-application.mutation.generated';
 import { SaveOrganisationMembersGQL } from 'src/app/user/api/generated/save-organisation-members.mutation.generated';
@@ -91,7 +89,6 @@ export class PortalParticipateEffects {
     tap(() => this.router.navigate([userUrl, 'participate'])),
   ), { dispatch: false });
 
-
   save = createEffect(() => this.actions.pipe(
     ofType(PortalParticipateActions.save),
     switchMap(action => this.saveOrganisationApplicationService.mutate({
@@ -103,11 +100,7 @@ export class PortalParticipateEffects {
   saved = createEffect(() => this.actions.pipe(
     ofType(PortalParticipateActions.saved),
     tap(() => this.router.navigate(['/', userUrl, 'participate', 'success-create-organisation'])),
-    map(() => CoreActions.setFeedback({
-      type: FeedbackType.Success,
-      labelMessage: 'savedSuccessfully'
-    }))
-  ), {dispatch: false});
+  ));
 
 
     

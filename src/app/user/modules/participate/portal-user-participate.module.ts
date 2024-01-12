@@ -25,6 +25,7 @@ import { PortalParticipateCreateOrganisationComponent } from './components/creat
 import { PortalParticipateJoinOrganisationComponent } from './components/join-organisation/portal-participate-join-organisation.component';
 import { PortalParticipateComponent } from './components/portal-participate.component';
 import { PortalParticipateSuccessBecomeAuthorComponent } from './components/success-become-author/portal-participate-success-become-author.component';
+import { PortalParticipateSuccessContestComponent } from './components/success-contest/portal-participate-success-contest.component';
 import { PortalParticipateSuccessCreateOrganisationComponent } from './components/success-create-organisation/portal-participate-success-create-organisation.component';
 import { PortalParticipateSuccessJoinOrganisationComponent } from './components/success-join-organisation/portal-participate-success-join-organisation.component';
 import { portalParticipateStateKey } from './constants/portal-participate.constants';
@@ -39,6 +40,7 @@ const components = [
   PortalParticipateSuccessBecomeAuthorComponent,
   PortalParticipateSuccessCreateOrganisationComponent,
   PortalParticipateSuccessJoinOrganisationComponent,
+  PortalParticipateSuccessContestComponent,
   PortalParticipateComponent,
 ];
 

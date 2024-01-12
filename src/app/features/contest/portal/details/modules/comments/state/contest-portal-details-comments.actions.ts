@@ -7,6 +7,6 @@ export const ContestPortalDetailsCommentsActions = createActionGroup({
   source: 'Contest Portal Details Comments',
   events: {
     'get comments': (slug: Maybe<string>) => ({ slug }),
-    'set comments': (comments: Maybe<ContestCommentEntity[]>) => ({ comments }),
+    'set comments': (comments: Maybe<ContestCommentEntity[]>) => ({ comments })
   }
 });

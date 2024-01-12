@@ -38,13 +38,16 @@ import { ContestPortalDetailsLandingComponent } from './components/contest-porta
 import { ContestPortalDetailsSummaryComponent } from './components/summary/contest-portal-details-summary.component';
 import { contestPortalDetailsLandingStateKey } from './constants/contest-details-landing.constant';
 import { ContestPortalDetailsLandingRoutingModule } from './contest-portal-details-landing-routing.module';
+import { PortalContestDetailsMediaComponent } from './media/portal-contest-details-media.component';
 import { ContestPortalDetailsLandingEffects } from './state/portal-contest-details-landing.effects';
 import { portalContestDetailsReducer } from './state/portal-contest-details-landing.reducer';
 
 const components = [
   ContestPortalDetailsLandingComponent,
   ContestPortalDetailsCommentComponent,
-  ContestPortalDetailsSummaryComponent
+  ContestPortalDetailsSummaryComponent,
+  PortalContestDetailsMediaComponent
+
 ];
 
 const framework = [
@@ -87,7 +90,7 @@ const modules = [
   TitleModule,
   FormStepperModule,
   GridLayoutModule,
-  ConfirmChangeComponent
+  ConfirmChangeComponent,
 ];
 
 const libs = [

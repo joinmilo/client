@@ -9,6 +9,6 @@ export const ContestPortalDetailsParticipationFormActions = createActionGroup({
     'save participation': (entity: ContestParticipationEntityInput) => ({ entity }),
     'participation saved': (entity: ContestParticipationEntity) => ({ entity }),
 
-    'cancelled': emptyProps(),
+    'cancelled': emptyProps()
   }
 });

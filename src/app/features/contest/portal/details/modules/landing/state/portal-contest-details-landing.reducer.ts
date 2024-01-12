@@ -14,6 +14,7 @@ export const portalContestDetailsReducer = createReducer(
 
   on(
     ContestPortalDetailsLandingActions.setDetails,
+    ContestPortalDetailsLandingActions.detailsUpdated,
     (state, action): PortalContestDetailsLandingState => 
       ({ ...state, details: action.contest })
   ),

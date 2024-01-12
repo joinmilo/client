@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { commentsRoute, participationFormsRoute, participationsRoute, winnersRoute } from './constants/contest-details.constant';
+import { commentsRoute, participationFormRoute, participationsRoute, winnersRoute } from './constants/contest-details.constant';
 import { ContestPortalDetailsCommentsComponent } from './modules/comments/components/contest-portal-details-comments.component';
 import { ContestPortalDetailsParticipationFormComponent } from './modules/participationForm/components/portal-contest-details-participation-form.component';
 import { ContestPortalDetailsParticipationsComponent } from './modules/participations/components/contest-portal-details-participations.component';
@@ -19,10 +19,10 @@ const routes: Routes = [
       component: ContestPortalDetailsParticipationsComponent
   },
   {
-    path: participationFormsRoute,
+    path: participationFormRoute,
     loadChildren: () => import('./modules/participationForm/contest-portal-details-participation-form.module')
       .then((imported) => imported.ContestPortalDetailsParticipationFormModule),
-      component: ContestPortalDetailsParticipationFormComponent 
+      component: ContestPortalDetailsParticipationFormComponent
   },
   {
     path: commentsRoute,

@@ -33,6 +33,23 @@ import {
 export class ContestPortalDetailsParticipationsComponent
   implements OnInit, OnDestroy
 {
+  
+  public actionInfos?: ActionInfo[];
+  
+  private contest?: Maybe<ContestEntity>;
+  
+  public currentUser?: Maybe<UserContextEntity>;
+  
+  private destroy = new Subject<void>();
+
+  public pageSizeOptions = [12, 24, 48, 96];
+
+  public params = this.store.select(selectParams);
+
+  private participations?: Maybe<Maybe<ContestParticipationEntity>[]>;
+  
+  public participationsTotal = this.store.select(selectParticipationsTotal);
+  
   public sortOptions: SortOption[] = [
     {
       label: 'created',
@@ -45,39 +62,33 @@ export class ContestPortalDetailsParticipationsComponent
     },
   ];
 
-  public actionInfos?: ActionInfo[];
-
-  public currentUser?: Maybe<UserContextEntity>;
-  
-  public participationsTotal = this.store.select(selectParticipationsTotal);
-  
-  public params = this.store.select(selectParams);
-  
-  public pageSizeOptions = [12, 24, 48, 96];
-
-  private contest?: Maybe<ContestEntity>;
-  
-  private destroy = new Subject<void>();
-  
-  private participations?: Maybe<Maybe<ContestParticipationEntity>[]>;
-
   private userVotes?: Maybe<number>;
-  
 
   constructor(private store: Store, private activatedRoute: ActivatedRoute) {}
-  
 
   ngOnInit(): void {
     this.store
       .select(selectCurrentUser)
       .subscribe((user) => (this.currentUser = user));
 
-    this.store.dispatch(
-      ContestPortalDetailsParticipationsActions.updateParams({
-        page: 0,
-        size: 12,
-      })
-    );
+    this.activatedRoute.parent?.params
+      .pipe(
+        tap((params) => 
+          this.store.dispatch(
+            ContestPortalDetailsLandingActions.getDetails(params[slug] || '')
+          ),
+        ),
+        switchMap(() => this.store.select(selectContestDetails)),
+        takeUntil(this.destroy)
+      )
+      .subscribe((contest) => {
+        this.contest = contest;
+        this.store.dispatch(
+          ContestPortalDetailsParticipationsActions.updateParams({
+            page: 0,
+            size: 12,
+          }))
+      });
 
     this.store
       .select(selectContestParticipations)
@@ -92,37 +103,28 @@ export class ContestPortalDetailsParticipationsComponent
               )?.length ?? 0
           )
           .reduce((acc, count) => acc + count, 0);
-        this.actionInfos = participations?.map((element) =>
-          this.retrieveActionInfos(element)
-        );
+        this.actionInfos = participations
+          ?.filter((participation) => participation?.approved)
+          ?.map((element) => this.retrieveActionInfos(element));
       });
-
-    this.activatedRoute.parent?.params
-      .pipe(
-        tap((params) =>
-          this.store.dispatch(
-            ContestPortalDetailsLandingActions.getDetails(params[slug] || '')
-          )
-        ),
-        switchMap(() => this.store.select(selectContestDetails)),
-        takeUntil(this.destroy)
-      )
-      .subscribe((contest) => (this.contest = contest));
   }
 
   retrieveActionInfos(element: Maybe<ContestParticipationEntity>): ActionInfo {
     const media = element?.mediaSubmissions?.[0]?.media;
-    return (this.contest?.maxVotes ?? 0) <= (this.userVotes ?? 0)
-      ? {
-          media: media,
-          disabled: true,
-          label: 'maxVotesReached',
-        }
-      : element?.contestVotes?.filter(
-          (vote) => vote?.userContext?.id == this.currentUser?.id
-        ).length != 0
-      ? { media: media, disabled: true, label: 'allreadyVoted' }
-      : { media: media, disabled: false, label: 'vote' };
+
+    return (this.contest?.maxVotes != null && this.userVotes != null)
+      ? this.contest?.maxVotes <= this.userVotes
+        ? {
+            media: media,
+            disabled: true,
+            label: 'maxVotesReached',
+          }
+        : element?.contestVotes?.filter(
+            (vote) => vote?.userContext?.id == this.currentUser?.id
+          ).length != 0
+        ? { media: media, disabled: true, label: 'allreadyVoted' }
+        : { media: media, disabled: false, label: 'vote' }
+      : { media: null, disabled: true, label: this.contest?.maxVotes?.toString()};
   }
 
   public changeSort(params: SortPaginate) {
@@ -142,12 +144,17 @@ export class ContestPortalDetailsParticipationsComponent
 
   edit(index: number) {
     this.store.dispatch(
-      ContestPortalDetailsParticipationsActions.saveVote({
-        userContext: { id: this.currentUser?.id },
-        contestParticipation: {
-          id: this.participations?.[index]?.id,
+      ContestPortalDetailsParticipationsActions.saveVote(
+        {
+          userContext: { id: this.currentUser?.id },
+          contestParticipation: {
+            id: this.participations?.[index]?.id,
+          },
         },
-      })
+        this.contest?.maxVotes && this.userVotes
+          ? this.contest?.maxVotes - this.userVotes
+          : 0
+      )
     );
   }
 
