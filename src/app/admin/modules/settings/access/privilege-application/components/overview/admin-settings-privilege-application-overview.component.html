@@ -1,0 +1,8 @@
+<app-page-title titleLabel="privilegeApproval"></app-page-title>
+
+<app-table
+  [data]="users"
+  [actions]="actions"
+  [columns]="columns"
+  (sortPaginate)="updateParams($event)">
+</app-table>

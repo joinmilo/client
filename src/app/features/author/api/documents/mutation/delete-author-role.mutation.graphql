@@ -1,3 +1,0 @@
-mutation deleteRole($id: String) {
-  deleteRole(id: $id)
-}

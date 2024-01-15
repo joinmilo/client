@@ -32,6 +32,18 @@ const routes: AdminSettingsRoute[] = [
     },
     canActivate: [requireAnyPrivilege('user_admin')]
   },
+  {
+    path: `${accessBaseRoute}/privilege-applications`,
+    loadChildren: () => import('src/app/admin/modules/settings/access/privilege-application/admin-settings-privilege-application.module')
+      .then((imported) => imported.AdminSettingsPrivilegeApplicationModule),
+    data: {
+      name: 'privilegesApplications',
+      description: 'privilegesDescription',
+      icon: 'users-gear',
+      privileges: ['user_admin']
+    },
+    canActivate: [requireAnyPrivilege('user_admin')]
+  },  
 ];
 
 @NgModule({

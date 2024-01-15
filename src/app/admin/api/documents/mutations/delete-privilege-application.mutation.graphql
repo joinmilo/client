@@ -1,0 +1,3 @@
+mutation deletePrivilegeApplication($id: String) {
+  deletePrivilegeApplication(id: $id)
+}

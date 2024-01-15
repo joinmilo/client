@@ -1,0 +1,39 @@
+query getPrivilegeApplications($params: FilterSortPaginateInput) {
+  getPrivilegeApplications(params: $params) {
+    result {
+      accepted
+      content
+      id
+      privilege {
+        id
+        name
+        code
+
+        translatables {
+          id
+          name
+          language {
+            ...Language
+          }
+      }
+      }
+
+      translatables {
+        id
+        content
+        language {
+            ...Language
+          }
+      }
+
+    user {
+      id
+      email
+      firstName
+      lastName
+      lastLogin
+    }
+  }
+    total
+  }
+}

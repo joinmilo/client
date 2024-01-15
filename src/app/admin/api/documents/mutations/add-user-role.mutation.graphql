@@ -1,0 +1,10 @@
+mutation addUserRole(
+  $roleId: String,
+  $userId: String,
+  $privilegeApplicationId: String
+) {
+  addUserRole(
+    roleId: $roleId,
+    userId: $userId,
+    privilegeApplicationId: $privilegeApplicationId)
+}
