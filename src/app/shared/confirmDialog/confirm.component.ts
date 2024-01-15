@@ -34,34 +34,34 @@ export class ConfirmComponent implements OnInit {
   ngOnInit(): void {
     switch (this.dialogData?.type) {
       case ConfirmDialogType.Cancel:
-        this.titleLabel == 'confirm';
-        this.messageLabel == 'areYouSureToCancel?';
-        this.buttonColor == 'primary';
-        this.buttonLabel == 'confirm';
+        this.titleLabel = 'confirm';
+        this.messageLabel = 'areYouSureToCancel?';
+        this.buttonColor = 'primary';
+        this.buttonLabel = 'confirm';
         break;
       case ConfirmDialogType.Change:
-        this.titleLabel == 'confirmChanges';
-        this.messageLabel == 'areYouSureToChange?';
-        this.buttonColor == 'primary';
-        this.buttonLabel == 'confirm';
+        this.titleLabel = 'confirmChanges';
+        this.messageLabel = 'areYouSureToChange?';
+        this.buttonColor = 'primary';
+        this.buttonLabel = 'confirm';
         break;
       case ConfirmDialogType.Delete:
-        this.titleLabel == 'delete';
-        this.messageLabel == 'areYouSureToDelete?';
-        this.buttonColor == 'warn';
-        this.buttonLabel == 'delete';
+        this.titleLabel = 'delete';
+        this.messageLabel = 'areYouSureToDelete?';
+        this.buttonColor = 'warn';
+        this.buttonLabel = 'delete';
         break;
       case ConfirmDialogType.Reset:
-        this.titleLabel == 'confirm';
-        this.messageLabel == 'areYouSureToReset?';
-        this.buttonColor == 'primary';
-        this.buttonLabel == 'confirm';
+        this.titleLabel = 'confirm';
+        this.messageLabel = 'areYouSureToReset?';
+        this.buttonColor = 'primary';
+        this.buttonLabel = 'confirm';
         break;
       default: 
-        this.titleLabel == this.dialogData?.customSettings?.titleLabel;
-        this.messageLabel == this.dialogData?.customSettings?.messageLabel;
-        this.buttonColor == this.dialogData?.customSettings?.buttonColor;
-        this.buttonLabel == this.dialogData?.customSettings?.buttonLabel;
+        this.titleLabel = this.dialogData?.customSettings?.titleLabel;
+        this.messageLabel = this.dialogData?.customSettings?.messageLabel;
+        this.buttonColor = this.dialogData?.customSettings?.buttonColor;
+        this.buttonLabel = this.dialogData?.customSettings?.buttonLabel;
     }
   }
 }

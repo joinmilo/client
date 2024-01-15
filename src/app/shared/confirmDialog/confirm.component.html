@@ -1,4 +1,4 @@
-<h1 mat-dialog-title appLabel="confirm"></h1>
+<h1 mat-dialog-title [appLabel]="titleLabel"></h1>
 <mat-dialog-content>
   <span [appLabel]="messageLabel"></span>
   <strong [appLabel]="dialogData?.context"></strong>
@@ -9,9 +9,9 @@
     appLabel="cancel">
   </button>
   <button mat-raised-button
-    color="primary"
+    [color]="buttonColor"
     mat-dialog-close
-    appLabel="confirm"
+    [appLabel]="buttonLabel"
     [mat-dialog-close]="true">
   </button>
 </mat-dialog-actions>
