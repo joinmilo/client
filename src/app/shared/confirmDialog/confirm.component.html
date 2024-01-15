@@ -1,7 +1,7 @@
 <h1 mat-dialog-title appLabel="confirm"></h1>
 <mat-dialog-content>
-  <span appLabel="areYouSureToReset?"></span>
-  <strong [appLabel]="context"></strong>
+  <span [appLabel]="messageLabel"></span>
+  <strong [appLabel]="dialogData?.context"></strong>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button

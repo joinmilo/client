@@ -3,7 +3,7 @@ import { Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, Que
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmDeleteComponent } from '../../../dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDeleteComponent } from '../../../confirmDialog/confirm-delete/confirm-delete.component';
 import { DragDropElement } from '../typings/drag-drop-element';
 import { DragDropElementComponent } from './element/drag-drop-element.component';
 

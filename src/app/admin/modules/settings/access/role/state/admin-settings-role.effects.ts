@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -10,103 +9,154 @@ import { GetRoleGQL } from 'src/app/admin/api/generated/get-role.query.generated
 import { GetRolesGQL } from 'src/app/admin/api/generated/get-roles.query.generated';
 import { GetUsersGQL } from 'src/app/admin/api/generated/get-users.query.generated';
 import { SaveRoleGQL } from 'src/app/admin/api/generated/save-role.mutation.generated';
-import { PageableList_RoleEntity, RolePrivilegeEntity, UserEntity } from 'src/app/core/api/generated/schema';
+import {
+  PageableList_RoleEntity,
+  RolePrivilegeEntity,
+  UserEntity,
+} from 'src/app/core/api/generated/schema';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { accessBaseRoute } from '../../admin-settings-access-routing.module';
 import { AdminSettingsRoleActions } from './admin-settings-role.actions';
 import { selectParams } from './admin-settings-role.selectors';
 
 @Injectable()
 export class AdminSettingsRoleEffects {
-
-  updateParams = createEffect(() => this.actions.pipe(
-    ofType(
-      AdminSettingsRoleActions.updateParams,
-      AdminSettingsRoleActions.roleDeleted
-    ),
-    withLatestFrom(this.store.select(selectParams)),
-    switchMap(([, params]) => this.getRolesService.watch({
-      params,
-    }).valueChanges),
-    map(response => AdminSettingsRoleActions.setOverviewData(response.data.getRoles as PageableList_RoleEntity))
-  ));
-
-  getRole = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.getRole),
-    switchMap(action => this.getRoleService.watch({
-      entity: { id: action.entityId }
-    }).valueChanges),
-    map(response => AdminSettingsRoleActions.roleRetrieved(response.data.getRole))
-  ));
-
-  getPrivileges = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.getPrivileges),
-    switchMap(() => this.getRolePrivilegesService.watch().valueChanges),
-    map(response => AdminSettingsRoleActions.privilegesRetrieved(response.data.getRolePrivileges?.result as RolePrivilegeEntity[]))
-  ));
-
-  getUsers = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.getUsers),
-    switchMap(() => this.getUsersService.watch({
-      params: {
-        sort: 'firstName'
-      }
-    }).valueChanges),
-    map(response => AdminSettingsRoleActions.usersRetrieved(response.data.getUsers?.result as UserEntity[]))
-  ));
-
-  save = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.save),
-    switchMap(action => this.saveRoleService.mutate({
-      entity: action.role
-    })),
-    map(() => AdminSettingsRoleActions.saved())
-  ));
-
-  saved = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.saved),
-    tap(() => this.router.navigate([adminUrl, accessBaseRoute, 'role'])),
-    map(() => CoreActions.setFeedback({
-      type: FeedbackType.Success,
-      labelMessage: 'savedSuccessfully'
-    }))
-  ));
-
-  cancelled = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.cancelled),
-    tap(() => this.router.navigate([adminUrl, accessBaseRoute, 'role'])),
-  ), { dispatch: false });
-
-  deleteRole = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.deleteRole),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.role?.name })
-      .afterClosed().pipe(
-        switchMap(confirmed => confirmed
-          ? of(action.role)
-          : EMPTY
+  updateParams = createEffect(() =>
+    this.actions.pipe(
+      ofType(
+        AdminSettingsRoleActions.updateParams,
+        AdminSettingsRoleActions.roleDeleted
+      ),
+      withLatestFrom(this.store.select(selectParams)),
+      switchMap(
+        ([, params]) =>
+          this.getRolesService.watch({
+            params,
+          }).valueChanges
+      ),
+      map((response) =>
+        AdminSettingsRoleActions.setOverviewData(
+          response.data.getRoles as PageableList_RoleEntity
         )
       )
-    ),
-    switchMap(role => this.deleteRoleService.mutate({
-      id: role?.id
-    })),
-    map(() => AdminSettingsRoleActions.roleDeleted())
-  ));
+    )
+  );
 
-  roleDeleted = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsRoleActions.roleDeleted),
-    map(() => CoreActions.setFeedback({
-      type: FeedbackType.Success,
-      labelMessage: 'deletedSuccessfully'
-    }))
-  ));
+  getRole = createEffect(() =>
+    this.actions.pipe(
+      ofType(AdminSettingsRoleActions.getRole),
+      switchMap(
+        (action) =>
+          this.getRoleService.watch({
+            entity: { id: action.entityId },
+          }).valueChanges
+      ),
+      map((response) =>
+        AdminSettingsRoleActions.roleRetrieved(response.data.getRole)
+      )
+    )
+  );
+
+  getPrivileges = createEffect(() =>
+    this.actions.pipe(
+      ofType(AdminSettingsRoleActions.getPrivileges),
+      switchMap(() => this.getRolePrivilegesService.watch().valueChanges),
+      map((response) =>
+        AdminSettingsRoleActions.privilegesRetrieved(
+          response.data.getRolePrivileges?.result as RolePrivilegeEntity[]
+        )
+      )
+    )
+  );
+
+  getUsers = createEffect(() =>
+    this.actions.pipe(
+      ofType(AdminSettingsRoleActions.getUsers),
+      switchMap(
+        () =>
+          this.getUsersService.watch({
+            params: {
+              sort: 'firstName',
+            },
+          }).valueChanges
+      ),
+      map((response) =>
+        AdminSettingsRoleActions.usersRetrieved(
+          response.data.getUsers?.result as UserEntity[]
+        )
+      )
+    )
+  );
+
+  save = createEffect(() =>
+    this.actions.pipe(
+      ofType(AdminSettingsRoleActions.save),
+      switchMap((action) =>
+        this.saveRoleService.mutate({
+          entity: action.role,
+        })
+      ),
+      map(() => AdminSettingsRoleActions.saved())
+    )
+  );
+
+  saved = createEffect(() =>
+    this.actions.pipe(
+      ofType(AdminSettingsRoleActions.saved),
+      tap(() => this.router.navigate([adminUrl, accessBaseRoute, 'role'])),
+      map(() =>
+        CoreActions.setFeedback({
+          type: FeedbackType.Success,
+          labelMessage: 'savedSuccessfully',
+        })
+      )
+    )
+  );
+
+  cancelled = createEffect(
+    () =>
+      this.actions.pipe(
+        ofType(AdminSettingsRoleActions.cancelled),
+        tap(() => this.router.navigate([adminUrl, accessBaseRoute, 'role']))
+      ),
+    { dispatch: false }
+  );
+
+  deleteRole = createEffect(() =>
+    this.actions.pipe(
+      ofType(AdminSettingsRoleActions.deleteRole),
+      switchMap((action) =>
+        this.confirmDialogService
+          .open({ type: ConfirmDialogType.Delete, context: action.role?.name })
+          .pipe(switchMap((confirmed) => (confirmed ? of(action.role) : EMPTY)))
+      ),
+      switchMap((role) =>
+        this.deleteRoleService.mutate({
+          id: role?.id,
+        })
+      ),
+      map(() => AdminSettingsRoleActions.roleDeleted())
+    )
+  );
+
+  roleDeleted = createEffect(() =>
+    this.actions.pipe(
+      ofType(AdminSettingsRoleActions.roleDeleted),
+      map(() =>
+        CoreActions.setFeedback({
+          type: FeedbackType.Success,
+          labelMessage: 'deletedSuccessfully',
+        })
+      )
+    )
+  );
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
     private deleteRoleService: DeleteRoleGQL,
     private getRoleService: GetRoleGQL,
     private getRolePrivilegesService: GetRolePrivilegesGQL,
@@ -115,5 +165,6 @@ export class AdminSettingsRoleEffects {
     private saveRoleService: SaveRoleGQL,
     private store: Store,
     private router: Router,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

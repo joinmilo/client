@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subject, take, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmCancelComponent } from 'src/app/shared/dialogs/confirm-cancel/confirm-cancel.component';
+import { ConfirmCancelComponent } from 'src/app/shared/confirmDialog/confirm-cancel/confirm.component';
 import { ConfirmResetComponent } from 'src/app/shared/dialogs/confirm-reset/confirm-reset.component';
 import { FormStepperActions } from '../../state/form-stepper.actions';
 import { selectIsDirty, selectIsValid } from '../../state/form-stepper.selectors';

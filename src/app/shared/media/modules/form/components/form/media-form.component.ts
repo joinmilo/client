@@ -6,7 +6,8 @@ import { Observable, Subject, filter, takeUntil } from 'rxjs';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { MediaEditDialogData, MediaEnhancedEntity } from 'src/app/shared/media/typings/media';
 import { MediaFormEditComponent } from '../edit/media-form-edit.component';
 
@@ -58,6 +59,7 @@ export class MediaFormComponent implements ControlValueAccessor, Validator, OnDe
     private store: Store,
     private dialog: MatDialog,
     private cdr: ChangeDetectorRef,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 
   public add(newMedia: MediaEntity[]) {
@@ -115,8 +117,8 @@ export class MediaFormComponent implements ControlValueAccessor, Validator, OnDe
   }
 
   public remove(index: number): void {
-    this.dialog.open(ConfirmDeleteComponent)
-      .afterClosed()
+    this.confirmDialogService
+          .open({ type: ConfirmDialogType.Delete })
       .subscribe(confirmed => {
         if (confirmed) {
           const media = [...this.media];
