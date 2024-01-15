@@ -12,7 +12,8 @@ import { PageableList_SuburbEntity } from 'src/app/core/api/generated/schema';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { baseRoute } from '../../admin-settings-location.routing.module';
 import { AdminSettingsSuburbActions } from './admin-settings-suburb.actions';
 import { selectParams } from './admin-settings-suburb.selectors';
@@ -66,8 +67,8 @@ export class AdminSettingsSuburbEffects {
 
   delete = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsSuburbActions.delete),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.suburb?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.suburb?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.suburb)
           : EMPTY
@@ -97,5 +98,6 @@ export class AdminSettingsSuburbEffects {
     private saveSuburbService: SaveSuburbGQL,
     private store: Store,
     private router: Router,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

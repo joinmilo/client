@@ -7,9 +7,9 @@ import { PageableList_OrganisationEntity, QueryOperator } from 'src/app/core/api
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteOrganisationGQL } from 'src/app/features/organisation/api/generated/delete-organisation.mutation.generated';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
 
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { ChangeOrganisationApprovalGQL } from '../../../api/generated/change-article-approval.mutation.generated';
 import { GetOrganisationsGQL } from '../../../api/generated/get-organisations.query.generated';
 import { OrganisationAdminApprovalOverviewActions } from './organisation-admin-approval-overview.actions';
@@ -42,12 +42,11 @@ export class OrganisationAdminOverviewEffects {
 
   changeApproval = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminApprovalOverviewActions.toggleOrganisationApproval),
-    switchMap(action => this.dialog.open(ConfirmChangeComponent, { data:
-        action.organisation?.approved
-          ? 'thisWillUnpublishOrganisation'
-          : 'thisWillApproveOrganisation'
-      })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Change, 
+        context: action.organisation?.approved
+        ? 'thisWillUnpublishOrganisation'
+        : 'thisWillApproveOrganisation'}).pipe(
         switchMap(confirmed => confirmed
           ? of(action.organisation)
           : EMPTY
@@ -70,8 +69,8 @@ export class OrganisationAdminOverviewEffects {
 
   deleteOrganisation = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminApprovalOverviewActions.deleteOrganisation),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.organisation?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.organisation?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.organisation)
           : EMPTY
@@ -99,5 +98,6 @@ export class OrganisationAdminOverviewEffects {
     private deleteOrganisationService: DeleteOrganisationGQL,
     private getOrganisationsService: GetOrganisationsGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

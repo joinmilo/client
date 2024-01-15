@@ -6,7 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ArticlePublicAuthorEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteArticlePublicAuthorGQL } from '../../../api/generated/delete-article-public-author.mutation.generated';
 import { GetArticlePublicAuthorsGQL } from '../../../api/generated/get-public-authors.query.generated';
 import { GuestArticleAdminPublicAuthorsActions } from './guest-article-admin-authors.actions';
@@ -29,8 +30,8 @@ export class GuestArticleAdminPublicAuthorsEffects {
 
   deleteGuestArticle = createEffect(() => this.actions.pipe(
     ofType(GuestArticleAdminPublicAuthorsActions.deleteAuthor),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.article?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.article?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -57,5 +58,6 @@ export class GuestArticleAdminPublicAuthorsEffects {
     private deleteGuestArticleService: DeleteArticlePublicAuthorGQL,
     private getPublicAuthorsService: GetArticlePublicAuthorsGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

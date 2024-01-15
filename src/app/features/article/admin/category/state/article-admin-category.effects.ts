@@ -6,7 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ArticleCategoryEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteArticleCategoryGQL } from '../../../api/generated/delete-article-category.mutation.generated';
 import { GetArticleCategoriesGQL } from '../../../api/generated/get-article-categories.query.generated';
 import { ArticleAdminCategoryActions } from './article-admin-category.actions';
@@ -29,8 +30,8 @@ export class ArticleAdminCategoryEffects {
 
   deleteArticle = createEffect(() => this.actions.pipe(
     ofType(ArticleAdminCategoryActions.deleteCategory),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.category?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.category?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.category)
           : EMPTY
@@ -57,5 +58,6 @@ export class ArticleAdminCategoryEffects {
     private deleteArticleCategoryService: DeleteArticleCategoryGQL,
     private getArticleCategoriesService: GetArticleCategoriesGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

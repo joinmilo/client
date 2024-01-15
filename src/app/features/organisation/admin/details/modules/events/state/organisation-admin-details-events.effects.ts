@@ -6,7 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_EventEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { DeleteEventGQL } from 'src/app/features/organisation/api/generated/delete-event.mutation.generated';
 import { GetOrganisationEventsGQL } from 'src/app/features/organisation/api/generated/get-organisation-events.query.generated';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { OrganisationAdminDetailsEventsActions } from './organisation-admin-details-events.actions';
 import { selectParams, selectSlug } from './organisation-admin-details-events.selectors';
 
@@ -38,8 +39,8 @@ export class OrganisationAdminDetailsEventsEffects {
 
   deleteEvent = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsEventsActions.deleteEvent),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.event?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.event?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.event)
           : EMPTY
@@ -58,5 +59,6 @@ export class OrganisationAdminDetailsEventsEffects {
     private getOrganisationEventsService: GetOrganisationEventsGQL,
     private deleteEventService: DeleteEventGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 }

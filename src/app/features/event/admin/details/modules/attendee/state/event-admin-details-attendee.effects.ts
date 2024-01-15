@@ -9,7 +9,8 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteEventAttendeeGQL } from 'src/app/features/event/api/generated/delete-eventattendee.mutation.generated';
 import { GetEventAttendeesGQL } from 'src/app/features/event/api/generated/get-event-attendees.query.generated';
 import { SaveEventAttendeeGQL } from 'src/app/features/event/api/generated/save-event-attendee.mutation.generated';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { EventAdminDetailsAttendeeActions } from './event-admin-details-attendee.actions';
 import { selectParams, selectSlug } from './event-admin-details-attendee.selectors';
 
@@ -43,8 +44,8 @@ export class EventAdminDetailsAttendeeEffects {
 
   deleteAttendee = createEffect(() => this.actions.pipe(
     ofType(EventAdminDetailsAttendeeActions.deleteAttendee),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.attendee?.userContext?.user?.email })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.attendee?.userContext?.user?.email }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.attendee)
           : EMPTY
@@ -90,6 +91,7 @@ export class EventAdminDetailsAttendeeEffects {
     private store: Store,
     private dialog: MatDialog,
     private deleteEventAttendeeService: DeleteEventAttendeeGQL,
-    private saveEventAttendeeService: SaveEventAttendeeGQL
+    private saveEventAttendeeService: SaveEventAttendeeGQL,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 }

@@ -8,7 +8,7 @@ import { ConfirmDialogData } from './typings/confirm-dialog';
 export class ConfirmDialogService {
   constructor(private dialog: MatDialog) {}
 
-  public open(dialogData: ConfirmDialogData): Observable<any>{
+  public confirm(dialogData: ConfirmDialogData): Observable<boolean>{
     return this.dialog.open(ConfirmComponent, { data: dialogData }).afterClosed();
   }
 }

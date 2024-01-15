@@ -8,8 +8,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteDealGQL } from '../../../api/generated/delete-deal.mutation.generated';
 import { GetDealsGQL } from '../../../api/generated/get-deals.query.generated';
 import { SponsorDealGQL } from '../../../api/generated/sponsor-deal.mutation.generated';
@@ -53,8 +53,8 @@ export class DealAdminOverviewEffects {
 
   sponsorDeal = createEffect(() => this.actions.pipe(
     ofType(DealAdminOverviewActions.sponsorDeal),
-    switchMap(action => this.dialog.open(ConfirmChangeComponent, { data: 'thisWillSponsor' })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.deal)
           : EMPTY
@@ -77,8 +77,8 @@ export class DealAdminOverviewEffects {
 
   deleteDeal = createEffect(() => this.actions.pipe(
     ofType(DealAdminOverviewActions.deleteDeal),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.deal?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.deal?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.deal)
           : EMPTY
@@ -107,5 +107,6 @@ export class DealAdminOverviewEffects {
     private sponsorDealService: SponsorDealGQL,
     private deleteDealService: DeleteDealGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

@@ -131,7 +131,7 @@ export class AdminSettingsRoleEffects {
       ofType(AdminSettingsRoleActions.deleteRole),
       switchMap((action) =>
         this.confirmDialogService
-          .open({ type: ConfirmDialogType.Delete, context: action.role?.name })
+          .confirm({ type: ConfirmDialogType.Delete, context: action.role?.name })
           .pipe(switchMap((confirmed) => (confirmed ? of(action.role) : EMPTY)))
       ),
       switchMap((role) =>

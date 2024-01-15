@@ -3,7 +3,8 @@ import { Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, Que
 import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmDeleteComponent } from '../../../confirmDialog/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DragDropElement } from '../typings/drag-drop-element';
 import { DragDropElementComponent } from './element/drag-drop-element.component';
 
@@ -44,6 +45,7 @@ export class DragDropComponent implements OnDestroy {
 
   constructor(
     private dialog: MatDialog,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 
   public drag(): void {
@@ -61,8 +63,8 @@ export class DragDropComponent implements OnDestroy {
   }
 
   public onDelete(index: number) {
-    this.dialog.open(ConfirmDeleteComponent)
-      .afterClosed()
+    this.confirmDialogService
+          .confirm({ type: ConfirmDialogType.Delete})
       .pipe(takeUntil(this.destroy))
       .subscribe(confirmed => {
         if (confirmed) {

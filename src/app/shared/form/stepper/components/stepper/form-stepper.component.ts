@@ -1,21 +1,32 @@
-import { AfterViewInit, Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  QueryList,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subject, take, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmCancelComponent } from 'src/app/shared/confirmDialog/confirm-cancel/confirm.component';
-import { ConfirmResetComponent } from 'src/app/shared/dialogs/confirm-reset/confirm-reset.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { FormStepperActions } from '../../state/form-stepper.actions';
-import { selectIsDirty, selectIsValid } from '../../state/form-stepper.selectors';
+import {
+  selectIsDirty,
+  selectIsValid,
+} from '../../state/form-stepper.selectors';
 import { FormStepComponent } from '../step/form-step.component';
 
 @Component({
   selector: 'app-form-stepper',
   templateUrl: './form-stepper.component.html',
-  styleUrls: ['./form-stepper.component.scss']
+  styleUrls: ['./form-stepper.component.scss'],
 })
 export class FormStepperComponent implements AfterViewInit, OnDestroy {
-
   //TODO: Implement linear mode
   @Input()
   public set linear(linear: boolean) {
@@ -43,14 +54,16 @@ export class FormStepperComponent implements AfterViewInit, OnDestroy {
   constructor(
     private store: Store,
     private dialog: MatDialog,
+    private confirmDialogService: ConfirmDialogService
   ) {
-    this.store.select(selectIsDirty)
+    this.store
+      .select(selectIsDirty)
       .pipe(takeUntil(this.destroy))
-      .subscribe(dirty => this.dirty = dirty);
+      .subscribe((dirty) => (this.dirty = dirty));
   }
 
   public ngAfterViewInit(): void {
-    this.steps?.forEach((step, index) => step.index = index);
+    this.steps?.forEach((step, index) => (step.index = index));
   }
 
   public save(captchaToken?: string): void {
@@ -59,22 +72,24 @@ export class FormStepperComponent implements AfterViewInit, OnDestroy {
 
   public cancel(): void {
     this.dirty
-      ? this.dialog.open(ConfirmCancelComponent).afterClosed()
+      ? this.confirmDialogService
+          .confirm({ type: ConfirmDialogType.Cancel })
           .pipe(take(1))
-          .subscribe(shouldCancel => shouldCancel
-            && this.cancelled.emit())
+          .subscribe((shouldCancel) =>
+           shouldCancel && this.cancelled.emit())
       : this.cancelled.emit();
   }
 
   public reset(): void {
-    this.dialog.open(ConfirmResetComponent).afterClosed()
+    this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Reset })
       .pipe(take(1))
-      .subscribe(shouldReset => shouldReset
-        && this.resetSteps())
+      .subscribe((shouldReset) =>
+       shouldReset && this.resetSteps());
   }
 
   private resetSteps(): void {
-    this.steps?.forEach(step => step.reset());
+    this.steps?.forEach((step) => step.reset());
     this.store.dispatch(FormStepperActions.stepsReset());
   }
 
@@ -83,5 +98,4 @@ export class FormStepperComponent implements AfterViewInit, OnDestroy {
     this.destroy.next();
     this.destroy.complete();
   }
-
 }

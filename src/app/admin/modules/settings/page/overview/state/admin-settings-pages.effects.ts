@@ -9,8 +9,8 @@ import { GetPagesGQL } from 'src/app/admin/api/generated/get-pages.query.generat
 import { PageableList_PageEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { AdminSettingsPageActions } from './admin-settings-pages.actions';
 import { selectParams } from './admin-settings-pages.selectors';
 
@@ -32,8 +32,8 @@ export class AdminSettingsPageEffects {
 
   assignLanding = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPageActions.assignLanding),
-    switchMap(action => this.dialog.open(ConfirmChangeComponent, { data: 'thisWillAssignLandingPage' })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillAssignLandingPage' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.pageId)
           : EMPTY
@@ -56,8 +56,8 @@ export class AdminSettingsPageEffects {
 
   deletePage = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPageActions.deletePage),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.page?.label })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.page?.label }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.page)
           : EMPTY
@@ -85,5 +85,6 @@ export class AdminSettingsPageEffects {
     private deletePageService: DeletePageGQL,
     private getPagesService: GetPagesGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

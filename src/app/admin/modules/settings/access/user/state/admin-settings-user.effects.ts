@@ -8,7 +8,8 @@ import { GetUsersGQL } from 'src/app/admin/api/generated/get-users.query.generat
 import { PageableList_UserEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { AdminSettingsUserActions } from './admin-settings-user.actions';
 import { selectParams } from './admin-settings-user.selectors';
 
@@ -29,8 +30,8 @@ export class AdminSettingsUserEffects {
 
   deleteUser = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsUserActions.deleteUser),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.user?.firstName + ' ' + action.user?.lastName })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.user?.firstName + ' ' + action.user?.lastName }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.user)
           : EMPTY
@@ -57,5 +58,6 @@ export class AdminSettingsUserEffects {
     private deleteUserService: DeleteUserGQL,
     private getUseresService: GetUsersGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

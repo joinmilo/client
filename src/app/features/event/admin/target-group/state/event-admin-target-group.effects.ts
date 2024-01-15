@@ -6,7 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_EventTargetGroupEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteEventTargetGroupGQL } from '../../../api/generated/delete-event-target-group.mutation.generated';
 import { GetEventTargetGroupsGQL } from '../../../api/generated/get-event-target-groups.query.generated';
 import { EventAdminTargetGroupActions } from './event-admin-target-group.actions';
@@ -29,8 +30,8 @@ export class EventAdminTargetGroupEffects {
 
   deleteEvent = createEffect(() => this.actions.pipe(
     ofType(EventAdminTargetGroupActions.deleteTargetGroup),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.targetGroup?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.targetGroup?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.targetGroup)
           : EMPTY
@@ -57,5 +58,6 @@ export class EventAdminTargetGroupEffects {
     private deleteEventTargetGroupService: DeleteEventTargetGroupGQL,
     private getEventCategoriesService: GetEventTargetGroupsGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

@@ -12,7 +12,8 @@ import { PageableList_AddressEntity } from 'src/app/core/api/generated/schema';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { baseRoute } from '../../admin-settings-location.routing.module';
 import { AdminSettingsAddressActions } from './admin-settings-address.actions';
 import { selectParams } from './admin-settings-address.selectors';
@@ -64,8 +65,8 @@ export class AdminSettingsAddressEffects {
 
   deleteAddress = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsAddressActions.delete),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.address?.street + ' ' + action.address?.houseNumber })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.address?.street + ' ' + action.address?.houseNumber }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.address)
           : EMPTY
@@ -95,5 +96,6 @@ export class AdminSettingsAddressEffects {
     private saveAddressService: SaveAddressGQL,
     private router: Router,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

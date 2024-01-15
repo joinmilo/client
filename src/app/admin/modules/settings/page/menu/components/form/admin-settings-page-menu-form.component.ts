@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 @Component({
@@ -48,6 +49,7 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
     private fb: FormBuilder,
     private dialog: MatDialog,
     private translationService: TranslationService,
+    private confirmDialogService: ConfirmDialogService
   ) {
     this.form.valueChanges
       .pipe(
@@ -69,8 +71,8 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
   }
 
   public onDelete(): void {
-    this.dialog.open(ConfirmDeleteComponent)
-      .afterClosed()
+    this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete })
       .pipe(takeUntil(this.destroy))
       .subscribe((confirmed: boolean) => {
         this.onTouch?.();

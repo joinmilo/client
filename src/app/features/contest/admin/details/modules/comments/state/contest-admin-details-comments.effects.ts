@@ -8,7 +8,8 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteContestCommentGQL } from 'src/app/features/contest/api/generated/delete-contest-comment.mutation.generated';
 import { GetContestCommentsGQL } from 'src/app/features/contest/api/generated/get-contest-comments.query.generated';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { ContestAdminDetailsCommentsActions } from './contest-admin-details-comments.actions';
 import { selectParams, selectPeriod, selectSlug } from './contest-admin-details-comments.selectors';
 
@@ -68,8 +69,8 @@ export class ContestAdminDetailsCommentsEffects {
 
   deleteComment = createEffect(() => this.actions.pipe(
     ofType(ContestAdminDetailsCommentsActions.deleteComment),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.comment?.content })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.comment?.content }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.comment)
           : EMPTY
@@ -95,6 +96,7 @@ export class ContestAdminDetailsCommentsEffects {
     private getContestCommentsService: GetContestCommentsGQL,
     private store: Store,
     private dialog: MatDialog,
-    private deleteContestCommentService: DeleteContestCommentGQL
+    private deleteContestCommentService: DeleteContestCommentGQL,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 }

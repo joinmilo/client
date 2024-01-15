@@ -8,7 +8,8 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteOrganisationCommentGQL } from 'src/app/features/organisation/api/generated/delete-organisation-comment.mutation.generated';
 import { GetOrganisationCommentsGQL } from 'src/app/features/organisation/api/generated/get-organisation-comments.query.generated';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { OrganisationAdminDetailsCommentsActions } from './organisation-admin-details-comments.actions';
 import { selectParams, selectPeriod, selectSlug } from './organisation-admin-details-comments.selectors';
 
@@ -67,8 +68,8 @@ export class OrganisationAdminDetailsCommentsEffects {
 
   deleteComment = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsCommentsActions.deleteComment),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.comment?.content })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.comment?.content }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.comment)
           : EMPTY
@@ -94,6 +95,7 @@ export class OrganisationAdminDetailsCommentsEffects {
     private getOrganisationCommentsService: GetOrganisationCommentsGQL,
     private store: Store,
     private dialog: MatDialog,
-    private deleteOrganisationCommentService: DeleteOrganisationCommentGQL
+    private deleteOrganisationCommentService: DeleteOrganisationCommentGQL,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 }

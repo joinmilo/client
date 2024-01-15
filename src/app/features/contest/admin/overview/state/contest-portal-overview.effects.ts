@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ContestEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteContestGQL } from '../../../api/generated/delete-contest.mutation.generated';
 import { GetContestsGQL } from '../../../api/generated/get-contests.query.generated';
 import { SponsorContestGQL } from '../../../api/generated/sponsor-contest.mutation.generated';
@@ -32,8 +31,8 @@ export class ContestAdminOverviewEffects {
 
   sponsorContest = createEffect(() => this.actions.pipe(
     ofType(ContestAdminOverviewActions.sponsorContest),
-    switchMap(action => this.dialog.open(ConfirmChangeComponent, { data: 'thisWillSponsor' })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.contest)
           : EMPTY
@@ -56,8 +55,8 @@ export class ContestAdminOverviewEffects {
 
   deleteContest = createEffect(() => this.actions.pipe(
     ofType(ContestAdminOverviewActions.deleteContest),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.contest?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.contest?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.contest)
           : EMPTY
@@ -82,8 +81,8 @@ export class ContestAdminOverviewEffects {
     private actions: Actions,
     private getContestService: GetContestsGQL,
     private store: Store,
-    private dialog: MatDialog,
     private sponsorContestService: SponsorContestGQL,
-    private deleteContestService: DeleteContestGQL
+    private deleteContestService: DeleteContestGQL,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

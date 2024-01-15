@@ -118,7 +118,7 @@ export class MediaFormComponent implements ControlValueAccessor, Validator, OnDe
 
   public remove(index: number): void {
     this.confirmDialogService
-          .open({ type: ConfirmDialogType.Delete })
+          .confirm({ type: ConfirmDialogType.Delete })
       .subscribe(confirmed => {
         if (confirmed) {
           const media = [...this.media];

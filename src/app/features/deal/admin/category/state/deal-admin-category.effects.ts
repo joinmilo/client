@@ -6,7 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_DealCategoryEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteDealCategoryGQL } from '../../../api/generated/delete-deal-category.mutation.generated';
 import { GetDealCategoriesGQL } from '../../../api/generated/get-deal-categories.query.generated';
 import { DealAdminCategoryActions } from './deal-admin-category.actions';
@@ -27,10 +28,10 @@ export class DealAdminCategoryEffects {
     map(response => DealAdminCategoryActions.setCategoryData(response.data.getDealCategories as PageableList_DealCategoryEntity))
   ));
 
-  deleteDeal = createEffect(() => this.actions.pipe(
+  deleteDealCategory = createEffect(() => this.actions.pipe(
     ofType(DealAdminCategoryActions.deleteCategory),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.category?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.category?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.category)
           : EMPTY
@@ -57,5 +58,6 @@ export class DealAdminCategoryEffects {
     private deleteDealCategoryService: DeleteDealCategoryGQL,
     private getDealCategoriesService: GetDealCategoriesGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

@@ -8,8 +8,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteOrganisationGQL } from '../../../api/generated/delete-organisation.mutation.generated';
 import { GetOrganisationMembersGQL } from '../../../api/generated/get-organisation-members.generated';
 import { GetOrganisationsGQL } from '../../../api/generated/get-organisations.query.generated';
@@ -68,8 +68,8 @@ export class OrganisationAdminOverviewEffects {
 
   sponsorOrganisation = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminOverviewActions.sponsorOrganisation),
-    switchMap(action => this.dialog.open(ConfirmChangeComponent, { data: 'thisWillSponsor' })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.organisation)
           : EMPTY
@@ -92,8 +92,8 @@ export class OrganisationAdminOverviewEffects {
 
   deleteOrganisation = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminOverviewActions.deleteOrganisation),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.organisation?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.organisation?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.organisation)
           : EMPTY
@@ -123,6 +123,7 @@ export class OrganisationAdminOverviewEffects {
     private organisationsService: GetOrganisationsGQL,
     private organisationMembersService: GetOrganisationMembersGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
     
   ) {}
 }

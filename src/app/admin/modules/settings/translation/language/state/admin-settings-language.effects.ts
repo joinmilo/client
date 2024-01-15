@@ -3,14 +3,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
+import { DeleteLanguageGQL } from 'src/app/admin/api/generated/delete-laguage.mutation.generated';
 import { GetLanguagesGQL } from 'src/app/admin/api/generated/get-languages.query.generated';
 import { PageableList_LanguageEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { AdminSettingsLanguageActions } from './admin-settings-language.actions';
 import { selectParams } from './admin-settings-language.selectors';
-import { DeleteLanguageGQL } from 'src/app/admin/api/generated/delete-laguage.mutation.generated';
 
 @Injectable()
 export class AdminSettingsLanguageEffects {
@@ -29,8 +30,8 @@ export class AdminSettingsLanguageEffects {
 
   deleteLanguage = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsLanguageActions.deleteLanguage),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.language?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.language?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.language)
           : EMPTY
@@ -57,5 +58,6 @@ export class AdminSettingsLanguageEffects {
     private deleteLanguageService: DeleteLanguageGQL,
     private getLanguageesService: GetLanguagesGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

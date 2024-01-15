@@ -7,8 +7,8 @@ import { PageableList_ArticleEntity, QueryOperator } from 'src/app/core/api/gene
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteArticleGQL } from 'src/app/features/article/api/generated/delete-article.mutation.generated';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { ChangeArticleApprovalGQL } from '../../../api/generated/change-article-approval.mutation.generated';
 import { GetGuestArticlesGQL } from '../../../api/generated/get-guest-articles.query.generated';
 import { GuestArticleAdminOverviewActions } from './guest-article-admin-overview.actions';
@@ -42,12 +42,11 @@ export class GuestArticleAdminOverviewEffects {
 
   changeApproval = createEffect(() => this.actions.pipe(
     ofType(GuestArticleAdminOverviewActions.toggleArticleApproval),
-    switchMap(action => this.dialog.open(ConfirmChangeComponent, { data:
-        action.article?.approved
-          ? 'thisWillUnpublishArticle'
-          : 'thisWillApproveArticle'
-      })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Change,
+         context: action.article?.approved
+        ? 'thisWillUnpublishArticle'
+        : 'thisWillApproveArticle' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -70,8 +69,8 @@ export class GuestArticleAdminOverviewEffects {
 
   deleteGuestArticle = createEffect(() => this.actions.pipe(
     ofType(GuestArticleAdminOverviewActions.deleteArticle),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.article?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.article?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -99,5 +98,6 @@ export class GuestArticleAdminOverviewEffects {
     private deleteGuestArticleService: DeleteArticleGQL,
     private getGuestArticlesService: GetGuestArticlesGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

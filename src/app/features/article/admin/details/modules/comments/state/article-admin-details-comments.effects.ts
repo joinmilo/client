@@ -6,10 +6,10 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, PageableList_ArticleCommentEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-
 import { DeleteArticleCommentGQL } from 'src/app/features/article/api/generated/delete-article-comment.mutation.generated';
 import { GetArticleCommentsGQL } from 'src/app/features/article/api/generated/get-article-comments.query.generated';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { ArticleAdminDetailsCommentsActions } from './article-admin-details-comments.actions';
 import { selectParams, selectPeriod, selectSlug } from './article-admin-details-comments.selectors';
 
@@ -69,8 +69,8 @@ export class ArticleAdminDetailsCommentsEffects {
 
   deleteComment = createEffect(() => this.actions.pipe(
     ofType(ArticleAdminDetailsCommentsActions.deleteComment),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.comment?.content })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.comment?.content }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.comment)
           : EMPTY
@@ -96,6 +96,7 @@ export class ArticleAdminDetailsCommentsEffects {
     private getArticleCommentsService: GetArticleCommentsGQL,
     private store: Store,
     private dialog: MatDialog,
-    private deleteArticleCommentService: DeleteArticleCommentGQL
+    private deleteArticleCommentService: DeleteArticleCommentGQL,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 }

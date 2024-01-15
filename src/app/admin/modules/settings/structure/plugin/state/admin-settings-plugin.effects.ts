@@ -6,7 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { ChangePluginActivationGQL } from 'src/app/admin/api/generated/change-plugin-activation.mutation.generated';
 import { GetPluginsGQL } from 'src/app/admin/api/generated/get-plugins.query.generated';
 import { PageableList_PluginEntity } from 'src/app/core/api/generated/schema';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { AdminSettingsPluginActions } from './admin-settings-plugin.actions';
 import { selectParams } from './admin-settings-plugin.selectors';
 
@@ -38,11 +39,11 @@ export class AdminSettingsPluginEffects {
         id: action.plugin?.id,
         active: !action.plugin?.active,
       })),
-      switchMap(plugin => this.dialog.open(ConfirmChangeComponent, {
-          data: plugin.active
+      switchMap(plugin => this.confirmDialogService
+        .confirm({ type: ConfirmDialogType.Change,
+          context: plugin.active
             ? 'thisWillActivateFeature'
-            : 'cautionThisWillDeactivateFeature'
-        }).afterClosed().pipe(
+            : 'cautionThisWillDeactivateFeature' }).pipe(
           switchMap(confirmed => confirmed
             ? of(plugin)
             : EMPTY
@@ -62,6 +63,7 @@ export class AdminSettingsPluginEffects {
     private dialog: MatDialog,
     private getPluginsService: GetPluginsGQL,
     private changePluginActivationService: ChangePluginActivationGQL,
-    private store: Store
+    private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }

@@ -10,7 +10,8 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteOrganisationMemberGQL } from 'src/app/features/organisation/api/generated/delete-organisation-member.mutation.generated';
 import { GetOrganisationMembersGQL } from 'src/app/features/organisation/api/generated/get-organisation-members.generated';
 import { SaveOrganisationMemberGQL } from 'src/app/features/organisation/api/generated/save-organisation-member.mutation.generated';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { OrganisationAdminDetailsApplicationsActions } from './organisation-admin-details-applications.actions';
 import { selectParams, selectSlug } from './organisation-admin-details-applications.selectors';
 
@@ -62,8 +63,8 @@ export class OrganisationAdminDetailsApplicationsEffects {
 
   deleteApplication = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsApplicationsActions.deleteMember),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.member?.userContext?.user?.email })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.member?.userContext?.user?.email }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.member)
           : EMPTY
@@ -108,6 +109,7 @@ export class OrganisationAdminDetailsApplicationsEffects {
     private store: Store,
     private dialog: MatDialog,
     private deleteOrganisationApplicationService: DeleteOrganisationMemberGQL,
-    private saveOrganisationMemberService: SaveOrganisationMemberGQL
+    private saveOrganisationMemberService: SaveOrganisationMemberGQL,
+    private confirmDialogService: ConfirmDialogService
   ) { }
 }

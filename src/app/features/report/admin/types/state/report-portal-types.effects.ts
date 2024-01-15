@@ -6,7 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ReportTypeEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
+import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
 import { DeleteReportTypeGQL } from '../../../api/generated/delete-report-type.mutation.generated';
 import { GetReportTypesGQL } from '../../../api/generated/get-report-types.query.generated';
 import { ReportAdminTypesActions } from './report-admin-types.actions';
@@ -29,8 +30,9 @@ export class ReportAdminTypesEffects {
 
   deleteReport = createEffect(() => this.actions.pipe(
     ofType(ReportAdminTypesActions.deleteType),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.reportType?.name })
-      .afterClosed().pipe(
+    switchMap(action => this.confirmDialogService
+      .confirm({ type: ConfirmDialogType.Delete, context: action.reportType?.name }) 
+      .pipe(
         switchMap(confirmed => confirmed
           ? of(action.reportType)
           : EMPTY
@@ -57,5 +59,6 @@ export class ReportAdminTypesEffects {
     private deleteReportService: DeleteReportTypeGQL,
     private getReportTypesService: GetReportTypesGQL,
     private store: Store,
+    private confirmDialogService: ConfirmDialogService
   ) {}
 }
