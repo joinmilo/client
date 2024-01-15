@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -10,8 +9,8 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteOrganisationMemberGQL } from 'src/app/features/organisation/api/generated/delete-organisation-member.mutation.generated';
 import { GetOrganisationMembersGQL } from 'src/app/features/organisation/api/generated/get-organisation-members.generated';
 import { SaveOrganisationMemberGQL } from 'src/app/features/organisation/api/generated/save-organisation-member.mutation.generated';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { OrganisationAdminDetailsApplicationsActions } from './organisation-admin-details-applications.actions';
 import { selectParams, selectSlug } from './organisation-admin-details-applications.selectors';
 
@@ -64,7 +63,7 @@ export class OrganisationAdminDetailsApplicationsEffects {
   deleteApplication = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsApplicationsActions.deleteMember),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.member?.userContext?.user?.email }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.member?.userContext?.user?.email }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.member)
           : EMPTY
@@ -105,11 +104,10 @@ export class OrganisationAdminDetailsApplicationsEffects {
 
   constructor(
     private actions: Actions,
-    private getOrganisationApplicationsService: GetOrganisationMembersGQL,
-    private store: Store,
-    private dialog: MatDialog,
+    private confirmDialogService: ConfirmService,
     private deleteOrganisationApplicationService: DeleteOrganisationMemberGQL,
+    private getOrganisationApplicationsService: GetOrganisationMembersGQL,
     private saveOrganisationMemberService: SaveOrganisationMemberGQL,
-    private confirmDialogService: ConfirmDialogService
+    private store: Store,
   ) { }
 }

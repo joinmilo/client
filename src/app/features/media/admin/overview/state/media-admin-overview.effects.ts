@@ -5,8 +5,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_InfoMediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { GetInfoMediaCardsGQL } from 'src/app/shared/widgets/card/api/generated/get-info-media-cards.query.generated';
 import { DeleteInfoMediumGQL } from '../../../api/generated/delete-medium.mutation.generated';
 import { MediaAdminOverviewActions } from './media-admin-overview.actions';
@@ -29,8 +29,8 @@ export class MediaAdminOverviewEffects {
 
   deleteMedia = createEffect(() => this.actions.pipe(
     ofType(MediaAdminOverviewActions.deleteMedia),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.media?.media?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.media?.media?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.media)
           : EMPTY
@@ -53,9 +53,9 @@ export class MediaAdminOverviewEffects {
 
   constructor(
     private actions: Actions,
+    private confirmService: ConfirmService,
     private getInfoMediaService: GetInfoMediaCardsGQL,
     private deleteInfoMediaService: DeleteInfoMediumGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

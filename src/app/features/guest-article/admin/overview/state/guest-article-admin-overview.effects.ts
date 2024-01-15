@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -7,8 +6,8 @@ import { PageableList_ArticleEntity, QueryOperator } from 'src/app/core/api/gene
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteArticleGQL } from 'src/app/features/article/api/generated/delete-article.mutation.generated';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { ChangeArticleApprovalGQL } from '../../../api/generated/change-article-approval.mutation.generated';
 import { GetGuestArticlesGQL } from '../../../api/generated/get-guest-articles.query.generated';
 import { GuestArticleAdminOverviewActions } from './guest-article-admin-overview.actions';
@@ -42,8 +41,8 @@ export class GuestArticleAdminOverviewEffects {
 
   changeApproval = createEffect(() => this.actions.pipe(
     ofType(GuestArticleAdminOverviewActions.toggleArticleApproval),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Change,
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Change,
          context: action.article?.approved
         ? 'thisWillUnpublishArticle'
         : 'thisWillApproveArticle' }).pipe(
@@ -69,8 +68,8 @@ export class GuestArticleAdminOverviewEffects {
 
   deleteGuestArticle = createEffect(() => this.actions.pipe(
     ofType(GuestArticleAdminOverviewActions.deleteArticle),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.article?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.article?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -93,11 +92,10 @@ export class GuestArticleAdminOverviewEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
     private changeArticleApprovalService: ChangeArticleApprovalGQL,
+    private confirmService: ConfirmService,
     private deleteGuestArticleService: DeleteArticleGQL,
     private getGuestArticlesService: GetGuestArticlesGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

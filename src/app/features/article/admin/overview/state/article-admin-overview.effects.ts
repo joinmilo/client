@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -8,8 +7,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteArticleGQL } from '../../../api/generated/delete-article.mutation.generated';
 import { GetArticlesGQL } from '../../../api/generated/get-articles.query.generated';
 import { SponsorArticleGQL } from '../../../api/generated/sponsor-article.mutation.generated';
@@ -65,8 +64,8 @@ export class ArticleAdminOverviewEffects {
 
   sponsorArticle = createEffect(() => this.actions.pipe(
     ofType(ArticleAdminOverviewActions.sponsorArticle),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillSponsor' }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Change, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -89,8 +88,8 @@ export class ArticleAdminOverviewEffects {
 
   deleteArticle = createEffect(() => this.actions.pipe(
     ofType(ArticleAdminOverviewActions.deleteArticle),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.article?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.article?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -114,11 +113,10 @@ export class ArticleAdminOverviewEffects {
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private confirmService: ConfirmService,
     private deleteArticleService: DeleteArticleGQL,
     private getArticlesService: GetArticlesGQL,
     private sponsorArticleService: SponsorArticleGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

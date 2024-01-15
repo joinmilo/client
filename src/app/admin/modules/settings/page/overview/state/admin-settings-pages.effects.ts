@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -9,8 +8,8 @@ import { GetPagesGQL } from 'src/app/admin/api/generated/get-pages.query.generat
 import { PageableList_PageEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { AdminSettingsPageActions } from './admin-settings-pages.actions';
 import { selectParams } from './admin-settings-pages.selectors';
 
@@ -32,8 +31,8 @@ export class AdminSettingsPageEffects {
 
   assignLanding = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPageActions.assignLanding),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillAssignLandingPage' }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Change, context: 'thisWillAssignLandingPage' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.pageId)
           : EMPTY
@@ -56,8 +55,8 @@ export class AdminSettingsPageEffects {
 
   deletePage = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPageActions.deletePage),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.page?.label }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.page?.label }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.page)
           : EMPTY
@@ -81,10 +80,9 @@ export class AdminSettingsPageEffects {
   constructor(
     private actions: Actions,
     private assignLandingPageService: AssignLandingPageGQL,
-    private dialog: MatDialog,
+    private confirmService: ConfirmService,
     private deletePageService: DeletePageGQL,
     private getPagesService: GetPagesGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

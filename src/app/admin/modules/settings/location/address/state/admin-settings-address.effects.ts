@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -12,8 +11,8 @@ import { PageableList_AddressEntity } from 'src/app/core/api/generated/schema';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { baseRoute } from '../../admin-settings-location.routing.module';
 import { AdminSettingsAddressActions } from './admin-settings-address.actions';
 import { selectParams } from './admin-settings-address.selectors';
@@ -66,7 +65,7 @@ export class AdminSettingsAddressEffects {
   deleteAddress = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsAddressActions.delete),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.address?.street + ' ' + action.address?.houseNumber }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.address?.street + ' ' + action.address?.houseNumber }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.address)
           : EMPTY
@@ -89,13 +88,12 @@ export class AdminSettingsAddressEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
+    private confirmDialogService: ConfirmService,
     private deleteAddressService: DeleteAddressGQL,
     private getAddressService: GetAddressGQL,
     private getAddressesService: GetAddressesGQL,
     private saveAddressService: SaveAddressGQL,
     private router: Router,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -8,8 +7,8 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteEventCommentGQL } from 'src/app/features/event/api/generated/delete-event-comment.mutation.generated';
 import { GetEventCommentsGQL } from 'src/app/features/event/api/generated/get-event-comments.query.generated';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { EventAdminDetailsCommentsActions } from './event-admin-details-comments.actions';
 import { selectParams, selectPeriod, selectSlug } from './event-admin-details-comments.selectors';
 
@@ -69,8 +68,8 @@ export class EventAdminDetailsCommentsEffects {
 
   deleteComment = createEffect(() => this.actions.pipe(
     ofType(EventAdminDetailsCommentsActions.deleteComment),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.comment?.content }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.comment?.content }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.comment)
           : EMPTY
@@ -93,10 +92,9 @@ export class EventAdminDetailsCommentsEffects {
 
   constructor(
     private actions: Actions,
+    private confirmService: ConfirmService,
     private getEventCommentsService: GetEventCommentsGQL,
-    private store: Store,
-    private dialog: MatDialog,
     private deleteEventCommentService: DeleteEventCommentGQL,
-    private confirmDialogService: ConfirmDialogService
+    private store: Store,
   ) { }
 }

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_InfoMediaCategoryEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteMediaCategoryGQL } from '../../../api/generated/delete-media-category.mutation.generated';
 import { GetMediaCategoriesGQL } from '../../../api/generated/get-media-categories.query.generated';
 import { MediaAdminCategoryActions } from './media-admin-category.actions';
@@ -31,7 +30,7 @@ export class MediaAdminCategoryEffects {
   deleteMedia = createEffect(() => this.actions.pipe(
     ofType(MediaAdminCategoryActions.deleteCategory),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.category?.name }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.category?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.category)
           : EMPTY
@@ -54,10 +53,9 @@ export class MediaAdminCategoryEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
+    private confirmDialogService: ConfirmService,
     private deleteMediaCategoryService: DeleteMediaCategoryGQL,
     private getMediaCategoriesService: GetMediaCategoriesGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

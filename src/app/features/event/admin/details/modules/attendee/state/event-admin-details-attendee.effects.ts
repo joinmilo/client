@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -9,8 +8,8 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteEventAttendeeGQL } from 'src/app/features/event/api/generated/delete-eventattendee.mutation.generated';
 import { GetEventAttendeesGQL } from 'src/app/features/event/api/generated/get-event-attendees.query.generated';
 import { SaveEventAttendeeGQL } from 'src/app/features/event/api/generated/save-event-attendee.mutation.generated';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { EventAdminDetailsAttendeeActions } from './event-admin-details-attendee.actions';
 import { selectParams, selectSlug } from './event-admin-details-attendee.selectors';
 
@@ -44,8 +43,8 @@ export class EventAdminDetailsAttendeeEffects {
 
   deleteAttendee = createEffect(() => this.actions.pipe(
     ofType(EventAdminDetailsAttendeeActions.deleteAttendee),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.attendee?.userContext?.user?.email }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.attendee?.userContext?.user?.email }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.attendee)
           : EMPTY
@@ -87,11 +86,10 @@ export class EventAdminDetailsAttendeeEffects {
 
   constructor(
     private actions: Actions,
-    private getEventAttendeesService: GetEventAttendeesGQL,
-    private store: Store,
-    private dialog: MatDialog,
+    private confirmService: ConfirmService,
     private deleteEventAttendeeService: DeleteEventAttendeeGQL,
+    private getEventAttendeesService: GetEventAttendeesGQL,
     private saveEventAttendeeService: SaveEventAttendeeGQL,
-    private confirmDialogService: ConfirmDialogService
+    private store: Store,
   ) { }
 }

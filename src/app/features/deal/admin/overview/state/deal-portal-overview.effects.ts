@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -8,8 +7,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteDealGQL } from '../../../api/generated/delete-deal.mutation.generated';
 import { GetDealsGQL } from '../../../api/generated/get-deals.query.generated';
 import { SponsorDealGQL } from '../../../api/generated/sponsor-deal.mutation.generated';
@@ -54,7 +53,7 @@ export class DealAdminOverviewEffects {
   sponsorDeal = createEffect(() => this.actions.pipe(
     ofType(DealAdminOverviewActions.sponsorDeal),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: 'thisWillSponsor' }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.deal)
           : EMPTY
@@ -78,7 +77,7 @@ export class DealAdminOverviewEffects {
   deleteDeal = createEffect(() => this.actions.pipe(
     ofType(DealAdminOverviewActions.deleteDeal),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.deal?.name }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.deal?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.deal)
           : EMPTY
@@ -102,11 +101,10 @@ export class DealAdminOverviewEffects {
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private confirmDialogService: ConfirmService,
+    private deleteDealService: DeleteDealGQL,
     private getDealsService: GetDealsGQL,
     private sponsorDealService: SponsorDealGQL,
-    private deleteDealService: DeleteDealGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

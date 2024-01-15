@@ -8,8 +8,8 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteEventGQL } from '../../../api/generated/delete-event.mutation.generated';
 import { GetEventsGQL } from '../../../api/generated/get-events.query.generated';
 import { SponsorEventGQL } from '../../../api/generated/sponsor-event.mutation.generated';
@@ -54,8 +54,8 @@ export class EventAdminOverviewEffects {
 
   sponsorEvent = createEffect(() => this.actions.pipe(
     ofType(EventAdminOverviewActions.sponsorEvent),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillSponsor' }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Change, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.event)
           : EMPTY
@@ -78,8 +78,8 @@ export class EventAdminOverviewEffects {
 
   deleteEvent = createEffect(() => this.actions.pipe(
     ofType(EventAdminOverviewActions.deleteEvent),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.event?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.event?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.event)
           : EMPTY
@@ -108,6 +108,6 @@ export class EventAdminOverviewEffects {
     private sponsorEventService: SponsorEventGQL,
     private deleteEventService: DeleteEventGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
+    private confirmService: ConfirmService
   ) {}
 }

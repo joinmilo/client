@@ -1,11 +1,10 @@
 import { Component, EventEmitter, OnDestroy, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 @Component({
@@ -47,9 +46,8 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
 
   constructor(
     private fb: FormBuilder,
-    private dialog: MatDialog,
+    private confirmService: ConfirmService,
     private translationService: TranslationService,
-    private confirmDialogService: ConfirmDialogService
   ) {
     this.form.valueChanges
       .pipe(
@@ -71,8 +69,8 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
   }
 
   public onDelete(): void {
-    this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete })
+    this.confirmService
+      .confirm({ type: ConfirmType.Delete })
       .pipe(takeUntil(this.destroy))
       .subscribe((confirmed: boolean) => {
         this.onTouch?.();

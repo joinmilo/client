@@ -6,8 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_SurveyEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteSurveyGQL } from '../../../api/generated/delete-survey.mutation.generated';
 import { GetSurveysGQL } from '../../../api/generated/get-surveys.query.generated';
 import { SponsorSurveyGQL } from '../../../api/generated/sponsor-survey.mutation.generated';
@@ -32,8 +32,8 @@ export class SurveyAdminOverviewEffects {
 
   sponsorSurvey = createEffect(() => this.actions.pipe(
     ofType(SurveyAdminOverviewActions.sponsorSurvey),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillSponsor' })
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Change, context: 'thisWillSponsor' })
     .pipe(
         switchMap(confirmed => confirmed
           ? of(action.survey)
@@ -57,8 +57,8 @@ export class SurveyAdminOverviewEffects {
 
   deleteSurvey = createEffect(() => this.actions.pipe(
     ofType(SurveyAdminOverviewActions.deleteSurvey),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.survey?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.survey?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.survey)
           : EMPTY
@@ -86,6 +86,6 @@ export class SurveyAdminOverviewEffects {
     private sponsorSurveyService: SponsorSurveyGQL,
     private getSurveysService: GetSurveysGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
+    private confirmService: ConfirmService
   ) {}
 }

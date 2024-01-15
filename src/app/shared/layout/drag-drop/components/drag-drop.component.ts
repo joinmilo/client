@@ -1,10 +1,9 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DragDropElement } from '../typings/drag-drop-element';
 import { DragDropElementComponent } from './element/drag-drop-element.component';
 
@@ -44,8 +43,7 @@ export class DragDropComponent implements OnDestroy {
   private destroy = new Subject<void>();
 
   constructor(
-    private dialog: MatDialog,
-    private confirmDialogService: ConfirmDialogService
+    private confirmService: ConfirmService
   ) {}
 
   public drag(): void {
@@ -63,8 +61,8 @@ export class DragDropComponent implements OnDestroy {
   }
 
   public onDelete(index: number) {
-    this.confirmDialogService
-          .confirm({ type: ConfirmDialogType.Delete})
+    this.confirmService
+      .confirm({ type: ConfirmType.Delete})
       .pipe(takeUntil(this.destroy))
       .subscribe(confirmed => {
         if (confirmed) {

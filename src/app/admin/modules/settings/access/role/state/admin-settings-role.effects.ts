@@ -17,8 +17,8 @@ import {
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { accessBaseRoute } from '../../admin-settings-access-routing.module';
 import { AdminSettingsRoleActions } from './admin-settings-role.actions';
 import { selectParams } from './admin-settings-role.selectors';
@@ -130,8 +130,8 @@ export class AdminSettingsRoleEffects {
     this.actions.pipe(
       ofType(AdminSettingsRoleActions.deleteRole),
       switchMap((action) =>
-        this.confirmDialogService
-          .confirm({ type: ConfirmDialogType.Delete, context: action.role?.name })
+        this.confirmService
+          .confirm({ type: ConfirmType.Delete, context: action.role?.name })
           .pipe(switchMap((confirmed) => (confirmed ? of(action.role) : EMPTY)))
       ),
       switchMap((role) =>
@@ -157,6 +157,7 @@ export class AdminSettingsRoleEffects {
 
   constructor(
     private actions: Actions,
+    private confirmService: ConfirmService,
     private deleteRoleService: DeleteRoleGQL,
     private getRoleService: GetRoleGQL,
     private getRolePrivilegesService: GetRolePrivilegesGQL,
@@ -165,6 +166,5 @@ export class AdminSettingsRoleEffects {
     private saveRoleService: SaveRoleGQL,
     private store: Store,
     private router: Router,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

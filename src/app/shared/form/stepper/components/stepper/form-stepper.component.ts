@@ -8,12 +8,11 @@ import {
   Output,
   QueryList,
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subject, take, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { FormStepperActions } from '../../state/form-stepper.actions';
 import {
   selectIsDirty,
@@ -53,8 +52,7 @@ export class FormStepperComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private store: Store,
-    private dialog: MatDialog,
-    private confirmDialogService: ConfirmDialogService
+    private confirmService: ConfirmService
   ) {
     this.store
       .select(selectIsDirty)
@@ -72,17 +70,17 @@ export class FormStepperComponent implements AfterViewInit, OnDestroy {
 
   public cancel(): void {
     this.dirty
-      ? this.confirmDialogService
-          .confirm({ type: ConfirmDialogType.Cancel })
+      ? this.confirmService
+          .confirm({ type: ConfirmType.Cancel })
           .pipe(take(1))
           .subscribe((shouldCancel) =>
-           shouldCancel && this.cancelled.emit())
+            shouldCancel && this.cancelled.emit())
       : this.cancelled.emit();
   }
 
   public reset(): void {
-    this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Reset })
+    this.confirmService
+      .confirm({ type: ConfirmType.Reset })
       .pipe(take(1))
       .subscribe((shouldReset) =>
        shouldReset && this.resetSteps());

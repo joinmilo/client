@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_EventEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { DeleteEventGQL } from 'src/app/features/organisation/api/generated/delete-event.mutation.generated';
 import { GetOrganisationEventsGQL } from 'src/app/features/organisation/api/generated/get-organisation-events.query.generated';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { OrganisationAdminDetailsEventsActions } from './organisation-admin-details-events.actions';
 import { selectParams, selectSlug } from './organisation-admin-details-events.selectors';
 
@@ -40,7 +39,7 @@ export class OrganisationAdminDetailsEventsEffects {
   deleteEvent = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsEventsActions.deleteEvent),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.event?.name }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.event?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.event)
           : EMPTY
@@ -55,10 +54,9 @@ export class OrganisationAdminDetailsEventsEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
+    private confirmDialogService: ConfirmService,
     private getOrganisationEventsService: GetOrganisationEventsGQL,
     private deleteEventService: DeleteEventGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) { }
 }

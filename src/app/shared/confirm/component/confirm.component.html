@@ -1,7 +1,7 @@
-<h1 mat-dialog-title [appLabel]="titleLabel"></h1>
+<h1 mat-dialog-title [appLabel]="data?.titleLabel"></h1>
 <mat-dialog-content>
-  <span [appLabel]="messageLabel"></span>
-  <strong [appLabel]="dialogData?.context"></strong>
+  <span [appLabel]="data?.messageLabel"></span>
+  <strong [appLabel]="data?.context"></strong>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button
@@ -9,9 +9,9 @@
     appLabel="cancel">
   </button>
   <button mat-raised-button
-    [color]="buttonColor"
+    [color]="data?.buttonColor"
     mat-dialog-close
-    [appLabel]="buttonLabel"
+    [appLabel]="data?.buttonLabel"
     [mat-dialog-close]="true">
   </button>
 </mat-dialog-actions>

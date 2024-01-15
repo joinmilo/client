@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -8,8 +7,8 @@ import { GetLanguagesGQL } from 'src/app/admin/api/generated/get-languages.query
 import { PageableList_LanguageEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { AdminSettingsLanguageActions } from './admin-settings-language.actions';
 import { selectParams } from './admin-settings-language.selectors';
 
@@ -31,7 +30,7 @@ export class AdminSettingsLanguageEffects {
   deleteLanguage = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsLanguageActions.deleteLanguage),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.language?.name }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.language?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.language)
           : EMPTY
@@ -54,10 +53,9 @@ export class AdminSettingsLanguageEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
+    private confirmDialogService: ConfirmService,
     private deleteLanguageService: DeleteLanguageGQL,
     private getLanguageesService: GetLanguagesGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

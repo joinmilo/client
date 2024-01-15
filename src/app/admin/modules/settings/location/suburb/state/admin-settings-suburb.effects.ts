@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -12,8 +11,8 @@ import { PageableList_SuburbEntity } from 'src/app/core/api/generated/schema';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { baseRoute } from '../../admin-settings-location.routing.module';
 import { AdminSettingsSuburbActions } from './admin-settings-suburb.actions';
 import { selectParams } from './admin-settings-suburb.selectors';
@@ -67,8 +66,8 @@ export class AdminSettingsSuburbEffects {
 
   delete = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsSuburbActions.delete),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.suburb?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.suburb?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.suburb)
           : EMPTY
@@ -91,13 +90,12 @@ export class AdminSettingsSuburbEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
+    private confirmService: ConfirmService,
     private deleteSuburbService: DeleteSuburbGQL,
     private getSuburbsService: GetSuburbsGQL,
     private getSuburbService: GetSuburbGQL,
     private saveSuburbService: SaveSuburbGQL,
     private store: Store,
     private router: Router,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

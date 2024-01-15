@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -8,8 +7,8 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteOrganisationCommentGQL } from 'src/app/features/organisation/api/generated/delete-organisation-comment.mutation.generated';
 import { GetOrganisationCommentsGQL } from 'src/app/features/organisation/api/generated/get-organisation-comments.query.generated';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { OrganisationAdminDetailsCommentsActions } from './organisation-admin-details-comments.actions';
 import { selectParams, selectPeriod, selectSlug } from './organisation-admin-details-comments.selectors';
 
@@ -69,7 +68,7 @@ export class OrganisationAdminDetailsCommentsEffects {
   deleteComment = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsCommentsActions.deleteComment),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.comment?.content }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.comment?.content }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.comment)
           : EMPTY
@@ -92,10 +91,9 @@ export class OrganisationAdminDetailsCommentsEffects {
 
   constructor(
     private actions: Actions,
+    private confirmDialogService: ConfirmService,
+    private deleteOrganisationCommentService: DeleteOrganisationCommentGQL,
     private getOrganisationCommentsService: GetOrganisationCommentsGQL,
     private store: Store,
-    private dialog: MatDialog,
-    private deleteOrganisationCommentService: DeleteOrganisationCommentGQL,
-    private confirmDialogService: ConfirmDialogService
   ) { }
 }

@@ -5,8 +5,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ContestEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteContestGQL } from '../../../api/generated/delete-contest.mutation.generated';
 import { GetContestsGQL } from '../../../api/generated/get-contests.query.generated';
 import { SponsorContestGQL } from '../../../api/generated/sponsor-contest.mutation.generated';
@@ -31,8 +31,8 @@ export class ContestAdminOverviewEffects {
 
   sponsorContest = createEffect(() => this.actions.pipe(
     ofType(ContestAdminOverviewActions.sponsorContest),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Change, context: 'thisWillSponsor' }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Change, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.contest)
           : EMPTY
@@ -55,8 +55,8 @@ export class ContestAdminOverviewEffects {
 
   deleteContest = createEffect(() => this.actions.pipe(
     ofType(ContestAdminOverviewActions.deleteContest),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.contest?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.contest?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.contest)
           : EMPTY
@@ -83,6 +83,6 @@ export class ContestAdminOverviewEffects {
     private store: Store,
     private sponsorContestService: SponsorContestGQL,
     private deleteContestService: DeleteContestGQL,
-    private confirmDialogService: ConfirmDialogService
+    private confirmService: ConfirmService
   ) {}
 }

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ReportEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteReportGQL } from '../../../api/generated/delete-report.mutation.generated';
 import { GetReportsGQL } from '../../../api/generated/get-reports.query.generated';
 import { ReportAdminOverviewActions } from './report-admin-overview.actions';
@@ -30,8 +29,8 @@ export class ReportAdminOverviewEffects {
 
   deleteReport = createEffect(() => this.actions.pipe(
     ofType(ReportAdminOverviewActions.deleteReport),
-    switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.report?.name }).pipe(
+    switchMap(action => this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.report?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.report)
           : EMPTY
@@ -54,10 +53,9 @@ export class ReportAdminOverviewEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
+    private confirmService: ConfirmService,
     private deleteReportService: DeleteReportGQL,
     private getReportsService: GetReportsGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }

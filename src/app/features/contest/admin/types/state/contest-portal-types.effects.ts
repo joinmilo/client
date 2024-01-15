@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ContestTypeEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDialogService } from 'src/app/shared/confirmDialog/dialog-confirm.service';
-import { ConfirmDialogType } from 'src/app/shared/confirmDialog/typings/confirm-dialog';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteContestTypeGQL } from '../../../api/generated/delete-report-type.mutation.generated';
 import { GetContestTypesGQL } from '../../../api/generated/get-report-types.query.generated';
 import { ContestAdminTypesActions } from './contest-admin-types.actions';
@@ -31,7 +30,7 @@ export class ContestAdminTypesEffects {
   deleteContestType = createEffect(() => this.actions.pipe(
     ofType(ContestAdminTypesActions.deleteType),
     switchMap(action => this.confirmDialogService
-      .confirm({ type: ConfirmDialogType.Delete, context: action.contestType?.name }).pipe(
+      .confirm({ type: ConfirmType.Delete, context: action.contestType?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.contestType)
           : EMPTY
@@ -54,10 +53,9 @@ export class ContestAdminTypesEffects {
 
   constructor(
     private actions: Actions,
-    private dialog: MatDialog,
+    private confirmDialogService: ConfirmService,
     private deleteContestService: DeleteContestTypeGQL,
     private getContestTypesService: GetContestTypesGQL,
     private store: Store,
-    private confirmDialogService: ConfirmDialogService
   ) {}
 }
