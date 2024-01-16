@@ -12,7 +12,8 @@ import { PageableList_PrivilegeApplicationEntity, QueryOperator, RoleEntity } fr
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { accessBaseRoute } from '../../admin-settings-access-routing.module';
 import { AdminSettingsPrivilegeApplicationActions } from './admin-settings-privilege-application.actions';
 import { selectParams } from './admin-settings-privilege-application.selectors';
@@ -47,8 +48,8 @@ export class AdminSettingsPrivilegeApplicationEffects {
     ofType(AdminSettingsPrivilegeApplicationActions.deleteApplication),
     switchMap(action => {
       const fullName = `${action.application?.user?.firstName} ${action.application?.user?.lastName}`;
-      return this.dialog.open(ConfirmDeleteComponent, { data: fullName })
-        .afterClosed().pipe(
+      return this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: fullName }).pipe(
           switchMap(confirmed => confirmed ? of(action.application) : EMPTY)
         );
     }),
@@ -113,6 +114,7 @@ export class AdminSettingsPrivilegeApplicationEffects {
   constructor(
     private actions: Actions,
     private addRoleService: AddRoleGQL,
+    private confirmService: ConfirmService,
     private dialog: MatDialog,
     private deleteApplicationService: DeletePrivilegeApplicationGQL,
     private getPrivilegeApplicationsService: GetPrivilegeApplicationsGQL,
