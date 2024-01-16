@@ -1,12 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { FilterSortPaginateInput, Maybe, PageableList_PrivilegeApplicationEntity, RoleEntity } from 'src/app/core/api/generated/schema';
+import { FilterSortPaginateInput, PageableList_PrivilegeApplicationEntity, RoleEntity } from 'src/app/core/api/generated/schema';
 import { AdminSettingsPrivilegeApplicationActions } from './admin-settings-privilege-application.actions';
 
 export interface AdminSettingsPrivilegeApplicationActions {
   overviewData?: PageableList_PrivilegeApplicationEntity,
   params: FilterSortPaginateInput,
   roles?: RoleEntity[],
-  editRole?: Maybe<RoleEntity>,
 }
 
 export const initialState: AdminSettingsPrivilegeApplicationActions = {
@@ -31,10 +30,4 @@ export const adminPrivilegeApplicationReducer = createReducer(
   on(AdminSettingsPrivilegeApplicationActions.rolesRetrieved, (state, action): AdminSettingsPrivilegeApplicationActions => (
     { ...state, roles: action.roles }
   )),
-
-  on(
-    AdminSettingsPrivilegeApplicationActions.saved, (state): AdminSettingsPrivilegeApplicationActions => (
-      { ...state, editRole: undefined }
-    )
-  ),
 );

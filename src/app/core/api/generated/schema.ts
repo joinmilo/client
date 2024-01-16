@@ -1723,6 +1723,8 @@ export type Mutation = {
   addFavoriteDeal?: Maybe<UserContextEntity>;
   addFavoriteEvent?: Maybe<UserContextEntity>;
   addFavoriteOrganisation?: Maybe<UserContextEntity>;
+  addRole?: Maybe<Scalars['Boolean']['output']>;
+  assignLandingPage?: Maybe<Scalars['Boolean']['output']>;
   changeArticleApproval?: Maybe<Scalars['Boolean']['output']>;
   changeOrganisationApproval?: Maybe<Scalars['Boolean']['output']>;
   changePassword?: Maybe<Scalars['Boolean']['output']>;
@@ -2066,6 +2068,19 @@ export type MutationAddFavoriteEventArgs = {
 /** Mutation root */
 export type MutationAddFavoriteOrganisationArgs = {
   organisationId?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Mutation root */
+export type MutationAddRoleArgs = {
+  roleId?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Mutation root */
+export type MutationAssignLandingPageArgs = {
+  pageId?: InputMaybe<Scalars['String']['input']>;
 };
 
 

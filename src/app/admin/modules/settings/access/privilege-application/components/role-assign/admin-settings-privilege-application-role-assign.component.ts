@@ -28,14 +28,17 @@ export class AdminSettingsPrivilegeApplicationRoleAssignComponent {
     private fb: FormBuilder,
     private store: Store,
     ) { 
-      this.store.dispatch(AdminSettingsPrivilegeApplicationActions.getUserRole(this.application.privilege?.id));
+      this.store.dispatch(AdminSettingsPrivilegeApplicationActions.getRoles(this.application.privilege?.id));
     }
 
   public saved(): void {
-    this.store.dispatch(AdminSettingsPrivilegeApplicationActions.save(
+    this.store.dispatch(AdminSettingsPrivilegeApplicationActions.assignRole(
       {id: this.form.value.roleId},
-      {id: this.form.value.userId},
-      {id: this.form.value.privilegeId}
+      {id: this.form.value.userId}
+    ));
+
+    this.store.dispatch(AdminSettingsPrivilegeApplicationActions.roleAssignedDeleteApplication(
+      this.application
     ))
   }
 }

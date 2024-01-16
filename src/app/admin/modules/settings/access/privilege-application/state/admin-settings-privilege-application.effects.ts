@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { AddRoleGQL } from 'src/app/admin/api/generated/add-user-role.mutation.generated';
 import { DeletePrivilegeApplicationGQL } from 'src/app/admin/api/generated/delete-privilege-application.mutation.generated';
 import { GetPrivilegeApplicationsGQL } from 'src/app/admin/api/generated/get-privilege-application.query.generated';
-
-import { Router } from '@angular/router';
-import { AddUserRoleGQL } from 'src/app/admin/api/generated/add-user-role.mutation.generated';
 import { GetRolesGQL } from 'src/app/admin/api/generated/get-roles.query.generated';
 import { PageableList_PrivilegeApplicationEntity, QueryOperator, RoleEntity } from 'src/app/core/api/generated/schema';
 import { adminUrl } from 'src/app/core/constants/module.constants';
@@ -19,15 +18,14 @@ import { AdminSettingsPrivilegeApplicationActions } from './admin-settings-privi
 import { selectParams } from './admin-settings-privilege-application.selectors';
 
 
-
 @Injectable()
 export class AdminSettingsPrivilegeApplicationEffects {
 
   updateParams = createEffect(() => this.actions.pipe(
     ofType(
       AdminSettingsPrivilegeApplicationActions.updateParams,
-      AdminSettingsPrivilegeApplicationActions.userApplicationDeleted,
-      AdminSettingsPrivilegeApplicationActions.saved,
+      AdminSettingsPrivilegeApplicationActions.applicationDeleted,
+      AdminSettingsPrivilegeApplicationActions.roleAssigned,
     ),
     withLatestFrom(this.store.select(selectParams)),
     switchMap(([, params]) => this.getPrivilegeApplicationsService.watch({ 
@@ -45,31 +43,31 @@ export class AdminSettingsPrivilegeApplicationEffects {
     map(response => AdminSettingsPrivilegeApplicationActions.setOverviewData(response.data.getPrivilegeApplications as PageableList_PrivilegeApplicationEntity))
   ));
 
-  deleteUserApplication = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsPrivilegeApplicationActions.deleteUserApplication),
+  deleteApplication = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsPrivilegeApplicationActions.deleteApplication),
     switchMap(action => {
-      const fullName = `${action.user?.user?.firstName} ${action.user?.user?.lastName}`;
+      const fullName = `${action.application?.user?.firstName} ${action.application?.user?.lastName}`;
       return this.dialog.open(ConfirmDeleteComponent, { data: fullName })
         .afterClosed().pipe(
-          switchMap(confirmed => confirmed ? of(action.user) : EMPTY)
+          switchMap(confirmed => confirmed ? of(action.application) : EMPTY)
         );
     }),
-    switchMap(user => this.deleteUserApplicationService.mutate({
+    switchMap(user => this.deleteApplicationService.mutate({
       id: user?.id
     })),
-    map(() => AdminSettingsPrivilegeApplicationActions.userApplicationDeleted())
+    map(() => AdminSettingsPrivilegeApplicationActions.applicationDeleted())
   ));
 
-  userApplicationDeleted = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsPrivilegeApplicationActions.userApplicationDeleted),
+  applicationDeleted = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsPrivilegeApplicationActions.applicationDeleted),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'deletedSuccessfully'
     }))
   ));
 
-  getUserRole = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsPrivilegeApplicationActions.getUserRole),
+  getRoles = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsPrivilegeApplicationActions.getRoles),
     switchMap(action => this.getRolesService.watch({
       params: {
         expression: {
@@ -85,18 +83,17 @@ export class AdminSettingsPrivilegeApplicationEffects {
     ))
   ));
 
-  save = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsPrivilegeApplicationActions.save),
-    switchMap(entity => this.addUserRoleService.mutate({
+  assignRole = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsPrivilegeApplicationActions.assignRole),
+    switchMap(entity => this.addRoleService.mutate({
       roleId: entity?.role?.id,  
-      userId: entity?.user?.id,
-      privilegeApplicationId: entity?.privilegeApplication?.id,
+      userId: entity?.user?.id
     })),
-    map(() => AdminSettingsPrivilegeApplicationActions.saved())
+    map(() => AdminSettingsPrivilegeApplicationActions.roleAssigned())
   ))
 
-  saved = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsPrivilegeApplicationActions.saved),
+  roleAssigned = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsPrivilegeApplicationActions.roleAssigned),
     tap(() => this.router.navigate([adminUrl, accessBaseRoute, 'privilege-applications'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
@@ -104,11 +101,20 @@ export class AdminSettingsPrivilegeApplicationEffects {
     }))
   ));
 
+  roleAssignedDeleteApplication = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsPrivilegeApplicationActions.roleAssignedDeleteApplication),
+    switchMap(entity => this.deleteApplicationService.mutate({
+        id: entity.application?.id
+    })),
+    map(() => AdminSettingsPrivilegeApplicationActions.roleAssigned())
+    ))
+
+    
   constructor(
     private actions: Actions,
-    private addUserRoleService: AddUserRoleGQL,
+    private addRoleService: AddRoleGQL,
     private dialog: MatDialog,
-    private deleteUserApplicationService: DeletePrivilegeApplicationGQL,
+    private deleteApplicationService: DeletePrivilegeApplicationGQL,
     private getPrivilegeApplicationsService: GetPrivilegeApplicationsGQL,
     private getRolesService: GetRolesGQL,
     private router: Router,

@@ -10,13 +10,16 @@ export const AdminSettingsPrivilegeApplicationActions = createActionGroup({
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),
 
-    'delete user application': (user?: Maybe<PrivilegeApplicationEntity>) => ({ user }),
-    'user application deleted': emptyProps(),
+    'delete application': (application?: Maybe<PrivilegeApplicationEntity>) => ({ application }),
+    'application deleted': emptyProps(),
 
-    'save': (role: RoleEntity, user: UserEntity, privilegeApplication: PrivilegeApplicationEntity) => ({ role, user, privilegeApplication}),
-    'saved': emptyProps(),
+    'assign role': (role: RoleEntity, user: UserEntity) => ({ role, user}),
+    'role assigned': emptyProps(),
 
-    'get user role': (rolePrivilegeId: Maybe<string>) => ({ rolePrivilegeId }),
+    'get roles': (rolePrivilegeId: Maybe<string>) => ({ rolePrivilegeId }),
     'roles retrieved': (roles: RoleEntity[]) => ({ roles }),
+    
+    'role assigned delete application': (application?: Maybe<PrivilegeApplicationEntity>) => ({ application }),
+    'role assigned application deleted': emptyProps(),
   }
 });

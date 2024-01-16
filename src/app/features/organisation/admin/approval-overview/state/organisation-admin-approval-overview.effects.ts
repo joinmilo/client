@@ -8,7 +8,7 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteOrganisationGQL } from 'src/app/features/organisation/api/generated/delete-organisation.mutation.generated';
 import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
 import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
-import { ChangeOrganisationApprovalGQL } from '../../../api/generated/change-article-approval.mutation.generated';
+import { ChangeOrganisationApprovalGQL } from '../../../api/generated/change-organisation-approval.mutation.generated';
 import { GetOrganisationsGQL } from '../../../api/generated/get-organisations.query.generated';
 import { OrganisationAdminApprovalOverviewActions } from './organisation-admin-approval-overview.actions';
 import { selectParams } from './organisation-admin-approval-overview.selectors';

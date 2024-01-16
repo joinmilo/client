@@ -15,19 +15,19 @@ import { AdminSettingsPrivilegeApplicationRoleAssignComponent } from '../role-as
 })
 export class AdminSettingsPrivilegeApplicationOverviewComponent {
 
-  public users = this.store.select(selectOverviewData);
+  public applications = this.store.select(selectOverviewData);
 
   public actions: RowAction<PrivilegeApplicationEntity>[] = [
     {
       icon: 'toggle-off',
       callback: (row: Maybe<PrivilegeApplicationEntity>) => 
         this.assignRole(row),
-      tooltipLabel: 'changeUserApproval',
+      tooltipLabel: 'changeUserApproval'
     },    
     {
       icon: 'trash',
-      callback: user =>
-        this.store.dispatch(AdminSettingsPrivilegeApplicationActions.deleteUserApplication(user)),
+      callback: application =>
+        this.store.dispatch(AdminSettingsPrivilegeApplicationActions.deleteApplication(application)),
       tooltipLabel: 'delete'
     },
   ];
@@ -60,13 +60,13 @@ export class AdminSettingsPrivilegeApplicationOverviewComponent {
     private dialog: MatDialog,
   ) { }
 
-  public updateParams(params: FilterSortPaginateInput) {
-    this.store.dispatch(AdminSettingsPrivilegeApplicationActions.updateParams(params));
+  private assignRole(application: Maybe<PrivilegeApplicationEntity>) {
+    this.dialog.open(AdminSettingsPrivilegeApplicationRoleAssignComponent, {
+      data: application 
+    })
   }
 
-  assignRole(applicant: Maybe<PrivilegeApplicationEntity>) {
-    this.dialog.open(AdminSettingsPrivilegeApplicationRoleAssignComponent, {
-      data: applicant 
-    })
+  public updateParams(params: FilterSortPaginateInput) {
+    this.store.dispatch(AdminSettingsPrivilegeApplicationActions.updateParams(params));
   }
 }
