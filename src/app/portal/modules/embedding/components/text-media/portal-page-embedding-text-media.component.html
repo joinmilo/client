@@ -1,6 +1,6 @@
 @for (element of elements; track element; let index = $index) {
   @if (index % 2 === 0) {
-    <section>
+    <section class="block">
       <ng-container *ngTemplateOutlet="content; context: { $implicit: element }">
       </ng-container>
       <app-media-element [media]="element?.media">
@@ -8,7 +8,7 @@
     </section>
   }
   @if (index % 2 !== 0) {
-    <section>
+    <section class="block">
       <app-media-element [media]="element?.media">
       </app-media-element>
       <ng-container *ngTemplateOutlet="content; context: { $implicit: element }">

@@ -3,7 +3,7 @@
   flex-flow: column;
   gap: var(--gap);
 
-  margin: auto;
+  margin: var(--gap) auto 0;
   width: var(--page-embedding-width);
   max-width: calc(100% - var(--gap));
 }
