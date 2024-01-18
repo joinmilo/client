@@ -31,7 +31,7 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
 
   public form = this.fb.group({
     id: ['' as Maybe<string>],
-    icon: [undefined as Maybe<SolidIconsType>, [Validators.required]],
+    icon: [undefined as Maybe<SolidIconsType>],
     name: ['' as Maybe<string>, [Validators.required]],
     shortDescription: ['' as Maybe<string>],
     order: [undefined as Maybe<number>],
@@ -81,27 +81,29 @@ export class AdminSettingsPageMenuFormComponent implements ControlValueAccessor,
       });
   }   
 
-  public writeValue(menuItem: MenuItemEntity): void {
-    this.form.patchValue({
-      id: menuItem.id,
-      icon: menuItem.icon as Maybe<SolidIconsType>,
-      order: menuItem.order,
-      parent: menuItem.parent
-    }, { emitEvent: false });
-
-    this.translationService.translatable(menuItem, 'name')
-      .pipe(takeUntil(this.destroy))
-      .subscribe(name => this.form.patchValue({
+  public writeValue(menuItem: Maybe<MenuItemEntity>): void {
+    if (menuItem) {
+      this.form.patchValue({
         id: menuItem.id,
-        name
-      }, { emitEvent: false }));
-
-    this.translationService.translatable(menuItem, 'shortDescription')
-      .pipe(takeUntil(this.destroy))
-      .subscribe(shortDescription => this.form.patchValue({
-        id: menuItem.id,
-        shortDescription
-      }, { emitEvent: false }));
+        icon: menuItem.icon as Maybe<SolidIconsType>,
+        order: menuItem.order,
+        parent: menuItem.parent
+      });
+  
+      this.translationService.translatable(menuItem, 'name')
+        .pipe(takeUntil(this.destroy))
+        .subscribe(name => this.form.patchValue({
+          id: menuItem.id,
+          name
+        }));
+  
+      this.translationService.translatable(menuItem, 'shortDescription')
+        .pipe(takeUntil(this.destroy))
+        .subscribe(shortDescription => this.form.patchValue({
+          id: menuItem.id,
+          shortDescription
+        }));
+    }
   }
 
   public registerOnChange(onChange: (menuItem: Maybe<MenuItemEntity>) => void): void {

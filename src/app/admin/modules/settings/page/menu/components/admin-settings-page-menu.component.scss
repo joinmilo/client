@@ -3,7 +3,7 @@
   flex-flow: column;
   gap: var(--gap);
 
-  form {
+  form > div {
     display: flex;
     flex-flow: column;
     gap: var(--gap);

@@ -47,7 +47,16 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
         this.onTouch?.();
         if (this.menuItems.valid) {
           this.onTouch?.();
-          this.onChange?.(value)
+          this.onChange?.(value.map(item => ({
+            id: item?.id,
+            icon: item?.icon,
+            name: item?.name,
+            shortDescription: item?.shortDescription,
+            order: item?.order,
+            parent: {
+              id: item?.parent?.id
+            }
+          })));
         }
       });
 
@@ -70,7 +79,6 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
 
   public onDelete(index: number): void {
     this.menuItems.removeAt(index);
-
   }
 
   public validate(): ValidationErrors | null {
@@ -80,6 +88,7 @@ export class AdminSettingsPageMenuComponent implements ControlValueAccessor, Val
   }
 
   public writeValue(value: Maybe<MenuItemEntity>[]): void {
+    this.menuItems.clear();
     value?.forEach(menuItem => {
       if (menuItem) {
         this.menuItems.push(this.fb.control(menuItem));
