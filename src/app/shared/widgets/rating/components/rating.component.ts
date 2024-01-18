@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, take } from 'rxjs';
-import { AnalyticsDto, AnalyticsEntry, Maybe } from 'src/app/core/api/generated/schema';
+import { AnalyticsDto, Maybe } from 'src/app/core/api/generated/schema';
 import { maxRatingConfig } from 'src/app/core/constants/configuration.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { selectConfiguration } from 'src/app/core/state/selectors/core.selectors';
@@ -16,10 +16,14 @@ export class RatingComponent {
 
   @Input()
   public set ratings(ratings: Maybe<AnalyticsDto>) {
-    this.series = ratings?.series?.reverse();
+    this._ratings = {...ratings, series: ratings?.series?.reverse()};
   }
 
-  public series?: Maybe<Maybe<AnalyticsEntry>[]>;
+  public get ratings(): Maybe<AnalyticsDto> {
+    return this._ratings;
+  }
+
+  public _ratings: Maybe<AnalyticsDto>;
 
   @Input()
   public currentValue?: Maybe<number>;

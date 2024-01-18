@@ -7,7 +7,7 @@
   </app-rating-input>
 </div>
 
-<div>
+<div class="current-ratings">
   <app-details-title titleLabel="userReviews"></app-details-title>
   <section>
     <app-rating-input
@@ -28,8 +28,9 @@
   <span class="mat-subtitle-1" [appLabel]="(ratings?.sum) !== 1 ? 'ratings' : 'rating'"></span>
 </div>
 
-<div *ngIf="series">
-  <app-rating-distribution *ngFor="let item of series"
+<div *ngIf="ratings?.series"
+  class="distribution-section">
+  <app-rating-distribution *ngFor="let item of ratings?.series"
     [key]="item?.name"
     [value]="item?.value">
   </app-rating-distribution>
