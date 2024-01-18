@@ -32,7 +32,7 @@
     @if (element?.url) {
       <a mat-raised-button
         color="primary"
-        [href]="element?.url"
+        [href]="element?.url?.value"
         [appLabel]="element?.button
           ? (element?.button | translatable: 'translatable' | async)
           : 'learnMore'">
