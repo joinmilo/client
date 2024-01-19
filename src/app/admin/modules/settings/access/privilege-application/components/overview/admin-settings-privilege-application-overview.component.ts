@@ -22,7 +22,7 @@ export class AdminSettingsPrivilegeApplicationOverviewComponent {
       icon: 'toggle-off',
       callback: (row: Maybe<PrivilegeApplicationEntity>) => 
         this.assignRole(row),
-      tooltipLabel: 'changeUserApproval'
+      tooltipLabel: 'changeUserRole',
     },    
     {
       icon: 'trash',

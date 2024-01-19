@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, switchMap, tap, withLatestFrom } from 'rxjs';
-import { ConjunctionOperator, FilterSortPaginateInput, Maybe, OrganisationEntity, OrganisationMemberEntity, QueryOperator, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { ConjunctionOperator, FilterSortPaginateInput, Maybe, OrganisationEntity, OrganisationMemberEntity, PrivilegeApplicationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { userUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
@@ -11,9 +11,8 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetOrganisationsGQL } from 'src/app/user/api/generated/get-organisations.query.generated';
 import { SaveOrganisationApplicationGQL } from 'src/app/user/api/generated/save-organisation-application.mutation.generated';
 import { SaveOrganisationMembersGQL } from 'src/app/user/api/generated/save-organisation-members.mutation.generated';
-import { VerifyAddressGQL } from 'src/app/user/api/generated/verify-address.mutation.generated';
+import { SavePrivilegeApplicationGQL } from 'src/app/user/api/generated/save-privilege-application.mutation.generated';
 import { PortalParticipateActions } from './portal-participate.actions';
-import { SaveMeGQL } from 'src/app/user/api/generated/save-user-context.mutation.generated';
 
 @Injectable()
 export class PortalParticipateEffects {
@@ -76,10 +75,10 @@ export class PortalParticipateEffects {
 
   saveAuthorApplication = createEffect(() => this.actions.pipe(
     ofType(PortalParticipateActions.saveAuthorApplication),
-    switchMap((action) => this.saveUserContextService.mutate({
+    switchMap((action) => this.savePrivilegeApplicationService.mutate({
       entity: action.entity
     })),
-    map(response => PortalParticipateActions.authorApplicationSaved(response.data?.saveMe as UserContextEntity))
+    map(response => PortalParticipateActions.authorApplicationSaved(response.data?.savePrivilegeApplication as PrivilegeApplicationEntity))
   ));
 
   authorApplicationSaved = createEffect(() => this.actions.pipe(
@@ -116,7 +115,7 @@ export class PortalParticipateEffects {
     private router: Router,
     private saveOrganisationApplicationService: SaveOrganisationApplicationGQL,
     private saveOrganisationMembersService: SaveOrganisationMembersGQL,
-    private saveUserContextService: SaveMeGQL,
+    private savePrivilegeApplicationService: SavePrivilegeApplicationGQL,
     private store: Store,
   ) {}
 

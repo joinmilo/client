@@ -1,0 +1,5 @@
+mutation savePrivilegeApplication($entity: PrivilegeApplicationEntityInput!) {
+  savePrivilegeApplication(entity: $entity) {
+    id
+  }
+}

@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { Maybe, OrganisationEntity, OrganisationEntityInput, OrganisationMemberEntity, OrganisationMemberEntityInput, UserContextEntity, UserContextEntityInput } from 'src/app/core/api/generated/schema';
+import { Maybe, OrganisationEntity, OrganisationEntityInput, OrganisationMemberEntity, OrganisationMemberEntityInput, PrivilegeApplicationEntity, PrivilegeApplicationEntityInput } from 'src/app/core/api/generated/schema';
 
 export const PortalParticipateActions = createActionGroup({
   source: 'Portal Participate',
@@ -11,8 +11,8 @@ export const PortalParticipateActions = createActionGroup({
     'send organisation requests': (organisationRequests: OrganisationMemberEntityInput[]) => ({ organisationRequests }),
     'organisation requests sent': (organisationRequests: Maybe<OrganisationMemberEntity[]>) => ({ organisationRequests }),
 
-    'save author application': (entity: UserContextEntityInput) => ({ entity }),
-    'author application saved': (entity: UserContextEntity) => ({ entity }),
+    'save author application': (entity: PrivilegeApplicationEntityInput) => ({ entity }),
+    'author application saved': (entity: PrivilegeApplicationEntity) => ({ entity }),
 
     'save': (organisation: OrganisationEntityInput) => ({ organisation }),
     'saved': emptyProps(),
