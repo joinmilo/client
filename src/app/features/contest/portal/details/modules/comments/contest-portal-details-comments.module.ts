@@ -27,10 +27,10 @@ const materials = [
 ];
 
 const modules = [
+  CommentModule,
   CoreModule,
-  TableModule,
   DateRangeFilterComponent,
-  CommentModule
+  TableModule,
 ];
 
 const libs = [

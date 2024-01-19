@@ -58,10 +58,10 @@ const framework = [
 
 const materials = [
   MatButtonModule,
-  MatDividerModule,
   MatCardModule,
-  MatDialogModule,
   MatCheckboxModule,
+  MatDialogModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatInputModule,
   MatMenuModule,
@@ -72,12 +72,14 @@ const modules = [
   CalendarModule,
   CardModule,
   CkEditorFormComponent,
-  CoreModule,
   CommentModule,
+  ConfirmChangeComponent,
   ContestPortalDetailsLandingRoutingModule,
+  CoreModule,
   DatePieceComponent,
-  WebsitePieceComponent,
   FavoriteComponent,
+  FormStepperModule,
+  GridLayoutModule,
   MailPieceComponent,
   MapModule,
   MediaFormModule,
@@ -88,9 +90,7 @@ const modules = [
   ShareModule,
   TableModule,
   TitleModule,
-  FormStepperModule,
-  GridLayoutModule,
-  ConfirmChangeComponent,
+  WebsitePieceComponent,
 ];
 
 const libs = [

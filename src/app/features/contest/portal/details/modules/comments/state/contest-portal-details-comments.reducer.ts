@@ -13,10 +13,8 @@ export const initialState: ContestPortalDetailsCommentsState = {
 export const contestPortalDetailsCommentsReducer = createReducer(
   initialState,
 
-  on(
-    ContestPortalDetailsCommentsActions.setComments,
+  on(ContestPortalDetailsCommentsActions.setComments,
     (state, action): ContestPortalDetailsCommentsState =>
-      ({ ...state, comments: action.comments })
-  ),
+      ({ ...state, comments: action.comments })),
 
 );

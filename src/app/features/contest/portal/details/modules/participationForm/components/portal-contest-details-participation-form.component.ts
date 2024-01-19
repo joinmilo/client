@@ -6,12 +6,13 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import {
   ContestEntity,
   Maybe,
-  MediaEntity
+  MediaEntity,
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { ContestPortalDetailsLandingActions } from '../../landing/state/portal-contest-details-landing.actions';
 import { selectContestDetails } from '../../landing/state/portal-contest-details-landing.selectors';
 import { ContestPortalDetailsParticipationFormActions } from '../state/contest-portal-details-participation-form.actions';
+import { ParticipationType } from '../typings/participation';
 
 @Component({
   selector: 'app-portal-contest-details-participation-form',
@@ -19,15 +20,20 @@ import { ContestPortalDetailsParticipationFormActions } from '../state/contest-p
   styleUrls: ['./portal-contest-details-participation-form.component.scss'],
 })
 export class ContestPortalDetailsParticipationFormComponent {
-
   public uploadsForm = this.fb.group({
-    textSubmission: [undefined as Maybe<string>],
+    textSubmission: ['' as Maybe<string>],
     mediaSubmission: [[] as Maybe<MediaEntity>[]],
   });
 
   public contest: Maybe<ContestEntity>;
 
   private destroy = new Subject<void>();
+
+  public image = ParticipationType.Image;
+
+  public video = ParticipationType.Video;
+
+  public text = ParticipationType.Text;
 
   constructor(
     private store: Store,
@@ -41,9 +47,11 @@ export class ContestPortalDetailsParticipationFormComponent {
         tap((params) =>
           this.store.dispatch(
             ContestPortalDetailsLandingActions.getDetails(params[slug] || '')
-          )),
+          )
+        ),
         switchMap(() => this.store.select(selectContestDetails)),
-        takeUntil(this.destroy))
+        takeUntil(this.destroy)
+      )
       .subscribe((contest) => {
         this.contest = contest;
       });
@@ -52,14 +60,24 @@ export class ContestPortalDetailsParticipationFormComponent {
   public saved(): void {
     this.store.dispatch(
       ContestPortalDetailsParticipationFormActions.saveParticipation({
-        textSubmission: this.uploadsForm.value.textSubmission,
-        mediaSubmissions: [{
-          id: undefined,
-          media: this.uploadsForm.value.mediaSubmission?.[0]
-        }], 
-        contest: { 
+        textSubmission:
+          this.contest?.type?.code === ParticipationType.Text
+            ? this.uploadsForm.value.textSubmission
+            : null,
+
+        mediaSubmissions:
+          this.contest?.type?.code === ParticipationType.Video ||
+          this.contest?.type?.code === ParticipationType.Image
+            ? [
+                {
+                  id: undefined,
+                  media: this.uploadsForm.value.mediaSubmission?.[0],
+                },
+              ]
+            : null,
+        contest: {
           id: this.contest?.id,
-          maxParticipations: this.contest?.maxParticipations
+          maxParticipations: this.contest?.maxParticipations,
         },
       })
     );

@@ -54,9 +54,9 @@ export class ContestAdminFormEffects {
 
   constructor(
     private actions: Actions,
-    private router: Router,
     private getContentService: GetContestFormGQL,
     private getContestTypesService: GetContestTypesGQL,
+    private router: Router,
     private saveContestService: SaveContestGQL
   ) {}
 }

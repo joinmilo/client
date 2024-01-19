@@ -40,9 +40,9 @@ const modules = [
   CardModule,
   CardSliderComponent,
   ContestFilterModule,
+  NoDataComponent,
   PortalContestOverviewRoutingModule,
   TitleModule,
-  NoDataComponent
 ];
 
 const libs = [

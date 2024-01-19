@@ -79,10 +79,10 @@ export class ContestAdminOverviewEffects {
 
   constructor(
     private actions: Actions,
+    private deleteContestService: DeleteContestGQL,
     private getContestService: GetContestsGQL,
     private store: Store,
     private sponsorContestService: SponsorContestGQL,
-    private deleteContestService: DeleteContestGQL,
     private confirmService: ConfirmService
   ) {}
 }

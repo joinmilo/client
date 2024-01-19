@@ -30,13 +30,12 @@ const materials = [
 ];
 
 const modules = [
+  ConfettiComponent,
   CoreModule,
-  TableModule,
   DateRangeFilterComponent,
-  TitleModule,
   MediaWidgetsModule,
-  ConfettiComponent
-  
+  TableModule,
+  TitleModule,
 ];
 
 const libs = [

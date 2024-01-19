@@ -18,11 +18,13 @@
     </app-media-action-card>
   </section>
 
-  <app-table-paginator
-    (page)="updateParams($event)"
-    [length]="(participationsTotal | async)"
-    [pageSize]="(params | async)?.size"
-    [pageIndex]="(params | async)?.page"
-    [pageSizeOption]="pageSizeOptions">
-  </app-table-paginator>
+  <mat-card>
+    <app-table-paginator
+      (page)="updateParams($event)"
+      [length]="participationsTotal | async"
+      [pageSize]="(params | async)?.size"
+      [pageIndex]="(params | async)?.page"
+      [pageSizeOption]="pageSizeOptions">
+    </app-table-paginator>
+  </mat-card>
 </div>

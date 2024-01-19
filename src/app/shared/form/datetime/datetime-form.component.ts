@@ -1,6 +1,6 @@
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnDestroy, forwardRef } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,7 +36,7 @@ import { CoreModule } from 'src/app/core/core.module';
     ReactiveFormsModule,
   ]
 })
-export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
+export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy, OnInit {
 
   @Input()
   public set date(date: Maybe<string | Date>) {
@@ -44,14 +44,23 @@ export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
   }
   
   @Input()
-  public minDate?: Date;
+  public set minDate(date: Maybe<string | Date>) {
+    if (date) {
+      this._minDate = new Date(date);
+    }
+  }
+
+  public get minDate(): Maybe<Date> {
+    return this._minDate;
+  }
+
+  public _minDate?: Date;
 
   @Input()
   public stepMinute = 15;
 
   @Input()
   public label = 'begin'; 
-
 
   public control = new FormControl(new Date());
 
@@ -67,6 +76,9 @@ export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
         this.onTouched?.();
         this.onChange?.(result);
       });
+  }
+  ngOnInit(): void {
+    console.log(this.date);
   }
 
   public writeValue(date: Date): void {

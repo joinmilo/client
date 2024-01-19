@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -10,6 +10,7 @@ import {
   ContestMediaEntity
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { AppValidators } from 'src/app/core/validators/validators';
 import { ContestAdminFormActions } from '../state/contest-admin-form.actions';
 import {
   selectContest,
@@ -21,7 +22,7 @@ import {
   templateUrl: './contest-admin-form.component.html',
   styleUrls: ['./contest-admin-form.component.scss'],
 })
-export class ContestAdminFormComponent implements OnInit {
+export class ContestAdminFormComponent implements OnInit, OnDestroy {
 
   public contentForm = this.fb.group({
     id: [undefined as Maybe<string>],
@@ -35,9 +36,9 @@ export class ContestAdminFormComponent implements OnInit {
   });
 
   public participationAndVoteForm = this.fb.group({
-    maxVotes: [1 as Maybe<number>],
+    maxVotes: [1 as Maybe<number>, [Validators.required, AppValidators.minValue(1)]],
     voteEndDate: [undefined as Maybe<string>, [Validators.required]],
-    maxParticipations: [1 as Maybe<number>],
+    maxParticipations: [1 as Maybe<number>, [Validators.required, AppValidators.minValue(1)]],
     participationEndDate: [undefined as Maybe<string>, [Validators.required]],
     participationApproval: [undefined as Maybe<boolean>],
   });
@@ -57,16 +58,16 @@ export class ContestAdminFormComponent implements OnInit {
 
   public contest?: Maybe<ContestEntity>;
 
-  public types = this.store.select(selectContestTypes);
-
   private destroy = new Subject<void>();
+
+  public types = this.store.select(selectContestTypes);
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private store: Store
   ) {}
-
+  
   public ngOnInit(): void {
     this.store.dispatch(ContestAdminFormActions.getTypes());
     this.activatedRoute.params
@@ -78,16 +79,16 @@ export class ContestAdminFormComponent implements OnInit {
         ),
         switchMap(() => this.store.select(selectContest)),
         filter((contest) => !!contest?.id))
-      .subscribe((contest) => {
+        .subscribe((contest) => {
         this.contest = contest;
-
+        
         this.contentForm.patchValue({
           id: contest?.id,
           name: contest?.name,
           typeId: contest?.type?.id,
           content: contest?.content,
         });
-
+        
         this.uploadsForm.patchValue({
           uploads: contest?.uploads
         });
@@ -95,7 +96,7 @@ export class ContestAdminFormComponent implements OnInit {
         this.shortDescriptionForm.patchValue({
           shortDescription: contest?.shortDescription,
         });
-
+        
         this.participationAndVoteForm.patchValue({
           maxVotes: contest?.maxVotes,
           maxParticipations: contest?.maxParticipations,
@@ -113,9 +114,9 @@ export class ContestAdminFormComponent implements OnInit {
           metaDescription: contest?.metaDescription,
         });
       });
-  }
-
-  public saved(): void {
+    }
+    
+    public saved(): void {
     this.store.dispatch(
       ContestAdminFormActions.save({
         id: this.contentForm.value.id,
@@ -127,13 +128,13 @@ export class ContestAdminFormComponent implements OnInit {
         content: this.contentForm.value.content,
         shortDescription: this.shortDescriptionForm.value.shortDescription,
         uploads: this.uploadsForm.value.uploads,
-
+        
         maxVotes: this.participationAndVoteForm.value.maxVotes,
         maxParticipations: this.participationAndVoteForm.value.maxParticipations,
         voteEndDate: this.participationAndVoteForm.value.voteEndDate,
         participationEndDate: this.participationAndVoteForm.value.participationEndDate,
         participationApproval: this.participationAndVoteForm.value.participationApproval,
-
+        
         contact: this.contactForm.value.contact
         ? {
           id: this.contactForm.value.contact?.id,
@@ -142,22 +143,22 @@ export class ContestAdminFormComponent implements OnInit {
           phone: this.contactForm.value.contact.phone,
           website: this.contactForm.value.contact.website,
           preferredContact:
-            this.contactForm.value.contact
-              .preferredContact ?? true,
+          this.contactForm.value.contact
+          .preferredContact ?? true,
         }
-      : null,
+        : null,
 
         metaDescription: this.additionalInfoForm.value.metaDescription,
         commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
       })
-    );
-  }
-
+      );
+    }
+    
   public cancelled(): void {
     this.store.dispatch(ContestAdminFormActions.cancelled());
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

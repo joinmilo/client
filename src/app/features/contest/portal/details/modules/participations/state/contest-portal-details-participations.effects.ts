@@ -102,9 +102,9 @@ export class ContestPortalDetailsParticipationsEffects {
 
   constructor(
     private actions: Actions,
+    private dialog: MatDialog,
     private getContestParticipationsService: GetContestParticipationsGQL,
     private saveContestVoteService: SaveContestVoteGQL,
     private store: Store,
-    private dialog: MatDialog,
   ) {}
 }

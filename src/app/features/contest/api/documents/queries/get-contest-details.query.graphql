@@ -36,6 +36,7 @@ query getContestDetails($entity: ContestEntityInput) {
       id
       name
       content
+      shortDescription
       language {
         id
         locale

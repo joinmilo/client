@@ -1,4 +1,13 @@
 <div class="main">
+  <app-page-title titleLabel="congrats"> </app-page-title>
+  <section>
+    <app-media-action-card
+      *ngFor="let element of winners; let i = index"
+      [media]="element.media"
+      [actionLabel]="element.label"
+      [actionDisabled]="element.disabled">
+    </app-media-action-card>
+  </section>
   <section>
     <app-media-action-card
       *ngFor="let element of actionInfos; let i = index"
@@ -8,5 +17,4 @@
     </app-media-action-card>
   </section>
 </div>
-
 <app-confetti></app-confetti>

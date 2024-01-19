@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
+import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
@@ -23,7 +24,9 @@ const components = [
 ]
 
 const framework = [
-  CommonModule, ReactiveFormsModule, FormsModule
+  CommonModule,
+  FormsModule,
+  ReactiveFormsModule, 
 ];
 
 const materials = [
@@ -33,13 +36,14 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
+  CkEditorFormComponent,
   DateRangeFilterComponent,
-  TitleModule,
-  GridLayoutModule,
   FormStepperModule,
+  GridLayoutModule,
   MediaFormModule,
-  SuccessComponent
+  SuccessComponent,
+  TableModule,
+  TitleModule,
 ];
 
 const libs = [

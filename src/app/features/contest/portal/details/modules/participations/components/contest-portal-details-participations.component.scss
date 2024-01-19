@@ -14,3 +14,7 @@ section{
   flex-flow: row wrap;
   gap:  var(--gap);
 }
+
+mat-card {
+  padding: 1rem;
+}

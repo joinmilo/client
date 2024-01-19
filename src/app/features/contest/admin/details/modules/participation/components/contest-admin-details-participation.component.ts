@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import { ContestParticipationEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { ContestAdminDetailsParticipationActions } from '../state/contest-admin-details-participation.actions';
 import { selectContestAdminDetailsParticipation } from '../state/contest-admin-details-participation.selectors';
@@ -24,10 +23,10 @@ export class ContestAdminDetailsParticipationComponent implements OnInit, OnDest
 
   public actions: RowAction<ContestParticipationEntity>[] = [
     {
-      icon: 'pen-to-square',
+      icon: 'trophy',
       callback: row => this.store.dispatch(ContestAdminDetailsParticipationActions.saveParticipation(row)),
       disable: row => !!row?.placement,
-      tooltipLabel: 'edit',
+      tooltipLabel: 'setPlacement',
       inlineEdit: true
     },
     {
@@ -62,28 +61,22 @@ export class ContestAdminDetailsParticipationComponent implements OnInit, OnDest
       sort: true
     },
     {
+      field: 'contestVotes',
+      label: 'votes',
+      type: 'LIST',
+      sort: true
+    },
+    {
       field: 'placement',
       label: 'placement',
       editable: true,
       sort: true
     },
-    {
-      field: 'translatables.textSubmission',
-      label: 'content',
-      value: row => this.translationService.translatable(row.translatables, 'textSubmission')
-    },
-    // {
-    //   field: 'mediaSubmissions?.[0]?.media',
-    //   label: 'file',
-    //   type: 'MEDIA',
-    // },
   ];
 
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private translationService: TranslationService,
   ) { }
 
   public ngOnInit(): void {

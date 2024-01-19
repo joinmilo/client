@@ -30,11 +30,10 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
-  DateRangeFilterComponent,
-  TitleModule,
   MediaWidgetsModule,
-  
+  DateRangeFilterComponent,
+  TableModule,
+  TitleModule,
 ];
 
 const libs = [

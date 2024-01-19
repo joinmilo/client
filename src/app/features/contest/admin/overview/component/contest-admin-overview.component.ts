@@ -41,7 +41,6 @@ export class ContestAdminOverviewComponent {
         this.store.dispatch(ContestAdminOverviewActions.deleteContest(contest)),
       tooltipLabel: 'delete',
     },
-
     'SHARE',
   ];
 

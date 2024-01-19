@@ -28,30 +28,30 @@ const components = [ContestAdminFormComponent];
 
 const framework = [
   CommonModule,
+  FormsModule,
   ReactiveFormsModule,
-  FormsModule
 ];
 
 const materials = [
   MatFormFieldModule,
   MatInputModule,
-  MatSelectModule,
   MatOptionModule,
+  MatSelectModule,
   MatSlideToggleModule,
 ];
 
 const modules = [
   CkEditorFormComponent,
-  CoreModule,
   ContestFilterModule,
   ContestAdminFormRoutingModule,
   ContactFormComponent,
+  CoreModule,
+  DatetimeFormComponent,
+  FormStepperModule,
+  GridLayoutModule,
   MediaFormModule,
   TableModule,
   TitleModule,
-  FormStepperModule,
-  GridLayoutModule,
-  DatetimeFormComponent,
 ];
 
 const libs = [

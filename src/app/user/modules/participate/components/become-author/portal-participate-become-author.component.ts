@@ -6,14 +6,14 @@ import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { PortalParticipateActions } from '../../state/portal-participate.actions';
 
-
 @Component({
   selector: 'app-portal-participate-become-author',
   templateUrl: './portal-participate-become-author.component.html',
-  styleUrls: ['./portal-participate-become-author.component.scss']
+  styleUrls: ['./portal-participate-become-author.component.scss'],
 })
-export class PortalParticipateBecomeAuthorComponent implements OnInit, OnDestroy{
-
+export class PortalParticipateBecomeAuthorComponent
+  implements OnInit, OnDestroy
+{
   private currentUser?: Maybe<UserContextEntity>;
 
   appliedForArticlesManage: boolean | undefined;
@@ -25,15 +25,13 @@ export class PortalParticipateBecomeAuthorComponent implements OnInit, OnDestroy
 
   private destroy = new Subject<void>();
 
-  constructor(  
-    private store: Store,
-    private fb: FormBuilder
-  ) { }
+  constructor(private store: Store, private fb: FormBuilder) {}
 
   public ngOnInit(): void {
-    this.store.select(selectCurrentUser)
+    this.store
+      .select(selectCurrentUser)
       .pipe(takeUntil(this.destroy))
-      .subscribe(user => this.currentUser = user);
+      .subscribe((user) => (this.currentUser = user));
   }
 
   public save(): void {

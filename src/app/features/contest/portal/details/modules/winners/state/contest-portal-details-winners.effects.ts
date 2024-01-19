@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
 import { map, switchMap } from 'rxjs';
 import {
   ContestParticipationEntity,
@@ -41,7 +40,6 @@ export class ContestPortalDetailsWinnersEffects {
 
   constructor(
     private actions: Actions,
-    private getContestParticipationsService: GetContestParticipationsGQL,
-    private store: Store
+    private getContestParticipationsService: GetContestParticipationsGQL
   ) {}
 }
