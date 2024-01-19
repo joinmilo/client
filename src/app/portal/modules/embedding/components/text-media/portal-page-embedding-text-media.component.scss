@@ -1,3 +1,5 @@
+@import 'src/styles/mixins.scss';
+
 :host {
   display: flex;
   flex-flow: column;
@@ -24,10 +26,30 @@
     align-items: baseline;
     gap: 1.5rem;
     width: calc(50% - var(--gap));
+   
+    @include responsive(phone) {
+      width: calc(100% - var(--gap));
+    }
   }
 
   h1 {
     margin-bottom: 0;
+  }
+
+  section {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  a {
+    padding: .5rem 1rem;
+    height: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 
   app-media-element {
@@ -36,5 +58,9 @@
 
     border-radius: var(--mdc-shape-small);
     overflow: hidden;
+
+    @include responsive(phone) {
+      display: none;
+    }
   }
 }

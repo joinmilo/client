@@ -1,5 +1,11 @@
+@import 'src/styles/mixins.scss';
+
 :host {
   display: flex;
   flex-flow: column;
   gap: 5rem;
+
+  @include responsive(phone) {
+    gap: 2.5rem;
+  }
 }

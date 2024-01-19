@@ -2,6 +2,6 @@
   display: flex;
   flex-flow: column;
   gap: 5rem;
-
   margin: var(--gap) auto 0;
+  max-width: calc(100% - var(--gap));
 }

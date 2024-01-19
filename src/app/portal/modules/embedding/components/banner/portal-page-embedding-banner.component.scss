@@ -3,6 +3,7 @@
   gap: 5rem;
   justify-content: center;
   padding: 3rem;
+  margin: var(--gap) auto 0;
 
   background-color: var(--color-accent-700);
   color: var(--color-accent-contrast-700);
@@ -16,10 +17,16 @@ section {
   h1 {
     margin-bottom: 0 !important;
     font-weight: 500;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   span {
     font-size: 1.5rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 
   * {

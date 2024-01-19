@@ -3,7 +3,9 @@
 h1 {
   margin-bottom: 0 !important;
   overflow-wrap: break-word;
+  word-break: break-word;
   hyphens: auto;
+  -webkit-hyphens: auto;
   
   @include responsive(phone) {
     font-size: 1.125rem !important;  

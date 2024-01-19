@@ -8,6 +8,7 @@
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  margin: var(--gap) auto 0;
 
   app-media-title {
     width: 100%;
@@ -19,6 +20,10 @@
     gap: 3rem;
     margin: var(--gap) auto;
     width: 80%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
 
     h1 {
       margin: 0;

@@ -16,8 +16,25 @@ h1 {
   display: flex;
   flex-flow: column;
   gap: var(--gap);
+
+  section {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
   
   a {
     align-self: flex-end;
+    padding: .5rem 1rem;
+    height: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
+}
+
+mat-expansion-panel-header, mat-expansion-panel-header.mat-expanded {
+  height: max-content;
 }
