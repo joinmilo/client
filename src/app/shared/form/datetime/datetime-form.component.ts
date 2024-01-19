@@ -1,6 +1,6 @@
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnDestroy, OnInit, forwardRef } from '@angular/core';
+import { Component, Input, OnDestroy, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -36,7 +36,7 @@ import { CoreModule } from 'src/app/core/core.module';
     ReactiveFormsModule,
   ]
 })
-export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy, OnInit {
+export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
 
   @Input()
   public set date(date: Maybe<string | Date>) {
@@ -77,12 +77,11 @@ export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy, O
         this.onChange?.(result);
       });
   }
-  ngOnInit(): void {
-    console.log(this.date);
-  }
 
-  public writeValue(date: Date): void {
-    this.control.patchValue(date);
+  public writeValue(date: Maybe<Date | string>): void {
+    date
+      ? this.control.patchValue(new Date(date))
+      : this.control.reset();
   }
 
   public registerOnChange(onChange: (value: Maybe<Date>) => void): void {
