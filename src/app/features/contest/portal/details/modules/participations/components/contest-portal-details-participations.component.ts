@@ -3,14 +3,18 @@ import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, switchMap, takeUntil, tap } from 'rxjs';
+import { Subject, switchMap, take, takeUntil, tap } from 'rxjs';
 import {
   ContestEntity,
   ContestParticipationEntity,
   UserContextEntity,
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
+import {
+  selectCurrentUser,
+  selectIsAuthenticated,
+} from 'src/app/core/state/selectors/user.selectors';
 import { selectParams } from 'src/app/shared/widgets/table/state/table.selectors';
 import {
   SortOption,
@@ -33,13 +37,12 @@ import {
 export class ContestPortalDetailsParticipationsComponent
   implements OnInit, OnDestroy
 {
-  
   public actionInfos?: ActionInfo[];
-  
+
   private contest?: Maybe<ContestEntity>;
-  
+
   public currentUser?: Maybe<UserContextEntity>;
-  
+
   private destroy = new Subject<void>();
 
   public pageSizeOptions = [12, 24, 48, 96];
@@ -47,9 +50,9 @@ export class ContestPortalDetailsParticipationsComponent
   public params = this.store.select(selectParams);
 
   private participations?: Maybe<Maybe<ContestParticipationEntity>[]>;
-  
+
   public participationsTotal = this.store.select(selectParticipationsTotal);
-  
+
   public sortOptions: SortOption[] = [
     {
       label: 'created',
@@ -64,7 +67,10 @@ export class ContestPortalDetailsParticipationsComponent
 
   private userVotes?: Maybe<number>;
 
-  constructor(private store: Store, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private store: Store,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     this.store
@@ -73,10 +79,10 @@ export class ContestPortalDetailsParticipationsComponent
 
     this.activatedRoute.parent?.params
       .pipe(
-        tap((params) => 
+        tap((params) =>
           this.store.dispatch(
             ContestPortalDetailsLandingActions.getDetails(params[slug] || '')
-          ),
+          )
         ),
         switchMap(() => this.store.select(selectContestDetails)),
         takeUntil(this.destroy)
@@ -87,7 +93,8 @@ export class ContestPortalDetailsParticipationsComponent
           ContestPortalDetailsParticipationsActions.updateParams({
             page: 0,
             size: 12,
-          }))
+          })
+        );
       });
 
     this.store
@@ -112,7 +119,7 @@ export class ContestPortalDetailsParticipationsComponent
   retrieveActionInfos(element: Maybe<ContestParticipationEntity>): ActionInfo {
     const media = element?.mediaSubmissions?.[0]?.media;
 
-    return (this.contest?.maxVotes != null && this.userVotes != null)
+    return this.contest?.maxVotes != null && this.userVotes != null
       ? this.contest?.maxVotes <= this.userVotes
         ? {
             media: media,
@@ -124,7 +131,11 @@ export class ContestPortalDetailsParticipationsComponent
           ).length != 0
         ? { media: media, disabled: true, label: 'allreadyVoted' }
         : { media: media, disabled: false, label: 'vote' }
-      : { media: null, disabled: true, label: this.contest?.maxVotes?.toString()};
+      : {
+          media: null,
+          disabled: true,
+          label: this.contest?.maxVotes?.toString(),
+        };
   }
 
   public changeSort(params: SortPaginate) {
@@ -143,19 +154,26 @@ export class ContestPortalDetailsParticipationsComponent
   }
 
   edit(index: number) {
-    this.store.dispatch(
-      ContestPortalDetailsParticipationsActions.saveVote(
-        {
-          userContext: { id: this.currentUser?.id },
-          contestParticipation: {
-            id: this.participations?.[index]?.id,
-          },
-        },
-        this.contest?.maxVotes && this.userVotes
-          ? this.contest?.maxVotes - this.userVotes
-          : 0
-      )
-    );
+    this.store
+      .select(selectIsAuthenticated)
+      .pipe(take(1))
+      .subscribe((isAuthenticated) =>
+        isAuthenticated
+          ? this.store.dispatch(
+              ContestPortalDetailsParticipationsActions.saveVote(
+                {
+                  userContext: { id: this.currentUser?.id },
+                  contestParticipation: {
+                    id: this.participations?.[index]?.id,
+                  },
+                },
+                this.contest?.maxVotes && this.userVotes
+                  ? this.contest?.maxVotes - this.userVotes
+                  : 0
+              )
+            )
+          : this.store.dispatch(CoreUserActions.requireLogin())
+      );
   }
 
   public ngOnDestroy(): void {
