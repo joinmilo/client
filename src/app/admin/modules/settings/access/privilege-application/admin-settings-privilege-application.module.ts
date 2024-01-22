@@ -17,6 +17,7 @@ import { AdminSettingsPrivilegeApplicationOverviewComponent } from './components
 import { AdminSettingsPrivilegeApplicationRoleAssignComponent } from './components/role-assign/admin-settings-privilege-application-role-assign.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material/divider';
 import { adminSettingsPrivilegeApplicationStateKey } from './constants/admin-settings-privilege-application.constants';
 import { AdminSettingsPrivilegeApplicationEffects } from './state/admin-settings-privilege-application.effects';
 import { adminPrivilegeApplicationReducer } from './state/admin-settings-privilege-application.reducer';
@@ -35,6 +36,7 @@ const materials = [
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,

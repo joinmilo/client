@@ -11,12 +11,27 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <section *ngIf="!roles">
+      <strong appLabel="noSuitableRoleFound"></strong>
+      <button 
+        mat-flat-button 
+        appLabel="createNewRole" 
+        color="primary" 
+        [routerLink]="['/admin/settings/access/role/form']"
+        [mat-dialog-close]="true">
+      </button>
+    </section>
   </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close appLabel="cancel"></button>
+    <mat-dialog-actions align="end">
+    <button 
+      mat-button 
+      mat-dialog-close 
+      appLabel="cancel">
+    </button>
     <button 
       mat-button [mat-dialog-close]="true" 
       cdkFocusInitial appLabel="save"
-      (click)="saved()"></button>
+      (click)="saved()">
+    </button>
   </mat-dialog-actions>
 </div>

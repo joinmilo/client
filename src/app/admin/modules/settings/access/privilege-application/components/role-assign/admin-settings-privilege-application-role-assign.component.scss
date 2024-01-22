@@ -3,7 +3,7 @@ div {
   max-width: 100%;
 }
 
-mat-dialog-content {
+mat-dialog-content, section {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
