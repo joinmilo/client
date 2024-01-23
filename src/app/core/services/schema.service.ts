@@ -443,6 +443,10 @@ export class SchemaService {
       '', //entity?.name,
       '', //entity?.callUrl,
       entity?.slug
+
+      // new PageEmbeddingsEntitySchema (
+      //   entity?.embeddings?.
+      // )
     )
     return pageElement;
   };

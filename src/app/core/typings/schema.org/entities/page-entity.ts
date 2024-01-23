@@ -1,9 +1,10 @@
-import { Maybe } from 'graphql/jsutils/Maybe';
+import { Maybe } from 'src/app/core/api/generated/schema';
 import { Schema } from '../schema-class';
 
 export class PageEntitySchema extends Schema {
 
   constructor(
+    // public hasParty: PageEmbeddingsEntitySchema[]
   public abstract: Maybe<string>,
   public dateCreated: Maybe<string>,
   public description: Maybe<string>,
