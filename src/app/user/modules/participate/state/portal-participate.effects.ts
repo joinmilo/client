@@ -107,8 +107,10 @@ export class PortalParticipateEffects {
       type: FeedbackType.Success,
       labelMessage: 'savedSuccessfully'
     }))
-  ));
+  ), {dispatch: false});
 
+
+    
   constructor(
     private actions: Actions,
     private getOrganisationsService: GetOrganisationsGQL,

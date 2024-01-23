@@ -18,7 +18,7 @@ const menuRoutes: AdminFeatureRoute[] = [
     },
   },
   {
-    path: `${organisationsFeatureKey}/category`,
+    path: `${organisationsFeatureKey}/approval`,
     loadChildren: () => import('src/app/features/organisation/admin/approval-overview/organisation-admin-approval-overview.module')
       .then((imported) => imported.OrganisationAdminApprovalOverviewModule),
     data: { 
