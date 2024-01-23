@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -86,12 +85,20 @@ export class AdminSettingsPrivilegeApplicationEffects {
 
   assignRole = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPrivilegeApplicationActions.assignRole),
-    switchMap(entity => this.addRoleService.mutate({
-      roleId: entity?.role?.id,  
-      userId: entity?.user?.id
-    })),
+    switchMap(action => 
+      this.addRoleService.mutate({
+        roleId: action?.roleId,
+        userId: action?.userId
+      }).pipe(
+        switchMap(() => 
+          this.deleteApplicationService.mutate({
+            id: action.applicationId
+          })
+        )
+      )
+    ),
     map(() => AdminSettingsPrivilegeApplicationActions.roleAssigned())
-  ))
+  ));
 
   roleAssigned = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPrivilegeApplicationActions.roleAssigned),
@@ -101,21 +108,11 @@ export class AdminSettingsPrivilegeApplicationEffects {
       labelMessage: 'savedSuccessfully'
     }))
   ));
-
-  roleAssignedDeleteApplication = createEffect(() => this.actions.pipe(
-    ofType(AdminSettingsPrivilegeApplicationActions.roleAssignedDeleteApplication),
-    switchMap(entity => this.deleteApplicationService.mutate({
-        id: entity.application?.id
-    })),
-    map(() => AdminSettingsPrivilegeApplicationActions.roleAssigned())
-    ))
-
     
   constructor(
     private actions: Actions,
     private addRoleService: AddRoleGQL,
     private confirmService: ConfirmService,
-    private dialog: MatDialog,
     private deleteApplicationService: DeletePrivilegeApplicationGQL,
     private getPrivilegeApplicationsService: GetPrivilegeApplicationsGQL,
     private getRolesService: GetRolesGQL,

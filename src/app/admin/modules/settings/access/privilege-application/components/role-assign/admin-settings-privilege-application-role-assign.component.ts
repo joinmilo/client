@@ -20,7 +20,6 @@ export class AdminSettingsPrivilegeApplicationRoleAssignComponent {
   public form = this.fb.group({
     userId: [this.application?.user?.id as Maybe<string>],
     roleId: ['' as Maybe<string>, [Validators.required]],
-    privilegeId: [this.application?.id as Maybe<string>],
   });
   
   constructor(
@@ -33,12 +32,9 @@ export class AdminSettingsPrivilegeApplicationRoleAssignComponent {
 
   public saved(): void {
     this.store.dispatch(AdminSettingsPrivilegeApplicationActions.assignRole(
-      {id: this.form.value.roleId},
-      {id: this.form.value.userId}
+      this.form.value.roleId,
+      this.form.value.userId,
+      this.application?.id
     ));
-
-    this.store.dispatch(AdminSettingsPrivilegeApplicationActions.roleAssignedDeleteApplication(
-      this.application
-    ))
   }
 }
