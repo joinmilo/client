@@ -7,7 +7,10 @@ import { ArticleEntitySchema } from '../typings/schema.org/entities/article-enti
 import { DealEntitySchema } from '../typings/schema.org/entities/deal-entity';
 import { EventEntitySchema } from '../typings/schema.org/entities/event-entity';
 import { OrganisationEntitySchema } from '../typings/schema.org/entities/organisation-entity';
+import { PageAttributeEntitySchema } from '../typings/schema.org/entities/page-attribute-entity';
+import { PageEmbeddingsEntitySchema } from '../typings/schema.org/entities/page-embeddings-entity';
 import { PageEntitySchema } from '../typings/schema.org/entities/page-entity';
+import { TranslatableEntitySchema } from '../typings/schema.org/entities/translateable-entity';
 import { UserContextEntitySchema } from '../typings/schema.org/entities/user-context-entity';
 import { AggregateRatingSchema } from '../typings/schema.org/properties/aggregate-rating';
 import { BreadcrumbList } from '../typings/schema.org/properties/breadcrumb';
@@ -435,18 +438,7 @@ export class SchemaService {
   private pageToJSON = (entity?: Maybe<PageEntity>): PageEntitySchema => {
     
     const pageElement = new PageEntitySchema(
-      entity?.shortDescription,
-      entity?.created,
-      '', //entity?.callText,
-      entity?.modified,
-      '', // entity?.content,
-      '', //entity?.name,
-      '', //entity?.callUrl,
-      entity?.slug
-
-      // new PageEmbeddingsEntitySchema (
-      //   entity?.embeddings?.
-      // )
+      this.getEmbeddingsOfPages(entity)
     )
     return pageElement;
   };
@@ -460,7 +452,30 @@ export class SchemaService {
 
     return pagesArray;
   };
+  
+  private getEmbeddingsOfPages = (entity?: Maybe<PageEntity>): PageEmbeddingsEntitySchema[] => {
+    const embeddings = entity?.embeddings
+      ?.filter(embedding => embedding?.id)
+      .map(embedding => {
+        const attributes = embedding?.attributes;
+        if (attributes) {
+          const pageAttributes = attributes.map(attribute => {
+            const translatables = attribute?.translatables
+            ?.filter(translatable => translatable?.language?.locale === 'de')
+            .map(translatable => {
+              return new TranslatableEntitySchema(
+                translatable?.translatable
+              );
+            }) ?? [];
+            return new PageAttributeEntitySchema(translatables);
+          }) ?? [];
+          return new PageEmbeddingsEntitySchema(pageAttributes);
+        }
+        return new PageEmbeddingsEntitySchema([]);
+      }) ?? [];
 
+    return embeddings;
+  };
 
   // USER
 
