@@ -1,8 +1,8 @@
-mutation addRole(
+mutation addUser(
   $roleId: String,
   $userId: String
 ) {
-  addRole(
+  addUser(
     roleId: $roleId,
     userId: $userId)
 }

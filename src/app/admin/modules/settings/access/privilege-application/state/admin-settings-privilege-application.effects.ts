@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
-import { AddRoleGQL } from 'src/app/admin/api/generated/add-user-role.mutation.generated';
+import { AddUserGQL } from 'src/app/admin/api/generated/add-user-role.mutation.generated';
 import { DeletePrivilegeApplicationGQL } from 'src/app/admin/api/generated/delete-privilege-application.mutation.generated';
 import { GetPrivilegeApplicationsGQL } from 'src/app/admin/api/generated/get-privilege-application.query.generated';
 import { GetRolesGQL } from 'src/app/admin/api/generated/get-roles.query.generated';
@@ -86,7 +86,7 @@ export class AdminSettingsPrivilegeApplicationEffects {
   assignRole = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPrivilegeApplicationActions.assignRole),
     switchMap(action => 
-      this.addRoleService.mutate({
+      this.addUserService.mutate({
         roleId: action?.roleId,
         userId: action?.userId
       }).pipe(
@@ -111,7 +111,7 @@ export class AdminSettingsPrivilegeApplicationEffects {
     
   constructor(
     private actions: Actions,
-    private addRoleService: AddRoleGQL,
+    private addUserService: AddUserGQL,
     private confirmService: ConfirmService,
     private deleteApplicationService: DeletePrivilegeApplicationGQL,
     private getPrivilegeApplicationsService: GetPrivilegeApplicationsGQL,
