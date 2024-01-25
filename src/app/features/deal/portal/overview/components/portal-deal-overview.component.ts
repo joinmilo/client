@@ -53,7 +53,7 @@ export class PortalDealOverviewComponent {
   ) {
     this.store.dispatch(PortalDealOverviewActions.getSponsoredDeal());
     this.deals?.subscribe(deals => {
-      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, deals);
+      this.schemaService.createMultiSchema(this.entity as SchemaEntityArray, deals);
     })
   }
 

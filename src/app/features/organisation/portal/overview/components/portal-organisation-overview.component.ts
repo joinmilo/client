@@ -55,7 +55,7 @@ export class PortalOrganisationOverviewComponent {
   ) {
     this.store.dispatch(PortalOrganisationOverviewActions.getSponsoredOrganisation());
     this.organisations?.subscribe(organisations => {
-      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, organisations);
+      this.schemaService.createMultiSchema(this.entity as SchemaEntityArray, organisations);
     })
   }
 

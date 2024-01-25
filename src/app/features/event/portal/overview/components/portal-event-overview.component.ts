@@ -57,7 +57,7 @@ export class PortalEventOverviewComponent {
   ) {
     this.store.dispatch(PortalEventOverviewActions.getSponsoredEvent());
     this.events?.subscribe(events => {
-      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, events);
+      this.schemaService.createMultiSchema(this.entity as SchemaEntityArray, events);
     })
   }
 

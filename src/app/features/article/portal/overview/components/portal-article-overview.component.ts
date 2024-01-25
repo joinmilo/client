@@ -52,7 +52,7 @@ export class PortalArticleOverviewComponent {
   ) {
     this.store.dispatch(PortalArticleOverviewActions.getSponsoredArticle());
     this.articles?.subscribe(articles => {
-      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, articles);
+      this.schemaService.createMultiSchema(this.entity as SchemaEntityArray, articles);
     })
   }
 

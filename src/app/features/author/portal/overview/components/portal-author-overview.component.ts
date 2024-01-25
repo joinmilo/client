@@ -40,7 +40,7 @@ export class PortalAuthorOverviewComponent {
   public updateParams(params: SortPaginate) {
     this.store.dispatch(PortalAuthorOverviewActions.updateParams(params));
     this.authors?.subscribe(authors => {
-      this.schemaService.multiJsonLd(this.entity as SchemaEntityArray, authors);
+      this.schemaService.createMultiSchema(this.entity as SchemaEntityArray, authors);
     })
   }
 
