@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
-import { ApiResponse } from '../typings/response';
+import { ApiError, ApiResponse } from '../typings/response';
 
 @Injectable({ providedIn: 'root' })
 export class AuthInterceptor implements HttpInterceptor {
@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
       next: HttpHandler,
       response: HttpEvent<ApiResponse>): Observable<HttpEvent<ApiResponse>> {
     return (response instanceof HttpResponse)
-        && response.body?.errors?.find((error: any) => error.extensions.exception === 'AccessDeniedException')
+        && response.body?.errors?.find((error: ApiError) => error.extensions.exception === 'AccessDeniedException')
       ? this.authService.refresh().pipe(
           switchMap(() => next.handle(request.clone({
             headers: request.headers.set('Authorization', `Bearer ${this.authService.tokens?.access}`)

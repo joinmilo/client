@@ -49,7 +49,7 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
       console.log('membership',this.author?.members?.filter(organisation => organisation?.organisation?.name))
 
       if (this.author) {
-        this.schemaService.singleJsonLd(this.author, this.entity as SchemaEntity);
+        this.schemaService.createSingleSchema(this.author, this.entity as SchemaEntity);
       }
     })
   }

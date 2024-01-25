@@ -27,7 +27,7 @@ import { Schema } from '../typings/schema.org/schema-class';
 @Injectable({ providedIn: 'root' })
 export class SchemaService {
 
-  private breadcrumb?: BreadcrumbList;
+  private footerSchema?: BreadcrumbList;
 
   private renderer: Renderer2;
   
@@ -42,13 +42,13 @@ export class SchemaService {
 
   public addFooterSchema(data?: Maybe<SchemaDataArray>): void {
     if (data?.length) {
-      this.breadcrumb = new BreadcrumbList(
+      this.footerSchema = new BreadcrumbList(
         data.map(item => this.menuItemToJSON(item as MenuItemEntity))
       );
     }
   }
 
-  public singleJsonLd(
+  public createSingleSchema(
     data: SchemaData, 
     entity: SchemaEntity,
   ): void {
@@ -60,7 +60,7 @@ export class SchemaService {
           ...this.entityToSchema(entity, data)
         },
         {
-          ...this.breadcrumb
+          ...this.footerSchema
         }
       ]
     };
@@ -74,14 +74,14 @@ export class SchemaService {
     }
 
     this.renderer.appendChild(this.document.body, script);
-
     this.previousScript = script;
   }
 
-  public multiJsonLd(
+  public createMultiSchema
+  (
     entity: SchemaEntityArray,
     data: SchemaOverview,
-    ): void {
+  ): void {
 
     const result = {
       '@context': 'https://schema.org',
@@ -90,7 +90,7 @@ export class SchemaService {
           ...this.arrayToSchema(entity, data)
         },
         {
-          ...this.breadcrumb
+          ...this.footerSchema
         }
       ]
     };
@@ -111,37 +111,25 @@ export class SchemaService {
   public entityToSchema(
     entity: SchemaEntity, 
     data: SchemaData
-  ): Maybe<Schema> {
-    let result: Maybe<Schema>;
-    
+  ): Maybe<Schema> {    
     switch(entity) {
       case 'ArticleEntity':
-        result = this.articleToJSON(data as ArticleEntity);
-        break;
+        return this.articleToJSON(data as ArticleEntity);
       case 'DealEntity':
-        result = this.dealToJSON(data as DealEntity);
-        break;
+        return this.dealToJSON(data as DealEntity);
       case 'EventEntity':
-        result = this.eventToJSON(data as EventEntity);
-        break;
+        return this.eventToJSON(data as EventEntity);
       case 'MenuItemEntity':
-        result = this.menuItemToJSON(data as MenuItemEntity);
-        break;
+        return this.menuItemToJSON(data as MenuItemEntity);
       case 'OrganisationEntity':
-        result = this.organisationToJSON(data as OrganisationEntity);
-        break;
+        return this.organisationToJSON(data as OrganisationEntity);
       case 'PageEntity':
-        result = this.pageToJSON(data as PageEntity);
-        break;
+        return this.pageToJSON(data as PageEntity);
       case 'UserContextEntity':
-        result = this.userContextToJSON(data as UserContextEntity);
-        break;
+        return this.userContextToJSON(data as UserContextEntity);
       default:
-        result = undefined;
-        break;
+        return undefined;
     }
-
-    return result;
   }
 
    public arrayToSchema(
@@ -152,7 +140,7 @@ export class SchemaService {
     
     switch(entity) {
       case 'PageableList_ArticleEntity':
-        result = this.articleArrayToJSON(data as PageableList_ArticleEntity);
+        result = this.articleArrayToSchema(data as PageableList_ArticleEntity);
         break;
       case 'PageableList_DealEntity':
         result = this.dealArrayToJSON(data as PageableList_DealEntity);
@@ -176,6 +164,16 @@ export class SchemaService {
 
   
   // ARTICLE
+
+  private articleArrayToSchema = (entity?: Maybe<PageableList_ArticleEntity>): Array => {
+    const articlesArray = new Array(
+      (entity?.result || []).map(entity => {
+        const article = this.articleToJSON(entity);
+        return article;
+      }));
+
+    return articlesArray;
+  };
 
   private articleToJSON = (entity?: Maybe<ArticleEntity>): ArticleEntitySchema => {
   
@@ -220,16 +218,6 @@ export class SchemaService {
 
     return categoryNames && categoryNames.length > 0 ? categoryNames.join() : null;
   }
-
-  private articleArrayToJSON = (entity?: Maybe<PageableList_ArticleEntity>): Array => {
-    const articlesArray = new Array(
-      (entity?.result || []).map(entity => {
-        const article = this.articleToJSON(entity);
-        return article;
-      }));
-
-    return articlesArray;
-  };
   
   
   // DEAL

@@ -64,7 +64,7 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
         ?.slice(0, 5) as MediaEntity[];
        
         if (this.deal) {
-          this.schemaService.singleJsonLd(this.deal, this.entity as SchemaEntity);
+          this.schemaService.createSingleSchema(this.deal, this.entity as SchemaEntity);
         }
     });
   }

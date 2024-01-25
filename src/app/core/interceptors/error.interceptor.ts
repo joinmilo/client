@@ -8,7 +8,7 @@ import { accessDeniedError, tokenExpiredError } from '../constants/error.constan
 import { CoreUserActions } from '../state/actions/core-user.actions';
 import { CoreActions } from '../state/actions/core.actions';
 import { FeedbackType } from '../typings/feedback';
-import { ApiResponse } from '../typings/response';
+import { ApiError, ApiResponse } from '../typings/response';
 
 @Injectable({ providedIn: 'root' })
 export class ErrorInterceptor implements HttpInterceptor {
@@ -27,9 +27,9 @@ export class ErrorInterceptor implements HttpInterceptor {
   private handleError(response: HttpEvent<ApiResponse>): void {
     if (response instanceof HttpResponse 
       && response?.body?.errors?.length
-      && response.body?.errors?.every((error: any) => error.extensions.exception !== accessDeniedError)) {
+      && response.body?.errors?.every((error: ApiError) => error.extensions.exception !== accessDeniedError)) {
 
-        if (response.body?.errors?.some((error: any)  => error.extensions.exception === tokenExpiredError)) {
+        if (response.body?.errors?.some((error: ApiError)  => error.extensions.exception === tokenExpiredError)) {
           this.store.dispatch(CoreUserActions.refreshExpired());
         }
         

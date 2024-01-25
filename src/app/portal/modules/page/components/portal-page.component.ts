@@ -38,7 +38,7 @@ export class PortalPageComponent implements OnInit, OnDestroy {
       this.page = page;
 
       if (this.page) {
-        this.schemaService.singleJsonLd(this.page, 'PageEntity');
+        this.schemaService.createSingleSchema(this.page, 'PageEntity');
       }
     })
   }
