@@ -56,7 +56,7 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
         ?.slice(0, 5) as MediaEntity[];
 
       if (this.article) {
-        this.schemaService.createSingleSchema(this.article, 'ArticleEntity');
+        this.schemaService.createEntitySchema(this.article, 'ArticleEntity');
       }
     });
 

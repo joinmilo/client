@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { guestArticlesFeatureKey } from 'src/app/core/constants/feature.constants';
@@ -7,7 +7,7 @@ import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 
-import { SchemaEntityArray } from 'src/app/core/typings/schema.org/schema';
+import { Subject } from 'rxjs';
 import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalArticleOverviewActions } from '../state/portal-article-overview.actions';
 import { selectOverviewData, selectSponsoredArticle } from '../state/portal-article-overview.selectors';
@@ -17,13 +17,11 @@ import { selectOverviewData, selectSponsoredArticle } from '../state/portal-arti
   templateUrl: './portal-article-overview.component.html',
   styleUrls: ['./portal-article-overview.component.scss']
 })
-export class PortalArticleOverviewComponent {
+export class PortalArticleOverviewComponent implements OnDestroy {
 
   public displayType = OverviewDisplayType.Category;
 
   public displayQueryParam = displayQueryParam;
-
-  private entity = 'PageableList_ArticleEntity'; 
 
   public inputs: RadioButtonInput[] = [
     {
@@ -45,6 +43,8 @@ export class PortalArticleOverviewComponent {
   public guestArticlesFeatureKey = guestArticlesFeatureKey;
 
   public portalUrl = portalUrl;
+
+  private destroy = new Subject<void>();
   
   constructor(
     private schemaService: SchemaService,
@@ -52,12 +52,17 @@ export class PortalArticleOverviewComponent {
   ) {
     this.store.dispatch(PortalArticleOverviewActions.getSponsoredArticle());
     this.articles?.subscribe(articles => {
-      this.schemaService.createMultiSchema(this.entity as SchemaEntityArray, articles);
+      this.schemaService.createArraySchema('PageableList_ArticleEntity', articles);
     })
   }
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalArticleOverviewActions.updateParams(params));
+  }
+
+  ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 
 }

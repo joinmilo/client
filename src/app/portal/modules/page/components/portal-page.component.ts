@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
@@ -21,7 +21,6 @@ export class PortalPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private renderer: Renderer2,
     private schemaService: SchemaService,
     private store: Store) { }
 
@@ -38,7 +37,7 @@ export class PortalPageComponent implements OnInit, OnDestroy {
       this.page = page;
 
       if (this.page) {
-        this.schemaService.createSingleSchema(this.page, 'PageEntity');
+        this.schemaService.createEntitySchema(this.page, 'PageEntity');
       }
     })
   }

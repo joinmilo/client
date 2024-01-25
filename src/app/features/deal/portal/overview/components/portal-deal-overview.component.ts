@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { SchemaEntityArray } from 'src/app/core/typings/schema.org/schema';
 import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalDealOverviewActions } from '../state/portal-deal-overview.actions';
 import { selectOverviewData, selectSponsoredDeal } from '../state/portal-deal-overview.selectors';
@@ -15,13 +15,11 @@ import { selectOverviewData, selectSponsoredDeal } from '../state/portal-deal-ov
   templateUrl: './portal-deal-overview.component.html',
   styleUrls: ['./portal-deal-overview.component.scss']
 })
-export class PortalDealOverviewComponent {
+export class PortalDealOverviewComponent implements OnDestroy {
 
   public displayType = OverviewDisplayType.Category;
 
   public displayQueryParam = displayQueryParam;
-
-  private entity = 'PageableList_DealEntity'; 
 
   public inputs: RadioButtonInput[] = [
     {
@@ -46,6 +44,8 @@ export class PortalDealOverviewComponent {
   public sponsored = this.store.select(selectSponsoredDeal);
 
   public dealsFeatureKey = dealsFeatureKey;
+
+  private destroy = new Subject<void>();
   
   constructor(
     private schemaService: SchemaService,
@@ -53,11 +53,16 @@ export class PortalDealOverviewComponent {
   ) {
     this.store.dispatch(PortalDealOverviewActions.getSponsoredDeal());
     this.deals?.subscribe(deals => {
-      this.schemaService.createMultiSchema(this.entity as SchemaEntityArray, deals);
+      this.schemaService.createArraySchema('PageableList_DealEntity', deals);
     })
   }
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalDealOverviewActions.updateParams(params));
+  }
+
+  ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 }

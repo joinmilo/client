@@ -5,7 +5,6 @@ import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
-import { SchemaEntity } from 'src/app/core/typings/schema.org/schema';
 import { PortalAuthorDetailsActions } from '../state/portal-author-details.actions';
 import { selectAuthorDetails } from '../state/portal-author-details.selectors';
 
@@ -23,9 +22,6 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
   public media?: Maybe<MediaEntity[]> | undefined;
 
   public mediaTitle?: Maybe<MediaEntity> | undefined;
-
-  private entity = 'UserContextEntity'; 
-  
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -46,10 +42,8 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
         ?.map(eventMedia => eventMedia?.media)
         ?.slice(0, 10) as MediaEntity[];
 
-      console.log('membership',this.author?.members?.filter(organisation => organisation?.organisation?.name))
-
       if (this.author) {
-        this.schemaService.createSingleSchema(this.author, this.entity as SchemaEntity);
+        this.schemaService.createEntitySchema(this.author, 'UserContextEntity');
       }
     })
   }

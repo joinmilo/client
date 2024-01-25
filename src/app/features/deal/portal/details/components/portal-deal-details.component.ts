@@ -8,7 +8,6 @@ import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-params/deal-filter-param';
-import { SchemaEntity } from 'src/app/core/typings/schema.org/schema';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { PortalDealDetailsActions } from '../state/portal-deal-details.actions';
 import { selectDealDetails } from '../state/portal-deal-details.selectors';
@@ -36,8 +35,6 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
 
   public portalUrl = portalUrl;
 
-  private entity = 'DealEntity'; 
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private schemaService: SchemaService,
@@ -64,7 +61,7 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
         ?.slice(0, 5) as MediaEntity[];
        
         if (this.deal) {
-          this.schemaService.createSingleSchema(this.deal, this.entity as SchemaEntity);
+          this.schemaService.createEntitySchema(this.deal, 'DealEntity');
         }
     });
   }

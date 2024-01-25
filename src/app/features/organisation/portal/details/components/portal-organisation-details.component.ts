@@ -6,7 +6,6 @@ import { Maybe, MediaEntity, OrganisationEntity } from 'src/app/core/api/generat
 import { organisationsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
-import { SchemaEntity } from 'src/app/core/typings/schema.org/schema';
 import { MarkerDefinition } from 'src/app/shared/widgets/map/typings/map';
 import { PortalOrganisationDetailsActions } from '../state/portal-organisation-details.actions';
 import { selectOrganisationDetails } from '../state/portal-organisation-details.selectors';
@@ -58,7 +57,7 @@ export class PortalOrganisationDetailsComponent implements OnInit, OnDestroy {
         ?.slice(0, 5) as MediaEntity[];
 
       if (this.organisation) {
-        this.schemaService.createSingleSchema(this.organisation, this.entity as SchemaEntity);
+        this.schemaService.createEntitySchema(this.organisation, 'OrganisationEntity');
       }
     });
 
