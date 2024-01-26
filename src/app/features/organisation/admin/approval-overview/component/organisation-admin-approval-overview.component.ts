@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
-
-import { TranslationService } from 'ngx-cinlib/i18n';
 import { OrganisationAdminApprovalOverviewActions } from '../state/organisation-admin-approval-overview.actions';
 import { selectOverviewData } from '../state/organisation-admin-approval-overview.selectors';
 
@@ -43,10 +42,6 @@ export class OrganisationAdminApprovalOverviewComponent {
       field: 'name',
       label: 'name',
       sort: true,
-    },
-    {
-      field: 'contact.name',
-      label: 'contact',
     },
     {
       field: 'contact.email',
