@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
@@ -103,7 +102,6 @@ export class EventAdminOverviewEffects {
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private dialog: MatDialog,
     private getEventsService: GetEventsGQL,
     private sponsorEventService: SponsorEventGQL,
     private deleteEventService: DeleteEventGQL,

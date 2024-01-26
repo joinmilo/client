@@ -17,19 +17,19 @@ export type Scalars = {
   OffsetDateTime: { input: any; output: any; }
 };
 
-  export type AddressEntity = {
-    __typename?: 'AddressEntity';
-    created?: Maybe<Scalars['OffsetDateTime']['output']>;
-    houseNumber?: Maybe<Scalars['String']['output']>;
-    id?: Maybe<Scalars['String']['output']>;
-    latitude?: Maybe<Scalars['Float']['output']>;
-    longitude?: Maybe<Scalars['Float']['output']>;
-    modified?: Maybe<Scalars['OffsetDateTime']['output']>;
-    place?: Maybe<Scalars['String']['output']>;
-    postalCode?: Maybe<Scalars['String']['output']>;
-    street?: Maybe<Scalars['String']['output']>;
-    suburb?: Maybe<SuburbEntity>;
-  };
+export type AddressEntity = {
+  __typename?: 'AddressEntity';
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  houseNumber?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  latitude?: Maybe<Scalars['Float']['output']>;
+  longitude?: Maybe<Scalars['Float']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  place?: Maybe<Scalars['String']['output']>;
+  postalCode?: Maybe<Scalars['String']['output']>;
+  street?: Maybe<Scalars['String']['output']>;
+  suburb?: Maybe<SuburbEntity>;
+};
 
 export type AddressEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
@@ -533,19 +533,17 @@ export type ContestCommentTranslatableEntityInput = {
 
 export type ContestEntity = {
   __typename?: 'ContestEntity';
-  comments?: Maybe<Array<Maybe<ContestCommentEntity>>>;
-  commentsAllowed?: Maybe<Scalars['Boolean']['output']>;
   contact?: Maybe<ContactEntity>;
   content?: Maybe<Scalars['String']['output']>;
   created?: Maybe<Scalars['OffsetDateTime']['output']>;
   id?: Maybe<Scalars['String']['output']>;
   lastContestComment?: Maybe<ContestCommentEntity>;
-  maxParticipations?: Maybe<Scalars['Int']['output']>;
-  maxVotes?: Maybe<Scalars['Int']['output']>;
   metaDescription?: Maybe<Scalars['String']['output']>;
   modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  multiSubmission?: Maybe<Scalars['Boolean']['output']>;
+  multiVote?: Maybe<Scalars['Boolean']['output']>;
   name?: Maybe<Scalars['String']['output']>;
-  participationApproval?: Maybe<Scalars['Boolean']['output']>;
+  offer?: Maybe<Scalars['Boolean']['output']>;
   participationEndDate?: Maybe<Scalars['OffsetDateTime']['output']>;
   participations?: Maybe<Array<Maybe<ContestParticipationEntity>>>;
   searchStatistics?: Maybe<Array<Maybe<AnalyticsDto>>>;
@@ -566,18 +564,16 @@ export type ContestEntitySearchStatisticsArgs = {
 };
 
 export type ContestEntityInput = {
-  comments?: InputMaybe<Array<InputMaybe<ContestCommentEntityInput>>>;
-  commentsAllowed?: InputMaybe<Scalars['Boolean']['input']>;
   contact?: InputMaybe<ContactEntityInput>;
   content?: InputMaybe<Scalars['String']['input']>;
   created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
-  maxParticipations?: InputMaybe<Scalars['Int']['input']>;
-  maxVotes?: InputMaybe<Scalars['Int']['input']>;
   metaDescription?: InputMaybe<Scalars['String']['input']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  multiSubmission?: InputMaybe<Scalars['Boolean']['input']>;
+  multiVote?: InputMaybe<Scalars['Boolean']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-  participationApproval?: InputMaybe<Scalars['Boolean']['input']>;
+  offer?: InputMaybe<Scalars['Boolean']['input']>;
   participationEndDate?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   participations?: InputMaybe<Array<InputMaybe<ContestParticipationEntityInput>>>;
   shortDescription?: InputMaybe<Scalars['String']['input']>;
@@ -612,31 +608,29 @@ export type ContestMediaEntityInput = {
 
 export type ContestParticipationEntity = {
   __typename?: 'ContestParticipationEntity';
-  approved?: Maybe<Scalars['Boolean']['output']>;
   contest?: Maybe<ContestEntity>;
   contestVotes?: Maybe<Array<Maybe<ContestVoteEntity>>>;
   created?: Maybe<Scalars['OffsetDateTime']['output']>;
   id?: Maybe<Scalars['String']['output']>;
   mediaSubmissions?: Maybe<Array<Maybe<ContestParticipationMediaEntity>>>;
   modified?: Maybe<Scalars['OffsetDateTime']['output']>;
-  placement?: Maybe<Scalars['Int']['output']>;
   textSubmission?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<ContestParticipationTranslatableEntity>>>;
   userContext?: Maybe<UserContextEntity>;
+  winner?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type ContestParticipationEntityInput = {
-  approved?: InputMaybe<Scalars['Boolean']['input']>;
   contest?: InputMaybe<ContestEntityInput>;
   contestVotes?: InputMaybe<Array<InputMaybe<ContestVoteEntityInput>>>;
   created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   id?: InputMaybe<Scalars['String']['input']>;
   mediaSubmissions?: InputMaybe<Array<InputMaybe<ContestParticipationMediaEntityInput>>>;
   modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
-  placement?: InputMaybe<Scalars['Int']['input']>;
   textSubmission?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<ContestParticipationTranslatableEntityInput>>>;
   userContext?: InputMaybe<UserContextEntityInput>;
+  winner?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ContestParticipationMediaEntity = {
@@ -1729,7 +1723,7 @@ export type Mutation = {
   addFavoriteDeal?: Maybe<UserContextEntity>;
   addFavoriteEvent?: Maybe<UserContextEntity>;
   addFavoriteOrganisation?: Maybe<UserContextEntity>;
-  addUserRole?: Maybe<Scalars['Boolean']['output']>;
+  addUser?: Maybe<Scalars['Boolean']['output']>;
   assignLandingPage?: Maybe<Scalars['Boolean']['output']>;
   changeArticleApproval?: Maybe<Scalars['Boolean']['output']>;
   changeOrganisationApproval?: Maybe<Scalars['Boolean']['output']>;
@@ -2078,7 +2072,7 @@ export type MutationAddFavoriteOrganisationArgs = {
 
 
 /** Mutation root */
-export type MutationAddUserRoleArgs = {
+export type MutationAddUserArgs = {
   roleId?: InputMaybe<Scalars['String']['input']>;
   userId?: InputMaybe<Scalars['String']['input']>;
 };
