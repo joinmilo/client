@@ -1729,7 +1729,7 @@ export type Mutation = {
   addFavoriteDeal?: Maybe<UserContextEntity>;
   addFavoriteEvent?: Maybe<UserContextEntity>;
   addFavoriteOrganisation?: Maybe<UserContextEntity>;
-  addRole?: Maybe<Scalars['Boolean']['output']>;
+  addUserRole?: Maybe<Scalars['Boolean']['output']>;
   assignLandingPage?: Maybe<Scalars['Boolean']['output']>;
   changeArticleApproval?: Maybe<Scalars['Boolean']['output']>;
   changeOrganisationApproval?: Maybe<Scalars['Boolean']['output']>;
@@ -2078,7 +2078,7 @@ export type MutationAddFavoriteOrganisationArgs = {
 
 
 /** Mutation root */
-export type MutationAddRoleArgs = {
+export type MutationAddUserRoleArgs = {
   roleId?: InputMaybe<Scalars['String']['input']>;
   userId?: InputMaybe<Scalars['String']['input']>;
 };

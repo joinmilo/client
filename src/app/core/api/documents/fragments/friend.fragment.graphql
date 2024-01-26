@@ -11,6 +11,15 @@ fragment Friend on FriendEntity {
       email
       phone
     }
+
+    uploads {
+      id
+      profilePicture
+      title
+      media {
+        ...Media
+      }
+    }
   }
 
   requester {
@@ -21,6 +30,15 @@ fragment Friend on FriendEntity {
       lastName
       email
       phone
+    }
+
+    uploads {
+      id
+      profilePicture
+      title
+      media {
+        ...Media
+      }
     }
   }
 }
