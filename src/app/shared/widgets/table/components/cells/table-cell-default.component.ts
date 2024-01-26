@@ -19,9 +19,11 @@ import { TableCellComponent } from '../../typings/cell';
       <span> {{ input ?? ' - ' }}</span>
     </ng-template>
   `,
-  styles: `:host {
-    overflow-wrap: break-word
-  }`
+  styles: `
+    :host {
+      overflow-wrap: break-word
+    }
+  `
 })
 export class TableCellDefaultComponent extends TableCellComponent<any> {
 

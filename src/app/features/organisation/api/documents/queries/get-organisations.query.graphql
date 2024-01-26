@@ -11,6 +11,15 @@ query getOrganisations($params: FilterSortPaginateInput) {
       contact {
         ...Contact
       }
+
+      translatables {
+        id
+        description
+
+        language {
+          ...Language
+        }
+      }
     }
     total
   }

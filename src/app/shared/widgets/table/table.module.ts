@@ -28,6 +28,7 @@ import { TableCellBooleanComponent } from './components/cells/table-cell-boolean
 import { TableCellCategoryComponent } from './components/cells/table-cell-category.component';
 import { TableCellColorComponent } from './components/cells/table-cell-color.component';
 import { TableCellDefaultComponent } from './components/cells/table-cell-default.component';
+import { TableCellHtmlComponent } from './components/cells/table-cell-html.component';
 import { TableCellIconComponent } from './components/cells/table-cell-icon.component';
 import { TableCellMediaComponent } from './components/cells/table-cell-media.component';
 import { TableDesktopComponent } from './components/desktop/table-desktop.component';
@@ -60,6 +61,7 @@ const cellComponents = [
   TableCellCategoryComponent,
   TableCellColorComponent,
   TableCellDefaultComponent,
+  TableCellHtmlComponent,
   TableCellIconComponent,
   TableCellMediaComponent,
 ]

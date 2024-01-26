@@ -7,6 +7,7 @@ import { TableCellBooleanComponent } from '../components/cells/table-cell-boolea
 import { TableCellCategoryComponent } from '../components/cells/table-cell-category.component';
 import { TableCellColorComponent } from '../components/cells/table-cell-color.component';
 import { TableCellDefaultComponent } from '../components/cells/table-cell-default.component';
+import { TableCellHtmlComponent } from '../components/cells/table-cell-html.component';
 import { TableCellIconComponent } from '../components/cells/table-cell-icon.component';
 import { TableCellMediaComponent } from '../components/cells/table-cell-media.component';
 import { TableCellComponent } from '../typings/cell';
@@ -49,6 +50,9 @@ export class CellDirective<T> implements OnInit, OnDestroy {
       case 'DATETIME':
         this.createComponent(TableCellDefaultComponent, (value) => this.dateTime(value));
         break;
+      case 'HTML':
+        this.createComponent(TableCellHtmlComponent);
+        break;
       case 'ICON':
         this.createComponent(TableCellIconComponent);
         break;
@@ -68,7 +72,8 @@ export class CellDirective<T> implements OnInit, OnDestroy {
 
   private createComponent<T>(
     component: Type<TableCellComponent<T>>,
-    transformation?: (input?: any) => T) {
+    transformation?: (input?: any) => T
+  ): void {
     const instance = this.viewContainer
       .createComponent<TableCellComponent<T>>(component)
       .instance;

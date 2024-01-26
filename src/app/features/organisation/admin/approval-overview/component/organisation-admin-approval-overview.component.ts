@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 
+import { TranslationService } from 'src/app/core/services/translation.service';
 import { OrganisationAdminApprovalOverviewActions } from '../state/organisation-admin-approval-overview.actions';
 import { selectOverviewData } from '../state/organisation-admin-approval-overview.selectors';
 
@@ -59,6 +60,12 @@ export class OrganisationAdminApprovalOverviewComponent {
       sort: true,
     },
     {
+      field: 'description',
+      label: 'description',
+      type: 'HTML',
+      value: (row: OrganisationEntity) => this.translationService.translatable(row, 'description')
+    },
+    {
       field: 'approved',
       label: 'approved',
       type: 'BOOLEAN',
@@ -70,6 +77,7 @@ export class OrganisationAdminApprovalOverviewComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private store: Store,
+    private translationService: TranslationService,
   ) { }
 
   public updateParams(params: FilterSortPaginateInput) {
