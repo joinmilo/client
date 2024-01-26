@@ -6,7 +6,7 @@ import { SchemaService } from 'src/app/core/services/schema.service';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalEventOverviewActions } from '../state/portal-event-overview.actions';
 import { selectOverviewData, selectSponsoredEvent } from '../state/portal-event-overview.selectors';
@@ -56,9 +56,10 @@ export class PortalEventOverviewComponent implements OnDestroy {
     private store: Store,
   ) {
     this.store.dispatch(PortalEventOverviewActions.getSponsoredEvent());
-    this.events?.subscribe(events => {
-      this.schemaService.createArraySchema('PageableList_EventEntity', events);
-    })
+
+    this.events
+      ?.pipe(takeUntil(this.destroy))
+      ?.subscribe(events => this.schemaService.createArraySchema('EventEntity', events?.result))
   }
 
   public updateParams(params: FilterSortPaginateInput) {
@@ -69,7 +70,7 @@ export class PortalEventOverviewComponent implements OnDestroy {
     this.store.dispatch(PortalEventOverviewActions.updateRawParams(params));
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

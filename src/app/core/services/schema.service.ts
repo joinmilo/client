@@ -1,8 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { ArticleEntity, DealEntity, EventEntity, MenuItemEntity, OrganisationEntity, PageEntity, PageableList_ArticleEntity, PageableList_DealEntity, PageableList_EventEntity, PageableList_OrganisationEntity, PageableList_PageEntity, PageableList_UserContextEntity, UserContextEntity } from '../api/generated/schema';
-import { Array } from '../typings/schema.org/arrays/array';
+import { ArticleEntity, DealEntity, EventEntity, MenuItemEntity, OrganisationEntity, PageEntity, UserContextEntity } from '../api/generated/schema';
 import { ArticleEntitySchema } from '../typings/schema.org/entities/article-entity';
 import { DealEntitySchema } from '../typings/schema.org/entities/deal-entity';
 import { EventEntitySchema } from '../typings/schema.org/entities/event-entity';
@@ -21,7 +20,7 @@ import { OfferSchema } from '../typings/schema.org/properties/offer';
 import { OrganisationSchema } from '../typings/schema.org/properties/organisation';
 import { PersonSchema } from '../typings/schema.org/properties/person';
 import { PostalSchema } from '../typings/schema.org/properties/postal';
-import { SchemaData, SchemaDataArray, SchemaEntity, SchemaEntityArray, SchemaOverview } from '../typings/schema.org/schema';
+import { SchemaData, SchemaEntity } from '../typings/schema.org/schema';
 import { Schema } from '../typings/schema.org/schema-class';
 
 @Injectable({ providedIn: 'root' })
@@ -33,36 +32,57 @@ export class SchemaService {
   
   private previousScript?: HTMLScriptElement;
 
-  private locale?: string
+  private locale = 'de';
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     rendererFactory: RendererFactory2,
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.locale = 'de'
   }
 
 
-  // ENTITY
-
-  public createEntitySchema(
-    data: SchemaData, 
+  // ARRAY
+  public createArraySchema
+  (
     entity: SchemaEntity,
+    data: Maybe<SchemaData[]>,
   ): void {
-    
+    if (data) {
+      this.createSchema(
+        this.arrayToSchema(entity, data)
+      );
+    }
+  }
+
+  // ENTITY
+  public createEntitySchema(
+    entity: SchemaEntity,
+    data: Maybe<SchemaData>, 
+  ): void {
+
+    if (data) {
+      this.createSchema(
+        this.entityToSchema(entity, data)
+      );
+    }
+  }
+
+  private createSchema(
+    schema: Maybe<Schema> | Maybe<Maybe<Schema>[]>,
+  ): void {
     const result = {
       '@context': 'https://schema.org',
       '@graph': [
         {
-          ...this.entityToSchema(entity, data)
+          ...schema
         },
         {
           ...this.footerSchema
         }
       ]
     };
-
+    
     const script = this.renderer.createElement('script');
     script.type = 'application/ld+json';
     script.text = `${JSON.stringify(result)}`;
@@ -70,9 +90,31 @@ export class SchemaService {
     if (this.previousScript) {
       this.renderer.removeChild(this.document.body, this.previousScript);
     }
-
     this.renderer.appendChild(this.document.body, script);
+
     this.previousScript = script;
+  }
+  
+  public arrayToSchema(
+    entity: SchemaEntity, 
+    data: SchemaData[],
+  ): Maybe<Schema[]> {   
+    switch(entity) {
+      case 'ArticleEntity':
+        return this.articleArrayToSchema(data as ArticleEntity[]);
+      case 'DealEntity':
+        return this.dealArrayToSchema(data as DealEntity[]); 
+      case 'EventEntity':
+        return this.eventArrayToSchema(data as EventEntity[]);       
+      case 'OrganisationEntity':
+        return this.organisationArrayToSchema(data as OrganisationEntity[]);  
+      case 'PageEntity':
+        return this.pageArrayToSchema(data as PageEntity[]);  
+      case 'UserContextEntity':
+        return this.userContextArrayToSchema(data as UserContextEntity[]);
+      default:
+        return undefined;
+    }
   }
 
   public entityToSchema(
@@ -99,9 +141,12 @@ export class SchemaService {
     }
   }
 
-  private articleToSchema = (entity?: Maybe<ArticleEntity>): ArticleEntitySchema => {
-  
-    const articleElement = new ArticleEntitySchema(
+  private articleArrayToSchema(data?: ArticleEntity[]): Maybe<ArticleEntitySchema[]> {
+    return data?.map(entity => this.articleToSchema(entity));
+  }
+
+  private articleToSchema(entity?: Maybe<ArticleEntity>): ArticleEntitySchema {
+    return new ArticleEntitySchema(
       entity?.content,
       this.getCategoryNameArticle(entity),
       new PersonSchema(
@@ -130,23 +175,22 @@ export class SchemaService {
       entity?.shortDescription,
       entity?.name,
       entity?.slug,
-    )
-
-    return articleElement;
-  };
+    );
+  }
 
   private getCategoryNameArticle(entity?: Maybe<ArticleEntity>): Maybe<string> {
-    const categoryNames = entity?.category?.translatables
+    return entity?.category?.translatables
       ?.filter(category => category?.language?.locale === this.locale)
-      .map(category => category?.name);
-
-    return categoryNames && categoryNames.length > 0 ? categoryNames.join() : null;
+      ?.map(category => category?.name)
+      ?.join()
   }
-  
 
-  private dealToSchema = (entity?: Maybe<DealEntity>): DealEntitySchema => {
+  private dealArrayToSchema(data?: DealEntity[]): Maybe<DealEntitySchema[]> {
+    return data?.map(entity => this.dealToSchema(entity));
+  }
 
-    const dealElement = new DealEntitySchema(
+  private dealToSchema(entity?: Maybe<DealEntity>): DealEntitySchema {
+    return new DealEntitySchema(
       this.getCategoryNameDeal(entity),
       entity?.content,
       entity?.name,
@@ -155,23 +199,23 @@ export class SchemaService {
       ),
       entity?.slug,
     );
-
-    return dealElement;
-  };
+  }
 
 
   private getCategoryNameDeal = (entity?: Maybe<DealEntity>): Maybe<string> => {
-    const categoryNames = entity?.category?.translatables
+    return entity?.category?.translatables
       ?.filter(category => category?.language?.locale === this.locale)
-      .map(category => category?.name);
-
-    return categoryNames && categoryNames.length > 0 ? categoryNames.join() : null;
+      ?.map(category => category?.name)
+      ?.join();
   };
 
 
-  private eventToSchema = (entity?: Maybe<EventEntity>): EventEntitySchema => {
+  private eventArrayToSchema(data: EventEntity[]): Maybe<EventEntitySchema[]> {
+    return data?.map(entity => this.eventToSchema(entity));
+  }
 
-    const eventElement = new EventEntitySchema(
+  private eventToSchema(entity?: Maybe<EventEntity>): EventEntitySchema {
+    return new EventEntitySchema(
       this.getCategoryNameEvent(entity),
       new AggregateRatingSchema(
         entity?.ratingDistribution?.average,
@@ -198,74 +242,23 @@ export class SchemaService {
         )
       ),
       entity?.slug,
-    )
-    return eventElement
-    
-  };
+    );
+  }
 
   private getCategoryNameEvent = (entity?: Maybe<EventEntity>): Maybe<string> => {
-    const categoryNames = entity?.category?.translatables
+    return entity?.category?.translatables
       ?.filter(category => category?.language?.locale === this.locale)
-      .map(category => category?.name);
-
-    return categoryNames && categoryNames.length > 0 ? categoryNames.join() : null;
+      ?.map(category => category?.name)
+      ?.join();
   };
 
 
-  private menuItemToSchema = (entity?: Maybe<MenuItemEntity>): ListItemSchema => {    
-
-    const menuItemElement = new ListItemSchema(
-        new ItemSchema(
-          this.getMenuNames(entity),
-          this.getMenuDescription(entity)
-        ),
-        entity?.order,
-      )
-    return menuItemElement;
-  };
-
-  private getMenuNames(entity: Maybe<MenuItemEntity>): Maybe<string> {
-    const menuNames = entity?.subMenuItems
-      ?.flatMap(subMenu => subMenu?.translatables
-      ?.filter(translatable => translatable?.language?.locale === this.locale)
-      .map(translatable => ({
-        name: translatable?.name,
-      }))
-    );
-
-    if (menuNames && menuNames.length > 0) {
-      const namesArray = menuNames.map(item => item?.name);
-      const joinedNames = namesArray.join(', ');
-
-      return joinedNames;
-    }
-    
-    return null;
+  private organisationArrayToSchema(data?: OrganisationEntity[]): Maybe<OrganisationEntitySchema[]> {
+    return data?.map(entity => this.organisationToSchema(entity));
   }
 
-  private getMenuDescription(entity: Maybe<MenuItemEntity>): Maybe<string> {
-    const menuDescription = entity?.subMenuItems
-      ?.flatMap(subMenu => subMenu?.translatables
-        ?.filter(translatable => translatable?.language?.locale === this.locale)
-        .map(translatable => ({
-          shortDescription: translatable?.shortDescription,
-        }))
-      );
-  
-    if (menuDescription && menuDescription.length > 0) {
-      const descriptionArray = menuDescription.map(item => item?.shortDescription);
-      const joinedDescription = descriptionArray.join(', ');
-
-      return joinedDescription;
-    }
-
-    return null;
-  }
-
-
-  private organisationToSchema = (entity?: Maybe<OrganisationEntity>): OrganisationEntitySchema => {
-    
-    const organisationElement = new OrganisationEntitySchema(
+  private organisationToSchema(entity?: Maybe<OrganisationEntity>): OrganisationEntitySchema {
+    return new OrganisationEntitySchema(
       new AggregateRatingSchema(
         entity?.ratingDistribution?.average,
         entity?.ratingDistribution?.sum,
@@ -283,43 +276,41 @@ export class SchemaService {
       entity?.description,
       entity?.contact?.website,
       entity?.slug,
-    )
-    return organisationElement;
-  };
+    );
+  }
   
-  private getMemberOfOrganisation = (entity?: Maybe<OrganisationEntity>): PersonSchema[] => {
-    const organisationMembers = entity?.members
+  private getMemberOfOrganisation = (entity?: Maybe<OrganisationEntity>): Maybe<Maybe<PersonSchema>[]> => {
+    return entity?.members
       ?.filter(member => member?.userContext)
-      .map(member => {
+      ?.map(member => {
         const user = member?.userContext?.user;
-        if (user) {
-          return new PersonSchema(
-            user.email,
-            user.firstName,
-            user.lastName,
-            user.phone
-          );
-        }
-        return null;
+        return user
+          ? new PersonSchema(
+              user.email,
+              user.firstName,
+              user.lastName,
+              user.phone
+            )
+          : null;
       })
-      .filter(person => person !== null) as PersonSchema[];
-
-    return organisationMembers ?? [];
+      ?.filter(person => person !== null);
   };
 
 
-  private pageToSchema = (entity?: Maybe<PageEntity>): PageEntitySchema => {
-    
-    const pageElement = new PageEntitySchema(
-      this.getEmbeddingsOfPages(entity)
-    )
-    return pageElement;
-  };
+  private pageArrayToSchema(data?: PageEntity[]): Maybe<PageEntitySchema[]> {
+    return data?.map(entity => this.pageToSchema(entity));
+  }
+
+  private pageToSchema(entity?: Maybe<PageEntity>): PageEntitySchema {
+    return new PageEntitySchema(
+      this.getPageEmbeddings(entity)
+    );
+  }
  
-  private getEmbeddingsOfPages = (entity?: Maybe<PageEntity>): PageEmbeddingsEntitySchema[] => {
-    const embeddings = entity?.embeddings
+  private getPageEmbeddings = (entity?: Maybe<PageEntity>): PageEmbeddingsEntitySchema[] => {
+    return entity?.embeddings
       ?.filter(embedding => embedding?.id)
-      .map(embedding => {
+      ?.map(embedding => {
         const attributes = embedding?.attributes;
         if (attributes) {
           const pageAttributes = attributes.map(attribute => {
@@ -336,14 +327,14 @@ export class SchemaService {
         }
         return new PageEmbeddingsEntitySchema([]);
       }) ?? [];
-
-    return embeddings;
   };
 
+  private userContextArrayToSchema(data?: UserContextEntity[]): Maybe<UserContextEntitySchema[]> {
+    return data?.map(entity => this.userContextToSchema(entity))
+  }
 
-  private userContextToSchema = (entity?: Maybe<UserContextEntity>): UserContextEntitySchema => {
-
-    const userContextElement = new UserContextEntitySchema(
+  private userContextToSchema(entity?: Maybe<UserContextEntity>): UserContextEntitySchema {
+    return new UserContextEntitySchema(
       new PostalSchema(
         entity?.address?.suburb?.name,
         `${entity?.address?.street} ${entity?.address?.houseNumber}`,
@@ -357,147 +348,57 @@ export class SchemaService {
       this.getMemberOf(entity),
       entity?.user?.phone,
       entity?.slug
-    )
-    return userContextElement;
-  };
+    );
+  }
 
-  private getMemberOf = (entity?: Maybe<UserContextEntity>): Maybe<string>[] => {
-    const organisationNames = entity?.members
+  private getMemberOf(entity?: Maybe<UserContextEntity>): Maybe<Maybe<string>[]> {
+    return entity?.members
       ?.filter(member => member?.organisation)
       .map(member => member?.organisation?.name)
-      .filter(name => name !== undefined && name !== null) as Maybe<string>[];
-
-    return organisationNames ?? [];
-  };
-
-
-  // ARRAY
-
-  public createArraySchema
-  (
-    entity: SchemaEntityArray,
-    data: SchemaOverview,
-  ): void {
-
-    const result = {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          ...this.arrayToSchema(entity, data)
-        },
-        {
-          ...this.footerSchema
-        }
-      ]
-    };
-   
-    const script = this.renderer.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = `${JSON.stringify(result)}`;
-
-    if (this.previousScript) {
-      this.renderer.removeChild(this.document.body, this.previousScript);
-    }
-
-    this.renderer.appendChild(this.document.body, script);
-    
-    this.previousScript = script;
+      .filter(name => name !== undefined && name !== null);
   }
-
-  public arrayToSchema(
-    entity: SchemaEntityArray, 
-    data: SchemaOverview,
-  ): Array {   
-    switch(entity) {
-      case 'PageableList_ArticleEntity':
-        return this.articleArrayToSchema(data as PageableList_ArticleEntity);
-      case 'PageableList_DealEntity':
-        return this.dealArrayToSchema(data as PageableList_DealEntity); 
-      case 'PageableList_EventEntity':
-        return this.eventArrayToSchema(data as PageableList_EventEntity);       
-      case 'PageableList_OrganisationEntity':
-        return this.organisationArrayToSchema(data as PageableList_OrganisationEntity);  
-      case 'PageableList_PageEntity':
-        return this.pageArrayToSchema(data as PageableList_PageEntity);  
-      case 'PageableList_UserContextEntity':
-        return this.userContextArrayToSchema(data as PageableList_UserContextEntity); 
-    }
-  }
-
-  private articleArrayToSchema = (entity?: Maybe<PageableList_ArticleEntity>): Array => {
-    const articlesArray = new Array(
-      (entity?.result || []).map(entity => {
-        const article = this.articleToSchema(entity);
-        return article;
-      }));
-
-    return articlesArray;
-  };
-
-
-  private dealArrayToSchema = (entity?: Maybe<PageableList_DealEntity>): Array => {
-    const dealsArray = new Array(
-      (entity?.result || []).map(entity => {
-        const deal = this.dealToSchema(entity);
-        return deal;
-      }));
-    
-    return dealsArray;
-  };
-
-
-  private eventArrayToSchema = (entity?: Maybe<PageableList_EventEntity>): Array => {
-    const eventsArray = new Array(
-      (entity?.result || []).map(entity => {
-        const event = this.eventToSchema(entity);
-        return event;
-      }));
-
-    return eventsArray;
-  };
-
-
-  private organisationArrayToSchema = (entity?: Maybe<PageableList_OrganisationEntity>): Array => {
-    const organisationsArray = new Array(
-      (entity?.result || []).map(entity => {
-        const organisation = this.organisationToSchema(entity);
-        return organisation;
-    }));
-  
-    return organisationsArray;
-  };
-
-
-  private pageArrayToSchema = (entity?: Maybe<PageableList_PageEntity>): Array => {
-    const pagesArray = new Array(
-      (entity?.result || []).map(entity => {
-        const page = this.pageToSchema(entity);
-        return page;
-      }));
-
-    return pagesArray;
-  };
-
-
-  private userContextArrayToSchema = (entity?: Maybe<PageableList_UserContextEntity>): Array => {
-    const userContextsArray = new Array(
-      (entity?.result || []).map(entity => {
-        const userContext = this.userContextToSchema(entity);
-        return userContext;
-      }));
-    
-    return userContextsArray;
-  };
-
 
   // FOOTER
 
-  public addFooterSchema(data?: Maybe<SchemaDataArray>): void {
+  public addFooterSchema(data?: Maybe<MenuItemEntity[]>): void {
     if (data?.length) {
       this.footerSchema = new BreadcrumbList(
-        data.map(item => this.menuItemToSchema(item as MenuItemEntity))
+        data.map(item => this.menuItemToSchema(item))
       );
     }
+  }
+
+  private menuItemToSchema(entity?: Maybe<MenuItemEntity>): ListItemSchema {
+    return new ListItemSchema(
+      new ItemSchema(
+        this.getMenuNames(entity),
+        this.getMenuDescription(entity)
+      ),
+      entity?.order,
+    );
+  }
+
+  private getMenuNames(entity: Maybe<MenuItemEntity>): Maybe<string> {
+    return entity?.subMenuItems
+      ?.flatMap(subMenu =>
+        subMenu?.translatables
+          ?.filter(translatable => translatable?.language?.locale === this.locale)
+          ?.map(translatable => ({ name: translatable?.name, }))
+      )
+      ?.map(item => item?.name)
+      ?.join(', ');
+  }
+
+  private getMenuDescription(entity: Maybe<MenuItemEntity>): Maybe<string> {
+    return entity?.subMenuItems
+      ?.flatMap(subMenu => subMenu?.translatables
+        ?.filter(translatable => translatable?.language?.locale === this.locale)
+        .map(translatable => ({
+          shortDescription: translatable?.shortDescription,
+        }))
+      )
+      .map(item => item?.shortDescription)
+      .join(', ');
   }
 
 }

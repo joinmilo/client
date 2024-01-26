@@ -11,7 +11,7 @@ export class OrganisationEntitySchema extends Schema {
     public email: Maybe<string>,
     public legalName: Maybe<string>,
     public location: PostalSchema,
-    public member: PersonSchema[],
+    public member: Maybe<Maybe<PersonSchema>[]>,
     public telephone: Maybe<string>,
     public description: Maybe<string>,
     public sameAs: Maybe<string>,

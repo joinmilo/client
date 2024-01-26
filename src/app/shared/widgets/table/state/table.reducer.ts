@@ -2,8 +2,9 @@
 import { createReducer, on } from '@ngrx/store';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { ContentEntity } from 'src/app/core/typings/content-entity';
+import { PageableList } from 'src/app/core/typings/pageable';
 import { setFieldValue } from 'src/app/core/utils/reflection.utils';
-import { Column, PageableList, RowAction, RowCustomAction, SortPaginate } from '../typings/table';
+import { Column, RowAction, RowCustomAction, SortPaginate } from '../typings/table';
 import { TableActions } from './table.actions';
 
 export interface TableState<T> {

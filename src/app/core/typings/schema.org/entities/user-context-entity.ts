@@ -10,7 +10,7 @@ export class UserContextEntitySchema extends Schema {
   public email: Maybe<string>,
   public familyName: Maybe<string>,
   public givenName: Maybe<string>,
-  public memberOf: Maybe<string>[],
+  public memberOf: Maybe<Maybe<string>[]>,
   public telephone: Maybe<string>,
   public url: Maybe<string>,
   ) {

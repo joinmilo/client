@@ -3,8 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, startWith, take } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
+import { PageableList } from 'src/app/core/typings/pageable';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
-import { PageableList, Sort, SortOption, SortPaginate } from '../../typings/table';
+import { Sort, SortOption, SortPaginate } from '../../typings/table';
 import { TablePaginatorComponent } from '../paginator/table-paginator.component';
 
 @Component({

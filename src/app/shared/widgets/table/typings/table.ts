@@ -23,11 +23,6 @@ export type Column<T> = {
   value?: ((row: T) => Observable<Maybe<string>> | Maybe<string>),
 };
 
-export type PageableList<T> = {
-  result?: Maybe<Array<Maybe<T>>>;
-  total?: number;
-};
-
 export type RowDefaultAction = 'LIKE' | 'SHARE';
 
 export type RowCustomAction<T> = {

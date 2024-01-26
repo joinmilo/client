@@ -42,9 +42,7 @@ export class PortalAuthorDetailsComponent implements OnInit, OnDestroy {
         ?.map(eventMedia => eventMedia?.media)
         ?.slice(0, 10) as MediaEntity[];
 
-      if (this.author) {
-        this.schemaService.createEntitySchema(this.author, 'UserContextEntity');
-      }
+      this.schemaService.createEntitySchema('UserContextEntity', this.author);
     })
   }
 

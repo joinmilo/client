@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
@@ -54,16 +54,17 @@ export class PortalOrganisationOverviewComponent implements OnDestroy  {
     private store: Store,
   ) {
     this.store.dispatch(PortalOrganisationOverviewActions.getSponsoredOrganisation());
-    this.organisations?.subscribe(organisations => {
-      this.schemaService.createArraySchema('PageableList_OrganisationEntity', organisations);
-    })
+
+    this.organisations
+      ?.pipe(takeUntil(this.destroy))
+      ?.subscribe(organisations => this.schemaService.createArraySchema('OrganisationEntity', organisations?.result))
   }
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalOrganisationOverviewActions.updateParams(params));
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

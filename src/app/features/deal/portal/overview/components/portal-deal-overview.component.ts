@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
@@ -52,16 +52,17 @@ export class PortalDealOverviewComponent implements OnDestroy {
     private store: Store,
   ) {
     this.store.dispatch(PortalDealOverviewActions.getSponsoredDeal());
-    this.deals?.subscribe(deals => {
-      this.schemaService.createArraySchema('PageableList_DealEntity', deals);
-    })
+
+    this.deals
+      ?.pipe(takeUntil(this.destroy))
+      ?.subscribe(deals => this.schemaService.createArraySchema('DealEntity', deals?.result))
   }
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalDealOverviewActions.updateParams(params));
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

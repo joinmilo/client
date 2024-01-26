@@ -7,7 +7,7 @@ import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalArticleOverviewActions } from '../state/portal-article-overview.actions';
 import { selectOverviewData, selectSponsoredArticle } from '../state/portal-article-overview.selectors';
@@ -51,9 +51,10 @@ export class PortalArticleOverviewComponent implements OnDestroy {
     private store: Store,
   ) {
     this.store.dispatch(PortalArticleOverviewActions.getSponsoredArticle());
-    this.articles?.subscribe(articles => {
-      this.schemaService.createArraySchema('PageableList_ArticleEntity', articles);
-    })
+
+    this.articles
+      ?.pipe(takeUntil(this.destroy))
+      ?.subscribe(articles => this.schemaService.createArraySchema('ArticleEntity', articles?.result))
   }
 
   public updateParams(params: FilterSortPaginateInput) {

@@ -3,9 +3,10 @@ import { Store } from '@ngrx/store';
 import { Observable, Subject, isObservable, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { ContentEntity } from 'src/app/core/typings/content-entity';
+import { PageableList } from 'src/app/core/typings/pageable';
 import { TableActions } from '../state/table.actions';
 import { selectClickedRow, selectParams } from '../state/table.selectors';
-import { Column, PageableList, RowAction, SortPaginate } from '../typings/table';
+import { Column, RowAction, SortPaginate } from '../typings/table';
 
 @Component({
   selector: 'app-table',

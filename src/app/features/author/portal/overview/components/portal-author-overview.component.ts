@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { CardType } from 'src/app/shared/widgets/card/typings/card';
 import { SortOption, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
@@ -35,16 +35,17 @@ export class PortalAuthorOverviewComponent implements OnDestroy {
   constructor(
     private schemaService: SchemaService, 
     private store: Store,
-  ) {}
+  ) {
+    this.authors
+      ?.pipe(takeUntil(this.destroy))
+      ?.subscribe(authors => this.schemaService.createArraySchema('UserContextEntity', authors?.result));
+  }
 
   public updateParams(params: SortPaginate) {
     this.store.dispatch(PortalAuthorOverviewActions.updateParams(params));
-    this.authors?.subscribe(authors => {
-      this.schemaService.createArraySchema('PageableList_UserContextEntity', authors);
-    })
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

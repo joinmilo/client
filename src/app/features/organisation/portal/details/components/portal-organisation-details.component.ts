@@ -56,9 +56,7 @@ export class PortalOrganisationDetailsComponent implements OnInit, OnDestroy {
         ?.map(organisationMedia => organisationMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
 
-      if (this.organisation) {
-        this.schemaService.createEntitySchema(this.organisation, 'OrganisationEntity');
-      }
+      this.schemaService.createEntitySchema('OrganisationEntity', this.organisation);
     });
 
   }

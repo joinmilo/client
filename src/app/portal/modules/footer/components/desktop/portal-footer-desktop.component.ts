@@ -23,9 +23,7 @@ export class PortalFooterDesktopComponent implements OnDestroy {
   ) {
     this.menu
       ?.pipe(takeUntil(this.destroy))
-      ?.subscribe(items => {
-        this.schemaService.addFooterSchema(items);
-      });
+      ?.subscribe(items => this.schemaService.addFooterSchema(items));
    }
   
   public navigate(item: Maybe<MenuItemEntity>) {
