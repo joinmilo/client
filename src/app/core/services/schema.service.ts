@@ -9,6 +9,7 @@ import { OrganisationEntitySchema } from '../typings/schema.org/entities/organis
 import { PageAttributeEntitySchema } from '../typings/schema.org/entities/page-attribute-entity';
 import { PageEmbeddingsEntitySchema } from '../typings/schema.org/entities/page-embeddings-entity';
 import { PageEntitySchema } from '../typings/schema.org/entities/page-entity';
+import { Schema } from '../typings/schema.org/entities/schema-entity';
 import { TranslatableEntitySchema } from '../typings/schema.org/entities/translateable-entity';
 import { UserContextEntitySchema } from '../typings/schema.org/entities/user-context-entity';
 import { AggregateRatingSchema } from '../typings/schema.org/properties/aggregate-rating';
@@ -20,8 +21,7 @@ import { OfferSchema } from '../typings/schema.org/properties/offer';
 import { OrganisationSchema } from '../typings/schema.org/properties/organisation';
 import { PersonSchema } from '../typings/schema.org/properties/person';
 import { PostalSchema } from '../typings/schema.org/properties/postal';
-import { SchemaData, SchemaEntity } from '../typings/schema.org/schema';
-import { Schema } from '../typings/schema.org/schema-class';
+import { SchemaDataInput, SchemaEntityInput } from '../typings/schema.org/schema-input';
 
 @Injectable({ providedIn: 'root' })
 export class SchemaService {
@@ -45,8 +45,8 @@ export class SchemaService {
   // ARRAY
   public createArraySchema
   (
-    entity: SchemaEntity,
-    data: Maybe<SchemaData[]>,
+    entity: SchemaEntityInput,
+    data: Maybe<SchemaDataInput[]>,
   ): void {
     if (data) {
       this.createSchema(
@@ -57,8 +57,8 @@ export class SchemaService {
 
   // ENTITY
   public createEntitySchema(
-    entity: SchemaEntity,
-    data: Maybe<SchemaData>, 
+    entity: SchemaEntityInput,
+    data: Maybe<SchemaDataInput>, 
   ): void {
 
     if (data) {
@@ -96,8 +96,8 @@ export class SchemaService {
   }
   
   public arrayToSchema(
-    entity: SchemaEntity, 
-    data: SchemaData[],
+    entity: SchemaEntityInput, 
+    data: SchemaDataInput[],
   ): Maybe<Schema[]> {   
     switch(entity) {
       case 'ArticleEntity':
@@ -118,8 +118,8 @@ export class SchemaService {
   }
 
   public entityToSchema(
-    entity: SchemaEntity, 
-    data: SchemaData
+    entity: SchemaEntityInput, 
+    data: SchemaDataInput
   ): Maybe<Schema> {    
     switch(entity) {
       case 'ArticleEntity':

@@ -2,7 +2,7 @@ import { Maybe } from '../../../api/generated/schema'
 import { CommentSchema } from '../properties/comment'
 import { OrganisationSchema } from '../properties/organisation'
 import { PersonSchema } from '../properties/person'
-import { Schema } from '../schema-class'
+import { Schema } from './schema-entity'
 
 export class ArticleEntitySchema extends Schema {
 

@@ -1,4 +1,4 @@
-import { Schema } from '../schema-class';
+import { Schema } from '../entities/schema-entity';
 
 export class Array extends Schema {
 

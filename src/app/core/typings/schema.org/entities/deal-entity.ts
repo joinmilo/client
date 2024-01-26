@@ -1,6 +1,6 @@
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { OfferSchema } from '../properties/offer';
-import { Schema } from '../schema-class';
+import { Schema } from './schema-entity';
 export class DealEntitySchema extends Schema {
 
   constructor(

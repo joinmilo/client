@@ -2,7 +2,7 @@ import { Maybe } from 'src/app/core/api/generated/schema'
 import { AggregateRatingSchema } from '../properties/aggregate-rating'
 import { PersonSchema } from '../properties/person'
 import { PostalSchema } from '../properties/postal'
-import { Schema } from '../schema-class'
+import { Schema } from './schema-entity'
 
 export class OrganisationEntitySchema extends Schema {
 

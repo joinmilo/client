@@ -1,6 +1,6 @@
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { PostalSchema } from '../properties/postal';
-import { Schema } from '../schema-class';
+import { Schema } from './schema-entity';
 
 export class UserContextEntitySchema extends Schema {
 

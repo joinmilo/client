@@ -1,4 +1,4 @@
-import { Schema } from '../schema-class';
+import { Schema } from '../entities/schema-entity';
 import { ListItemSchema } from './list-item';
 
 export class BreadcrumbList extends Schema {

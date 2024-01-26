@@ -3,7 +3,7 @@ import { AggregateRatingSchema } from '../properties/aggregate-rating'
 import { OrganisationSchema } from '../properties/organisation'
 import { PersonSchema } from '../properties/person'
 import { PostalSchema } from '../properties/postal'
-import { Schema } from '../schema-class'
+import { Schema } from './schema-entity'
 
 export class EventEntitySchema extends Schema {
 

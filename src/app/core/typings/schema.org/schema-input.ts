@@ -1,6 +1,6 @@
 import { ArticleEntity, ContestEntity, DealEntity, EventEntity, Maybe, MenuItemEntity, OrganisationEntity, PageEntity, SurveyEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 
-export type SchemaEntity = 'ArticleEntity'
+export type SchemaEntityInput = 'ArticleEntity'
   | 'DealEntity'
   | 'EventEntity'
   | 'MenuItemEntity'
@@ -8,7 +8,7 @@ export type SchemaEntity = 'ArticleEntity'
   | 'PageEntity'
   | 'UserContextEntity';
 
-export type SchemaData = Maybe<ArticleEntity
+export type SchemaDataInput = Maybe<ArticleEntity
   | ContestEntity
   | DealEntity
   | EventEntity

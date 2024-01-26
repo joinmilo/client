@@ -1,6 +1,6 @@
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { Schema } from '../schema-class';
 import { PageEmbeddingsEntitySchema } from './page-embeddings-entity';
+import { Schema } from './schema-entity';
 
 export class PageEntitySchema extends Schema {
 

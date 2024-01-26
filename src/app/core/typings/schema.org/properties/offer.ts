@@ -1,5 +1,5 @@
 import { Maybe } from '../../../api/generated/schema';
-import { Schema } from '../schema-class';
+import { Schema } from '../entities/schema-entity';
 
 export class OfferSchema extends Schema {
 
