@@ -9,14 +9,14 @@
   </app-table-sort>
 
   <section>
-    <app-media-action-card
+    <app-contest-portal-details-participations-card
       *ngFor="let element of actionInfos; let i = index"
       [media]="element.media"
-      
+      [text]="element.text"
       [actionLabel]="element.label"
       [actionDisabled]="element.disabled"
       (action)="edit(i)">
-    </app-media-action-card>
+    </app-contest-portal-details-participations-card>
   </section>
 
   <mat-card>

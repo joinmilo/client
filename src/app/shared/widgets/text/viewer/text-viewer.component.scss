@@ -1,0 +1,27 @@
+@import 'src/styles/mixins.scss';
+
+div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  align-self: end;
+  margin: 1rem;
+}
+
+section {
+  max-width: 60rem;
+  @include responsive(tablet) {
+    max-width: 80%;
+  }
+  max-height: 80%;
+  overflow-y: auto;
+  margin: var(--gap) auto;
+}
+
+app-icon {
+  color: white
+}

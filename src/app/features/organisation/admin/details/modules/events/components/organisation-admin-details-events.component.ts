@@ -5,14 +5,10 @@ import { Subject, takeUntil } from 'rxjs';
 import { EventEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { id } from '../../../../../../../core/constants/queryparam.constants';
 import { OrganisationAdminDetailsEventsActions } from '../state/organisation-admin-details-events.actions';
 import { selectOrganisationAdminDetailsEvents } from '../state/organisation-admin-details-events.selectors';
-
-
-
 
 @Component({
   selector: 'app-organisation-admin-details-events',
@@ -73,13 +69,10 @@ export class OrganisationAdminDetailsEventsComponent implements OnInit, OnDestro
     },
   ];
 
-  
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store,
     private router: Router,
-    private translationService: TranslationService,
   ) { 
   }
 

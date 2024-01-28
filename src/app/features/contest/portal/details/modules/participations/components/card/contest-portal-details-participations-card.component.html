@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    @if (media) {
+      <app-media-element
+        [media]="media">
+      </app-media-element>
+    } @else {
+      <app-text-element
+      [text]="text"
+      ></app-text-element>
+    }
+  </mat-card-header>
+  
+  <mat-card-content>
+    <span>{{ media?.name }}</span>
+    <button mat-flat-button
+      color="primary"
+      [appLabel]="actionLabel"
+      (click)="action.emit()"
+      [disabled]="actionDisabled">
+    </button>
+  </mat-card-content>
+</mat-card>

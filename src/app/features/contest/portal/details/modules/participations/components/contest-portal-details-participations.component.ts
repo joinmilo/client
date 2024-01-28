@@ -30,7 +30,7 @@ import {
 } from '../state/contest-portal-details-participations.selectors';
 
 @Component({
-  selector: 'app-contst-portal-details-participations',
+  selector: 'app-contest-portal-details-participations',
   templateUrl: './contest-portal-details-participations.component.html',
   styleUrls: ['./contest-portal-details-participations.component.scss'],
 })
@@ -118,21 +118,24 @@ export class ContestPortalDetailsParticipationsComponent
 
   retrieveActionInfos(element: Maybe<ContestParticipationEntity>): ActionInfo {
     const media = element?.mediaSubmissions?.[0]?.media;
+    const text = element?.textSubmission
 
     return this.contest?.maxVotes != null && this.userVotes != null
       ? this.contest?.maxVotes <= this.userVotes
         ? {
             media: media,
+            text: text,
             disabled: true,
             label: 'maxVotesReached',
           }
         : element?.contestVotes?.filter(
             (vote) => vote?.userContext?.id == this.currentUser?.id
           ).length != 0
-        ? { media: media, disabled: true, label: 'allreadyVoted' }
-        : { media: media, disabled: false, label: 'vote' }
+        ? { media: media, text: text, disabled: true, label: 'allreadyVoted' }
+        : { media: media, text: text, disabled: false, label: 'vote' }
       : {
           media: null,
+          text: text,
           disabled: true,
           label: this.contest?.maxVotes?.toString(),
         };
