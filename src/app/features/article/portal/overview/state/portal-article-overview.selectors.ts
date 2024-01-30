@@ -25,8 +25,10 @@ export const selectOverviewDataCategories = createSelector(
         ? existing.articles?.push(current)
         : result.push({ ...current?.category, articles: [current] } as ArticleCategoryEntity);
 
+        console.log("result",result);
+        console.log("sorted", result.sort((a, b) => (a.name || '').localeCompare(b.name || '')))
       return result;
-    }, [] as ArticleCategoryEntity[]);
+    }, [] as ArticleCategoryEntity[]).reverse()
   }
 );
 

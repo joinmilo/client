@@ -28,7 +28,7 @@ export const selectOverviewDataCategories = createSelector(
         : result.push({ ...current?.category, events: [current] } as EventCategoryEntity);
 
       return result;
-    }, [] as EventCategoryEntity[]);
+    }, [] as EventCategoryEntity[]).reverse();
   }
 );
 

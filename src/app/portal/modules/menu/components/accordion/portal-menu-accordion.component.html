@@ -7,7 +7,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="submenu">
-      <a *ngFor="let subItem of menuItem.subMenuItems" (click)="navigate(subItem)">
+      <a *ngFor="let subItem of sort(menuItem.subMenuItems)" (click)="navigate(subItem)">
         {{subItem | translatable: 'name' | async}}
       </a>
     </div>

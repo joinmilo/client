@@ -19,19 +19,11 @@ export class AdminSettingsUserComponent {
 
   public actions: RowAction<UserEntity>[] = [
     {
-      icon: 'pen-to-square',
-      callback: row =>
-        this.router.navigate([row?.id, 'edit'], { relativeTo: this.activatedRoute }),
-      tooltipLabel: 'edit'
-    },
-    {
       icon: 'trash',
       callback: user =>
         this.store.dispatch(AdminSettingsUserActions.deleteUser(user)),
       tooltipLabel: 'delete'
     },
-
-    'SHARE',
   ];
 
   public columns: Column<UserEntity>[] = [

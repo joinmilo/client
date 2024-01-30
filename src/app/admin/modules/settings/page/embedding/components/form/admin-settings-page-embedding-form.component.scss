@@ -9,11 +9,12 @@ form {
   }
 }
 
-
 :host ::ng-deep {
   .text-media {
     .media {
       align-self: center;
+      max-width: 100%;
     }
   }
 }
+

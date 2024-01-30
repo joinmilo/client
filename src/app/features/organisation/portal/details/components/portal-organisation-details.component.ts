@@ -52,7 +52,6 @@ export class PortalOrganisationDetailsComponent implements OnInit, OnDestroy {
       };
 
       this.media = organisation?.uploads
-        ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(organisationMedia => organisationMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
 

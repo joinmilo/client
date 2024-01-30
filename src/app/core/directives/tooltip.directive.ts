@@ -1,5 +1,6 @@
-import { Directive, HostListener, Input } from '@angular/core';
+import { Directive, HostListener, Input, OnDestroy } from '@angular/core';
 import { MatTooltip, TooltipPosition } from '@angular/material/tooltip';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 
@@ -7,13 +8,17 @@ import { TranslationService } from 'src/app/core/services/translation.service';
   selector: '[appTooltip]',
   providers: [MatTooltip],
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
 
   @Input()
   public appTooltip?: Maybe<string>;
 
   @Input()
   public direction?: TooltipPosition;
+
+  private subscription?: Subscription;
+
+  private destroy = new Subject<void>();
 
   constructor(
     private tooltip: MatTooltip,
@@ -22,8 +27,9 @@ export class TooltipDirective {
 
   @HostListener('mouseover')
   public onMouseOver(): void {
-    this.translationService
+    this.subscription = this.translationService
       .label(this.appTooltip)
+      .pipe(takeUntil(this.destroy))
       .subscribe(label => {
         if (label) {
           this.tooltip.message = label;
@@ -36,6 +42,12 @@ export class TooltipDirective {
   @HostListener('mouseout')
   public onMouseOut(): void {
     this.tooltip.hide();
+    this.subscription?.unsubscribe();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy.next();
+    this.destroy.complete();
   }
 
 }

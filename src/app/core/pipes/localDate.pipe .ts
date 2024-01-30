@@ -25,7 +25,6 @@ export class LocalDatePipe implements PipeTransform {
       options.day = 'numeric';
 
     } else if (format === 'medium') {
-      options.weekday = 'short';
       options.year = 'numeric';
       options.month = 'short';
       options.day = 'numeric';

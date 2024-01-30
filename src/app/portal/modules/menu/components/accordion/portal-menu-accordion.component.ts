@@ -44,6 +44,10 @@ export class PortalMenuAccordionComponent implements OnInit, OnChanges {
       ? this.store.select(selectPortalHeaderOnlyMenu)
       : this.store.select(selectPortalMenu);
   }
+
+  public sort(items: Maybe<Maybe<MenuItemEntity>[]>): Maybe<MenuItemEntity>[] | undefined {
+    return items?.sort((i1, i2) => (i1?.order || 0) - (i2?.order || 0));
+  }
   
   public navigate(item: Maybe<MenuItemEntity>) {
     this.panel?.closeAll();

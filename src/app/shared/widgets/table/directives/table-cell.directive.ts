@@ -6,6 +6,7 @@ import { TableCellAddressComponent } from '../components/cells/table-cell-addres
 import { TableCellBooleanComponent } from '../components/cells/table-cell-boolean.component';
 import { TableCellCategoryComponent } from '../components/cells/table-cell-category.component';
 import { TableCellColorComponent } from '../components/cells/table-cell-color.component';
+import { TableCellDateComponent } from '../components/cells/table-cell-date.component copy';
 import { TableCellDefaultComponent } from '../components/cells/table-cell-default.component';
 import { TableCellHtmlComponent } from '../components/cells/table-cell-html.component';
 import { TableCellIconComponent } from '../components/cells/table-cell-icon.component';
@@ -44,11 +45,8 @@ export class CellDirective<T> implements OnInit, OnDestroy {
       case 'BOOLEAN':
         this.createComponent(TableCellBooleanComponent);
         break;
-      case 'DATE':
-        this.createComponent(TableCellDefaultComponent, (value) => new Date(value).toLocaleDateString());
-        break;
       case 'DATETIME':
-        this.createComponent(TableCellDefaultComponent, (value) => this.dateTime(value));
+        this.createComponent(TableCellDateComponent);
         break;
       case 'HTML':
         this.createComponent(TableCellHtmlComponent);
@@ -83,13 +81,13 @@ export class CellDirective<T> implements OnInit, OnDestroy {
     instance.transformation = transformation;
   }
 
-  private dateTime(value: string): string {
-    return `${this.date(value)}, ${this.time(value)}`;
-  }
+  // private dateTime(value: string): string {
+  //   return `${this.date(value)}, ${this.time(value)}`;
+  // }
 
-  private date(value: string): string {
-    return new Date(value).toLocaleDateString();
-  }
+  // private date(value: string): string {
+  //   return new Date(value).toLocaleDateString() | LocalDatePipe;
+  // }
 
   private time(value: string): string {
     return new Date(value).toLocaleTimeString();

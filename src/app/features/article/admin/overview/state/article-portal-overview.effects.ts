@@ -6,8 +6,8 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ArticleEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
-import { ConfirmDeleteComponent } from 'src/app/shared/dialogs/confirm-delete/confirm-delete.component';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
+import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteArticleGQL } from '../../../api/generated/delete-article.mutation.generated';
 import { GetArticlesGQL } from '../../../api/generated/get-articles.query.generated';
 import { SponsorArticleGQL } from '../../../api/generated/sponsor-article.mutation.generated';
@@ -41,8 +41,9 @@ export class ArticleAdminOverviewEffects {
 
   sponsorArticle = createEffect(() => this.actions.pipe(
     ofType(ArticleAdminOverviewActions.sponsorArticle),
-    switchMap(action => this.dialog.open(ConfirmChangeComponent, { data: 'thisWillSponsor' })
-      .afterClosed().pipe(
+    switchMap(action => 
+      this.confirmService
+      .confirm({ type: ConfirmType.Change, context: 'thisWillSponsor'}).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -65,8 +66,9 @@ export class ArticleAdminOverviewEffects {
 
   deleteArticle = createEffect(() => this.actions.pipe(
     ofType(ArticleAdminOverviewActions.deleteArticle),
-    switchMap(action => this.dialog.open(ConfirmDeleteComponent, { data: action.article?.name })
-      .afterClosed().pipe(
+    switchMap(action => 
+      this.confirmService
+      .confirm({ type: ConfirmType.Delete, context: action.article?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.article)
           : EMPTY
@@ -89,6 +91,7 @@ export class ArticleAdminOverviewEffects {
 
   constructor(
     private actions: Actions,
+    private confirmService: ConfirmService,
     private dialog: MatDialog,
     private deleteArticleService: DeleteArticleGQL,
     private getArticlesService: GetArticlesGQL,
