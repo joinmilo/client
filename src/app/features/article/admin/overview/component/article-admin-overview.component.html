@@ -1,11 +1,12 @@
 <cin-page-title titleLabel="articles"></cin-page-title>
 
 <app-article-filter (paramsUpdated)="updateParams($event)">
-  <button
+  <a
     mat-raised-button
     color="primary"
     [routerLink]="['form']"
-    i18nLabel="createArticle"></button>
+    i18nLabel="createArticle">
+  </a>
 </app-article-filter>
 
 <cin-table

@@ -1,12 +1,10 @@
 <cin-page-title titleLabel="activities"></cin-page-title>
 
 <app-event-filter (paramsUpdated)="updateParams($event)">
-  <button
-    mat-raised-button
-    color="primary"
+  <a mat-raised-button color="primary"
     [routerLink]="['form']"
     i18nLabel="createEvent">
-  </button>
+  </a>
 </app-event-filter>
 
 <cin-table

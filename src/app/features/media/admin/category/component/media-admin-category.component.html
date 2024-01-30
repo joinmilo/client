@@ -1,11 +1,11 @@
 <cin-page-title titleLabel="mediaCategories"></cin-page-title>
 
-<button *ngIf="isMediaAdmin"
+<a *ngIf="isMediaAdmin"
   mat-raised-button
   color="primary" 
   [routerLink]="['form']"
   i18nLabel="createCategory">
-</button>
+</a>
 
 <cin-table
   [data]="categories"

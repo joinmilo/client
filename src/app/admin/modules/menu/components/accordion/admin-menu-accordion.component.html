@@ -11,12 +11,12 @@
 
     <div class="sub-menu">
       <ng-container *ngIf="(item?.childs?.length || 0) > 1"></ng-container>
-      <button mat-button *ngFor="let child of item?.childs"
+      <a mat-button *ngFor="let child of item?.childs"
         [i18nLabel]="child.name"
         [routerLink]="menuService.createRouterLink(child)"
         routerLinkActive="menu-active"
         [routerLinkActiveOptions]="{ exact: true }">
-      </button>
+      </a>
     </div>
 
   </mat-expansion-panel>

@@ -1,10 +1,11 @@
 <cin-page-title titleLabel="dealCategories"></cin-page-title>
 
-<button *ngIf="isDealAdmin"
+<a *ngIf="isDealAdmin"
   mat-raised-button
   color="primary"
   [routerLink]="['form']"
-  i18nLabel="createCategory"></button>
+  i18nLabel="createCategory">
+</a>
 
 <cin-table
   [data]="categories"

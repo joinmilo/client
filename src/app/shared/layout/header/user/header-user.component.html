@@ -1,27 +1,27 @@
-<button mat-menu-item (click)="route('favorites')">
+<a mat-menu-item [routerLink]="['/', userUrl, 'favorites']">
   <section>
     <cin-icon [icon]="['far', 'heart']"></cin-icon>
     <span i18nLabel="favorites"></span>
   </section>
-</button>
-<button mat-menu-item (click)="route('friends')">
+</a>
+<a mat-menu-item [routerLink]="['/', userUrl, 'friends']">
   <section>
     <cin-icon [icon]="['fas', 'users']"></cin-icon>
     <span i18nLabel="friends"></span>
   </section>
-</button>
-<button mat-menu-item (click)="route('settings')">
+</a>
+<a mat-menu-item [routerLink]="['/', userUrl, 'settings']">
   <section>
     <cin-icon [icon]="['fas', 'gear']"></cin-icon>
     <span i18nLabel="settings"></span>
   </section>
-</button>
-<button mat-menu-item (click)="route('participate')">
+</a>
+<a mat-menu-item [routerLink]="['/', userUrl, 'participate']">
   <section>
     <cin-icon [icon]="['fas', 'pen']"></cin-icon>
     <span i18nLabel="participate"></span>
   </section>
-</button>
+</a>
 <button mat-menu-item (click)="logout()" *ngIf="isAuthenticated">
   <section>
     <cin-icon [icon]="['fas', 'right-from-bracket']"></cin-icon>

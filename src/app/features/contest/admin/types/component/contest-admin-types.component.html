@@ -1,14 +1,15 @@
-<cin-page-title titleLabel="roles"></cin-page-title>
+<app-page-title titleLabel="types"></app-page-title>
 
 <a
   mat-raised-button
   color="primary"
   [routerLink]="['form']"
-  i18nLabel="createNewRole">
+  i18nLabel="createContestType">
 </a>
 
-<cin-table [data]="roles"
+<app-table
+  [data]="contests"
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams($event)">
-</cin-table>
+</app-table>

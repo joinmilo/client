@@ -1,12 +1,12 @@
 <cin-page-title titleLabel="eventCategories"></cin-page-title>
 
-<button 
+<a 
   *ngIf="isEventAdmin" 
   mat-raised-button 
   color="primary" 
   [routerLink]="['form']"
   i18nLabel="createCategory">
-</button>
+</a>
 
 <cin-table
   [data]="categories"

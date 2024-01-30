@@ -34,19 +34,25 @@
       }
   
       mat-card {
-        display: flex;
-        flex-flow: row;
-        align-items: center;
         cursor: pointer;
         border-radius: var(--mdc-shape-small) !important;
-  
-        gap: var(--gap);
-        padding: 1rem;
         width: calc(50% - 1rem);
+        // flex-flow: row;
+        
+        a {
+          height: 100%;
+          display: flex;
+          gap: var(--gap);
+          padding: 1rem;
+          align-items: flex-start;
+        }
 
         cin-icon {
           width: 2rem;
-          text-align: center;
+          height: 100%;
+          align-items: center;
+          display: flex;
+          justify-content: center;
         }
   
         article {

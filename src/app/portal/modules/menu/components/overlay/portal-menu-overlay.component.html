@@ -24,16 +24,16 @@
       </app-portal-menu-overlay>
       
       <ng-template #entries>
-        <button class="subItem"
+        <a class="subItem"
           mat-menu-item
-          (click)="route(subItem)">
+          [routerLink]="['/', portalUrl, subItem?.plugin?.code]">
           <cin-icon [icon]="['fas', icon(subItem?.icon)]"></cin-icon>
           <section>
             <span>{{ subItem | translatable: 'name' | async }}</span>
             <small>{{ subItem | translatable: 'shortDescription' | async }}</small>
           </section>
           <cin-icon [icon]="['fas', 'arrow-right']"></cin-icon>
-        </button>
+        </a>
       </ng-template>
     </ng-container>
   </div>

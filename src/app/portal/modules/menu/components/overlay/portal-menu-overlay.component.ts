@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { SolidIconsType } from 'ngx-cinlib/icons';
 import { Observable, map, of } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
+import { portalUrl } from 'src/app/core/constants/module.constants';
 import { GetMenuGQL } from 'src/app/portal/api/generated/get-menu.query.generated';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
 
@@ -16,11 +17,13 @@ export class PortalMenuOverlayComponent implements OnInit {
 
   @Input()
   public root = false;
-
+  
   @Input()
   public parent?: Maybe<MenuItemEntity>;
   
   public subMenuItems?: Observable<Maybe<Maybe<MenuItemEntity>[]> | undefined>;
+  
+  public portalUrl = portalUrl;
 
   constructor(
     private store: Store,

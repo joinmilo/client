@@ -1,11 +1,11 @@
 <cin-page-title titleLabel="media"></cin-page-title>
 
 <app-media-filter (paramsUpdated)="updateParams($event)">
-  <button mat-raised-button
+  <a mat-raised-button
     color="primary"
     [routerLink]="['form']"
     i18nLabel="addMedia">
-  </button>
+  </a>
 </app-media-filter>
 
 <ng-container *ngIf="(infoMedia | async); else emptyResult">

@@ -34,12 +34,12 @@
       </button>
       <mat-menu #userMenu="matMenu">
         <ng-container *ngIf="currentUser?.user?.roles?.length">
-          <button mat-menu-item [routerLink]="['/', adminUrl]">
+          <a mat-menu-item [routerLink]="['/', adminUrl]">
             <div class="admin-button">
               <cin-icon [icon]="['fas', 'gauge']"></cin-icon>
               <span i18nLabel="toAdminArea"></span>
             </div>
-          </button>
+          </a>
           <mat-divider></mat-divider>
         </ng-container>
         <app-header-user></app-header-user>

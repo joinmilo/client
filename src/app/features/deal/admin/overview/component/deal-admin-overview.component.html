@@ -1,11 +1,11 @@
 <cin-page-title titleLabel="deals"></cin-page-title>
 
 <app-deal-filter (paramsUpdated)="updateParams($event)">
-  <button mat-raised-button
+  <a mat-raised-button
     color="primary"
     [routerLink]="['form']"
     i18nLabel="createDeal">
-  </button>
+  </a>
 </app-deal-filter>
 
 <cin-table

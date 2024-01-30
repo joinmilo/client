@@ -7,14 +7,15 @@
     <cin-details-title [titleLabel]="item.name"></cin-details-title>
 
     <nav>
-      <mat-card *ngFor="let child of item.childs"
-        [routerLink]="createRouterLink(child)"
+      <mat-card *ngFor="let child of item.childs">
+        <a [routerLink]="createRouterLink(child)"
         [class.disabled]="child.comingSoon">
-        <cin-icon *ngIf="child?.icon" [icon]="['fas', child!.icon!]" [size]="'xl'"></cin-icon>
-        <article>
-          <strong [i18nLabel]="child.name"></strong>
-          <small [i18nLabel]="child.description"></small>
-        </article>
+          <cin-icon *ngIf="child?.icon" [icon]="['fas', child!.icon!]" [size]="'xl'"></cin-icon>
+          <article>
+            <strong [i18nLabel]="child.name"></strong>
+            <small [i18nLabel]="child.description"></small>
+          </article>
+        </a>
       </mat-card>
     </nav>
   </div>
