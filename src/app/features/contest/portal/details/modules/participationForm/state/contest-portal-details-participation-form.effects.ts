@@ -28,7 +28,7 @@ export class ContestPortalDetailsParticipationFormEffects {
                   participation?.contest?.id == action.entity.contest?.id
               ).length ?? 0) +
                 1
-                ? 'lastParticipations'
+                ? 'lastParticipation'
                 : (action.entity.contest?.maxParticipations ?? 0) ===
                   (user?.contestPariticpations?.filter(
                     (participation) =>
