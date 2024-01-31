@@ -51,6 +51,7 @@ export class ArticlePortalDetailsComponent implements OnInit, OnDestroy {
       this.mediaTitle = article?.uploads?.find(upload => upload?.title)?.media;
 
       this.media = article?.uploads
+        ?.filter(upload => !upload?.card && !upload?.title)
         ?.map(articleMedia => articleMedia?.media)
         ?.slice(0, 5) as MediaEntity[];
 
