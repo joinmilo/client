@@ -81,14 +81,6 @@ export class CellDirective<T> implements OnInit, OnDestroy {
     instance.transformation = transformation;
   }
 
-  // private dateTime(value: string): string {
-  //   return `${this.date(value)}, ${this.time(value)}`;
-  // }
-
-  // private date(value: string): string {
-  //   return new Date(value).toLocaleDateString() | LocalDatePipe;
-  // }
-
   private time(value: string): string {
     return new Date(value).toLocaleTimeString();
   }
