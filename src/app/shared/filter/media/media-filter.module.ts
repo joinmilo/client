@@ -7,9 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { DateRangeFilterComponent } from 'ngx-cinlib/filters/date-range';
+import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
 import { CoreModule } from 'src/app/core/core.module';
-import { DateRangeFilterComponent } from '../date-range/date-range-filter.component';
-import { FilterAreaComponent } from '../filter-area/filter-area.component';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { MediaFilterCategoryComponent } from './components/category/media-filter-category.component';
 import { MediaFilterComponent } from './components/media-filter.component';
@@ -39,12 +39,12 @@ const materials = [
 const modules = [
   CoreModule,
   SuburbFilterModule,
-
-  DateRangeFilterComponent,
-  FilterAreaComponent,
 ];
 
 const libs = [
+  DateRangeFilterComponent,
+  FilterAreaComponent,
+
   StoreModule.forFeature(mediaFilterStateKey, mediaFilterReducer),
   EffectsModule.forFeature([MediaFilterEffects]),
 ];

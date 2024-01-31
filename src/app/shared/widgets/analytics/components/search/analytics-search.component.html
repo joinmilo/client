@@ -1,15 +1,15 @@
 <section class="filter">
-  <app-date-range-filter
+  <cin-date-range-filter
     [initValue]="period"
     [queryParam]="false"
     (valueChanged)="updatePeriod($event)">
-  </app-date-range-filter>
+  </cin-date-range-filter>
 
-  <app-interval-filter
+  <cin-interval-filter
     [initValue]="interval"
     [queryParam]="false"
     (valueChanged)="updateInterval($event)">
-  </app-interval-filter>
+  </cin-interval-filter>
 </section>
 
 <section class="summary">

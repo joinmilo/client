@@ -8,8 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
 import { CoreModule } from 'src/app/core/core.module';
-import { FilterAreaComponent } from '../filter-area/filter-area.component';
 import { ContestFilterComponent } from './components/contest-filter.component';
 import { ContestFilterTypesComponent } from './components/types/contest-filter-types.component';
 import { contestFilterStateKey } from './constants/contest.filter.constants';
@@ -37,12 +37,12 @@ const materials = [
 
 const modules = [
   CoreModule,
-  FilterAreaComponent,
 ];
 
 const libs = [
-  StoreModule.forFeature(contestFilterStateKey, contestFilterReducer),
+  FilterAreaComponent,
   EffectsModule.forFeature([ContestFilterEffects]),
+  StoreModule.forFeature(contestFilterStateKey, contestFilterReducer),
 ];
 
 @NgModule({

@@ -26,10 +26,6 @@ import { PortalModule } from './portal/portal.module';
 
 registerLocaleData(localeDe, 'de-DE', localeDeExtra);
 
-const cinlib = [
-  SidenavContainerComponent
-];
-
 const components = [
   AppComponent,
 ];
@@ -66,6 +62,8 @@ const libs = [
   NgHcaptchaModule.forRoot({
     languageCode: 'de' //TODO
   }),
+
+  SidenavContainerComponent,
 ];
 
 //TODO: Breaks scrolling Angular:
@@ -112,7 +110,6 @@ const providers = [
     ...components,
   ],
   imports: [
-    ...cinlib,
     ...framework,
     ...libs,
     ...materials,

@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsFavoritesComponent } from './components/event-admin-details-favorites.component';
 import { eventAdminDetailsFavoritesStateKey } from './constants/event-admin-details-favorites.constants';
@@ -28,10 +27,9 @@ const materials = [
 const modules = [
   CoreModule,
   TableModule,
-  DateRangeFilterComponent
 ];
 
-const libs = [
+const libs = [  
   StoreModule.forFeature(eventAdminDetailsFavoritesStateKey, eventAdminDetailsFavoritesReducer),
   EffectsModule.forFeature([EventAdminDetailsFavoritesEffects]),
 ];

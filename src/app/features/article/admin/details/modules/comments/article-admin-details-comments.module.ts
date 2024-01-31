@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { DateRangeFilterComponent } from 'ngx-cinlib/filters/date-range';
 import { CoreModule } from 'src/app/core/core.module';
-import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ArticleAdminDetailsCommentsComponent } from './components/article-admin-details-comments.component';
 import { articleAdminDetailsCommentsStateKey } from './constants/article-admin-details-comments.constants';
@@ -14,7 +14,7 @@ import { articleAdminDetailsCommentsReducer } from './state/article-admin-detail
 
 const components = [
   ArticleAdminDetailsCommentsComponent,
-]
+];
 
 const framework = [
   CommonModule,
@@ -28,10 +28,11 @@ const materials = [
 const modules = [
   CoreModule,
   TableModule,
-  DateRangeFilterComponent
 ];
 
 const libs = [
+  DateRangeFilterComponent,
+  
   StoreModule.forFeature(articleAdminDetailsCommentsStateKey, articleAdminDetailsCommentsReducer),
   EffectsModule.forFeature([ArticleAdminDetailsCommentsEffects]),
 ];

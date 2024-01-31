@@ -2,7 +2,6 @@ import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, debounceTime, take, takeUntil } from 'rxjs';
-import { collapse } from 'src/app/core/animations/animations';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { SurveyFilterQueryParams } from 'src/app/core/typings/filter-params/survey-filter-param';
 import { SurveyFilterActions } from '../state/survey-filter.actions';
@@ -12,9 +11,6 @@ import { selectFiltersActive, selectRawFilterParams, selectSurveyFilterParams } 
   selector: 'app-survey-filter',
   templateUrl: './survey-filter.component.html',
   styleUrls: ['./survey-filter.component.scss'],
-  animations: [
-     collapse()
-  ],
 })
 export class SurveyFilterComponent implements OnInit, OnDestroy {
 

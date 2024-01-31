@@ -9,9 +9,6 @@ import { slug } from '../../../../../../../core/constants/queryparam.constants';
 import { ArticleAdminDetailsFavoritesActions } from '../state/article-admin-details-favorites.actions';
 import { selectArticleAdminDetailsFavorites } from '../state/article-admin-details-favorites.selectors';
 
-
-
-
 @Component({
   selector: 'app-article-admin-details-favorites',
   templateUrl: './article-admin-details-favorites.component.html',

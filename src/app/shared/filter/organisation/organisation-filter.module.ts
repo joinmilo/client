@@ -10,8 +10,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
 import { CoreModule } from 'src/app/core/core.module';
-import { FilterAreaComponent } from '../filter-area/filter-area.component';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { OrganisationFilterActiveComponent } from './components/active/organisation-filter-active.component';
 import { OrganisationFilterComponent } from './components/organisation-filter.component';
@@ -42,13 +42,12 @@ const materials = [
 const modules = [
   CoreModule,
   SuburbFilterModule,
-
-  FilterAreaComponent,
 ];
 
 const libs = [
-  StoreModule.forFeature(organisationFilterStateKey, organisationFilterReducer),
+  FilterAreaComponent,
   EffectsModule.forFeature([OrganisationFilterEffects]),
+  StoreModule.forFeature(organisationFilterStateKey, organisationFilterReducer),
 ];
 
 @NgModule({

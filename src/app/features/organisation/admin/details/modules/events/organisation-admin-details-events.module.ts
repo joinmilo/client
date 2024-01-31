@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminDetailsEventsComponent } from './components/organisation-admin-details-events.component';
 import { organisationAdminDetailsEventsStateKey } from './constants/organisation-admin-details-events.constants';
@@ -28,7 +27,6 @@ const materials = [
 const modules = [
   CoreModule,
   TableModule,
-  DateRangeFilterComponent
 ];
 
 const libs = [

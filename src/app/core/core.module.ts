@@ -31,10 +31,6 @@ import { CoreUserEffects } from './state/effects/core-user.effects';
 import { CoreEffects } from './state/effects/core.effects';
 import { appReducers, localStorageMetaReducer } from './state/reducers/reducer';
 
-const cinlib = [
-  FeedbackComponent,
-]
-
 const components = [
   CookieComponent,
   HelpComponent,
@@ -75,11 +71,12 @@ const materials = [
 ];
 
 const libs = [
+  FeedbackComponent,
+  EffectsModule.forFeature([CoreEffects, CoreUserEffects]),
   StoreModule.forFeature(appStateKey, {
     core: appReducers.core,
     coreUser: localStorageMetaReducer(appReducers.coreUser),
   }),
-  EffectsModule.forFeature([CoreEffects, CoreUserEffects])
 ];
 
 @NgModule({
@@ -89,7 +86,6 @@ const libs = [
     ...pipes,
   ],
   imports: [
-    ...cinlib,
     ...framework,
     ...materials,
     ...libs
