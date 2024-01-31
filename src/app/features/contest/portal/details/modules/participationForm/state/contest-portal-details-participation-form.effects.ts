@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -9,7 +8,7 @@ import { contestsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl, userUrl } from 'src/app/core/constants/module.constants';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { SaveContestParticipationGQL } from 'src/app/features/contest/api/generated/save-contest-participation.mutation.generated';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
+import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
 import { ContestPortalDetailsParticipationFormActions } from './contest-portal-details-participation-form.actions';
 
 @Injectable()
@@ -19,9 +18,13 @@ export class ContestPortalDetailsParticipationFormEffects {
       ofType(ContestPortalDetailsParticipationFormActions.saveParticipation),
       withLatestFrom(this.store.select(selectCurrentUser)),
       switchMap(([action, user]) =>
-        this.dialog
-          .open(ConfirmChangeComponent, {
-            data:
+        this.confirmDialogService
+          .confirm({
+            buttonColor: 'primary',
+            buttonLabel: 'confirm',
+            titleLabel: 'saveVote',
+            messageLabel: 'areYouSureToVote',
+            context:
               (action.entity.contest?.maxParticipations ?? 0) ===
               (user?.contestPariticpations?.filter(
                 (participation) =>
@@ -37,7 +40,6 @@ export class ContestPortalDetailsParticipationFormEffects {
                 ? 'equalParticipations'
                 : 'moreParticipations',
           })
-          .afterClosed()
           .pipe(
             switchMap((confirmed) => (confirmed ? of(action.entity) : EMPTY))
           )
@@ -77,8 +79,8 @@ export class ContestPortalDetailsParticipationFormEffects {
 
   constructor(
     private actions: Actions,
+    private confirmDialogService: ConfirmService,
     private saveContestParticipationService: SaveContestParticipationGQL,
-    private dialog: MatDialog,
     private store: Store,
     private router: Router
   ) {}
