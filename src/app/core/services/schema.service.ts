@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { ArticleEntity, DealEntity, EventEntity, MenuItemEntity, OrganisationEntity, PageEntity, UserContextEntity } from '../api/generated/schema';
+import { SchemaArray } from '../typings/schema.org/arrays/schema-array';
 import { ArticleEntitySchema } from '../typings/schema.org/entities/article-entity';
 import { DealEntitySchema } from '../typings/schema.org/entities/deal-entity';
 import { EventEntitySchema } from '../typings/schema.org/entities/event-entity';
@@ -69,7 +70,7 @@ export class SchemaService {
   }
 
   private createSchema(
-    schema: Maybe<Schema> | Maybe<Maybe<Schema>[]>,
+    schema: Maybe<Schema>,
   ): void {
     const result = {
       '@context': 'https://schema.org',
@@ -98,7 +99,7 @@ export class SchemaService {
   public arrayToSchema(
     entity: SchemaEntityInput, 
     data: SchemaDataInput[],
-  ): Maybe<Schema[]> {   
+  ): Maybe<SchemaArray<Schema>> {   
     switch(entity) {
       case 'ArticleEntity':
         return this.articleArrayToSchema(data as ArticleEntity[]);
@@ -141,8 +142,8 @@ export class SchemaService {
     }
   }
 
-  private articleArrayToSchema(data?: ArticleEntity[]): Maybe<ArticleEntitySchema[]> {
-    return data?.map(entity => this.articleToSchema(entity));
+  private articleArrayToSchema(data?: ArticleEntity[]): SchemaArray<ArticleEntitySchema> {
+    return new SchemaArray(data?.map(entity => this.articleToSchema(entity)));
   }
 
   private articleToSchema(entity?: Maybe<ArticleEntity>): ArticleEntitySchema {
@@ -185,8 +186,8 @@ export class SchemaService {
       ?.join()
   }
 
-  private dealArrayToSchema(data?: DealEntity[]): Maybe<DealEntitySchema[]> {
-    return data?.map(entity => this.dealToSchema(entity));
+  private dealArrayToSchema(data?: DealEntity[]): SchemaArray<DealEntitySchema> {
+    return new SchemaArray(data?.map(entity => this.dealToSchema(entity)));
   }
 
   private dealToSchema(entity?: Maybe<DealEntity>): DealEntitySchema {
@@ -209,9 +210,8 @@ export class SchemaService {
       ?.join();
   };
 
-
-  private eventArrayToSchema(data: EventEntity[]): Maybe<EventEntitySchema[]> {
-    return data?.map(entity => this.eventToSchema(entity));
+  private eventArrayToSchema(data?: EventEntity[]): SchemaArray<EventEntitySchema> {
+    return new SchemaArray(data?.map(entity => this.eventToSchema(entity)));
   }
 
   private eventToSchema(entity?: Maybe<EventEntity>): EventEntitySchema {
@@ -252,9 +252,8 @@ export class SchemaService {
       ?.join();
   };
 
-
-  private organisationArrayToSchema(data?: OrganisationEntity[]): Maybe<OrganisationEntitySchema[]> {
-    return data?.map(entity => this.organisationToSchema(entity));
+  private organisationArrayToSchema(data?: OrganisationEntity[]): SchemaArray<OrganisationEntitySchema> {
+    return new SchemaArray(data?.map(entity => this.organisationToSchema(entity)));
   }
 
   private organisationToSchema(entity?: Maybe<OrganisationEntity>): OrganisationEntitySchema {
@@ -296,9 +295,8 @@ export class SchemaService {
       ?.filter(person => person !== null);
   };
 
-
-  private pageArrayToSchema(data?: PageEntity[]): Maybe<PageEntitySchema[]> {
-    return data?.map(entity => this.pageToSchema(entity));
+  private pageArrayToSchema(data?: PageEntity[]): SchemaArray<PageEntitySchema> {
+    return new SchemaArray(data?.map(entity => this.pageToSchema(entity)));
   }
 
   private pageToSchema(entity?: Maybe<PageEntity>): PageEntitySchema {
@@ -329,8 +327,8 @@ export class SchemaService {
       }) ?? [];
   };
 
-  private userContextArrayToSchema(data?: UserContextEntity[]): Maybe<UserContextEntitySchema[]> {
-    return data?.map(entity => this.userContextToSchema(entity))
+  private userContextArrayToSchema(data?: UserContextEntity[]): SchemaArray<UserContextEntitySchema> {
+    return new SchemaArray(data?.map(entity => this.userContextToSchema(entity)));
   }
 
   private userContextToSchema(entity?: Maybe<UserContextEntity>): UserContextEntitySchema {

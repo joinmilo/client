@@ -10,6 +10,10 @@ fragment AuthorCard on UserContextEntity {
     phone
   }
 
+  address {
+    ...Address
+  }
+
   uploads {
     id
     profilePicture
