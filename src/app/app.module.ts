@@ -5,7 +5,6 @@ import localeDeExtra from '@angular/common/locales/extra/de';
 import { LOCALE_ID, NgModule, isDevMode } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -14,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgHcaptchaModule } from 'ng-hcaptcha';
+import { SidenavContainerComponent } from 'ngx-cinlib/modals/sidenav';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -25,6 +25,10 @@ import { GraphQLModule } from './graphql.module';
 import { PortalModule } from './portal/portal.module';
 
 registerLocaleData(localeDe, 'de-DE', localeDeExtra);
+
+const cinlib = [
+  SidenavContainerComponent
+];
 
 const components = [
   AppComponent,
@@ -69,8 +73,6 @@ const libs = [
 const materials = [
   MatAutocompleteModule,
   MatMenuModule,
-
-  MatSidenavModule,
 ];
 
 const modules = [
@@ -102,7 +104,7 @@ const providers = [
   {
     provide: LOCALE_ID,
     useValue: 'de-DE'
-  }
+  },
 ];
 
 @NgModule({
@@ -110,6 +112,7 @@ const providers = [
     ...components,
   ],
   imports: [
+    ...cinlib,
     ...framework,
     ...libs,
     ...materials,

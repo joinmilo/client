@@ -11,14 +11,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FeedbackComponent, FeedbackService } from 'ngx-cinlib/modals/feedback';
 import { IconComponent } from '../shared/widgets/icon/icon.component';
-import { AsideComponent } from './components/aside/aside.component';
 import { CookieComponent } from './components/cookie/cookie.component';
-import { FeedbackComponent } from './components/feedback/feedback.component';
 import { HelpComponent } from './components/help/help.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { appStateKey } from './constants/core.constants';
-import { AsideDirective } from './directives/aside.directive';
 import { HtmlDirective } from './directives/html.directive';
 import { LabelDirective } from './directives/label.directive';
 import { TooltipDirective } from './directives/tooltip.directive';
@@ -33,16 +31,17 @@ import { CoreUserEffects } from './state/effects/core-user.effects';
 import { CoreEffects } from './state/effects/core.effects';
 import { appReducers, localStorageMetaReducer } from './state/reducers/reducer';
 
-const components = [
-  AsideComponent,
-  CookieComponent,
+const cinlib = [
   FeedbackComponent,
+]
+
+const components = [
+  CookieComponent,
   HelpComponent,
   LogoComponent,
 ];
 
 const directives = [
-  AsideDirective,
   LabelDirective,
   HtmlDirective,
   TooltipDirective,
@@ -90,6 +89,7 @@ const libs = [
     ...pipes,
   ],
   imports: [
+    ...cinlib,
     ...framework,
     ...materials,
     ...libs
@@ -99,6 +99,9 @@ const libs = [
     ...directives,
     ...pipes,
   ],
+  providers: [
+    FeedbackService,
+  ]
 })
 export class CoreModule { }
 

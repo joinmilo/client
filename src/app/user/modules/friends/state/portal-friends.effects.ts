@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, FilterSortPaginateInput, FriendEntity, Maybe, QueryOperator, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectAllFriendUsers, selectAllFriends, selectCurrentUser, selectReceivedFriendRequest } from 'src/app/core/state/selectors/user.selectors';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteFriendGQL } from 'src/app/user/api/generated/delete-friend-entity.mutation.generated';
 import { GetUserContextsGQL } from 'src/app/user/api/generated/get-user-contexts.query.generated';
 import { SaveFriendGQL } from 'src/app/user/api/generated/save-friend.mutation.generated';

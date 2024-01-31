@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map } from 'rxjs';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { SchedulerActions } from './scheduler.actions';
 
 

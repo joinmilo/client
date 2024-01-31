@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap } from 'rxjs';
 import { ReportEntity, ReportTypeEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetReportTypesGQL } from '../../api/generated/get-report-types.query.generated';
 import { SaveReportGQL } from '../../api/generated/save-report.mutation.generated';
 import { ReportEmbeddingActions } from './report-embedding.actions';

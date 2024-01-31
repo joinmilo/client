@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, EventCommentEntity, EventEntity, EventRatingEntity, EventScheduleEntity, Maybe, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
 import { DeleteEventAttendeeGQL } from '../../../api/generated/delete-eventattendee.mutation.generated';
 import { GetEventCommentsGQL } from '../../../api/generated/get-event-comments.query.generated';

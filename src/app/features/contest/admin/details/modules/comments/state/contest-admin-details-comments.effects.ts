@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, PageableList_ContestCommentEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteContestCommentGQL } from 'src/app/features/contest/api/generated/delete-contest-comment.mutation.generated';
 import { GetContestCommentsGQL } from 'src/app/features/contest/api/generated/get-contest-comments.query.generated';
 import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';

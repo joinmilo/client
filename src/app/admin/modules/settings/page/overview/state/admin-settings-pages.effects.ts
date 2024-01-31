@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { AssignLandingPageGQL } from 'src/app/admin/api/generated/assign-landing.mutation.generated';
 import { DeletePageGQL } from 'src/app/admin/api/generated/delete-page.mutation.generated';
 import { GetPagesGQL } from 'src/app/admin/api/generated/get-pages.query.generated';
 import { PageableList_PageEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
 import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { AdminSettingsPageActions } from './admin-settings-pages.actions';

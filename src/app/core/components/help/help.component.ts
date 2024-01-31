@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectHelp } from '../../state/selectors/core.selectors';
+import { Help } from '../../typings/help';
 
 @Component({
   selector: 'app-help',
@@ -9,10 +8,6 @@ import { selectHelp } from '../../state/selectors/core.selectors';
 })
 export class HelpComponent {
 
-  public help = this.store.select(selectHelp);
-
-  constructor(
-    private store: Store,
-  ) { }
+  public help?: Help;
 
 }

@@ -47,7 +47,7 @@ export class AdminLandingComponent implements OnInit, OnDestroy {
   }
 
   public openContact(): void {
-    this.store.dispatch(CoreActions.setAsideComponent({
+    this.store.dispatch(CoreActions.setSidenavComponent({
       component: AdminLandingContactComponent
     }));
   }
@@ -59,7 +59,7 @@ export class AdminLandingComponent implements OnInit, OnDestroy {
           .elements?.[roadmapOutput.elementIndex]),
         takeUntil(this.destroy)
       )
-      .subscribe(element => this.store.dispatch(CoreActions.setAsideComponent({
+      .subscribe(element => this.store.dispatch(CoreActions.setSidenavComponent({
         component: AdminLandingMilestoneComponent,
         params: {
           element

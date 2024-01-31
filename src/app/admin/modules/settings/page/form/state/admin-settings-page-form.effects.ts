@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, tap } from 'rxjs';
 import { GetPageDetailsGQL } from 'src/app/admin/api/generated/get-page-details.query.generated';
 import { SavePageGQL } from 'src/app/admin/api/generated/save-page.mutation.generated';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { PageEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { AdminSettingsPageFormActions } from './admin-settings-page-form.actions';
 
 @Injectable()

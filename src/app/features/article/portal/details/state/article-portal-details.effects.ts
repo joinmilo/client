@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, withLatestFrom } from 'rxjs';
 import { ArticleCommentEntity, ArticleEntity, ArticleRatingEntity, Maybe, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
 import { GetArticleCommentsGQL } from '../../../api/generated/get-article-comments.query.generated';
 import { GetArticleDetailsGQL } from '../../../api/generated/get-article-details.query.generated';

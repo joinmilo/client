@@ -2,12 +2,12 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { accessDeniedError, tokenExpiredError } from '../constants/error.constants';
 import { CoreUserActions } from '../state/actions/core-user.actions';
 import { CoreActions } from '../state/actions/core.actions';
-import { FeedbackType } from '../typings/feedback';
 import { ApiError, ApiResponse } from '../typings/response';
 
 @Injectable({ providedIn: 'root' })

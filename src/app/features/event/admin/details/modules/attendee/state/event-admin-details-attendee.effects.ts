@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_EventAttendeeEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { DeleteEventAttendeeGQL } from 'src/app/features/event/api/generated/delete-eventattendee.mutation.generated';
 import { GetEventAttendeesGQL } from 'src/app/features/event/api/generated/get-event-attendees.query.generated';
 import { SaveEventAttendeeGQL } from 'src/app/features/event/api/generated/save-event-attendee.mutation.generated';

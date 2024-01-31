@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
-
+import { Action } from '@ngrx/store';
+import { FeedbackService } from 'ngx-cinlib/modals/feedback';
+import { SidenavService } from 'ngx-cinlib/modals/sidenav';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { AppEntity, ConfigurationEntity, LabelEntity, LanguageEntity, SocialMediaEntity, ThemeEntity } from 'src/app/core/api/generated/schema';
-import { FeedbackService } from '../../services/feedback.service';
-import { CoreActions } from '../actions/core.actions';
-
-import { Action } from '@ngrx/store';
 import { GetAppsGQL } from '../../api/generated/get-apps.query.generated';
 import { GetConfigurationsGQL } from '../../api/generated/get-configurations.query.generated';
 import { GetLabelsGQL } from '../../api/generated/get-labels.query.generated';
@@ -14,7 +12,8 @@ import { GetLanguagesGQL } from '../../api/generated/get-languages.query.generat
 import { GetSocialMediaGQL } from '../../api/generated/get-social-media.query.generated';
 import { GetThemeGQL } from '../../api/generated/get-theme.query.generated';
 import { GetServerInformationGQL } from '../../api/generated/server-info.query.generated';
-
+import { HelpComponent } from '../../components/help/help.component';
+import { CoreActions } from '../actions/core.actions';
 @Injectable()
 export class CoreEffects implements OnInitEffects {
 
@@ -83,6 +82,21 @@ export class CoreEffects implements OnInitEffects {
     tap(action => this.feedbackService.open(action.feedback)),
   ), { dispatch: false });
 
+  setHelp = createEffect(() => this.actions.pipe(
+    ofType(CoreActions.setHelp),
+    tap(action => this.sidenavService.open({
+      component: HelpComponent,
+      params: {
+        help: action.help,
+      }
+    })),
+  ), { dispatch: false });
+
+  setSidenav = createEffect(() => this.actions.pipe(
+    ofType(CoreActions.setSidenavComponent),
+    tap(action => this.sidenavService.open(action.sidenav)),
+  ), { dispatch: false });
+
   constructor(
     private actions: Actions,
     private feedbackService: FeedbackService,
@@ -93,5 +107,7 @@ export class CoreEffects implements OnInitEffects {
     private getServerInfoService: GetServerInformationGQL,
     private getSocialMediaService: GetSocialMediaGQL,
     private getThemeService: GetThemeGQL,
-    ) { }
+
+    private sidenavService: SidenavService,
+  ) { }
 }

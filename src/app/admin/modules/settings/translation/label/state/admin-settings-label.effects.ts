@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { debounceTime, filter, map, switchMap, tap } from 'rxjs';
 import { SaveLabelGQL } from 'src/app/admin/api/generated/save-label.mutation.generated';
 import { GetLabelsGQL } from 'src/app/core/api/generated/get-labels.query.generated';
 import { LabelEntityInput, PageableList_LabelEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { AdminSettingsLabelActions } from './admin-settings-label.actions';
 
 @Injectable()

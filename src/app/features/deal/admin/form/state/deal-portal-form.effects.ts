@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, tap } from 'rxjs';
 import { DealCategoryEntity, DealEntity } from 'src/app/core/api/generated/schema';
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetDealCategoriesGQL } from '../../../api/generated/get-deal-categories.query.generated';
 import { GetDealGQL } from '../../../api/generated/get-deal.query.generated';
 

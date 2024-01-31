@@ -49,7 +49,7 @@ export class SchedulerDatetimeComponent implements OnDestroy {
   }
 
   public showSchedules(): void {
-    this.store.dispatch(CoreActions.setAsideComponent({
+    this.store.dispatch(CoreActions.setSidenavComponent({
       component: SchedulerOverviewComponent
     }));
   }

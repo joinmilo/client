@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { filter, map, switchMap } from 'rxjs';
 import { OrganisationConfigurationEntity, RoleEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetOrganisationConfigurationGQL } from '../../../api/generated/get-organisation-configuration.query.generated';
 import { GetRolesGQL } from '../../../api/generated/get-roles.generated';
 import { SaveOrganisationConfigurationGQL } from '../../../api/generated/save-organisation-configuration.mutation.generated';

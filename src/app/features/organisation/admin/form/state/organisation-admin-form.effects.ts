@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, tap } from 'rxjs';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { organisationsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 
 import { GetOrganisationFormGQL } from '../../../api/generated/get-organisation-form.query.generated';
 import { SaveOrganisationGQL } from '../../../api/generated/save-organisation.mutation.generated';

@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, tap } from 'rxjs';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { InfoMediaCategoryEntity, InfoMediaEntity } from 'src/app/core/api/generated/schema';
 import { mediaFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetMediaCategoriesGQL } from '../../../api/generated/get-media-categories.query.generated';
 
 import { GetMediaFormGQL } from '../../../api/generated/get-media-form.query.generated';

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, tap } from 'rxjs';
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetEventCategoryGQL } from '../../../api/generated/get-event-category.query.generated';
 import { SaveEventCategoryGQL } from '../../../api/generated/save-event-category.mutation.generated';
 import { EventAdminCategoryFormActions } from './event-admin-category-form.actions';

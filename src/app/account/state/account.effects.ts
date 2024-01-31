@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { filter, map, switchMap, tap } from 'rxjs';
 import { AddressEntity, Maybe, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { accountUrl } from 'src/app/core/constants/module.constants';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { CoreActions } from '../../core/state/actions/core.actions';
 import { GetOrganisationsGQL } from '../api/generated/account-get-organisation.generated';
 import { ResetPasswordGQL } from '../api/generated/account-reset-password.mutation.generated';

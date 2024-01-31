@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { filter, map, switchMap, withLatestFrom } from 'rxjs';
 import { SaveConfigurationGQL } from 'src/app/admin/api/generated/save-configuration.mutation.generated';
 import { GetConfigurationsGQL } from 'src/app/core/api/generated/get-configurations.query.generated';
 import { PageableList_ConfigurationEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { AdminSettingsConfiguratioActions } from './admin-settings-configuration.actions';
 import { selectParams } from './admin-settings-configuration.selectors';
 
