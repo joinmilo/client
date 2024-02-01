@@ -10,6 +10,10 @@ mat-drawer-container {
 div {
   display: flex;
   flex-flow: column;
+
+  app-admin-header {
+    height: var(--header-height);
+  }
 }
 
 main {

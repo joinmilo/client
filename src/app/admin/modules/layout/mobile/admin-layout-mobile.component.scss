@@ -11,6 +11,10 @@ div {
   display: flex;
   flex-flow: column;
   height: 100%;
+
+  app-admin-header {
+    height: var(--header-height);
+  }
 }
 
 main {
