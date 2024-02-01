@@ -19,7 +19,6 @@ import { contestPortalDetailsParticipationsReducer } from './state/contest-porta
 
 const components = [
   ContestPortalDetailsParticipationsComponent,
-  ContestPortalDetailsParticipationsCardComponent
 ]
 
 const framework = [
@@ -34,6 +33,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  ContestPortalDetailsParticipationsCardComponent,
   MediaWidgetsModule,
   DateRangeFilterComponent,
   TableModule,

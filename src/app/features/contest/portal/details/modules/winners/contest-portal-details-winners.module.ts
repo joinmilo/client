@@ -10,6 +10,7 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { ConfettiComponent } from 'src/app/shared/widgets/contest-winner/confetti.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { ContestPortalDetailsParticipationsCardComponent } from '../../card/contest-portal-details-participations-card.component';
 import { ContestPortalDetailsWinnersComponent } from './components/contest-portal-details-winners.component';
 import { contestPortalDetailsWinnersStateKey } from './constants/contest-portal-details-winners.constants';
 import { ContestPortalDetailsWinnersEffects } from './state/contest-portal-details-winners.effects';
@@ -31,6 +32,7 @@ const materials = [
 
 const modules = [
   ConfettiComponent,
+  ContestPortalDetailsParticipationsCardComponent,
   CoreModule,
   DateRangeFilterComponent,
   MediaWidgetsModule,

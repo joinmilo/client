@@ -1,4 +1,4 @@
-import { createActionGroup, emptyProps } from '@ngrx/store';
+import { createActionGroup } from '@ngrx/store';
 
 import { ContestParticipationEntity, Maybe } from 'src/app/core/api/generated/schema';
 
@@ -6,8 +6,8 @@ import { ContestParticipationEntity, Maybe } from 'src/app/core/api/generated/sc
 export const ContestPortalDetailsWinnersActions = createActionGroup({
   source: 'Contest Portal Details Winners',
   events: {
-    'set winners': (winners?: Maybe<ContestParticipationEntity[]>) => ({ winners }),
+    'get winners': (slug?: Maybe<string>) => ({slug}),
 
-    'get winners': emptyProps()
+    'set winners': (winners?: Maybe<ContestParticipationEntity[]>) => ({ winners }),
   }
 });

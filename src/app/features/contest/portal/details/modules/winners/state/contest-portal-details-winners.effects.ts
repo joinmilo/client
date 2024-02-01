@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import {
+  ConjunctionOperator,
   ContestParticipationEntity,
   Maybe,
   QueryOperator,
@@ -14,17 +15,30 @@ export class ContestPortalDetailsWinnersEffects {
   getContestWinners = createEffect(() =>
     this.actions.pipe(
       ofType(ContestPortalDetailsWinnersActions.getWinners),
-      switchMap(
-        () =>
+      switchMap((action) =>
           this.getContestParticipationsService.watch({
             params: {
               sort: 'placement',
               dir: 'asc',
               expression: {
-                entity: {
-                  path: 'placement',
-                  operator: QueryOperator.NotEqual,
-                  value: null,
+                conjunction: {
+                  operator: ConjunctionOperator.And,
+                  operands: [
+                    {
+                      entity: {
+                        path: 'placement',
+                        operator: QueryOperator.NotEqual,
+                        value: null,
+                      },
+                    },
+                    {
+                      entity: {
+                        path: 'contest.slug',
+                        operator: QueryOperator.Equal,
+                        value: action.slug,
+                      },
+                    },
+                  ],
                 },
               },
             },
@@ -32,7 +46,9 @@ export class ContestPortalDetailsWinnersEffects {
       ),
       map((response) =>
         ContestPortalDetailsWinnersActions.setWinners(
-          response.data.getContestParticipations?.result as Maybe<ContestParticipationEntity[]>
+          response.data.getContestParticipations?.result as Maybe<
+            ContestParticipationEntity[]
+          >
         )
       )
     )
