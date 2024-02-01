@@ -7,16 +7,17 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from '../../../core/core.module';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
-import { CaptchaModule } from '../captcha/captcha.module';
 import { CommentDialogComponent } from './components/dialog/comment-dialog.component';
 import { CommentEntryComponent } from './components/entry/comment-entry.component';
 import { CommentFormComponent } from './components/form/comment-form.component';
 import { CommentOverviewComponent } from './components/overview/comment-overview.component';
+;
 
 const components = [
   CommentEntryComponent,

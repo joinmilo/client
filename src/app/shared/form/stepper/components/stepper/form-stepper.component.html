@@ -4,11 +4,11 @@
 
 <section>
   <ng-container *ngIf="captchaRequired; else defaultSave;">
-    <app-captcha-submit
+    <cin-captcha-submit
       [disabled]="(valid | async) === false"
       label="save"
       (verified)="save($event)">
-    </app-captcha-submit>
+    </cin-captcha-submit>
   </ng-container>
 
   <ng-template #defaultSave>

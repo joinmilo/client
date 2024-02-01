@@ -11,7 +11,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { CaptchaService } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { ConfirmService } from 'ngx-cinlib/modals/confirm';
 import { FeedbackComponent, FeedbackService } from 'ngx-cinlib/modals/feedback';
 import { CookieComponent } from './components/cookie/cookie.component';
 import { HelpComponent } from './components/help/help.component';
@@ -79,6 +81,12 @@ const libs = [
   }),
 ];
 
+const providers = [
+  CaptchaService,
+  ConfirmService,
+  FeedbackService,
+];
+
 @NgModule({
   declarations: [
     ...components,
@@ -96,7 +104,7 @@ const libs = [
     ...pipes,
   ],
   providers: [
-    FeedbackService,
+    ...providers,
   ]
 })
 export class CoreModule { }

@@ -11,10 +11,10 @@
     <app-password-confirm formControlName="password"></app-password-confirm>
     <app-privacy-policy-form formControlName="termsAccepted"></app-privacy-policy-form>
   
-    <app-captcha-submit
+    <cin-captcha-submit
       [disabled]="form.invalid"
       (verified)="onSubmit($event, formDirective)">
-    </app-captcha-submit>
+    </cin-captcha-submit>
   
     <section>
       <small>

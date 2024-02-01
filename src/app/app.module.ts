@@ -12,8 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { NgHcaptchaModule } from 'ng-hcaptcha';
-import { ConfirmService } from 'ngx-cinlib/modals/confirm';
+// import { NgHcaptchaModule } from 'ng-hcaptcha';
 import { SidenavContainerComponent } from 'ngx-cinlib/modals/sidenav';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,9 +59,9 @@ const libs = [
   NgxChartsModule,
 
   //TODO: 
-  NgHcaptchaModule.forRoot({
-    languageCode: 'de' //TODO
-  }),
+  // NgHcaptchaModule.forRoot({
+  //   languageCode: 'de' //TODO
+  // }),
 
   SidenavContainerComponent,
 ];
@@ -104,7 +103,6 @@ const providers = [
     provide: LOCALE_ID,
     useValue: 'de-DE'
   },
-  ConfirmService,
 ];
 
 @NgModule({

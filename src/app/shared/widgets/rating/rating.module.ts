@@ -6,13 +6,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule } from '@angular/router';
+import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CoreModule } from '../../../core/core.module';
-import { CaptchaModule } from '../../form/captcha/captcha.module';
 import { RatingDistributionComponent } from './components/distribution/rating-distribution.component';
 import { RatingInputComponent } from './components/input/rating-input.component';
 import { RatingComponent } from './components/rating.component';
+;
 
 const components = [
   RatingComponent,

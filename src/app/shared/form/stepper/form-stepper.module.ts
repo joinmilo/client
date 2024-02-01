@@ -5,13 +5,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { StoreModule } from '@ngrx/store';
+import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { CaptchaModule } from '../captcha/captcha.module';
 import { FormStepComponent } from './components/step/form-step.component';
 import { FormStepperComponent } from './components/stepper/form-stepper.component';
 import { formStepperStateKey } from './constants/form-stepper.constants';
 import { formStepperReducer } from './state/form-stepper.reducer';
+;
 
 const components = [
   FormStepperComponent,
