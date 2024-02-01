@@ -3,8 +3,11 @@
     <section class="block">
       <ng-container *ngTemplateOutlet="content; context: { $implicit: element }">
       </ng-container>
-      <app-media-element [media]="element?.media">
-      </app-media-element>
+      
+      @if (element?.media) {
+        <app-media-element [media]="element?.media">
+        </app-media-element>
+      }
     </section>
   }
   @if (index % 2 !== 0) {
@@ -17,26 +20,29 @@
   }
 }
 <ng-template #content let-element>
-  <div>
 
-    @if (element?.title) {
-      <h1 class="mat-headline-4">
-        {{ element?.title | translatable: 'translatable' | async }}
-      </h1>
-    }
-
-    @if (element?.text) {
-      <section [innerHTML]="element?.text | translatable: 'translatable' | async"></section>
-    }
-
-    @if (element?.url) {
-      <a mat-raised-button
-        color="primary"
-        [href]="element?.url?.value"
-        [appLabel]="element?.button
-          ? (element?.button | translatable: 'translatable' | async)
-          : 'learnMore'">
-      </a>
-    }
-  </div>
+  @if (element?.title || element?.text || element?.url) {
+    <div>
+  
+      @if (element?.title) {
+        <h1 class="mat-headline-4">
+          {{ element?.title | translatable: 'translatable' | async }}
+        </h1>
+      }
+  
+      @if (element?.text) {
+        <section [innerHTML]="element?.text | translatable: 'translatable' | async"></section>
+      }
+  
+      @if (element?.url) {
+        <a mat-raised-button
+          color="primary"
+          [href]="element?.url?.value"
+          [appLabel]="element?.button
+            ? (element?.button | translatable: 'translatable' | async)
+            : 'learnMore'">
+        </a>
+      }
+    </div>
+  }
 </ng-template>

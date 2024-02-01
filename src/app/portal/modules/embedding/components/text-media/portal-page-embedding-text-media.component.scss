@@ -3,7 +3,7 @@
 :host {
   display: flex;
   flex-flow: column;
-  gap: 5rem;
+  gap: 10rem;
 
   margin: var(--gap) auto 0;
   width: var(--page-embedding-width);
@@ -16,7 +16,7 @@
 
 .block {
   display: flex;
-  gap: var(--gap);
+  gap: 4rem;
   align-items: center;
   justify-content: center;
 
