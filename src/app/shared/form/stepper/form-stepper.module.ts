@@ -5,8 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icon/icon.component';
 import { CaptchaModule } from '../captcha/captcha.module';
 import { FormStepComponent } from './components/step/form-step.component';
 import { FormStepperComponent } from './components/stepper/form-stepper.component';
@@ -32,10 +32,10 @@ const materials = [
 const modules = [
   CaptchaModule,
   CoreModule,
-  IconComponent,
 ];
 
 const libs = [
+  IconComponent,
   StoreModule.forFeature(formStepperStateKey, formStepperReducer),
 ];
 

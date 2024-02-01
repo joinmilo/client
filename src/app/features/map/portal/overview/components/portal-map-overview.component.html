@@ -9,7 +9,7 @@
         </app-portal-map-overview-list>
       </section>
       <button mat-button (click)="drawer.toggle(); menuToggled();">
-        <app-icon [icon]="['fas', 'angle-left']"></app-icon>
+        <cin-icon [icon]="['fas', 'angle-left']"></cin-icon>
       </button>
     </div>
   </mat-drawer>
@@ -19,7 +19,7 @@
     </app-map>
   
     <button mat-mini-fab (click)="drawer.toggle(); menuToggled();">
-      <app-icon [icon]="['fas', drawer.opened ? 'angle-left' : 'angle-right']"></app-icon>
+      <cin-icon [icon]="['fas', drawer.opened ? 'angle-left' : 'angle-right']"></cin-icon>
     </button>
 
     <app-radio-button-group

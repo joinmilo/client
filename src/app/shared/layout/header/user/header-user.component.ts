@@ -4,12 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { Subject, takeUntil } from 'rxjs';
 import { userUrl } from 'src/app/core/constants/module.constants';
 import { CoreModule } from 'src/app/core/core.module';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { selectIsAuthenticated } from 'src/app/core/state/selectors/user.selectors';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 
 @Component({
   selector: 'app-header-user',

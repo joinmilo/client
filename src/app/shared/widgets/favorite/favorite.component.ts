@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { Subject, take, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { selectIsAuthenticated, selectIsFavorite } from 'src/app/core/state/selectors/user.selectors';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
-import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-favorite',

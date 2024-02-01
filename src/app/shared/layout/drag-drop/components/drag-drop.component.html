@@ -5,7 +5,7 @@
   @for (element of elements; track element; let index = $index) {
     <mat-card cdkDrag cdkDragLockAxis="y" (cdkDragStarted)="drag()">
       <section class="drag-handle" cdkDragHandle>
-        <app-icon [icon]="['fas', 'grip-vertical']"></app-icon>
+        <cin-icon [icon]="['fas', 'grip-vertical']"></cin-icon>
       </section>
   
       <section class="content-area">
@@ -16,7 +16,7 @@
       @if (deletable) {
         <button mat-button
           (click)="onDelete(index)">
-          <app-icon [icon]="['fas', 'trash']"></app-icon>
+          <cin-icon [icon]="['fas', 'trash']"></cin-icon>
         </button>
       }
   

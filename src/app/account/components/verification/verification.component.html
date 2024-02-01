@@ -4,7 +4,7 @@
       [appLabel]="(verified | async)
         ? 'congratulations'
         : 'failure'"></h2>
-    <app-icon 
+    <cin-icon 
       [icon]="(verified | async) 
         ? ['fas', 'check'] 
         : ['fas', 'xmark']" 
@@ -12,7 +12,7 @@
       [style.color]="(verified | async) 
         ? 'var(--color-success-500)' 
         : 'var(--color-warn-500)'">
-    </app-icon>
+    </cin-icon>
 
     <p [appLabel]="(verified | async)
         ? 'verificationSuccess'

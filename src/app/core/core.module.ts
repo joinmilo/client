@@ -11,8 +11,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { FeedbackComponent, FeedbackService } from 'ngx-cinlib/modals/feedback';
-import { IconComponent } from '../shared/widgets/icon/icon.component';
 import { CookieComponent } from './components/cookie/cookie.component';
 import { HelpComponent } from './components/help/help.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -62,7 +62,6 @@ const framework = [
 
 const materials = [
   LayoutModule,
-  IconComponent,
   MatButtonModule,
   MatDialogModule,
   MatSnackBarModule,
@@ -72,6 +71,7 @@ const materials = [
 
 const libs = [
   FeedbackComponent,
+  IconComponent,
   EffectsModule.forFeature([CoreEffects, CoreUserEffects]),
   StoreModule.forFeature(appStateKey, {
     core: appReducers.core,

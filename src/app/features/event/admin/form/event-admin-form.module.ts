@@ -13,7 +13,6 @@ import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { ContactFormComponent } from 'src/app/shared/form/contact/contact-form.component';
-import { IconFormComponent } from 'src/app/shared/form/icon/icon-form.component';
 import { SchedulerModule } from 'src/app/shared/form/scheduler/scheduler.module';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
@@ -47,16 +46,15 @@ const materials = [
 
 const modules = [
   AddressFormModule,
+  ContactFormComponent,
   CoreModule,
   EventAdminFormRoutingModule,
   FormStepperModule,
   GridLayoutModule,
-  IconFormComponent,
   MediaFormModule,
   MediaWidgetsModule,
   SchedulerModule,
   TitleModule,
-  ContactFormComponent
 ];
 
 const libs = [

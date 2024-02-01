@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SolidIconsType } from 'ngx-cinlib/icons';
 import { map } from 'rxjs';
 import { selectReceivedFriendRequest } from 'src/app/core/state/selectors/user.selectors';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
-import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
 
 @Component({

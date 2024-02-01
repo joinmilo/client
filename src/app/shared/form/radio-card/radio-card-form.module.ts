@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from '../../layout/title/title.module';
-import { IconComponent } from '../../widgets/icon/icon.component';
 import { RadioCardGroupComponent } from './components/radio-card-group/radio-card-group.component';
 import { RadioCardComponent } from './components/radio-card/radio-card.component';
 
@@ -26,8 +26,11 @@ const materials = [
 
 const modules = [
   CoreModule,
-  IconComponent,
   TitleModule
+];
+
+const libs = [
+  IconComponent,
 ];
 
 @NgModule({
@@ -36,6 +39,7 @@ const modules = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [...components],
 })

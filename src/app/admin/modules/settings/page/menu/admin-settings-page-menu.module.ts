@@ -11,11 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent, IconFormComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconFormComponent } from 'src/app/shared/form/icon/icon-form.component';
 import { DragAndDropModule } from 'src/app/shared/layout/drag-drop/drag-drop.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { AdminSettingsPageMenuComponent } from './components/admin-settings-page-menu.component';
 import { AdminSettingsPageMenuDialogComponent } from './components/dialog/admin-settings-page-menu-dialog.component';
 import { AdminSettingsPageMenuFormComponent } from './components/form/admin-settings-page-menu-form.component';
@@ -49,13 +48,14 @@ const modules = [
   CoreModule,
   DragAndDropModule,
   GridLayoutModule,
-  IconComponent,
-  IconFormComponent,
 ];
 
 const libs = [
-  StoreModule.forFeature(adminSettingsPageMenuStateKey, adminSettingsPageMenuReducer),
+  IconComponent,
+  IconFormComponent,
+
   EffectsModule.forFeature([AdminSettingsPageMenuEffects]),
+  StoreModule.forFeature(adminSettingsPageMenuStateKey, adminSettingsPageMenuReducer),
 ]
 
 @NgModule({

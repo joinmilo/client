@@ -8,7 +8,7 @@
       </app-media-avatar>
       <button mat-stroked-button color="primary" (click)="showAllFriends()">
         <span>
-          <app-icon [icon]="['fas', 'users']"></app-icon>
+          <cin-icon [icon]="['fas', 'users']"></cin-icon>
           <span appLabel="showAllFriends"></span>
         </span>
       </button>
@@ -17,13 +17,13 @@
       <button mat-flat-button color="primary" *ngIf="(currentUser | async)?.id"
         (click)="inviteFriends()">
         <span>
-          <app-icon [icon]="['fas', 'user-plus']"></app-icon>
+          <cin-icon [icon]="['fas', 'user-plus']"></cin-icon>
           <span appLabel="inviteFriends"></span>
         </span>
       </button>
       <button mat-flat-button color="primary" *ngIf="!((currentUser | async)?.id)" (click)="requireLogin()">
         <span>
-          <app-icon [icon]="['fas', 'user-plus']"></app-icon>
+          <cin-icon [icon]="['fas', 'user-plus']"></cin-icon>
           <span appLabel="inviteFriends"></span>
         </span>
       </button>

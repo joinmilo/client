@@ -28,7 +28,7 @@
       <app-header-notification *ngIf="currentUser?.id" [@fadeIn]></app-header-notification>
 
       <button mat-icon-button [matMenuTriggerFor]="userMenu" [@fadeIn]>
-        <app-icon *ngIf="!currentUser?.id" [icon]="['far', 'circle-user']"></app-icon>
+        <cin-icon *ngIf="!currentUser?.id" [icon]="['far', 'circle-user']"></cin-icon>
         <app-media-avatar *ngIf="currentUser?.id" [user]="currentUser"></app-media-avatar>
         
       </button>
@@ -36,7 +36,7 @@
         <ng-container *ngIf="currentUser?.user?.roles?.length">
           <button mat-menu-item [routerLink]="['/', adminUrl]">
             <div class="admin-button">
-              <app-icon [icon]="['fas', 'gauge']"></app-icon>
+              <cin-icon [icon]="['fas', 'gauge']"></cin-icon>
               <span appLabel="toAdminArea"></span>
             </div>
           </button>

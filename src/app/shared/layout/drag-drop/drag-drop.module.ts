@@ -3,8 +3,8 @@ import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icon/icon.component';
 import { DragDropComponent } from './components/drag-drop.component';
 import { DragDropElementComponent } from './components/element/drag-drop-element.component';
 import { DragDropDirective } from './directive/drag-drop.directive';
@@ -32,8 +32,11 @@ const materials = [
 const modules = [
   CoreModule,
   CommonModule,
-  IconComponent,
 ];
+
+const libs = [
+  IconComponent,
+]
 
 @NgModule({
   declarations: [
@@ -44,6 +47,7 @@ const modules = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [
     ...components,

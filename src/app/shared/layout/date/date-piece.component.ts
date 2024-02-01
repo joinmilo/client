@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icon/icon.component';
 
 @Component({
   selector: 'app-date-piece',

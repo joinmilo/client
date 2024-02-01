@@ -1,6 +1,4 @@
-import { BrandIcon } from 'src/app/shared/widgets/icon/typings/brand-icons';
-import { RegularIcon } from 'src/app/shared/widgets/icon/typings/regular-icons';
-import { SolidIcon } from 'src/app/shared/widgets/icon/typings/solid-icons';
+import { BrandIcon, RegularIcon, SolidIcon } from 'ngx-cinlib/icons';
 
 export interface RadioButtonInput<T = unknown> {
   icon?: SolidIcon | RegularIcon | BrandIcon;

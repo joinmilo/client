@@ -4,14 +4,14 @@
   [class.disabled]="disabled">
   <button mat-icon-button
     (click)="back.emit()">
-    <app-icon [icon]="['fas', 'arrow-left']"></app-icon>
+    <cin-icon [icon]="['fas', 'arrow-left']"></cin-icon>
   </button>
   <input type="file"
     multiple
     [disabled]="disabled"
     (change)="onFileBrowse($event)" />
   <section>
-    <app-icon [icon]="['fas', 'upload']" [size]="'3x'"></app-icon>
+    <cin-icon [icon]="['fas', 'upload']" [size]="'3x'"></cin-icon>
     <span appLabel="dragAndDropHere"></span>
   </section>
   <span appLabel="or"></span>

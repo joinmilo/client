@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SolidIconsType } from 'ngx-cinlib/icons';
 import { Observable, map, of } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { GetMenuGQL } from 'src/app/portal/api/generated/get-menu.query.generated';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
-import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 
 @Component({

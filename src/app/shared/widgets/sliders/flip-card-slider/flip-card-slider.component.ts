@@ -7,7 +7,6 @@ import { CardModule } from '../../card/card.module';
 import { FlipCardOutput } from '../../card/typings/card';
 import { FlipCardSliderInput, FlipCardSliderOutput } from './typings/flip-card-slider';
 
-
 @Component({
   selector: 'app-flip-card-slider',
   templateUrl: './flip-card-slider.component.html',

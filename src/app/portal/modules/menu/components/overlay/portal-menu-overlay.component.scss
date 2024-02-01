@@ -7,7 +7,7 @@
   width: 20rem;
 }
 
-app-icon {
+cin-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,16 +33,16 @@ app-icon {
     gap: .25rem;
   }
 
-  app-icon:first-of-type {
+  cin-icon:first-of-type {
     width: 1.5rem;
   }
 
-  app-icon:last-of-type {
+  cin-icon:last-of-type {
     color: transparent;
     transform: translateX(-.5rem);
   }
 
-  &:hover app-icon:last-of-type {
+  &:hover cin-icon:last-of-type {
     color: inherit;
     transform: translateX(0rem);
     transition: color 0.4s, transform 0.4s;

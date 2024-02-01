@@ -12,12 +12,12 @@
       height: 100% !important;
       transition: ease-out .4s;
 
-      app-icon {
+      cin-icon {
         color: var(--color-gray);
       }
 
       &:hover {
-        app-icon {
+        cin-icon {
           color: var(--color-dark-gray);
           transform: scale(1.2);
         }

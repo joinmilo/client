@@ -1,10 +1,10 @@
 import { Component, EventEmitter, OnDestroy, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
+import { SolidIconsType } from 'ngx-cinlib/icons';
 import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 @Component({
   selector: 'app-admin-settings-page-menu-form',

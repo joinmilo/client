@@ -3,12 +3,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { DateRangeFilterComponent } from 'ngx-cinlib/filters/date-range';
 import { IntervalFilterComponent } from 'ngx-cinlib/filters/interval';
+import { RegularIconsType } from 'ngx-cinlib/icons';
 import { AnalyticsDto, IntervalFilter, Maybe } from 'src/app/core/api/generated/schema';
 import { visitorsKey, visitsKey } from 'src/app/core/constants/analytics.constant';
 import { CoreModule } from 'src/app/core/core.module';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { Period } from 'src/app/core/typings/period';
-import { RegularIconsType } from 'src/app/shared/widgets/icon/typings/regular-icons';
 import { ChartModule } from '../../../chart/chart.module';
 import { AnalyticsParams } from '../../typings/analytics';
 

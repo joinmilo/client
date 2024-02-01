@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
-import { IconComponent } from '../icon/icon.component';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CalendarHeaderComponent } from './components/header/calendar-header.component';
 
@@ -27,7 +27,7 @@ const materials = [
   MatNativeDateModule,
 ];
 
-const modules = [
+const libs = [
   IconComponent,
 ];
 
@@ -36,7 +36,7 @@ const modules = [
   imports: [
     ...framework,
     ...materials,
-    ...modules,
+    ...libs,
   ],
   exports: [...components],
 })

@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
@@ -17,7 +18,6 @@ import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { ChartModule } from '../chart/chart.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
-import { IconComponent } from '../icon/icon.component';
 import { ShareModule } from '../share/share.module';
 import { CardActionsComponent } from './components/actions/card-actions.component';
 import { ContactCardComponent } from './components/contact/contact-card.component';
@@ -57,19 +57,24 @@ const modules = [
   CoreModule,
   DatePieceComponent,
   FavoriteComponent,
-  IconComponent,
   MailPieceComponent,
   MediaWidgetsModule,
   PhonePieceComponent,
   TitleModule,
   ChartModule
 ];
+
+const libs = [
+  IconComponent,
+];
+
 @NgModule({
   declarations: [...components],
   imports: [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [...components],
 })

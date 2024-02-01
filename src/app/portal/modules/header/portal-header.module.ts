@@ -5,13 +5,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { HeaderBackComponent } from 'src/app/shared/layout/header/back/header-back.component';
 import { HeaderLanguageComponent } from 'src/app/shared/layout/header/language/header-language.component';
 import { HeaderNotificationComponent } from 'src/app/shared/layout/header/notification/header-notification.component';
 import { HeaderUserComponent } from 'src/app/shared/layout/header/user/header-user.component';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { PortalSearchModule } from '../../../shared/pages/search/search.module';
 import { PortalMenuModule } from '../menu/portal-menu.module';
 import { PortalHeaderDesktopComponent } from './components/desktop/portal-header-desktop.component';
@@ -42,10 +42,13 @@ const modules = [
   HeaderLanguageComponent,
   HeaderNotificationComponent,
   HeaderUserComponent,
-  IconComponent,
   MediaWidgetsModule,
   PortalMenuModule,
   PortalSearchModule,
+];
+
+const libs = [
+  IconComponent,
 ];
 
 @NgModule({
@@ -56,6 +59,7 @@ const modules = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [
     ...components,

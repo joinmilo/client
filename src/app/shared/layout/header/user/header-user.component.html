@@ -1,30 +1,30 @@
 <button mat-menu-item (click)="route('favorites')">
   <section>
-    <app-icon [icon]="['far', 'heart']"></app-icon>
+    <cin-icon [icon]="['far', 'heart']"></cin-icon>
     <span appLabel="favorites"></span>
   </section>
 </button>
 <button mat-menu-item (click)="route('friends')">
   <section>
-    <app-icon [icon]="['fas', 'users']"></app-icon>
+    <cin-icon [icon]="['fas', 'users']"></cin-icon>
     <span appLabel="friends"></span>
   </section>
 </button>
 <button mat-menu-item (click)="route('settings')">
   <section>
-    <app-icon [icon]="['fas', 'gear']"></app-icon>
+    <cin-icon [icon]="['fas', 'gear']"></cin-icon>
     <span appLabel="settings"></span>
   </section>
 </button>
 <button mat-menu-item (click)="route('participate')">
   <section>
-    <app-icon [icon]="['fas', 'pen']"></app-icon>
+    <cin-icon [icon]="['fas', 'pen']"></cin-icon>
     <span appLabel="participate"></span>
   </section>
 </button>
 <button mat-menu-item (click)="logout()" *ngIf="isAuthenticated">
   <section>
-    <app-icon [icon]="['fas', 'right-from-bracket']"></app-icon>
+    <cin-icon [icon]="['fas', 'right-from-bracket']"></cin-icon>
     <span appLabel="logout"></span>
   </section>
 </button>

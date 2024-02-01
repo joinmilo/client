@@ -12,6 +12,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalFooterModule } from '../portal/modules/footer/portal-footer.module';
 import { AddressFormModule } from '../shared/form/address/address-form.module';
@@ -22,7 +23,6 @@ import { LoadingComponent } from '../shared/layout/loading/loading.component';
 import { TitleModule } from '../shared/layout/title/title.module';
 import { MediaFormModule } from '../shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from '../shared/media/modules/widgets/media-widgets.module';
-import { IconComponent } from '../shared/widgets/icon/icon.component';
 import { UserPortalRoutingModule } from './account-routing.module';
 import { FirstLoginFormComponent } from './components/first-login-form/first-login-form.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
@@ -73,7 +73,6 @@ const modules = [
   AddressFormModule,
   CaptchaModule,
   CoreModule,
-  IconComponent,
   LoadingComponent,
   MediaFormModule,
   MediaWidgetsModule,
@@ -85,6 +84,7 @@ const modules = [
 ];
 
 const libs = [
+  IconComponent,
   StoreModule.forFeature(accountFeatureKey, accountReducer),
   EffectsModule.forFeature([AccountEffects]),
 ]

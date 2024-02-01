@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
@@ -24,7 +25,6 @@ import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-w
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
@@ -87,7 +87,6 @@ const modules = [
   CommentModule,
   CardModule,
   FavoriteComponent,
-  IconComponent,
   MailPieceComponent,
   MediaWidgetsModule,
   PhonePieceComponent,
@@ -101,6 +100,7 @@ const modules = [
 ];
 
 const libs = [
+  IconComponent,
   StoreModule.forFeature(portalEventDetailsStateKey, portalEventDetailsReducer),
   EffectsModule.forFeature([PortalEventDetailsEffects]),
 ]

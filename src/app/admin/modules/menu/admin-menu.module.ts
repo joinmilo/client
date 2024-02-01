@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { AdminMenuAccordionComponent } from './components/accordion/admin-menu-accordion.component';
 import { AdminMenuComponent } from './components/admin-menu.component';
 import { AdminMenuOverlayComponent } from './components/overlay/admin-menu-overlay.component';
@@ -30,12 +30,15 @@ const materials = [
 
 const modules = [
   CoreModule,
+];
+
+const libs = [
   IconComponent,
 ];
 
 const providers = [
   AdminMenuService,
-]
+];
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ const providers = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [
     ...components,

@@ -7,13 +7,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
 import { EventFilterModule } from 'src/app/shared/filter/event/event-filter.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalMapOverviewFilterComponent } from './components/filter/portal-map-overview-filter.component';
@@ -52,13 +52,16 @@ const modules = [
   CoreModule,
   DealFilterModule,
   EventFilterModule,
-  IconComponent,
   MapModule,
   OrganisationFilterModule,
   PortalMapOverviewRoutingModule,
   RadioButtonFormModule,
   TableModule,
-]
+];
+
+const libs = [
+  IconComponent,
+];
 
 @NgModule({
   declarations: [
@@ -69,6 +72,7 @@ const modules = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [
     ...components

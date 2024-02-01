@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
@@ -21,7 +22,6 @@ import { CategoryPieceComponent } from '../../layout/category/category-piece.com
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { MediaFormModule } from '../../media/modules/form/media-form.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
-import { IconComponent } from '../icon/icon.component';
 import { TableActionsComponent } from './components/actions/table-actions.component';
 import { TableCardComponent } from './components/card/table-card.component';
 import { TableCellAddressComponent } from './components/cells/table-cell-address.component';
@@ -98,13 +98,14 @@ const modules = [
   CategoryPieceComponent,
   CoreModule,
   FavoriteComponent,
-  IconComponent,
   MediaFormModule,
   ShareModule,
   DatePieceComponent
 ];
 
 const libs = [
+  IconComponent,
+
   StoreModule.forFeature(tableStateKey, tableReducer),
   EffectsModule.forFeature([TableEffects]),
 ];

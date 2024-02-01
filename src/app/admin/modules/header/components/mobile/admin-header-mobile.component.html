@@ -1,7 +1,7 @@
 <app-header-back></app-header-back>
 
 <button mat-icon-button (click)="openMenu()">
-  <app-icon [icon]="['fas', 'bars']"></app-icon>
+  <cin-icon [icon]="['fas', 'bars']"></cin-icon>
 </button>
 
 <app-header-notification></app-header-notification>
@@ -13,7 +13,7 @@
   <ng-container>
     <button mat-menu-item [routerLink]="['/']">
       <div class="portal-button">
-        <app-icon [icon]="['fas', 'globe']"></app-icon>
+        <cin-icon [icon]="['fas', 'globe']"></cin-icon>
         <span appLabel="toPortal"></span>
       </div>
     </button>

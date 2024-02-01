@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
+import { RegularIcon, SolidIcon } from 'ngx-cinlib/icons';
 import { Subject } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { RegularIcon } from 'src/app/shared/widgets/icon/typings/regular-icons';
-import { SolidIcon } from 'src/app/shared/widgets/icon/typings/solid-icons';
 
 @Component({
   selector: 'app-rating-input',

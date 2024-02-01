@@ -6,12 +6,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, NotificationEntity } from 'src/app/core/api/generated/schema';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { CoreModule } from 'src/app/core/core.module';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 
 @Component({
   selector: 'app-header-notification',

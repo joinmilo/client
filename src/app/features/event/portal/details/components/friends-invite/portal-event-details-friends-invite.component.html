@@ -4,11 +4,11 @@
     <mat-label appLabel="search"></mat-label>
     <input matInput type="text" [(ngModel)]="value" (input)="filterFriends(value)">
     <button *ngIf="!value" matSuffix mat-icon-button>
-      <app-icon [icon]="['fas', 'magnifying-glass']"></app-icon>
+      <cin-icon [icon]="['fas', 'magnifying-glass']"></cin-icon>
     </button>
     <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''"
       (click)="filterFriends(value)">
-      <app-icon [icon]="['fas', 'xmark']"></app-icon>
+      <cin-icon [icon]="['fas', 'xmark']"></cin-icon>
     </button>
   </mat-form-field>
   <div>

@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { PasswordModule } from 'src/app/shared/form/password/password.module';
@@ -21,7 +22,6 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { UserLayoutComponent } from './components/layout/user-layout.component';
 import { UserChangePasswordComponent } from './components/profile-data/change-password/user-change-password.component';
 import { UserDeleteAccountConfirmationComponent } from './components/profile-data/delete-account/delete-account-confirmation/user-delete-account-confirmation.component';
@@ -34,7 +34,6 @@ import { UserSettingsMenuComponent } from './menu/settings-menu/user-settings-me
 import { UserSettingsEffects } from './state/user-settings.effects';
 import { portalSettingsReducer } from './state/user-settings.reducer';
 import { UserSettingsRoutingModule } from './user-settings-routing.module';
-
 
 const components = [
   UserChangePasswordComponent,
@@ -66,7 +65,7 @@ const materials = [
 ];
 
 const routes = [
-  UserSettingsRoutingModule, //TODO: always last entry duet to order and redirect to 404, Remove 404 and put in AppRouter
+  UserSettingsRoutingModule,
 ];
 
 const modules = [
@@ -75,7 +74,6 @@ const modules = [
   CoreModule,
   FormStepperModule,
   GridLayoutModule,
-  IconComponent,
   MediaFormModule,
   MediaWidgetsModule,
   PasswordModule,
@@ -83,6 +81,8 @@ const modules = [
 ];
 
 const libs = [
+  IconComponent,
+
   StoreModule.forFeature(userSettingsStateKey, portalSettingsReducer),
   EffectsModule.forFeature([UserSettingsEffects]),
 ];

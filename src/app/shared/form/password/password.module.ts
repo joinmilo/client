@@ -7,8 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../widgets/icon/icon.component';
 import { PasswordConfirmComponent } from './components/confirm/password-confirm.component';
 import { PasswordFormComponent } from './components/field/password-field.component';
 import { PasswordStrengthComponent } from './components/strength/password-strength.component';
@@ -39,10 +39,10 @@ const materials = [
 
 const modules = [
   CoreModule,
-  IconComponent,
 ];
 
 const libs = [
+  IconComponent,
   StoreModule.forFeature(passwordStateKey, passwordReducer),
 ]
 

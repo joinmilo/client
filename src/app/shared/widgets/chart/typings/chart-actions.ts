@@ -1,4 +1,4 @@
-import { RegularIconsType } from 'src/app/shared/widgets/icon/typings/regular-icons';
+import { RegularIconsType } from 'ngx-cinlib/icons';
 export type ChartAction = {
   label: string,
   icon: RegularIconsType,

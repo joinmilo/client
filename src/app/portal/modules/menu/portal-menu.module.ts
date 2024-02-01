@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { PortalMenuAccordionComponent } from './components/accordion/portal-menu-accordion.component';
 import { PortalMenuOverlayComponent } from './components/overlay/portal-menu-overlay.component';
 
@@ -25,8 +25,11 @@ const materials = [
 
 const modules = [
   CoreModule,
-  IconComponent,
 ];
+
+const libs = [
+  IconComponent,
+]
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ const modules = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [
     ...components,

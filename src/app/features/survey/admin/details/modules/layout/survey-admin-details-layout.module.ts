@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { RadioCardFormModule } from 'src/app/shared/form/radio-card/radio-card-form.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
@@ -13,7 +14,6 @@ import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.com
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { SurveyAdminDetailsLayoutComponent } from './components/survey-admin-details-layout.component';
 import { surveyAdminDetailsLayoutStateKey } from './constants/survey-admin-details-layout.constants';
@@ -38,7 +38,6 @@ const modules = [
   AddressPieceComponent,
   CalendarModule,
   CoreModule,
-  IconComponent,
   MailPieceComponent,
   MediaWidgetsModule,
   PhonePieceComponent,
@@ -48,6 +47,8 @@ const modules = [
 ];
 
 const libs = [
+  IconComponent,
+  
   StoreModule.forFeature(surveyAdminDetailsLayoutStateKey, surveyAdminDetailsLayoutReducer),
   EffectsModule.forFeature([SurveyAdminDetailsLayoutEffects]),
 ];

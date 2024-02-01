@@ -1,7 +1,7 @@
 <div>
 
   <span>
-    <app-icon id="user-group" [icon]="['fas', 'user-group']"></app-icon>
+    <cin-icon id="user-group" [icon]="['fas', 'user-group']"></cin-icon>
     {{ approvedAttendees?.length ?? 0 }}
     {{ maxAttendees ? '/ ' + maxAttendees: '' }}
   </span>
@@ -17,7 +17,7 @@
 
     <button mat-flat-button color="primary" (click)="cancel()">
       <span>
-        <app-icon [icon]="['fas', 'right-from-bracket']"></app-icon>
+        <cin-icon [icon]="['fas', 'right-from-bracket']"></cin-icon>
         <span appLabel="deRegister"></span>
       </span>
     </button>
@@ -29,7 +29,7 @@
         else fullyBooked"
       mat-flat-button color="primary" (click)="attend()">
       <span>
-        <app-icon [icon]="['fas', 'right-from-bracket']"></app-icon>
+        <cin-icon [icon]="['fas', 'right-from-bracket']"></cin-icon>
         <span appLabel="attend"></span>
       </span>
     </button>

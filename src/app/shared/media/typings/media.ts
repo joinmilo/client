@@ -22,7 +22,6 @@ export type AttributionDirection = 'TOP-LEFT'
   | 'BOTTOM-RIGHT'
   | 'BOTTOM-LEFT';
 
-
 export type MediaFormMode = 'UPLOAD'
   | 'URL';
 

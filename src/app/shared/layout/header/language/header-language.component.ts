@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Store } from '@ngrx/store';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { LanguageEntity } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
 
 @Component({
   selector: 'app-header-language',

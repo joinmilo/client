@@ -27,12 +27,12 @@
         <button class="subItem"
           mat-menu-item
           (click)="route(subItem)">
-          <app-icon [icon]="['fas', icon(subItem?.icon)]"></app-icon>
+          <cin-icon [icon]="['fas', icon(subItem?.icon)]"></cin-icon>
           <section>
             <span>{{ subItem | translatable: 'name' | async }}</span>
             <small>{{ subItem | translatable: 'shortDescription' | async }}</small>
           </section>
-          <app-icon [icon]="['fas', 'arrow-right']"></app-icon>
+          <cin-icon [icon]="['fas', 'arrow-right']"></cin-icon>
         </button>
       </ng-template>
     </ng-container>

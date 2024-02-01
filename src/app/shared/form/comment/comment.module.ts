@@ -7,11 +7,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from '../../../core/core.module';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
-import { IconComponent } from '../../widgets/icon/icon.component';
 import { CaptchaModule } from '../captcha/captcha.module';
 import { CommentDialogComponent } from './components/dialog/comment-dialog.component';
 import { CommentEntryComponent } from './components/entry/comment-entry.component';
@@ -43,9 +43,12 @@ const modules = [
   CaptchaModule,
   CoreModule,
   DatePieceComponent,
-  IconComponent,
   MediaWidgetsModule,
   TitleModule,
+];
+
+const libs = [
+  IconComponent,
 ];
 
 @NgModule({
@@ -54,6 +57,7 @@ const modules = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [...components],
 })

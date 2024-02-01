@@ -1,7 +1,7 @@
+import { SolidIconsType } from 'ngx-cinlib/icons';
 import { AddressEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { Category } from 'src/app/core/typings/category';
 import { Translatable } from 'src/app/core/typings/translatable';
-import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 export type CardActionInput = {
   label: string,
   icon: SolidIconsType,

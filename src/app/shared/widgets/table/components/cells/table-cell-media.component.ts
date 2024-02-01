@@ -15,7 +15,7 @@ import { TableCellComponent } from '../../typings/cell';
     <button *ngIf="editMode; else displayTemplate"
       mat-button
       (click)="openForm()">
-        <app-icon [icon]="['fas', 'upload']"></app-icon>
+        <cin-icon [icon]="['fas', 'upload']"></cin-icon>
     </button>
 
     <!-- DISPLAY AREA -->
@@ -23,7 +23,7 @@ import { TableCellComponent } from '../../typings/cell';
       <button *ngIf="input"
         mat-button
         (click)="openViewer()">
-          <app-icon [icon]="['fas', 'image']"></app-icon>
+          <cin-icon [icon]="['fas', 'image']"></cin-icon>
       </button>
 
       <span *ngIf="!input">{{ ' - ' }}</span>

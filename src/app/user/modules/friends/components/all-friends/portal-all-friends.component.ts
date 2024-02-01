@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SolidIconsType } from 'ngx-cinlib/icons';
 import { Subject, map, takeUntil } from 'rxjs';
 import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectAcceptedFriendUsers, selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
-import { SolidIconsType } from 'src/app/shared/widgets/icon/typings/solid-icons';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
 
 @Component({

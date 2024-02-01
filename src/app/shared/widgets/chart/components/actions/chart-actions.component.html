@@ -2,21 +2,21 @@
   <button mat-button
     (click)="actions![0].clicked()"
     [appTooltip]="actions![0].label">
-    <app-icon [icon]="['far', actions![0].icon]" [size]="'xl'"></app-icon>
+    <cin-icon [icon]="['far', actions![0].icon]" [size]="'xl'"></cin-icon>
   </button>
 </ng-container>
 
 <ng-template #menuActions>
   <button mat-button
     [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
-    <app-icon [icon]="['fas', 'ellipsis-vertical']" [size]="'xl'"></app-icon>
+    <cin-icon [icon]="['fas', 'ellipsis-vertical']" [size]="'xl'"></cin-icon>
   </button>
 
   <mat-menu #menu="matMenu">
     <ng-container *ngFor="let action of actions">
       <button mat-menu-item (click)="action.clicked()">
         <div class="action-button">
-          <app-icon [icon]="['far', action.icon]" [size]="'xl'"></app-icon>
+          <cin-icon [icon]="['far', action.icon]" [size]="'xl'"></cin-icon>
           <span [appLabel]="action.label"></span>
         </div>
       </button>
