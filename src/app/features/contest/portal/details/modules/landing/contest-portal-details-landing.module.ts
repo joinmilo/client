@@ -13,7 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { ConfirmChangeComponent } from 'src/app/shared/dialogs/confirm-change/confirm-change.component';
+import { ConfirmComponent } from 'src/app/shared/confirm/component/confirm.component';
 import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
@@ -73,7 +73,7 @@ const modules = [
   CardModule,
   CkEditorFormComponent,
   CommentModule,
-  ConfirmChangeComponent,
+  ConfirmComponent,
   ContestPortalDetailsLandingRoutingModule,
   CoreModule,
   DatePieceComponent,

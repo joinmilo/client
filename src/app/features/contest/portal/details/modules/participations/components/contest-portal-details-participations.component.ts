@@ -5,28 +5,28 @@ import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
 import { Subject, switchMap, take, takeUntil, tap } from 'rxjs';
 import {
-  ContestEntity,
-  ContestParticipationEntity,
-  UserContextEntity,
+    ContestEntity,
+    ContestParticipationEntity,
+    UserContextEntity,
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import {
-  selectCurrentUser,
-  selectIsAuthenticated,
+    selectCurrentUser,
+    selectIsAuthenticated,
 } from 'src/app/core/state/selectors/user.selectors';
 import { selectParams } from 'src/app/shared/widgets/table/state/table.selectors';
 import {
-  SortOption,
-  SortPaginate,
+    SortOption,
+    SortPaginate,
 } from 'src/app/shared/widgets/table/typings/table';
 import { ActionInfo } from '../../../typings/actionInfo';
 import { ContestPortalDetailsLandingActions } from '../../landing/state/portal-contest-details-landing.actions';
 import { selectContestDetails } from '../../landing/state/portal-contest-details-landing.selectors';
 import { ContestPortalDetailsParticipationsActions } from '../state/contest-portal-details-participations.actions';
 import {
-  selectContestParticipations,
-  selectParticipationsTotal,
+    selectContestParticipations,
+    selectParticipationsTotal,
 } from '../state/contest-portal-details-participations.selectors';
 
 @Component({

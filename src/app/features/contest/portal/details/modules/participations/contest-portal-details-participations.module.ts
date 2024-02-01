@@ -10,7 +10,7 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { TextElementComponent } from 'src/app/shared/widgets/text/element/text-element.component';
-import { ContestPortalDetailsParticipationsCardComponent } from './components/card/contest-portal-details-participations-card.component';
+import { ContestPortalDetailsParticipationsCardComponent } from '../../card/contest-portal-details-participations-card.component';
 import { ContestPortalDetailsParticipationsComponent } from './components/contest-portal-details-participations.component';
 import { contestPortalDetailsParticipationsStateKey } from './constants/contest-portal-details-participations.constants';
 import { ContestPortalDetailsParticipationsEffects } from './state/contest-portal-details-participations.effects';

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
@@ -105,7 +104,6 @@ export class ContestPortalDetailsParticipationsEffects {
   constructor(
     private actions: Actions,
     private confirmDialogService: ConfirmService,
-    private dialog: MatDialog,
     private getContestParticipationsService: GetContestParticipationsGQL,
     private saveContestVoteService: SaveContestVoteGQL,
     private store: Store
