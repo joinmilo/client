@@ -10,7 +10,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { ReportEmbeddingComponent } from './component/report-embedding.component';
 import { reportEmbeddingStateKey } from './constants/report-embedding.constant';
 import { ReportEmbeddingEffects } from './state/report-embedding.effects';
@@ -35,11 +34,10 @@ const materials = [
 
 const modules = [
   CoreModule,
-  CaptchaModule,
-  RadioButtonFormModule,
 ];
 
 const libs = [
+  CaptchaModule,
   StoreModule.forFeature(reportEmbeddingStateKey, reportEmbeddingReducer),
   EffectsModule.forFeature([ReportEmbeddingEffects]),
 ]

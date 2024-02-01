@@ -11,10 +11,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DatetimeFormComponent } from 'ngx-cinlib/forms/datetime';
+import { RadioButtonComponent } from 'ngx-cinlib/forms/radio-button';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { GridLayoutModule } from '../../layout/grid-layout/grid-layout.module';
-import { RadioButtonFormModule } from '../radio-button/radio-button-form.module';
 import { SchedulerDatetimeComponent } from './components/datetime/scheduler-datetime.component';
 import { SchedulerErrorsComponent } from './components/errors/scheduler-errors.component';
 import { SchedulerExecuteComponent } from './components/execute/scheduler-execute.component';
@@ -58,17 +58,14 @@ const materials = [
 const modules = [
   CoreModule,
   GridLayoutModule,
-  RadioButtonFormModule,
-
 ];
 
 const libs = [
   IconComponent,
-  
+  DatetimeFormComponent,
   StoreModule.forFeature(schedulerStateKey, schedulerReducer),
   EffectsModule.forFeature([SchedulerEffects]),
-
-  DatetimeFormComponent,
+  RadioButtonComponent,
 ];
 
 @NgModule({

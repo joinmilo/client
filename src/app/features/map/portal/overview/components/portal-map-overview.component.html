@@ -22,12 +22,12 @@
       <cin-icon [icon]="['fas', drawer.opened ? 'angle-left' : 'angle-right']"></cin-icon>
     </button>
 
-    <app-radio-button-group
+    <cin-radio-button-group
       [inputs]="inputs"
       [value]="entityType | async"
       [queryParamKey]="entityQueryParam"
       (valueChanged)="updateEntityFilter($event)">
-    </app-radio-button-group>
+    </cin-radio-button-group>
 
     <app-map-attribution></app-map-attribution>
   </div>

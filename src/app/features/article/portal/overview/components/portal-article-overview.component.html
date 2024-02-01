@@ -13,12 +13,12 @@
 
   <app-article-filter 
     (paramsUpdated)="updateParams($event)">
-    <app-radio-button-group
+    <cin-radio-button-group
       [inputs]="inputs"
       [value]="displayType"
       [queryParamKey]="displayQueryParam"
       (valueChanged)="displayType = $event">
-    </app-radio-button-group>
+    </cin-radio-button-group>
   </app-article-filter>
 
   <ng-container *ngIf="(articles | async)?.total; else emptyResult">

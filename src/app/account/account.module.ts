@@ -71,7 +71,6 @@ const materials = [
 
 const modules = [
   AddressFormModule,
-  CaptchaModule,
   CoreModule,
   LoadingComponent,
   MediaFormModule,
@@ -84,6 +83,7 @@ const modules = [
 ];
 
 const libs = [
+  CaptchaModule,
   IconComponent,
   StoreModule.forFeature(accountFeatureKey, accountReducer),
   EffectsModule.forFeature([AccountEffects]),

@@ -7,8 +7,8 @@ import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Subject, takeUntil } from 'rxjs';
-import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalArticleOverviewActions } from '../state/portal-article-overview.actions';
 import { selectOverviewData, selectSponsoredArticle } from '../state/portal-article-overview.selectors';
 

@@ -2,11 +2,11 @@
   <app-page-title titleLabel="media"></app-page-title>
 
   <section>
-    <app-radio-button-group
+    <cin-radio-button-group
       [inputs]="inputs"
       [value]="fileType"
       (valueChanged)="fileType = $event">
-    </app-radio-button-group>
+    </cin-radio-button-group>
     <button mat-raised-button (click)="routeBack()">
       <span>
         <cin-icon [icon]="['fas', 'arrow-left']" [size]="'xs'"></cin-icon>

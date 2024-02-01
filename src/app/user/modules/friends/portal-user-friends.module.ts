@@ -9,9 +9,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
@@ -54,7 +54,6 @@ const modules = [
   IconComponent,
   MediaWidgetsModule,
   PortalUserFriendsRoutingModule,
-  RadioButtonFormModule,
   TableModule,
   TitleModule, 
 ];
@@ -62,6 +61,7 @@ const modules = [
 const libs = [
   StoreModule.forFeature(portalFriendsStateKey, portalFriendsReducer),
   EffectsModule.forFeature([PortalFriendsEffects]),
+  RadioButtonGroupComponent
 ];
 
 @NgModule({
@@ -70,7 +70,10 @@ const libs = [
     ...framework, 
     ...materials, 
     ...modules, 
-    ...libs],
-  exports: [...components],
+    ...libs
+  ],
+  exports: [
+    ...components
+  ],
 })
 export class PortalFriendsModule {}

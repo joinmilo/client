@@ -7,9 +7,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
+import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from '../../../form/radio-button/radio-button-form.module';
 import { TitleModule } from '../../../layout/title/title.module';
 import { SliderHeaderComponent } from '../../../widgets/sliders/slider-header/slider-header.component';
 import { SliderComponent } from '../../../widgets/sliders/slider/slider.component';
@@ -63,7 +63,6 @@ const materials = [
 const modules = [
   CoreModule,
   SliderComponent,
-  RadioButtonFormModule,
   SliderHeaderComponent,
   TitleModule,
 ];
@@ -74,6 +73,7 @@ const providers = [
 
 const libs = [
   IconComponent,
+  RadioButtonGroupComponent,
 ];
 
 @NgModule({

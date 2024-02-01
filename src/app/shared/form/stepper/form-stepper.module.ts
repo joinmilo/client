@@ -12,7 +12,7 @@ import { FormStepComponent } from './components/step/form-step.component';
 import { FormStepperComponent } from './components/stepper/form-stepper.component';
 import { formStepperStateKey } from './constants/form-stepper.constants';
 import { formStepperReducer } from './state/form-stepper.reducer';
-;
+
 
 const components = [
   FormStepperComponent,
@@ -31,11 +31,11 @@ const materials = [
 ];
 
 const modules = [
-  CaptchaModule,
   CoreModule,
 ];
 
 const libs = [
+  CaptchaModule,
   IconComponent,
   StoreModule.forFeature(formStepperStateKey, formStepperReducer),
 ];

@@ -14,12 +14,12 @@
 
   <app-deal-filter 
     (paramsUpdated)="updateParams($event)">
-    <app-radio-button-group
+    <cin-radio-button-group
       [inputs]="inputs"
       [value]="displayType"
       [queryParamKey]="displayQueryParam"
       (valueChanged)="displayType = $event">
-    </app-radio-button-group>
+    </cin-radio-button-group>
   </app-deal-filter>
 
   <ng-container *ngIf="(deals | async)?.total; else emptyResult">

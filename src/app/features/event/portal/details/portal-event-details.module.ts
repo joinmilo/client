@@ -14,7 +14,6 @@ import { StoreModule } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
@@ -92,7 +91,6 @@ const modules = [
   PhonePieceComponent,
   PortalEventDetailsRoutingModule,
   PriceComponent,
-  RadioButtonFormModule,
   RatingModule,
   ShareModule,
   TableModule,

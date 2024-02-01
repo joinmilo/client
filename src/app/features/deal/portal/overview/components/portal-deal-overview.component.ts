@@ -1,12 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { dealsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
-import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalDealOverviewActions } from '../state/portal-deal-overview.actions';
 import { selectOverviewData, selectSponsoredDeal } from '../state/portal-deal-overview.selectors';
 

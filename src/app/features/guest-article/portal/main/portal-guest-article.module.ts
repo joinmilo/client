@@ -47,7 +47,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  CaptchaModule,
   FormStepperModule,
   GridLayoutModule,
   MediaWidgetsModule,
@@ -56,6 +55,7 @@ const modules = [
 ];
 
 const libs = [
+  CaptchaModule,
   IconComponent,
   StoreModule.forFeature(portalGuestArticleStateKey, portalGuestArticleReducer),
   EffectsModule.forFeature([PortalGuestArticleEffects]),

@@ -1,18 +1,18 @@
 <div class="main">
   <app-page-title titleLabel="favorites"></app-page-title>
   
-  <app-radio-button-group 
+  <cin-radio-button-group 
     [inputs]="inputs" 
     [value]="displayType" 
     [queryParamKey]="displayQueryParam"
     (valueChanged)="displayType = $event">
-  </app-radio-button-group>
+  </cin-radio-button-group>
 
   <ng-container [ngSwitch]="displayType">  
-      <app-portal-favorite-events *ngSwitchCase="'events'"></app-portal-favorite-events>
-      <app-portal-favorite-deals *ngSwitchCase="'deals'"></app-portal-favorite-deals>
-      <app-portal-favorite-organisations *ngSwitchCase="'organisations'"></app-portal-favorite-organisations>
-      <app-portal-favorite-articles *ngSwitchCase="'articles'"></app-portal-favorite-articles>
-      <app-portal-favorite-authors *ngSwitchCase="'authors'"></app-portal-favorite-authors>
+    <app-portal-favorite-events *ngSwitchCase="'events'"></app-portal-favorite-events>
+    <app-portal-favorite-deals *ngSwitchCase="'deals'"></app-portal-favorite-deals>
+    <app-portal-favorite-organisations *ngSwitchCase="'organisations'"></app-portal-favorite-organisations>
+    <app-portal-favorite-articles *ngSwitchCase="'articles'"></app-portal-favorite-articles>
+    <app-portal-favorite-authors *ngSwitchCase="'authors'"></app-portal-favorite-authors>
   </ng-container>
 </div>

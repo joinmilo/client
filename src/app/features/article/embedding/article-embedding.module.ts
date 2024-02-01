@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { ArticleEmbeddingComponent } from './component/article-embedding.component';
 import { articleEmbeddingStateKey } from './constants/article-embedding.constants';
@@ -21,7 +20,6 @@ const framework = [
 const modules = [
   CoreModule,
   CardSliderComponent,
-  RadioButtonFormModule,
 ];
 
 const libs = [
@@ -36,6 +34,8 @@ const libs = [
     ...modules,
     ...libs,
   ],
-  exports: [...components],
+  exports: [
+    ...components
+  ],
 })
 export class ArticleEmbeddingModule { }

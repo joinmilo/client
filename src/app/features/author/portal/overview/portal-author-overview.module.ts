@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
@@ -24,7 +23,6 @@ const framework = [
 const modules = [
   CoreModule,
   CardModule,
-  RadioButtonFormModule,
   PortalAuthorOverviewRoutingModule,
   TableModule,
   TitleModule,

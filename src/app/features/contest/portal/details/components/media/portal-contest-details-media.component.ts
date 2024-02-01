@@ -5,15 +5,16 @@ import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Subject, takeUntil } from 'rxjs';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
-import { PortalDealDetailsActions } from '../../state/portal-deal-details.actions';
-import { selectDealMedia } from '../../state/portal-deal-details.selectors';
+import { PortalContestDetailsActions } from '../../state/portal-contest-details.actions';
+import { selectContestMedia } from '../../state/portal-contest-details.selectors';
+
 
 @Component({
-  selector: 'app-portal-deal-details-media',
-  templateUrl: './portal-deal-details-media.component.html',
-  styleUrls: ['./portal-deal-details-media.component.scss']
+  selector: 'app-portal-contest-details-media',
+  templateUrl: './portal-contest-details-media.component.html',
+  styleUrls: ['./portal-contest-details-media.component.scss']
 })
-export class PortalDealDetailsMediaComponent implements OnDestroy {
+export class PortalContestDetailsMediaComponent implements OnDestroy {
 
   public fileType = MediaDisplayType.Image;
 
@@ -37,7 +38,7 @@ export class PortalDealDetailsMediaComponent implements OnDestroy {
     }
   ];
 
-  public media = this.store.select(selectDealMedia);
+  public media = this.store.select(selectContestMedia);
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -46,7 +47,7 @@ export class PortalDealDetailsMediaComponent implements OnDestroy {
     this.activatedRoute.paramMap
       .pipe(takeUntil(this.destroy))
       .subscribe(params => this.store.dispatch(
-        PortalDealDetailsActions.getDetails(params.get(slug) || '')));
+        PortalContestDetailsActions.getDetails(params.get(slug) || '')));
   }
 
   public ngOnDestroy(): void {
@@ -55,5 +56,3 @@ export class PortalDealDetailsMediaComponent implements OnDestroy {
   }
 
 }
-
-

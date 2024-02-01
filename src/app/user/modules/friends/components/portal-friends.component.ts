@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
-import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { selectFilteredUsers } from '../state/portal-friends.selectors';
 import { PortalAddFriendsComponent } from './add-friends/portal-add-friends.component';
 

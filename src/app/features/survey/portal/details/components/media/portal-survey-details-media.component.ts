@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Subject, takeUntil } from 'rxjs';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
-import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalSurveyDetailsActions } from '../../state/portal-survey-details.actions';
 import { selectSurveyMedia } from '../../state/portal-survey-details.selectors';
 

@@ -1,9 +1,9 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
-import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { MediaViewerData } from 'src/app/shared/media/typings/media';
 import { MediaViewerComponent } from '../viewer/media-viewer.component';
 

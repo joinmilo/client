@@ -7,12 +7,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
 import { EventFilterModule } from 'src/app/shared/filter/event/event-filter.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
@@ -55,12 +55,12 @@ const modules = [
   MapModule,
   OrganisationFilterModule,
   PortalMapOverviewRoutingModule,
-  RadioButtonFormModule,
   TableModule,
 ];
 
 const libs = [
   IconComponent,
+  RadioButtonGroupComponent,
 ];
 
 @NgModule({

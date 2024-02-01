@@ -4,9 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { CoreModule } from 'src/app/core/core.module';
 import { EventFilterModule } from 'src/app/shared/filter/event/event-filter.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
@@ -49,7 +49,6 @@ const modules = [
   EventFilterModule,
   MapModule,
   PortalEventOverviewRoutingModule,
-  RadioButtonFormModule,
   TableModule,
   TitleModule,
   NoDataComponent,
@@ -58,6 +57,7 @@ const modules = [
 const libs = [
   StoreModule.forFeature(portalEventOverviewStateKey, portalEventOverviewReducer),
   EffectsModule.forFeature([PortalEventOverviewEffects]),
+  RadioButtonGroupComponent,
 ];
 
 @NgModule({

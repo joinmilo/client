@@ -4,12 +4,12 @@
   <app-row columns="columns | async">
 
     <!-- TODO: Make possible to select never to end --> 
-    <app-radio-button
+    <cin-radio-button
       formControlName="recurrenceEnd"
       [input]="recurrenceEndOn"
       [value]="form.value.recurrenceEnd"
       [appAssignColumns]="leftAssignedColumns | async">
-    </app-radio-button>
+    </cin-radio-button>
 
     <mat-form-field appearance="outline" [appAssignColumns]="leftAssignedColumns | async">
       <mat-label appLabel="endRecurrence"></mat-label>
@@ -28,12 +28,12 @@
   </app-row>
 
   <app-row columns="columns | async">
-    <app-radio-button
+    <cin-radio-button
       formControlName="recurrenceEnd"
       [input]="recurrenceEndAfter"
       [value]="form.value.recurrenceEnd"
       [appAssignColumns]="leftAssignedColumns | async">
-    </app-radio-button>
+    </cin-radio-button>
 
     <mat-form-field appearance="outline"
       [appAssignColumns]="numberAssignedColumns | async">

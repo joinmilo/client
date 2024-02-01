@@ -7,12 +7,12 @@
 
   <app-organisation-filter 
     (paramsUpdated)="updateParams($event)">
-    <app-radio-button-group
+    <cin-radio-button-group
       [inputs]="inputs"
       [value]="displayType"
       [queryParamKey]="displayQueryParam"
       (valueChanged)="displayType = $event">
-    </app-radio-button-group>
+    </cin-radio-button-group>
   </app-organisation-filter>
 
   <ng-container *ngIf="(organisations | async)?.total; else emptyResult">

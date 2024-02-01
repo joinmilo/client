@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { AppValidators } from 'src/app/core/validators/validators';
-import { RadioButtonInput } from '../../../radio-button/typings/radio-button-input';
 import { SchedulerActions } from '../../state/scheduler.actions';
 import { selectColumns, selectInitRecurrenceEnd, selectLefthandColumns, selectNumberColumns } from '../../state/scheduler.selectors';
 import { RecurrenceEnd } from '../../typings/scheduler';

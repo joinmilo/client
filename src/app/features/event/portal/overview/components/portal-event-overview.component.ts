@@ -6,8 +6,8 @@ import { SchemaService } from 'src/app/core/services/schema.service';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { OverviewDisplayType } from 'src/app/core/typings/filter-params/overview-display';
 
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { Subject, takeUntil } from 'rxjs';
-import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 import { PortalEventOverviewActions } from '../state/portal-event-overview.actions';
 import { selectOverviewData, selectSponsoredEvent } from '../state/portal-event-overview.selectors';
 

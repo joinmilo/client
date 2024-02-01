@@ -17,7 +17,7 @@ import { CommentDialogComponent } from './components/dialog/comment-dialog.compo
 import { CommentEntryComponent } from './components/entry/comment-entry.component';
 import { CommentFormComponent } from './components/form/comment-form.component';
 import { CommentOverviewComponent } from './components/overview/comment-overview.component';
-;
+
 
 const components = [
   CommentEntryComponent,
@@ -41,7 +41,6 @@ const materials = [
 ];
 
 const modules = [
-  CaptchaModule,
   CoreModule,
   DatePieceComponent,
   MediaWidgetsModule,
@@ -49,6 +48,7 @@ const modules = [
 ];
 
 const libs = [
+  CaptchaModule,
   IconComponent,
 ];
 

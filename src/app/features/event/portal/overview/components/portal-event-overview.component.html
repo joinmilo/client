@@ -8,12 +8,12 @@
   <app-event-filter 
     (paramsUpdated)="updateParams($event)"
     (rawParamsUpdated)="updateRawParams($event)">
-    <app-radio-button-group
+    <cin-radio-button-group
       [inputs]="inputs"
       [value]="displayType"
       [queryParamKey]="displayQueryParam"
       (valueChanged)="displayType = $event">
-    </app-radio-button-group>
+    </cin-radio-button-group>
   </app-event-filter>
 
   <ng-container>

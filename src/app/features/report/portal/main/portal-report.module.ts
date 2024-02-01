@@ -9,7 +9,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { PortalReportFormComponent } from './components/portal-report-form.component';
@@ -37,14 +36,13 @@ const materials = [
 
 const modules = [
   CoreModule,
-  CaptchaModule,
-  RadioButtonFormModule,
   PortalReportRoutingModule,
   TitleModule,
   CardModule
 ];
 
 const libs = [
+  CaptchaModule,
   StoreModule.forFeature(reportStateKey, reportReducer),
   EffectsModule.forFeature([ReportEffects]),
 ]

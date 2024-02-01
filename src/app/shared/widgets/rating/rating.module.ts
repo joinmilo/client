@@ -13,7 +13,7 @@ import { CoreModule } from '../../../core/core.module';
 import { RatingDistributionComponent } from './components/distribution/rating-distribution.component';
 import { RatingInputComponent } from './components/input/rating-input.component';
 import { RatingComponent } from './components/rating.component';
-;
+
 
 const components = [
   RatingComponent,
@@ -24,7 +24,6 @@ const components = [
 const framework = [
   CommonModule,
   RouterModule,
-  CaptchaModule,
   TitleModule
 ];
 
@@ -41,6 +40,10 @@ const materials = [
   MatProgressBarModule,
 ];
 
+const libs = [
+  CaptchaModule,
+]
+
 @NgModule({
   declarations: [...components],
   
@@ -48,6 +51,7 @@ const materials = [
     ...framework,
     ...materials,
     ...modules,
+    ...libs,
   ],
   exports: [...components],
 })

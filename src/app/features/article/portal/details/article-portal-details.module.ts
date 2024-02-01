@@ -13,7 +13,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
 import { DatePieceComponent } from 'src/app/shared/layout/date/date-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
@@ -73,7 +72,6 @@ const modules = [
   DatePieceComponent,
   FavoriteComponent,
   MediaWidgetsModule,
-  RadioButtonFormModule,
   RatingModule,
   ShareModule,
   TableModule,

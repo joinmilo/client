@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
 import { displayQueryParam } from 'src/app/core/constants/queryparam.constants';
-import { RadioButtonInput } from 'src/app/shared/form/radio-button/typings/radio-button-input';
 
 @Component({
   selector: 'app-portal-favorites',

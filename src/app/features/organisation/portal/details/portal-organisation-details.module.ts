@@ -13,7 +13,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
@@ -81,7 +80,6 @@ const modules = [
   MediaWidgetsModule,
   PhonePieceComponent,
   PortalOrganisationDetailsRoutingModule,
-  RadioButtonFormModule,
   RatingModule,
   ShareModule,
   TableModule,

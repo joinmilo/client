@@ -5,7 +5,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
@@ -40,7 +39,6 @@ const modules = [
   FavoriteComponent,
   MediaWidgetsModule,
   PortalAuthorDetailsRoutingModule,
-  RadioButtonFormModule,
   ShareModule,
   TableModule,
   TitleModule,
