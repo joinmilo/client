@@ -44,12 +44,6 @@ mat-card {
   border-radius: var(--mdc-shape-medium) !important;
 }
 
-/* CKEditor */
-
-.ck-editor__editable_inline {
-  min-height: 20rem;
-}
-
 /* Form Fields*/
 .mdc-text-field {
   background-color: var(--color-lightest) !important;

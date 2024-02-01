@@ -10,13 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { CoreModule } from 'src/app/core/core.module';
-import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
-import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
-
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
+import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { IconComponent } from 'src/app/shared/widgets/icon/icon.component';
@@ -63,7 +62,6 @@ const materials = [
 const modules = [
   AddressFormModule,
   CoreModule,
-  CkEditorFormComponent,
   FormStepperModule,
   GridLayoutModule,
   IconComponent,
@@ -76,6 +74,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(portalParticipateStateKey, portalParticipateReducer),
   EffectsModule.forFeature([PortalParticipateEffects]),
+
+  RichtextEditorFormComponent,
 ];
 
 @NgModule({

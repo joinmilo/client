@@ -65,9 +65,9 @@
     <app-row
       columns="2" [formGroup]="form.controls.textMedium">
       @if (hasControl(form.controls.textMedium, 'text')) {
-        <app-ck-editor-form
+        <cin-richtext-editor-form
           [formControl]="getControl(form.controls.textMedium, 'text')">
-        </app-ck-editor-form>
+        </cin-richtext-editor-form>
       }
       @if (hasControl(form.controls.textMedium, 'media')) {
         <app-media-form

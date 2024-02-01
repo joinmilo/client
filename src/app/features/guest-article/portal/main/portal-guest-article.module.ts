@@ -10,9 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { CoreModule } from 'src/app/core/core.module';
 import { CaptchaModule } from 'src/app/shared/form/captcha/captcha.module';
-import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
@@ -28,7 +28,6 @@ import { portalGuestArticleReducer } from './state/portal-guest-article.reducer'
 const components = [
   PortalGuestArticleFormComponent,
   PortalGuestArticleSuccessComponent,
-
 ];
 
 const framework = [
@@ -49,7 +48,6 @@ const materials = [
 const modules = [
   CoreModule,
   CaptchaModule,
-  CkEditorFormComponent,
   FormStepperModule,
   GridLayoutModule,
   IconComponent,
@@ -61,6 +59,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(portalGuestArticleStateKey, portalGuestArticleReducer),
   EffectsModule.forFeature([PortalGuestArticleEffects]),
+
+  RichtextEditorFormComponent,
 ]
 
 @NgModule({

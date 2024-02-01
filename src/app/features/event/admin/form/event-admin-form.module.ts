@@ -9,9 +9,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
-import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { ContactFormComponent } from 'src/app/shared/form/contact/contact-form.component';
 import { IconFormComponent } from 'src/app/shared/form/icon/icon-form.component';
 import { SchedulerModule } from 'src/app/shared/form/scheduler/scheduler.module';
@@ -47,7 +47,6 @@ const materials = [
 
 const modules = [
   AddressFormModule,
-  CkEditorFormComponent,
   CoreModule,
   EventAdminFormRoutingModule,
   FormStepperModule,
@@ -63,6 +62,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(eventAdminFormStateKey, eventAdminFormReducer),
   EffectsModule.forFeature([EventAdminFormEffects]),
+
+  RichtextEditorFormComponent,
 ];
 
 @NgModule({

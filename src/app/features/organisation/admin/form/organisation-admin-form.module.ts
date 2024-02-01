@@ -7,10 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { CoreModule } from 'src/app/core/core.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
-import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { ContactFormComponent } from 'src/app/shared/form/contact/contact-form.component';
 import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
@@ -42,7 +42,6 @@ const materials = [
 
 const modules = [
   AddressFormModule,
-  CkEditorFormComponent,
   ContactFormComponent,
   CoreModule,
   FormStepperModule,
@@ -58,6 +57,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(organisationAdminFormStateKey, organisationAdminFormReducer),
   EffectsModule.forFeature([OrganisationAdminFormEffects]),
+
+  RichtextEditorFormComponent,
 ];
 
 @NgModule({
