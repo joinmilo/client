@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_ArticleEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { DeleteArticleGQL } from 'src/app/features/article/api/generated/delete-article.mutation.generated';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { ChangeArticleApprovalGQL } from '../../../api/generated/change-article-approval.mutation.generated';
 import { GetGuestArticlesGQL } from '../../../api/generated/get-guest-articles.query.generated';
 import { GuestArticleAdminOverviewActions } from './guest-article-admin-overview.actions';

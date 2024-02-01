@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_EventAttendeeEntity, QueryOperator } from 'src/app/core/api/generated/schema';
@@ -8,8 +9,6 @@ import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { DeleteEventAttendeeGQL } from 'src/app/features/event/api/generated/delete-eventattendee.mutation.generated';
 import { GetEventAttendeesGQL } from 'src/app/features/event/api/generated/get-event-attendees.query.generated';
 import { SaveEventAttendeeGQL } from 'src/app/features/event/api/generated/save-event-attendee.mutation.generated';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { EventAdminDetailsAttendeeActions } from './event-admin-details-attendee.actions';
 import { selectParams, selectSlug } from './event-admin-details-attendee.selectors';
 

@@ -1,9 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ContentChildren, EventEmitter, Input, OnDestroy, Output, QueryList } from '@angular/core';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DragDropElement } from '../typings/drag-drop-element';
 import { DragDropElementComponent } from './element/drag-drop-element.component';
 

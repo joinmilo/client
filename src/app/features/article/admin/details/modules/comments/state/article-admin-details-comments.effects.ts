@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, PageableList_ArticleCommentEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { DeleteArticleCommentGQL } from 'src/app/features/article/api/generated/delete-article-comment.mutation.generated';
 import { GetArticleCommentsGQL } from 'src/app/features/article/api/generated/get-article-comments.query.generated';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { ArticleAdminDetailsCommentsActions } from './article-admin-details-comments.actions';
 import { selectParams, selectPeriod, selectSlug } from './article-admin-details-comments.selectors';
 

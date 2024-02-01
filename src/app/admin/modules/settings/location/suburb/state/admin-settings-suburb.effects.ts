@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { DeleteSuburbGQL } from 'src/app/admin/api/generated/delete-suburb.mutation.generated';
@@ -11,8 +12,6 @@ import { SaveSuburbGQL } from 'src/app/admin/api/generated/save-suburb.mutation.
 import { PageableList_SuburbEntity } from 'src/app/core/api/generated/schema';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { baseRoute } from '../../admin-settings-location.routing.module';
 import { AdminSettingsSuburbActions } from './admin-settings-suburb.actions';
 import { selectParams } from './admin-settings-suburb.selectors';

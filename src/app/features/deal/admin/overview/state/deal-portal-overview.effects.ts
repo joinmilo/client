@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_DealEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteDealGQL } from '../../../api/generated/delete-deal.mutation.generated';
 import { GetDealsGQL } from '../../../api/generated/get-deals.query.generated';
 import { SponsorDealGQL } from '../../../api/generated/sponsor-deal.mutation.generated';
@@ -52,7 +51,7 @@ export class DealAdminOverviewEffects {
 
   sponsorDeal = createEffect(() => this.actions.pipe(
     ofType(DealAdminOverviewActions.sponsorDeal),
-    switchMap(action => this.confirmDialogService
+    switchMap(action => this.confirmService
       .confirm({ type: ConfirmType.Delete, context: 'thisWillSponsor' }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.deal)
@@ -76,7 +75,7 @@ export class DealAdminOverviewEffects {
 
   deleteDeal = createEffect(() => this.actions.pipe(
     ofType(DealAdminOverviewActions.deleteDeal),
-    switchMap(action => this.confirmDialogService
+    switchMap(action => this.confirmService
       .confirm({ type: ConfirmType.Delete, context: action.deal?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.deal)
@@ -101,7 +100,7 @@ export class DealAdminOverviewEffects {
   constructor(
     private actions: Actions,
     private authService: AuthService,
-    private confirmDialogService: ConfirmService,
+    private confirmService: ConfirmService,
     private deleteDealService: DeleteDealGQL,
     private getDealsService: GetDealsGQL,
     private sponsorDealService: SponsorDealGQL,

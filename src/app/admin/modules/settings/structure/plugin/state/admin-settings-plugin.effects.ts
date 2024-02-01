@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { ChangePluginActivationGQL } from 'src/app/admin/api/generated/change-plugin-activation.mutation.generated';
 import { GetPluginsGQL } from 'src/app/admin/api/generated/get-plugins.query.generated';
 import { PageableList_PluginEntity } from 'src/app/core/api/generated/schema';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { AdminSettingsPluginActions } from './admin-settings-plugin.actions';
 import { selectParams } from './admin-settings-plugin.selectors';
 
@@ -38,7 +37,7 @@ export class AdminSettingsPluginEffects {
         id: action.plugin?.id,
         active: !action.plugin?.active,
       })),
-      switchMap(plugin => this.confirmDialogService
+      switchMap(plugin => this.confirmService
         .confirm({ type: ConfirmType.Change,
           context: plugin.active
             ? 'thisWillActivateFeature'
@@ -60,7 +59,7 @@ export class AdminSettingsPluginEffects {
   constructor(
     private actions: Actions,
     private changePluginActivationService: ChangePluginActivationGQL,
-    private confirmDialogService: ConfirmService,
+    private confirmService: ConfirmService,
     private getPluginsService: GetPluginsGQL,
     private store: Store,
   ) {}

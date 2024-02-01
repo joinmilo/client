@@ -2,12 +2,11 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, Output } 
 import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { Observable, Subject, filter, takeUntil } from 'rxjs';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { MediaEditDialogData, MediaEnhancedEntity } from 'src/app/shared/media/typings/media';
 import { MediaFormEditComponent } from '../edit/media-form-edit.component';
 

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { DeleteUserGQL } from 'src/app/admin/api/generated/delete-user.mutation.generated';
 import { GetUsersGQL } from 'src/app/admin/api/generated/get-users.query.generated';
 import { PageableList_UserEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { AdminSettingsUserActions } from './admin-settings-user.actions';
 import { selectParams } from './admin-settings-user.selectors';
 

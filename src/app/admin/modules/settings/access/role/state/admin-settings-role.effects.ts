@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { DeleteRoleGQL } from 'src/app/admin/api/generated/delete-role.mutation.generated';
@@ -11,14 +12,12 @@ import { GetRolesGQL } from 'src/app/admin/api/generated/get-roles.query.generat
 import { GetUsersGQL } from 'src/app/admin/api/generated/get-users.query.generated';
 import { SaveRoleGQL } from 'src/app/admin/api/generated/save-role.mutation.generated';
 import {
-    PageableList_RoleEntity,
-    RolePrivilegeEntity,
-    UserEntity,
+  PageableList_RoleEntity,
+  RolePrivilegeEntity,
+  UserEntity,
 } from 'src/app/core/api/generated/schema';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { accessBaseRoute } from '../../admin-settings-access-routing.module';
 import { AdminSettingsRoleActions } from './admin-settings-role.actions';
 import { selectParams } from './admin-settings-role.selectors';

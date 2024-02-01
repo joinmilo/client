@@ -1,22 +1,21 @@
 import {
-  AfterViewInit,
-  Component,
-  ContentChildren,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  Output,
-  QueryList,
+    AfterViewInit,
+    Component,
+    ContentChildren,
+    EventEmitter,
+    Input,
+    OnDestroy,
+    Output,
+    QueryList,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { Subject, take, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { FormStepperActions } from '../../state/form-stepper.actions';
 import {
-  selectIsDirty,
-  selectIsValid,
+    selectIsDirty,
+    selectIsValid,
 } from '../../state/form-stepper.selectors';
 import { FormStepComponent } from '../step/form-step.component';
 

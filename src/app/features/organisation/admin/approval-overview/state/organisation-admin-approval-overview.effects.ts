@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_OrganisationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { DeleteOrganisationGQL } from 'src/app/features/organisation/api/generated/delete-organisation.mutation.generated';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { ChangeOrganisationApprovalGQL } from '../../../api/generated/change-organisation-approval.mutation.generated';
 import { GetOrganisationsGQL } from '../../../api/generated/get-organisations.query.generated';
 import { OrganisationAdminApprovalOverviewActions } from './organisation-admin-approval-overview.actions';

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_InfoMediaCategoryEntity } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { DeleteMediaCategoryGQL } from '../../../api/generated/delete-media-category.mutation.generated';
 import { GetMediaCategoriesGQL } from '../../../api/generated/get-media-categories.query.generated';
 import { MediaAdminCategoryActions } from './media-admin-category.actions';
@@ -29,7 +28,7 @@ export class MediaAdminCategoryEffects {
 
   deleteMedia = createEffect(() => this.actions.pipe(
     ofType(MediaAdminCategoryActions.deleteCategory),
-    switchMap(action => this.confirmDialogService
+    switchMap(action => this.confirmService
       .confirm({ type: ConfirmType.Delete, context: action.category?.name }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.category)
@@ -53,7 +52,7 @@ export class MediaAdminCategoryEffects {
 
   constructor(
     private actions: Actions,
-    private confirmDialogService: ConfirmService,
+    private confirmService: ConfirmService,
     private deleteMediaCategoryService: DeleteMediaCategoryGQL,
     private getMediaCategoriesService: GetMediaCategoriesGQL,
     private store: Store,

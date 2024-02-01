@@ -6,11 +6,10 @@ import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { ConjunctionOperator, PageableList_OrganisationMemberEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { DeleteOrganisationMemberGQL } from 'src/app/features/organisation/api/generated/delete-organisation-member.mutation.generated';
 import { GetOrganisationMembersGQL } from 'src/app/features/organisation/api/generated/get-organisation-members.generated';
 import { SaveOrganisationMemberGQL } from 'src/app/features/organisation/api/generated/save-organisation-member.mutation.generated';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { OrganisationAdminDetailsApplicationsActions } from './organisation-admin-details-applications.actions';
 import { selectParams, selectSlug } from './organisation-admin-details-applications.selectors';
 
@@ -62,7 +61,7 @@ export class OrganisationAdminDetailsApplicationsEffects {
 
   deleteApplication = createEffect(() => this.actions.pipe(
     ofType(OrganisationAdminDetailsApplicationsActions.deleteMember),
-    switchMap(action => this.confirmDialogService
+    switchMap(action => this.confirmService
       .confirm({ type: ConfirmType.Delete, context: action.member?.userContext?.user?.email }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.member)
@@ -104,7 +103,7 @@ export class OrganisationAdminDetailsApplicationsEffects {
 
   constructor(
     private actions: Actions,
-    private confirmDialogService: ConfirmService,
+    private confirmService: ConfirmService,
     private deleteOrganisationApplicationService: DeleteOrganisationMemberGQL,
     private getOrganisationApplicationsService: GetOrganisationMembersGQL,
     private saveOrganisationMemberService: SaveOrganisationMemberGQL,

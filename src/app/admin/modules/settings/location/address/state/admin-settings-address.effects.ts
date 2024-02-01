@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { DeleteAddressGQL } from 'src/app/admin/api/generated/delete-address.mutation.generated';
@@ -11,8 +12,6 @@ import { SaveAddressGQL } from 'src/app/admin/api/generated/save-address.mutatio
 import { PageableList_AddressEntity } from 'src/app/core/api/generated/schema';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { baseRoute } from '../../admin-settings-location.routing.module';
 import { AdminSettingsAddressActions } from './admin-settings-address.actions';
 import { selectParams } from './admin-settings-address.selectors';
@@ -64,7 +63,7 @@ export class AdminSettingsAddressEffects {
 
   deleteAddress = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsAddressActions.delete),
-    switchMap(action => this.confirmDialogService
+    switchMap(action => this.confirmService
       .confirm({ type: ConfirmType.Delete, context: action.address?.street + ' ' + action.address?.houseNumber }).pipe(
         switchMap(confirmed => confirmed
           ? of(action.address)
@@ -88,7 +87,7 @@ export class AdminSettingsAddressEffects {
 
   constructor(
     private actions: Actions,
-    private confirmDialogService: ConfirmService,
+    private confirmService: ConfirmService,
     private deleteAddressService: DeleteAddressGQL,
     private getAddressService: GetAddressGQL,
     private getAddressesService: GetAddressesGQL,
