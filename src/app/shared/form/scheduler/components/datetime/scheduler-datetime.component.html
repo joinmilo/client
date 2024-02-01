@@ -1,15 +1,15 @@
 <app-row [columns]="columns | async" [formGroup]="form">
-  <app-datetime-form
+  <cin-datetime-form
     [appAssignColumns]="assignedColumns | async"
     label="begin"
     formControlName="startDate">
-  </app-datetime-form>
+  </cin-datetime-form>
 
-  <app-datetime-form
+  <cin-datetime-form
     [appAssignColumns]="assignedColumns | async"
     label="end"
     formControlName="endDate">
-  </app-datetime-form>
+  </cin-datetime-form>
 
   <button *ngIf="(results | async)?.length"
     mat-icon-button

@@ -1,4 +1,3 @@
-import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,10 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { DatetimeFormComponent } from 'ngx-cinlib/forms/datetime';
 import { CoreModule } from 'src/app/core/core.module';
 import { GridLayoutModule } from '../../layout/grid-layout/grid-layout.module';
 import { IconComponent } from '../../widgets/icon/icon.component';
-import { DatetimeFormComponent } from '../datetime/datetime-form.component';
 import { RadioButtonFormModule } from '../radio-button/radio-button-form.module';
 import { SchedulerDatetimeComponent } from './components/datetime/scheduler-datetime.component';
 import { SchedulerErrorsComponent } from './components/errors/scheduler-errors.component';
@@ -58,7 +57,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  DatetimeFormComponent,
   GridLayoutModule,
   IconComponent,
   RadioButtonFormModule,
@@ -69,9 +67,7 @@ const libs = [
   StoreModule.forFeature(schedulerStateKey, schedulerReducer),
   EffectsModule.forFeature([SchedulerEffects]),
 
-  NgxMatDatetimePickerModule,
-  NgxMatTimepickerModule,
-  NgxMatNativeDateModule,
+  DatetimeFormComponent,
 ];
 
 @NgModule({
