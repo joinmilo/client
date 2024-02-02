@@ -71,11 +71,16 @@ export class PortalParticipateEffects {
   ), {dispatch: false});
 
 
-
   saveAuthorApplication = createEffect(() => this.actions.pipe(
     ofType(PortalParticipateActions.saveAuthorApplication),
-    switchMap((action) => this.savePrivilegeApplicationService.mutate({
-      entity: action.entity
+    withLatestFrom(this.store.select(selectCurrentUser)),
+    switchMap(([action, currentUser]) => this.savePrivilegeApplicationService.mutate({
+      entity: {
+        ...action.entity,
+      user: {
+        id: currentUser?.user?.id
+      }
+    }
     })),
     map(response => PortalParticipateActions.authorApplicationSaved(response.data?.savePrivilegeApplication as PrivilegeApplicationEntity))
   ));
