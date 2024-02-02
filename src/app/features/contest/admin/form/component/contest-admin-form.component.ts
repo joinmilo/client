@@ -72,14 +72,15 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
     this.store.dispatch(ContestAdminFormActions.getTypes());
     this.activatedRoute.params
       .pipe(
-        takeUntil(this.destroy),
         filter((params) => !!params[slug]),
         tap((params) =>
           this.store.dispatch(ContestAdminFormActions.getContest(params[slug]))
         ),
         switchMap(() => this.store.select(selectContest)),
-        filter((contest) => !!contest?.id))
-        .subscribe((contest) => {
+        filter((contest) => !!contest?.id),
+        takeUntil(this.destroy),
+      )
+      .subscribe((contest) => {
         this.contest = contest;
         
         this.contentForm.patchValue({
@@ -114,9 +115,9 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
           metaDescription: contest?.metaDescription,
         });
       });
-    }
+  }
     
-    public saved(): void {
+  public saved(): void {
     this.store.dispatch(
       ContestAdminFormActions.save({
         id: this.contentForm.value.id,
@@ -136,29 +137,27 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
         participationApproval: this.participationAndVoteForm.value.participationApproval,
         
         contact: this.contactForm.value.contact
-        ? {
-          id: this.contactForm.value.contact?.id,
-          name: this.contactForm.value.contact.name,
-          email: this.contactForm.value.contact.email,
-          phone: this.contactForm.value.contact.phone,
-          website: this.contactForm.value.contact.website,
-          preferredContact:
-          this.contactForm.value.contact
-          .preferredContact ?? true,
-        }
-        : null,
+          ? {
+              id: this.contactForm.value.contact?.id,
+              name: this.contactForm.value.contact.name,
+              email: this.contactForm.value.contact.email,
+              phone: this.contactForm.value.contact.phone,
+              website: this.contactForm.value.contact.website,
+              preferredContact: this.contactForm.value.contact.preferredContact ?? true,
+            }
+          : null,
 
         metaDescription: this.additionalInfoForm.value.metaDescription,
         commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
       })
-      );
-    }
+    );
+  }
     
   public cancelled(): void {
     this.store.dispatch(ContestAdminFormActions.cancelled());
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }
