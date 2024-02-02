@@ -53,7 +53,6 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
       )
       .subscribe((contest) => {
         this.contest = contest;
-        console.log(this.contest);
         this.mediaTitle = contest?.uploads?.find(
           (upload) => upload?.title
         )?.media;

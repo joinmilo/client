@@ -157,8 +157,6 @@ export class ContestPortalDetailsParticipationsComponent
   }
 
   edit(index: number) {
-    console.log("max",this.contest?.maxVotes);
-    console.log("user",this.userVotes);
     this.store
       .select(selectIsAuthenticated)
       .pipe(take(1))

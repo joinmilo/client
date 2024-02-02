@@ -11,12 +11,9 @@ import { PortalParticipateActions } from '../../state/portal-participate.actions
   templateUrl: './portal-participate-become-author.component.html',
   styleUrls: ['./portal-participate-become-author.component.scss'],
 })
-export class PortalParticipateBecomeAuthorComponent
-  implements OnInit, OnDestroy
-{
-  private currentUser?: Maybe<UserContextEntity>;
+export class PortalParticipateBecomeAuthorComponent implements OnInit, OnDestroy {
 
-  appliedForArticlesManage: boolean | undefined;
+  private currentUser?: Maybe<UserContextEntity>;
 
   public form = this.fb.group({
     author: [true],
@@ -25,27 +22,28 @@ export class PortalParticipateBecomeAuthorComponent
 
   private destroy = new Subject<void>();
 
-  constructor(private store: Store, private fb: FormBuilder) {}
+  constructor(
+    private store: Store,
+    private fb: FormBuilder) { }
 
   public ngOnInit(): void {
     this.store
       .select(selectCurrentUser)
       .pipe(takeUntil(this.destroy))
-      .subscribe((user) => (this.currentUser = user));
+      .subscribe(user => this.currentUser = user);
   }
 
   public save(): void {
-    console.log('form',this.form.value)
-  this.store.dispatch(PortalParticipateActions.saveAuthorApplication({
-    accepted: false,
-    content: this.form.value.content,
-    privilege: { code: 'articles_manage' },
-    user: {
-      id: this.currentUser?.user?.id,
-    }
-  }));
-}
-  
+    this.store.dispatch(PortalParticipateActions.saveAuthorApplication({
+      accepted: false,
+      content: this.form.value.content,
+      privilege: { code: 'articles_manage' },
+      user: {
+        id: this.currentUser?.user?.id,
+      }
+    }));
+  }
+    
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
