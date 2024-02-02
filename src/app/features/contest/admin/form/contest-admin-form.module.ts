@@ -24,7 +24,9 @@ import { ContestAdminFormRoutingModule } from './contest-admin-form-routing.modu
 import { ContestAdminFormEffects } from './state/contest-admin-form.effects';
 import { contestAdminFormReducer } from './state/contest-admin-form.reducer';
 
-const components = [ContestAdminFormComponent];
+const components = [
+  ContestAdminFormComponent
+];
 
 const framework = [
   CommonModule,
@@ -60,8 +62,15 @@ const libs = [
 ];
 
 @NgModule({
-  declarations: [...components],
-  imports: [...framework, ...libs, ...materials, ...modules],
+  declarations: [
+    ...components
+  ],
+  imports: [
+    ...framework,
+    ...libs,
+    ...materials,
+    ...modules
+  ],
   exports: [...components],
 })
 export class ContestAdminFormModule {}
