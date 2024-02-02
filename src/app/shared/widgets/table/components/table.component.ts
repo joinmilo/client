@@ -26,7 +26,7 @@ export class TableComponent<T> implements OnInit, OnDestroy {
   }
 
   @Input()
-  public set data (data: Observable<Maybe<PageableList<T>>> | Maybe<PageableList<T>>) {
+  public set data(data: Observable<Maybe<PageableList<T>>> | Maybe<PageableList<T>>) {
     isObservable(data)
       ? data
         .pipe(takeUntil(this.destroy))

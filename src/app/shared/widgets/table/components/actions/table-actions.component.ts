@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { contentPortalDetailsUrl } from 'src/app/core/constants/url.constants';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -21,7 +21,8 @@ export class TableActionsComponent<T> implements OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public row?: Maybe<any>;
 
-  public actions = this.store.select(selectActions);
+  public actions = this.store.select(selectActions)
+    .pipe(tap(actions => console.log('actions', actions)));
 
   public entity?: ContentEntity;
 

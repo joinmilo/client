@@ -18,6 +18,8 @@
   <button *ngIf="inlineEditAction"
     mat-button
     [appTooltip]="inlineEditAction.tooltipLabel"
+    [class.disabled]="isDisabled(inlineEditAction)"
+    [disabled]="isDisabled(inlineEditAction)"
     (click)="$event.stopPropagation(); enable();">
     <app-icon [icon]="['fas', inlineEditAction.icon]"></app-icon>
   </button>

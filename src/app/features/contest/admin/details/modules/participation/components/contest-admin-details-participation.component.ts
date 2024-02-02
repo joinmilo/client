@@ -31,14 +31,12 @@ export class ContestAdminDetailsParticipationComponent implements OnInit, OnDest
     },
     {
       icon: 'toggle-off',
-      callback: participation =>
-      this.store.dispatch(ContestAdminDetailsParticipationActions.saveParticipation(participation)),
+      callback: row => this.store.dispatch(ContestAdminDetailsParticipationActions.saveParticipation(row)),
       tooltipLabel: 'toggleApprovedNotApproved'
     },
     {
       icon: 'trash',
-      callback: participation =>
-        this.store.dispatch(ContestAdminDetailsParticipationActions.deleteParticipation(participation)),
+      callback: participation => this.store.dispatch(ContestAdminDetailsParticipationActions.deleteParticipation(participation)),
       tooltipLabel: 'delete'
     },
   ];
@@ -91,7 +89,7 @@ export class ContestAdminDetailsParticipationComponent implements OnInit, OnDest
     this.store.dispatch(ContestAdminDetailsParticipationActions.updateParams(this.slug ?? slug, params ));
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }
