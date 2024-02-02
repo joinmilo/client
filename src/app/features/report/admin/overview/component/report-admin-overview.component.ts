@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
-import { FilterSortPaginateInput, Maybe, ReportEntity } from 'src/app/core/api/generated/schema';
+import { FilterSortPaginateInput, ReportEntity } from 'src/app/core/api/generated/schema';
 import { ReportAdminOverviewActions } from '../state/report-admin-overview.actions';
 import { selectOverviewData } from '../state/report-portal-overview.selectors';
 
@@ -63,9 +63,5 @@ export class ReportAdminOverviewComponent {
 
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(ReportAdminOverviewActions.updateParams(params));
-  }
-
-  public rowClicked(report: Maybe<ReportEntity>): void {
-    this.router.navigate([report?.id], { relativeTo: this.activatedRoute })
   }
 }
