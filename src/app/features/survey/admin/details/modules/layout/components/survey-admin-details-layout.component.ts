@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { RadioCardInput } from 'ngx-cinlib/forms/radio-card';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe, SurveyEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
 import { searchRoute, visitorsRoute } from '../../../constants/survey-admin-details.constants';
 import { SurveyAdminDetailsLayoutActions } from '../state/survey-admin-details-layout.actions';
 import { selectSurveyAdminDetailsLayout } from '../state/survey-admin-details-layout.selectors';

@@ -5,9 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { RadioCardFormModule } from 'src/app/shared/form/radio-card/radio-card-form.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
@@ -41,16 +41,16 @@ const modules = [
   MailPieceComponent,
   MediaWidgetsModule,
   PhonePieceComponent,
-  RadioCardFormModule,
   TableModule,
   TitleModule,
 ];
 
 const libs = [
-  IconComponent,
-
   StoreModule.forFeature(organisationAdminDetailsLayoutStateKey, organisationAdminDetailsLayoutReducer),
   EffectsModule.forFeature([OrganisationAdminDetailsLayoutEffects]),
+
+  IconComponent,
+  RadioCardGroupComponent,
 ];
 
 @NgModule({

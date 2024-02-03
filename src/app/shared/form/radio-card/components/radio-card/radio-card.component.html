@@ -1,9 +1,0 @@
-<div [class.active]="checked"
-  (click)="changeSelect($event)"
-  class="border-box">
-    <strong [appLabel]="input?.label"></strong>
-    <section>
-      <cin-icon [icon]="input!.icon" [size]="'lg'"></cin-icon>
-      <span *ngIf="input?.display">{{ input?.display }}</span>
-    </section>
-</div>

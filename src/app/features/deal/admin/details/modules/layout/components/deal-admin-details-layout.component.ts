@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { RadioCardInput } from 'ngx-cinlib/forms/radio-card';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { DealEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
 import { favoritesRoute, searchRoute, visitorsRoute } from '../../../constants/deal-admin-details.constants';
 import { DealAdminDetailsLayoutActions } from '../state/deal-admin-details-layout.actions';
 import { selectDealAdminDetailsLayout } from '../state/deal-admin-details-layout.selectors';

@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { RadioCardInput } from 'ngx-cinlib/forms/radio-card';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { RadioCardInput } from 'src/app/shared/form/radio-card/typings/radio-card-input';
 import { applicationsRoute, commentsRoute, eventsRoute, favoritesRoute, membersRoute, ratingsRoute, searchRoute, visitorsRoute } from '../../../constants/organisation-admin-details.constants';
 import { OrganisationAdminDetailsLayoutActions } from '../state/organisation-admin-details-layout.actions';
 import { selectOrganisationAdminDetailsLayout } from '../state/organisation-admin-details-layout.selectors';
