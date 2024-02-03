@@ -4,8 +4,8 @@
   <div class="settings">
     <app-user-settings-menu></app-user-settings-menu>
 
-      <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-        <app-form-step [formGroup]="userForm" titleLabel="content">
+      <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+        <cin-form-step [formGroup]="userForm" titleLabel="content">
           <app-row columns="2">
             <mat-form-field appearance="outline">
               <mat-label appLabel="firstName"></mat-label>
@@ -27,26 +27,26 @@
               <input matInput formControlName="phone" />
             </mat-form-field>
           </app-row>
-        </app-form-step>
+        </cin-form-step>
 
-        <app-form-step titleLabel="profilePicture" [formGroup]="ProfilePictureForm">
+        <cin-form-step titleLabel="profilePicture" [formGroup]="ProfilePictureForm">
           <app-media-form [maxFiles]="1"
             formControlName="profilePicture"></app-media-form>
-        </app-form-step>
+        </cin-form-step>
         
-        <app-form-step titleLabel="titleImage" [formGroup]="titleImageForm"
+        <cin-form-step titleLabel="titleImage" [formGroup]="titleImageForm"
         descriptionLabel="onlyRelevantForAuthors">
           <app-media-form formControlName="titleImage"
             [maxFiles]="1"></app-media-form>
-        </app-form-step>        
+        </cin-form-step>        
 
-        <app-form-step [formGroup]="addressForm" titleLabel="address">
+        <cin-form-step [formGroup]="addressForm" titleLabel="address">
           <app-row>
             <app-address-form formControlName="address"> </app-address-form>
           </app-row>
-        </app-form-step>
+        </cin-form-step>
 
-        <app-form-step
+        <cin-form-step
           [formGroup]="additionalInfoForm"
           titleLabel="additionalInfo">
           <app-row columns="1">
@@ -70,7 +70,7 @@
               </mat-select>
             </mat-form-field>
           </app-row>
-        </app-form-step>
-      </app-form-stepper>
+        </cin-form-step>
+      </cin-form-stepper>
     </div>
   </div>

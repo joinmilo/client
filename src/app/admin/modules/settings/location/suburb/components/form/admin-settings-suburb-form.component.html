@@ -2,10 +2,10 @@
   [titleLabel]="form.value.id ? 'editSuburb' : 'createNewSuburb'">
 </app-page-title>
 
-<app-form-stepper
+<cin-form-stepper
   (cancelled)="cancelled()"
   (saved)="saved()">
-  <app-form-step
+  <cin-form-step
     titleLabel="suburb"
     [formGroup]="form">
     <app-row columns="2">
@@ -26,5 +26,5 @@
         <input matInput formControlName="latitude">
       </mat-form-field>
     </app-row>
-  </app-form-step>
-</app-form-stepper>
+  </cin-form-step>
+</cin-form-stepper>

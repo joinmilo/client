@@ -2,14 +2,14 @@
   [titleLabel]="form.value.address?.id ? 'editAddress' : 'createNewAddress'">
 </app-page-title>
 
-<app-form-stepper
+<cin-form-stepper
   (cancelled)="cancelled()"
   (saved)="saved()">
-  <app-form-step
+  <cin-form-step
     titleLabel="address"
     [formGroup]="form">
     <app-row columns="2">
       <app-address-form [formControl]="form.controls.address"></app-address-form>
     </app-row>
-  </app-form-step>
-</app-form-stepper>
+  </cin-form-step>
+</cin-form-stepper>

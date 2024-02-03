@@ -1,8 +1,8 @@
 <app-page-title [titleLabel]="form.value.id ? 'editRole' : 'createNewRole'">
 </app-page-title>
 
-<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-  <app-form-step titleLabel="role" [formGroup]="form">
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-step titleLabel="role" [formGroup]="form">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
@@ -34,5 +34,5 @@
         </mat-select>
       </mat-form-field>
     </app-row>
-  </app-form-step>
-</app-form-stepper>
+  </cin-form-step>
+</cin-form-stepper>

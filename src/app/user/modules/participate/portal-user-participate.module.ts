@@ -11,10 +11,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
@@ -62,7 +62,6 @@ const materials = [
 const modules = [
   AddressFormModule,
   CoreModule,
-  FormStepperModule,
   GridLayoutModule,
   MediaFormModule,
   MediaWidgetsModule,
@@ -71,11 +70,12 @@ const modules = [
 ];
 
 const libs = [
-  IconComponent,
-
   StoreModule.forFeature(portalParticipateStateKey, portalParticipateReducer),
   EffectsModule.forFeature([PortalParticipateEffects]),
 
+  FormStepComponent,
+  FormStepperComponent,
+  IconComponent,
   RichtextEditorFormComponent,
 ];
 

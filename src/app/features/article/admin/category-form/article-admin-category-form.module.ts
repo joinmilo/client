@@ -5,9 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconFormComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { ArticleAdminCategoryFormRoutingModule } from './article-admin-category-form-routing.module';
@@ -33,25 +33,31 @@ const materials = [
 const modules = [
   ArticleAdminCategoryFormRoutingModule,
   CoreModule,
-  FormStepperModule,
   GridLayoutModule,
   TitleModule,
 ];
 
 const libs = [
-  IconFormComponent,
   EffectsModule.forFeature([ArticleAdminCategoryFormEffects]),
   StoreModule.forFeature(articleAdminCategoryFormStateKey, articleAdminFormReducer),
+
+  FormStepComponent,
+  FormStepperComponent,
+  IconFormComponent,
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [
+    ...components
+  ],
   imports: [
     ...framework,
     ...libs,
     ...materials,
     ...modules,
   ],
-  exports: [...components],
+  exports: [
+    ...components
+  ],
 })
 export class ArticleAdminCategoryFormModule { }

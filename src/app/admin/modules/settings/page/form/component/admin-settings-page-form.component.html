@@ -2,8 +2,8 @@
   [titleLabel]="contentForm.value.id ? 'editPage' : 'createNewPage'">
 </app-page-title>
 
-<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-  <app-form-step titleLabel="content" [formGroup]="contentForm">
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-step titleLabel="content" [formGroup]="contentForm">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
@@ -13,10 +13,10 @@
 
     <app-admin-settings-page-embedding formControlName="embeddings">
     </app-admin-settings-page-embedding>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step titleLabel="menu" [formGroup]="menuForm">
+  <cin-form-step titleLabel="menu" [formGroup]="menuForm">
     <app-admin-settings-page-menu formControlName="menuItems">
     </app-admin-settings-page-menu>
-  </app-form-step>
-</app-form-stepper>
+  </cin-form-step>
+</cin-form-stepper>

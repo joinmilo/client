@@ -9,8 +9,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
@@ -40,7 +40,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  FormStepperModule,
   GridLayoutModule,
   MediaAdminFormRoutingModule,
   MediaFormModule,
@@ -53,6 +52,8 @@ const libs = [
   StoreModule.forFeature(mediaAdminFormStateKey, mediaAdminFormReducer),
   EffectsModule.forFeature([MediaAdminFormEffects]),
 
+  FormStepComponent,
+  FormStepperComponent,
   RichtextEditorFormComponent,
 ];
 

@@ -12,9 +12,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -47,7 +47,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  FormStepperModule,
   GridLayoutModule,
   MediaWidgetsModule,
   PortalGuestArticleRoutingModule,
@@ -55,10 +54,13 @@ const modules = [
 ];
 
 const libs = [
-  CaptchaModule,
-  IconComponent,
   StoreModule.forFeature(portalGuestArticleStateKey, portalGuestArticleReducer),
   EffectsModule.forFeature([PortalGuestArticleEffects]),
+
+  CaptchaModule,
+  FormStepComponent,
+  FormStepperComponent,
+  IconComponent,
   RichtextEditorFormComponent,
 ]
 

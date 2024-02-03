@@ -1,9 +1,9 @@
 <app-page-title titleLabel="organisationConfiguration">
 </app-page-title>
 
-<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
 
-  <app-form-step titleLabel="configuration" [formGroup]="form">
+  <cin-form-step titleLabel="configuration" [formGroup]="form">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="whichRoleForMembers"></mat-label>
@@ -20,6 +20,6 @@
         <span appLabel="approvalRequired"></span>
       </mat-slide-toggle>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-</app-form-stepper>
+</cin-form-stepper>

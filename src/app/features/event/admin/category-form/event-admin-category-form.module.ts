@@ -5,9 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconFormComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { EventAdminCategoryFormComponent } from './components/event-admin-category-form.component';
@@ -34,14 +34,16 @@ const modules = [
   CoreModule,
   EventAdminCategoryFormRoutingModule,
   TitleModule,
-  FormStepperModule,
   GridLayoutModule,
 ];
 
 const libs = [
-  IconFormComponent,
   EffectsModule.forFeature([EventAdminCategoryFormEffects]),
   StoreModule.forFeature(eventAdminCategoryFormStateKey, eventAdminFormReducer),
+
+  FormStepComponent,
+  FormStepperComponent,
+  IconFormComponent,
 ];
 
 @NgModule({

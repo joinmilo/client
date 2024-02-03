@@ -2,8 +2,8 @@
   [titleLabel]="contentForm.value.id ? 'editArticle' : 'createNewArticle'">
 </app-page-title>
 
-<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-  <app-form-step titleLabel="content" [formGroup]="contentForm">
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-step titleLabel="content" [formGroup]="contentForm">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
@@ -28,26 +28,26 @@
         formControlName="content">
       </cin-richtext-editor-form>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step titleLabel="media" [formGroup]="uploadsForm">
+  <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
     <app-media-form 
       [cardToggle]="true" 
       [titleToggle]="true" 
       formControlName="uploads">
     </app-media-form>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step titleLabel="shortDescription" [formGroup]="shortDescriptionForm">
+  <cin-form-step titleLabel="shortDescription" [formGroup]="shortDescriptionForm">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="shortDescription"></mat-label>
         <textarea matInput formControlName="shortDescription" rows="5"></textarea>
       </mat-form-field>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step titleLabel="additionalInfo"
+  <cin-form-step titleLabel="additionalInfo"
     [formGroup]="additionalInfoForm">
     <app-row columns="1">
       <div>
@@ -64,6 +64,6 @@
         </textarea>
       </mat-form-field>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-</app-form-stepper>
+</cin-form-stepper>

@@ -2,8 +2,8 @@
   [titleLabel]="contentForm.value.id ? 'editDeal' : 'createNewDeal'">
 </app-page-title>
 
-<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-  <app-form-step titleLabel="content" [formGroup]="contentForm">
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-step titleLabel="content" [formGroup]="contentForm">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
@@ -28,32 +28,32 @@
       <cin-richtext-editor-form formControlName="content">
       </cin-richtext-editor-form>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step titleLabel="media" [formGroup]="uploadsForm">
+  <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
     <app-media-form
       [cardToggle]="true"
       [titleToggle]="true"
       formControlName="uploads">
     </app-media-form>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
+  <cin-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
     <app-row>
       <app-contact-form 
         formControlName="contact" 
         [showContactOptions]="false">
       </app-contact-form>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step [formGroup]="locationForm" titleLabel="location">
+  <cin-form-step [formGroup]="locationForm" titleLabel="location">
     <app-row>
       <app-address-form formControlName="address"> </app-address-form>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step
+  <cin-form-step
     titleLabel="shortDescription"
     [formGroup]="shortDescriptionForm">
     <app-row columns="2">
@@ -63,9 +63,9 @@
         </textarea>
       </mat-form-field>
     </app-row>
-  </app-form-step>
+  </cin-form-step>
 
-  <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
+  <cin-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
     <app-row columns="2">
       <mat-radio-group formControlName="selectedType">
         <mat-radio-button
@@ -97,5 +97,5 @@
         </mat-slide-toggle>
       </div>
     </app-row>
-  </app-form-step>
-</app-form-stepper>
+  </cin-form-step>
+</cin-form-stepper>

@@ -5,9 +5,9 @@
     <p appLabel="organisationText2"></p>
   </section>
 
-  <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
          
-    <app-form-step titleLabel="content" [formGroup]="descriptionForm" descriptionLabel="describeYourOrganisation">
+    <cin-form-step titleLabel="content" [formGroup]="descriptionForm" descriptionLabel="describeYourOrganisation">
       <app-row columns="2">
         <mat-form-field appearance="outline">
           <mat-label appLabel="organisationName"></mat-label>
@@ -18,14 +18,14 @@
         <cin-richtext-editor-form formControlName="description">
         </cin-richtext-editor-form>
       </app-row>
-    </app-form-step>
+    </cin-form-step>
 
-    <app-form-step titleLabel="media" [formGroup]="uploadsForm">
+    <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
       <app-media-form [cardToggle]="true" [titleToggle]="true" formControlName="uploads">
       </app-media-form>
-    </app-form-step>
+    </cin-form-step>
     
-    <app-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
+    <cin-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
       <app-row columns="2">
         <mat-form-field appearance="outline">
           <mat-label appLabel="email"></mat-label>
@@ -47,14 +47,14 @@
           <input matInput formControlName="phone" type="number">
         </mat-form-field>
       </app-row>
-    </app-form-step>
+    </cin-form-step>
 
-    <app-form-step titleLabel="address" [formGroup]="addressForm" descriptionLabel="enterYourAddress">
+    <cin-form-step titleLabel="address" [formGroup]="addressForm" descriptionLabel="enterYourAddress">
       <app-row>
         <app-address-form formControlName="address">
         </app-address-form>
       </app-row>
-    </app-form-step>
+    </cin-form-step>
 
-  </app-form-stepper>  
+  </cin-form-stepper>  
 </div>

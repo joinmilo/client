@@ -8,8 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { OrganisationAdminConfigurationComponent } from './component/organisation-admin-configuration.component';
@@ -37,7 +37,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  FormStepperModule,
   GridLayoutModule,
   OrganisationAdminConfigurationRoutingModule,
   TitleModule,
@@ -46,6 +45,9 @@ const modules = [
 const libs = [
   StoreModule.forFeature(organisationAdminConfigurationStateKey, organisationAdminConfigurationReducer),
   EffectsModule.forFeature([OrganisationAdminConfigurationEffects]),
+
+  FormStepComponent,
+  FormStepperComponent,
 ];
 
 @NgModule({

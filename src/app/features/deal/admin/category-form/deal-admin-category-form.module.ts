@@ -5,9 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconFormComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { DealAdminCategoryFormComponent } from './components/deal-admin-category-form.component';
@@ -35,14 +35,16 @@ const modules = [
   CoreModule,
   DealAdminCategoryFormRoutingModule,
   TitleModule,
-  FormStepperModule,
   GridLayoutModule,
 ];
 
 const libs = [
-  IconFormComponent,
   EffectsModule.forFeature([DealAdminCategoryFormEffects]),
   StoreModule.forFeature(dealAdminCategoryFormStateKey, dealAdminFormReducer),
+
+  FormStepComponent,
+  FormStepperComponent,
+  IconFormComponent,
 ];
 
 @NgModule({

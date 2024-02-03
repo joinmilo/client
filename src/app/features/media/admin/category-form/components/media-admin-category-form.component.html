@@ -1,13 +1,13 @@
 <app-page-title [titleLabel]="categoryForm.value.id ? 'editCategory' : 'createNewCategory'">
 </app-page-title>
 
-<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-  <app-form-step titleLabel="category" [formGroup]="categoryForm">
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-step titleLabel="category" [formGroup]="categoryForm">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
     </app-row>
-  </app-form-step>
-</app-form-stepper>
+  </cin-form-step>
+</cin-form-stepper>

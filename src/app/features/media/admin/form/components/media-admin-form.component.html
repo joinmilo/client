@@ -2,8 +2,8 @@
   [titleLabel]="'createNewMedia'">
 </app-page-title>
 
-<app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
-  <app-form-step titleLabel="content" [formGroup]="contentForm">
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-step titleLabel="content" [formGroup]="contentForm">
     <app-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="category"></mat-label>
@@ -17,5 +17,5 @@
     <app-row>
       <app-media-form [maxFiles]="1" formControlName="media"></app-media-form>
     </app-row>
-  </app-form-step>
-</app-form-stepper>
+  </cin-form-step>
+</cin-form-stepper>

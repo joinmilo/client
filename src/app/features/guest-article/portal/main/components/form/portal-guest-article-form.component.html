@@ -6,8 +6,8 @@
     <p appLabel="guestArticleIncentive"></p>
     <p appLabel="guestArticleHowTo"></p>
   </div>
-  <app-form-stepper [captchaRequired]="true" (cancelled)="cancelled()" (saved)="saved($event)">
-    <app-form-step titleLabel="content" [formGroup]="contentForm">
+  <cin-form-stepper [captchaRequired]="true" (cancelled)="cancelled()" (saved)="saved($event)">
+    <cin-form-step titleLabel="content" [formGroup]="contentForm">
       <app-row columns="2">
         <mat-form-field appearance="outline">
           <mat-label appLabel="name"></mat-label>
@@ -19,9 +19,9 @@
         <cin-richtext-editor-form formControlName="content">
         </cin-richtext-editor-form>
       </app-row>
-    </app-form-step>
+    </cin-form-step>
 
-    <app-form-step titleLabel="userInformation" [formGroup]="infomationForm">
+    <cin-form-step titleLabel="userInformation" [formGroup]="infomationForm">
       <app-row columns="2">
         <mat-form-field appearance="outline" [appAssignColumns]="1">
           <mat-label appLabel="userName"></mat-label>
@@ -32,6 +32,6 @@
           <input matInput formControlName="email" type="email">
         </mat-form-field>
       </app-row>
-    </app-form-step>
-  </app-form-stepper>
+    </cin-form-step>
+  </cin-form-stepper>
 </div>
