@@ -6,9 +6,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
+import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
-import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
@@ -39,7 +39,6 @@ const modules = [
   CalendarModule,
   CoreModule,
   MediaWidgetsModule,
-  PhonePieceComponent,
   TableModule,
   TitleModule,
 ];
@@ -49,6 +48,7 @@ const libs = [
   EffectsModule.forFeature([EventAdminDetailsLandingEffects]),
 
   MailPieceComponent,
+  PhonePieceComponent,
 ];
 
 @NgModule({

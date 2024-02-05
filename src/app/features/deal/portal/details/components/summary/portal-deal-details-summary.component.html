@@ -9,9 +9,9 @@
       [mail]="deal?.contact?.email">
     </cin-mail-piece>
 
-    <app-phone-piece *ngIf="deal?.contact?.phone"
+    <cin-phone-piece *ngIf="deal?.contact?.phone"
       [phone]="deal?.contact?.phone">
-    </app-phone-piece>
+    </cin-phone-piece>
   </section>
   <app-price [price]="deal?.price"></app-price>
 </div>

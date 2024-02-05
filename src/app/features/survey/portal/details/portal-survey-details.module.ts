@@ -13,9 +13,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
+import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
@@ -65,7 +65,6 @@ const modules = [
   FavoriteComponent,
   MapModule,
   MediaWidgetsModule,
-  PhonePieceComponent,
   PortalSurveyDetailsRoutingModule,
   RatingModule,
   ShareModule,
@@ -79,6 +78,7 @@ const libs = [
 
   DatePieceComponent,
   MailPieceComponent,
+  PhonePieceComponent,
 ]
 
 @NgModule({

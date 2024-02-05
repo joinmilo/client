@@ -9,5 +9,5 @@
 <cin-mail-piece *ngIf="(survey | async)?.contact?.email" [mail]="(survey | async)?.contact?.email">
 </cin-mail-piece>
 
-<app-phone-piece *ngIf="(survey | async)?.contact?.phone" [phone]="(survey | async)?.contact?.phone">
-</app-phone-piece>
+<cin-phone-piece *ngIf="(survey | async)?.contact?.phone" [phone]="(survey | async)?.contact?.phone">
+</cin-phone-piece>

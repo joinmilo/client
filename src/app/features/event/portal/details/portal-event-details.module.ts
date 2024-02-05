@@ -14,11 +14,11 @@ import { StoreModule } from '@ngrx/store';
 import { LocalDatePipe } from 'ngx-cinlib/date/pipes';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
+import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
-import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -88,7 +88,6 @@ const modules = [
   CardModule,
   FavoriteComponent,
   MediaWidgetsModule,
-  PhonePieceComponent,
   PortalEventDetailsRoutingModule,
   PriceComponent,
   RatingModule,
@@ -104,6 +103,7 @@ const libs = [
   IconComponent,
   LocalDatePipe,
   MailPieceComponent,
+  PhonePieceComponent,
 ]
 
 @NgModule({

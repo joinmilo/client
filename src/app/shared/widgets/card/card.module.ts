@@ -10,10 +10,10 @@ import { RouterModule } from '@angular/router';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
+import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
-import { PhonePieceComponent } from '../../layout/phone/phone-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { ChartModule } from '../chart/chart.module';
@@ -57,7 +57,6 @@ const modules = [
   CoreModule,
   FavoriteComponent,
   MediaWidgetsModule,
-  PhonePieceComponent,
   TitleModule,
   ChartModule
 ];
@@ -66,6 +65,7 @@ const libs = [
   IconComponent,
   DatePieceComponent,
   MailPieceComponent,
+  PhonePieceComponent,
 ];
 
 @NgModule({

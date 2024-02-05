@@ -12,10 +12,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
+import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
-import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { WebsitePieceComponent } from 'src/app/shared/layout/website/website-piece.component';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -77,7 +77,6 @@ const modules = [
   FavoriteComponent,
   MapModule,
   MediaWidgetsModule,
-  PhonePieceComponent,
   PortalOrganisationDetailsRoutingModule,
   RatingModule,
   ShareModule,
@@ -91,6 +90,7 @@ const libs = [
   EffectsModule.forFeature([PortalOrganisationDetailsEffects]),
 
   MailPieceComponent,
+  PhonePieceComponent,
 ]
 
 @NgModule({
