@@ -11,7 +11,7 @@ import {
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 
-import { AppValidators } from 'src/app/core/validators/validators';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { UserSettingsActions } from '../../../state/user-settings.actions';
 
 @Component({

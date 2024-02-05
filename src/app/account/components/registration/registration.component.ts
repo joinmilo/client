@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, takeUntil } from 'rxjs';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { AccountActions } from '../../state/account.actions';
 import { selectRegisteredUserId } from '../../state/account.selectors';
 

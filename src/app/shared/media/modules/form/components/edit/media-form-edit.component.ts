@@ -1,9 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { mediaBaseApi } from 'src/app/core/constants/url.constants';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { MediaService } from 'src/app/shared/media/services/media.service';
 import { MediaEditDialogData, MediaEnhancedEntity } from 'src/app/shared/media/typings/media';
 

@@ -12,12 +12,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PasswordFieldComponent } from 'ngx-cinlib/forms/password';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
-import { PasswordModule } from 'src/app/shared/form/password/password.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -74,7 +74,6 @@ const modules = [
   CoreModule,
   MediaFormModule,
   MediaWidgetsModule,
-  PasswordModule,
   TitleModule,
 ];
 
@@ -87,6 +86,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconComponent,
+  PasswordFieldComponent,
 ];
 
 @NgModule({

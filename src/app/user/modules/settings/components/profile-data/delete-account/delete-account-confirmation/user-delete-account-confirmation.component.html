@@ -10,7 +10,7 @@
         <p appLabel="deleteAccountText3"></p>
       </div>
       <form [formGroup]="form">
-        <app-password-field formControlName="password"></app-password-field>
+        <cin-password-field formControlName="password"></cin-password-field>
       </form>
       <button mat-flat-button [disabled]="form.invalid" color="primary" appLabel="deleteAccount" 
       (click)="onSubmit()"></button>

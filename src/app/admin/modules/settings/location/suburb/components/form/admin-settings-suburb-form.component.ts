@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, switchMap, take, tap } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { id } from 'src/app/core/constants/queryparam.constants';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { AdminSettingsSuburbActions } from '../../state/admin-settings-suburb.actions';
 import { selectEditableSuburb } from '../../state/admin-settings-suburb.selectors';
 

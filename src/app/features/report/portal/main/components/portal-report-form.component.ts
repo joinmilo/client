@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { ReportTypeEntity } from 'src/app/core/api/generated/schema';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { ReportActions } from '../state/report.actions';
 import { selectReportTypes, selectSavedReport } from '../state/report.selectors';
 

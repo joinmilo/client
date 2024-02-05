@@ -1,10 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { SchedulerActions } from '../../state/scheduler.actions';
 import { selectColumns, selectLefthandColumns, selectResult } from '../../state/scheduler.selectors';
 import { SchedulerOverviewComponent } from '../overview/scheduler-overview.component';

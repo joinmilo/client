@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, takeUntil } from 'rxjs';
 import { LanguageEntity, Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { AccountActions } from '../../state/account.actions';
 import { selectOrganisations } from '../../state/account.selectors';
 

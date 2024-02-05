@@ -8,6 +8,7 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import {
   Observable,
   Subject,
@@ -21,7 +22,6 @@ import {
   tap,
 } from 'rxjs';
 import { AddressEntity, Maybe } from 'src/app/core/api/generated/schema';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { AddressValidationService } from '../services/address-validator.service';
 import { AddressFormActions } from '../state/address-form.actions';
 import { selectSuburbs } from '../state/address-form.selectors';

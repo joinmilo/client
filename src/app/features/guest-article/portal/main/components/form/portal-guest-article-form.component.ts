@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { PortalGuestArticleActions } from '../../state/portal-guest-article.actions';
 
 @Component({

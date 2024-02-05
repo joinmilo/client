@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'src/app/core/validators/validators';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { AccountActions } from '../../state/account.actions';
 
 

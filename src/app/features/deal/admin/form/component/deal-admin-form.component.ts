@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AddressEntity, ContactEntity, DealEntity, DealMediaEntity, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { DealAdminFormActions } from '../state/deal-admin-form.actions';
 import { selectCategories, selectDeal } from '../state/deal-portal-form.selectors';
 
