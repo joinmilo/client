@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { CoreModule } from 'src/app/core/core.module';
-import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { FlipCardSliderComponent } from 'src/app/shared/widgets/sliders/flip-card-slider/flip-card-slider.component';
@@ -17,7 +17,6 @@ import { AdminLandingMilestoneComponent } from './components/milestone/admin-lan
 import { adminLandingStateKey } from './constants/admin-landing.constants';
 import { AdminLandingEffects } from './state/admin-landing.effects';
 import { adminLandingReducer } from './state/admin-landing.reducer';
-
 
 const components = [
   AdminLandingComponent,
@@ -39,7 +38,6 @@ const modules = [
   CoreModule,
   AdminLandingRoutingModule,
   FlipCardSliderComponent,
-  MailPieceComponent,
   PhonePieceComponent,
   TitleModule,
 ];
@@ -47,6 +45,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(adminLandingStateKey, adminLandingReducer),
   EffectsModule.forFeature([AdminLandingEffects]),
+
+  MailPieceComponent,
 ];
 
 @NgModule({

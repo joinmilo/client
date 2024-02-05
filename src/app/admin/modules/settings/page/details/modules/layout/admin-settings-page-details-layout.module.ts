@@ -10,7 +10,6 @@ import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
-import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
@@ -40,7 +39,6 @@ const modules = [
   AddressPieceComponent,
   CalendarModule,
   CoreModule,
-  MailPieceComponent,
   MediaFormModule,
   PhonePieceComponent,
   TableModule,

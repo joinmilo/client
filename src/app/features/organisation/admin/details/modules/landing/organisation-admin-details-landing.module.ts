@@ -4,9 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
-import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -34,7 +34,6 @@ const modules = [
   AddressPieceComponent,
   CalendarModule,
   CoreModule,
-  MailPieceComponent,
   MediaWidgetsModule,
   PhonePieceComponent,
   TableModule,
@@ -44,6 +43,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(organisationAdminDetailsLandingStateKey, organisationAdminDetailsLandingReducer),
   EffectsModule.forFeature([OrganisationAdminDetailsLandingEffects]),
+
+  MailPieceComponent,
 ];
 
 @NgModule({

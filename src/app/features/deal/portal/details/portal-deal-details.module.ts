@@ -11,11 +11,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
-import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
 import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
@@ -68,7 +68,6 @@ const modules = [
   CoreModule,
   CommentModule,
   FavoriteComponent,
-  MailPieceComponent,
   MediaWidgetsModule,
   PhonePieceComponent,
   PortalDealDetailsRoutingModule,
@@ -82,6 +81,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(portalDealDetailsStateKey, portalDealDetailsReducer),
   EffectsModule.forFeature([PortalDealDetailsEffects]),
+
+  MailPieceComponent,
 ]
 
 @NgModule({

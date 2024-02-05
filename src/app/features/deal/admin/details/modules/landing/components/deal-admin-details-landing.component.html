@@ -40,11 +40,14 @@
     <app-details-title titleLabel="contactData"
       [link]="['./form']" linkIcon="pen-to-square">
     </app-details-title>
+
     <app-address-piece [address]="deal?.address">
     </app-address-piece>
+
     <app-phone-piece [phone]="deal?.contact?.phone">
     </app-phone-piece>
-    <app-mail-piece [mail]="deal?.contact?.email">
-    </app-mail-piece>
+
+    <cin-mail-piece [mail]="deal?.contact?.email">
+    </cin-mail-piece>
   </section>
 </div>

@@ -5,5 +5,5 @@
 <span class="mat-subtitle-1">
   {{element?.creator ? element?.creator: ''}}
 </span>
-<app-mail-piece *ngIf="element?.email" [mail]="element?.email"></app-mail-piece>
+<cin-mail-piece *ngIf="element?.email" [mail]="element?.email"></cin-mail-piece>
 <app-phone-piece [phone]="element?.phone"></app-phone-piece>

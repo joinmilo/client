@@ -6,9 +6,9 @@
       (addressClicked)="onAddressClicked()">
     </app-address-piece>
 
-    <app-mail-piece *ngIf="organisation?.contact?.email"
+    <cin-mail-piece *ngIf="organisation?.contact?.email"
       [mail]="organisation?.contact?.email">
-    </app-mail-piece>
+    </cin-mail-piece>
 
     <app-phone-piece *ngIf="organisation?.contact?.phone"
       [phone]="organisation?.contact?.phone">

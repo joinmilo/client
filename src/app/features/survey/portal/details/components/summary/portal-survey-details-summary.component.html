@@ -6,8 +6,8 @@
 <cin-date-piece [date]="(survey | async)?.dueDate"></cin-date-piece>
 </div>
 
-<app-mail-piece *ngIf="(survey | async)?.contact?.email" [mail]="(survey | async)?.contact?.email">
-</app-mail-piece>
+<cin-mail-piece *ngIf="(survey | async)?.contact?.email" [mail]="(survey | async)?.contact?.email">
+</cin-mail-piece>
 
 <app-phone-piece *ngIf="(survey | async)?.contact?.phone" [phone]="(survey | async)?.contact?.phone">
 </app-phone-piece>
