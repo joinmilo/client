@@ -3,6 +3,6 @@
     <app-media-avatar [user]="comment?.userContext"></app-media-avatar>
     <span>{{comment?.userContext?.user?.firstName}} {{comment?.userContext?.user?.lastName}}</span>
   </section>
-  <app-date-piece *ngIf="comment?.created" [date]="comment?.created"></app-date-piece>
+  <cin-date-piece *ngIf="comment?.created" [date]="comment?.created"></cin-date-piece>
   <p>{{ comment?.content }}</p>
 </article>

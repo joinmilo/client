@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { selectIsLoading } from 'src/app/core/state/selectors/core.selectors';
+import { LoadingService } from 'ngx-cinlib/layouts/loading';
 
 @Component({
   selector: 'app-user-layout',
@@ -9,9 +8,9 @@ import { selectIsLoading } from 'src/app/core/state/selectors/core.selectors';
 })
 export class UserLayoutComponent {
 
-  public loading = this.store.select(selectIsLoading);
+  public loading = this.loadingService.isLoading();
 
   constructor(
-    private store: Store,
+    private loadingService: LoadingService,
   ) { }
 }

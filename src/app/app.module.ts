@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { LoadingInterceptor } from 'ngx-cinlib/layouts/loading';
 import { SidenavContainerComponent } from 'ngx-cinlib/modals/sidenav';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +20,6 @@ import { CoreModule } from './core/core.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { LanguageInterceptor } from './core/interceptors/language.interceptor';
-import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { GraphQLModule } from './graphql.module';
 import { PortalModule } from './portal/portal.module';
 

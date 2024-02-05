@@ -1,4 +1,4 @@
-<app-loading>
+<cin-loading>
   <app-admin-layout-desktop *ngIf="(mobile | async) === false">
     <ng-container *ngTemplateOutlet="routerContent">
     </ng-container>
@@ -8,7 +8,7 @@
     <ng-container *ngTemplateOutlet="routerContent">
     </ng-container>
   </app-admin-layout-mobile>
-</app-loading>
+</cin-loading>
 
 <ng-template #routerContent>
   <router-outlet></router-outlet>

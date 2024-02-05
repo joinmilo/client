@@ -18,11 +18,6 @@ export const selectApps = createSelector(
   state => state.apps
 );
 
-export const selectIsLoading = createSelector(
-  selectCoreState,
-  state => state.ongoingRequests > 0,
-);
-
 export const selectLabels = createSelector(
   selectCoreState,
   state => state?.labels

@@ -81,7 +81,6 @@ export class CoreEffects implements OnInitEffects {
 
   setCaptchaSiteKey = createEffect(() => this.actions.pipe(
     ofType(CoreActions.setConfigurations),
-    tap(action => console.log(action?.configurations?.find(c => c?.code === hCaptchaSitekeyConfig)?.value as string)),
     tap(action => this.captchaService.addSiteKey(action?.configurations?.find(c => c?.code === hCaptchaSitekeyConfig)?.value as string)),
   ), { dispatch: false });
 

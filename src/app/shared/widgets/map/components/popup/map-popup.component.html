@@ -9,8 +9,8 @@
   (addressClicked)="openGoogleMaps($event)">
 </app-address-piece>
 
-<app-date-piece *ngIf="poi?.date" [date]="poi?.date" [dateTime]="true">
-</app-date-piece>
+<cin-date-piece *ngIf="poi?.date" [date]="poi?.date" [dateTime]="true">
+</cin-date-piece>
 <span>
   {{
     (poi?.text

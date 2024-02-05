@@ -14,12 +14,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { LoadingComponent } from 'ngx-cinlib/layouts/loading';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalFooterModule } from '../portal/modules/footer/portal-footer.module';
 import { AddressFormModule } from '../shared/form/address/address-form.module';
 import { PasswordModule } from '../shared/form/password/password.module';
 import { PrivacyPolicyFormComponent } from '../shared/form/privacy-policy/privacy-policy-form.component';
-import { LoadingComponent } from '../shared/layout/loading/loading.component';
 import { TitleModule } from '../shared/layout/title/title.module';
 import { MediaFormModule } from '../shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from '../shared/media/modules/widgets/media-widgets.module';
@@ -72,7 +72,6 @@ const materials = [
 const modules = [
   AddressFormModule,
   CoreModule,
-  LoadingComponent,
   MediaFormModule,
   MediaWidgetsModule,
   PasswordModule,
@@ -83,10 +82,12 @@ const modules = [
 ];
 
 const libs = [
-  CaptchaModule,
-  IconComponent,
   StoreModule.forFeature(accountFeatureKey, accountReducer),
   EffectsModule.forFeature([AccountEffects]),
+
+  CaptchaModule,
+  IconComponent,
+  LoadingComponent,
 ]
 
 @NgModule({

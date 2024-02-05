@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { selectIsLoading } from 'src/app/core/state/selectors/core.selectors';
-import { LoadingComponent } from 'src/app/shared/layout/loading/loading.component';
+import { LoadingComponent, LoadingService } from 'ngx-cinlib/layouts/loading';
 import { PortalFooterModule } from '../footer/portal-footer.module';
 import { PortalHeaderModule } from '../header/portal-header.module';
 
@@ -23,9 +21,9 @@ import { PortalHeaderModule } from '../header/portal-header.module';
 })
 export class PortalLayoutComponent {
 
-  public loading = this.store.select(selectIsLoading);
+  public loading = this.loadingService.isLoading();
 
   constructor(
-    private store: Store,
+    private loadingService: LoadingService,
   ) { }
 }

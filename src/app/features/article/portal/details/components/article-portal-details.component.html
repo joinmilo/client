@@ -19,7 +19,7 @@
       <span class="details-headline">
         {{article | translatable: 'name' | async}}
       </span>
-      <app-date-piece [date]="article?.created"></app-date-piece>
+      <cin-date-piece [date]="article?.created"></cin-date-piece>
 
       <!-- <p class="details-content"
         [innerHtml]="article | translatable: 'shortDescription' | async">

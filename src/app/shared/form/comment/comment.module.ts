@@ -7,10 +7,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
+import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from '../../../core/core.module';
-import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { CommentDialogComponent } from './components/dialog/comment-dialog.component';
@@ -42,13 +42,13 @@ const materials = [
 
 const modules = [
   CoreModule,
-  DatePieceComponent,
   MediaWidgetsModule,
   TitleModule,
 ];
 
 const libs = [
   CaptchaModule,
+  DatePieceComponent,
   IconComponent,
 ];
 

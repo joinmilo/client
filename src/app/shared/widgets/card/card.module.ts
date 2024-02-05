@@ -7,11 +7,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
-import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { MailPieceComponent } from '../../layout/mail/mail-piece.component';
 import { PhonePieceComponent } from '../../layout/phone/phone-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
@@ -55,7 +55,6 @@ const modules = [
   AddressPieceComponent,
   CategoryPieceComponent,
   CoreModule,
-  DatePieceComponent,
   FavoriteComponent,
   MailPieceComponent,
   MediaWidgetsModule,
@@ -66,6 +65,7 @@ const modules = [
 
 const libs = [
   IconComponent,
+  DatePieceComponent,
 ];
 
 @NgModule({

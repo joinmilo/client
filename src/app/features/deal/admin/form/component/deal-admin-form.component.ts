@@ -40,7 +40,7 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public contactForm = this.fb.group({
-    contact: [undefined as Maybe<ContactEntity>],
+    contact: [undefined as Maybe<ContactEntity>,],
   });
 
   public uploadsForm = this.fb.group({

@@ -21,9 +21,6 @@ export const CoreActions = createActionGroup({
     'set sidenav component': (sidenav: SidenavContent) => ({ sidenav }),
     'remove sidenav component': emptyProps(),
 
-    'add request': emptyProps(),
-    'remove request': emptyProps(),
-
     'change language': (language: LanguageEntity) => ({ language }),
   },
 });

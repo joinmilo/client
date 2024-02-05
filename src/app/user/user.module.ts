@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { LoadingComponent } from 'ngx-cinlib/layouts/loading';
 import { PortalFooterModule } from '../portal/modules/footer/portal-footer.module';
 import { PortalHeaderModule } from '../portal/modules/header/portal-header.module';
-import { LoadingComponent } from '../shared/layout/loading/loading.component';
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 
@@ -18,15 +18,18 @@ const framework = [
 const modules = [
   PortalHeaderModule,
   PortalFooterModule,
-
-  LoadingComponent,
 ];
+
+const libs = [
+  LoadingComponent,
+]
 
 @NgModule({
   declarations: [...components],
   imports: [
     ...framework,
     ...modules,
+    ...libs,
   ],
 })
 export class UserModule { }

@@ -11,10 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
-import { DatePieceComponent } from 'src/app/shared/layout/date/date-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
@@ -69,7 +69,6 @@ const modules = [
   CardModule,
   CoreModule,
   CommentModule,
-  DatePieceComponent,
   FavoriteComponent,
   MediaWidgetsModule,
   RatingModule,
@@ -81,6 +80,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(articlePortalDetailsStateKey, articlePortalDetailsReducer),
   EffectsModule.forFeature([ArticlePortalDetailsEffects]),
+
+  DatePieceComponent,
 ]
 
 @NgModule({

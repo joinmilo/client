@@ -1,9 +1,9 @@
 <div>
-<app-date-piece [date]="(survey | async)?.startDate"></app-date-piece>
+<cin-date-piece [date]="(survey | async)?.startDate"></cin-date-piece>
 
 <span appLabel="to"></span>
 
-<app-date-piece [date]="(survey | async)?.dueDate"></app-date-piece>
+<cin-date-piece [date]="(survey | async)?.dueDate"></cin-date-piece>
 </div>
 
 <app-mail-piece *ngIf="(survey | async)?.contact?.email" [mail]="(survey | async)?.contact?.email">

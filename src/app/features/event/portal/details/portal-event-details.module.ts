@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { LocalDatePipe } from 'ngx-cinlib/date/pipes';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
@@ -98,9 +99,11 @@ const modules = [
 ];
 
 const libs = [
-  IconComponent,
   StoreModule.forFeature(portalEventDetailsStateKey, portalEventDetailsReducer),
   EffectsModule.forFeature([PortalEventDetailsEffects]),
+
+  IconComponent,
+  LocalDatePipe
 ]
 
 @NgModule({
