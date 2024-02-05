@@ -12,8 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent, IconFormComponent } from 'ngx-cinlib/icons';
+import { DragDropContainerComponent, DragDropElementComponent } from 'ngx-cinlib/layouts/drag-drop';
 import { CoreModule } from 'src/app/core/core.module';
-import { DragAndDropModule } from 'src/app/shared/layout/drag-drop/drag-drop.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { AdminSettingsPageMenuComponent } from './components/admin-settings-page-menu.component';
 import { AdminSettingsPageMenuDialogComponent } from './components/dialog/admin-settings-page-menu-dialog.component';
@@ -46,16 +46,17 @@ const materials = [
 
 const modules = [
   CoreModule,
-  DragAndDropModule,
   GridLayoutModule,
 ];
 
 const libs = [
-  IconComponent,
-  IconFormComponent,
-
   EffectsModule.forFeature([AdminSettingsPageMenuEffects]),
   StoreModule.forFeature(adminSettingsPageMenuStateKey, adminSettingsPageMenuReducer),
+
+  DragDropContainerComponent,
+  DragDropElementComponent,
+  IconComponent,
+  IconFormComponent,
 ]
 
 @NgModule({

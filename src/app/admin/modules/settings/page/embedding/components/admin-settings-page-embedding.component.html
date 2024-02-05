@@ -1,9 +1,9 @@
-<app-drag-drop
+<cin-drag-drop-container
   [disabled]="disabled"
   (deleted)="deleted($event)"
   (updated)="sorted($event)">
   @for (input of inputs; track input; let index = $index) {
-    <app-drag-drop-element
+    <cin-drag-drop-element
       [title]="input.embedding.label"
       [subTitle]="input.embedding.type | translatable: 'name' | async"
       [expanded]="input.expanded">
@@ -12,9 +12,9 @@
         (saved)="saved($event, index)"
         (validUpdated)="validUpdated($event, index)">
       </app-admin-settings-page-embedding-form>
-    </app-drag-drop-element>
+    </cin-drag-drop-element>
   }
-</app-drag-drop>
+</cin-drag-drop-container>
 <button mat-flat-button
   color="primary"
   [disabled]="!valid"

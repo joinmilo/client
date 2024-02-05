@@ -12,8 +12,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
+import { DragDropContainerComponent, DragDropElementComponent } from 'ngx-cinlib/layouts/drag-drop';
 import { CoreModule } from 'src/app/core/core.module';
-import { DragAndDropModule } from 'src/app/shared/layout/drag-drop/drag-drop.module';
 import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { AdminSettingsPageEmbeddingComponent } from './components/admin-settings-page-embedding.component';
@@ -22,7 +22,6 @@ import { AdminSettingsPageEmbeddingFormComponent } from './components/form/admin
 import { adminSettingsPageEmbeddingStateKey } from './constants/admin-settings-page-emedding.constants';
 import { AdminSettingsPageEmbeddingEffects } from './state/admin-settings-page-embedding.effects';
 import { adminSettingsPageEmbeddingReducer } from './state/admin-settings-page-embedding.reducer';
-
 
 const components = [
   AdminSettingsPageEmbeddingComponent,
@@ -49,7 +48,6 @@ const materials = [
 const modules = [
   CoreModule,
   GridLayoutModule,
-  DragAndDropModule,
   MediaFormModule,
 ];
 
@@ -57,6 +55,8 @@ const libs = [
   StoreModule.forFeature(adminSettingsPageEmbeddingStateKey, adminSettingsPageEmbeddingReducer),
   EffectsModule.forFeature([AdminSettingsPageEmbeddingEffects]),
 
+  DragDropContainerComponent,
+  DragDropElementComponent,
   RichtextEditorFormComponent,
 ]
 

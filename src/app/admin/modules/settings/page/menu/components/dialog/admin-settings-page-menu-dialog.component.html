@@ -19,24 +19,24 @@
   
     <mat-divider></mat-divider>
 
-    <app-drag-drop
+    <cin-drag-drop-container
       [deletable]="false"
       (updated)="sorted($event)">
       @for (item of form.value.items; track item; let index = $index) {
         @if (item.newEntity) {
-          <app-drag-drop-element
+          <cin-drag-drop-element
             titleLabel="yourPage"
             [expanded]="true">
             <span appLabel="orderYourPageInMenu"></span>
-          </app-drag-drop-element>
+          </cin-drag-drop-element>
         } @else {
-          <app-drag-drop-element
+          <cin-drag-drop-element
             [title]="item.menu | translatable: 'name' | async"
             [expandable]="false">
-          </app-drag-drop-element>
+          </cin-drag-drop-element>
         }
       }
-    </app-drag-drop>
+    </cin-drag-drop-container>
   </form>
 
 
