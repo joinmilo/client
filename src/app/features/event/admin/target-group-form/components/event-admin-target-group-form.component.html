@@ -3,11 +3,11 @@
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="targetGroup" [formGroup]="targetGroupForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 </cin-form-stepper>

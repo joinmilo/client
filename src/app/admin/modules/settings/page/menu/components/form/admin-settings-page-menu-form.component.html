@@ -13,15 +13,15 @@
 
     <mat-divider></mat-divider>
 
-    <app-row columns="6">
-      <mat-form-field appearance="outline" [appAssignColumns]="3">
+    <cin-grid-row columns="6">
+      <mat-form-field appearance="outline" [cinAssignColumns]="3">
         <mat-label appLabel="menuName"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
 
-      <cin-icon-form formControlName="icon" [appAssignColumns]="1">
+      <cin-icon-form formControlName="icon" [cinAssignColumns]="1">
       </cin-icon-form>
-    </app-row>
+    </cin-grid-row>
 
     <mat-form-field appearance="outline">
       <mat-label appLabel="shortDescription"></mat-label>

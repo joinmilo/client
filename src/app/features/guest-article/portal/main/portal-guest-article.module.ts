@@ -14,8 +14,8 @@ import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalGuestArticleFormComponent } from './components/form/portal-guest-article-form.component';
@@ -47,7 +47,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  GridLayoutModule,
   MediaWidgetsModule,
   PortalGuestArticleRoutingModule,
   TitleModule,
@@ -60,6 +59,8 @@ const libs = [
   CaptchaModule,
   FormStepComponent,
   FormStepperComponent,
+  GridColumnDirective,
+  GridRowComponent,
   IconComponent,
   RichtextEditorFormComponent,
 ]

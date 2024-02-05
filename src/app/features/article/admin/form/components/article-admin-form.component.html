@@ -4,14 +4,14 @@
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="content" [formGroup]="contentForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
@@ -21,13 +21,13 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="1">
+    <cin-grid-row columns="1">
       <cin-richtext-editor-form
         formControlName="content">
       </cin-richtext-editor-form>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
@@ -39,31 +39,31 @@
   </cin-form-step>
 
   <cin-form-step titleLabel="shortDescription" [formGroup]="shortDescriptionForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="shortDescription"></mat-label>
         <textarea matInput formControlName="shortDescription" rows="5"></textarea>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step titleLabel="additionalInfo"
     [formGroup]="additionalInfoForm">
-    <app-row columns="1">
+    <cin-grid-row columns="1">
       <div>
         <span appLabel="commentsAllowed"></span>
         <mat-slide-toggle color="primary" formControlName="commentsAllowed">
         </mat-slide-toggle>
       </div>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="metaDescription"></mat-label>
         <textarea matInput formControlName="metaDescription" rows="5">
         </textarea>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
 </cin-form-stepper>

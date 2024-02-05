@@ -8,9 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsAddressRoutingModule } from './admin-settings-address-routing.module';
@@ -41,7 +41,6 @@ const modules = [
   AddressFormModule,
   AdminSettingsAddressRoutingModule,
   CoreModule,
-  GridLayoutModule,
   TableModule,
   TitleModule,
 ];
@@ -52,6 +51,8 @@ const libs = [
 
   FormStepComponent,
   FormStepperComponent,
+  GridColumnDirective,
+  GridRowComponent,
 ];
 
 @NgModule({

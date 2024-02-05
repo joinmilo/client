@@ -6,8 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaAdminCategoryFormComponent } from './components/media-admin-category-form.component';
 import { mediaAdminCategoryFormStateKey } from './constants/media-admin-category-form.constants';
@@ -34,7 +34,6 @@ const modules = [
   CoreModule,
   MediaAdminCategoryFormRoutingModule,
   TitleModule,
-  GridLayoutModule,
 ];
 
 const libs = [
@@ -43,6 +42,8 @@ const libs = [
 
   FormStepComponent,
   FormStepperComponent,
+  GridColumnDirective,
+  GridRowComponent,
 ];
 
 @NgModule({

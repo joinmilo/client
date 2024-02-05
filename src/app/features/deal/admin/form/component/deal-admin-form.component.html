@@ -4,14 +4,14 @@
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="content" [formGroup]="contentForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="name" />
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
@@ -22,12 +22,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="1">
+    <cin-grid-row columns="1">
       <cin-richtext-editor-form formControlName="content">
       </cin-richtext-editor-form>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
@@ -39,34 +39,34 @@
   </cin-form-step>
 
   <cin-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
-    <app-row>
+    <cin-grid-row>
       <app-contact-form 
         formControlName="contact" 
         [showContactOptions]="false">
       </app-contact-form>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step [formGroup]="locationForm" titleLabel="location">
-    <app-row>
+    <cin-grid-row>
       <app-address-form formControlName="address"> </app-address-form>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step
     titleLabel="shortDescription"
     [formGroup]="shortDescriptionForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="shortDescription"></mat-label>
         <textarea matInput formControlName="shortDescription" rows="5">
         </textarea>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-radio-group formControlName="selectedType">
         <mat-radio-button
           color="primary"
@@ -81,21 +81,21 @@
           <span appLabel="request"></span>
         </mat-radio-button>
       </mat-radio-group>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="8">
+    <cin-grid-row columns="8">
       <mat-form-field appearance="outline">
         <mat-label appLabel="price"></mat-label>
         <input formControlName="price" matInput placeholder="&euro;" />
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row>
+    <cin-grid-row>
       <div>
         <span appLabel="dealIsPublic"></span>
         <mat-slide-toggle color="primary" formControlName="isPublic">
         </mat-slide-toggle>
       </div>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 </cin-form-stepper>

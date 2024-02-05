@@ -18,12 +18,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Store } from '@ngrx/store';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { Subject, takeUntil } from 'rxjs';
 import { ContactEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { AppValidators } from 'src/app/core/validators/validators';
-import { GridLayoutModule } from '../../layout/grid-layout/grid-layout.module';
 import { ContactOptionEntity } from './typings/contact-form';
 
 @Component({
@@ -41,12 +41,13 @@ import { ContactOptionEntity } from './typings/contact-form';
   imports: [
     CommonModule,
     CoreModule,
-    GridLayoutModule,
+    GridColumnDirective,
+    GridRowComponent,
     MatFormFieldModule,
     MatInputModule,
     MatOptionModule,
-    ReactiveFormsModule,
     MatSelectModule,
+    ReactiveFormsModule,
   ],
 })
 export class ContactFormComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {

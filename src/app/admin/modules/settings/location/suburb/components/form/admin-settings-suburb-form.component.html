@@ -8,14 +8,14 @@
   <cin-form-step
     titleLabel="suburb"
     [formGroup]="form">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="8">
+    <cin-grid-row columns="8">
       <mat-form-field appearance="outline">
         <mat-label appLabel="longitude"></mat-label>
         <input matInput formControlName="longitude">
@@ -25,6 +25,6 @@
         <mat-label appLabel="latitude"></mat-label>
         <input matInput formControlName="latitude">
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 </cin-form-stepper>

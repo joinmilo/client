@@ -1,14 +1,14 @@
-<app-row [columns]="columns | async">
+<cin-grid-row [columns]="columns | async">
   <button mat-flat-button
     color="accent"
     appLabel="showSchedules"
     (click)="showSchedules()"
-    [appAssignColumns]="leftAssignedColumns | async">
+    [cinAssignColumns]="leftAssignedColumns | async">
   </button>
   <button mat-stroked-button
     color="primary"
     appLabel="createNewSchedules"
     (click)="createNewSchedules()"
-    [appAssignColumns]="leftAssignedColumns | async">
+    [cinAssignColumns]="leftAssignedColumns | async">
   </button>
-</app-row>
+</cin-grid-row>

@@ -7,8 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconFormComponent } from 'ngx-cinlib/icons';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { EventAdminCategoryFormComponent } from './components/event-admin-category-form.component';
 import { eventAdminCategoryFormStateKey } from './constants/event-admin-category-form.constants';
@@ -34,7 +34,6 @@ const modules = [
   CoreModule,
   EventAdminCategoryFormRoutingModule,
   TitleModule,
-  GridLayoutModule,
 ];
 
 const libs = [
@@ -43,6 +42,8 @@ const libs = [
 
   FormStepComponent,
   FormStepperComponent,
+  GridColumnDirective,
+  GridRowComponent,
   IconFormComponent,
 ];
 

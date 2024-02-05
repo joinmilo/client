@@ -8,16 +8,16 @@
   <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
          
     <cin-form-step titleLabel="content" [formGroup]="descriptionForm" descriptionLabel="describeYourOrganisation">
-      <app-row columns="2">
+      <cin-grid-row columns="2">
         <mat-form-field appearance="outline">
           <mat-label appLabel="organisationName"></mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
-      </app-row>
-      <app-row columns="1">
+      </cin-grid-row>
+      <cin-grid-row columns="1">
         <cin-richtext-editor-form formControlName="description">
         </cin-richtext-editor-form>
-      </app-row>
+      </cin-grid-row>
     </cin-form-step>
 
     <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
@@ -26,7 +26,7 @@
     </cin-form-step>
     
     <cin-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
-      <app-row columns="2">
+      <cin-grid-row columns="2">
         <mat-form-field appearance="outline">
           <mat-label appLabel="email"></mat-label>
           <input matInput formControlName="email">
@@ -35,9 +35,9 @@
           <mat-label appLabel="name"></mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
-      </app-row>
+      </cin-grid-row>
 
-      <app-row columns="2">
+      <cin-grid-row columns="2">
         <mat-form-field appearance="outline">
           <mat-label appLabel="website"></mat-label>
           <input matInput formControlName="website">
@@ -46,14 +46,14 @@
           <mat-label appLabel="phone"></mat-label>
           <input matInput formControlName="phone" type="number">
         </mat-form-field>
-      </app-row>
+      </cin-grid-row>
     </cin-form-step>
 
     <cin-form-step titleLabel="address" [formGroup]="addressForm" descriptionLabel="enterYourAddress">
-      <app-row>
+      <cin-grid-row>
         <app-address-form formControlName="address">
         </app-address-form>
-      </app-row>
+      </cin-grid-row>
     </cin-form-step>
 
   </cin-form-stepper>  

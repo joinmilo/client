@@ -4,7 +4,7 @@
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
 
   <cin-form-step titleLabel="configuration" [formGroup]="form">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="whichRoleForMembers"></mat-label>
         <mat-select formControlName="memberRole">
@@ -14,12 +14,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </app-row>
-    <app-row columns="2">
+    </cin-grid-row>
+    <cin-grid-row columns="2">
       <mat-slide-toggle formControlName="approvalRequired" color="primary">
         <span appLabel="approvalRequired"></span>
       </mat-slide-toggle>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
 </cin-form-stepper>

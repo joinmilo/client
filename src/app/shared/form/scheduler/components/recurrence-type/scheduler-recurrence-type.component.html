@@ -1,6 +1,6 @@
-<app-row columns="columns | async">
+<cin-grid-row [columns]="columns | async">
   <mat-form-field appearance="outline"
-      [appAssignColumns]="leftAssignedColumns | async">
+      [cinAssignColumns]="leftAssignedColumns | async">
     <mat-label appLabel="recurrence"></mat-label>
 
     <mat-select [formControl]="control">
@@ -9,4 +9,4 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-</app-row>
+</cin-grid-row>

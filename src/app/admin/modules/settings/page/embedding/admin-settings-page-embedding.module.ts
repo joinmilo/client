@@ -13,8 +13,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { DragDropContainerComponent, DragDropElementComponent } from 'ngx-cinlib/layouts/drag-drop';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { AdminSettingsPageEmbeddingComponent } from './components/admin-settings-page-embedding.component';
 import { AdminSettingsPageEmbeddingDialogComponent } from './components/dialog/admin-settings-page-embedding-dialog.component';
@@ -47,7 +47,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  GridLayoutModule,
   MediaFormModule,
 ];
 
@@ -57,6 +56,8 @@ const libs = [
 
   DragDropContainerComponent,
   DragDropElementComponent,
+  GridColumnDirective,
+  GridRowComponent,
   RichtextEditorFormComponent,
 ]
 

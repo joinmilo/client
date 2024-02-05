@@ -4,12 +4,12 @@
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="content" [formGroup]="contentForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="label">
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
     <app-admin-settings-page-embedding formControlName="embeddings">
     </app-admin-settings-page-embedding>

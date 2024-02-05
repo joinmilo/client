@@ -1,11 +1,11 @@
-<app-row columns="columns | async">
+<cin-grid-row columns="columns | async">
   <span appLabel="repeatEvery"
-    [appAssignColumns]="leftAssignedColumns | async">
+    [cinAssignColumns]="leftAssignedColumns | async">
   </span>
 
   <mat-form-field appearance="outline"
-    [appAssignColumns]="numberAssignedColumns | async">
+    [cinAssignColumns]="numberAssignedColumns | async">
     <mat-label [appLabel]="everyRecurrenceLabel | async"></mat-label>
     <input matInput type="number" [formControl]="control">
   </mat-form-field>
-</app-row>
+</cin-grid-row>

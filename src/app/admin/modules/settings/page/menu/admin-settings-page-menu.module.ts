@@ -13,8 +13,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent, IconFormComponent } from 'ngx-cinlib/icons';
 import { DragDropContainerComponent, DragDropElementComponent } from 'ngx-cinlib/layouts/drag-drop';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { AdminSettingsPageMenuComponent } from './components/admin-settings-page-menu.component';
 import { AdminSettingsPageMenuDialogComponent } from './components/dialog/admin-settings-page-menu-dialog.component';
 import { AdminSettingsPageMenuFormComponent } from './components/form/admin-settings-page-menu-form.component';
@@ -46,7 +46,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  GridLayoutModule,
 ];
 
 const libs = [
@@ -55,6 +54,8 @@ const libs = [
 
   DragDropContainerComponent,
   DragDropElementComponent,
+  GridColumnDirective,
+  GridRowComponent,
   IconComponent,
   IconFormComponent,
 ]

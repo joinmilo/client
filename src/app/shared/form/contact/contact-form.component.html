@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <ng-container *ngIf="showContactOptions">
-    <app-row *ngIf="contactOptions?.length" [columns]="2">
+    <cin-grid-row *ngIf="contactOptions?.length" [columns]="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="importContact"></mat-label>
         <mat-select formControlName="contactOptionLabel">
@@ -10,10 +10,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </ng-container>
 
-  <app-row columns="2">
+  <cin-grid-row columns="2">
     <mat-form-field appearance="outline">
       <mat-label appLabel="name"></mat-label>
       <input matInput formControlName="name">
@@ -23,9 +23,9 @@
       <mat-label appLabel="email"></mat-label>
       <input matInput formControlName="email">
     </mat-form-field>
-  </app-row>
+  </cin-grid-row>
 
-  <app-row columns="2">
+  <cin-grid-row columns="2">
     <mat-form-field appearance="outline">
       <mat-label appLabel="phone"></mat-label>
       <input matInput formControlName="phone">
@@ -35,5 +35,5 @@
       <mat-label appLabel="website"></mat-label>
       <input matInput formControlName="website">
     </mat-form-field>
-  </app-row>
+  </cin-grid-row>
 </form>

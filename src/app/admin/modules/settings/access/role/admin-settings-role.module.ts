@@ -9,8 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsRoleRoutingModule } from './admin-settings-role-routing.module';
@@ -41,7 +41,6 @@ const materials = [
 const modules = [
   AdminSettingsRoleRoutingModule,
   CoreModule,
-  GridLayoutModule,
   TableModule,
   TitleModule,
 ];
@@ -52,6 +51,8 @@ const libs = [
 
   FormStepComponent,
   FormStepperComponent,
+  GridColumnDirective,
+  GridRowComponent,
 ];
 
 @NgModule({

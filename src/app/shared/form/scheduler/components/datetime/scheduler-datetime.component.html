@@ -1,12 +1,12 @@
-<app-row [columns]="columns | async" [formGroup]="form">
+<cin-grid-row [columns]="columns | async" [formGroup]="form">
   <cin-datetime-form
-    [appAssignColumns]="assignedColumns | async"
+    [cinAssignColumns]="assignedColumns | async"
     label="begin"
     formControlName="startDate">
   </cin-datetime-form>
 
   <cin-datetime-form
-    [appAssignColumns]="assignedColumns | async"
+    [cinAssignColumns]="assignedColumns | async"
     label="end"
     formControlName="endDate">
   </cin-datetime-form>
@@ -18,4 +18,4 @@
     (click)="showSchedules()">
     <cin-icon [icon]="['fas', 'eye']"></cin-icon>
   </button>
-</app-row>
+</cin-grid-row>

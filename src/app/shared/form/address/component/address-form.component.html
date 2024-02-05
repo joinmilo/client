@@ -1,17 +1,17 @@
 <form [formGroup]="form">
-  <app-row columns="8">
-    <mat-form-field appearance="outline" [appAssignColumns]="6">
+  <cin-grid-row columns="8">
+    <mat-form-field appearance="outline" [cinAssignColumns]="6">
       <mat-label appLabel="street"></mat-label>
       <input matInput formControlName="street">
     </mat-form-field>
   
-    <mat-form-field appearance="outline" [appAssignColumns]="2">
+    <mat-form-field appearance="outline" [cinAssignColumns]="2">
       <mat-label appLabel="nr"></mat-label>
       <input matInput formControlName="houseNumber">
     </mat-form-field>
-  </app-row>
+  </cin-grid-row>
 
-  <app-row columns="2">
+  <cin-grid-row columns="2">
     <mat-form-field appearance="outline">
       <mat-label appLabel="place"></mat-label>
       <input matInput formControlName="place">
@@ -28,7 +28,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-  </app-row>
+  </cin-grid-row>
 
   <mat-error *ngIf="form.errors">
     <ng-container *ngFor="let error of form.errors | keyvalue">

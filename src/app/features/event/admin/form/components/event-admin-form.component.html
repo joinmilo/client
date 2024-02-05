@@ -4,14 +4,14 @@
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step [formGroup]="contentForm" titleLabel="content">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="name" />
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
@@ -22,12 +22,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="1">
+    <cin-grid-row columns="1">
       <cin-richtext-editor-form formControlName="content">
       </cin-richtext-editor-form>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
@@ -42,43 +42,43 @@
     [formGroup]="locationForm"
     titleLabel="location"
     [required]="true">
-    <app-row>
+    <cin-grid-row>
       <app-address-form formControlName="address"> </app-address-form>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline" [ariaDisabled]="true">
         <mat-label appLabel="videoChatLink"></mat-label>
         <input matInput formControlName="videoChatLink" />
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step
     [formGroup]="shortDescriptionForm"
     titleLabel="shortDescription">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="shortDescription"></mat-label>
         <textarea formControlName="shortDescription" rows="5" matInput>
         </textarea>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step
     titleLabel="time"
     descriptionLabel="createSchedules"
     [formGroup]="scheduleForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <app-scheduler-form formControlName="schedules"> </app-scheduler-form>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step
   titleLabel="contactAndOrganisation"
   [formGroup]="contactAndOrganisationForm">
-  <app-row columns="2" *ngIf="userOrganisations?.length">
+  <cin-grid-row columns="2" *ngIf="userOrganisations?.length">
     <mat-form-field appearance="outline">
       <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
       <mat-select formControlName="organisationId">
@@ -93,63 +93,63 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-  </app-row>
+  </cin-grid-row>
 
     <mat-divider></mat-divider>
 
-    <app-row>
+    <cin-grid-row>
       <app-contact-form
         formControlName="contact"
         [inputOptions]="contactOptionEntity">
       </app-contact-form>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step titleLabel="attendance" [formGroup]="attendeeConfigForm">
-    <app-row columns="1">
+    <cin-grid-row columns="1">
       <div>
         <span appLabel="configureAttendance"></span>
         <mat-slide-toggle color="primary" formControlName="configureAttendance">
         </mat-slide-toggle>
       </div>
-    </app-row>
+    </cin-grid-row>
 
     <mat-divider
       *ngIf="attendeeConfigForm.value.configureAttendance"></mat-divider>
 
-    <app-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="1">
+    <cin-grid-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="1">
       <div>
         <span appLabel="attandanceNeedsApproval"></span>
         <mat-slide-toggle color="primary" formControlName="approval">
         </mat-slide-toggle>
       </div>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="5">
+    <cin-grid-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="5">
       <mat-form-field appearance="outline">
         <mat-label appLabel="maxAttendees"></mat-label>
         <input formControlName="maxAttendees" matInput />
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
-    <app-row columns="8">
+    <cin-grid-row columns="8">
       <mat-form-field appearance="outline">
         <mat-label appLabel="entryFee"></mat-label>
         <input formControlName="entryFee" matInput placeholder="&euro;" />
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="1">
+    <cin-grid-row columns="1">
       <div>
         <span appLabel="commentsAllowed"></span>
         <mat-slide-toggle color="primary" formControlName="commentsAllowed">
         </mat-slide-toggle>
       </div>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="targetGroup"></mat-label>
         <mat-select formControlName="targetGroups" multiple>
@@ -160,14 +160,14 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
         <mat-label appLabel="metaDescription"></mat-label>
         <textarea matInput formControlName="metaDescription" rows="5">
         </textarea>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 </cin-form-stepper>

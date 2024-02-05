@@ -3,14 +3,14 @@
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="category" [formGroup]="categoryForm">
-    <app-row columns="2">
+    <cin-grid-row columns="2">
       <mat-form-field id="name" appearance="outline">
         <mat-label appLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
 
-    <app-row columns="4">
+    <cin-grid-row columns="4">
       <cin-icon-form matInput formControlName="icon">
       </cin-icon-form>
 
@@ -18,6 +18,6 @@
         <mat-label appLabel="color"></mat-label>
         <input type="color" matInput formControlName="color">
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   </cin-form-step>
 </cin-form-stepper>

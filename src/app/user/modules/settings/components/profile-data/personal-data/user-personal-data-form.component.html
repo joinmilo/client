@@ -6,7 +6,7 @@
 
       <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
         <cin-form-step [formGroup]="userForm" titleLabel="content">
-          <app-row columns="2">
+          <cin-grid-row columns="2">
             <mat-form-field appearance="outline">
               <mat-label appLabel="firstName"></mat-label>
               <input matInput formControlName="firstName" />
@@ -15,9 +15,9 @@
               <mat-label appLabel="lastName"></mat-label>
               <input matInput formControlName="lastName" />
             </mat-form-field>
-          </app-row>
+          </cin-grid-row>
 
-          <app-row columns="2">
+          <cin-grid-row columns="2">
             <mat-form-field appearance="outline">
               <mat-label appLabel="email"></mat-label>
               <input matInput formControlName="email" />
@@ -26,7 +26,7 @@
               <mat-label appLabel="phone"></mat-label>
               <input matInput formControlName="phone" />
             </mat-form-field>
-          </app-row>
+          </cin-grid-row>
         </cin-form-step>
 
         <cin-form-step titleLabel="profilePicture" [formGroup]="ProfilePictureForm">
@@ -41,23 +41,23 @@
         </cin-form-step>        
 
         <cin-form-step [formGroup]="addressForm" titleLabel="address">
-          <app-row>
+          <cin-grid-row>
             <app-address-form formControlName="address"> </app-address-form>
-          </app-row>
+          </cin-grid-row>
         </cin-form-step>
 
         <cin-form-step
           [formGroup]="additionalInfoForm"
           titleLabel="additionalInfo">
-          <app-row columns="1">
+          <cin-grid-row columns="1">
             <mat-form-field appearance="outline">
               <mat-label appLabel="shortDescription"></mat-label>
               <textarea formControlName="description" rows="5" matInput>
               </textarea>
             </mat-form-field>
-          </app-row>
+          </cin-grid-row>
 
-          <app-row columns="2">
+          <cin-grid-row columns="2">
             <mat-form-field appearance="outline">
               <mat-label appLabel="language"></mat-label>
               <mat-select
@@ -69,7 +69,7 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-          </app-row>
+          </cin-grid-row>
         </cin-form-step>
       </cin-form-stepper>
     </div>

@@ -1,15 +1,15 @@
 <form [formGroup]="form">
-  <app-row columns="2" formGroupName="base">
-    <mat-form-field appearance="outline" [appAssignColumns]="1">
+  <cin-grid-row columns="2" formGroupName="base">
+    <mat-form-field appearance="outline" [cinAssignColumns]="1">
       <mat-label appLabel="name"></mat-label>
       <input matInput formControlName="label">
     </mat-form-field>
-  </app-row>
+  </cin-grid-row>
 
   <mat-divider></mat-divider>
 
   @if (hasControl(form.controls.plugin, 'plugin')) {
-    <app-row
+    <cin-grid-row
       columns="2"
       [formGroup]="form.controls.plugin">
       <mat-form-field appearance="outline">
@@ -23,11 +23,11 @@
           }
         </mat-select>
       </mat-form-field>
-    </app-row>
+    </cin-grid-row>
   }
 
   @if (hasControl(form.controls.title, 'title')) {
-  <app-row
+  <cin-grid-row
     columns="2"
     [formGroup]="form.controls.title">
     <mat-form-field
@@ -35,12 +35,12 @@
         <mat-label appLabel="title"></mat-label>
         <input matInput [formControl]="getControl(form.controls.title, 'title')">
       </mat-form-field>
-  </app-row>
+  </cin-grid-row>
 }
 
   @if (hasControl(form.controls.buttonUrl, 'button')
     || hasControl(form.controls.buttonUrl, 'url')) {
-    <app-row
+    <cin-grid-row
       columns="2"
       [formGroup]="form.controls.buttonUrl">
       @if (hasControl(form.controls.buttonUrl, 'button')) {
@@ -58,11 +58,11 @@
           <input matInput [formControl]="getControl(form.controls.buttonUrl, 'url')">
         </mat-form-field>
       }
-    </app-row>
+    </cin-grid-row>
   }
   @if (hasControl(form.controls.textMedium, 'text')
     || hasControl(form.controls.textMedium, 'media')) {
-    <app-row
+    <cin-grid-row
       columns="2" [formGroup]="form.controls.textMedium">
       @if (hasControl(form.controls.textMedium, 'text')) {
         <cin-richtext-editor-form
@@ -76,7 +76,7 @@
           [maxFiles]="1">
         </app-media-form>
       }
-    </app-row>
+    </cin-grid-row>
   }
   @if (hasControl(form.controls.media, 'multimedia')) {
     <div
