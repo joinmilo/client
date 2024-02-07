@@ -42,40 +42,26 @@
     titleLabel="voteAndParticipation"
     [required]="true">
 
-    <app-row [columns]="15">
+    <app-row [columns]="3">
       <app-datetime-form
         [date]="participationAndVoteForm.value.participationEndDate"
-        [appAssignColumns]="6"
+        [appAssignColumns]="1"
         formControlName="participationEndDate"
         label="participationEndDate">
     </app-datetime-form>
-      <mat-form-field [appAssignColumns]="3" appearance="outline">
-        <mat-label appLabel="maxParticipations"></mat-label>
-        <input formControlName="maxParticipations" matInput />
-      </mat-form-field>
-    </app-row>
 
-    <app-row [columns]="15">
       <app-datetime-form
         [date]="participationAndVoteForm.value.voteEndDate"
-        [appAssignColumns]="6"
+        [appAssignColumns]="1"
         formControlName="voteEndDate"
         label="voteEndDate"
         [minDate]="participationAndVoteForm.value.participationEndDate">
-      </app-datetime-form>
-      <mat-form-field [appAssignColumns]="3" appearance="outline">
-        <mat-label appLabel="maxVotes"></mat-label>
-        <input formControlName="maxVotes" matInput />
-      </mat-form-field>
+      </app-datetime-form>  
     </app-row>
 
-    <app-row [columns]="1">
-      <div>
-        <span appLabel="participationApproval"></span>
-        <mat-slide-toggle color="primary" formControlName="participationApproval">
-        </mat-slide-toggle>
-      </div>
-    </app-row>
+    <mat-error *ngIf="participationAndVoteForm.controls.voteEndDate.hasError('invalidMinDate')">
+        <span appLabel="votingDateAfterParticipation"></span>
+    </mat-error>     
   </app-form-step>
 
   <app-form-step
@@ -91,7 +77,33 @@
   </app-form-step>
 
 
+  <app-form-step titleLabel="contact" [formGroup]="contactForm">
+    <app-row>
+      <app-contact-form formControlName="contact"></app-contact-form>
+    </app-row>
+  </app-form-step>
+  
   <app-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
+    <app-row [columns]="1">
+      <div>
+        <span appLabel="participationApproval"></span>
+        <mat-slide-toggle color="primary" formControlName="participationApproval">
+        </mat-slide-toggle>
+      </div>
+    </app-row>
+
+    <app-row [columns]="4">
+      <mat-form-field [appAssignColumns]="1" appearance="outline">
+        <mat-label appLabel="maxParticipations"></mat-label>
+        <input formControlName="maxParticipations" matInput />
+      </mat-form-field>
+
+      <mat-form-field [appAssignColumns]="1" appearance="outline">
+        <mat-label appLabel="maxVotes"></mat-label>
+        <input formControlName="maxVotes" matInput />
+      </mat-form-field>
+   </app-row>
+
     <app-row [columns]="1">
       <div>
         <span appLabel="commentsAllowed"></span>
@@ -106,12 +118,6 @@
         <textarea matInput formControlName="metaDescription" rows="5">
         </textarea>
       </mat-form-field>
-    </app-row>
-  </app-form-step>
-
-  <app-form-step titleLabel="contact" [formGroup]="contactForm">
-    <app-row>
-      <app-contact-form formControlName="contact"></app-contact-form>
     </app-row>
   </app-form-step>
 </app-form-stepper>

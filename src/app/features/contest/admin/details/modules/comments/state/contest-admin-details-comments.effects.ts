@@ -65,7 +65,6 @@ export class ContestAdminDetailsCommentsEffects {
     map(response => ContestAdminDetailsCommentsActions.setComments(response.data.getContestComments as PageableList_ContestCommentEntity))
   ));
 
-
   deleteComment = createEffect(() => this.actions.pipe(
     ofType(ContestAdminDetailsCommentsActions.deleteComment),
     switchMap(action => this.confirmService

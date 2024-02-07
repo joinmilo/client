@@ -1,7 +1,7 @@
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnDestroy, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, ReactiveFormsModule, ValidationErrors, Validator } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +19,12 @@ import { CoreModule } from 'src/app/core/core.module';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DatetimeFormComponent),
       multi: true
-    }
+    },
+    {
+      provide: NG_VALIDATORS,
+      multi: true,
+      useExisting: DatetimeFormComponent
+    },
   ],
   imports: [
     CommonModule,
@@ -36,7 +41,7 @@ import { CoreModule } from 'src/app/core/core.module';
     ReactiveFormsModule,
   ]
 })
-export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
+export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy, Validator {
 
   @Input()
   public set date(date: Maybe<string | Date>) {
@@ -52,6 +57,10 @@ export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
 
   public get minDate(): Maybe<Date> {
     return this._minDate;
+  }
+
+  get valid(): boolean {
+    return this.control.valid;
   }
 
   public _minDate?: Date;
@@ -77,6 +86,25 @@ export class DatetimeFormComponent implements ControlValueAccessor, OnDestroy {
         this.onChange?.(result);
       });
   }
+
+
+  public validate(): ValidationErrors | null {
+    if (!this.valid) {
+      var errors = { ...this.control.errors };
+  
+      if ('matDatetimePickerMin' in errors) {
+        errors = {...errors, invalidMinDate: true};
+        delete errors['matDatetimePickerMin'];
+      }
+  
+      return errors;
+    } else {
+      return null;
+    }
+  }
+  
+  
+
 
   public writeValue(date: Maybe<Date | string>): void {
     date

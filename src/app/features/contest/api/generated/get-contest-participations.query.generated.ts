@@ -11,7 +11,7 @@ export type GetContestParticipationsQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetContestParticipationsQuery = { __typename?: 'Query', getContestParticipations?: { __typename?: 'PageableList_ContestParticipationEntity', total: any, result?: Array<{ __typename?: 'ContestParticipationEntity', id?: string | null, approved?: boolean | null, placement?: number | null, textSubmission?: string | null, contest?: { __typename?: 'ContestEntity', id?: string | null, maxParticipations?: number | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, contestVotes?: Array<{ __typename?: 'ContestVoteEntity', id?: string | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null } | null } | null> | null, translatables?: Array<{ __typename?: 'ContestParticipationTranslatableEntity', id?: string | null, textSubmission?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, mediaSubmissions?: Array<{ __typename?: 'ContestParticipationMediaEntity', id?: string | null, media?: { __typename?: 'MediaEntity', id?: string | null, created?: any | null, extension?: string | null, mimeType?: string | null, modified?: any | null, name?: string | null, size?: any | null, url?: string | null, base64?: string | null, attribution?: { __typename?: 'MediaAttributionEntity', id?: string | null, title?: string | null, author?: string | null, source?: string | null, license?: string | null } | null } | null } | null> | null } | null> | null } | null };
+export type GetContestParticipationsQuery = { __typename?: 'Query', getContestParticipations?: { __typename?: 'PageableList_ContestParticipationEntity', total: any, result?: Array<{ __typename?: 'ContestParticipationEntity', id?: string | null, approved?: boolean | null, placement?: number | null, textSubmission?: string | null, voteAmount?: number | null, contest?: { __typename?: 'ContestEntity', id?: string | null, maxParticipations?: number | null, maxVotes?: number | null } | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null, user?: { __typename?: 'UserEntity', firstName?: string | null, lastName?: string | null } | null } | null, contestVotes?: Array<{ __typename?: 'ContestVoteEntity', id?: string | null, userContext?: { __typename?: 'UserContextEntity', id?: string | null } | null } | null> | null, translatables?: Array<{ __typename?: 'ContestParticipationTranslatableEntity', id?: string | null, textSubmission?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null, mediaSubmissions?: Array<{ __typename?: 'ContestParticipationMediaEntity', id?: string | null, media?: { __typename?: 'MediaEntity', id?: string | null, created?: any | null, extension?: string | null, mimeType?: string | null, modified?: any | null, name?: string | null, size?: any | null, url?: string | null, base64?: string | null, attribution?: { __typename?: 'MediaAttributionEntity', id?: string | null, title?: string | null, author?: string | null, source?: string | null, license?: string | null } | null } | null } | null> | null } | null> | null } | null };
 
 export const GetContestParticipationsDocument = gql`
     query getContestParticipations($params: FilterSortPaginateInput) {
@@ -21,9 +21,11 @@ export const GetContestParticipationsDocument = gql`
       approved
       placement
       textSubmission
+      voteAmount
       contest {
         id
         maxParticipations
+        maxVotes
       }
       userContext {
         id

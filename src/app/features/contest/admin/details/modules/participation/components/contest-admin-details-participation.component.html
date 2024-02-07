@@ -3,5 +3,6 @@
   [actions]="actions"
   [entity]="'ContestEntity'"
   [columns]="columns"
-  (sortPaginate)="updateParams(undefined ,$event)">
+  (sortPaginate)="updateParams(undefined ,$event)"
+  (rowClicked)="rowClicked($event)">
 </app-table>

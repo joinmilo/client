@@ -12,7 +12,7 @@ export interface TableState<T> {
 
   clickable?: boolean,
   clickedRow?: T,
-
+  
   columns?: Column<T>[],
   data?: Maybe<PageableList<T>>,
   entity?: ContentEntity,

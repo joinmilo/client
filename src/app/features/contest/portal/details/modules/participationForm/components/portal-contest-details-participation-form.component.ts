@@ -9,9 +9,8 @@ import {
   MediaEntity,
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { ContestPortalDetailsLandingActions } from '../../landing/state/portal-contest-details-landing.actions';
-import { selectContestDetails } from '../../landing/state/portal-contest-details-landing.selectors';
 import { ContestPortalDetailsParticipationFormActions } from '../state/contest-portal-details-participation-form.actions';
+import { selectContestDetails } from '../state/contest-portal-details-participation-form.selectors';
 import { ParticipationType } from '../typings/participation';
 
 @Component({
@@ -42,12 +41,12 @@ export class ContestPortalDetailsParticipationFormComponent {
   ) {}
 
   public ngOnInit(): void {
-    this.activatedRoute.params
+    this.activatedRoute.parent?.params
       .pipe(
-        tap((params) =>
+        tap((params) =>{
           this.store.dispatch(
-            ContestPortalDetailsLandingActions.getDetails(params[slug] || '')
-          )
+            ContestPortalDetailsParticipationFormActions.getDetails(params[slug] || '')
+          )}
         ),
         switchMap(() => this.store.select(selectContestDetails)),
         takeUntil(this.destroy)
@@ -77,7 +76,7 @@ export class ContestPortalDetailsParticipationFormComponent {
             : null,
         contest: {
           id: this.contest?.id,
-          maxParticipations: this.contest?.maxParticipations,
+          maxParticipations: this.contest?.maxParticipations, //important! server checks on createEntity
         },
       })
     );

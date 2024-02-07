@@ -10,11 +10,10 @@ import {
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import {
-  selectCurrentUser,
-  selectIsAuthenticated,
+  selectIsAuthenticated
 } from 'src/app/core/state/selectors/user.selectors';
 import { ContestPortalDetailsLandingActions } from '../state/portal-contest-details-landing.actions';
-import { selectContestDetails } from '../state/portal-contest-details-landing.selectors';
+import { selectContestDetails, selectMaxParticipationsReached } from '../state/portal-contest-details-landing.selectors';
 
 @Component({
   selector: 'app-contest-portal-details-landing',
@@ -32,7 +31,8 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
 
   private destroy = new Subject<void>();
 
-  public maxParticipationsReached = false;
+  public maxParticipationsReached = this.store.select(selectMaxParticipationsReached);
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -62,8 +62,6 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
           ?.map((contestMedia) => contestMedia?.media)
           ?.slice(0, 10) as MediaEntity[];
          this.contestEvaluated = contest?.participations?.filter(participation => participation?.placement).length != 0
-
-          this.checkDisabled();
       });
   }
 
@@ -75,7 +73,7 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
   isAuthenticated() {
     this.store
       .select(selectIsAuthenticated)
-      .pipe(take(1))
+      .pipe(take(1), takeUntil(this.destroy))
       .subscribe((isAuthenticated) =>
         isAuthenticated
           ? this.router.navigate(['participationForm'], {
@@ -83,16 +81,6 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
             })
           : this.store.dispatch(CoreUserActions.requireLogin())
       );
-  }
-
-  checkDisabled(): void {
-    this.store.select(selectCurrentUser).subscribe((user) => {
-      this.maxParticipationsReached =
-        (this.contest?.maxParticipations ?? 0) <=
-        (this.contest?.participations?.filter(
-          (participation) => participation?.userContext?.id === user?.id
-        )?.length ?? 0);
-    });
   }
 
   ngOnDestroy(): void {

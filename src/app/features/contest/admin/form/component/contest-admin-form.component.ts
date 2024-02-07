@@ -36,11 +36,8 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public participationAndVoteForm = this.fb.group({
-    maxVotes: [1 as Maybe<number>, [Validators.required, AppValidators.minValue(1)]],
     voteEndDate: [undefined as Maybe<string>, [Validators.required]],
-    maxParticipations: [1 as Maybe<number>, [Validators.required, AppValidators.minValue(1)]],
     participationEndDate: [undefined as Maybe<string>, [Validators.required]],
-    participationApproval: [undefined as Maybe<boolean>],
   });
 
   public shortDescriptionForm = this.fb.group({
@@ -52,6 +49,10 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
+    maxVotes: [undefined as Maybe<number>, [AppValidators.minValue(1)]],
+    maxParticipations: [undefined as Maybe<number>, [AppValidators.minValue(1)]],
+    participationApproval: [undefined as Maybe<boolean>],    
+
     commentsAllowed: [undefined as Maybe<boolean>],
     metaDescription: [undefined as Maybe<string>],
   });
@@ -99,11 +100,8 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
         });
         
         this.participationAndVoteForm.patchValue({
-          maxVotes: contest?.maxVotes,
-          maxParticipations: contest?.maxParticipations,
-          voteEndDate: contest?.voteEndDate,
           participationEndDate: contest?.participationEndDate,
-          participationApproval: contest?.participationApproval,
+          voteEndDate: contest?.voteEndDate,
         });
 
         this.contactForm.patchValue({
@@ -111,6 +109,9 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
         });
 
         this.additionalInfoForm.patchValue({
+          maxParticipations: contest?.maxParticipations,
+          maxVotes: contest?.maxVotes,  
+          participationApproval: contest?.participationApproval,                  
           commentsAllowed: contest?.commentsAllowed,
           metaDescription: contest?.metaDescription,
         });
@@ -130,11 +131,12 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
         shortDescription: this.shortDescriptionForm.value.shortDescription,
         uploads: this.uploadsForm.value.uploads,
         
-        maxVotes: this.participationAndVoteForm.value.maxVotes,
-        maxParticipations: this.participationAndVoteForm.value.maxParticipations,
         voteEndDate: this.participationAndVoteForm.value.voteEndDate,
         participationEndDate: this.participationAndVoteForm.value.participationEndDate,
-        participationApproval: this.participationAndVoteForm.value.participationApproval,
+
+        maxVotes: this.additionalInfoForm.value.maxVotes || null,
+        maxParticipations: this.additionalInfoForm.value.maxParticipations || null,
+        participationApproval: this.additionalInfoForm.value.participationApproval,
         
         contact: this.contactForm.value.contact
           ? {

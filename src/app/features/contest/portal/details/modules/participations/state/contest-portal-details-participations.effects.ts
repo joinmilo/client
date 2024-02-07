@@ -7,29 +7,23 @@ import {
   PageableList_ContestParticipationEntity,
   QueryOperator,
 } from 'src/app/core/api/generated/schema';
+import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetContestParticipationsGQL } from 'src/app/features/contest/api/generated/get-contest-participations.query.generated';
 import { SaveContestVoteGQL } from 'src/app/features/contest/api/generated/save-contest-vote.mutation.generated';
 import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { selectContestDetails } from '../../landing/state/portal-contest-details-landing.selectors';
 import { ContestPortalDetailsParticipationsActions } from './contest-portal-details-participations.actions';
-import { selectParams } from './contest-portal-details-participations.selectors';
+import { selectContestMaxVotes, selectParams, selectSlug, selectUserVotes } from './contest-portal-details-participations.selectors';
 
 @Injectable()
 export class ContestPortalDetailsParticipationsEffects {
+    
   getContestParticipations = createEffect(() =>
     this.actions.pipe(
-      ofType(
-        ContestPortalDetailsParticipationsActions.updateParams,
-        ContestPortalDetailsParticipationsActions.voteSaved
-      ),
-      withLatestFrom(
-        this.store.select(selectContestDetails),
-        this.store.select(selectParams)
-      ),
-      switchMap(([, contest, params]) => {
+      ofType(ContestPortalDetailsParticipationsActions.getParticipations),
+      withLatestFrom(this.store.select(selectParams)),
+      switchMap(([action, params]) => {
         return this.getContestParticipationsService.watch({
           params: {
             sort: params?.sort,
@@ -40,7 +34,42 @@ export class ContestPortalDetailsParticipationsEffects {
               entity: {
                 path: 'contest.slug',
                 operator: QueryOperator.Equal,
-                value: contest?.slug,
+                value: action.slug ,
+              },
+            },
+          },
+        }).valueChanges;
+      }),
+      map((response) =>
+        ContestPortalDetailsParticipationsActions.setParticipations(
+          response.data
+            .getContestParticipations as PageableList_ContestParticipationEntity
+        )
+      )
+    )
+  );
+  
+  
+  updateParams = createEffect(() =>
+    this.actions.pipe(
+      ofType(ContestPortalDetailsParticipationsActions.updateParams,
+        ContestPortalDetailsParticipationsActions.voteSaved
+      ),
+      withLatestFrom(
+        this.store.select(selectSlug),
+        this.store.select(selectParams)),
+      switchMap(([, slug, params]) => {
+        return this.getContestParticipationsService.watch({
+          params: {
+            sort: params?.sort,
+            dir: params?.dir,
+            size: params?.size,
+            page: params?.page,
+            expression: {
+              entity: {
+                path: 'contest.slug',
+                operator: QueryOperator.Equal,
+                value: slug,
               },
             },
           },
@@ -58,19 +87,18 @@ export class ContestPortalDetailsParticipationsEffects {
   saveVote = createEffect(() =>
     this.actions.pipe(
       ofType(ContestPortalDetailsParticipationsActions.saveVote),
-      withLatestFrom(
-        this.store.select(selectCurrentUser),
-        this.store.select(selectContestDetails)
-      ),
-      switchMap(([action]) =>
+      withLatestFrom(this.store.select(selectContestMaxVotes),
+      this.store.select(selectUserVotes)),
+      switchMap(([action, maxVotes, userVotes]) =>
         this.confirmDialogService
           .confirm({
             buttonColor: 'primary',
             buttonLabel: 'confirm',
-            titleLabel: 'saveVote',
+            titleLabel: 'confirmVote',
             messageLabel: 'areYouSureToVote',
-            context:
-              (action.remainingVotes ?? 0) <= 1 ? 'lastVote' : 'moreVotes',
+            context: (maxVotes != null && maxVotes != undefined && maxVotes - userVotes <= 1) 
+              ? 'lastVote'
+              : 'moreVotes'
           })
           .pipe(
             switchMap((confirmed) => (confirmed ? of(action.entity) : EMPTY))
@@ -100,6 +128,11 @@ export class ContestPortalDetailsParticipationsEffects {
       )
     )
   );
+
+  updateUser = createEffect(() => this.actions.pipe(
+    ofType(ContestPortalDetailsParticipationsActions.voteSaved),
+    map(() => CoreUserActions.updateUser())
+  ));  
 
   constructor(
     private actions: Actions,

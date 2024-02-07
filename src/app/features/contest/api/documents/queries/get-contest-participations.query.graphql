@@ -5,10 +5,14 @@ query getContestParticipations($params: FilterSortPaginateInput) {
       approved
       placement
       textSubmission
+      voteAmount
+
       contest {
         id
         maxParticipations
+        maxVotes
       }
+      
       userContext{
         id
         user{

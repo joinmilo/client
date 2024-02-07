@@ -22,9 +22,9 @@
           *ngIf="checkDatePassed(contest?.participationEndDate)">
           <img src="assets/draw.svg" />
           <button mat-raised-button color="primary"
-            [appLabel]="maxParticipationsReached ? 'maxParticipationsReached' : 'participate'"
+            [appLabel]="(maxParticipationsReached | async) ? 'maxParticipationsReached' : 'participate'"
            (click)="isAuthenticated()"
-           [disabled]="maxParticipationsReached"></button>
+           [disabled]="(maxParticipationsReached | async)"></button>
         </section>
         <section class="border-box" *ngIf="checkDatePassed(contest?.voteEndDate)">
           <img src="assets/vote.svg" />

@@ -11,7 +11,10 @@ export const ContestAdminDetailsParticipationActions = createActionGroup({
     'delete participation': (participation?: Maybe<ContestParticipationEntity>) => ({ participation }),
     'participation deleted': emptyProps(),
 
-    'save participation': (participation: Maybe<ContestParticipationEntity>) => ({ participation }),
-    'participation saved': emptyProps()
+    'change placement': (participation: Maybe<ContestParticipationEntity>) => ({ participation }),
+    'placement changed': emptyProps(),
+
+    'change approved': (participation: Maybe<ContestParticipationEntity>) => ({ participation }),
+    'approved changed': emptyProps()
   }
 });

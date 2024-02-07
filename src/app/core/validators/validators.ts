@@ -149,7 +149,7 @@ export class AppValidators {
     return (group: AbstractControl): ValidationErrors | null => {
       return group?.get(control)?.value === value &&
         !group?.get(otherControl)?.value
-        ? { otherNotFilled: true }
+        ? {otherNotFilled: true }
         : null;
     };
   }
@@ -164,6 +164,10 @@ export class AppValidators {
   public static minValue(minValue: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value as number;
+      if (value === null || value === undefined || (typeof value === 'string' && value === '')) {
+        return null;
+      }
+
       if (isNaN(value) || value < minValue) {
         return { minValue: { requiredValue: minValue, actualValue: value } };
       }

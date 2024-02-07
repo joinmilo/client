@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { Maybe } from 'src/app/core/api/generated/schema';
@@ -14,29 +14,31 @@ import { TextViewerComponent } from '../viewer/text-viewer.component';
   standalone: true,
   imports: [IconComponent, CommonModule, CoreModule, MatButtonModule],
 })
-export class TextElementComponent implements OnInit {
+export class TextElementComponent{
+  
   @Input()
-  public text?: Maybe<string>;
+  public set text(text: Maybe<string>){
+    this.cardText = this.prepareText(text);
+    this._text = text;
+  }  
 
-  public modifiedText?: Maybe<string>;
+  public _text?: Maybe<string>;
+
+  public cardText?: Maybe<string>;
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.prepareText();
-  }
-
   public click(): void {
     this.dialog.open(TextViewerComponent, {
-      data: this.text,
+      data: this._text,
       autoFocus: false,
       panelClass: 'media-dialog',
     });
   }
 
-  private prepareText(): void {
-    if (this.text != null) {
-      const doc = new DOMParser().parseFromString(this.text, 'text/html');
+  private prepareText(text: Maybe<string>): Maybe<string> {
+    if (text!= null) {
+      const doc = new DOMParser().parseFromString(text, 'text/html');
 
       doc.querySelectorAll('a').forEach((link) => {
         const textContent = doc.createTextNode(link.textContent || '');
@@ -50,7 +52,8 @@ export class TextElementComponent implements OnInit {
         boldElement.textContent = heading.textContent || '';
         heading.parentNode?.replaceChild(boldElement, heading);
       });;
-      this.modifiedText = doc.body.innerHTML;
+      return doc.body.innerHTML;
     }
+    return null;
   }
 }

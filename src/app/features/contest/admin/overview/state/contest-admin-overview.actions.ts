@@ -4,7 +4,6 @@ import { ContestEntity, FilterSortPaginateInput, Maybe, PageableList_ContestEnti
 export const ContestAdminOverviewActions = createActionGroup({
   source: 'Contest Admin Overview',
   events: {
-
     'set overview data': (contests: PageableList_ContestEntity) => ({ contests }),
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),

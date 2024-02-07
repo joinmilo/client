@@ -5,10 +5,15 @@ import { ContestPortalDetailsParticipationsActions } from './contest-portal-deta
 
 export interface ContestPortalDetailsParticipationsState {
   participations?: Maybe<PageableList_ContestParticipationEntity>,
-  params?: FilterSortPaginateInput
+  params?: FilterSortPaginateInput,
+  slug?: Maybe<string>
 }
 
 export const initialState: ContestPortalDetailsParticipationsState = {
+  params: {
+    size: 12,
+    page: 0
+  }
 };
 
 export const contestPortalDetailsParticipationsReducer = createReducer(
@@ -16,11 +21,25 @@ export const contestPortalDetailsParticipationsReducer = createReducer(
 
   on(
     ContestPortalDetailsParticipationsActions.setParticipations,
-    (state, action): ContestPortalDetailsParticipationsState =>
-      ({ ...state, participations: action.participations })
+    (state, action): ContestPortalDetailsParticipationsState => ({
+      ...state,
+      participations: action.participations,
+    })
   ),
 
-  on(ContestPortalDetailsParticipationsActions.updateParams, (state, action): ContestPortalDetailsParticipationsState => (
-    { ...state, params: Object.assign({ ...state.params } || {}, action.params) }
-  )),
+  on(
+    ContestPortalDetailsParticipationsActions.updateParams,
+    (state, action): ContestPortalDetailsParticipationsState => ({
+      ...state,
+      params: Object.assign({ ...state.params } || {}, action.params),
+    })
+  ),
+
+  on(
+    ContestPortalDetailsParticipationsActions.getParticipations,
+    (state, action): ContestPortalDetailsParticipationsState => ({
+      ...state,
+      slug: action.slug,
+    })
+  ),
 );

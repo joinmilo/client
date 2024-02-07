@@ -3,11 +3,10 @@ import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { Subject, switchMap, take, takeUntil, tap } from 'rxjs';
+import { Subject, switchMap, take, takeUntil, tap, withLatestFrom } from 'rxjs';
 import {
-  ContestEntity,
   ContestParticipationEntity,
-  UserContextEntity,
+  UserContextEntity
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
@@ -21,12 +20,12 @@ import {
   SortPaginate,
 } from 'src/app/shared/widgets/table/typings/table';
 import { ActionInfo } from '../../../typings/actionInfo';
-import { ContestPortalDetailsLandingActions } from '../../landing/state/portal-contest-details-landing.actions';
-import { selectContestDetails } from '../../landing/state/portal-contest-details-landing.selectors';
 import { ContestPortalDetailsParticipationsActions } from '../state/contest-portal-details-participations.actions';
 import {
+  selectContestMaxVotes,
   selectContestParticipations,
   selectParticipationsTotal,
+  selectUserVotes
 } from '../state/contest-portal-details-participations.selectors';
 
 @Component({
@@ -38,8 +37,6 @@ export class ContestPortalDetailsParticipationsComponent
   implements OnInit, OnDestroy
 {
   public actionInfos?: ActionInfo[];
-
-  private contest?: Maybe<ContestEntity>;
 
   public currentUser?: Maybe<UserContextEntity>;
 
@@ -65,12 +62,7 @@ export class ContestPortalDetailsParticipationsComponent
     },
   ];
 
-  private userVotes?: Maybe<number>;
-
-  constructor(
-    private store: Store,
-    private activatedRoute: ActivatedRoute,
-  ) {}
+  constructor(private store: Store, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.store
@@ -79,66 +71,46 @@ export class ContestPortalDetailsParticipationsComponent
 
     this.activatedRoute.parent?.params
       .pipe(
-        tap((params) =>
-          this.store.dispatch(
-            ContestPortalDetailsLandingActions.getDetails(params[slug] || '')
-          )
+        takeUntil(this.destroy),
+        tap((params) => {
+          this.store.dispatch
+          (ContestPortalDetailsParticipationsActions.getParticipations(params[slug] || ''));
+        }
         ),
-        switchMap(() => this.store.select(selectContestDetails)),
-        takeUntil(this.destroy)
-      )
-      .subscribe((contest) => {
-        this.contest = contest;
-        this.store.dispatch(
-          ContestPortalDetailsParticipationsActions.updateParams({
-            page: 0,
-            size: 12,
-          })
-        );
-      });
-
-    this.store
-      .select(selectContestParticipations)
-      .pipe(takeUntil(this.destroy))
-      .subscribe((participations) => {
+        switchMap(() => this.store.select(selectContestParticipations)),
+        takeUntil(this.destroy),
+        withLatestFrom(
+          this.store.select(selectUserVotes),
+          this.store.select(selectContestMaxVotes)))
+      .subscribe(([participations, userVotes, maxVotes]) => {
         this.participations = participations;
-        this.userVotes = this.participations
-          ?.map(
-            (participation) =>
-              participation?.contestVotes?.filter(
-                (vote) => vote?.userContext?.id === this.currentUser?.id
-              )?.length ?? 0
-          )
-          .reduce((acc, count) => acc + count, 0);
         this.actionInfos = participations
           ?.filter((participation) => participation?.approved)
-          ?.map((element) => this.retrieveActionInfos(element));
+          ?.map((element) => this.retrieveActionInfos(element, userVotes, maxVotes));
       });
   }
 
-  retrieveActionInfos(element: Maybe<ContestParticipationEntity>): ActionInfo {
-    const media = element?.mediaSubmissions?.[0]?.media;
-    const text = element?.textSubmission
+  private retrieveActionInfos(
+    element: Maybe<ContestParticipationEntity>, userVotes: number, maxVotes: Maybe<number>): ActionInfo {
+    const actionInfo = {
+      media: element?.mediaSubmissions?.[0]?.media,
+      text: element?.textSubmission,
+      disabled: false,
+      label: 'vote',
+    };
 
-    return this.contest?.maxVotes != null && this.userVotes != null
-      ? this.contest?.maxVotes <= this.userVotes
-        ? {
-            media: media,
-            text: text,
-            disabled: true,
-            label: 'maxVotesReached',
-          }
-        : element?.contestVotes?.filter(
-            (vote) => vote?.userContext?.id == this.currentUser?.id
-          ).length != 0
-        ? { media: media, text: text, disabled: true, label: 'allreadyVoted' }
-        : { media: media, text: text, disabled: false, label: 'vote' }
-      : {
-          media: null,
-          text: text,
-          disabled: true,
-          label: this.contest?.maxVotes?.toString(),
-        };
+    if (maxVotes && maxVotes <= userVotes) {
+      actionInfo.label = 'maxVotesReached';
+      actionInfo.disabled = true;
+    } else if (
+      element?.contestVotes?.filter(
+        (vote) => vote?.userContext?.id == this.currentUser?.id
+      ).length != 0
+    ) {
+      actionInfo.label = 'allreadyVoted';
+      actionInfo.disabled = true;
+    }
+    return actionInfo;
   }
 
   public changeSort(params: SortPaginate) {
@@ -149,31 +121,30 @@ export class ContestPortalDetailsParticipationsComponent
 
   public updateParams(event: PageEvent) {
     this.store.dispatch(
-      ContestPortalDetailsParticipationsActions.updateParams({
+      ContestPortalDetailsParticipationsActions.updateParams(
+      {
         size: event.pageSize,
         page: event.pageIndex,
       })
     );
   }
 
-  edit(index: number) {
+  public edit(index: number) {
     this.store
       .select(selectIsAuthenticated)
-      .pipe(take(1))
+      .pipe(take(1), takeUntil(this.destroy))
       .subscribe((isAuthenticated) =>
         isAuthenticated
           ? this.store.dispatch(
-              ContestPortalDetailsParticipationsActions.saveVote(
-                {
-                  userContext: { id: this.currentUser?.id },
-                  contestParticipation: {
-                    id: this.participations?.[index]?.id,
-                  },
+              ContestPortalDetailsParticipationsActions.saveVote({
+                userContext: { id: this.currentUser?.id },
+                contestParticipation: {
+                  id: this.participations?.[index]?.id,
+                  contest: {
+                    id: this.participations?.[index]?.contest?.id
+                  }
                 },
-                this.contest?.maxVotes != null && this.userVotes != null
-                  ? (this.contest?.maxVotes) - (this.userVotes)
-                  : 0
-              )
+              })
             )
           : this.store.dispatch(CoreUserActions.requireLogin())
       );

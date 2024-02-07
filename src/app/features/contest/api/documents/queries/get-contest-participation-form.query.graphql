@@ -1,0 +1,15 @@
+query getContestParticipationForm($entity: ContestEntityInput) {
+  getContest(entity: $entity) {
+    id
+    modified
+    created
+    slug
+    maxParticipations
+    maxVotes
+
+
+    type {
+      ...ContestType
+    }
+  }
+}

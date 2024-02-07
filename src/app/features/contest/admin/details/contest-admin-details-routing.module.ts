@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { commentsRoute, participationsRoute, searchRoute } from './constants/contest-admin-details.constants';
 import { ContestAdminDetailsCommentsComponent } from './modules/comments/components/contest-admin-details-comments.component';
 import { ContestAdminDetailsLandingComponent } from './modules/landing/components/contest-admin-details-landing.component';
-import { ContestAdminDetailsSearchComponent } from './modules/search/component/contest-admin-details-search.component';
 import { ContestAdminDetailsParticipationComponent } from './modules/participation/components/contest-admin-details-participation.component';
+import { ContestAdminDetailsSearchComponent } from './modules/search/component/contest-admin-details-search.component';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     path: searchRoute,
     loadChildren: () => import('./modules/search/contest-admin-details-search.module')
       .then((imported) => imported.ContestAdminDetailsSearchModule),
-      component: ContestAdminDetailsSearchComponent
+    component: ContestAdminDetailsSearchComponent
   },
   {
     path: commentsRoute,
