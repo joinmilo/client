@@ -7,6 +7,9 @@ query getPlugins($params: FilterSortPaginateInput) {
       icon
       name
       released
+      menuItems {
+        id
+      }
       translatables {
         id
         name

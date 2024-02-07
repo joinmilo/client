@@ -56,8 +56,8 @@ export class AdminSettingsPrivilegeApplicationOverviewComponent {
   
   constructor(
     private store: Store,
-    private translationService: TranslationService,
     private dialog: MatDialog,
+    private translationService: TranslationService,
   ) { }
 
   private assignRole(application: Maybe<PrivilegeApplicationEntity>) {

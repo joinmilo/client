@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
-import { FilterSortPaginateInput, Maybe, PageableList_PluginEntity, PluginEntity } from 'src/app/core/api/generated/schema';
+import { FilterSortPaginateInput, Maybe, MenuItemEntity, MenuItemEntityInput, PageableList_PluginEntity, PluginEntity } from 'src/app/core/api/generated/schema';
 
 export const AdminSettingsPluginActions = createActionGroup({
   source: 'Plugin Admin Overview',
@@ -9,7 +9,13 @@ export const AdminSettingsPluginActions = createActionGroup({
 
     'update params': (params: FilterSortPaginateInput) => ({ params }),
 
-    'toggle plugin': (plugin?: Maybe<PluginEntity>) => ({ plugin }),
-    'plugin toggled': emptyProps(),
+    'deactivate plugin': (plugin?: Maybe<PluginEntity>) => ({ plugin }),
+    'plugin deactivated': emptyProps(),
+    
+    'get menu items': emptyProps(),
+    'menu items retrieved': (menuItems: MenuItemEntity[]) => ({ menuItems }),
+
+    'save plugin menu item': (menuItem: MenuItemEntityInput, childMenuItem: Maybe<MenuItemEntity>, plugin: Maybe<PluginEntity>,) => ({ menuItem, childMenuItem, plugin }),
+    'menu item plugin saved': emptyProps(),
   }
 });

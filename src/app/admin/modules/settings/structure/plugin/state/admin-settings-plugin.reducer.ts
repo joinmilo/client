@@ -1,10 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { FilterSortPaginateInput, PageableList_PluginEntity } from 'src/app/core/api/generated/schema';
+import { FilterSortPaginateInput, MenuItemEntity, PageableList_PluginEntity } from 'src/app/core/api/generated/schema';
 import { AdminSettingsPluginActions } from './admin-settings-plugin.actions';
 
 export interface AdminSettingsPluginState {
   plugins?: PageableList_PluginEntity,
-  params: FilterSortPaginateInput
+  params: FilterSortPaginateInput,
+  menuItems?: MenuItemEntity[],
 }
 
 export const initialState: AdminSettingsPluginState = {
@@ -21,4 +22,8 @@ export const adminSettingsPluginReducer = createReducer(
   on(AdminSettingsPluginActions.setOverviewData, (state, action): AdminSettingsPluginState => (
     { ...state, plugins: action.plugins }
   )),
+
+  on(AdminSettingsPluginActions.menuItemsRetrieved, (state, action): AdminSettingsPluginState => ({
+    ...state, menuItems: action.menuItems
+  })),
 );

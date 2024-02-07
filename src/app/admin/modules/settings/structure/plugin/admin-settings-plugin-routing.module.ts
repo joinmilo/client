@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminSettingsPluginComponent } from './component/admin-settings-plugin.component';
+import { AdminSettingsPluginOverviewComponent } from './components/overview/admin-settings-plugin-overview.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminSettingsPluginComponent,
+    component: AdminSettingsPluginOverviewComponent,
   },
 ];
 

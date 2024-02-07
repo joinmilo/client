@@ -10,7 +10,7 @@ export type GetPluginsQueryVariables = Types.Exact<{
 }>;
 
 
-export type GetPluginsQuery = { __typename?: 'Query', getPlugins?: { __typename?: 'PageableList_PluginEntity', total: any, result?: Array<{ __typename?: 'PluginEntity', id?: string | null, active?: boolean | null, code?: string | null, icon?: string | null, name?: string | null, released?: boolean | null, translatables?: Array<{ __typename?: 'PluginTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
+export type GetPluginsQuery = { __typename?: 'Query', getPlugins?: { __typename?: 'PageableList_PluginEntity', total: any, result?: Array<{ __typename?: 'PluginEntity', id?: string | null, active?: boolean | null, code?: string | null, icon?: string | null, name?: string | null, released?: boolean | null, menuItems?: Array<{ __typename?: 'MenuItemEntity', id?: string | null } | null> | null, translatables?: Array<{ __typename?: 'PluginTranslatableEntity', id?: string | null, name?: string | null, language?: { __typename?: 'LanguageEntity', id?: string | null, locale?: string | null, name?: string | null } | null } | null> | null } | null> | null } | null };
 
 export const GetPluginsDocument = gql`
     query getPlugins($params: FilterSortPaginateInput) {
@@ -22,6 +22,9 @@ export const GetPluginsDocument = gql`
       icon
       name
       released
+      menuItems {
+        id
+      }
       translatables {
         id
         name

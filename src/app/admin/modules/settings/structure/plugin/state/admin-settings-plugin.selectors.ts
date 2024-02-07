@@ -13,3 +13,8 @@ export const selectParams = createSelector(
   selectAdminSettingsPluginState,
   state => state.params
 );
+
+export const selectMenuItems = createSelector(
+  selectAdminSettingsPluginState,
+  state => state.menuItems
+);
