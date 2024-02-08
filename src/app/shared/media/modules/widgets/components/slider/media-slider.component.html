@@ -36,7 +36,7 @@
 </div>
 
 <ng-container *ngIf="mediaCardType === 'VIEW'">
-  <app-slider *ngIf="media?.length">
+  <cin-slider *ngIf="media?.length">
     <ng-container *ngFor="let element of media">
       <app-media-view-card 
         [media]="element"
@@ -44,11 +44,11 @@
         (deleted)="delete($event)">
       </app-media-view-card>
     </ng-container>
-  </app-slider>
+  </cin-slider>
 </ng-container>
 
 <ng-container *ngIf="mediaCardType === 'ACTION'">
-  <app-slider *ngIf="media?.length">
+  <cin-slider *ngIf="media?.length">
     <ng-container *ngFor="let element of media">
       <app-media-action-card
         [actionLabel]="actionLabel"
@@ -58,5 +58,5 @@
         (deleted)="delete($event)">
       </app-media-action-card>
     </ng-container>
-  </app-slider>
+  </cin-slider>
 </ng-container>

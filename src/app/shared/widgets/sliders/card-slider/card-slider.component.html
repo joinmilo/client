@@ -15,18 +15,18 @@
 
 <ng-container *ngIf="data?.length; else emptyResult;">
   <ng-container [ngSwitch]="cardType">
-    <app-slider *ngSwitchCase="types.contact">
+    <cin-slider *ngSwitchCase="types.contact">
       <app-contact-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-contact-card>
-    </app-slider>
-    <app-slider *ngSwitchCase="types.member">
+    </cin-slider>
+    <cin-slider *ngSwitchCase="types.member">
       <app-member-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-member-card>
-    </app-slider>
-    <app-slider *ngSwitchCase="types.content">
+    </cin-slider>
+    <cin-slider *ngSwitchCase="types.content">
       <app-content-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-content-card>
-    </app-slider>
-    <app-slider *ngSwitchCase="types.sponsored">
+    </cin-slider>
+    <cin-slider *ngSwitchCase="types.sponsored">
       <app-sponsored-card *ngFor="let card of data" [entity]="entity" [data]="card"></app-sponsored-card>
-    </app-slider>
+    </cin-slider>
   </ng-container>
 </ng-container>
 <ng-template #emptyResult>

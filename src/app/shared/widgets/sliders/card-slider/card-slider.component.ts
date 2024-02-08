@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SliderComponent } from 'ngx-cinlib/layouts/slider';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
@@ -10,7 +11,6 @@ import { CardType } from 'src/app/shared/widgets/card/typings/card';
 import { TitleModule } from '../../../layout/title/title.module';
 import { CardModule } from '../../card/card.module';
 import { SliderHeaderComponent } from '../slider-header/slider-header.component';
-import { SliderComponent } from '../slider/slider.component';
 
 @Component({
   selector: 'app-card-slider',
