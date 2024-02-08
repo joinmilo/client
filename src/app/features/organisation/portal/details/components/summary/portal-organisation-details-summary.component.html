@@ -14,8 +14,9 @@
       [phone]="organisation?.contact?.phone">
     </cin-phone-piece>
 
-    <app-website-piece *ngIf="organisation?.contact?.website"
-    [website]="organisation?.contact?.website"></app-website-piece>
+    <cin-website-piece *ngIf="organisation?.contact?.website"
+      [website]="organisation?.contact?.website">
+    </cin-website-piece>
   </section>
   
 </div>

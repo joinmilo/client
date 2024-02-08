@@ -4,7 +4,6 @@ import { Subject, takeUntil } from 'rxjs';
 import { Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { selectOrganisationDetails } from '../../state/portal-organisation-details.selectors';
 
-
 @Component({
   selector: 'app-portal-organisation-details-summary',
   templateUrl: './portal-organisation-details-summary.component.html',
