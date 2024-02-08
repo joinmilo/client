@@ -13,66 +13,66 @@
 </section>
 
 <section class="summary">
-  <app-chart-summary
+  <cin-chart-summary
     [actions]="[clicksAction]"
     [color]="clicksColor"
     [summary]="clicks?.sum"
     titleLabel="totalClicks">
-  </app-chart-summary>
+  </cin-chart-summary>
 
-  <app-chart-summary
+  <cin-chart-summary
     [actions]="[impressionsAction]"
     [color]="impressionsColor"
     [summary]="impressions?.sum"
     titleLabel="totalImpressions">
-  </app-chart-summary>
+  </cin-chart-summary>
 
-  <app-chart-summary
+  <cin-chart-summary
     [actions]="[ctrAction]"
     [color]="ctrColor"
     [summary]="ctr?.average"
     unit="%"
     titleLabel="averageCtr">
-  </app-chart-summary>
+  </cin-chart-summary>
 
-  <app-chart-summary
+  <cin-chart-summary
     [actions]="[positionsAction]"
     [color]="positionsColor"
     [summary]="positions?.average"
     titleLabel="averagePosition">
-  </app-chart-summary>
+  </cin-chart-summary>
 </section>
 
 <section class="charts">
-  <app-chart-bar-vertical *ngIf="clicks"
+  <cin-chart-bar-vertical *ngIf="clicks"
     [actions]="[clicksAction]"
     [colors]="[clicksColor]"
     [data]="clicks.series"
     [titleLabel]="clicksKey"
     [yAxisLabel]="clicksKey">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 
-  <app-chart-bar-vertical *ngIf="impressions"
+  <cin-chart-bar-vertical *ngIf="impressions"
     [actions]="[impressionsAction]"
     [colors]="[impressionsColor]"
     [data]="impressions.series"
     [titleLabel]="impressionsKey"
     [yAxisLabel]="impressionsKey">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 
-  <app-chart-bar-vertical *ngIf="ctr"
+  <cin-chart-bar-vertical *ngIf="ctr"
     [actions]="[ctrAction]"
     [colors]="[ctrColor]"
     [data]="ctr.series"
     [titleLabel]="ctrKey"
     [yAxisLabel]="ctrKey">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 
-  <app-chart-bar-vertical *ngIf="positions"
+  <cin-chart-bar-vertical *ngIf="positions"
     [actions]="[positionsAction]"
     [colors]="[positionsColor]"
     [data]="positions.series"
     [titleLabel]="positionsKey"
     yAxisLabel="averagePosition">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 </section>

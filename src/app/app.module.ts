@@ -11,7 +11,6 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { LoadingInterceptor } from 'ngx-cinlib/layouts/loading';
 import { SidenavContainerComponent } from 'ngx-cinlib/modals/sidenav';
 import { AppRoutingModule } from './app-routing.module';
@@ -54,8 +53,6 @@ const libs = [
     autoPause: true,
   }),
   EffectsModule.forRoot([]),
-  //TODO: https://github.com/swimlane/ngx-charts/issues/1733
-  NgxChartsModule,
 
   SidenavContainerComponent,
 ];

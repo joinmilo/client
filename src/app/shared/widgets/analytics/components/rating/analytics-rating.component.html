@@ -13,44 +13,44 @@
 </section>
 
 <section class="summary">
-  <app-chart-summary
+  <cin-chart-summary
     [actions]="[scoreDistributionAction]"
     [color]="scoreDistributionColor"
     [summary]="scoreDistribution?.average"
     titleLabel="averageScore">
-  </app-chart-summary>
+  </cin-chart-summary>
 
-  <app-chart-summary
+  <cin-chart-summary
     [actions]="[scoreDistributionAction]"
     [color]="timeAmountDistributionColor"
     [summary]="scoreDistribution?.sum"
     titleLabel="totalAmount">
-  </app-chart-summary>
+  </cin-chart-summary>
 </section>
 
 <section class="charts">
-  <app-chart-bar-vertical *ngIf="scoreDistribution"
+  <cin-chart-bar-vertical *ngIf="scoreDistribution"
     [actions]="[scoreDistributionAction]"
     [colors]="[scoreDistributionColor]"
     [data]="scoreDistribution.series"
     [titleLabel]="scoreDistributionKey"
     [yAxisLabel]="scoreDistributionKey"
     xAxisLabel="stars">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 
-  <app-chart-bar-vertical *ngIf="timeAmountDistribution"
+  <cin-chart-bar-vertical *ngIf="timeAmountDistribution"
     [actions]="[timeAmountDistributionAction]"
     [colors]="[timeAmountDistributionColor]"
     [data]="timeAmountDistribution.series"
     [titleLabel]="timeAmountDistributionKey"
     [yAxisLabel]="timeAmountDistributionKey">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 
-  <app-chart-bar-vertical *ngIf="timeAverageDistribution"
+  <cin-chart-bar-vertical *ngIf="timeAverageDistribution"
     [actions]="[timeAverageDistributionAction]"
     [colors]="[timeAverageDistributionColor]"
     [data]="timeAverageDistribution.series"
     [titleLabel]="timeAverageDistributionKey"
     [yAxisLabel]="timeAverageDistributionKey">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 </section>

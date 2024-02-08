@@ -16,7 +16,6 @@ import { AddressPieceComponent } from '../../layout/address/address-piece.compon
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
-import { ChartModule } from '../chart/chart.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
 import { ShareModule } from '../share/share.module';
 import { CardActionsComponent } from './components/actions/card-actions.component';
@@ -58,7 +57,6 @@ const modules = [
   FavoriteComponent,
   MediaWidgetsModule,
   TitleModule,
-  ChartModule
 ];
 
 const libs = [

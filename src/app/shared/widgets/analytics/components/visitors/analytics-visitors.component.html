@@ -13,35 +13,35 @@
 </section>
 
 <section class="summary">
-  <app-chart-summary *ngIf="visits"
+  <cin-chart-summary *ngIf="visits"
     [actions]="[visitsAction]"
     [color]="visitsColor"
     [summary]="visits.sum"
     titleLabel="totalVisits">
-  </app-chart-summary>
+  </cin-chart-summary>
 
-  <app-chart-summary *ngIf="visitors"
+  <cin-chart-summary *ngIf="visitors"
     [actions]="[visitorsAction]"
     [color]="visitorsColor"
     [summary]="visitors.sum"
     titleLabel="totalVisitors">
-  </app-chart-summary>
+  </cin-chart-summary>
 </section>
 
 <section class="charts">
-  <app-chart-bar-vertical *ngIf="visits"
+  <cin-chart-bar-vertical *ngIf="visits"
     [actions]="[visitsAction]"
     [colors]="[visitsColor]"
     [data]="visits.series"
     [titleLabel]="visitsKey"
     [yAxisLabel]="visitsKey">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 
-  <app-chart-bar-vertical *ngIf="visitors"
+  <cin-chart-bar-vertical *ngIf="visitors"
     [actions]="[visitorsAction]"
     [colors]="[visitorsColor]"
     [data]="visitors.series"
     [titleLabel]="visitorsKey"
     [yAxisLabel]="visitorsKey">
-  </app-chart-bar-vertical>
+  </cin-chart-bar-vertical>
 </section>
