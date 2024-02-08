@@ -1,11 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { contestPortalDetailsParticipationsStateKey } from '../constants/contest-portal-details-participations.constants';
-import { ContestPortalDetailsParticipationsState } from './contest-portal-details-participations.reducer';
+import { contestPortalDetailsVoteStateKey } from '../constants/contest-portal-details-vote.constants';
+import { ContestPortalDetailsVoteState } from './contest-portal-details-vote.reducer';
 
 export const selectContestPortalDetailsParticipationsState =
-  createFeatureSelector<ContestPortalDetailsParticipationsState>(
-    contestPortalDetailsParticipationsStateKey
+  createFeatureSelector<ContestPortalDetailsVoteState>(
+    contestPortalDetailsVoteStateKey
   );
 
 export const selectContestParticipations = createSelector(

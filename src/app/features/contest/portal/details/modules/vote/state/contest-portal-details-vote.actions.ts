@@ -3,8 +3,8 @@ import { createActionGroup } from '@ngrx/store';
 import { ContestVoteEntity, ContestVoteEntityInput, FilterSortPaginateInput, Maybe, PageableList_ContestParticipationEntity } from 'src/app/core/api/generated/schema';
 
 
-export const ContestPortalDetailsParticipationsActions = createActionGroup({
-  source: 'Contest Portal Details Participations',
+export const ContestPortalDetailsVoteActions = createActionGroup({
+  source: 'Contest Portal Details Vote',
   events: {
     'get participations':(slug: Maybe<string>) => ({ slug }),
     'set participations': (participations?: Maybe<PageableList_ContestParticipationEntity>) => ({ participations }),

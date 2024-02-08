@@ -13,15 +13,15 @@ import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetContestParticipationsGQL } from 'src/app/features/contest/api/generated/get-contest-participations.query.generated';
 import { SaveContestVoteGQL } from 'src/app/features/contest/api/generated/save-contest-vote.mutation.generated';
 import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ContestPortalDetailsParticipationsActions } from './contest-portal-details-participations.actions';
-import { selectContestMaxVotes, selectParams, selectSlug, selectUserVotes } from './contest-portal-details-participations.selectors';
+import { ContestPortalDetailsVoteActions } from './contest-portal-details-vote.actions';
+import { selectContestMaxVotes, selectParams, selectSlug, selectUserVotes } from './contest-portal-details-vote.selectors';
 
 @Injectable()
-export class ContestPortalDetailsParticipationsEffects {
+export class ContestPortalDetailsVoteEffects {
     
   getContestParticipations = createEffect(() =>
     this.actions.pipe(
-      ofType(ContestPortalDetailsParticipationsActions.getParticipations),
+      ofType(ContestPortalDetailsVoteActions.getParticipations),
       withLatestFrom(this.store.select(selectParams)),
       switchMap(([action, params]) => {
         return this.getContestParticipationsService.watch({
@@ -41,7 +41,7 @@ export class ContestPortalDetailsParticipationsEffects {
         }).valueChanges;
       }),
       map((response) =>
-        ContestPortalDetailsParticipationsActions.setParticipations(
+        ContestPortalDetailsVoteActions.setParticipations(
           response.data
             .getContestParticipations as PageableList_ContestParticipationEntity
         )
@@ -52,14 +52,14 @@ export class ContestPortalDetailsParticipationsEffects {
   
   updateParams = createEffect(() =>
     this.actions.pipe(
-      ofType(ContestPortalDetailsParticipationsActions.updateParams,
-        ContestPortalDetailsParticipationsActions.voteSaved
+      ofType(
+        ContestPortalDetailsVoteActions.updateParams,
+        ContestPortalDetailsVoteActions.voteSaved
       ),
       withLatestFrom(
         this.store.select(selectSlug),
         this.store.select(selectParams)),
-      switchMap(([, slug, params]) => {
-        return this.getContestParticipationsService.watch({
+      switchMap(([, slug, params]) => this.getContestParticipationsService.watch({
           params: {
             sort: params?.sort,
             dir: params?.dir,
@@ -73,10 +73,10 @@ export class ContestPortalDetailsParticipationsEffects {
               },
             },
           },
-        }).valueChanges;
-      }),
+        }).valueChanges
+      ),
       map((response) =>
-        ContestPortalDetailsParticipationsActions.setParticipations(
+        ContestPortalDetailsVoteActions.setParticipations(
           response.data
             .getContestParticipations as PageableList_ContestParticipationEntity
         )
@@ -86,7 +86,7 @@ export class ContestPortalDetailsParticipationsEffects {
 
   saveVote = createEffect(() =>
     this.actions.pipe(
-      ofType(ContestPortalDetailsParticipationsActions.saveVote),
+      ofType(ContestPortalDetailsVoteActions.saveVote),
       withLatestFrom(this.store.select(selectContestMaxVotes),
       this.store.select(selectUserVotes)),
       switchMap(([action, maxVotes, userVotes]) =>
@@ -110,7 +110,7 @@ export class ContestPortalDetailsParticipationsEffects {
         })
       ),
       map((response) =>
-        ContestPortalDetailsParticipationsActions.voteSaved(
+        ContestPortalDetailsVoteActions.voteSaved(
           response.data?.saveContestVote as ContestVoteEntity
         )
       )
@@ -119,7 +119,7 @@ export class ContestPortalDetailsParticipationsEffects {
 
   voteSaved = createEffect(() =>
     this.actions.pipe(
-      ofType(ContestPortalDetailsParticipationsActions.voteSaved),
+      ofType(ContestPortalDetailsVoteActions.voteSaved),
       map(() =>
         CoreActions.setFeedback({
           type: FeedbackType.Success,
@@ -130,7 +130,7 @@ export class ContestPortalDetailsParticipationsEffects {
   );
 
   updateUser = createEffect(() => this.actions.pipe(
-    ofType(ContestPortalDetailsParticipationsActions.voteSaved),
+    ofType(ContestPortalDetailsVoteActions.voteSaved),
     map(() => CoreUserActions.updateUser())
   ));  
 

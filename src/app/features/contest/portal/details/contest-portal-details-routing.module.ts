@@ -4,7 +4,7 @@ import { AuthGuardService } from 'src/app/core/guards/auth-guard.service';
 import { commentsRoute, participationFormRoute, participationsRoute, winnersRoute } from './constants/contest-details.constant';
 import { ContestPortalDetailsCommentsComponent } from './modules/comments/components/contest-portal-details-comments.component';
 import { ContestPortalDetailsParticipationFormComponent } from './modules/participation-form/components/portal-contest-details-participation-form.component';
-import { ContestPortalDetailsParticipationsComponent } from './modules/participations/components/contest-portal-details-participations.component';
+import { ContestPortalDetailsVoteComponent } from './modules/vote/components/contest-portal-details-vote.component';
 import { ContestPortalDetailsWinnersComponent } from './modules/winners/components/contest-portal-details-winners.component';
 
 const routes: Routes = [
@@ -15,9 +15,9 @@ const routes: Routes = [
   },
     {
     path: participationsRoute,
-    loadChildren: () => import('./modules/participations/contest-portal-details-participations.module')
-      .then((imported) => imported.ContestPortalDetailsParticipationsModule),
-        component: ContestPortalDetailsParticipationsComponent
+    loadChildren: () => import('./modules/vote/contest-portal-details-vote.module')
+      .then((imported) => imported.ContestPortalDetailsVoteModule),
+        component: ContestPortalDetailsVoteComponent
   },
   {
     path: participationFormRoute,

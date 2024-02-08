@@ -11,14 +11,14 @@ import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-w
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { TextElementComponent } from 'src/app/shared/widgets/text/element/text-element.component';
 import { ContestPortalDetailsParticipationsCardComponent } from '../card/contest-portal-details-participations-card.component';
-import { ContestPortalDetailsParticipationsComponent } from './components/contest-portal-details-participations.component';
-import { contestPortalDetailsParticipationsStateKey } from './constants/contest-portal-details-participations.constants';
-import { ContestPortalDetailsParticipationsEffects } from './state/contest-portal-details-participations.effects';
-import { contestPortalDetailsParticipationsReducer } from './state/contest-portal-details-participations.reducer';
+import { ContestPortalDetailsVoteComponent } from './components/contest-portal-details-vote.component';
+import { contestPortalDetailsVoteStateKey } from './constants/contest-portal-details-vote.constants';
+import { ContestPortalDetailsVoteEffects } from './state/contest-portal-details-vote.effects';
+import { contestPortalDetailsVoteReducer } from './state/contest-portal-details-vote.reducer';
 
 
 const components = [
-  ContestPortalDetailsParticipationsComponent,
+  ContestPortalDetailsVoteComponent,
 ]
 
 const framework = [
@@ -42,8 +42,8 @@ const modules = [
 ];
 
 const libs = [
-  StoreModule.forFeature(contestPortalDetailsParticipationsStateKey, contestPortalDetailsParticipationsReducer),
-  EffectsModule.forFeature([ContestPortalDetailsParticipationsEffects]),
+  StoreModule.forFeature(contestPortalDetailsVoteStateKey, contestPortalDetailsVoteReducer),
+  EffectsModule.forFeature([ContestPortalDetailsVoteEffects]),
 ];
 
 @NgModule({
@@ -56,4 +56,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class ContestPortalDetailsParticipationsModule { }
+export class ContestPortalDetailsVoteModule { }
