@@ -2,13 +2,13 @@
     && row?.id === (inlineEditRow | async)?.id; else actionsTemplate">
   <button mat-button
     class="save"
-    appTooltip="save"
+    cinTooltip="save"
     (click)="$event.stopPropagation(); save();">
     <cin-icon [icon]="['fas', 'check']"></cin-icon>
   </button>
 
   <button mat-button
-    appTooltip="cancel"
+    cinTooltip="cancel"
     (click)="$event.stopPropagation(); cancel();">
     <cin-icon [icon]="['fas', 'xmark']"></cin-icon>
   </button>
@@ -41,7 +41,7 @@
             mat-button
             [disabled]="isDisabled(action)"
             (click)="$event.stopPropagation(); callback(action);"
-            [appTooltip]="tooltip(action)">
+            [cinTooltip]="tooltip(action)">
             <cin-icon [icon]="['fas', icon(action)]"></cin-icon>
           </button>
         </div>

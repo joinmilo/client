@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { TooltipDirective } from 'ngx-cinlib/tooltip';
 import { ShareModule as LibShareModule } from 'ngx-sharebuttons';
 import { CoreModule } from 'src/app/core/core.module';
 import { ShareButtonComponent } from './button/share-button.component';
@@ -18,7 +19,8 @@ const framework = [
 ];
 
 const lib = [
-  LibShareModule
+  LibShareModule,
+  TooltipDirective,
 ];
 
 const materials = [

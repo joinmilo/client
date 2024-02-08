@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { TooltipDirective } from 'ngx-cinlib/tooltip';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { ShareModule } from 'src/app/shared/widgets/share/share.module';
@@ -104,10 +105,11 @@ const modules = [
 ];
 
 const libs = [
-  IconComponent,
-
   StoreModule.forFeature(tableStateKey, tableReducer),
   EffectsModule.forFeature([TableEffects]),
+
+  IconComponent,
+  TooltipDirective,
 ];
 
 const providers = [
