@@ -1,13 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
-import {
-  ContestEntity,
-  Maybe,
-  MediaEntity,
-} from 'src/app/core/api/generated/schema';
+import { ContestEntity, Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { ContestPortalDetailsParticipationFormActions } from '../state/contest-portal-details-participation-form.actions';
 import { selectContestDetails } from '../state/contest-portal-details-participation-form.selectors';
@@ -18,7 +14,8 @@ import { ParticipationType } from '../typings/participation';
   templateUrl: './portal-contest-details-participation-form.component.html',
   styleUrls: ['./portal-contest-details-participation-form.component.scss'],
 })
-export class ContestPortalDetailsParticipationFormComponent {
+export class ContestPortalDetailsParticipationFormComponent implements OnInit, OnDestroy {
+
   public uploadsForm = this.fb.group({
     textSubmission: ['' as Maybe<string>],
     mediaSubmission: [[] as Maybe<MediaEntity>[]],
@@ -51,9 +48,7 @@ export class ContestPortalDetailsParticipationFormComponent {
         switchMap(() => this.store.select(selectContestDetails)),
         takeUntil(this.destroy)
       )
-      .subscribe((contest) => {
-        this.contest = contest;
-      });
+      .subscribe((contest) => this.contest = contest);
   }
 
   public saved(): void {
@@ -69,14 +64,12 @@ export class ContestPortalDetailsParticipationFormComponent {
           this.contest?.type?.code === ParticipationType.Image
             ? [
                 {
-                  id: undefined,
                   media: this.uploadsForm.value.mediaSubmission?.[0],
                 },
               ]
             : null,
         contest: {
           id: this.contest?.id,
-          maxParticipations: this.contest?.maxParticipations, //important! server checks on createEntity
         },
       })
     );

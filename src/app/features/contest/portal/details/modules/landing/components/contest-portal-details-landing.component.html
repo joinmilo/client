@@ -17,33 +17,44 @@
       [innerHtml]="contest | translatable : 'content' | async"></p>
       
       <div id="card-wrapper">
-        <section
-          class="border-box"
-          *ngIf="checkDatePassed(contest?.participationEndDate)">
-          <img src="assets/draw.svg" />
-          <button mat-raised-button color="primary"
-            [appLabel]="(maxParticipationsReached | async) ? 'maxParticipationsReached' : 'participate'"
-           (click)="isAuthenticated()"
-           [disabled]="(maxParticipationsReached | async)"></button>
-        </section>
-        <section class="border-box" *ngIf="checkDatePassed(contest?.voteEndDate)">
-          <img src="assets/vote.svg" />
-          <button mat-raised-button color="primary"
-             appLabel="vote"
-             [routerLink]="'participations'"></button>
-        </section>
-        <section class="border-box" *ngIf="!checkDatePassed(contest?.voteEndDate) && !contestEvaluated">
-          <img src="assets/waiting.svg" />
-          <button mat-raised-button color="primary"
-             appLabel="evaluationInProgress"
-             disabled></button>
-        </section>
-        <section class="border-box" *ngIf="!checkDatePassed(contest?.voteEndDate) && contestEvaluated">
-          <img src="assets/winner.svg" />
-          <button mat-raised-button color="primary"
-             appLabel="showWinners"
-             [routerLink]="'winners'"></button>
-        </section>
+        @if (checkDatePassed(contest?.participationEndDate)) {
+          <section
+            class="border-box">
+            <img src="assets/draw.svg" />
+            <button mat-raised-button color="primary"
+              [appLabel]="(maxParticipationsReached | async) ? 'maxParticipationsReached' : 'participate'"
+              [routerLink]="[participationFormRoute]"
+              [disabled]="(maxParticipationsReached | async)">
+            </button>
+          </section>
+        }
+
+        @if (checkDatePassed(contest?.voteEndDate)) {
+          <section class="border-box">
+            <img src="assets/vote.svg" />
+            <button mat-raised-button color="primary"
+               appLabel="vote"
+               [routerLink]="'participations'"></button>
+          </section>
+        }
+
+        @if (!checkDatePassed(contest?.voteEndDate) && !contestEvaluated) {
+          <section class="border-box">
+            <img src="assets/waiting.svg" />
+            <button mat-raised-button color="primary"
+               appLabel="evaluationInProgress"
+               disabled></button>
+          </section>
+        }
+
+        @if (!checkDatePassed(contest?.voteEndDate) && contestEvaluated) {
+          <section class="border-box">
+            <img src="assets/winner.svg" />
+            <button mat-raised-button color="primary"
+               appLabel="showWinners"
+               [routerLink]="'winners'"></button>
+          </section>
+        }
       </div>
 
     <app-media-slider

@@ -9,8 +9,7 @@ import { ContestPortalDetailsCommentsActions } from './contest-portal-details-co
 export class ContestPortalDetailsCommentsEffects {
 
   getComments = createEffect(() => this.actions.pipe(
-    ofType(
-      ContestPortalDetailsCommentsActions.getComments),
+    ofType(ContestPortalDetailsCommentsActions.getComments),
     switchMap(action => this.getCommentsService.watch({
       params: {
         sort: 'created',

@@ -23,6 +23,7 @@ import { TextElementComponent } from 'src/app/shared/widgets/text/element/text-e
   ],
 })
 export class ContestPortalDetailsParticipationsCardComponent {
+
   @Input()
   public actionLabel?: Maybe<string>;
 
@@ -38,5 +39,7 @@ export class ContestPortalDetailsParticipationsCardComponent {
   @Output()
   public action = new EventEmitter<void>();
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog
+  ) {}
 }

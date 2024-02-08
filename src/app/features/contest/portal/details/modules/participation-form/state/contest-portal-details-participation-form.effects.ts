@@ -18,24 +18,23 @@ import { selectContestDetails, selectSlug, selectUserPartipations } from './cont
 export class ContestPortalDetailsParticipationFormEffects {
 
   getDetails = createEffect(() => this.actions.pipe(
-    ofType(ContestPortalDetailsParticipationFormActions.getDetails,
-      ),
-    switchMap((action) => this.getContestService.watch({
-      entity: { slug: action.slug }
-    }).valueChanges),
+    ofType(ContestPortalDetailsParticipationFormActions.getDetails),
+    switchMap((action) => this.getContestService.watch({ 
+        entity: { slug: action.slug }
+      }).valueChanges
+    ),
     map(response => response.data.getContest?.id
       ? ContestPortalDetailsParticipationFormActions.setDetails(response.data.getContest as ContestEntity)
       : PortalActions.notFound())
   ));
 
   updateDetails = createEffect(() => this.actions.pipe(
-    ofType(
-      ContestPortalDetailsParticipationFormActions.participationSaved
-    ),
+    ofType(ContestPortalDetailsParticipationFormActions.participationSaved),
     withLatestFrom(this.store.select(selectSlug)),
     switchMap(([, slug]) => this.getContestService.watch({
-      entity: { slug: slug }
-    }).valueChanges),
+        entity: { slug: slug }
+      }).valueChanges
+    ),
     map(response => response.data.getContest?.id
       ? ContestPortalDetailsParticipationFormActions.setDetails(response.data.getContest as ContestEntity)
       : PortalActions.notFound())
@@ -43,68 +42,58 @@ export class ContestPortalDetailsParticipationFormEffects {
 
 
   saveParticipation = createEffect(() =>
-  this.actions.pipe(
-    ofType(ContestPortalDetailsParticipationFormActions.saveParticipation),
-    withLatestFrom(
-      this.store.select(selectUserPartipations),
-      this.store.select(selectContestDetails)),
-    switchMap(([action, userParticipations, contest]) =>
-      this.confirmDialogService
-        .confirm({
-          buttonColor: 'primary',
-          buttonLabel: 'confirm',
-          titleLabel: 'confirmParticipation',
-          messageLabel: 'areYouSureToParticipate',
-          context:
-            contest?.maxParticipations 
-              ? contest?.maxParticipations == (userParticipations + 1)
-                ? 'lastParticipation'
-                : contest?.maxParticipations == userParticipations || contest?.maxParticipations < userParticipations
-                  ? 'equalParticipations'
-                  : 'moreParticipations'
-              : 'moreParticipations' 
+    this.actions.pipe(
+      ofType(ContestPortalDetailsParticipationFormActions.saveParticipation),
+      withLatestFrom(
+        this.store.select(selectUserPartipations),
+        this.store.select(selectContestDetails)),
+      switchMap(([action, userParticipations, contest]) =>
+        this.confirmDialogService
+          .confirm({
+            buttonColor: 'primary',
+            buttonLabel: 'confirm',
+            titleLabel: 'confirmParticipation',
+            messageLabel: 'areYouSureToParticipate',
+            context:
+              contest?.maxParticipations 
+                ? contest?.maxParticipations == (userParticipations + 1)
+                  ? 'lastParticipation'
+                  : contest?.maxParticipations == userParticipations || contest?.maxParticipations < userParticipations
+                    ? 'equalParticipations'
+                    : 'moreParticipations'
+                : 'moreParticipations' 
+          })
+          .pipe(
+            switchMap((confirmed) => (confirmed ? of(action.entity) : EMPTY))
+          )
+      ),
+      switchMap((participation) =>
+        this.saveContestParticipationService.mutate({
+          entity: participation,
         })
-        .pipe(
-          switchMap((confirmed) => (confirmed ? of(action.entity) : EMPTY))
+      ),
+      map((response) =>
+        ContestPortalDetailsParticipationFormActions.participationSaved(
+          response.data?.saveContestParticipation as ContestParticipationEntity
         )
-    ),
-    switchMap((participation) =>
-      this.saveContestParticipationService.mutate({
-        entity: participation,
-      })
-    ),
-    map((response) =>
-      ContestPortalDetailsParticipationFormActions.participationSaved(
-        response.data?.saveContestParticipation as ContestParticipationEntity
       )
     )
-  )
-);
-
-  participationSaved = createEffect(
-    () =>
-      this.actions.pipe(
-        ofType(ContestPortalDetailsParticipationFormActions.participationSaved),
-        tap(() =>
-          this.router.navigate(['/', userUrl, 'participate', 'success-contest'])
-        )
-      ),
-    { dispatch: false }
   );
+
+  participationSaved = createEffect(() => this.actions.pipe(
+    ofType(ContestPortalDetailsParticipationFormActions.participationSaved),
+    tap(() => this.router.navigate(['/', userUrl, 'participate', 'success-contest']))
+  ), { dispatch: false });
 
   updateUser = createEffect(() => this.actions.pipe(
     ofType(ContestPortalDetailsParticipationFormActions.participationSaved),
     map(() => CoreUserActions.updateUser())
   ));  
 
-  cancelled = createEffect(
-    () =>
-      this.actions.pipe(
-        ofType(ContestPortalDetailsParticipationFormActions.cancelled),
-        tap(() => this.router.navigate([portalUrl, contestsFeatureKey]))
-      ),
-    { dispatch: false }
-  );
+  cancelled = createEffect(() => this.actions.pipe(
+    ofType(ContestPortalDetailsParticipationFormActions.cancelled),
+    tap(() => this.router.navigate([portalUrl, contestsFeatureKey]))
+  ), { dispatch: false });
 
   constructor(
     private actions: Actions,

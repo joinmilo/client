@@ -1,0 +1,23 @@
+<div class="main">
+  <app-page-title titleLabel="createNewParticipation"> </app-page-title>
+
+  <app-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+    <app-form-step [formGroup]="uploadsForm" titleLabel="content">
+
+      @if (contest?.type?.code === text) {
+        <app-row [columns]="1">
+          <app-ck-editor-form
+            formControlName="textSubmission">
+          </app-ck-editor-form>
+        </app-row>
+      }
+
+      @if (contest?.type?.code === image || contest?.type?.code === video) {
+        <app-media-form
+          [maxFiles]="1"
+          formControlName="mediaSubmission">
+        </app-media-form>
+      }
+    </app-form-step>
+  </app-form-stepper>
+</div>

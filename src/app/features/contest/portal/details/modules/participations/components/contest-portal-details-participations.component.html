@@ -1,22 +1,24 @@
 <div class="main">
   <app-page-title titleLabel="yourVoteCounts"></app-page-title>
 
-  <app-table-sort
-    *ngIf="sortOptions"
-    [options]="sortOptions"
-    [queryParams]="true"
-    (sortChange)="changeSort($event)">
-  </app-table-sort>
+  @if (sortOptions) {
+    <app-table-sort
+      [options]="sortOptions"
+      [queryParams]="true"
+      (sortChange)="changeSort($event)">
+    </app-table-sort>
+  }
 
   <section>
-    <app-contest-portal-details-participations-card
-      *ngFor="let element of actionInfos; let i = index"
-      [media]="element.media"
-      [text]="element.text"
-      [actionLabel]="element.label"
-      [actionDisabled]="element.disabled"
-      (action)="edit(i)">
-    </app-contest-portal-details-participations-card>
+    @for (element of actionInfos; track element; let i = $index) {
+      <app-contest-portal-details-participations-card 
+        [media]="element.media"
+        [text]="element.text"
+        [actionLabel]="element.label"
+        [actionDisabled]="element.disabled"
+        (action)="saveVote(i)">
+      </app-contest-portal-details-participations-card>
+    }
   </section>
 
   <mat-card>

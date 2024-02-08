@@ -18,10 +18,8 @@ export const selectSlug = createSelector(
 export const selectUserPartipations = createSelector(
   selectCurrentUser,
   selectContestDetails,
-  (user, contest) => {
-    return user?.contestPariticpations?.filter(
-      (participation) => participation?.contest?.id == contest?.id
-    ).length ?? 0;
-  }
+  (user, contest) =>
+    user?.contestPariticpations?.filter((participation) =>
+      participation?.contest?.id == contest?.id).length
+    ?? 0
 );
-

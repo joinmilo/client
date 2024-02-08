@@ -72,11 +72,7 @@ export class ContestPortalDetailsParticipationsComponent
     this.activatedRoute.parent?.params
       .pipe(
         takeUntil(this.destroy),
-        tap((params) => {
-          this.store.dispatch
-          (ContestPortalDetailsParticipationsActions.getParticipations(params[slug] || ''));
-        }
-        ),
+        tap((params) => this.store.dispatch(ContestPortalDetailsParticipationsActions.getParticipations(params[slug] || ''))),
         switchMap(() => this.store.select(selectContestParticipations)),
         takeUntil(this.destroy),
         withLatestFrom(
@@ -129,7 +125,7 @@ export class ContestPortalDetailsParticipationsComponent
     );
   }
 
-  public edit(index: number) {
+  public saveVote(index: number) {
     this.store
       .select(selectIsAuthenticated)
       .pipe(take(1), takeUntil(this.destroy))
