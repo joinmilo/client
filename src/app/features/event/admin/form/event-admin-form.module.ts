@@ -10,12 +10,12 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
+import { SchedulerFormComponent } from 'ngx-cinlib/forms/scheduler';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { ContactFormComponent } from 'src/app/shared/form/contact/contact-form.component';
-import { SchedulerModule } from 'src/app/shared/form/scheduler/scheduler.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -51,7 +51,6 @@ const modules = [
   EventAdminFormRoutingModule,
   MediaFormModule,
   MediaWidgetsModule,
-  SchedulerModule,
   TitleModule,
 ];
 
@@ -64,6 +63,7 @@ const libs = [
   GridRowComponent,
   GridColumnDirective,
   RichtextEditorFormComponent,
+  SchedulerFormComponent,
 ];
 
 @NgModule({

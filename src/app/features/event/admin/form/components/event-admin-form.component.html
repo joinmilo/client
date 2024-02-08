@@ -71,29 +71,29 @@
     descriptionLabel="createSchedules"
     [formGroup]="scheduleForm">
     <cin-grid-row columns="2">
-      <app-scheduler-form formControlName="schedules"> </app-scheduler-form>
+      <cin-scheduler-form formControlName="schedules"> </cin-scheduler-form>
     </cin-grid-row>
   </cin-form-step>
 
   <cin-form-step
-  titleLabel="contactAndOrganisation"
-  [formGroup]="contactAndOrganisationForm">
-  <cin-grid-row columns="2" *ngIf="userOrganisations?.length">
-    <mat-form-field appearance="outline">
-      <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
-      <mat-select formControlName="organisationId">
-        <mat-option 
-          [value]="null"
-          appLabel="NoOrganisation">
-        </mat-option>
-        <mat-option
-          [value]="organisation?.id"
-          *ngFor="let organisation of userOrganisations">
-          {{ organisation.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </cin-grid-row>
+    titleLabel="contactAndOrganisation"
+    [formGroup]="contactAndOrganisationForm">
+    <cin-grid-row columns="2" *ngIf="userOrganisations?.length">
+      <mat-form-field appearance="outline">
+        <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
+        <mat-select formControlName="organisationId">
+          <mat-option 
+            [value]="null"
+            appLabel="NoOrganisation">
+          </mat-option>
+          <mat-option
+            [value]="organisation?.id"
+            *ngFor="let organisation of userOrganisations">
+            {{ organisation.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </cin-grid-row>
 
     <mat-divider></mat-divider>
 
