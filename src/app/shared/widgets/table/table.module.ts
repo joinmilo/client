@@ -14,10 +14,10 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { TooltipDirective } from 'ngx-cinlib/tooltip';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
@@ -110,6 +110,7 @@ const libs = [
 
   IconComponent,
   TooltipDirective,
+  ShareButtonComponent,
 ];
 
 const providers = [

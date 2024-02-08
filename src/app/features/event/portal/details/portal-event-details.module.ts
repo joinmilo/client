@@ -15,6 +15,7 @@ import { LocalDatePipe } from 'ngx-cinlib/date/pipes';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
@@ -27,7 +28,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalEventDetailsAttendeeComponent } from './components/attendee/portal-event-details-attendee.component';
 import { PortalEventDetailsCalendarComponent } from './components/calendar/portal-event-details-calendar.component';
@@ -91,7 +91,6 @@ const modules = [
   PortalEventDetailsRoutingModule,
   PriceComponent,
   RatingModule,
-  ShareModule,
   TableModule,
   TitleModule
 ];
@@ -104,6 +103,7 @@ const libs = [
   LocalDatePipe,
   MailPieceComponent,
   PhonePieceComponent,
+  ShareButtonComponent,
 ]
 
 @NgModule({

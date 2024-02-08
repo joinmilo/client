@@ -11,13 +11,13 @@ import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
-import { ShareModule } from '../share/share.module';
 import { CardActionsComponent } from './components/actions/card-actions.component';
 import { ContactCardComponent } from './components/contact/contact-card.component';
 import { ContentCardComponent } from './components/content/content-card.component';
@@ -46,7 +46,6 @@ const materials = [
   MatCardModule,
   MatChipsModule,
   MatMenuModule,
-  ShareModule,
   MatButtonToggleModule
 ];
 
@@ -64,6 +63,7 @@ const libs = [
   DatePieceComponent,
   MailPieceComponent,
   PhonePieceComponent,
+  ShareButtonComponent,
 ];
 
 @NgModule({

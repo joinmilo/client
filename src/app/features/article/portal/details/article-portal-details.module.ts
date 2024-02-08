@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
+import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
@@ -22,7 +23,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ArticlePortalDetailsRoutingModule } from './article-portal-details-routing.module';
 import { ArticlePortalDetailsComponent } from './components/article-portal-details.component';
@@ -72,7 +72,6 @@ const modules = [
   FavoriteComponent,
   MediaWidgetsModule,
   RatingModule,
-  ShareModule,
   TableModule,
   TitleModule
 ];
@@ -82,6 +81,7 @@ const libs = [
   EffectsModule.forFeature([ArticlePortalDetailsEffects]),
 
   DatePieceComponent,
+  ShareButtonComponent,
 ]
 
 @NgModule({

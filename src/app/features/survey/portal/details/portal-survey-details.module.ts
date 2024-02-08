@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
@@ -23,7 +24,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalSurveyDetailsMediaComponent } from './components/media/portal-survey-details-media.component';
 import { PortalSurveyDetailsComponent } from './components/portal-survey-details.component';
@@ -67,7 +67,6 @@ const modules = [
   MediaWidgetsModule,
   PortalSurveyDetailsRoutingModule,
   RatingModule,
-  ShareModule,
   TableModule,
   TitleModule
 ];
@@ -79,6 +78,7 @@ const libs = [
   DatePieceComponent,
   MailPieceComponent,
   PhonePieceComponent,
+  ShareButtonComponent,
 ]
 
 @NgModule({

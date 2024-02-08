@@ -4,12 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
-import { ShareModule } from 'src/app/shared/widgets/share/share.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalAuthorDetailsMediaComponent } from './components/media/portal-author-details-media.component';
@@ -39,16 +39,16 @@ const modules = [
   FavoriteComponent,
   MediaWidgetsModule,
   PortalAuthorDetailsRoutingModule,
-  ShareModule,
   TableModule,
   TitleModule,
 ];
 
 const libs = [
-  IconComponent,
-
   StoreModule.forFeature(authorDetailsStateKey, authorReducer),
   EffectsModule.forFeature([AuthorDetailsEffects]),
+
+  IconComponent,
+  ShareButtonComponent,
 ]
 
 @NgModule({

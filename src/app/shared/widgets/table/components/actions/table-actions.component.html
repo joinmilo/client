@@ -31,9 +31,9 @@
         [data]="dataAsContent()">
       </app-favorite>
   
-      <app-share-button *ngSwitchCase="'SHARE'"
+      <cin-share-button *ngSwitchCase="'SHARE'"
         [url]="createUrl()">
-      </app-share-button>
+      </cin-share-button>
   
       <ng-container *ngSwitchDefault>
         <div [class.disabled]="isDisabled(action)">
