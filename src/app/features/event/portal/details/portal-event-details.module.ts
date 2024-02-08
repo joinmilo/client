@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { CalendarComponent } from 'ngx-cinlib/calendar';
 import { LocalDatePipe } from 'ngx-cinlib/date/pipes';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
@@ -23,7 +24,6 @@ import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
@@ -81,7 +81,6 @@ const materials = [
 
 const modules = [
   AddressPieceComponent,
-  CalendarModule,
   CategoryPieceComponent,
   CoreModule,
   CommentModule,
@@ -99,6 +98,7 @@ const libs = [
   StoreModule.forFeature(portalEventDetailsStateKey, portalEventDetailsReducer),
   EffectsModule.forFeature([PortalEventDetailsEffects]),
 
+  CalendarComponent,
   IconComponent,
   LocalDatePipe,
   MailPieceComponent,

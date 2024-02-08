@@ -1,10 +1,10 @@
-<app-calendar *ngIf="startDates"
+<cin-calendar *ngIf="startDates"
   [queryParams]="false"
   [dates]="startDates"
   (click)="$event.stopPropagation()"
   (monthSelected)="monthSelected($event)"
   (daySelected)="daySelected($event)">
-</app-calendar>
+</cin-calendar>
 
 <span *ngIf="!startDates" appLabel="noUpcomingDates"></span>
 

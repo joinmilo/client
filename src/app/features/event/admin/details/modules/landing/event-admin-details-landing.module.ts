@@ -5,13 +5,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { CalendarComponent } from 'ngx-cinlib/calendar';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsLandingCalendarComponent } from './components/calendar/event-admin-details-landing-calendar.component';
 import { EventAdminDetailsLandingComponent } from './components/event-admin-details-landing.component';
@@ -36,7 +36,6 @@ const materials = [
 
 const modules = [
   AddressPieceComponent,
-  CalendarModule,
   CoreModule,
   MediaWidgetsModule,
   TableModule,
@@ -47,6 +46,7 @@ const libs = [
   StoreModule.forFeature(eventAdminDetailsLandingStateKey, eventAdminDetailsLandingReducer),
   EffectsModule.forFeature([EventAdminDetailsLandingEffects]),
 
+  CalendarComponent,
   MailPieceComponent,
   PhonePieceComponent,
 ];

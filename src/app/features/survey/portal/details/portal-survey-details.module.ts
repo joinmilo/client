@@ -19,7 +19,6 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
@@ -58,7 +57,6 @@ const materials = [
 ];
 
 const modules = [
-  CalendarModule,
   CoreModule,
   CommentModule,
   CardModule,

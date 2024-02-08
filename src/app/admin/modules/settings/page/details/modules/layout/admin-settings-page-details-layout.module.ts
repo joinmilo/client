@@ -12,7 +12,6 @@ import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
-import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsPageDetailsLayoutComponent } from './components/admin-settings-page-details-layout.component';
 import { adminSettingsPageDetailsLayoutStateKey } from './constants/admin-settings-page-details-layout.constants';
@@ -36,7 +35,6 @@ const materials = [
 
 const modules = [
   AddressPieceComponent,
-  CalendarModule,
   CoreModule,
   MediaFormModule,
   TableModule,

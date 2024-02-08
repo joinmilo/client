@@ -20,13 +20,13 @@
 
 <mat-menu #menu="matMenu">
   <div>
-    <app-calendar
+    <cin-calendar
       [queryParams]="false"
       [dates]="startDates"
       (click)="$event.stopPropagation()"
       (monthSelected)="monthSelected($event)"
       (daySelected)="daySelected($event)">
-    </app-calendar>
+    </cin-calendar>
     <div class="date" *ngIf="selectedSchedule">
       <span>{{selectedSchedule.startDate | localDate: 'calendar'}}</span>
       <span appLabel="to"></span>

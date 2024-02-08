@@ -8,7 +8,6 @@ import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { SurveyAdminDetailsLandingComponent } from './components/survey-admin-details-landing.component';
 import { eventAdminDetailsLandingStateKey } from './constants/survey-admin-details-landing.constants';
@@ -31,7 +30,6 @@ const materials = [
 const modules = [
   AddressPieceComponent,
   CoreModule,
-  CalendarModule,
   MediaWidgetsModule,
   TableModule,
   TitleModule,

@@ -9,7 +9,6 @@ import { CoreModule } from 'src/app/core/core.module';
 import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsPageDetailsLandingComponent } from './components/admin-settings-page-details-landing.component';
 import { adminSettingsPageDetailsLandingStateKey } from './constants/admin-settings-page-details-landing.constants';
@@ -32,7 +31,6 @@ const materials = [
 
 const modules = [
   AddressPieceComponent,
-  CalendarModule,
   CoreModule,
   MediaWidgetsModule,
   TableModule,
