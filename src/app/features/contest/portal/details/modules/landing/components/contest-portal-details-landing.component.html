@@ -21,20 +21,21 @@
           <section
             class="border-box">
             <img src="assets/draw.svg" />
-            <button mat-raised-button color="primary"
+            <a mat-raised-button color="primary"
               [appLabel]="(maxParticipationsReached | async) ? 'maxParticipationsReached' : 'participate'"
               [routerLink]="[participationFormRoute]"
               [disabled]="(maxParticipationsReached | async)">
-            </button>
+            </a>
           </section>
         }
 
         @if (checkDatePassed(contest?.voteEndDate)) {
           <section class="border-box">
             <img src="assets/vote.svg" />
-            <button mat-raised-button color="primary"
+            <a mat-raised-button color="primary"
                appLabel="vote"
-               [routerLink]="'participations'"></button>
+               [routerLink]="'participations'">
+            </a>
           </section>
         }
 
@@ -50,9 +51,10 @@
         @if (!checkDatePassed(contest?.voteEndDate) && contestEvaluated) {
           <section class="border-box">
             <img src="assets/winner.svg" />
-            <button mat-raised-button color="primary"
+            <a mat-raised-button color="primary"
                appLabel="showWinners"
-               [routerLink]="'winners'"></button>
+               [routerLink]="'winners'">
+            </a>
           </section>
         }
       </div>

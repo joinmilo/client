@@ -1,10 +1,10 @@
 <app-page-title [title]="contest | translatable: 'name' | async">
 </app-page-title>
 
-<button mat-flat-button color="primary" [routerLink]="['form']">
+<a mat-flat-button color="primary" [routerLink]="['form']">
   <app-icon size="1x" [icon]="['fas', 'pen-to-square']"></app-icon>
   <span appLabel="editContest"></span>
-</button>
+</a>
 
 <app-radio-card-group
   [value]="initValue"
