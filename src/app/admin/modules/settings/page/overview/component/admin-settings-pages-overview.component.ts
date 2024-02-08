@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, Maybe, PageEntity } from 'src/app/core/api/generated/schema';
+import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { AdminSettingsPageActions } from '../state/admin-settings-pages.actions';
 import { selectPages } from '../state/admin-settings-pages.selectors';
@@ -51,12 +52,19 @@ export class AdminSettingsPagesOverviewComponent {
       type: 'BOOLEAN',
       sort: true,
     },
+    {
+      field: 'menuItems',
+      label: 'menu',
+      value: row => this.translationService.translatable(
+        row.menuItems?.[0]?.translatables, 'name')
+    },
   ];
 
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private translationService: TranslationService
   ) { }
 
   public updateParams(params: FilterSortPaginateInput) {

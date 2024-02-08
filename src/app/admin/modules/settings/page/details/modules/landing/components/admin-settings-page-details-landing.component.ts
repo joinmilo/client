@@ -34,7 +34,10 @@ export class AdminSettingsPageDetailsLandingComponent implements OnInit, OnDestr
       tap(params => this.store.dispatch(AdminSettingsPageDetailsLandingActions.getDetails(params[slug] || ''))),
       switchMap(() => this.store.select(selectAdminSettingsPageDetailsLanding)),
       takeUntil(this.destroy)
-    ).subscribe(page => this.page = page);
+    ).subscribe(page => {
+      this.page = page
+      this.page?.embeddings?.sort((a,b) => a?.order! - b?.order!);
+    });
   }
 
   ngOnDestroy(): void {

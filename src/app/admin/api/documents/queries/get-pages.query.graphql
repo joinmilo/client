@@ -5,6 +5,17 @@ query getPages($params: FilterSortPaginateInput) {
       label
       slug
       isLanding
+      
+      menuItems {
+      id
+      translatables {
+        id
+        name
+        language {
+          ...Language
+        }
+      }
+      }
     }
     total
   }
