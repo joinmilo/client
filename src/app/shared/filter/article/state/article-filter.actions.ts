@@ -1,8 +1,8 @@
 import { Params } from '@angular/router';
 import { createActionGroup, emptyProps } from '@ngrx/store';
+import { Period } from 'ngx-cinlib/core';
 import { ArticleCategoryEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { ArticleFilterQueryParams } from 'src/app/core/typings/filter-params/article-filter-param';
-import { Period } from 'src/app/core/typings/period';
 
 export const ArticleFilterActions = createActionGroup({
   source: 'Article Filter',

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { PageableList } from 'ngx-cinlib/core';
 import { Observable, Subject, isObservable, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { PageableList } from 'src/app/core/typings/pageable';
 import { TableActions } from '../state/table.actions';
 import { selectClickedRow, selectParams } from '../state/table.selectors';
 import { Column, RowAction, SortPaginate } from '../typings/table';

@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Period } from 'ngx-cinlib/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ContestCommentEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { Period } from 'src/app/core/typings/period';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { slug } from '../../../../../../../core/constants/queryparam.constants';
 import { ContestAdminDetailsCommentsActions } from '../state/contest-admin-details-comments.actions';

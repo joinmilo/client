@@ -17,19 +17,19 @@ export type Scalars = {
   OffsetDateTime: { input: any; output: any; }
 };
 
-export type AddressEntity = {
-  __typename?: 'AddressEntity';
-  created?: Maybe<Scalars['OffsetDateTime']['output']>;
-  houseNumber?: Maybe<Scalars['String']['output']>;
-  id?: Maybe<Scalars['String']['output']>;
-  latitude?: Maybe<Scalars['Float']['output']>;
-  longitude?: Maybe<Scalars['Float']['output']>;
-  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
-  place?: Maybe<Scalars['String']['output']>;
-  postalCode?: Maybe<Scalars['String']['output']>;
-  street?: Maybe<Scalars['String']['output']>;
-  suburb?: Maybe<SuburbEntity>;
-};
+  export type AddressEntity = {
+    __typename?: 'AddressEntity';
+    created?: Maybe<Scalars['OffsetDateTime']['output']>;
+    houseNumber?: Maybe<Scalars['String']['output']>;
+    id?: Maybe<Scalars['String']['output']>;
+    latitude?: Maybe<Scalars['Float']['output']>;
+    longitude?: Maybe<Scalars['Float']['output']>;
+    modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+    place?: Maybe<Scalars['String']['output']>;
+    postalCode?: Maybe<Scalars['String']['output']>;
+    street?: Maybe<Scalars['String']['output']>;
+    suburb?: Maybe<SuburbEntity>;
+  };
 
 export type AddressEntityInput = {
   created?: InputMaybe<Scalars['OffsetDateTime']['input']>;

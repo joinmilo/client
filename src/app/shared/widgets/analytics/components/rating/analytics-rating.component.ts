@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ChartBarVerticalComponent, ChartSummaryComponent } from 'ngx-cinlib/charts';
+import { Period } from 'ngx-cinlib/core';
 import { DateRangeFilterComponent } from 'ngx-cinlib/filters/date-range';
 import { IntervalFilterComponent } from 'ngx-cinlib/filters/interval';
 import { RegularIconsType } from 'ngx-cinlib/icons';
@@ -9,7 +10,6 @@ import { AnalyticsDto, IntervalFilter, Maybe } from 'src/app/core/api/generated/
 import { scoreDistributionKey, timeAmountDistributionKey, timeAverageDistributionKey } from 'src/app/core/constants/analytics.constant';
 import { CoreModule } from 'src/app/core/core.module';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { Period } from 'src/app/core/typings/period';
 import { AnalyticsParams } from '../../typings/analytics';
 
 @Component({

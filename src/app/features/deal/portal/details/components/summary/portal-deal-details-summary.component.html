@@ -1,9 +1,9 @@
 <div>
   <section>      
-    <app-address-piece *ngIf="deal?.address"
+    <cin-address-piece *ngIf="deal?.address"
       [address]="deal?.address"
       (addressClicked)="onAddressClicked()">
-    </app-address-piece>
+    </cin-address-piece>
 
     <cin-mail-piece *ngIf="deal?.contact?.email"
       [mail]="deal?.contact?.email">

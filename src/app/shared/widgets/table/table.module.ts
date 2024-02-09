@@ -13,12 +13,12 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { TooltipDirective } from 'ngx-cinlib/tooltip';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { MediaFormModule } from '../../media/modules/form/media-form.module';
@@ -95,7 +95,6 @@ const materials = [
 ];
 
 const modules = [
-  AddressPieceComponent,
   CardModule,
   CategoryPieceComponent,
   CoreModule,
@@ -109,6 +108,7 @@ const libs = [
   StoreModule.forFeature(tableStateKey, tableReducer),
   EffectsModule.forFeature([TableEffects]),
 
+  AddressPieceComponent,
   IconComponent,
   TooltipDirective,
   ShareButtonComponent,

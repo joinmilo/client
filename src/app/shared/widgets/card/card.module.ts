@@ -7,13 +7,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
+import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
-import { AddressPieceComponent } from '../../layout/address/address-piece.component';
 import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
 import { TitleModule } from '../../layout/title/title.module';
 import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
@@ -50,7 +50,6 @@ const materials = [
 ];
 
 const modules = [
-  AddressPieceComponent,
   CategoryPieceComponent,
   CoreModule,
   FavoriteComponent,
@@ -59,6 +58,7 @@ const modules = [
 ];
 
 const libs = [
+  AddressPieceComponent,
   IconComponent,
   DatePieceComponent,
   MailPieceComponent,

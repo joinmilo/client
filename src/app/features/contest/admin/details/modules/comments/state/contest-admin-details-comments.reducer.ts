@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
+import { Period } from 'ngx-cinlib/core';
 import { FilterSortPaginateInput, Maybe, PageableList_ContestCommentEntity } from 'src/app/core/api/generated/schema';
-import { Period } from 'src/app/core/typings/period';
 import { ContestAdminDetailsCommentsActions } from './contest-admin-details-comments.actions';
 
 export interface ContestAdminDetailsCommentsState {

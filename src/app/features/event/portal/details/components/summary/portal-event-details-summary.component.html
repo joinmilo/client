@@ -4,11 +4,11 @@
     <app-portal-event-details-calendar>
     </app-portal-event-details-calendar>
 
-    <app-address-piece *ngIf="event?.address"
+    <cin-address-piece *ngIf="event?.address"
       [address]="event?.address"
       [link]="event?.videoChatLink"
       (addressClicked)="onAddressClicked()">
-    </app-address-piece>
+    </cin-address-piece>
 
     <cin-mail-piece *ngIf="event?.contact?.email"
       [mail]="event?.contact?.email">

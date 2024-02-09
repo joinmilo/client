@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Period } from 'ngx-cinlib/core';
 import { AppValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import {
@@ -13,7 +14,6 @@ import {
   UserContextEntity
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { Period } from 'src/app/core/typings/period';
 import { ContactOptionEntity } from 'src/app/shared/form/contact/typings/contact-form';
 import { EventAdminFormActions } from '../state/event-admin-form.actions';
 import {

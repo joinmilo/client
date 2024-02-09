@@ -7,9 +7,9 @@ import { TableCellComponent } from '../../typings/cell';
 @Component({
   selector: 'app-table-cell-address',
   template: `
-    <app-address-piece *ngIf="input"
+    <cin-address-piece *ngIf="input"
       [address]="input">
-    </app-address-piece>
+    </cin-address-piece>
   `,
 })
 export class TableCellAddressComponent extends TableCellComponent<AddressEntity> {

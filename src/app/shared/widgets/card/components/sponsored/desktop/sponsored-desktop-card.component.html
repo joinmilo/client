@@ -35,7 +35,7 @@
       </h1>
     </header>
     <cin-date-piece *ngIf="element?.date" [date]="element?.date" [dateTime]="element?.dateTime">Date</cin-date-piece>
-    <app-address-piece *ngIf="element?.address" [address]="element?.address"></app-address-piece>
+    <cin-address-piece *ngIf="element?.address" [address]="element?.address"></cin-address-piece>
     <span>
       {{
         element?.text

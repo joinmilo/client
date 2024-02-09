@@ -1,7 +1,7 @@
 import { createActionGroup } from '@ngrx/store';
+import { Period } from 'ngx-cinlib/core';
 import { EventEntity, EventScheduleEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
-import { Period } from 'src/app/core/typings/period';
 
 export const EventCalendarActions = createActionGroup({
   source: 'Event Calendar',

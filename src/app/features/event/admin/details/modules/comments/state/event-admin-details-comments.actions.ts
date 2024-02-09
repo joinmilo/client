@@ -1,7 +1,7 @@
 import { createActionGroup, emptyProps } from '@ngrx/store';
 
+import { Period } from 'ngx-cinlib/core';
 import { EventCommentEntity, FilterSortPaginateInput, Maybe, PageableList_EventCommentEntity } from 'src/app/core/api/generated/schema';
-import { Period } from 'src/app/core/typings/period';
 
 
 export const EventAdminDetailsCommentsActions = createActionGroup({

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Params } from '@angular/router';
 import { createActionGroup, emptyProps } from '@ngrx/store';
+import { PageableList } from 'ngx-cinlib/core';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { ContentEntity } from 'src/app/core/typings/content-entity';
-import { PageableList } from 'src/app/core/typings/pageable';
 import { Column, RowAction, SortPaginate } from '../typings/table';
 
 export const TableActions = createActionGroup({

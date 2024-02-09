@@ -11,13 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { WebsitePieceComponent } from 'ngx-cinlib/layouts/website';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
@@ -67,7 +67,6 @@ const materials = [
 ];
 
 const modules = [
-  AddressPieceComponent,
   CardSliderComponent,
   CoreModule,
   CommentModule,
@@ -86,6 +85,7 @@ const libs = [
   StoreModule.forFeature(portalOrganisationDetailsStateKey, portalOrganisationDetailsReducer),
   EffectsModule.forFeature([PortalOrganisationDetailsEffects]),
 
+  AddressPieceComponent,
   MailPieceComponent,
   PhonePieceComponent,
   ShareButtonComponent,

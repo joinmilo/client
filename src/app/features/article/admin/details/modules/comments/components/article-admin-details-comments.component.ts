@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Period } from 'ngx-cinlib/core';
 import { Subject, takeUntil } from 'rxjs';
 import { ArticleCommentEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { Period } from 'src/app/core/typings/period';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { ArticleAdminDetailsCommentsActions } from '../state/article-admin-details-comments.actions';
 import { selectArticleAdminDetailsComments } from '../state/article-admin-details-comments.selectors';

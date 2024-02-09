@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createReducer, on } from '@ngrx/store';
+import { PageableList } from 'ngx-cinlib/core';
+import { setFieldValue } from 'ngx-cinlib/utils';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { ContentEntity } from 'src/app/core/typings/content-entity';
-import { PageableList } from 'src/app/core/typings/pageable';
-import { setFieldValue } from 'src/app/core/utils/reflection.utils';
 import { Column, RowAction, RowCustomAction, SortPaginate } from '../typings/table';
 import { TableActions } from './table.actions';
 

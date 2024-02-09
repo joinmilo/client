@@ -2,9 +2,9 @@
 import { Directive, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { fieldValue } from 'ngx-cinlib/utils';
 import { Observable, Subject, isObservable, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { fieldValue } from 'src/app/core/utils/reflection.utils';
 import { TableActions } from '../state/table.actions';
 import { selectInlineEditActive, selectInlineEditRow } from '../state/table.selectors';
 import { Column } from './table';

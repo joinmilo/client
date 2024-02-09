@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
-import { AddressPieceComponent } from 'src/app/shared/layout/address/address-piece.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
@@ -32,7 +31,6 @@ const materials = [
 ];
 
 const modules = [
-  AddressPieceComponent,
   CoreModule,
   MediaWidgetsModule,
   TableModule,

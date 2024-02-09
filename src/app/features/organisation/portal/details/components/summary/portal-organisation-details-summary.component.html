@@ -1,10 +1,10 @@
 <div>
   <section>
     
-    <app-address-piece *ngIf="organisation?.address"
+    <cin-address-piece *ngIf="organisation?.address"
       [address]="organisation?.address"
       (addressClicked)="onAddressClicked()">
-    </app-address-piece>
+    </cin-address-piece>
 
     <cin-mail-piece *ngIf="organisation?.contact?.email"
       [mail]="organisation?.contact?.email">

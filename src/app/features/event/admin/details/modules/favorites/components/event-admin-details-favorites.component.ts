@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Period } from 'ngx-cinlib/core';
 import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
-import { Period } from 'src/app/core/typings/period';
 import { Column } from 'src/app/shared/widgets/table/typings/table';
 import { slug } from '../../../../../../../core/constants/queryparam.constants';
 import { EventAdminDetailsFavoritesActions } from '../state/event-admin-details-favorites.actions';

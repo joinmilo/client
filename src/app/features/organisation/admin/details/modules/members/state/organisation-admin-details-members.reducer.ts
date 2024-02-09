@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
+import { Period } from 'ngx-cinlib/core';
 import { FilterSortPaginateInput, Maybe, PageableList_OrganisationMemberEntity } from 'src/app/core/api/generated/schema';
-import { Period } from 'src/app/core/typings/period';
 import { OrganisationAdminDetailsMembersActions } from './organisation-admin-details-members.actions';
 
 export interface OrganisationAdminDetailsMembersState {

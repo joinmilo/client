@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Period } from 'ngx-cinlib/core';
 import { Subject, takeUntil } from 'rxjs';
 import { EventEntity, EventScheduleEntity, Maybe } from 'src/app/core/api/generated/schema';
-import { Period } from 'src/app/core/typings/period';
 import { EventAdminDetailsLandingActions } from '../../state/event-admin-details-landing.actions';
 import { selectEventAdminDetailsLanding, selectEventAdminDetailsLandingSchedules } from '../../state/event-admin-details-landing.selectors';
 
