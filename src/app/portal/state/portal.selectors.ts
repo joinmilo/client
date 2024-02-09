@@ -6,10 +6,11 @@ export const selectPortalState = createFeatureSelector<PortalState>(portalStateK
 
 export const selectPortalHeaderOnlyMenu = createSelector(
   selectPortalState,
-  state => state.menu?.filter(item => item.header)
+  state => state.menu?.filter(item => item.header && !item.plugin?.id && !item.page?.id),
+  
 );
 
 export const selectPortalMenu = createSelector(
   selectPortalState,
-  state => state.menu
+  state => state.menu?.filter(item => !item.plugin?.id)
 );

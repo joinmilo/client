@@ -9,6 +9,14 @@ query getPlugins($params: FilterSortPaginateInput) {
       released
       menuItems {
         id
+        header
+        name
+        order
+        icon
+        parent {
+          id
+          name
+        }
       }
       translatables {
         id

@@ -15,7 +15,7 @@ import { AdminSettingsPluginMenuAssignComponent } from '../menu-assign/admin-set
 })
 export class AdminSettingsPluginOverviewComponent {
 
-  public features = this.store.select(selectPlugins);
+  public plugins = this.store.select(selectPlugins);
 
   public actions: RowAction<PluginEntity>[] = [
     {
