@@ -15,12 +15,12 @@ import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { CalendarComponent } from 'ngx-cinlib/calendar';
 import { LocalDatePipe } from 'ngx-cinlib/date/pipes';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -80,7 +80,6 @@ const materials = [
 ];
 
 const modules = [
-  CategoryPieceComponent,
   CoreModule,
   CommentModule,
   CardModule,
@@ -99,6 +98,7 @@ const libs = [
 
   AddressPieceComponent,
   CalendarComponent,
+  CategoryPieceComponent,
   IconComponent,
   LocalDatePipe,
   MailPieceComponent,

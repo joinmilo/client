@@ -10,9 +10,9 @@
         [data]="deal">
       </app-favorite>
     </section>
-    <app-category-piece *ngIf="deal?.category" [category]="deal?.category" [url]="['/', portalUrl, categoryUrl]"
+    <cin-category-piece *ngIf="deal?.category" [category]="deal?.category" [url]="['/', portalUrl, categoryUrl]"
       [queryParam]="categoryQueryParams">
-    </app-category-piece>
+    </cin-category-piece>
   </div>
   <section class="content-area">
     <section>

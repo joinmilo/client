@@ -15,11 +15,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { TooltipDirective } from 'ngx-cinlib/tooltip';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { CategoryPieceComponent } from '../../layout/category/category-piece.component';
 import { DatePieceComponent } from '../../layout/date/date-piece.component';
 import { MediaFormModule } from '../../media/modules/form/media-form.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
@@ -96,7 +96,6 @@ const materials = [
 
 const modules = [
   CardModule,
-  CategoryPieceComponent,
   CoreModule,
   FavoriteComponent,
   MediaFormModule,
@@ -109,6 +108,7 @@ const libs = [
   EffectsModule.forFeature([TableEffects]),
 
   AddressPieceComponent,
+  CategoryPieceComponent,
   IconComponent,
   TooltipDirective,
   ShareButtonComponent,

@@ -12,12 +12,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
+import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { CategoryPieceComponent } from 'src/app/shared/layout/category/category-piece.component';
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
 import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
@@ -63,7 +63,6 @@ const materials = [
 
 const modules = [
   CardModule,
-  CategoryPieceComponent,
   CoreModule,
   CommentModule,
   FavoriteComponent,
@@ -80,6 +79,7 @@ const libs = [
   EffectsModule.forFeature([PortalDealDetailsEffects]),
 
   AddressPieceComponent,
+  CategoryPieceComponent,
   MailPieceComponent,
   PhonePieceComponent,
   ShareButtonComponent,
