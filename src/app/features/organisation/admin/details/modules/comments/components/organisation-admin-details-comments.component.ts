@@ -30,8 +30,6 @@ export class OrganisationAdminDetailsCommentsComponent implements OnInit, OnDest
         this.store.dispatch(OrganisationAdminDetailsCommentsActions.deleteComment(comment)),
       tooltipLabel: 'delete'
     },
-
-    'SHARE',
   ];
 
   public columns: Column<OrganisationCommentEntity>[] = [

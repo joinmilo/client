@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
 import { AuthorAdminOverviewActions } from '../state/author-admin-overview.actions';
 import { selectOverviewData } from '../state/author-admin-overview.selectors';
 
@@ -15,7 +16,7 @@ export class AuthorAdminOverviewComponent {
   public authors = this.store.select(selectOverviewData);
 
   public actions: RowAction<UserContextEntity>[] = [
-    'SHARE',
+    shareAction('UserContextEntity'),
   ];
 
   public columns: Column<UserContextEntity>[] = [

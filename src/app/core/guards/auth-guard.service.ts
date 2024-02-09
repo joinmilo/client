@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'ngx-cinlib/security';
 import { CoreUserActions } from '../state/actions/core-user.actions';
 
 

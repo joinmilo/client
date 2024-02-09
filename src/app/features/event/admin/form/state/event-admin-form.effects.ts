@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
+import { AuthService } from 'ngx-cinlib/security';
 import { map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { EventCategoryEntity, EventEntity, EventTargetGroupEntity, FilterSortPaginateInput, OrganisationEntity, PageableList_OrganisationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { GetOrganisationMembersGQL } from 'src/app/features/organisation/api/generated/get-organisation-members.generated';
 import { GetEventCategoriesGQL } from 'src/app/shared/filter/event/api/generated/get-event-categories.query.generated';
 import { GetEventFormGQL } from '../../../api/generated/get-event-form.query.generated';
@@ -45,7 +46,7 @@ export class EventAdminFormEffects {
   getOrganisations = createEffect(() => this.actions.pipe(
     ofType(EventAdminFormActions.getCategories),
     withLatestFrom(this.store.select(selectCurrentUser)),
-    switchMap(([, user]) => this.authService.hasAnyPrivileges(['organisations_admin'])
+    switchMap(([, user]) => this.authService.hasAnyPrivileges<Privilege>(['organisations_admin'])
     ? this.getOrganisationsService.watch().valueChanges.pipe(map(response => response.data.getOrganisations as PageableList_OrganisationEntity))
     : this.getOrganisationMembersService.watch({
         params: {

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
 import { OrganisationAdminOverviewActions } from '../state/organisation-admin-overview.actions';
 import { selectOverviewData } from '../state/organisation-admin-overview.selectors';
 
@@ -36,7 +37,7 @@ export class OrganisationAdminOverviewComponent {
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
+    shareAction('OrganisationEntity'),
   ];
 
   public columns: Column<OrganisationEntity>[] = [

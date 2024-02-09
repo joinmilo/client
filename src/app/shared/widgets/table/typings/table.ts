@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SortDirection } from '@angular/material/sort';
 import { SolidIconsType } from 'ngx-cinlib/icons';
 import { Observable } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { Privilege } from 'src/app/core/typings/privilege';
+
 export type ColumnType = 'ADDRESS'
   | 'BOOLEAN'
   | 'CATEGORY'
@@ -23,8 +25,6 @@ export type Column<T> = {
   value?: ((row: T) => Observable<Maybe<string>> | Maybe<string>),
 };
 
-export type RowDefaultAction = 'LIKE' | 'SHARE';
-
 export type RowCustomAction<T> = {
   callback?: (row: Maybe<T>) => void,
   disable?: (row: Maybe<T>) => boolean,
@@ -34,7 +34,16 @@ export type RowCustomAction<T> = {
   tooltipLabel?: Maybe<string>,
 };
 
-export type RowAction<T> = RowCustomAction<T> | RowDefaultAction;
+export type RowActionComponentInput = {
+  component: any,
+  inputs?: {
+    [key: string]: any;
+  }
+}
+
+export type RowActionComponent<T> = (row: T) => RowActionComponentInput
+
+export type RowAction<T> = RowCustomAction<T> | RowActionComponent<T>;
 
 export type Sort = {
   dir?: Maybe<SortDirection>,

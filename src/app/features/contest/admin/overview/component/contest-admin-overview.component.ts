@@ -8,6 +8,7 @@ import {
 } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
 import { ContestAdminOverviewActions } from '../state/contest-admin-overview.actions';
 import { selectOverviewData } from '../state/contest-portal-overview.selectors';
 
@@ -41,7 +42,8 @@ export class ContestAdminOverviewComponent {
         this.store.dispatch(ContestAdminOverviewActions.deleteContest(contest)),
       tooltipLabel: 'delete',
     },
-    'SHARE',
+
+    shareAction('ContestEntity'),
   ];
 
   public columns: Column<ContestEntity>[] = [

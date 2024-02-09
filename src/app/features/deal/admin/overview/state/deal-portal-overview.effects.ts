@@ -3,11 +3,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
+import { AuthService } from 'ngx-cinlib/security';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_DealEntity, QueryOperator } from 'src/app/core/api/generated/schema';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { DeleteDealGQL } from '../../../api/generated/delete-deal.mutation.generated';
 import { GetDealsGQL } from '../../../api/generated/get-deals.query.generated';
 import { SponsorDealGQL } from '../../../api/generated/sponsor-deal.mutation.generated';
@@ -27,7 +28,7 @@ export class DealAdminOverviewEffects {
       this.store.select(selectParams),
       this.store.select(selectCurrentUser),
     ),
-    map(([, params, user]) => this.authService.hasAnyPrivileges(['deals_admin'])
+    map(([, params, user]) => this.authService.hasAnyPrivileges<Privilege>(['deals_admin'])
       ? params
       : {
         ...params,

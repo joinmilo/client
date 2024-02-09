@@ -1,8 +1,8 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from 'ngx-cinlib/security';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { AuthService } from '../services/auth.service';
 import { ApiError, ApiResponse } from '../typings/response';
 
 @Injectable({ providedIn: 'root' })

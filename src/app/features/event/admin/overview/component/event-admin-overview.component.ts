@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { EventEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
 import { EventAdminOverviewActions } from '../state/event-admin-overview.actions';
 import { selectOverviewData } from '../state/event-admin-overview.selectors';
 
@@ -37,7 +38,7 @@ export class EventAdminOverviewComponent {
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
+    shareAction('EventEntity'),
   ];
 
   public columns: Column<EventEntity>[] = [

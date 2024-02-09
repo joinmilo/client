@@ -1,13 +1,13 @@
 import { inject } from '@angular/core'
 import { CanActivateFn, Router } from '@angular/router'
 import { Store } from '@ngrx/store'
-import { AuthService } from '../services/auth.service'
+import { AuthService } from 'ngx-cinlib/security'
 import { CoreUserActions } from '../state/actions/core-user.actions'
 import { Privilege } from '../typings/privilege'
 
 export const requireAnyPrivilege = (...privileges: Privilege[]): CanActivateFn =>
   () => {
-    const hasPrivilege = inject(AuthService).hasAnyPrivileges(privileges);
+    const hasPrivilege = inject(AuthService).hasAnyPrivileges<Privilege>(privileges);
 
     if (!hasPrivilege) {
       inject(Router).navigate(['/']);

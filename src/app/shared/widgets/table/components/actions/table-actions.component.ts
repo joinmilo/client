@@ -1,14 +1,15 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { SolidIconsType } from 'ngx-cinlib/icons';
+import { AuthService } from 'ngx-cinlib/security';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { contentPortalDetailsUrl } from 'src/app/core/constants/url.constants';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { TableActions } from '../../state/table.actions';
 import { selectActions, selectEntity, selectInlineEditAction, selectInlineEditActive, selectInlineEditRow } from '../../state/table.selectors';
-import { RowAction, RowCustomAction } from '../../typings/table';
+import { RowAction, RowActionComponent, RowActionComponentInput, RowCustomAction } from '../../typings/table';
 
 @Component({
   selector: 'app-table-actions',
@@ -44,6 +45,12 @@ export class TableActionsComponent<T> implements OnDestroy {
       .subscribe(action => this.inlineEditAction = action);
   }
 
+  public actionComponent(action: string | RowActionComponent<T> | RowCustomAction<T>): Maybe<RowActionComponentInput> {
+    return typeof action === 'function'
+      ? (action as RowActionComponent<T>)?.(this.row)
+      : undefined;
+  }
+
   public dataAsContent(): ContentData {
     return this.row as ContentData;
   }
@@ -67,7 +74,7 @@ export class TableActionsComponent<T> implements OnDestroy {
   public hasPrivileges(action: RowAction<T>): boolean {
     const privileges = (action as RowCustomAction<T>)?.privileges;
     return privileges
-      ? this.authService.hasAnyPrivileges(privileges)
+      ? this.authService.hasAnyPrivileges<Privilege>(privileges)
       : true;
   }
 

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AuthService } from 'ngx-cinlib/security';
 import {
   DealCategoryEntity,
   FilterSortPaginateInput,
 } from 'src/app/core/api/generated/schema';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { TranslationService } from 'src/app/core/services/translation.service';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { DealAdminCategoryActions } from '../state/deal-admin-category.actions';
 import { selectCategoryData } from '../state/deal-admin-category.selectors';
@@ -70,7 +71,7 @@ export class DealAdminCategoryComponent implements OnInit {
   }
   
   private checkPrivileges() {
-    this.isDealAdmin = this.authService.hasAnyPrivileges(['deals_admin']);
+    this.isDealAdmin = this.authService.hasAnyPrivileges<Privilege>(['deals_admin']);
   }
 
   public updateParams(params: FilterSortPaginateInput) {

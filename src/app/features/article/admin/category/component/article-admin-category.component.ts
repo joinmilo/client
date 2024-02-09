@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AuthService } from 'ngx-cinlib/security';
 import { ArticleCategoryEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { TranslationService } from 'src/app/core/services/translation.service';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { ArticleAdminCategoryActions } from '../state/article-admin-category.actions';
 import { selectCategoryData } from '../state/article-admin-category.selectors';
@@ -65,7 +66,7 @@ export class ArticleAdminCategoryComponent implements OnInit {
   }
   
   private checkPrivileges() {
-    this.isArticleAdmin = this.authService.hasAnyPrivileges(['articles_admin']);
+    this.isArticleAdmin = this.authService.hasAnyPrivileges<Privilege>(['articles_admin']);
   }
 
   public updateParams(params: FilterSortPaginateInput) {

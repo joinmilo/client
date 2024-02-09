@@ -4,11 +4,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
+import { AuthService } from 'ngx-cinlib/security';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PageableList_EventEntity, QueryOperator } from 'src/app/core/api/generated/schema';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { DeleteEventGQL } from '../../../api/generated/delete-event.mutation.generated';
 import { GetEventsGQL } from '../../../api/generated/get-events.query.generated';
 import { SponsorEventGQL } from '../../../api/generated/sponsor-event.mutation.generated';
@@ -28,7 +29,7 @@ export class EventAdminOverviewEffects {
       this.store.select(selectParams),
       this.store.select(selectCurrentUser),
     ),
-    map(([, params, user]) => this.authService.hasAnyPrivileges(['events_admin'])
+    map(([, params, user]) => this.authService.hasAnyPrivileges<Privilege>(['events_admin'])
       ? params
       : {
         ...params,

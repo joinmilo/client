@@ -8,9 +8,6 @@ import { slug } from '../../../../../../../core/constants/queryparam.constants';
 import { OrganisationAdminDetailsFavoritesActions } from '../state/organisation-admin-details-favorites.actions';
 import { selectOrganisationAdminDetailsFavorites } from '../state/organisation-admin-details-favorites.selectors';
 
-
-
-
 @Component({
   selector: 'app-organisation-admin-details-favorites',
   templateUrl: './organisation-admin-details-favorites.component.html',

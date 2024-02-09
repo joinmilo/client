@@ -37,7 +37,6 @@ export class AdminSettingsPagesOverviewComponent {
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
   ];
 
   public columns: Column<PageEntity>[] = [

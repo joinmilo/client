@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { AuthService } from 'ngx-cinlib/security';
 import { map } from 'rxjs';
 import { selectAdminMainMenu, selectAdminSettingsMenu } from 'src/app/admin/state/admin.selectors';
 import { AdminMenuItem } from 'src/app/admin/typings/menu';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { Privilege } from 'src/app/core/typings/privilege';
 
 @Component({
   selector: 'app-admin-menu',
@@ -45,7 +46,7 @@ export class AdminMenuComponent {
   private allowedRoutes(routes: AdminMenuItem[]): AdminMenuItem[] {
     return routes.map(route => (
       { ...route, childs: route.childs?.filter(child => child?.privileges
-        ? this.authService.hasAnyPrivileges(child.privileges)
+        ? this.authService.hasAnyPrivileges<Privilege>(child.privileges)
         : true)
       }
     )).filter(route => !!route.childs?.length)

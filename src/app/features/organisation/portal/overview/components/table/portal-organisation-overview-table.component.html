@@ -1,7 +1,6 @@
 <app-table
   [actions]="actions"
   [data]="organisations"
-  [entity]="'OrganisationEntity'"
   [columns]="columns"
   (sortPaginate)="sortPaginate.emit($event)"
   (rowClicked)="rowClicked($event)">

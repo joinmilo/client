@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -77,6 +77,7 @@ const directives = [
 const framework = [
   CommonModule,
   FormsModule,
+  NgComponentOutlet,
   ReactiveFormsModule,
   RouterModule,
 ];

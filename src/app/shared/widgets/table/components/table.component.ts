@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { Store } from '@ngrx/store';
 import { Observable, Subject, isObservable, takeUntil } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { ContentEntity } from 'src/app/core/typings/content-entity';
 import { PageableList } from 'src/app/core/typings/pageable';
 import { TableActions } from '../state/table.actions';
 import { selectClickedRow, selectParams } from '../state/table.selectors';
@@ -32,13 +31,6 @@ export class TableComponent<T> implements OnInit, OnDestroy {
         .pipe(takeUntil(this.destroy))
         .subscribe(data => this.store.dispatch(TableActions.setData(data)))
       : this.store.dispatch(TableActions.setData(data));
-  }
-
-  //TODO: Remove because only necessary for Favorites / Share actions
-  // but not all tables have that
-  @Input()
-  public set entity(entity: ContentEntity) {
-    this.store.dispatch(TableActions.setEntity(entity));
   }
 
   @Input()

@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { DealEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
 import { DealAdminOverviewActions } from '../state/deal-admin-overview.actions';
 import { selectOverviewData } from '../state/deal-portal-overview.selectors';
 
@@ -37,7 +38,7 @@ export class DealAdminOverviewComponent {
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
+    shareAction('DealEntity'),
   ];
 
   public columns: Column<DealEntity>[] = [

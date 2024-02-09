@@ -6,7 +6,6 @@
 <app-table
   [actions]="actions"
   [data]="surveys"
-  [entity]="'SurveyEntity'"
   [columns]="columns"
   (sortPaginate)="updateParams($event)"
   (rowClicked)="rowClicked($event)">

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { FeedbackService, FeedbackType } from 'ngx-cinlib/modals/feedback';
+import { AuthService, refreshKey } from 'ngx-cinlib/security';
 import { EMPTY } from 'rxjs';
 import { delay, filter, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { UserContextEntity } from 'src/app/core/api/generated/schema';
@@ -19,9 +20,7 @@ import { RemoveFavoriteDealGQL } from '../../api/generated/remove-favorite-deal.
 import { RemoveFavoriteEventGQL } from '../../api/generated/remove-favorite-event.mutation.generated';
 import { RemoveFavoriteOrganisationGQL } from '../../api/generated/remove-favorite-organisation.mutation.generated';
 import { CookieComponent } from '../../components/cookie/cookie.component';
-import { refreshKey } from '../../constants/core.constants';
 import { accountUrl } from '../../constants/module.constants';
-import { AuthService } from '../../services/auth.service';
 import { CoreUserActions } from '../actions/core-user.actions';
 import { CoreActions } from '../actions/core.actions';
 import { selectCookieSettings } from '../selectors/user.selectors';
@@ -70,6 +69,13 @@ export class CoreUserEffects {
         : this.router.navigate([`/${accountUrl}`, 'login-stepper']);
     }),
     map(currentUser => CoreUserActions.getMe(currentUser)),
+  ));
+
+  clear = createEffect(() => this.actions.pipe(
+    ofType(CoreUserActions.init),
+    switchMap(() => this.authService.cleared()),
+    filter(cleared => cleared),
+    map(() => CoreUserActions.clear())
   ));
 
   logout = createEffect(() => this.actions.pipe(

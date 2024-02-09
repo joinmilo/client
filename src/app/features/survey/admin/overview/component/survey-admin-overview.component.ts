@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { FilterSortPaginateInput, Maybe, SurveyEntity } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
 import { SurveyAdminOverviewActions } from '../state/survey-admin-overview.actions';
 import { selectOverviewData } from '../state/survey-admin-overview.selectors';
 
@@ -37,7 +38,7 @@ export class SurveyAdminOverviewComponent {
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
+    shareAction('SurveyEntity'),
   ];
 
   public columns: Column<SurveyEntity>[] = [

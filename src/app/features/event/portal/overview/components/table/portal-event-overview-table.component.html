@@ -2,7 +2,6 @@
   <app-table
     [data]="events"
     [actions]="actions"
-    [entity]="'EventEntity'"
     [columns]="columns"
     (sortPaginate)="sortPaginate.emit($event)"
     (rowClicked)="rowClicked($event)">

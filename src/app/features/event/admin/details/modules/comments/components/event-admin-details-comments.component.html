@@ -6,7 +6,6 @@
 <app-table 
   [data]="comments"
   [actions]="actions"
-  [entity]="'EventEntity'"
   [columns]="columns"
   (sortPaginate)="updateParams(undefined, undefined, $event)">
 </app-table>

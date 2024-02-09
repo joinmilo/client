@@ -33,7 +33,6 @@ export class ContestAdminDetailsCommentsComponent implements OnInit, OnDestroy {
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
   ];
 
   public columns: Column<ContestCommentEntity>[] = [

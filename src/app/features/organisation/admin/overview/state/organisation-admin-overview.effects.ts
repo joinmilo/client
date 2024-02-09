@@ -3,11 +3,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
 import { FeedbackType } from 'ngx-cinlib/modals/feedback';
+import { AuthService } from 'ngx-cinlib/security';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { FilterSortPaginateInput, PageableList_OrganisationEntity, QueryOperator } from 'src/app/core/api/generated/schema';
-import { AuthService } from 'src/app/core/services/auth.service';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
+import { Privilege } from 'src/app/core/typings/privilege';
 import { DeleteOrganisationGQL } from '../../../api/generated/delete-organisation.mutation.generated';
 import { GetOrganisationMembersGQL } from '../../../api/generated/get-organisation-members.generated';
 import { GetOrganisationsGQL } from '../../../api/generated/get-organisations.query.generated';
@@ -28,7 +29,7 @@ export class OrganisationAdminOverviewEffects {
       this.store.select(selectParams),
       this.store.select(selectCurrentUser),
     ),
-    switchMap(([, params, user]) => this.authService.hasAnyPrivileges(['organisations_admin'])
+    switchMap(([, params, user]) => this.authService.hasAnyPrivileges<Privilege>(['organisations_admin'])
       ? this.organisationsService.watch({ params }).valueChanges.pipe(map(response => response.data.getOrganisations as PageableList_OrganisationEntity))
       : this.organisationMembersService.watch({
           params: {

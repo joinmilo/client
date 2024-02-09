@@ -24,28 +24,23 @@
     <cin-icon [icon]="['fas', inlineEditAction.icon]"></cin-icon>
   </button>
 
-  <ng-container  *ngFor="let action of (actions | async)">
-    <ng-container [ngSwitch]="action">
-      <app-favorite *ngSwitchCase="'LIKE'"
-        [entity]="entity"
-        [data]="dataAsContent()">
-      </app-favorite>
-  
-      <cin-share-button *ngSwitchCase="'SHARE'"
-        [url]="createUrl()">
-      </cin-share-button>
-  
-      <ng-container *ngSwitchDefault>
-        <div [class.disabled]="isDisabled(action)">
-          <button id="button" *ngIf="hasPrivileges(action)"
-            mat-button
-            [disabled]="isDisabled(action)"
-            (click)="$event.stopPropagation(); callback(action);"
-            [cinTooltip]="tooltip(action)">
-            <cin-icon [icon]="['fas', icon(action)]"></cin-icon>
-          </button>
-        </div>
+  <ng-container *ngFor="let action of (actions | async)">
+
+    @if(actionComponent(action); as action) {
+      <ng-container>
+        <ng-container *ngComponentOutlet="action.component; inputs: action.inputs">
+        </ng-container>
       </ng-container>
-    </ng-container>
+    } @else {
+      <div [class.disabled]="isDisabled(action)">
+        <button id="button" *ngIf="hasPrivileges(action)"
+          mat-button
+          [disabled]="isDisabled(action)"
+          (click)="$event.stopPropagation(); callback(action);"
+          [cinTooltip]="tooltip(action)">
+          <cin-icon [icon]="['fas', icon(action)]"></cin-icon>
+        </button>
+      </div>
+    }
   </ng-container>
 </ng-template>

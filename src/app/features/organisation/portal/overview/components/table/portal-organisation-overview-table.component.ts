@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { EventEntity, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
-import { Column, RowDefaultAction, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
-import { selectOverviewData } from '../../state/portal-organisation-overview.selectors';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
+import { Column, RowAction, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
+import { likeAction, shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
+import { selectOverviewData } from '../../state/portal-organisation-overview.selectors';
 
 @Component({
   selector: 'app-portal-organisation-overview-table',
@@ -17,8 +18,9 @@ export class PortalOrganisationOverviewTableComponent {
   @Output()
   public sortPaginate = new EventEmitter<SortPaginate>();
 
-  public actions: RowDefaultAction[] = [
-    'LIKE', 'SHARE'
+  public actions: RowAction<OrganisationEntity>[] = [
+    likeAction('OrganisationEntity'),
+    shareAction('OrganisationEntity')
   ];
   
   constructor(

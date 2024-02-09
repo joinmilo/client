@@ -6,6 +6,7 @@ import { EventEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/ge
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
+import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
 import { id } from '../../../../../../../core/constants/queryparam.constants';
 import { OrganisationAdminDetailsEventsActions } from '../state/organisation-admin-details-events.actions';
 import { selectOrganisationAdminDetailsEvents } from '../state/organisation-admin-details-events.selectors';
@@ -37,7 +38,7 @@ export class OrganisationAdminDetailsEventsComponent implements OnInit, OnDestro
       tooltipLabel: 'delete'
     },
 
-    'SHARE',
+    shareAction('EventEntity'),
   ];
 
   public columns: Column<EventEntity>[] = [
