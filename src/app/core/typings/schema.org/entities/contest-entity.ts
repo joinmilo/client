@@ -12,7 +12,7 @@ export class ContestEntitySchema extends Schema {
     public about: Maybe<string>,
     public endDate: Maybe<string>,
     public startDate: Maybe<string>,
-    public participants: Maybe<Maybe<PersonSchema>[]>,
+    public performer: Maybe<Maybe<PersonSchema>[]>,
   ) {
     super('Event');
   }
