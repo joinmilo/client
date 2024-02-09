@@ -8,6 +8,7 @@ import {
   MediaEntity,
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { SchemaService } from 'src/app/core/services/schema.service';
 import { participationFormRoute } from '../../../constants/contest-details.constant';
 import { ContestPortalDetailsLandingActions } from '../state/portal-contest-details-landing.actions';
 import { selectContestDetails, selectMaxParticipationsReached } from '../state/portal-contest-details-landing.selectors';
@@ -36,6 +37,7 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store,
+    private schemaService: SchemaService
   ) {}
 
   public ngOnInit(): void {
@@ -57,6 +59,7 @@ export class ContestPortalDetailsLandingComponent implements OnInit, OnDestroy {
           ?.slice(0, 10) as MediaEntity[];
 
          this.contestEvaluated = contest?.participations?.filter(participation => participation?.placement).length != 0
+         this.schemaService.createEntitySchema('ContestEntity', this.contest);
       });
   }
 

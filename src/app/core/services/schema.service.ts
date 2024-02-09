@@ -1,9 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { ArticleEntity, DealEntity, EventEntity, MenuItemEntity, OrganisationEntity, PageEntity, UserContextEntity } from '../api/generated/schema';
+import { ArticleEntity, ContestEntity, DealEntity, EventEntity, MenuItemEntity, OrganisationEntity, PageEntity, UserContextEntity } from '../api/generated/schema';
 import { SchemaArray } from '../typings/schema.org/arrays/schema-array';
 import { ArticleEntitySchema } from '../typings/schema.org/entities/article-entity';
+import { ContestEntitySchema } from '../typings/schema.org/entities/contest-entity';
 import { DealEntitySchema } from '../typings/schema.org/entities/deal-entity';
 import { EventEntitySchema } from '../typings/schema.org/entities/event-entity';
 import { OrganisationEntitySchema } from '../typings/schema.org/entities/organisation-entity';
@@ -113,6 +114,8 @@ export class SchemaService {
         return this.pageArrayToSchema(data as PageEntity[]);  
       case 'UserContextEntity':
         return this.userContextArrayToSchema(data as UserContextEntity[]);
+      case 'ContestEntity':
+        return this.contestArrayToSchema(data as ContestEntity[]);        
       default:
         return undefined;
     }
@@ -137,6 +140,8 @@ export class SchemaService {
         return this.pageToSchema(data as PageEntity);
       case 'UserContextEntity':
         return this.userContextToSchema(data as UserContextEntity);
+      case 'ContestEntity':
+        return this.contestToSchema(data as ContestEntity);        
       default:
         return undefined;
     }
@@ -148,14 +153,14 @@ export class SchemaService {
 
   private articleToSchema(entity?: Maybe<ArticleEntity>): ArticleEntitySchema {
     return new ArticleEntitySchema(
-      entity?.content,
       this.getCategoryNameArticle(entity),
+      entity?.content,
       new PersonSchema(
         entity?.author?.user?.email,
         entity?.author?.user?.firstName,
         entity?.author?.user?.lastName,
         entity?.author?.user?.phone,
-      ),
+        ),
       new PersonSchema(
         entity?.publicAuthor?.email,
         entity?.publicAuthor?.name,
@@ -185,6 +190,43 @@ export class SchemaService {
       ?.map(category => category?.name)
       ?.join()
   }
+
+
+  private contestArrayToSchema(data?: ContestEntity[]): SchemaArray<ContestEntitySchema> {
+    return new SchemaArray(data?.map(entity => this.contestToSchema(entity)));
+  }
+
+  private contestToSchema(entity?: Maybe<ContestEntity>): ContestEntitySchema {
+    return new ContestEntitySchema(
+      entity?.shortDescription,
+      new PersonSchema(
+        entity?.contact?.email,
+        entity?.contact?.name,
+        entity?.contact?.phone,
+        ),
+      entity?.content,
+      entity?.voteEndDate,
+      entity?.created,
+      this.getParticipantOfContest(entity)
+      );
+  }
+
+  private getParticipantOfContest = (entity?: Maybe<ContestEntity>): Maybe<Maybe<PersonSchema>[]> => {
+    return entity?.participations
+      ?.filter(participation => participation?.userContext)
+      ?.map(participation => {
+        const user = participation?.userContext?.user;
+        return user
+          ? new PersonSchema(
+              user.email,
+              user.firstName,
+              user.lastName,
+              user.phone
+            )
+          : null;
+      })
+      ?.filter(person => person !== null);
+  };  
 
   private dealArrayToSchema(data?: DealEntity[]): SchemaArray<DealEntitySchema> {
     return new SchemaArray(data?.map(entity => this.dealToSchema(entity)));
@@ -221,13 +263,12 @@ export class SchemaService {
         entity?.ratingDistribution?.average,
         entity?.ratingDistribution?.sum,
       ),
-      entity?.content,
       entity?.schedule?.endDate,
       entity?.schedule?.startDate,
+      entity?.content,
       new PostalSchema(
-        entity?.address?.suburb?.name,
-        `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.postalCode,
+        `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.place,
       ),
       entity?.attendeeConfiguration?.maxAttendees,
@@ -235,10 +276,9 @@ export class SchemaService {
       new OrganisationSchema(
       entity?.organisation?.name,
         new PostalSchema(
-          entity?.organisation?.address?.suburb?.name,
-          entity?.organisation?.address?.street,
           entity?.organisation?.address?.postalCode,
-          entity?.organisation?.address?.place,
+          `${entity?.address?.street} ${entity?.address?.houseNumber}`,
+          entity?.organisation?.address?.place
         )
       ),
       entity?.slug,
@@ -265,9 +305,8 @@ export class SchemaService {
       entity?.contact?.email,
       entity?.name,
       new PostalSchema(
-        entity?.address?.suburb?.name,
-        `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.postalCode,
+        `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.place,
       ),
       this.getMemberOfOrganisation(entity),
@@ -334,9 +373,8 @@ export class SchemaService {
   private userContextToSchema(entity?: Maybe<UserContextEntity>): UserContextEntitySchema {
     return new UserContextEntitySchema(
       new PostalSchema(
-        entity?.address?.suburb?.name,
-        `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.postalCode,
+        `${entity?.address?.street} ${entity?.address?.houseNumber}`,
         entity?.address?.place,
       ),
       entity?.description,

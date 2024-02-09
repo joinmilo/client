@@ -7,7 +7,6 @@ export class PostalSchema extends Schema {
   public postalCode?: Maybe<string>,
   public streetAddress?: Maybe<string>,
   public addressLocality?: Maybe<string>,
-  public addressRegion?: Maybe<string>,
   ) {
     super('PostalAddress');
   }

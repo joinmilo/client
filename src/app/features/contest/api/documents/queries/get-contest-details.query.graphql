@@ -11,12 +11,22 @@ query getContestDetails($entity: ContestEntityInput) {
     maxParticipations
     maxVotes
     commentsAllowed
+    shortDescription
+    content
+
 
     participations{
       id
       placement
       userContext {
         id
+        user {
+          id
+        email
+        firstName
+        lastName
+        phone
+        }
       }
     }
 

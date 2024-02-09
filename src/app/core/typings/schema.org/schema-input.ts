@@ -6,10 +6,10 @@ export type SchemaEntityInput = 'ArticleEntity'
   | 'MenuItemEntity'
   | 'OrganisationEntity'
   | 'PageEntity'
-  | 'UserContextEntity';
+  | 'UserContextEntity'
+  | 'ContestEntity';
 
 export type SchemaDataInput = Maybe<ArticleEntity
-  | ContestEntity
   | DealEntity
   | EventEntity
   | MenuItemEntity
@@ -17,5 +17,6 @@ export type SchemaDataInput = Maybe<ArticleEntity
   | PageEntity
   | SurveyEntity
   | UserContextEntity
+  | ContestEntity
   | undefined
 >;

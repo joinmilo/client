@@ -28,3 +28,18 @@ export const selectParams = createSelector(
   selectPortalContestOverviewState,
   state => state.params
 );
+
+export const selectContests = createSelector(
+  selectSponsoredContest,
+  selectActiveContests,
+  selectCompletedContests,
+  selectVoteableContests,
+  (sponsoredContest, activeContests, completedContests, voteableContests) => {
+    return [
+        sponsoredContest,
+      ...activeContests || [],
+      ...completedContests || [],
+      ...voteableContests || []
+    ];
+  }
+);
