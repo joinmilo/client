@@ -70,19 +70,19 @@
         </cin-richtext-editor-form>
       }
       @if (hasControl(form.controls.textMedium, 'media')) {
-        <app-media-form
+        <cin-media-form
           class="text-media"
           [formControl]="getControl(form.controls.textMedium, 'media')"
           [maxFiles]="1">
-        </app-media-form>
+        </cin-media-form>
       }
     </cin-grid-row>
   }
   @if (hasControl(form.controls.media, 'multimedia')) {
     <div
       [formGroup]="form.controls.media">
-      <app-media-form [formControl]="getControl(form.controls.media, 'multimedia')">
-      </app-media-form>
+      <cin-media-form [formControl]="getControl(form.controls.media, 'multimedia')">
+      </cin-media-form>
     </div>
   }
   <button mat-stroked-button

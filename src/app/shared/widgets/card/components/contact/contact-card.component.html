@@ -3,11 +3,11 @@
     (click)="route()">
   <figure [class.non-clickable]="!element?.url"
     (click)="route()">
-    <app-media-element *ngIf="element?.image"
+    <cin-media-element *ngIf="element?.image"
       class="border-image"
       [clickable]="false"
       [media]="element?.image">
-    </app-media-element>
+    </cin-media-element>
     <span class="border-image" *ngIf="!element?.image">
       {{ element?.avatarPlaceholder }}
     </span>

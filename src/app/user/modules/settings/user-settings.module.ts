@@ -16,11 +16,10 @@ import { PasswordFieldComponent } from 'ngx-cinlib/forms/password';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaFormComponent } from 'ngx-cinlib/media/forms';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { UserLayoutComponent } from './components/layout/user-layout.component';
 import { UserChangePasswordComponent } from './components/profile-data/change-password/user-change-password.component';
@@ -72,9 +71,6 @@ const modules = [
   AddressFormModule,
   CardModule,
   CoreModule,
-  MediaFormModule,
-  MediaWidgetsModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -86,6 +82,8 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconComponent,
+  MediaFormComponent,
+  PageTitleComponent,
   PasswordFieldComponent,
 ];
 

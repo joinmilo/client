@@ -1,6 +1,6 @@
 <div class="details">
   <div class="title-area">
-    <app-media-title [media]="mediaTitle"></app-media-title>
+    <cin-media-title [media]="mediaTitle"></cin-media-title>
     <section class="card-box">
       <cin-share-button>
       </cin-share-button>
@@ -21,10 +21,10 @@
       [innerHtml]="survey | translatable: 'description' | async">
     </p>
 
-    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
-    </app-media-slider>
+    <cin-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </cin-media-slider>
     <div>
-      <app-details-title titleLabel="attend"></app-details-title>
+      <cin-details-title titleLabel="attend"></cin-details-title>
       <img src="assets/features/survey.svg" alt="survey-image">
       <button mat-raised-button color="primary" appLabel="participateSurvey"></button>
     </div>

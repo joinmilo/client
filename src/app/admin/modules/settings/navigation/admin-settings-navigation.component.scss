@@ -16,7 +16,7 @@
       justify-content: space-between;
       width: 100%;
 
-      app-details-title {
+      cin-details-title {
         width: 30%;
       }
   
@@ -63,7 +63,7 @@
       @include responsive(tablet) {
         flex-flow: column;
 
-        app-details-title, nav, mat-card {
+        cin-details-title, nav, mat-card {
           width: 100%;
         }
       }

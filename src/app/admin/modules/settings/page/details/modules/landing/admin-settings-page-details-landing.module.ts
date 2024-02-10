@@ -5,9 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsPageDetailsLandingComponent } from './components/admin-settings-page-details-landing.component';
 import { adminSettingsPageDetailsLandingStateKey } from './constants/admin-settings-page-details-landing.constants';
@@ -30,14 +29,14 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(adminSettingsPageDetailsLandingStateKey, adminSettingsPageDetailsLandingReducer),
   EffectsModule.forFeature([AdminSettingsPageDetailsLandingEffects]),
+
+  DetailsTitleComponent,
 ];
 
 @NgModule({

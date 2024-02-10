@@ -10,7 +10,7 @@ div:first-of-type {
     section {
       display: flex;
 
-      app-media-avatar {
+      cin-media-avatar {
         max-height: 6rem;
         max-width: 6rem;
         margin-left: -1.25rem;
@@ -18,7 +18,7 @@ div:first-of-type {
         aspect-ratio: 1/1;
       }
 
-      app-media-avatar:first-child {
+      cin-media-avatar:first-child {
         margin-left: 0;
       }
     }

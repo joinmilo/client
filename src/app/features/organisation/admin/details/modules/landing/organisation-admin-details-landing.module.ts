@@ -7,9 +7,9 @@ import { StoreModule } from '@ngrx/store';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminDetailsLandingComponent } from './components/organisation-admin-details-landing.component';
 import { organisationAdminDetailsLandingStateKey } from './constants/organisation-admin-details-landing.constants';
@@ -31,9 +31,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -41,7 +39,9 @@ const libs = [
   EffectsModule.forFeature([OrganisationAdminDetailsLandingEffects]),
 
   AddressPieceComponent,
+  DetailsTitleComponent,
   MailPieceComponent,
+  MediaSliderComponent,
   PhonePieceComponent,
 ];
 

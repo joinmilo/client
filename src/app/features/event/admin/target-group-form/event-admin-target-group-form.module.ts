@@ -7,8 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { EventAdminTargetGroupFormComponent } from './components/event-admin-target-group-form.component';
 import { eventAdminTargetGroupFormStateKey } from './constants/event-admin-target-group-form.constants';
 import { EventAdminTargetGroupFormRoutingModule } from './event-admin-target-group-form-routing.module';
@@ -33,7 +33,6 @@ const materials = [
 const modules = [
   CoreModule,
   EventAdminTargetGroupFormRoutingModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -44,6 +43,7 @@ const libs = [
   FormStepperComponent,
   GridColumnDirective,
   GridRowComponent,
+  PageTitleComponent,
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
-<app-page-title 
+<cin-page-title 
   [titleLabel]="'createNewMedia'">
-</app-page-title>
+</cin-page-title>
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="content" [formGroup]="contentForm">
@@ -15,7 +15,7 @@
       </mat-form-field>
     </cin-grid-row>
     <cin-grid-row>
-      <app-media-form [maxFiles]="1" formControlName="media"></app-media-form>
+      <cin-media-form [maxFiles]="1" formControlName="media"></cin-media-form>
     </cin-grid-row>
   </cin-form-step>
 </cin-form-stepper>

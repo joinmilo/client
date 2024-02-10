@@ -8,8 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconFormComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { ArticleAdminCategoryFormRoutingModule } from './article-admin-category-form-routing.module';
 import { ArticleAdminCategoryFormComponent } from './components/article-admin-category-form.component';
 import { articleAdminCategoryFormStateKey } from './constants/article-admin-category-form.constants';
@@ -33,7 +33,6 @@ const materials = [
 const modules = [
   ArticleAdminCategoryFormRoutingModule,
   CoreModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -45,6 +44,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconFormComponent,
+  PageTitleComponent,
 ];
 
 @NgModule({

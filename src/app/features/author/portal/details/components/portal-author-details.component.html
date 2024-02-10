@@ -1,7 +1,7 @@
 <div class="details" *ngIf="author">
   <div class="title-area">
-    <app-media-title [media]="mediaTitle"></app-media-title>
-    <app-media-avatar [user]="author"></app-media-avatar>
+    <cin-media-title [media]="mediaTitle"></cin-media-title>
+    <cin-media-avatar [user]="author"></cin-media-avatar>
   </div>
 
   <section class="content-area">
@@ -36,10 +36,10 @@
       titleType="DETAILS">
     </app-card-slider>
 
-    <app-media-slider *ngIf="media && media.length"
+    <cin-media-slider *ngIf="media && media.length"
       [media]="media"
       [link]="['./media']">
-    </app-media-slider>
+    </cin-media-slider>
 
   </section>
 

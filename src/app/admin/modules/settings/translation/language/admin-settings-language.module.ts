@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsLanguageRoutingModule } from './admin-settings-language-routing.module';
 import { AdminSettingsLanguageComponent } from './component/admin-settings-language.component';
@@ -28,12 +28,13 @@ const modules = [
   CoreModule,
   AdminSettingsLanguageRoutingModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(adminSettingsLanguageStateKey, adminSettingsLanguageReducer),
   EffectsModule.forFeature([AdminSettingsLanguageEffects]),
+
+  PageTitleComponent,
 ];
 
 @NgModule({

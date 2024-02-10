@@ -10,8 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsRoleRoutingModule } from './admin-settings-role-routing.module';
 import { AdminSettingsRoleFormComponent } from './components/form/admin-settings-role-form.component';
@@ -42,7 +42,6 @@ const modules = [
   AdminSettingsRoleRoutingModule,
   CoreModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -53,6 +52,7 @@ const libs = [
   FormStepperComponent,
   GridColumnDirective,
   GridRowComponent,
+  PageTitleComponent,
 ];
 
 @NgModule({

@@ -10,8 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { OrganisationAdminConfigurationComponent } from './component/organisation-admin-configuration.component';
 import { organisationAdminConfigurationStateKey } from './constants/organisation-admin-configuration.constants';
 import { OrganisationAdminConfigurationRoutingModule } from './organisation-admin-configuration-routing.module';
@@ -38,7 +38,6 @@ const materials = [
 const modules = [
   CoreModule,
   OrganisationAdminConfigurationRoutingModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -49,6 +48,7 @@ const libs = [
   FormStepperComponent,
   GridColumnDirective,
   GridRowComponent,
+  PageTitleComponent,
 ];
 
 @NgModule({

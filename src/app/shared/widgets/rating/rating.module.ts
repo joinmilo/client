@@ -8,7 +8,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule } from '@angular/router';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
+import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from '../../../core/core.module';
 import { RatingDistributionComponent } from './components/distribution/rating-distribution.component';
 import { RatingInputComponent } from './components/input/rating-input.component';
@@ -24,7 +24,6 @@ const components = [
 const framework = [
   CommonModule,
   RouterModule,
-  TitleModule
 ];
 
 const modules = [
@@ -42,6 +41,7 @@ const materials = [
 
 const libs = [
   CaptchaModule,
+  DetailsTitleComponent,
 ]
 
 @NgModule({

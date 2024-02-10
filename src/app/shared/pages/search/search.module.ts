@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { PortalSearchButtonComponent } from './components/button/search-button.component';
 import { SearchInputComponent } from './components/input/search-input.component';
@@ -48,12 +48,13 @@ const modules = [
   CardSliderComponent,
   IconComponent,
   PortalSearchRoutingModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(searchStateKey, searchReducer),
   EffectsModule.forFeature([SearchEffects]),
+
+  PageTitleComponent,
 ]
 
 @NgModule({

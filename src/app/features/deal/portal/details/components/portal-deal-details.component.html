@@ -1,6 +1,6 @@
 <div class="details">
   <div class="title-area">
-    <app-media-title [media]="mediaTitle"></app-media-title>
+    <cin-media-title [media]="mediaTitle"></cin-media-title>
     <section class="card-box">
       <cin-share-button>
       </cin-share-button>
@@ -31,12 +31,12 @@
     <app-portal-deal-details-creator *ngIf="deal?.creator">
     </app-portal-deal-details-creator>
 
-    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
-    </app-media-slider>
+    <cin-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </cin-media-slider>
 
     <div #map>
       <div *ngIf="deal?.address" class="map-area" >
-        <app-details-title titleLabel="mapView"></app-details-title>
+        <cin-details-title titleLabel="mapView"></cin-details-title>
         <app-map [queryParams]="false" [markerDefinition]="marker">
         </app-map>
       </div>

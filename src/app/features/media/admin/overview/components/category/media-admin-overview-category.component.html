@@ -1,4 +1,4 @@
-<app-media-slider
+<cin-media-slider
   *ngFor="let category of categories"
   [media]="getMedia(category)"
   [title]="category | translatable : 'name' | async"
@@ -7,4 +7,4 @@
   actionLabel="edit"
   (actionClicked)="edit($event)"
   (deleted)="delete($event)">
-</app-media-slider>
+</cin-media-slider>

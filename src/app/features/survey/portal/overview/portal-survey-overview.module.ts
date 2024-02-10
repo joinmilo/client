@@ -4,10 +4,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { SurveyFilterModule } from 'src/app/shared/filter/survey/survey-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalSurveyOverviewComponent } from './components/overview/portal-survey-overview.component';
@@ -35,16 +35,14 @@ const modules = [
   PortalSurveyOverviewRoutingModule,
   SurveyFilterModule,
   TableModule,
-  TitleModule,
   NoDataComponent
 ];
 
 const libs = [
-  StoreModule.forFeature(
-    portalSurveyOverviewStateKey,
-    portalSurveyOverviewReducer
-  ),
+  StoreModule.forFeature(portalSurveyOverviewStateKey, portalSurveyOverviewReducer),
   EffectsModule.forFeature([PortalSurveyOverviewEffects]),
+
+  PageTitleComponent,
 ];
 
 @NgModule({

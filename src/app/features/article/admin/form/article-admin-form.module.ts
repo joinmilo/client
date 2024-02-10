@@ -11,10 +11,9 @@ import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaFormComponent } from 'ngx-cinlib/media/forms';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { ArticleAdminFormRoutingModule } from './article-admin-form-routing.module';
 import { ArticleAdminFormComponent } from './components/article-admin-form.component';
 import { articleAdminFormStateKey } from './constants/article-admin-form.constants';
@@ -41,9 +40,6 @@ const materials = [
 const modules = [
   ArticleAdminFormRoutingModule,
   CoreModule,
-  MediaFormModule,
-  MediaWidgetsModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -54,6 +50,8 @@ const libs = [
   FormStepperComponent,
   GridColumnDirective,
   GridRowComponent,
+  MediaFormComponent,
+  PageTitleComponent,
   RichtextEditorFormComponent,
 ];
 

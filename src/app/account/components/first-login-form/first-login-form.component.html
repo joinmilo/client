@@ -28,7 +28,7 @@
       <ng-template matStepLabel>
         <span appLabel="addAProfilePicture"></span>
       </ng-template>
-      <app-media-form formControlName="uploads" class="content-full-width" [maxFiles]="1" (uploads)="addUploads($event)"></app-media-form>
+      <cin-media-form formControlName="uploads" class="content-full-width" [maxFiles]="1" (uploads)="addUploads($event)"></cin-media-form>
         <div>
           <button mat-button matStepperPrevious appLabel="previous"></button>
           <button mat-button matStepperNext appLabel="continue"></button>

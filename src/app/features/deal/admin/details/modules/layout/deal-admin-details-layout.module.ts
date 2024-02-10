@@ -7,9 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { DealAdminDetailsLayoutComponent } from './components/deal-admin-details-layout.component';
 import { dealAdminDetailsLayoutStateKey } from './constants/deal-admin-details-layout.constants';
@@ -32,9 +31,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -42,6 +39,7 @@ const libs = [
   StoreModule.forFeature(dealAdminDetailsLayoutStateKey, dealAdminDetailsLayoutReducer),
 
   IconComponent,
+  PageTitleComponent,
   RadioCardGroupComponent,
 ];
 

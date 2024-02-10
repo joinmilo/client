@@ -11,9 +11,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaAvatarComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalAddFriendsComponent } from './components/add-friends/portal-add-friends.component';
@@ -52,16 +52,17 @@ const modules = [
   CoreModule,
   FormsModule,
   IconComponent,
-  MediaWidgetsModule,
   PortalUserFriendsRoutingModule,
   TableModule,
-  TitleModule, 
 ];
 
 const libs = [
   StoreModule.forFeature(portalFriendsStateKey, portalFriendsReducer),
   EffectsModule.forFeature([PortalFriendsEffects]),
-  RadioButtonGroupComponent
+
+  MediaAvatarComponent,
+  PageTitleComponent,
+  RadioButtonGroupComponent,
 ];
 
 @NgModule({

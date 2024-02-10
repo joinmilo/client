@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from '../../layout/title/title.module';
 import { NotificationComponent } from './component/notification.component';
 import { NotificationRoutingModule } from './notification-routing.module';
 
@@ -15,6 +15,10 @@ const framework = [
   CommonModule,
 ];
 
+const libs = [
+  PageTitleComponent
+]
+
 const materials = [
   MatButtonModule,
   MatDividerModule,
@@ -23,8 +27,6 @@ const materials = [
 const modules = [
   CoreModule,
   NotificationRoutingModule,
-
-  TitleModule,
 ];
 
 @NgModule({
@@ -33,6 +35,7 @@ const modules = [
   ],
   imports: [
     ...framework,
+    ...libs,
     ...materials,
     ...modules,
   ],

@@ -14,11 +14,10 @@ import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { MediaFormComponent } from 'ngx-cinlib/media/forms';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { SuccessComponent } from 'src/app/shared/layout/success/success.component';
-import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalParticipateBecomeAuthorComponent } from './components/become-author/portal-participate-become-author.component';
 import { PortalParticipateCreateOrganisationComponent } from './components/create-organisation/portal-participate-create-organisation.component';
 import { PortalParticipateJoinOrganisationComponent } from './components/join-organisation/portal-participate-join-organisation.component';
@@ -62,8 +61,6 @@ const materials = [
 const modules = [
   AddressFormModule,
   CoreModule,
-  MediaFormModule,
-  MediaWidgetsModule,
   PortalParticipateRoutingModule,
   SuccessComponent,
 ];
@@ -77,6 +74,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconComponent,
+  MediaFormComponent,
   RichtextEditorFormComponent,
 ];
 

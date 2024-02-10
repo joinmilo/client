@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { CaptchaService } from 'ngx-cinlib/forms/captcha';
 import { PasswordService } from 'ngx-cinlib/forms/password';
+import { MediaApiService } from 'ngx-cinlib/media/common';
 import { FeedbackService } from 'ngx-cinlib/modals/feedback';
 import { SidenavService } from 'ngx-cinlib/modals/sidenav';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
@@ -16,6 +17,7 @@ import { GetThemeGQL } from '../../api/generated/get-theme.query.generated';
 import { GetServerInformationGQL } from '../../api/generated/server-info.query.generated';
 import { HelpComponent } from '../../components/help/help.component';
 import { hCaptchaSitekeyConfig, pwBitStrengthConfig } from '../../constants/configuration.constants';
+import { mediaBaseApi, mediaDownloadBaseApi, mediaMimeTypeApi } from '../../constants/url.constants';
 import { CoreActions } from '../actions/core.actions';
 
 @Injectable()
@@ -81,6 +83,15 @@ export class CoreEffects implements OnInitEffects {
     map(response => CoreActions.setThemes(response.data.getThemes?.result as ThemeEntity[]))
   ));
 
+  setMediaApiUrls = createEffect(() => this.actions.pipe(
+    ofType(CoreActions.init),
+    tap(() => {
+      this.mediaApiService.setMediaBaseApi(mediaBaseApi);
+      this.mediaApiService.setMediaDownloadBaseApi(mediaDownloadBaseApi);
+      this.mediaApiService.setMediaMimeTypeApi(mediaMimeTypeApi);
+    }),
+  ));
+
   setCaptchaSiteKey = createEffect(() => this.actions.pipe(
     ofType(CoreActions.setConfigurations),
     tap(action => this.captchaService.addSiteKey(action?.configurations?.find(c => c?.code === hCaptchaSitekeyConfig)?.value as string)),
@@ -123,6 +134,7 @@ export class CoreEffects implements OnInitEffects {
     private getSocialMediaService: GetSocialMediaGQL,
     private getThemeService: GetThemeGQL,
 
+    private mediaApiService: MediaApiService,
     private passwordService: PasswordService,
     private sidenavService: SidenavService,
   ) { }

@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { DetailsTitleComponent, SubTitleComponent, TitleType } from 'ngx-cinlib/layouts/title';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
-import { SliderTitleType } from 'src/app/core/typings/slider-title-type';
-import { TitleModule } from '../../../layout/title/title.module';
 
 @Component({
   selector: 'app-slider-header',
@@ -14,8 +13,9 @@ import { TitleModule } from '../../../layout/title/title.module';
   imports: [
     CommonModule,
     CoreModule,
+    DetailsTitleComponent,
     RouterModule,
-    TitleModule,
+    SubTitleComponent,
   ]
 })
 export class SliderHeaderComponent {
@@ -33,6 +33,6 @@ export class SliderHeaderComponent {
   public title?: Maybe<string>;
 
   @Input()
-  public titleType?: Maybe<SliderTitleType>;
+  public titleType?: Maybe<TitleType>;
 
 }

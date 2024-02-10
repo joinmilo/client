@@ -7,9 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ArticleAdminDetailsLayoutComponent } from './components/article-admin-details-layout.component';
 import { articleAdminDetailsLayoutStateKey } from './constants/article-admin-details-layout.constants';
@@ -32,15 +31,15 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
   IconComponent,
   StoreModule.forFeature(articleAdminDetailsLayoutStateKey, articleAdminDetailsLayoutReducer),
   EffectsModule.forFeature([ArticleAdminDetailsLayoutEffects]),
+
+  PageTitleComponent,
   RadioCardGroupComponent,
 ];
 

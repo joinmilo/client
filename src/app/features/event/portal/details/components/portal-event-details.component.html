@@ -1,7 +1,7 @@
 <div class="details">
   <div class="title-area">
-    <app-media-title [media]="mediaTitle">
-    </app-media-title>
+    <cin-media-title [media]="mediaTitle">
+    </cin-media-title>
     
     <section class="card-box">
       <cin-share-button>
@@ -38,10 +38,10 @@
     <app-portal-event-details-organisation *ngIf="event?.organisation">
     </app-portal-event-details-organisation>
 
-    <app-media-slider *ngIf="media && media.length"
+    <cin-media-slider *ngIf="media && media.length"
       [media]="media"
       [link]="['./media']">
-    </app-media-slider>
+    </cin-media-slider>
 
     <app-portal-event-details-rating>
     </app-portal-event-details-rating>
@@ -53,8 +53,8 @@
     </app-portal-event-details-participants>
 
     <div #map class="map-area">
-      <app-details-title titleLabel="mapView">
-      </app-details-title>
+      <cin-details-title titleLabel="mapView">
+      </cin-details-title>
       <app-map [queryParams]="false"
         [markerDefinition]="marker">
       </app-map>

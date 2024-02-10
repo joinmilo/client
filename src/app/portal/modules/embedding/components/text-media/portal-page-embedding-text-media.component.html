@@ -5,15 +5,15 @@
       </ng-container>
       
       @if (element?.media) {
-        <app-media-element [media]="element?.media">
-        </app-media-element>
+        <cin-media-element [media]="element?.media">
+        </cin-media-element>
       }
     </section>
   }
   @if (index % 2 !== 0) {
     <section class="block">
-      <app-media-element [media]="element?.media">
-      </app-media-element>
+      <cin-media-element [media]="element?.media">
+      </cin-media-element>
       <ng-container *ngTemplateOutlet="content; context: { $implicit: element }">
       </ng-container>
     </section>

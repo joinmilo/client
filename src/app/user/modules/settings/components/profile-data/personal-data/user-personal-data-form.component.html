@@ -1,5 +1,5 @@
 <div class="main">
-  <app-page-title titleLabel="settings"></app-page-title>
+  <cin-page-title titleLabel="settings"></cin-page-title>
   <app-user-settings-menu-mobile class="sticky-container"></app-user-settings-menu-mobile>
   <div class="settings">
     <app-user-settings-menu></app-user-settings-menu>
@@ -30,14 +30,14 @@
         </cin-form-step>
 
         <cin-form-step titleLabel="profilePicture" [formGroup]="ProfilePictureForm">
-          <app-media-form [maxFiles]="1"
-            formControlName="profilePicture"></app-media-form>
+          <cin-media-form [maxFiles]="1"
+            formControlName="profilePicture"></cin-media-form>
         </cin-form-step>
         
         <cin-form-step titleLabel="titleImage" [formGroup]="titleImageForm"
         descriptionLabel="onlyRelevantForAuthors">
-          <app-media-form formControlName="titleImage"
-            [maxFiles]="1"></app-media-form>
+          <cin-media-form formControlName="titleImage"
+            [maxFiles]="1"></cin-media-form>
         </cin-form-step>        
 
         <cin-form-step [formGroup]="addressForm" titleLabel="address">

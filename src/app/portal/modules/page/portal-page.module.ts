@@ -6,8 +6,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalPageEmbeddingModule } from '../embedding/portal-page-embedding.module';
 import { PortalPageComponent } from './components/portal-page.component';
 import { portalPageStateKey } from './constants/portal-page.constants';
@@ -31,10 +29,8 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
   PortalPageEmbeddingModule,
   PortalPageRoutingModule,
-  TitleModule,
 ];
 
 const libs = [

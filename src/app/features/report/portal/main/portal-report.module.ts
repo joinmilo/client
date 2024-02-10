@@ -8,8 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { PortalReportFormComponent } from './components/portal-report-form.component';
 import { reportStateKey } from './constants/report.constants';
@@ -37,14 +37,15 @@ const materials = [
 const modules = [
   CoreModule,
   PortalReportRoutingModule,
-  TitleModule,
   CardModule
 ];
 
 const libs = [
-  CaptchaModule,
   StoreModule.forFeature(reportStateKey, reportReducer),
   EffectsModule.forFeature([ReportEffects]),
+
+  CaptchaModule,
+  PageTitleComponent,
 ]
 
 @NgModule({

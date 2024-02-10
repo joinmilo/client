@@ -13,13 +13,13 @@
     </app-card-actions>
     
     <a [routerLink]="element?.url">
-      <app-media-element *ngIf="element?.image"
+      <cin-media-element *ngIf="element?.image"
         [clickable]="false"
         [media]="element?.image">
-      </app-media-element>
+      </cin-media-element>
       <img *ngIf="!element?.image" [src]="'/assets/placeholder.webp'"
         alt="content-card"
-        [appAttribution]="element?.image?.attribution">
+        [cinAttribution]="element?.image?.attribution">
     </a>
   </mat-card-header>
 

@@ -1,5 +1,5 @@
-<app-page-title [titleLabel]="targetGroupForm.value.id ? 'editTargetGroup' : 'createNewTargetGroup'">
-</app-page-title>
+<cin-page-title [titleLabel]="targetGroupForm.value.id ? 'editTargetGroup' : 'createNewTargetGroup'">
+</cin-page-title>
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="targetGroup" [formGroup]="targetGroupForm">

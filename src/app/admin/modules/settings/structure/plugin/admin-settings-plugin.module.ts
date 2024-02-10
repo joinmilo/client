@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsPluginRoutingModule } from './admin-settings-plugin-routing.module';
 import { AdminSettingsPluginComponent } from './component/admin-settings-plugin.component';
@@ -30,12 +30,13 @@ const modules = [
   CoreModule,
   AdminSettingsPluginRoutingModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(adminSettingsPluginStateKey, adminSettingsPluginReducer),
   EffectsModule.forFeature([AdminSettingsPluginEffects]),
+
+  PageTitleComponent,
 ];
 
 @NgModule({

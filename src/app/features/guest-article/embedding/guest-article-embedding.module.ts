@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { SubTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { GuestArticleEmbeddingComponent } from './component/guest-article-embedding.component';
 import { guestArticleEmbeddingStateKey } from './constants/guest-article-embedding.constants';
@@ -30,12 +30,13 @@ const materials = [
 const modules = [
   CoreModule,
   CardSliderComponent,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(guestArticleEmbeddingStateKey, articleEmbeddingReducer),
   EffectsModule.forFeature([GuestArticleEmbeddingEffects]),
+
+  SubTitleComponent,
 ]
 
 @NgModule({

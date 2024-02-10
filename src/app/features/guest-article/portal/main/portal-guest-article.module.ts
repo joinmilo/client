@@ -15,9 +15,8 @@ import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalGuestArticleFormComponent } from './components/form/portal-guest-article-form.component';
 import { PortalGuestArticleSuccessComponent } from './components/success/portal-guest-article-success.component';
 import { portalGuestArticleStateKey } from './constants/portal-guest-article.constants';
@@ -47,9 +46,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
   PortalGuestArticleRoutingModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -62,6 +59,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconComponent,
+  PageTitleComponent,
   RichtextEditorFormComponent,
 ]
 

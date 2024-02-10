@@ -15,12 +15,12 @@ import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaGalleryComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
 import { PriceComponent } from 'src/app/shared/layout/price/price.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
@@ -66,12 +66,10 @@ const modules = [
   CoreModule,
   CommentModule,
   FavoriteComponent,
-  MediaWidgetsModule,
   PortalDealDetailsRoutingModule,
   PriceComponent,
   RatingModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -80,7 +78,11 @@ const libs = [
 
   AddressPieceComponent,
   CategoryPieceComponent,
+  DetailsTitleComponent,
   MailPieceComponent,
+  MediaGalleryComponent,
+  MediaSliderComponent,
+  MediaTitleComponent,
   PhonePieceComponent,
   ShareButtonComponent,
 ]

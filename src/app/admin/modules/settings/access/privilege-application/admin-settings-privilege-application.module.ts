@@ -10,7 +10,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticleFilterModule } from 'src/app/shared/filter/article/article-filter.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AuthorSettingsAdminApprovalOverviewRoutingModule } from './admin-settings-privilege-application-routing.module';
 import { AdminSettingsPrivilegeApplicationOverviewComponent } from './components/overview/admin-settings-privilege-application-overview.component';
@@ -18,6 +17,7 @@ import { AdminSettingsPrivilegeApplicationRoleAssignComponent } from './componen
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { adminSettingsPrivilegeApplicationStateKey } from './constants/admin-settings-privilege-application.constants';
 import { AdminSettingsPrivilegeApplicationEffects } from './state/admin-settings-privilege-application.effects';
 import { adminPrivilegeApplicationReducer } from './state/admin-settings-privilege-application.reducer';
@@ -47,12 +47,13 @@ const modules = [
   AuthorSettingsAdminApprovalOverviewRoutingModule,
   CoreModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(adminSettingsPrivilegeApplicationStateKey, adminPrivilegeApplicationReducer),
   EffectsModule.forFeature([AdminSettingsPrivilegeApplicationEffects]),
+
+  PageTitleComponent,
 ];
 
 @NgModule({

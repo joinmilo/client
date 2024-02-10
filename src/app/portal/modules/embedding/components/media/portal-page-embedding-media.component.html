@@ -1,9 +1,9 @@
 @for (element of elements; track element) {
   @if (element?.title) {
-    <app-media-slider
+    <cin-media-slider
       [media]="element?.multimedia"
       titleType="DETAILS"
       [title]="element?.title | translatable: 'translatable' | async">
-    </app-media-slider>
+    </cin-media-slider>
   }
 }

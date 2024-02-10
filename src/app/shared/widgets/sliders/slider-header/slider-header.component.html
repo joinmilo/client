@@ -1,11 +1,11 @@
 <div *ngIf="titleLabel || link || title">
   <ng-container *ngIf="titleType === 'SUBTITLE'">
-    <app-sub-title *ngIf="titleLabel" [titleLabel]="titleLabel"></app-sub-title>
-    <app-sub-title *ngIf="title" [title]="title"></app-sub-title>
+    <cin-sub-title *ngIf="titleLabel" [titleLabel]="titleLabel"></cin-sub-title>
+    <cin-sub-title *ngIf="title" [title]="title"></cin-sub-title>
   </ng-container>
   <ng-container *ngIf="titleType === 'DETAILS'">
-    <app-details-title *ngIf="titleLabel" [titleLabel]="titleLabel"></app-details-title>
-    <app-details-title *ngIf="title" [title]="title"></app-details-title>
+    <cin-details-title *ngIf="titleLabel" [titleLabel]="titleLabel"></cin-details-title>
+    <cin-details-title *ngIf="title" [title]="title"></cin-details-title>
   </ng-container>
   <a *ngIf="link" 
     class="link"

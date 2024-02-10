@@ -4,11 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
 import { MediaFilterModule } from 'src/app/shared/filter/media/media-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalMediaOverviewCategoryComponent } from './components/category/portal-media-overview-category.component';
 import { PortalMediaOverviewComponent } from './components/portal-media-overview.component';
 import { portalMediaOverviewStateKey } from './constants/portal-media-overview.constants';
@@ -33,15 +33,16 @@ const materials = [
 const modules = [
   CoreModule,
   PortalMediaOverviewRoutingModule,
-  MediaWidgetsModule,
   MediaFilterModule,
   NoDataComponent,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(portalMediaOverviewStateKey, portalMediaOverviewReducer),
   EffectsModule.forFeature([PortalMediaOverviewEffects]),
+
+  MediaSliderComponent,
+  PageTitleComponent,
 ];
 
 @NgModule({

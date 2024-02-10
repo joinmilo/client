@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
+import { MediaElementComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticleEmbeddingModule } from 'src/app/features/article/embedding/article-embedding.module';
 import { AuthorEmbeddingModule } from 'src/app/features/author/embedding/author-embedding.module';
@@ -16,8 +17,6 @@ import { MediaEmbeddingModule } from 'src/app/features/media/embedding/media-emb
 import { OrganisationEmbeddingModule } from 'src/app/features/organisation/embedding/organisation-embedding.module';
 import { ReportEmbeddingModule } from 'src/app/features/report/embedding/report-embedding.module';
 import { SurveyEmbeddingModule } from 'src/app/features/survey/embedding/survey-embedding.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { PortalPageEmbeddingBannerComponent } from './components/banner/portal-page-embedding-banner.component';
 import { PortalPageEmbeddingBoxComponent } from './components/box/portal-page-embedding-box.component';
 import { PortalPageEmbeddingExpansionComponent } from './components/expansion/portal-page-embedding-expansion.component';
@@ -43,6 +42,12 @@ const framework = [
   RouterModule,
 ];
 
+const libs = [
+  MediaElementComponent,
+  MediaSliderComponent,
+  MediaTitleComponent,
+];
+
 const materials = [
   MatButtonModule,
   MatExpansionModule,
@@ -59,11 +64,9 @@ const modules = [
   GuestArticleEmbeddingModule,
   MapEmbeddingModule,
   MediaEmbeddingModule,
-  MediaWidgetsModule,
   OrganisationEmbeddingModule,
   ReportEmbeddingModule,
   SurveyEmbeddingModule,
-  TitleModule,
 ]
 
 @NgModule({
@@ -72,6 +75,7 @@ const modules = [
   ],
   imports: [
     ...framework,
+    ...libs,
     ...materials,
     ...modules,
   ],

@@ -5,6 +5,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { DetailsTitleComponent, PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { AuthService } from 'ngx-cinlib/security';
 import { map } from 'rxjs';
 import { selectAdminSettingsMenu } from 'src/app/admin/state/admin.selectors';
@@ -12,7 +13,6 @@ import { AdminMenuItem } from 'src/app/admin/typings/menu';
 import { adminUrl, settingsUrl } from 'src/app/core/constants/module.constants';
 import { CoreModule } from 'src/app/core/core.module';
 import { Privilege } from 'src/app/core/typings/privilege';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 
 @Component({
   selector: 'app-admin-settings-navigation',
@@ -22,14 +22,12 @@ import { TitleModule } from 'src/app/shared/layout/title/title.module';
   imports: [
     CommonModule,
     CoreModule,
-
+    DetailsTitleComponent,
     IconComponent,
-
     MatCardModule,
     MatDividerModule,
-
+    PageTitleComponent,
     RouterModule,
-    TitleModule,
   ]
 })
 export class AdminSettingsNavigationComponent {

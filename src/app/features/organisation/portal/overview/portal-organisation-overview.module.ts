@@ -7,10 +7,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
@@ -52,13 +52,14 @@ const modules = [
   OrganisationFilterModule,
   PortalOrganisationOverviewRoutingModule,
   TableModule,
-  TitleModule,
   NoDataComponent
 ];
 
 const libs = [
   StoreModule.forFeature(portalOrganisationOverviewStateKey, portalOrganisationOverviewReducer),
   EffectsModule.forFeature([PortalOrganisationOverviewEffects]),
+
+  PageTitleComponent,
   RadioButtonGroupComponent,
 ];
 

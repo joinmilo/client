@@ -2,9 +2,9 @@ import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RadioButtonInput } from 'ngx-cinlib/forms/radio-button';
+import { MediaDisplayType } from 'ngx-cinlib/media/common';
 import { Subject, takeUntil } from 'rxjs';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { MediaDisplayType } from 'src/app/core/typings/filter-params/media-display';
 import { PortalDealDetailsActions } from '../../state/portal-deal-details.actions';
 import { selectDealMedia } from '../../state/portal-deal-details.selectors';
 

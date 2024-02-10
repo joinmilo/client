@@ -1,6 +1,6 @@
-<app-media-slider
+<cin-media-slider
   *ngFor="let category of categories | async"
   [media]="getMedia(category)"
   [title]="category | translatable : 'name' | async"
   [titleType]="'SUBTITLE'">
-</app-media-slider>
+</cin-media-slider>

@@ -1,6 +1,6 @@
 <div class="details">
   <div class="title-area">
-    <app-media-title [media]="mediaTitle"></app-media-title>
+    <cin-media-title [media]="mediaTitle"></cin-media-title>
     <section class="card-box">
 
       <cin-share-button>
@@ -25,8 +25,8 @@
       </p>
     </section>
 
-    <app-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
-    </app-media-slider>
+    <cin-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
+    </cin-media-slider>
 
     <app-portal-organisation-details-members>
     </app-portal-organisation-details-members>
@@ -38,7 +38,7 @@
     </app-portal-organisation-details-comment>
 
     <div class="map-area" #map>
-      <app-details-title titleLabel="mapView"></app-details-title>
+      <cin-details-title titleLabel="mapView"></cin-details-title>
       <app-map [queryParams]="false" [markerDefinition]="marker">
       </app-map>
     </div>

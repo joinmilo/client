@@ -13,10 +13,10 @@ import { IconComponent } from 'ngx-cinlib/icons';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { MediaAttributionDirective } from 'ngx-cinlib/media/common';
+import { MediaElementComponent } from 'ngx-cinlib/media/elements';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from '../../layout/title/title.module';
-import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { FavoriteComponent } from '../favorite/favorite.component';
 import { CardActionsComponent } from './components/actions/card-actions.component';
 import { ContactCardComponent } from './components/contact/contact-card.component';
@@ -52,8 +52,6 @@ const materials = [
 const modules = [
   CoreModule,
   FavoriteComponent,
-  MediaWidgetsModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -62,6 +60,8 @@ const libs = [
   IconComponent,
   DatePieceComponent,
   MailPieceComponent,
+  MediaAttributionDirective,
+  MediaElementComponent,
   PhonePieceComponent,
   ShareButtonComponent,
 ];

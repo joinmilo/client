@@ -4,9 +4,9 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalFavoriteArticlesComponent } from './components/articles/portal-favorite-articles.component';
@@ -41,7 +41,6 @@ const modules = [
   CoreModule,
   CardModule,
   PortalFavoritesRoutingModule,
-  TitleModule,
   TableModule,
   NoDataComponent,
 ];
@@ -49,6 +48,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(portalFavoritesStateKey, portalFavoritesReducer),
   EffectsModule.forFeature([PortalFavoritesEffects]),
+
+  PageTitleComponent,
   RadioButtonGroupComponent,
 ];
 

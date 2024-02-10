@@ -1,7 +1,7 @@
 <div>
   <section>
     <img class="border-image" [src]="media?.url" alt="organisation-image">
-    <app-details-title [title]="event?.organisation?.name"></app-details-title>
+    <cin-details-title [title]="event?.organisation?.name"></cin-details-title>
   </section>
   <a mat-stroked-button color="primary" [routerLink]="['/', portalUrl, 'organisations', event?.organisation?.slug]">
     <span appLabel="toTheOrganisation"></span>

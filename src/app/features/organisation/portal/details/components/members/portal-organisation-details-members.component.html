@@ -1,5 +1,5 @@
 <ng-container *ngIf="(members | async)?.length">
-  <app-details-title titleLabel="team"></app-details-title>
+  <cin-details-title titleLabel="team"></cin-details-title>
   <app-card-slider [cardType]="cardType"
     [data]="members | async"
     entity="UserContextEntity">

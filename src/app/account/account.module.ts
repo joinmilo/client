@@ -16,13 +16,11 @@ import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { PasswordConfirmComponent, PasswordFieldComponent } from 'ngx-cinlib/forms/password';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { LoadingComponent } from 'ngx-cinlib/layouts/loading';
+import { MediaFormComponent } from 'ngx-cinlib/media/forms';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalFooterModule } from '../portal/modules/footer/portal-footer.module';
 import { AddressFormModule } from '../shared/form/address/address-form.module';
 import { PrivacyPolicyFormComponent } from '../shared/form/privacy-policy/privacy-policy-form.component';
-import { TitleModule } from '../shared/layout/title/title.module';
-import { MediaFormModule } from '../shared/media/modules/form/media-form.module';
-import { MediaWidgetsModule } from '../shared/media/modules/widgets/media-widgets.module';
 import { UserPortalRoutingModule } from './account-routing.module';
 import { FirstLoginFormComponent } from './components/first-login-form/first-login-form.component';
 import { ImageSliderComponent } from './components/image-slider/image-slider.component';
@@ -72,11 +70,8 @@ const materials = [
 const modules = [
   AddressFormModule,
   CoreModule,
-  MediaFormModule,
-  MediaWidgetsModule,
   PortalFooterModule,
   PrivacyPolicyFormComponent,
-  TitleModule,
   UserPortalRoutingModule,
 ];
 
@@ -87,6 +82,7 @@ const libs = [
   CaptchaModule,
   IconComponent,
   LoadingComponent,
+  MediaFormComponent,
   PasswordConfirmComponent,
   PasswordFieldComponent,
 ]

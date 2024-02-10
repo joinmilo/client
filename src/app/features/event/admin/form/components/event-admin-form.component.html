@@ -1,6 +1,6 @@
-<app-page-title
+<cin-page-title
   [titleLabel]="contentForm.value.id ? 'editEvent' : 'createNewEvent'">
-</app-page-title>
+</cin-page-title>
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step [formGroup]="contentForm" titleLabel="content">
@@ -31,11 +31,11 @@
   </cin-form-step>
 
   <cin-form-step titleLabel="media" [formGroup]="uploadsForm">
-    <app-media-form
+    <cin-media-form
       [cardToggle]="true"
       [titleToggle]="true"
       formControlName="uploads">
-    </app-media-form>
+    </cin-media-form>
   </cin-form-step>
 
   <cin-form-step

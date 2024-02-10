@@ -13,11 +13,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
+import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaAvatarComponent, MediaGalleryComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
@@ -67,10 +67,8 @@ const modules = [
   CoreModule,
   CommentModule,
   FavoriteComponent,
-  MediaWidgetsModule,
   RatingModule,
   TableModule,
-  TitleModule
 ];
 
 const libs = [
@@ -78,7 +76,12 @@ const libs = [
   EffectsModule.forFeature([ArticlePortalDetailsEffects]),
 
   CategoryPieceComponent,
+  DetailsTitleComponent,
   DatePieceComponent,
+  MediaAvatarComponent,
+  MediaGalleryComponent,
+  MediaSliderComponent,
+  MediaTitleComponent,
   ShareButtonComponent,
 ]
 

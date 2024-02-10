@@ -4,10 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaAvatarComponent, MediaGalleryComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
@@ -37,10 +37,8 @@ const modules = [
   CardModule,
   CoreModule,
   FavoriteComponent,
-  MediaWidgetsModule,
   PortalAuthorDetailsRoutingModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -48,6 +46,11 @@ const libs = [
   EffectsModule.forFeature([AuthorDetailsEffects]),
 
   IconComponent,
+  MediaAvatarComponent,
+  MediaGalleryComponent,
+  MediaSliderComponent,
+  MediaTitleComponent,
+  PageTitleComponent,
   ShareButtonComponent,
 ]
 

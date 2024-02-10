@@ -4,9 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticleFilterModule } from 'src/app/shared/filter/article/article-filter.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { GuestArticleAdminPublicAuthorsComponent } from './component/guest-article-admin-authors.component';
 import { guestArticleAdminPublicAuthorsStateKey } from './constants/guest-article-admin-authors.constants';
@@ -32,12 +32,13 @@ const modules = [
   ArticleFilterModule,
   GuestArticleAdminPublicAuthorsRoutingModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(guestArticleAdminPublicAuthorsStateKey, guestArticleAdminPublicAuthorsReducer),
   EffectsModule.forFeature([GuestArticleAdminPublicAuthorsEffects]),
+
+  PageTitleComponent,
 ];
 
 @NgModule({

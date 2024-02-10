@@ -9,9 +9,9 @@ import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { CalendarComponent } from 'ngx-cinlib/calendar';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsLandingCalendarComponent } from './components/calendar/event-admin-details-landing-calendar.component';
 import { EventAdminDetailsLandingComponent } from './components/event-admin-details-landing.component';
@@ -36,9 +36,7 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
@@ -47,7 +45,10 @@ const libs = [
 
   AddressPieceComponent,
   CalendarComponent,
+  DetailsTitleComponent,
   MailPieceComponent,
+  MediaSliderComponent,
+  MediaTitleComponent,
   PhonePieceComponent,
 ];
 

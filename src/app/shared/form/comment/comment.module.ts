@@ -10,9 +10,9 @@ import { RouterModule } from '@angular/router';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { DetailsTitleComponent, PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaAvatarComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from '../../../core/core.module';
-import { TitleModule } from '../../layout/title/title.module';
-import { MediaWidgetsModule } from '../../media/modules/widgets/media-widgets.module';
 import { CommentDialogComponent } from './components/dialog/comment-dialog.component';
 import { CommentEntryComponent } from './components/entry/comment-entry.component';
 import { CommentFormComponent } from './components/form/comment-form.component';
@@ -42,14 +42,15 @@ const materials = [
 
 const modules = [
   CoreModule,
-  MediaWidgetsModule,
-  TitleModule,
 ];
 
 const libs = [
   CaptchaModule,
   DatePieceComponent,
+  DetailsTitleComponent,
   IconComponent,
+  MediaAvatarComponent,
+  PageTitleComponent,
 ];
 
 @NgModule({

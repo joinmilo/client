@@ -4,10 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent, SubTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContestFilterModule } from 'src/app/shared/filter/contest/contest-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { PortalContestOverviewActiveComponent } from './components/active/portal-contest-overview-active.component';
@@ -42,12 +42,14 @@ const modules = [
   ContestFilterModule,
   NoDataComponent,
   PortalContestOverviewRoutingModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(portalContestOverviewStateKey, portalContestOverviewReducer),
   EffectsModule.forFeature([PortalContestOverviewEffects]),
+
+  PageTitleComponent,
+  SubTitleComponent,
 ];
 
 @NgModule({

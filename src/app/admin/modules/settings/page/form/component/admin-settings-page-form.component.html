@@ -1,6 +1,6 @@
-<app-page-title 
+<cin-page-title 
   [titleLabel]="contentForm.value.id ? 'editPage' : 'createNewPage'">
-</app-page-title>
+</cin-page-title>
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="content" [formGroup]="contentForm">

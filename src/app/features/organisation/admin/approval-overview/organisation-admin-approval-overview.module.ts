@@ -4,9 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticleFilterModule } from 'src/app/shared/filter/article/article-filter.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminApprovalOverviewComponent } from './component/organisation-admin-approval-overview.component';
 import { organisationAdminApprovalOverviewStateKey } from './constants/organisation-admin-approval-overview.constants';
@@ -32,12 +32,13 @@ const modules = [
   ArticleFilterModule,
   OrganisationAdminApprovalOverviewRoutingModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(organisationAdminApprovalOverviewStateKey, guestArticleAdminOverviewReducer),
   EffectsModule.forFeature([OrganisationAdminOverviewEffects]),
+
+  PageTitleComponent,
 ];
 
 @NgModule({

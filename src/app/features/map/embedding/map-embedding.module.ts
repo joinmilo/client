@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { SubTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
 import { MapEmbeddingComponent } from './component/map-embedding.component';
@@ -23,12 +23,13 @@ const modules = [
   CoreModule,
   CardSliderComponent,
   MapModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(mapEmbeddingStateKey, mapEmbeddingReducer),
   EffectsModule.forFeature([MapEmbeddingEffects]),
+
+  SubTitleComponent,
 ]
 
 @NgModule({

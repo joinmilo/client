@@ -12,9 +12,8 @@ import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { AdminSettingsPageEmbeddingModule } from '../embedding/admin-settings-page-embedding.module';
 import { AdminSettingsPageMenuModule } from '../menu/admin-settings-page-menu.module';
 import { AdminSettingsPageFormRoutingModule } from './admin-settings-page-form.module-routing.module';
@@ -45,19 +44,18 @@ const modules = [
   AdminSettingsPageFormRoutingModule,
   AdminSettingsPageMenuModule,
   CoreModule,
-  CaptchaModule,
-  MediaFormModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(adminSettingsPageFormStateKey, adminSettingsPageFormReducer),
   EffectsModule.forFeature([AdminSettingsPageFormEffects]),
 
+  CaptchaModule,
   FormStepComponent,
   FormStepperComponent,
   GridColumnDirective,
   GridRowComponent,
+  PageTitleComponent,
   RichtextEditorFormComponent,
 ]
 

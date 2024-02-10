@@ -10,13 +10,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContestFilterModule } from 'src/app/shared/filter/contest/contest-filter.module';
-import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
-import { ContactFormComponent } from 'src/app/shared/form/contact/contact-form.component';
-import { DatetimeFormComponent } from 'src/app/shared/form/datetime/datetime-form.component';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
 import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ContestAdminFormComponent } from './component/contest-admin-form.component';
 import { contestAdminFormStateKey } from './constants/contest-admin-form.constants';
@@ -53,7 +46,6 @@ const modules = [
   GridLayoutModule,
   MediaFormModule,
   TableModule,
-  TitleModule,
 ];
 
 const libs = [

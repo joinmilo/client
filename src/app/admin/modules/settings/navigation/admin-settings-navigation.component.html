@@ -1,10 +1,10 @@
-<app-page-title
+<cin-page-title
   titleLabel="platformSettings">
-</app-page-title>
+</cin-page-title>
 
 <section *ngFor="let item of menuItems | async; let last = last">
   <div class="menu-block">
-    <app-details-title [titleLabel]="item.name"></app-details-title>
+    <cin-details-title [titleLabel]="item.name"></cin-details-title>
 
     <nav>
       <mat-card *ngFor="let child of item.childs"

@@ -7,8 +7,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { DetailsTitleComponent, PageTitleComponent, SubTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
 import { FlipCardSliderComponent } from 'src/app/shared/widgets/sliders/flip-card-slider/flip-card-slider.component';
 import { AdminLandingRoutingModule } from './admin-landing-routing.module';
 import { AdminLandingComponent } from './components/admin-landingComponent';
@@ -38,15 +38,17 @@ const modules = [
   CoreModule,
   AdminLandingRoutingModule,
   FlipCardSliderComponent,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(adminLandingStateKey, adminLandingReducer),
   EffectsModule.forFeature([AdminLandingEffects]),
 
+  DetailsTitleComponent,
   MailPieceComponent,
+  PageTitleComponent,
   PhonePieceComponent,
+  SubTitleComponent,
 ];
 
 @NgModule({

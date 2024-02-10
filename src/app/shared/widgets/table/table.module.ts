@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
+import { MediaFormComponent } from 'ngx-cinlib/media/forms';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { TooltipDirective } from 'ngx-cinlib/tooltip';
 import { CoreModule } from 'src/app/core/core.module';
@@ -98,9 +99,12 @@ const modules = [
   CardModule,
   CoreModule,
   FavoriteComponent,
+<<<<<<< Upstream, based on main
   MediaFormModule,
   ShareModule,
   DatePieceComponent
+=======
+>>>>>>> c8ac913 ngx-cinlib: extracted address-piece, core typings, title, media, utils,
 ];
 
 const libs = [
@@ -110,6 +114,7 @@ const libs = [
   AddressPieceComponent,
   CategoryPieceComponent,
   IconComponent,
+  MediaFormComponent,
   TooltipDirective,
   ShareButtonComponent,
 ];

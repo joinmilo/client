@@ -14,11 +14,11 @@ import { StoreModule } from '@ngrx/store';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaGalleryComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
@@ -62,11 +62,9 @@ const modules = [
   CardModule,
   FavoriteComponent,
   MapModule,
-  MediaWidgetsModule,
   PortalSurveyDetailsRoutingModule,
   RatingModule,
   TableModule,
-  TitleModule
 ];
 
 const libs = [
@@ -74,7 +72,11 @@ const libs = [
   EffectsModule.forFeature([PortalSurveyDetailsEffects]),
 
   DatePieceComponent,
+  DetailsTitleComponent,
   MailPieceComponent,
+  MediaGalleryComponent,
+  MediaSliderComponent,
+  MediaTitleComponent,
   PhonePieceComponent,
   ShareButtonComponent,
 ]

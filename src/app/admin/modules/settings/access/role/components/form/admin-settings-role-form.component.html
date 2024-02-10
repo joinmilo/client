@@ -1,5 +1,5 @@
-<app-page-title [titleLabel]="form.value.id ? 'editRole' : 'createNewRole'">
-</app-page-title>
+<cin-page-title [titleLabel]="form.value.id ? 'editRole' : 'createNewRole'">
+</cin-page-title>
 
 <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
   <cin-form-step titleLabel="role" [formGroup]="form">
