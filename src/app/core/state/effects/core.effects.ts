@@ -90,7 +90,7 @@ export class CoreEffects implements OnInitEffects {
       this.mediaApiService.setMediaDownloadBaseApi(mediaDownloadBaseApi);
       this.mediaApiService.setMediaMimeTypeApi(mediaMimeTypeApi);
     }),
-  ));
+  ), { dispatch: false });
 
   setCaptchaSiteKey = createEffect(() => this.actions.pipe(
     ofType(CoreActions.setConfigurations),
