@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsLabelRoutingModule } from './admin-settings-label-routing.module';
 import { AdminSettingsLabelComponent } from './component/admin-settings-label.component';
 import { adminSettingsLabelStateKey } from './constants/admin-settings-label.constants';
@@ -27,7 +27,6 @@ const materials = [
 const modules = [
   CoreModule,
   AdminSettingsLabelRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -35,6 +34,7 @@ const libs = [
   EffectsModule.forFeature([AdminSettingsLabelEffects]),
 
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

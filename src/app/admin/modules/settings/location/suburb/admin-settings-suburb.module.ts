@@ -10,8 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsSuburbRoutingModule } from './admin-settings-suburb-routing.module';
 import { AdminSettingsSuburbFormComponent } from './components/form/admin-settings-suburb-form.component';
 import { AdminSettingsSuburbOverviewComponent } from './components/overview/admin-settings-suburb-overview.component';
@@ -39,7 +39,6 @@ const materials = [
 const modules = [
   CoreModule,
   AdminSettingsSuburbRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -51,6 +50,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

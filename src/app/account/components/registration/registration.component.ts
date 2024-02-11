@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, takeUntil } from 'rxjs';
 import { AccountActions } from '../../state/account.actions';
 import { selectRegisteredUserId } from '../../state/account.selectors';
@@ -17,7 +17,7 @@ import { selectRegisteredUserId } from '../../state/account.selectors';
 export class RegistrationComponent implements OnDestroy {
 
   public form = this.fb.group({
-    email: ['', [Validators.required, AppValidators.email()]],
+    email: ['', [Validators.required, CinValidators.email()]],
     password: ['', Validators.required],
     termsAccepted: [false, [Validators.requiredTrue]],
   });

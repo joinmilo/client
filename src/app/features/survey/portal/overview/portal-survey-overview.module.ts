@@ -9,7 +9,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { SurveyFilterModule } from 'src/app/shared/filter/survey/survey-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { TableCardComponent } from 'src/app/shared/widgets/table-card/table-card.component';
 import { PortalSurveyOverviewComponent } from './components/overview/portal-survey-overview.component';
 import { portalSurveyOverviewStateKey } from './constants/portal-survey-overview.constant';
 import { PortalSurveyOverviewRoutingModule } from './portal-survey-overview-routing.module';
@@ -32,10 +32,10 @@ const modules = [
   CardModule,
   CoreModule,
   MatSortModule,
+  NoDataComponent,
   PortalSurveyOverviewRoutingModule,
   SurveyFilterModule,
-  TableModule,
-  NoDataComponent
+  TableCardComponent,
 ];
 
 const libs = [

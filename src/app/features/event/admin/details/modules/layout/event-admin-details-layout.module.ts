@@ -9,7 +9,6 @@ import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsLayoutComponent } from './components/event-admin-details-layout.component';
 import { eventAdminDetailsLayoutStateKey } from './constants/event-admin-details-layout.constants';
 import { EventAdminDetailsLayoutEffects } from './state/event-admin-details-layout.effects';
@@ -31,7 +30,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [

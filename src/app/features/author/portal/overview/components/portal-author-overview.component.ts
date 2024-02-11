@@ -1,9 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SortOption, SortPaginate } from 'ngx-cinlib/tables';
 import { Subject, takeUntil } from 'rxjs';
 import { SchemaService } from 'src/app/core/services/schema.service';
 import { CardType } from 'src/app/shared/widgets/card/typings/card';
-import { SortOption, SortPaginate } from 'src/app/shared/widgets/table/typings/table';
 import { PortalAuthorOverviewActions } from '../state/portal-author-overview.actions';
 import { selectAuthors } from '../state/portal-author-overview.selectors';
 

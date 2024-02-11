@@ -3,7 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { StaticProvider, enableProdMode } from '@angular/core';
 import { FetchResult } from '@apollo/client/core';
-import { APP_AUTH_TOKENS, RefreshMutation, refreshKey } from 'ngx-cinlib/security';
+import { CIN_AUTH_TOKENS, RefreshMutation, refreshKey } from 'ngx-cinlib/security';
 import { AppModule } from './app/app.module';
 import { graphqlApi } from './app/core/constants/url.constants';
 import { environment } from './environments/environment';
@@ -23,13 +23,13 @@ function refreshListener(response: any): void {
   }
 
   bootstrap([
-    { provide: APP_AUTH_TOKENS, useValue: token?.data?.refreshToken }
+    { provide: CIN_AUTH_TOKENS, useValue: token?.data?.refreshToken }
   ]);
 }
 
 function refreshFailed(): void {
   bootstrap([
-    { provide: APP_AUTH_TOKENS, useValue: undefined }
+    { provide: CIN_AUTH_TOKENS, useValue: undefined }
   ]);
 }
 

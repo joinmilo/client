@@ -10,7 +10,6 @@ import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
 import { MediaFilterModule } from 'src/app/shared/filter/media/media-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { MediaAdminOverviewCategoryComponent } from './components/category/media-admin-overview-category.component';
 import { MediaAdminOverviewComponent } from './components/media-admin-overview.component';
 import { mediaAdminOverviewStateKey } from './constants/media-admin-overview.constants';
@@ -38,7 +37,6 @@ const modules = [
   MediaFilterModule,
   MediaAdminOverviewRoutingModule,
   NoDataComponent,
-  TableModule,
 ];
 
 const libs = [

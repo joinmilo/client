@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'ngx-cinlib/security';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import {
-  DealCategoryEntity,
-  FilterSortPaginateInput,
+    DealCategoryEntity,
+    FilterSortPaginateInput,
 } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
 import { Privilege } from 'src/app/core/typings/privilege';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { DealAdminCategoryActions } from '../state/deal-admin-category.actions';
 import { selectCategoryData } from '../state/deal-admin-category.selectors';
 

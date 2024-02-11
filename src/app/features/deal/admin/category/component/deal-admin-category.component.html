@@ -6,9 +6,9 @@
   [routerLink]="['form']"
   appLabel="createCategory"></button>
 
-<app-table
+<cin-table
   [data]="categories"
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams($event)">
-</app-table>
+</cin-table>

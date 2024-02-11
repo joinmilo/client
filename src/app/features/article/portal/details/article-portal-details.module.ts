@@ -22,7 +22,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ArticlePortalDetailsRoutingModule } from './article-portal-details-routing.module';
 import { ArticlePortalDetailsComponent } from './components/article-portal-details.component';
 import { ArticlePortalDetailsAuthorComponent } from './components/author/article-portal-details-author.component';
@@ -68,7 +67,6 @@ const modules = [
   CommentModule,
   FavoriteComponent,
   RatingModule,
-  TableModule,
 ];
 
 const libs = [

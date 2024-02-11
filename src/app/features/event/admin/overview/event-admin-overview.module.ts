@@ -5,9 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { EventFilterModule } from 'src/app/shared/filter/event/event-filter.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminOverviewComponent } from './component/event-admin-overview.component';
 import { eventAdminOverviewStateKey } from './constants/event-admin-overview.constants';
 import { EventAdminOverviewRoutingModule } from './event-admin-overview-routing.module';
@@ -31,7 +31,6 @@ const modules = [
   CoreModule,
   EventFilterModule,
   EventAdminOverviewRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -39,6 +38,7 @@ const libs = [
   EffectsModule.forFeature([EventAdminOverviewEffects]),
 
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

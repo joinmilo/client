@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { TableCardComponent } from 'src/app/shared/widgets/table-card/table-card.component';
 import { PortalAuthorOverviewComponent } from './components/portal-author-overview.component';
 import { portalAuthorOverviewStateKey } from './constants/portal-author-overview.constants';
 import { PortalAuthorOverviewRoutingModule } from './portal-author-overview-routing.module';
@@ -24,7 +24,7 @@ const modules = [
   CoreModule,
   CardModule,
   PortalAuthorOverviewRoutingModule,
-  TableModule,
+  TableCardComponent,
 ];
 
 const libs = [

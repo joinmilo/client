@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, takeUntil } from 'rxjs';
 import { LanguageEntity, Maybe, MediaEntity, OrganisationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
@@ -28,7 +28,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
   public form = this.fb.group({
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    phone: ['', [AppValidators.phone()]],
+    phone: ['', [CinValidators.phone()]],
     content: [''],
     author: [false],
     organisations: [[] as OrganisationEntity[]],

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, UserContextEntity } from 'src/app/core/api/generated/schema';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
-import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
+import { shareAction } from 'src/app/core/utils/table.utils';
 import { AuthorAdminOverviewActions } from '../state/author-admin-overview.actions';
 import { selectOverviewData } from '../state/author-admin-overview.selectors';
 

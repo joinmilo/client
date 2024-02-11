@@ -1,9 +1,9 @@
 <cin-page-title titleLabel="guestArticles"></cin-page-title>
 
-<app-table
+<cin-table
   [data]="guestArticles"
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams($event)"
   (rowClicked)="rowClicked($event)">
-</app-table>
+</cin-table>

@@ -9,10 +9,10 @@
   </button>
 </app-event-filter>
 
-<app-table
+<cin-table
   [data]="events"
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams($event)"
   (rowClicked)="rowClicked($event)">
-</app-table>
+</cin-table>

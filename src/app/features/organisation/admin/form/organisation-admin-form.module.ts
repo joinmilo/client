@@ -16,7 +16,6 @@ import { CoreModule } from 'src/app/core/core.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
 import { ContactFormComponent } from 'src/app/shared/form/contact/contact-form.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminFormComponent } from './component/organisation-admin-form.component';
 import { organisationAdminFormStateKey } from './constants/organisation-admin-form.constants';
 import { OrganisationAdminFormRoutingModule } from './organisation-admin-form-routing.module';
@@ -45,7 +44,6 @@ const modules = [
   CoreModule,
   OrganisationFilterModule,
   OrganisationAdminFormRoutingModule,
-  TableModule,
 ];
 
 const libs = [

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SortPaginate } from 'ngx-cinlib/tables';
 import { CardType } from 'src/app/shared/widgets/card/typings/card';
-import { SortPaginate } from 'src/app/shared/widgets/table/typings/table';
 import { PortalFavoritesActions } from '../../state/portal-favorites.actions';
 import { selectFavoriteEvents } from '../../state/portal-favorites.selectors';
 

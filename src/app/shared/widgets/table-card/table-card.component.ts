@@ -1,17 +1,27 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageableList } from 'ngx-cinlib/core';
+import { Sort, SortOption, SortPaginate, TablePaginatorComponent, TableSortComponent } from 'ngx-cinlib/tables';
 import { Observable, startWith, take } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity';
 import { CardActionInput, CardActionOutput, CardType } from 'src/app/shared/widgets/card/typings/card';
-import { Sort, SortOption, SortPaginate } from '../../typings/table';
-import { TablePaginatorComponent } from '../paginator/table-paginator.component';
+import { CardModule } from '../card/card.module';
 
 @Component({
   selector: 'app-table-card',
   templateUrl: './table-card.component.html',
-  styleUrls: ['./table-card.component.scss']
+  styleUrls: ['./table-card.component.scss'],
+  standalone: true,
+  imports: [
+    CardModule,
+    CommonModule,
+    MatCardModule,
+    TablePaginatorComponent,
+    TableSortComponent,
+  ]
 })
 export class TableCardComponent implements AfterViewInit, OnDestroy {
 

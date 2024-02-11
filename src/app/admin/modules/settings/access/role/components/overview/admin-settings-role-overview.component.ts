@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, RoleEntity } from 'src/app/core/api/generated/schema';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { AdminSettingsRoleActions } from '../../state/admin-settings-role.actions';
 import { selectRoles } from '../../state/admin-settings-role.selectors';
 

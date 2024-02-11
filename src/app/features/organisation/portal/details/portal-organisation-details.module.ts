@@ -25,7 +25,6 @@ import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.comp
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalOrganisationDetailsCommentComponent } from './components/comment/portal-organisation-details-comments.component';
 import { PortalOrganisationDetailsCommentsComponent } from './components/comments/portal-organisation-details-comments.component';
 import { PortalOrganisationDetailsMediaComponent } from './components/media/portal-organisation-details-media.component';
@@ -75,8 +74,6 @@ const modules = [
   MapModule,
   PortalOrganisationDetailsRoutingModule,
   RatingModule,
-  TableModule,
-  WebsitePieceComponent,
 ];
 
 const libs = [
@@ -91,6 +88,7 @@ const libs = [
   MediaTitleComponent,
   PhonePieceComponent,
   ShareButtonComponent,
+  WebsitePieceComponent,
 ]
 
 @NgModule({

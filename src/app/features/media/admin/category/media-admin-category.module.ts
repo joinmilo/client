@@ -5,9 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { MediaFilterModule } from 'src/app/shared/filter/media/media-filter.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { MediaAdminCategoryComponent } from './component/media-admin-category.component';
 import { mediaAdminCategoryStateKey } from './constants/media-admin-category.constants';
 import { MediaAdminCategoryRoutingModule } from './media-admin-category-routing.module';
@@ -31,7 +31,6 @@ const modules = [
   CoreModule,
   MediaFilterModule,
   MediaAdminCategoryRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -39,6 +38,7 @@ const libs = [
   EffectsModule.forFeature([MediaAdminCategoryEffects]),
 
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

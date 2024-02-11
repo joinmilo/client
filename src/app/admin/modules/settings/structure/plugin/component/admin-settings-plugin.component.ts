@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, PluginEntity } from 'src/app/core/api/generated/schema';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { AdminSettingsPluginActions } from '../state/admin-settings-plugin.actions';
 import { selectPlugins } from '../state/admin-settings-plugin.selectors';
 

@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { Subject, takeUntil } from 'rxjs';
 import { EventEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
-import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
-import { id } from '../../../../../../../core/constants/queryparam.constants';
+import { id } from 'src/app/core/constants/queryparam.constants';
+import { shareAction } from 'src/app/core/utils/table.utils';
 import { OrganisationAdminDetailsEventsActions } from '../state/organisation-admin-details-events.actions';
 import { selectOrganisationAdminDetailsEvents } from '../state/organisation-admin-details-events.selectors';
 

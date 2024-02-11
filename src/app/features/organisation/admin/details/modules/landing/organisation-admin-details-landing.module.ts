@@ -10,7 +10,6 @@ import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminDetailsLandingComponent } from './components/organisation-admin-details-landing.component';
 import { organisationAdminDetailsLandingStateKey } from './constants/organisation-admin-details-landing.constants';
 import { OrganisationAdminDetailsLandingEffects } from './state/organisation-admin-details-landing.effects';
@@ -31,7 +30,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [

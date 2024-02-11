@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, LanguageEntity } from 'src/app/core/api/generated/schema';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { AdminSettingsLanguageActions } from '../state/admin-settings-language.actions';
 import { selectLanguages } from '../state/admin-settings-language.selectors';
 

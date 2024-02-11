@@ -3,9 +3,9 @@
   [queryParam]="false" [initValue]="initPeriod">
 </cin-date-range-filter>
 
-<app-table 
+<cin-table 
   [data]="comments"
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams(undefined, undefined, $event)">
-</app-table>
+</cin-table>

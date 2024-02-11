@@ -15,7 +15,7 @@ import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaAvatarComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { TableCardComponent } from 'src/app/shared/widgets/table-card/table-card.component';
 import { PortalAddFriendsComponent } from './components/add-friends/portal-add-friends.component';
 import { PortalAllFriendsComponent } from './components/all-friends/portal-all-friends.component';
 import { PortalFriendsComponent } from './components/portal-friends.component';
@@ -53,7 +53,7 @@ const modules = [
   FormsModule,
   IconComponent,
   PortalUserFriendsRoutingModule,
-  TableModule,
+  TableCardComponent,
 ];
 
 const libs = [

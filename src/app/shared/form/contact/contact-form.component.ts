@@ -1,24 +1,24 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit
+    Component,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit
 } from '@angular/core';
 import {
-  ControlValueAccessor,
-  FormBuilder,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-  Validators,
+    ControlValueAccessor,
+    FormBuilder,
+    NG_VALUE_ACCESSOR,
+    ReactiveFormsModule,
+    Validators,
 } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { Subject, takeUntil } from 'rxjs';
 import { ContactEntity, Maybe } from 'src/app/core/api/generated/schema';
@@ -61,8 +61,8 @@ export class ContactFormComponent implements ControlValueAccessor, OnInit, OnDes
   public form = this.fb.group({
     contactOptionLabel: [undefined as Maybe<string>],
     name: ['' as Maybe<string>],
-    email: ['' as Maybe<string>, [Validators.required, AppValidators.email()]],
-    phone: ['' as Maybe<string>, [AppValidators.phone()]],
+    email: ['' as Maybe<string>, [Validators.required, CinValidators.email()]],
+    phone: ['' as Maybe<string>, [CinValidators.phone()]],
     website: ['' as Maybe<string>],
   });
 

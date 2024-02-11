@@ -7,7 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { SurveyAdminDetailsLandingComponent } from './components/survey-admin-details-landing.component';
 import { eventAdminDetailsLandingStateKey } from './constants/survey-admin-details-landing.constants';
 import { SurveyAdminDetailsLandingEffects } from './state/survey-admin-details-landing.effects';
@@ -28,7 +27,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [

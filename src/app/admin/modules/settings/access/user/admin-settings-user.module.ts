@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsUserRoutingModule } from './admin-settings-user-routing.module';
 import { AdminSettingsUserComponent } from './component/admin-settings-user.component';
 import { adminSettingsUserStateKey } from './constants/admin-settings-user.constants';
@@ -29,7 +29,6 @@ const materials = [
 const modules = [
   CoreModule,
   AdminSettingsUserRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -37,6 +36,7 @@ const libs = [
   EffectsModule.forFeature([AdminSettingsUserEffects]),
 
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

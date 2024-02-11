@@ -8,10 +8,10 @@
   </button>
 </app-organisation-filter>
 
-<app-table
+<cin-table
   [data]="organisations"
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams($event)"
   (rowClicked)="rowClicked($event)">
-</app-table>
+</cin-table>

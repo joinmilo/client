@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ReportAdminTypesComponent } from './component/report-admin-types.component';
 import { reportAdminTypesStateKey } from './constants/report-admin-types.constants';
 import { ReportAdminTypesRoutingModule } from './report-admin-types-routing.module';
@@ -29,7 +29,6 @@ const materials = [
 const modules = [
   CoreModule,
   ReportAdminTypesRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -37,6 +36,7 @@ const libs = [
   EffectsModule.forFeature([ReportAdminTypesEffects]),
 
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

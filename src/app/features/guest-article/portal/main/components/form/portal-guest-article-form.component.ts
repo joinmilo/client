@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { PortalGuestArticleActions } from '../../state/portal-guest-article.actions';
 
@@ -20,7 +20,7 @@ export class PortalGuestArticleFormComponent{
 
   public infomationForm = this.fb.group({
     userName: ['' as Maybe<string>, [Validators.required]],
-    email: ['' as Maybe<string>, [Validators.required, AppValidators.email()]],
+    email: ['' as Maybe<string>, [Validators.required, CinValidators.email()]],
   });
 
   constructor(

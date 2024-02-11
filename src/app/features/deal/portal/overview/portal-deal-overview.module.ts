@@ -6,13 +6,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalDealOverviewCategoryComponent } from './components/category/portal-deal-overview-category.component';
 import { PortalDealOverviewMapComponent } from './components/map/portal-deal-overview-map.component';
 import { PortalDealOverviewComponent } from './components/portal-deal-overview.component';
@@ -44,9 +44,8 @@ const modules = [
   CoreModule,
   DealFilterModule,
   MapModule,
+  NoDataComponent,
   PortalDealOverviewRoutingModule,
-  TableModule,
-  NoDataComponent
 ];
 
 const libs = [
@@ -54,7 +53,8 @@ const libs = [
   EffectsModule.forFeature([PortalDealOverviewEffects]),
 
   PageTitleComponent,
-  RadioButtonGroupComponent
+  RadioButtonGroupComponent,
+  TableComponent,
 ];
 
 @NgModule({

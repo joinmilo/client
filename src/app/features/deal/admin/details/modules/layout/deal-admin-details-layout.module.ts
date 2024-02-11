@@ -9,7 +9,6 @@ import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { DealAdminDetailsLayoutComponent } from './components/deal-admin-details-layout.component';
 import { dealAdminDetailsLayoutStateKey } from './constants/deal-admin-details-layout.constants';
 import { DealAdminDetailsLayoutEffects } from './state/deal-admin-details-layout.effects';
@@ -31,7 +30,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [

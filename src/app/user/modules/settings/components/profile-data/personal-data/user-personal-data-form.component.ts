@@ -3,15 +3,15 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import {
-  AddressEntity,
-  Maybe,
-  MediaEntity,
-  UserContextEntity
+    AddressEntity,
+    Maybe,
+    MediaEntity,
+    UserContextEntity
 } from 'src/app/core/api/generated/schema';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { UserSettingsActions } from '../../../state/user-settings.actions';
 
 @Component({
@@ -27,9 +27,9 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
     lastName: [undefined as Maybe<string>, [Validators.required]],
     email: [
       undefined as Maybe<string>,
-      [Validators.required, AppValidators.email()],
+      [Validators.required, CinValidators.email()],
     ],
-    phone: [undefined as Maybe<string>, [AppValidators.phone()]],
+    phone: [undefined as Maybe<string>, [CinValidators.phone()]],
   });
 
   public ProfilePictureForm = this.fb.group({

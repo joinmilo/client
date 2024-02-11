@@ -23,7 +23,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalSurveyDetailsMediaComponent } from './components/media/portal-survey-details-media.component';
 import { PortalSurveyDetailsComponent } from './components/portal-survey-details.component';
 import { PortalSurveyDetailsSummaryComponent } from './components/summary/portal-survey-details-summary.component';
@@ -64,7 +63,6 @@ const modules = [
   MapModule,
   PortalSurveyDetailsRoutingModule,
   RatingModule,
-  TableModule,
 ];
 
 const libs = [

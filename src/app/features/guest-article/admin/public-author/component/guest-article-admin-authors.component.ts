@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { ArticlePublicAuthorEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { GuestArticleAdminPublicAuthorsActions } from '../state/guest-article-admin-authors.actions';
 import { selectPublicAuthorsData } from '../state/guest-article-admin-authors.selectors';
 

@@ -25,7 +25,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalDealDetailsCreatorComponent } from './components/creator/portal-deal-details-creator.component';
 import { PortalDealDetailsMediaComponent } from './components/media/portal-deal-details-media.component';
 import { PortalDealDetailsComponent } from './components/portal-deal-details.component';
@@ -69,7 +68,6 @@ const modules = [
   PortalDealDetailsRoutingModule,
   PriceComponent,
   RatingModule,
-  TableModule,
 ];
 
 const libs = [

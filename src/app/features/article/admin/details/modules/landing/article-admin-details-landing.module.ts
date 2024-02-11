@@ -7,7 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ArticleAdminDetailsLandingComponent } from './components/article-admin-details-landing.component';
 import { articleAdminDetailsLandingStateKey } from './constants/article-admin-details-landing.constants';
 import { ArticleAdminDetailsLandingEffects } from './state/article-admin-details-landing.effects';
@@ -28,7 +27,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [

@@ -9,10 +9,10 @@
   </a>
 </app-contest-filter>
 
-<app-table
+<cin-table
   [data]="contests"
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams($event)"
   (rowClicked)="rowClicked($event)">
-</app-table>
+</cin-table>

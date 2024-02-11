@@ -3,10 +3,10 @@
 <app-survey-filter (paramsUpdated)="updateParams($event)">
 </app-survey-filter>
 
-<app-table
+<cin-table
   [actions]="actions"
   [data]="surveys"
   [columns]="columns"
   (sortPaginate)="updateParams($event)"
   (rowClicked)="rowClicked($event)">
-</app-table>
+</cin-table>

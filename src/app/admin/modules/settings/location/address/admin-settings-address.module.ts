@@ -10,9 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormModule } from 'src/app/shared/form/address/address-form.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsAddressRoutingModule } from './admin-settings-address-routing.module';
 import { AdminSettingsAddressFormComponent } from './components/form/admin-settings-address-form.component';
 import { AdminSettingsAddressOverviewComponent } from './components/overview/admin-settings-address.component';
@@ -41,7 +41,6 @@ const modules = [
   AddressFormModule,
   AdminSettingsAddressRoutingModule,
   CoreModule,
-  TableModule,
 ];
 
 const libs = [
@@ -53,6 +52,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

@@ -7,7 +7,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsPageDetailsLandingComponent } from './components/admin-settings-page-details-landing.component';
 import { adminSettingsPageDetailsLandingStateKey } from './constants/admin-settings-page-details-landing.constants';
 import { AdminSettingsPageDetailsLandingEffects } from './state/admin-settings-page-details-landing.effects';
@@ -29,7 +28,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [

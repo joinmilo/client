@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, switchMap, take, tap } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { id } from 'src/app/core/constants/queryparam.constants';
@@ -19,8 +19,8 @@ export class AdminSettingsSuburbFormComponent implements OnInit, OnDestroy {
   public form = this.fb.group({
     id: ['' as Maybe<string>],
     name: ['' as Maybe<string>, [Validators.required]],
-    longitude: ['' as Maybe<string>, [Validators.required, AppValidators.decimal(),]],
-    latitude: ['' as Maybe<string>, [Validators.required, AppValidators.decimal(),]],
+    longitude: ['' as Maybe<string>, [Validators.required, CinValidators.decimal(),]],
+    latitude: ['' as Maybe<string>, [Validators.required, CinValidators.decimal(),]],
   });
 
   private destroy = new Subject<void>();
@@ -42,8 +42,8 @@ export class AdminSettingsSuburbFormComponent implements OnInit, OnDestroy {
       this.form = this.fb.group({
         id: [suburb?.id],
         name: [suburb?.name, [Validators.required]],
-        longitude: [suburb?.longitude?.toString(), [Validators.required, AppValidators.decimal(),]],
-        latitude: [suburb?.latitude?.toString(), [Validators.required, AppValidators.decimal(),]],
+        longitude: [suburb?.longitude?.toString(), [Validators.required, CinValidators.decimal(),]],
+        latitude: [suburb?.latitude?.toString(), [Validators.required, CinValidators.decimal(),]],
       }));
   }
 

@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { Subject, takeUntil } from 'rxjs';
 import { EventAttendeeEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { TranslationService } from 'src/app/core/services/translation.service';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { EventAdminDetailsAttendeeActions } from '../state/event-admin-details-attendee.actions';
 import { selectEventAdminDetailsAttendee } from '../state/event-admin-details-attendee.selectors';
 

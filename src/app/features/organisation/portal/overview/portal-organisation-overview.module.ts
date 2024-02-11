@@ -8,13 +8,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { TableCardComponent } from 'src/app/shared/widgets/table-card/table-card.component';
 import { PortalOrganisationOverviewCardComponent } from './components/card/portal-organisation-overview-card.component';
 import { PortalOrganisationOverviewMapComponent } from './components/map/portal-organisation-overview-map.component';
 import { PortalOrganisationOverviewComponent } from './components/portal-organisation-overview.component';
@@ -49,10 +50,10 @@ const modules = [
   CardModule,
   CardSliderComponent,
   MapModule,
+  NoDataComponent,
   OrganisationFilterModule,
   PortalOrganisationOverviewRoutingModule,
-  TableModule,
-  NoDataComponent
+  TableCardComponent,
 ];
 
 const libs = [
@@ -61,6 +62,7 @@ const libs = [
 
   PageTitleComponent,
   RadioButtonGroupComponent,
+  TableComponent,
 ];
 
 @NgModule({

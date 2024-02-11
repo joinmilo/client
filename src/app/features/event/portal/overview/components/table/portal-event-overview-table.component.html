@@ -1,11 +1,11 @@
 <ng-container *ngIf="(events | async)?.total; else emptyResult">
-  <app-table
+  <cin-table
     [data]="events"
     [actions]="actions"
     [columns]="columns"
     (sortPaginate)="sortPaginate.emit($event)"
     (rowClicked)="rowClicked($event)">
-  </app-table>
+  </cin-table>
 </ng-container>
 <ng-template #emptyResult>
   <app-no-data 

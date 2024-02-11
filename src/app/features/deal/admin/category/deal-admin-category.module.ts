@@ -5,9 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { DealAdminCategoryComponent } from './component/deal-admin-category.component';
 import { dealAdminCategoryStateKey } from './constants/deal-admin-category.constants';
 import { DealAdminCategoryRoutingModule } from './deal-admin-category-routing.module';
@@ -31,7 +31,6 @@ const modules = [
   CoreModule,
   DealFilterModule,
   DealAdminCategoryRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -39,6 +38,7 @@ const libs = [
   EffectsModule.forFeature([DealAdminCategoryEffects]),
 
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

@@ -12,7 +12,6 @@ import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { EventAdminDetailsLandingCalendarComponent } from './components/calendar/event-admin-details-landing-calendar.component';
 import { EventAdminDetailsLandingComponent } from './components/event-admin-details-landing.component';
 import { eventAdminDetailsLandingStateKey } from './constants/event-admin-details-landing.constants';
@@ -36,7 +35,6 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [

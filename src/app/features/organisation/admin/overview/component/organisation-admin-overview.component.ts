@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
-import { shareAction } from 'src/app/shared/widgets/table/utils/table-component-action.utils';
+import { shareAction } from 'src/app/core/utils/table.utils';
 import { OrganisationAdminOverviewActions } from '../state/organisation-admin-overview.actions';
 import { selectOverviewData } from '../state/organisation-admin-overview.selectors';
 

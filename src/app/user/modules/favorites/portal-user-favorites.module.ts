@@ -8,7 +8,7 @@ import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { TableCardComponent } from 'src/app/shared/widgets/table-card/table-card.component';
 import { PortalFavoriteArticlesComponent } from './components/articles/portal-favorite-articles.component';
 import { PortalFavoriteAuthorsComponent } from './components/authors/portal-favorite-authors.component';
 import { PortalFavoriteDealsComponent } from './components/deals/portal-favorite-deals.component';
@@ -40,9 +40,9 @@ const material = [
 const modules = [
   CoreModule,
   CardModule,
-  PortalFavoritesRoutingModule,
-  TableModule,
   NoDataComponent,
+  PortalFavoritesRoutingModule,
+  TableCardComponent,
 ];
 
 const libs = [

@@ -1,8 +1,8 @@
-<app-table-sort *ngIf="sortOptions"
+<cin-table-sort *ngIf="sortOptions"
   [options]="sortOptions"
   [queryParams]="queryParams"
   (sortChange)="sortChange($event)">
-</app-table-sort>
+</cin-table-sort>
 
 <ng-container>
   <section>
@@ -36,9 +36,9 @@
 </ng-container>
 
 <mat-card *ngIf="paginate">
-  <app-table-paginator
+  <cin-table-paginator
     [length]="(data | async)?.total"
     [pageSize]="initParams.size"
     [pageIndex]="initParams.page">
-  </app-table-paginator>
+  </cin-table-paginator>
 </mat-card>

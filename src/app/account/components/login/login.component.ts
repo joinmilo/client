@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 
 @Component({
@@ -15,7 +15,7 @@ import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 export class LoginComponent {
 
   public form = this.fb.group({
-    email: ['', [Validators.required, AppValidators.email()]],
+    email: ['', [Validators.required, CinValidators.email()]],
     password: ['', [Validators.required]],
   });
 

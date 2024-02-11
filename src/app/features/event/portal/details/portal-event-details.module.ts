@@ -28,7 +28,6 @@ import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalEventDetailsAttendeeComponent } from './components/attendee/portal-event-details-attendee.component';
 import { PortalEventDetailsCalendarComponent } from './components/calendar/portal-event-details-calendar.component';
 import { PortalEventDetailsCommentComponent } from './components/comment/portal-event-details-comment.component';
@@ -87,7 +86,6 @@ const modules = [
   PortalEventDetailsRoutingModule,
   PriceComponent,
   RatingModule,
-  TableModule,
 ];
 
 const libs = [

@@ -8,6 +8,9 @@
   appLabel="createCategory">
 </button>
 
-<app-table [data]="categories" [actions]="actions" [columns]="columns"
+<cin-table
+  [data]="categories"
+  [actions]="actions"
+  [columns]="columns"
   (sortPaginate)="updateParams($event)">
-</app-table>
+</cin-table>

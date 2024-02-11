@@ -11,7 +11,6 @@ import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalAuthorDetailsMediaComponent } from './components/media/portal-author-details-media.component';
 import { PortalAuthorDetailsComponent } from './components/portal-author-details.component';
 import { authorDetailsStateKey } from './constants/portal-author-details.constants';
@@ -38,7 +37,6 @@ const modules = [
   CoreModule,
   FavoriteComponent,
   PortalAuthorDetailsRoutingModule,
-  TableModule,
 ];
 
 const libs = [

@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, takeUntil } from 'rxjs';
 import { ReportTypeEntity } from 'src/app/core/api/generated/schema';
 import { ReportEmbeddingActions } from '../state/report-embedding.actions';
@@ -17,7 +17,7 @@ export class ReportEmbeddingComponent implements OnDestroy {
   public form = this.fb.group({
     type: [{} as ReportTypeEntity, [Validators.required]],
     name: ['', [Validators.required]],
-    email: ['', [Validators.required, AppValidators.email()]],
+    email: ['', [Validators.required, CinValidators.email()]],
     content: ['', [Validators.required]],
   });
 

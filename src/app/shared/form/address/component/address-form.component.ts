@@ -8,19 +8,8 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
-import {
-  Observable,
-  Subject,
-  debounceTime,
-  filter,
-  map,
-  of,
-  switchMap,
-  take,
-  takeUntil,
-  tap,
-} from 'rxjs';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
+import { Observable, Subject, debounceTime, filter, map, of, switchMap, take, takeUntil, tap } from 'rxjs';
 import { AddressEntity, Maybe } from 'src/app/core/api/generated/schema';
 import { AddressValidationService } from '../services/address-validator.service';
 import { AddressFormActions } from '../state/address-form.actions';
@@ -55,7 +44,7 @@ export class AddressFormComponent
       suburb: [''],
     },
     {
-      validators: [AppValidators.allOrNone('street', 'place', 'houseNumber')],
+      validators: [CinValidators.allOrNone('street', 'place', 'houseNumber')],
     }
   );
 

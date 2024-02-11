@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import { AddressEntity, ContactEntity, DealEntity, DealMediaEntity, Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
@@ -30,7 +30,7 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    price: ['' as Maybe<string>, [AppValidators.number()]],
+    price: ['' as Maybe<string>, [CinValidators.number()]],
     isPublic: [true as Maybe<boolean>],
     selectedType: ['offer' as Maybe<string>]
   });

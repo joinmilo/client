@@ -5,9 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticleFilterModule } from 'src/app/shared/filter/article/article-filter.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ArticleAdminOverviewRoutingModule } from './article-admin-overview-routing.module';
 import { ArticleAdminOverviewComponent } from './component/article-admin-overview.component';
 import { articleAdminOverviewStateKey } from './constants/article-admin-overview.constants';
@@ -31,7 +31,6 @@ const modules = [
   CoreModule,
   ArticleFilterModule,
   ArticleAdminOverviewRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -39,6 +38,7 @@ const libs = [
   EffectsModule.forFeature([ArticleAdminOverviewEffects]),
 
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

@@ -3,24 +3,24 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Period } from 'ngx-cinlib/core';
-import { AppValidators } from 'ngx-cinlib/forms/validators';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import {
-  AddressEntity,
-  ContactEntity,
-  EventMediaEntity,
-  Maybe,
-  OrganisationEntity,
-  UserContextEntity
+    AddressEntity,
+    ContactEntity,
+    EventMediaEntity,
+    Maybe,
+    OrganisationEntity,
+    UserContextEntity
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { ContactOptionEntity } from 'src/app/shared/form/contact/typings/contact-form';
 import { EventAdminFormActions } from '../state/event-admin-form.actions';
 import {
-  selectCategories,
-  selectEvent,
-  selectOrganisations,
-  selectTargetGroups,
+    selectCategories,
+    selectEvent,
+    selectOrganisations,
+    selectTargetGroups,
 } from '../state/event-admin-form.selectors';
 
 @Component({
@@ -46,7 +46,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
       address: [undefined as Maybe<AddressEntity>],
     },
     {
-      validators: [AppValidators.either('videoChatLink', 'address')],
+      validators: [CinValidators.either('videoChatLink', 'address')],
     }
   );
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { ConfigurationEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { AdminSettingsConfiguratioActions } from '../state/admin-settings-configuration.actions';
 import { selectConfigurations } from '../state/admin-settings-configuration.selectors';
 

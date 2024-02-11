@@ -5,9 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { OrganisationAdminOverviewComponent } from './component/organisation-admin-overview.component';
 import { organisationAdminOverviewStateKey } from './constants/organisation-admin-overview.constants';
 import { OrganisationAdminOverviewRoutingModule } from './organisation-admin-overview-routing.module';
@@ -31,14 +31,14 @@ const modules = [
   CoreModule,
   OrganisationFilterModule,
   OrganisationAdminOverviewRoutingModule,
-  TableModule,
 ];
 
 const libs = [
   StoreModule.forFeature(organisationAdminOverviewStateKey, organisationAdminOverviewReducer),
   EffectsModule.forFeature([OrganisationAdminOverviewEffects]),
 
-  PageTitleComponent
+  PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

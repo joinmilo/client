@@ -10,7 +10,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContestFilterModule } from 'src/app/shared/filter/contest/contest-filter.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ContestAdminFormComponent } from './component/contest-admin-form.component';
 import { contestAdminFormStateKey } from './constants/contest-admin-form.constants';
 import { ContestAdminFormRoutingModule } from './contest-admin-form-routing.module';

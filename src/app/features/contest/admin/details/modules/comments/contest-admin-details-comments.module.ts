@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DateRangeFilterComponent } from 'ngx-cinlib/filters/date-range';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ContestAdminDetailsCommentsComponent } from './components/contest-admin-details-comments.component';
 import { contestAdminDetailsCommentsStateKey } from './constants/contest-admin-details-comments.constants';
 import { ContestAdminDetailsCommentsEffects } from './state/contest-admin-details-comments.effects';
@@ -27,13 +27,14 @@ const materials = [
 
 const modules = [
   CoreModule,
-  TableModule,
 ];
 
 const libs = [
-  DateRangeFilterComponent,
   StoreModule.forFeature(contestAdminDetailsCommentsStateKey, contestAdminDetailsCommentsReducer),
   EffectsModule.forFeature([ContestAdminDetailsCommentsEffects]),
+
+  DateRangeFilterComponent,
+  TableComponent,
 ];
 
 @NgModule({

@@ -11,8 +11,8 @@ import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { AdminSettingsRoleRoutingModule } from './admin-settings-role-routing.module';
 import { AdminSettingsRoleFormComponent } from './components/form/admin-settings-role-form.component';
 import { AdminSettingsRoleOverviewComponent } from './components/overview/admin-settings-role-overview.component';
@@ -41,7 +41,6 @@ const materials = [
 const modules = [
   AdminSettingsRoleRoutingModule,
   CoreModule,
-  TableModule,
 ];
 
 const libs = [
@@ -53,6 +52,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

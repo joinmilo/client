@@ -9,13 +9,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { TablePaginatorComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
 import { EventFilterModule } from 'src/app/shared/filter/event/event-filter.module';
 import { OrganisationFilterModule } from 'src/app/shared/filter/organisation/organisation-filter.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalMapOverviewFilterComponent } from './components/filter/portal-map-overview-filter.component';
 import { PortalMapOverviewListComponent } from './components/list/portal-map-overview-list.component';
 import { PortalMapOverviewComponent } from './components/portal-map-overview.component';
@@ -55,12 +55,12 @@ const modules = [
   MapModule,
   OrganisationFilterModule,
   PortalMapOverviewRoutingModule,
-  TableModule,
 ];
 
 const libs = [
   IconComponent,
   RadioButtonGroupComponent,
+  TablePaginatorComponent
 ];
 
 @NgModule({

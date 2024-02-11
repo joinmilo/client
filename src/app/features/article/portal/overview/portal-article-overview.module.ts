@@ -6,12 +6,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticleFilterModule } from 'src/app/shared/filter/article/article-filter.module';
 import { NoDataComponent } from 'src/app/shared/layout/no-data/no-data.component';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { PortalArticleOverviewCategoryComponent } from './components/category/portal-article-overview-category.component';
 import { PortalArticleOverviewComponent } from './components/portal-article-overview.component';
 import { PortalArticleOverviewTableComponent } from './components/table/portal-article-overview-table.component';
@@ -42,7 +42,6 @@ const modules = [
   CardSliderComponent,
   NoDataComponent,
   PortalArticleOverviewRoutingModule,
-  TableModule,
 ];
 
 const libs = [
@@ -51,6 +50,7 @@ const libs = [
 
   RadioButtonGroupComponent,
   PageTitleComponent,
+  TableComponent,
 ];
 
 @NgModule({

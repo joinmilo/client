@@ -8,6 +8,9 @@
   appLabel="createTargetGroup">
 </button>
 
-<app-table [data]="targetGroups" [actions]="actions" [columns]="columns"
+<cin-table
+  [data]="targetGroups"
+  [actions]="actions"
+  [columns]="columns"
   (sortPaginate)="updateParams($event)">
-</app-table>
+</cin-table>
