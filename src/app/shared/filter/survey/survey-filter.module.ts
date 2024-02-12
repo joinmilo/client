@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DateRangeFilterComponent } from 'ngx-cinlib/filters/date-range';
 import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { SurveyFilterPastComponent } from './components/past/survey-filter-past.component';
@@ -40,10 +41,12 @@ const modules = [
 ];
 
 const libs = [
-  DateRangeFilterComponent,
-  FilterAreaComponent,
   StoreModule.forFeature(surveyFilterStateKey, surveyFilterReducer),
   EffectsModule.forFeature([SurveyFilterEffects]),
+
+  DateRangeFilterComponent,
+  FilterAreaComponent,
+  I18nDirective,
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@
   <cin-form-step titleLabel="content" [formGroup]="contentForm">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="category"></mat-label>
+        <mat-label i18nLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
           <mat-option [value]="category.id" *ngFor="let category of categories | async">
             {{category | translatable: "name" | async}}

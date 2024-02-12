@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { MediaElementComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
 import { ArticleEmbeddingModule } from 'src/app/features/article/embedding/article-embedding.module';
@@ -43,9 +44,11 @@ const framework = [
 ];
 
 const libs = [
+  I18nDirective,
   MediaElementComponent,
   MediaSliderComponent,
   MediaTitleComponent,
+  TranslatablePipe,
 ];
 
 const materials = [

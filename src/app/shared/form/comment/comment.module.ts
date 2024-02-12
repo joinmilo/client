@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { DetailsTitleComponent, PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaAvatarComponent } from 'ngx-cinlib/media/elements';
@@ -49,6 +50,7 @@ const libs = [
   DatePieceComponent,
   DetailsTitleComponent,
   IconComponent,
+  I18nDirective,
   MediaAvatarComponent,
   PageTitleComponent,
 ];

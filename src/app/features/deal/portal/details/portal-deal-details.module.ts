@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
+import { TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
@@ -83,6 +84,7 @@ const libs = [
   MediaTitleComponent,
   PhonePieceComponent,
   ShareButtonComponent,
+  TranslatablePipe,
 ]
 
 @NgModule({

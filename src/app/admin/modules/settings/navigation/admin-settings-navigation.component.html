@@ -12,8 +12,8 @@
         [class.disabled]="child.comingSoon">
         <cin-icon *ngIf="child?.icon" [icon]="['fas', child!.icon!]" [size]="'xl'"></cin-icon>
         <article>
-          <strong [appLabel]="child.name"></strong>
-          <small [appLabel]="child.description"></small>
+          <strong [i18nLabel]="child.name"></strong>
+          <small [i18nLabel]="child.description"></small>
         </article>
       </mat-card>
     </nav>

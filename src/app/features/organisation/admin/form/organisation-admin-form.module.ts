@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaFormComponent } from 'ngx-cinlib/media/forms';
@@ -54,6 +55,7 @@ const libs = [
   FormStepperComponent,
   GridColumnDirective,
   GridRowComponent,
+  I18nDirective,
   MediaFormComponent,
   PageTitleComponent,
   RichtextEditorFormComponent,

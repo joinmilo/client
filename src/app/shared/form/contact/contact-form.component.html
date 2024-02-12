@@ -2,11 +2,11 @@
   <ng-container *ngIf="showContactOptions">
     <cin-grid-row *ngIf="contactOptions?.length" [columns]="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="importContact"></mat-label>
+        <mat-label i18nLabel="importContact"></mat-label>
         <mat-select formControlName="contactOptionLabel">
           <mat-option [value]="contactOption?.label" 
             *ngFor="let contactOption of contactOptions">
-            <span [appLabel]="contactOption?.label"></span>
+            <span [i18nLabel]="contactOption?.label"></span>
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -15,24 +15,24 @@
 
   <cin-grid-row columns="2">
     <mat-form-field appearance="outline">
-      <mat-label appLabel="name"></mat-label>
+      <mat-label i18nLabel="name"></mat-label>
       <input matInput formControlName="name">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label appLabel="email"></mat-label>
+      <mat-label i18nLabel="email"></mat-label>
       <input matInput formControlName="email">
     </mat-form-field>
   </cin-grid-row>
 
   <cin-grid-row columns="2">
     <mat-form-field appearance="outline">
-      <mat-label appLabel="phone"></mat-label>
+      <mat-label i18nLabel="phone"></mat-label>
       <input matInput formControlName="phone">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label appLabel="website"></mat-label>
+      <mat-label i18nLabel="website"></mat-label>
       <input matInput formControlName="website">
     </mat-form-field>
   </cin-grid-row>

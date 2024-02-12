@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { DetailsTitleComponent, PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
@@ -40,8 +41,10 @@ const libs = [
 
   DetailsTitleComponent,
   IconComponent,
+  I18nDirective,
   PageTitleComponent,
   RadioCardGroupComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

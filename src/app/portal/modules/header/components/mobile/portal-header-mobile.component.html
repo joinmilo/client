@@ -25,7 +25,7 @@
           <button mat-menu-item [routerLink]="['/', adminUrl]">
             <div class="admin-button">
               <cin-icon [icon]="['fas', 'gauge']"></cin-icon>
-              <span appLabel="toAdminArea"></span>
+              <span i18nLabel="toAdminArea"></span>
             </div>
           </button>
           <mat-divider></mat-divider>
@@ -37,10 +37,10 @@
 
         <section *ngIf="!currentUser?.id">          
           <button mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'register']">
-            <span appLabel="register"></span>
+            <span i18nLabel="register"></span>
           </button>
           <button mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'login']">
-            <span appLabel="login"></span>
+            <span i18nLabel="login"></span>
           </button>          
         </section>
 

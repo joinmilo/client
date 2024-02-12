@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { ReportEmbeddingComponent } from './component/report-embedding.component';
 import { reportEmbeddingStateKey } from './constants/report-embedding.constant';
@@ -37,9 +38,12 @@ const modules = [
 ];
 
 const libs = [
-  CaptchaModule,
   StoreModule.forFeature(reportEmbeddingStateKey, reportEmbeddingReducer),
   EffectsModule.forFeature([ReportEmbeddingEffects]),
+
+  CaptchaModule,
+  I18nDirective,
+  TranslatablePipe,
 ]
 
 @NgModule({

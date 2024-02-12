@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { ArticleEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { GuestArticleAdminOverviewActions } from '../state/guest-article-admin-overview.actions';
 import { selectOverviewData } from '../state/guest-article-admin-overview.selectors';
 

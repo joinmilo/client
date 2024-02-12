@@ -1,12 +1,12 @@
 <h1 mat-dialog-title
-  appLabel="privacy">
+  i18nLabel="privacy">
 </h1>
 <mat-dialog-content>
   <section>
     <cin-icon [icon]="['fas', 'cookie-bite']" [size]="'10x'"></cin-icon>
     <div>
-      <span appLabel="weUseCookies"></span>
-      <a class="link" [routerLink]="['/portal', (dataProtectionConfig | async)?.value]" appLabel="clickHereForDataProtection"></a>
+      <span i18nLabel="weUseCookies"></span>
+      <a class="link" [routerLink]="['/portal', (dataProtectionConfig | async)?.value]" i18nLabel="clickHereForDataProtection"></a>
     </div>
   </section>
 
@@ -15,22 +15,22 @@
       [checked]="true"
       [disabled]="true"
       color="primary">
-      <span appLabel="necessary"></span>
+      <span i18nLabel="necessary"></span>
     </mat-slide-toggle>
 
     <mat-slide-toggle formControlName="externalContent"
       color="primary">
-      <span appLabel="externalContent"></span>
+      <span i18nLabel="externalContent"></span>
     </mat-slide-toggle>
 
     <mat-slide-toggle formControlName="preferences"
       color="primary">
-      <span appLabel="preferences"></span>
+      <span i18nLabel="preferences"></span>
     </mat-slide-toggle>
 
     <mat-slide-toggle formControlName="statistics"
       color="primary">
-      <span appLabel="statistics"></span>
+      <span i18nLabel="statistics"></span>
     </mat-slide-toggle>
   </form>
 </mat-dialog-content>
@@ -39,27 +39,27 @@
   <button *ngIf="!activeSettings"
     mat-flat-button
     mat-dialog-close
-    appLabel="declineAllOptionalCookies"
+    i18nLabel="declineAllOptionalCookies"
     (click)="declineOptionalCookies()">
   </button>
 
   <button *ngIf="!activeSettings"
     mat-flat-button
-    appLabel="cookieSettings"
+    i18nLabel="cookieSettings"
     (click)="activeSettings = !activeSettings">
   </button>
 
   <button *ngIf="activeSettings"
     mat-dialog-close
     mat-flat-button
-    appLabel="acceptSelection"
+    i18nLabel="acceptSelection"
     (click)="acceptSelectedCookies()">
   </button>
 
   <button mat-raised-button
     mat-dialog-close
     color="primary"
-    appLabel="acceptAll"
+    i18nLabel="acceptAll"
     (click)="acceptAllCookies()">
   </button>
 </mat-dialog-actions>

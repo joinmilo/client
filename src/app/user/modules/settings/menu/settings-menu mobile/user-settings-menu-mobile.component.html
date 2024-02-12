@@ -10,19 +10,19 @@
         <mat-expansion-panel-header>
           <span>
             <cin-icon [icon]="['fas', 'bell']"></cin-icon>
-            <mat-panel-title appLabel="notifications"></mat-panel-title>
+            <mat-panel-title i18nLabel="notifications"></mat-panel-title>
           </span>
         </mat-expansion-panel-header>
         <section>
-          <button mat-button appLabel="emailNotifications"></button>
-          <button mat-button appLabel="pushNotifications"></button>
+          <button mat-button i18nLabel="emailNotifications"></button>
+          <button mat-button i18nLabel="pushNotifications"></button>
         </section>
       </mat-expansion-panel> -->
       <!-- <mat-expansion-panel (click)="$event.stopPropagation()">
         <mat-expansion-panel-header>
           <span>
             <cin-icon [icon]="['fas', 'lock']"></cin-icon>
-            <mat-panel-title appLabel="dataProtection"></mat-panel-title>
+            <mat-panel-title i18nLabel="dataProtection"></mat-panel-title>
           </span>
         </mat-expansion-panel-header>
       </mat-expansion-panel> -->
@@ -31,17 +31,17 @@
         <mat-expansion-panel-header>
           <span>
             <cin-icon [icon]="['fas', 'user']"></cin-icon>
-            <mat-panel-title appLabel="profileData"></mat-panel-title>
+            <mat-panel-title i18nLabel="profileData"></mat-panel-title>
           </span>
         </mat-expansion-panel-header>
         <section>
-          <button mat-button appLabel="personalData" [routerLink]="['/user/settings/personal-data'] || ['/user/settings']"
+          <button mat-button i18nLabel="personalData" [routerLink]="['/user/settings/personal-data'] || ['/user/settings']"
             routerLinkActive="menu-active">
           </button>
-          <button mat-button appLabel="changePassword" [routerLink]="['/user/settings/change-password']"
+          <button mat-button i18nLabel="changePassword" [routerLink]="['/user/settings/change-password']"
             routerLinkActive="menu-active">
           </button>
-          <button mat-button appLabel="deleteAccount" [routerLink]="['/user/settings/delete-account-reason']"
+          <button mat-button i18nLabel="deleteAccount" [routerLink]="['/user/settings/delete-account-reason']"
             routerLinkActive="menu-active">
           </button>
         </section>

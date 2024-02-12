@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
@@ -54,6 +55,7 @@ const libs = [
   StoreModule.forFeature(searchStateKey, searchReducer),
   EffectsModule.forFeature([SearchEffects]),
 
+  I18nDirective,
   PageTitleComponent,
 ]
 

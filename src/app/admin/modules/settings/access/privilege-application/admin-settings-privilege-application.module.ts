@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
@@ -51,6 +52,7 @@ const libs = [
   StoreModule.forFeature(adminSettingsPrivilegeApplicationStateKey, adminPrivilegeApplicationReducer),
   EffectsModule.forFeature([AdminSettingsPrivilegeApplicationEffects]),
 
+  I18nDirective,
   PageTitleComponent,
   TableComponent,
 ];

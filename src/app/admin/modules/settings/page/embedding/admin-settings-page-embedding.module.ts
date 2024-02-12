@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { DragDropContainerComponent, DragDropElementComponent } from 'ngx-cinlib/layouts/drag-drop';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { MediaFormComponent } from 'ngx-cinlib/media/forms';
@@ -57,8 +58,10 @@ const libs = [
   DragDropElementComponent,
   GridColumnDirective,
   GridRowComponent,
+  I18nDirective,
   MediaFormComponent,
   RichtextEditorFormComponent,
+  TranslatablePipe,
 ]
 
 @NgModule({

@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { SchedulerFormComponent } from 'ngx-cinlib/forms/scheduler';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaFormComponent } from 'ngx-cinlib/media/forms';
@@ -58,10 +59,12 @@ const libs = [
   FormStepComponent,
   GridRowComponent,
   GridColumnDirective,
+  I18nDirective,
   MediaFormComponent,
   PageTitleComponent,
   RichtextEditorFormComponent,
   SchedulerFormComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

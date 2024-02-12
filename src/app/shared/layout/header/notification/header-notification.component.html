@@ -9,15 +9,15 @@
 </button>
 <mat-menu #userNotification="matMenu">
   <div class="container">
-    <strong class="padding" appLabel="notifications"></strong>
+    <strong class="padding" i18nLabel="notifications"></strong>
     <section>
-      <span class="padding" appLabel="comingSoon"></span>
+      <span class="padding" i18nLabel="comingSoon"></span>
       <img [src]="images.path">
     </section>
     <!-- <mat-divider></mat-divider>
     TODO: Save Notifications
     <button mat-button class="padding align-end">
-      <small appLabel="markAsRead"></small>
+      <small i18nLabel="markAsRead"></small>
     </button>
     <section>
       <ng-container *ngFor="let notification of notifications">
@@ -30,10 +30,10 @@
       </ng-container>
     </section>
     <section *ngIf="!notifications?.length" class="center">
-      <small appLabel="noNewNotifications"></small>
+      <small i18nLabel="noNewNotifications"></small>
     </section>
     <mat-divider></mat-divider>
     <a class="padding" [routerLink]="['/', portalUrl, 'notifications']"
-      appLabel="allNotifications" suffix="»"></a> -->
+      i18nLabel="allNotifications" suffix="»"></a> -->
   </div>
 </mat-menu>

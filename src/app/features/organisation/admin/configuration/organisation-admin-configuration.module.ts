@@ -9,6 +9,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
@@ -48,7 +49,9 @@ const libs = [
   FormStepperComponent,
   GridColumnDirective,
   GridRowComponent,
+  I18nDirective,
   PageTitleComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

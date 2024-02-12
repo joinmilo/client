@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { FooterAppStoreComponent } from 'src/app/shared/layout/footer/appstore/footer-appstore.component';
 import { AdminFooterComponent } from './component/admin-footer.component';
@@ -30,6 +31,9 @@ const modules = [
 const libs = [
   StoreModule.forFeature(adminFooterStateKey, adminFooterReducer),
   EffectsModule.forFeature([AdminFooterEffects]),
+
+  I18nDirective,
+  TranslatablePipe,
 ];
 
 @NgModule({

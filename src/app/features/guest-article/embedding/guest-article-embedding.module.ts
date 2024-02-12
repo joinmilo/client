@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { SubTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardSliderComponent } from 'src/app/shared/widgets/sliders/card-slider/card-slider.component';
@@ -36,6 +37,7 @@ const libs = [
   StoreModule.forFeature(guestArticleEmbeddingStateKey, articleEmbeddingReducer),
   EffectsModule.forFeature([GuestArticleEmbeddingEffects]),
 
+  I18nDirective,
   SubTitleComponent,
 ]
 

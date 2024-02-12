@@ -8,17 +8,17 @@
 
   <ng-container *ngIf="currentUserAttendee; else attendSection">
     <i *ngIf="currentUserAttendee?.approved"
-      appLabel="youAttendToThisEvent">
+      i18nLabel="youAttendToThisEvent">
     </i>
 
     <i *ngIf="!currentUserAttendee?.approved"
-      appLabel="yourRegistrationIsInProcess">
+      i18nLabel="yourRegistrationIsInProcess">
     </i>
 
     <button mat-flat-button color="primary" (click)="cancel()">
       <span>
         <cin-icon [icon]="['fas', 'right-from-bracket']"></cin-icon>
-        <span appLabel="deRegister"></span>
+        <span i18nLabel="deRegister"></span>
       </span>
     </button>
   </ng-container>
@@ -30,12 +30,12 @@
       mat-flat-button color="primary" (click)="attend()">
       <span>
         <cin-icon [icon]="['fas', 'right-from-bracket']"></cin-icon>
-        <span appLabel="attend"></span>
+        <span i18nLabel="attend"></span>
       </span>
     </button>
 
     <ng-template #fullyBooked>
-      <i appLabel="unfortunatelyEventFullyBooked"></i>
+      <i i18nLabel="unfortunatelyEventFullyBooked"></i>
     </ng-template>
   </ng-template>
 

@@ -6,7 +6,7 @@
   <cin-form-step titleLabel="configuration" [formGroup]="form">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="whichRoleForMembers"></mat-label>
+        <mat-label i18nLabel="whichRoleForMembers"></mat-label>
         <mat-select formControlName="memberRole">
           <mat-option [value]="role.id"
             *ngFor="let role of roles | async">
@@ -17,7 +17,7 @@
     </cin-grid-row>
     <cin-grid-row columns="2">
       <mat-slide-toggle formControlName="approvalRequired" color="primary">
-        <span appLabel="approvalRequired"></span>
+        <span i18nLabel="approvalRequired"></span>
       </mat-slide-toggle>
     </cin-grid-row>
   </cin-form-step>

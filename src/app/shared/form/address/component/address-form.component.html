@@ -1,27 +1,27 @@
 <form [formGroup]="form">
   <cin-grid-row columns="8">
     <mat-form-field appearance="outline" [cinAssignColumns]="6">
-      <mat-label appLabel="street"></mat-label>
+      <mat-label i18nLabel="street"></mat-label>
       <input matInput formControlName="street">
     </mat-form-field>
   
     <mat-form-field appearance="outline" [cinAssignColumns]="2">
-      <mat-label appLabel="nr"></mat-label>
+      <mat-label i18nLabel="nr"></mat-label>
       <input matInput formControlName="houseNumber">
     </mat-form-field>
   </cin-grid-row>
 
   <cin-grid-row columns="2">
     <mat-form-field appearance="outline">
-      <mat-label appLabel="place"></mat-label>
+      <mat-label i18nLabel="place"></mat-label>
       <input matInput formControlName="place">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label appLabel="suburb"></mat-label>
+      <mat-label i18nLabel="suburb"></mat-label>
       <mat-select formControlName="suburb">
         <mat-option [value]="">
-          <span appLabel="keine Angabe"></span>
+          <span i18nLabel="keine Angabe"></span>
         </mat-option>
         <mat-option [value]="suburb.id" *ngFor="let suburb of suburbs | async">
           <span>{{ suburb.name }}</span>
@@ -32,7 +32,7 @@
 
   <mat-error *ngIf="form.errors">
     <ng-container *ngFor="let error of form.errors | keyvalue">
-      <span [appLabel]="error.key"></span>
+      <span [i18nLabel]="error.key"></span>
     </ng-container>
   </mat-error>
 </form>

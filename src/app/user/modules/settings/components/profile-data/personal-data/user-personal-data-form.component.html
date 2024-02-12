@@ -8,22 +8,22 @@
         <cin-form-step [formGroup]="userForm" titleLabel="content">
           <cin-grid-row columns="2">
             <mat-form-field appearance="outline">
-              <mat-label appLabel="firstName"></mat-label>
+              <mat-label i18nLabel="firstName"></mat-label>
               <input matInput formControlName="firstName" />
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label appLabel="lastName"></mat-label>
+              <mat-label i18nLabel="lastName"></mat-label>
               <input matInput formControlName="lastName" />
             </mat-form-field>
           </cin-grid-row>
 
           <cin-grid-row columns="2">
             <mat-form-field appearance="outline">
-              <mat-label appLabel="email"></mat-label>
+              <mat-label i18nLabel="email"></mat-label>
               <input matInput formControlName="email" />
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label appLabel="phone"></mat-label>
+              <mat-label i18nLabel="phone"></mat-label>
               <input matInput formControlName="phone" />
             </mat-form-field>
           </cin-grid-row>
@@ -51,7 +51,7 @@
           titleLabel="additionalInfo">
           <cin-grid-row columns="1">
             <mat-form-field appearance="outline">
-              <mat-label appLabel="shortDescription"></mat-label>
+              <mat-label i18nLabel="shortDescription"></mat-label>
               <textarea formControlName="description" rows="5" matInput>
               </textarea>
             </mat-form-field>
@@ -59,7 +59,7 @@
 
           <cin-grid-row columns="2">
             <mat-form-field appearance="outline">
-              <mat-label appLabel="language"></mat-label>
+              <mat-label i18nLabel="language"></mat-label>
               <mat-select
                 formControlName="languageId">
                 <mat-option

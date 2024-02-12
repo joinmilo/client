@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { TooltipDirective } from 'ngx-cinlib/tooltip';
 import { Subject, take, takeUntil } from 'rxjs';
@@ -18,9 +19,10 @@ import { ContentData, ContentEntity } from 'src/app/core/typings/content-entity'
   imports: [
     CommonModule,
     CoreModule,
-    TooltipDirective,
     IconComponent,
+    I18nDirective,
     MatButtonModule,
+    TooltipDirective,
   ]
 })
 export class FavoriteComponent implements OnChanges, OnDestroy {

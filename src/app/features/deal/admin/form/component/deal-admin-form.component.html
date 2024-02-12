@@ -6,14 +6,14 @@
   <cin-form-step titleLabel="content" [formGroup]="contentForm">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="name"></mat-label>
+        <mat-label i18nLabel="name"></mat-label>
         <input matInput formControlName="name" />
       </mat-form-field>
     </cin-grid-row>
 
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="category"></mat-label>
+        <mat-label i18nLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
           <mat-option
             [value]="category.id"
@@ -58,7 +58,7 @@
     [formGroup]="shortDescriptionForm">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="shortDescription"></mat-label>
+        <mat-label i18nLabel="shortDescription"></mat-label>
         <textarea matInput formControlName="shortDescription" rows="5">
         </textarea>
       </mat-form-field>
@@ -72,27 +72,27 @@
           color="primary"
           value="offer"
           [checked]="this.additionalInfoForm.value.selectedType === 'offer'">
-          <span appLabel="offer"></span>
+          <span i18nLabel="offer"></span>
         </mat-radio-button>
         <mat-radio-button
           color="primary"
           value="request"
           [checked]="this.additionalInfoForm.value.selectedType === 'request'">
-          <span appLabel="request"></span>
+          <span i18nLabel="request"></span>
         </mat-radio-button>
       </mat-radio-group>
     </cin-grid-row>
 
     <cin-grid-row columns="8">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="price"></mat-label>
+        <mat-label i18nLabel="price"></mat-label>
         <input formControlName="price" matInput placeholder="&euro;" />
       </mat-form-field>
     </cin-grid-row>
 
     <cin-grid-row>
       <div>
-        <span appLabel="dealIsPublic"></span>
+        <span i18nLabel="dealIsPublic"></span>
         <mat-slide-toggle color="primary" formControlName="isPublic">
         </mat-slide-toggle>
       </div>

@@ -7,7 +7,7 @@
 </button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item *ngFor="let child of item?.childs"
-    [appLabel]="child.name"
+    [i18nLabel]="child.name"
     [routerLink]="menuService.createRouterLink(child)"
     routerLinkActive="menu-active">
   </button>

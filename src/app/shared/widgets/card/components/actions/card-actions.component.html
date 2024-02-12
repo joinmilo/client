@@ -9,7 +9,7 @@
       <button mat-menu-item (click)="actionClicked.emit(action)">
         <div class="action-button">
           <cin-icon [icon]="['fas', action.icon ]"></cin-icon>
-          <span [appLabel]="action.label"></span>
+          <span [i18nLabel]="action.label"></span>
         </div>
       </button>
     </ng-container>

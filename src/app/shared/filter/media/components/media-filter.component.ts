@@ -1,8 +1,8 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { collapse } from 'ngx-cinlib/core';
 import { Subject, debounceTime, filter, take, takeUntil } from 'rxjs';
-import { collapse } from 'src/app/core/animations/animations';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 import { MediaFilterQueryParams } from 'src/app/core/typings/filter-params/media-filter-param';
 import { MediaFilterActions } from '../state/media-filter.actions';

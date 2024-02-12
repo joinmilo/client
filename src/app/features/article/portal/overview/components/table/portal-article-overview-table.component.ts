@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction, SortPaginate } from 'ngx-cinlib/tables';
 import { ArticleEntity, Maybe } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { likeAction, shareAction } from 'src/app/core/utils/table.utils';
 import { selectOverviewData } from '../../state/portal-article-overview.selectors';
 

@@ -4,15 +4,15 @@
   </button>
 </mat-dialog-actions>
 
-<h1 class="mat-headline-6" appLabel="addFriends"></h1>
+<h1 class="mat-headline-6" i18nLabel="addFriends"></h1>
 
 <mat-dialog-content>
-  <p appLabel="findYourFriends"></p>
-  <p appLabel="showFriendsAtEvents"></p>
+  <p i18nLabel="findYourFriends"></p>
+  <p i18nLabel="showFriendsAtEvents"></p>
 </mat-dialog-content>
 
 <mat-form-field appearance="outline">
-  <mat-label appLabel="search"></mat-label>
+  <mat-label i18nLabel="search"></mat-label>
   <input matInput type="text" [(ngModel)]="value" (input)="filterUsers(value)">
   <button *ngIf="!value" matSuffix mat-icon-button>
     <cin-icon [icon]="['fas', 'magnifying-glass']"></cin-icon>
@@ -40,7 +40,7 @@
   <button mat-flat-button color="primary" (click)="sendFriendRequest()">
     <section>
       <cin-icon [icon]="['fas', 'user-plus']"></cin-icon>
-      <span appLabel="sendFriendRequest"></span>
+      <span i18nLabel="sendFriendRequest"></span>
     </section>
   </button>
 </mat-dialog-actions>

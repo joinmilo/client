@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
+import { TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { PortalMenuAccordionComponent } from './components/accordion/portal-menu-accordion.component';
@@ -29,6 +30,7 @@ const modules = [
 
 const libs = [
   IconComponent,
+  TranslatablePipe,
 ]
 
 @NgModule({

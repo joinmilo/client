@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { MediaFormComponent } from 'ngx-cinlib/media/forms';
@@ -74,6 +75,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconComponent,
+  I18nDirective,
   MediaFormComponent,
   RichtextEditorFormComponent,
 ];

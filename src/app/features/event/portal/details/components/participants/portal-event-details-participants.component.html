@@ -9,7 +9,7 @@
       <button mat-stroked-button color="primary" (click)="showAllFriends()">
         <span>
           <cin-icon [icon]="['fas', 'users']"></cin-icon>
-          <span appLabel="showAllFriends"></span>
+          <span i18nLabel="showAllFriends"></span>
         </span>
       </button>
     </section>
@@ -18,13 +18,13 @@
         (click)="inviteFriends()">
         <span>
           <cin-icon [icon]="['fas', 'user-plus']"></cin-icon>
-          <span appLabel="inviteFriends"></span>
+          <span i18nLabel="inviteFriends"></span>
         </span>
       </button>
       <button mat-flat-button color="primary" *ngIf="!((currentUser | async)?.id)" (click)="requireLogin()">
         <span>
           <cin-icon [icon]="['fas', 'user-plus']"></cin-icon>
-          <span appLabel="inviteFriends"></span>
+          <span i18nLabel="inviteFriends"></span>
         </span>
       </button>
     </section>

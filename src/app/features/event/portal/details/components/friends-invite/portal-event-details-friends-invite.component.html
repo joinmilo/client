@@ -1,7 +1,7 @@
-<h1 mat-dialog-title appLabel="inviteFriends"></h1>
+<h1 mat-dialog-title i18nLabel="inviteFriends"></h1>
 <mat-dialog-content>
   <mat-form-field appearance="outline">
-    <mat-label appLabel="search"></mat-label>
+    <mat-label i18nLabel="search"></mat-label>
     <input matInput type="text" [(ngModel)]="value" (input)="filterFriends(value)">
     <button *ngIf="!value" matSuffix mat-icon-button>
       <cin-icon [icon]="['fas', 'magnifying-glass']"></cin-icon>
@@ -14,7 +14,7 @@
   <div>
     <label>
       <span>
-        <span appLabel="friends"></span>
+        <span i18nLabel="friends"></span>
         ({{ filteredFriends.length }})
       </span>
       <mat-checkbox [checked]="friends.length === selectedFriends.length"
@@ -37,6 +37,6 @@
   <mat-divider></mat-divider>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close appLabel="cancel"></button>
-  <button mat-button mat-dialog-close appLabel="send" (click)="sendNotification()"></button>
+  <button mat-button mat-dialog-close i18nLabel="cancel"></button>
+  <button mat-button mat-dialog-close i18nLabel="send" (click)="sendNotification()"></button>
 </mat-dialog-actions>

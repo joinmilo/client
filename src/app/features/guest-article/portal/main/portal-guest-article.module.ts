@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { RichtextEditorFormComponent } from 'ngx-cinlib/forms/richtext';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
@@ -59,6 +60,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconComponent,
+  I18nDirective,
   PageTitleComponent,
   RichtextEditorFormComponent,
 ]

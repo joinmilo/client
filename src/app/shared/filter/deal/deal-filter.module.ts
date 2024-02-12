@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { DealFilterCategoryComponent } from './components/category/deal-filter-category.component';
@@ -47,12 +48,15 @@ const modules = [
   CoreModule,
   SuburbFilterModule,
 
-  FilterAreaComponent,
 ];
 
 const libs = [
   StoreModule.forFeature(dealFilterStateKey, dealFilterReducer),
   EffectsModule.forFeature([DealFilterEffects]),
+
+  FilterAreaComponent,
+  I18nDirective,
+  TranslatablePipe,
 ];
 
 @NgModule({

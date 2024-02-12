@@ -25,7 +25,7 @@
 
 <div class="label-section">
   <span class="mat-subtitle-1">{{ratings?.sum ?? 0}}</span>
-  <span class="mat-subtitle-1" [appLabel]="(ratings?.sum) !== 1 ? 'ratings' : 'rating'"></span>
+  <span class="mat-subtitle-1" [i18nLabel]="(ratings?.sum) !== 1 ? 'ratings' : 'rating'"></span>
 </div>
 
 <div *ngIf="ratings?.series"

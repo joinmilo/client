@@ -3,63 +3,63 @@
 
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="whatIsYourName"></span>
+        <span i18nLabel="whatIsYourName"></span>
       </ng-template>
       <div>
         <mat-form-field appearance="outline">
-          <mat-label appLabel="firstName"></mat-label>
+          <mat-label i18nLabel="firstName"></mat-label>
           <input matInput formControlName="firstName" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label appLabel="lastName"></mat-label>
+          <mat-label i18nLabel="lastName"></mat-label>
           <input matInput formControlName="lastName" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label appLabel="phone"></mat-label>
+          <mat-label i18nLabel="phone"></mat-label>
           <input matInput formControlName="phone">
         </mat-form-field>
       </div>
       <div>
-        <button mat-button matStepperNext appLabel="continue"></button>
+        <button mat-button matStepperNext i18nLabel="continue"></button>
       </div>
     </mat-step>
 
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="addAProfilePicture"></span>
+        <span i18nLabel="addAProfilePicture"></span>
       </ng-template>
       <cin-media-form formControlName="uploads" class="content-full-width" [maxFiles]="1" (uploads)="addUploads($event)"></cin-media-form>
         <div>
-          <button mat-button matStepperPrevious appLabel="previous"></button>
-          <button mat-button matStepperNext appLabel="continue"></button>
+          <button mat-button matStepperPrevious i18nLabel="previous"></button>
+          <button mat-button matStepperNext i18nLabel="continue"></button>
         </div>
     </mat-step>
 
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="applyToBeABlogger"></span>
+        <span i18nLabel="applyToBeABlogger"></span>
       </ng-template>
       <section>
-        <span appLabel="iApplyAsABlogger"></span>
+        <span i18nLabel="iApplyAsABlogger"></span>
         <mat-slide-toggle formControlName="author" color="primary"></mat-slide-toggle>
       </section>
       <mat-form-field class="content-full-width" appearance="outline">
-        <mat-label appLabel="writeSomethingAboutYou"></mat-label>
+        <mat-label i18nLabel="writeSomethingAboutYou"></mat-label>
         <textarea formControlName="content" matInput rows="5"></textarea>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious appLabel="previous"></button>
-        <button mat-button matStepperNext appLabel="continue"></button>
+        <button mat-button matStepperPrevious i18nLabel="previous"></button>
+        <button mat-button matStepperNext i18nLabel="continue"></button>
       </div>
     </mat-step>
 
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="joinAnOrganisation"></span>
+        <span i18nLabel="joinAnOrganisation"></span>
       </ng-template>
       <div>
         <mat-form-field class="content-full-width" appearance="outline">
-          <mat-label appLabel="organisations"></mat-label>
+          <mat-label i18nLabel="organisations"></mat-label>
           <mat-select formControlName="organisations" multiple>
             <mat-option *ngFor="let organisation of (organisations | async)" [value]="organisation">
               {{ organisation.name }}
@@ -68,18 +68,18 @@
         </mat-form-field>
       </div>
       <div>
-        <button mat-button matStepperPrevious appLabel="previous"></button>
-        <button mat-button matStepperNext appLabel="continue"></button>
+        <button mat-button matStepperPrevious i18nLabel="previous"></button>
+        <button mat-button matStepperNext i18nLabel="continue"></button>
       </div>
     </mat-step>
 
     <mat-step [stepControl]="form" [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="language"></span>
+        <span i18nLabel="language"></span>
       </ng-template>
       <div>
         <mat-form-field class="content-full-width" appearance="outline">
-          <mat-label appLabel="language"></mat-label>
+          <mat-label i18nLabel="language"></mat-label>
           <mat-select formControlName="languageId">
             <mat-option 
               [value]="language.id" 
@@ -90,18 +90,18 @@
         </mat-form-field>
       </div>
       <div>
-        <button mat-button matStepperPrevious appLabel="previous"></button>
-        <button mat-button matStepperNext appLabel="continue"></button>
+        <button mat-button matStepperPrevious i18nLabel="previous"></button>
+        <button mat-button matStepperNext i18nLabel="continue"></button>
       </div>
     </mat-step>
 
     <mat-step [completed]="false">
       <ng-template matStepLabel>
-        <span appLabel="done"></span>
+        <span i18nLabel="done"></span>
       </ng-template>
       <div>
-        <button mat-button matStepperPrevious appLabel="previous"></button>
-        <button mat-button [routerLink]="['/']" appLabel="save" (click)="saveData()"></button>
+        <button mat-button matStepperPrevious i18nLabel="previous"></button>
+        <button mat-button [routerLink]="['/']" i18nLabel="save" (click)="saveData()"></button>
       </div>
     </mat-step>
 

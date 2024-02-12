@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaAvatarComponent, MediaGalleryComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
@@ -76,11 +77,13 @@ const libs = [
   CategoryPieceComponent,
   DetailsTitleComponent,
   DatePieceComponent,
+  I18nDirective,
   MediaAvatarComponent,
   MediaGalleryComponent,
   MediaSliderComponent,
   MediaTitleComponent,
   ShareButtonComponent,
+  TranslatablePipe,
 ]
 
 @NgModule({

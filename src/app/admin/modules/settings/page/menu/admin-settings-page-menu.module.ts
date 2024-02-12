@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent, IconFormComponent } from 'ngx-cinlib/icons';
 import { DragDropContainerComponent, DragDropElementComponent } from 'ngx-cinlib/layouts/drag-drop';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
@@ -58,6 +59,8 @@ const libs = [
   GridRowComponent,
   IconComponent,
   IconFormComponent,
+  I18nDirective,
+  TranslatablePipe,
 ]
 
 @NgModule({

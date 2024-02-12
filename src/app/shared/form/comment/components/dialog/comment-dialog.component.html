@@ -1,14 +1,14 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-dialog-content>
-    <p class="mat-subtitle-1" appLabel="addAComment"></p>
+    <p class="mat-subtitle-1" i18nLabel="addAComment"></p>
     <mat-form-field appearance="outline">
-      <mat-label appLabel="feedbackComment"></mat-label>
+      <mat-label i18nLabel="feedbackComment"></mat-label>
       <textarea matInput formControlName="content" rows="5" cols="50"></textarea>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-flat-button mat-dialog-close appLabel="cancel"></button>
+    <button mat-flat-button mat-dialog-close i18nLabel="cancel"></button>
     <button color="primary" mat-flat-button mat-dialog-close type="submit" [disabled]="form.invalid"
-      appLabel="send"></button>
+      i18nLabel="send"></button>
   </mat-dialog-actions>
 </form>

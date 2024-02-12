@@ -1,7 +1,7 @@
 import { Component, HostListener, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { fadeInAnimation, growOnSidesAnimation } from 'ngx-cinlib/core';
 import { Subject, takeUntil } from 'rxjs';
-import { fadeInAnimation, growOnSidesAnimation } from 'src/app/core/animations/animations';
 import { SearchActions } from '../state/search.actions';
 import { selectIsSearching } from '../state/search.selectors';
 

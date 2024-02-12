@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { Subject, takeUntil } from 'rxjs';
 import { CoreModule } from 'src/app/core/core.module';
 
@@ -20,10 +21,9 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     CoreModule,
-
-    ReactiveFormsModule,
-
+    I18nDirective,
     MatSlideToggleModule,
+    ReactiveFormsModule,
   ]
 })
 export class PrivacyPolicyFormComponent implements ControlValueAccessor, OnDestroy {

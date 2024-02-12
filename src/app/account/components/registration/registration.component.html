@@ -1,10 +1,10 @@
 <div class="main">
   <form class="border-box" [formGroup]="form" #formDirective="ngForm">
   
-    <h2 class="mat-headline-5" appLabel="register"></h2>
+    <h2 class="mat-headline-5" i18nLabel="register"></h2>
   
     <mat-form-field appearance="outline">
-      <mat-label appLabel="email"></mat-label>
+      <mat-label i18nLabel="email"></mat-label>
       <input matInput formControlName="email" placeholder="m.mustermann@example.com">
     </mat-form-field>
 
@@ -18,12 +18,12 @@
   
     <section>
       <small>
-        <span appLabel="haveAcc?" suffix="&nbsp;"></span>
-        <a class="link" [routerLink]="['../login']" appLabel="login"></a>
+        <span i18nLabel="haveAcc?" suffix="&nbsp;"></span>
+        <a class="link" [routerLink]="['../login']" i18nLabel="login"></a>
       </small>
       <small>
-        <span appLabel="noVerification?" suffix="&nbsp;"></span>
-        <a class="link" [routerLink]="['../verification']" appLabel="sendNewMail"></a>
+        <span i18nLabel="noVerification?" suffix="&nbsp;"></span>
+        <a class="link" [routerLink]="['../verification']" i18nLabel="sendNewMail"></a>
       </small>
     </section>
 

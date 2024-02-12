@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, Maybe, OrganisationEntity } from 'src/app/core/api/generated/schema';
 
-import { TranslationService } from 'src/app/core/services/translation.service';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { OrganisationAdminApprovalOverviewActions } from '../state/organisation-admin-approval-overview.actions';
 import { selectOverviewData } from '../state/organisation-admin-approval-overview.selectors';
 

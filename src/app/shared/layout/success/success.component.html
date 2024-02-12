@@ -1,14 +1,14 @@
 <div class="border-box">
   <section>
-    <h2 class="mat-headline-6" *ngIf="titleLabel" [appLabel]="titleLabel"></h2>
+    <h2 class="mat-headline-6" *ngIf="titleLabel" [i18nLabel]="titleLabel"></h2>
     <cin-icon [icon]="['far', 'circle-check']" [size]="'4x'"></cin-icon>
 
     <ng-container *ngFor="let text of texts; let last = last">
-      <p [appLabel]="text"></p>
+      <p [i18nLabel]="text"></p>
       <mat-divider *ngIf="!last"></mat-divider>
     </ng-container>
 
-    <button mat-flat-button [appLabel]="buttonLabel" color="primary" [routerLink]="link"></button>
+    <button mat-flat-button [i18nLabel]="buttonLabel" color="primary" [routerLink]="link"></button>
   </section>
 
   <img src="assets/success.svg">

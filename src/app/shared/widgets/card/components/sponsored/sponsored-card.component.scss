@@ -1,4 +1,4 @@
-@import 'src/styles/mixins.scss';
+@import 'ngx-cinlib/styles/mobile-mixins.scss';
 
 @include responsive(phone) {
   app-sponsored-desktop-card {

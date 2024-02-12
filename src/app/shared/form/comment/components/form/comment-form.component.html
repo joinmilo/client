@@ -4,12 +4,12 @@
   [comment]="comment">
 </app-comment-entry>
 
-<span *ngIf="!comment?.id" appLabel="noCommentsYet"></span>
+<span *ngIf="!comment?.id" i18nLabel="noCommentsYet"></span>
 
 <section>
-  <a appLabel="writeComment" suffix="»" (click)="openDialog()"></a>
+  <a i18nLabel="writeComment" suffix="»" (click)="openDialog()"></a>
   <a *ngIf="comment?.id"
     (click)="routeOverview()"
     [routerLink]="['./comments']"
-    appLabel="allComments" suffix="»"></a>
+    i18nLabel="allComments" suffix="»"></a>
 </section>

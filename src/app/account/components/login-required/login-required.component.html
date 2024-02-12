@@ -1,32 +1,32 @@
 <div class="main">
   <form class="border-box" [formGroup]="form" #formDirective="ngForm" (ngSubmit)="onSubmit()">
   
-    <h2 class="mat-headline-5" appLabel="loginForThisFeature"></h2>
-    <p appLabel="loginRequiredText"></p>
+    <h2 class="mat-headline-5" i18nLabel="loginForThisFeature"></h2>
+    <p i18nLabel="loginRequiredText"></p>
   
     <mat-form-field appearance="outline">
-      <mat-label appLabel="email"></mat-label>
+      <mat-label i18nLabel="email"></mat-label>
       <input matInput formControlName="email" placeholder="email@example.com">
     </mat-form-field>
     
     <cin-password-field formControlName="password"></cin-password-field>
     
     <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
-      <span appLabel="login"></span>
+      <span i18nLabel="login"></span>
     </button>
 
     <button mat-stroked-button color="primary" (click)="back()">
-      <span appLabel="backToPage"></span>
+      <span i18nLabel="backToPage"></span>
     </button>
   
     <section>
       <small>
-        <span appLabel="notRegistered?" suffix="&nbsp;"></span>
-        <a class="link" [routerLink]="['../register']" appLabel="register"></a>
+        <span i18nLabel="notRegistered?" suffix="&nbsp;"></span>
+        <a class="link" [routerLink]="['../register']" i18nLabel="register"></a>
       </small>
       <small>
-        <span appLabel="forgotpassword?" suffix="&nbsp;"></span>
-        <a class="link" [routerLink]="['../password']" appLabel="resetPassword"></a>
+        <span i18nLabel="forgotpassword?" suffix="&nbsp;"></span>
+        <a class="link" [routerLink]="['../password']" i18nLabel="resetPassword"></a>
       </small>
     </section>
 

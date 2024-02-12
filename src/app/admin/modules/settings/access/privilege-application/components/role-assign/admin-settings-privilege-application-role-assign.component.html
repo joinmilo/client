@@ -1,11 +1,11 @@
 <div>
-  <h2 mat-dialog-title appLabel="assignRole"></h2>
+  <h2 mat-dialog-title i18nLabel="assignRole"></h2>
   <mat-dialog-content [formGroup]="form">
     <section *ngIf="(roles | async)?.length !== 0">
       <strong>{{ application.user?.firstName }} {{ application.user?.lastName }}</strong>
       <span>{{ application.content }}</span>
       <mat-form-field appearance="outline">
-        <mat-label appLabel="role"></mat-label>
+        <mat-label i18nLabel="role"></mat-label>
         <mat-select required="roleId" formControlName="roleId">
           <mat-option [value]="role.id" *ngFor="let role of roles | async">
             <span>{{ role.name }}</span>
@@ -14,10 +14,10 @@
       </mat-form-field>
     </section>
     <section *ngIf="(roles | async)?.length === 0">
-      <strong appLabel="noSuitableRoleFound"></strong>
+      <strong i18nLabel="noSuitableRoleFound"></strong>
       <button 
         mat-flat-button 
-        appLabel="createNewRole" 
+        i18nLabel="createNewRole" 
         color="primary" 
         [routerLink]="['/admin/settings/access/role/form']"
         [mat-dialog-close]="true">
@@ -28,12 +28,12 @@
     <button 
       mat-button 
       mat-dialog-close 
-      appLabel="cancel">
+      i18nLabel="cancel">
     </button>
     <button
       [disabled]="(form.invalid)" 
       mat-button [mat-dialog-close]="true" 
-      appLabel="save"
+      i18nLabel="save"
       (click)="saved()">
     </button>
   </mat-dialog-actions>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, PluginEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { AdminSettingsPluginActions } from '../state/admin-settings-plugin.actions';
 import { selectPlugins } from '../state/admin-settings-plugin.selectors';
 
@@ -34,7 +34,7 @@ export class AdminSettingsPluginComponent {
     {
       field: 'released',
       label: 'released',
-      value: row => this.translationService.label(row.released ? 'yes' : 'comingSoon'),
+      value: row => this.translationService.getLabel(row.released ? 'yes' : 'comingSoon'),
       sort: true
     },
     {

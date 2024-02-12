@@ -5,6 +5,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
+import { TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 import { MapAttributionComponent } from './components/attribution/map-attribution.component';
@@ -33,6 +34,7 @@ const libs = [
   IconComponent,
   LeafletModule,
   LeafletMarkerClusterModule,
+  TranslatablePipe,
 ];
 
 @NgModule({

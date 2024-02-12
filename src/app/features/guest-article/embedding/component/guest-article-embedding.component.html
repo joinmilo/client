@@ -4,12 +4,12 @@
     entity="ArticleEntity" 
     [data]="guestArticles | async">
   </app-card-slider>
-  <h2 class="mat-headline-6" appLabel="beCreative!"></h2>
+  <h2 class="mat-headline-6" i18nLabel="beCreative!"></h2>
   <section>
-    <span appLabel="guestArticleText"></span>
+    <span i18nLabel="guestArticleText"></span>
     <a 
       mat-flat-button color="primary" 
-      appLabel="createGuestArticle"
+      i18nLabel="createGuestArticle"
       [routerLink]="['./guestarticle']">
     </a>
   </section>

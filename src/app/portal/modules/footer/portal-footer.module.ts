@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { FooterAppStoreComponent } from 'src/app/shared/layout/footer/appstore/footer-appstore.component';
 import { FooterSocialMediaComponent } from 'src/app/shared/layout/footer/socialmedia/footer-socialmedia.component';
@@ -18,6 +19,10 @@ const framework = [
   CommonModule,
 ];
 
+const libs = [
+  TranslatablePipe,
+]
+
 const modules = [
   CoreModule,
   FooterAppStoreComponent,
@@ -31,6 +36,7 @@ const modules = [
   ],
   imports: [
     ...framework,
+    ...libs,
     ...modules,
   ],
   exports: [

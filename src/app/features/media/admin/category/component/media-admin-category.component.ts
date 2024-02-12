@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { AuthService } from 'ngx-cinlib/security';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, InfoMediaCategoryEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { Privilege } from 'src/app/core/typings/privilege';
 import { MediaAdminCategoryActions } from '../state/media-admin-category.actions';
 import { selectCategoryData } from '../state/media-admin-category.selectors';

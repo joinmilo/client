@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, NotificationEntity } from 'src/app/core/api/generated/schema';
@@ -22,13 +23,12 @@ import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
     CommonModule,
     CoreModule,
     IconComponent,
-    RouterModule,
-
+    I18nDirective,
     MatBadgeModule,
     MatButtonModule,
     MatDividerModule,
     MatMenuModule,
-
+    RouterModule,
   ]
 })
 export class HeaderNotificationComponent implements OnInit, OnDestroy {

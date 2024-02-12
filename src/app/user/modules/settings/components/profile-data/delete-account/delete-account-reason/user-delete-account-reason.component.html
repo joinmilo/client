@@ -4,9 +4,9 @@
   <div class="settings">
     <app-user-settings-menu></app-user-settings-menu>
     <div class="border-box">
-      <h2 class="mat-headline-6" appLabel="deleteAccount"></h2>
+      <h2 class="mat-headline-6" i18nLabel="deleteAccount"></h2>
       <div>
-        <p appLabel="deleteAccountText"></p>
+        <p i18nLabel="deleteAccountText"></p>
       </div>
       <section *ngFor="let type of types">
         <label>
@@ -17,7 +17,7 @@
         <span>{{type?.name}}</span>
         </label>
       </section>
-      <button mat-flat-button color="primary" appLabel="continue" [routerLink]="['../delete-account-description']" (click)="onSubmit()"></button>
+      <button mat-flat-button color="primary" i18nLabel="continue" [routerLink]="['../delete-account-description']" (click)="onSubmit()"></button>
     </div>
   </div>
 </div>

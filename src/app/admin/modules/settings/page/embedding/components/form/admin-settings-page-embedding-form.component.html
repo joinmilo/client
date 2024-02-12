@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <cin-grid-row columns="2" formGroupName="base">
     <mat-form-field appearance="outline" [cinAssignColumns]="1">
-      <mat-label appLabel="name"></mat-label>
+      <mat-label i18nLabel="name"></mat-label>
       <input matInput formControlName="label">
     </mat-form-field>
   </cin-grid-row>
@@ -13,7 +13,7 @@
       columns="2"
       [formGroup]="form.controls.plugin">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="plugin"></mat-label>
+        <mat-label i18nLabel="plugin"></mat-label>
         <mat-select [formControl]="getControl(form.controls.plugin, 'plugin')">
           @for (plugin of plugins | async; track plugin) {
             <mat-option
@@ -32,7 +32,7 @@
     [formGroup]="form.controls.title">
     <mat-form-field
         appearance="outline">
-        <mat-label appLabel="title"></mat-label>
+        <mat-label i18nLabel="title"></mat-label>
         <input matInput [formControl]="getControl(form.controls.title, 'title')">
       </mat-form-field>
   </cin-grid-row>
@@ -46,7 +46,7 @@
       @if (hasControl(form.controls.buttonUrl, 'button')) {
         <mat-form-field
           appearance="outline">
-          <mat-label appLabel="buttonText"></mat-label>
+          <mat-label i18nLabel="buttonText"></mat-label>
           <input matInput [formControl]="getControl(form.controls.buttonUrl, 'button')">
         </mat-form-field>
       }
@@ -54,7 +54,7 @@
       @if (hasControl(form.controls.buttonUrl, 'url')) {
         <mat-form-field
           appearance="outline">
-          <mat-label appLabel="buttonUrl"></mat-label>
+          <mat-label i18nLabel="buttonUrl"></mat-label>
           <input matInput [formControl]="getControl(form.controls.buttonUrl, 'url')">
         </mat-form-field>
       }
@@ -86,7 +86,7 @@
     </div>
   }
   <button mat-stroked-button
-    appLabel="save"
+    i18nLabel="save"
     [disabled]="form.invalid"
     (click)="update()">
   </button>

@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconFormComponent } from 'ngx-cinlib/icons';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
@@ -44,6 +45,7 @@ const libs = [
   GridColumnDirective,
   GridRowComponent,
   IconFormComponent,
+  I18nDirective,
   PageTitleComponent,
 ];
 

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, Maybe, PrivilegeApplicationEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { AdminSettingsPrivilegeApplicationActions } from '../../state/admin-settings-privilege-application.actions';
 import { selectOverviewData } from '../../state/admin-settings-privilege-application.selectors';
 import { AdminSettingsPrivilegeApplicationRoleAssignComponent } from '../role-assign/admin-settings-privilege-application-role-assign.component';

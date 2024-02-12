@@ -31,9 +31,9 @@
             ],
             "styles": [
               "src/styles/variables.scss",
-              "src/styles/theme/colors.theme.scss",
+              "ngx-cinlib/styles/theme-palette.scss",
               "src/styles/theme/theme.scss",
-              "src/styles/theme/components.theme.scss",
+              "ngx-cinlib/styles/components.scss",
               "src/styles/styles.scss",
               "node_modules/ngx-sharebuttons/themes/default.scss",
               "node_modules/leaflet/dist/leaflet.css",
@@ -108,10 +108,14 @@
             ],
             "styles": [
               "src/styles/variables.scss",
+              "ngx-cinlib/styles/theme-palette.scss",
+              "src/styles/theme/theme.scss",
+              "ngx-cinlib/styles/components.scss",
               "src/styles/styles.scss",
-              "src/styles/theme/colors.theme.scss",
-              "src/styles/theme/components.theme.scss",
-              "src/styles/theme/theme.scss"
+              "node_modules/ngx-sharebuttons/themes/default.scss",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/leaflet.markercluster/dist/MarkerCluster.css",
+              "src/styles/leaflet-overrides.scss"
             ],
             "scripts": []
           }

@@ -3,19 +3,19 @@
 
     <section>
       <strong>{{ form.value.parent | translatable: 'name' | async }}</strong>
-      <small appLabel="parentMenuItem"></small>
+      <small i18nLabel="parentMenuItem"></small>
     </section>
 
     <section>
       <strong>{{ (form.value.order || 0) + 1 }}</strong>
-      <small appLabel="menuPlacement"></small>
+      <small i18nLabel="menuPlacement"></small>
     </section>
 
     <mat-divider></mat-divider>
 
     <cin-grid-row columns="6">
       <mat-form-field appearance="outline" [cinAssignColumns]="3">
-        <mat-label appLabel="menuName"></mat-label>
+        <mat-label i18nLabel="menuName"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
 
@@ -24,7 +24,7 @@
     </cin-grid-row>
 
     <mat-form-field appearance="outline">
-      <mat-label appLabel="shortDescription"></mat-label>
+      <mat-label i18nLabel="shortDescription"></mat-label>
       <input matInput formControlName="shortDescription">
     </mat-form-field>
 

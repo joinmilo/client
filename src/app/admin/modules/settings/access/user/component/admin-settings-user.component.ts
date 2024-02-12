@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { combineLatest, map } from 'rxjs';
 import { FilterSortPaginateInput, UserEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { AdminSettingsUserActions } from '../state/admin-settings-user.actions';
 import { selectUsers } from '../state/admin-settings-user.selectors';
 

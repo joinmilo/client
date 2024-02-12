@@ -7,14 +7,14 @@
 
       <i>{{event?.schedule?.startDate| localDate: 'medium' }}</i>
     </button>
-    <span class="piece" *ngIf="!event?.schedule" appLabel="schedulesInThePast"></span>
+    <span class="piece" *ngIf="!event?.schedule" i18nLabel="schedulesInThePast"></span>
   </section>
 </div>
 
 <ng-template #noSchedules>
   <section>
     <cin-icon [icon]="['far', 'calendar']" [size]="'lg'"></cin-icon>
-    <i appLabel="noFixedDates"></i>
+    <i i18nLabel="noFixedDates"></i>
   </section>
 </ng-template>
 
@@ -29,7 +29,7 @@
     </cin-calendar>
     <div class="date" *ngIf="selectedSchedule">
       <span>{{selectedSchedule.startDate | localDate: 'calendar'}}</span>
-      <span appLabel="to"></span>
+      <span i18nLabel="to"></span>
       <span>{{selectedSchedule.endDate | localDate: 'calendar'}}</span>
     </div>
   </div>

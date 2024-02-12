@@ -1,16 +1,16 @@
 <div class="main">
   <form class="border-box" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <h2 class="mat-headline-5" appLabel="noVerification?"></h2>
-    <p appLabel="newMailWithVerification"></p>
+    <h2 class="mat-headline-5" i18nLabel="noVerification?"></h2>
+    <p i18nLabel="newMailWithVerification"></p>
     <mat-form-field appearance="outline">
-      <mat-label appLabel="email"></mat-label>
+      <mat-label i18nLabel="email"></mat-label>
       <input matInput id="email" formControlName="email" placeholder="m.mustermann@example.com">
     </mat-form-field>
     <button mat-flat-button [disabled]="form.invalid" type="submit" mat-flat-button color="primary">
-      <span appLabel="send"></span>
+      <span i18nLabel="send"></span>
     </button>
     <small>
-      <a class="link" [routerLink]="['../login',]" appLabel="backToLogin"></a>
+      <a class="link" [routerLink]="['../login',]" i18nLabel="backToLogin"></a>
     </small>
   </form>
 </div>

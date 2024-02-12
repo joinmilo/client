@@ -5,14 +5,14 @@
     <mat-expansion-panel-header>
       <mat-panel-title [ngClass]="{'menu-active': active }">     
         <cin-icon *ngIf="item?.icon" [icon]="['fas', item!.icon!]" [size]="'lg'"></cin-icon>
-        <strong [appLabel]="item?.name"></strong>
+        <strong [i18nLabel]="item?.name"></strong>
       </mat-panel-title>
     </mat-expansion-panel-header>
 
     <div class="sub-menu">
       <ng-container *ngIf="(item?.childs?.length || 0) > 1"></ng-container>
       <button mat-button *ngFor="let child of item?.childs"
-        [appLabel]="child.name"
+        [i18nLabel]="child.name"
         [routerLink]="menuService.createRouterLink(child)"
         routerLinkActive="menu-active"
         [routerLinkActiveOptions]="{ exact: true }">

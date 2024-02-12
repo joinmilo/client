@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { SuburbFilterComponent } from './component/suburb-filter.component';
 import { suburbFilterStateKey } from './constants/suburb-filter.constants';
@@ -32,6 +33,8 @@ const modules = [
 const libs = [
   StoreModule.forFeature(suburbFilterStateKey, suburbFilterReducer),
   EffectsModule.forFeature([SuburbFilterEffects]),
+
+  I18nDirective,
 ];
 
 @NgModule({

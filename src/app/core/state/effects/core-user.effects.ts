@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { FeedbackService, FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { AuthService, refreshKey } from 'ngx-cinlib/security';
 import { EMPTY } from 'rxjs';
@@ -71,29 +72,27 @@ export class CoreUserEffects {
     map(currentUser => CoreUserActions.getMe(currentUser)),
   ));
 
-  clear = createEffect(() => this.actions.pipe(
+  changeUserLanguage = createEffect(() => this.actions.pipe(
+    ofType(CoreUserActions.getMe),
+    filter(response => !!response.user?.user?.language),
+    tap(response => this.translationService.setCurrentLanguage(response.user?.user?.language))
+  ), { dispatch: false });
+
+  listenOnClear = createEffect(() => this.actions.pipe(
     ofType(CoreUserActions.init),
     switchMap(() => this.authService.cleared()),
     filter(cleared => cleared),
     map(() => CoreUserActions.clear())
   ));
 
-  logout = createEffect(() => this.actions.pipe(
-    ofType(CoreUserActions.logout),
+  clear = createEffect(() => this.actions.pipe(
+    ofType(CoreUserActions.clear),
+    tap(() => this.router.navigate([''])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'youreLoggedOut'
     }))
   ));
-
-  refreshExpiredOrLogout = createEffect(() => this.actions.pipe(
-    ofType(
-      CoreUserActions.refreshExpired,
-      CoreUserActions.logout
-    ),
-    tap(() => this.router.navigate([''])),
-    tap(() => this.authService.clear()),
-  ), { dispatch: false });
 
   requireLogin = createEffect(() => this.actions.pipe(
     ofType(CoreUserActions.requireLogin),
@@ -182,15 +181,16 @@ export class CoreUserEffects {
     private addFavoriteDealService: AddFavoriteDealGQL,
     private addFavoriteEventService: AddFavoriteEventGQL,
     private addFavoriteOrganisationService: AddFavoriteOrganisationGQL,
+    private dialog: MatDialog,
+    private getMeService: GetMeGQL,
+    private feedbackService: FeedbackService,
     private removeFavoriteArticleService: RemoveFavoriteArticleGQL,
     private removeFavoriteAuthorService: RemoveFavoriteAuthorGQL,
     private removeFavoriteEventService: RemoveFavoriteEventGQL,
     private removeFavoriteDealService: RemoveFavoriteDealGQL,
     private removeFavoriteOrganisationService: RemoveFavoriteOrganisationGQL,
-    private feedbackService: FeedbackService,
-    private getMeService: GetMeGQL,
     private router: Router,
     private store: Store,
-    private dialog: MatDialog
+    private translationService: TranslationService,
   ) { }
 }

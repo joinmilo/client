@@ -1,5 +1,5 @@
 <mat-form-field appearance="outline">
-  <mat-label appLabel="types"></mat-label>
+  <mat-label i18nLabel="types"></mat-label>
   <mat-select [formControl]="control" multiple>
     <mat-option *ngFor="let type of types | async" [value]="type.id">
       {{type | translatable: 'name' | async}}

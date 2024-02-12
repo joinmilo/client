@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
 import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
 import { DetailsTitleComponent, PageTitleComponent, SubTitleComponent } from 'ngx-cinlib/layouts/title';
@@ -45,10 +46,12 @@ const libs = [
   EffectsModule.forFeature([AdminLandingEffects]),
 
   DetailsTitleComponent,
+  I18nDirective,
   MailPieceComponent,
   PageTitleComponent,
   PhonePieceComponent,
   SubTitleComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

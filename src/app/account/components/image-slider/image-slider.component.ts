@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { fadeInFromRightAnimation } from 'src/app/core/animations/animations';
+import { fadeInFromRightAnimation } from 'ngx-cinlib/core';
 
 @Component({
   selector: 'app-image-slider',

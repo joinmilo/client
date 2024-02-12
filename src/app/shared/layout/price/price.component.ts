@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
 
@@ -11,6 +12,7 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     CoreModule,
+    I18nDirective,
   ]
 })
 export class PriceComponent {

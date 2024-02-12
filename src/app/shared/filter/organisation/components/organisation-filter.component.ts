@@ -1,8 +1,8 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { collapse } from 'ngx-cinlib/core';
 import { Subject, debounceTime, filter, take, takeUntil } from 'rxjs';
-import { collapse } from 'src/app/core/animations/animations';
 import { FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { OrganisationFilterQueryParams } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { OrganisationFilterActions } from '../state/organisation-filter.actions';

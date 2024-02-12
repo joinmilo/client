@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaAvatarComponent, MediaGalleryComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
@@ -50,6 +51,7 @@ const libs = [
   MediaTitleComponent,
   PageTitleComponent,
   ShareButtonComponent,
+  TranslatablePipe,
 ]
 
 @NgModule({

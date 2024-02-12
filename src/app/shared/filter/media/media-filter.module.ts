@@ -9,6 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { DateRangeFilterComponent } from 'ngx-cinlib/filters/date-range';
 import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { MediaFilterCategoryComponent } from './components/category/media-filter-category.component';
@@ -42,11 +43,13 @@ const modules = [
 ];
 
 const libs = [
-  DateRangeFilterComponent,
-  FilterAreaComponent,
-
   StoreModule.forFeature(mediaFilterStateKey, mediaFilterReducer),
   EffectsModule.forFeature([MediaFilterEffects]),
+
+  DateRangeFilterComponent,
+  FilterAreaComponent,
+  I18nDirective,
+  TranslatablePipe,
 ];
 
 @NgModule({

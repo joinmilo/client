@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { CaptchaService } from 'ngx-cinlib/forms/captcha';
 import { PasswordService } from 'ngx-cinlib/forms/password';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { MediaApiService } from 'ngx-cinlib/media/common';
 import { FeedbackService } from 'ngx-cinlib/modals/feedback';
 import { SidenavService } from 'ngx-cinlib/modals/sidenav';
@@ -44,8 +45,14 @@ export class CoreEffects implements OnInitEffects {
     ofType(CoreActions.init),
     switchMap(() => this.getLabelsService.watch().valueChanges),
     filter(response => !!response?.data?.getLabels?.result?.length),
-    map(response => CoreActions.setLabels(response.data.getLabels?.result as LabelEntity[]))
-  ));
+    map(response => response.data.getLabels?.result as LabelEntity[]),
+    map(labelsList => labelsList.reduce((map, label) =>
+      (label.tagId && (map.set(label.tagId, label.translatables?.length
+        ? label.translatables
+        : [])), map),
+        new Map())),
+    map(labelsMap => this.translationService.setLabels(labelsMap))
+  ), { dispatch: false });
 
   getLanguages = createEffect(() => this.actions.pipe(
     ofType(CoreActions.init),
@@ -137,5 +144,6 @@ export class CoreEffects implements OnInitEffects {
     private mediaApiService: MediaApiService,
     private passwordService: PasswordService,
     private sidenavService: SidenavService,
+    private translationService: TranslationService,
   ) { }
 }

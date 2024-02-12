@@ -5,6 +5,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { MediaAvatarComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
@@ -48,6 +49,7 @@ const modules = [
 
 const libs = [
   IconComponent,
+  I18nDirective,
   MediaAvatarComponent,
 ];
 

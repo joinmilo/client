@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CoreModule } from 'src/app/core/core.module';
 
@@ -15,6 +16,7 @@ import { CoreModule } from 'src/app/core/core.module';
     CommonModule,
     CoreModule,
     IconComponent,
+    I18nDirective,
     MatButtonModule,
     MatDividerModule,
     RouterModule,

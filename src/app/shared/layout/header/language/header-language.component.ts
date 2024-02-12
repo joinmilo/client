@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Store } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { LanguageEntity } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
@@ -19,6 +20,7 @@ import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
     CommonModule,
     CoreModule,
     IconComponent,
+    I18nDirective,
     MatButtonModule,
     MatMenuModule,
   ]

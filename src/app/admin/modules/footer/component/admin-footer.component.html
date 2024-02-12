@@ -2,7 +2,7 @@
   <div class="big-gap">
     <section>
       <img [src]="(platformLogo | async)?.media?.url">
-      <span appLabel="freeLocalNewsPlatform"></span>
+      <span i18nLabel="freeLocalNewsPlatform"></span>
     </section>
     <nav *ngFor="let parent of menu | async">
       <h3>{{ parent | translatable: 'name' | async }}</h3>

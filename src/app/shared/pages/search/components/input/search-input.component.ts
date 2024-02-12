@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { growOnSidesAnimation } from 'ngx-cinlib/core';
 import { Subject, combineLatest, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs';
-import { growOnSidesAnimation } from 'src/app/core/animations/animations';
 import { Maybe, SearchDto } from 'src/app/core/api/generated/schema';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
 import { SearchActions } from '../../state/search.actions';

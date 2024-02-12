@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslatablePipe } from 'ngx-cinlib/i18n';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
@@ -43,6 +44,7 @@ const libs = [
 
   MediaSliderComponent,
   PageTitleComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

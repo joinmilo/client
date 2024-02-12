@@ -5,14 +5,14 @@
   <cin-form-step titleLabel="role" [formGroup]="form">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="name"></mat-label>
+        <mat-label i18nLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
     </cin-grid-row>
 
     <cin-grid-row>
       <mat-form-field appearance="outline">
-        <mat-label appLabel="privileges"></mat-label>
+        <mat-label i18nLabel="privileges"></mat-label>
         <mat-select formControlName="privileges" multiple>
           <mat-option [value]="privilege.id"
             *ngFor="let privilege of privileges | async">
@@ -25,7 +25,7 @@
     <!-- TODO: use User selection popup with nice search -->
     <cin-grid-row>
       <mat-form-field appearance="outline">
-        <mat-label appLabel="users"></mat-label>
+        <mat-label i18nLabel="users"></mat-label>
         <mat-select formControlName="users" multiple>
           <mat-option [value]="user.id"
             *ngFor="let user of users | async">

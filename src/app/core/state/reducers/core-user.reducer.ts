@@ -23,7 +23,6 @@ export const coreUserReducer = createReducer(
   )),
 
   on(
-    CoreUserActions.logout,
     CoreUserActions.clear,
     (state): CoreUserState => (
       { ...state, currentUser: undefined }

@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
@@ -58,12 +59,14 @@ const libs = [
   AddressPieceComponent,
   CategoryPieceComponent,
   IconComponent,
+  I18nDirective,
   DatePieceComponent,
   MailPieceComponent,
   MediaAttributionDirective,
   MediaElementComponent,
   PhonePieceComponent,
   ShareButtonComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

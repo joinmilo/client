@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
@@ -45,7 +46,9 @@ const libs = [
   EffectsModule.forFeature([ReportEffects]),
 
   CaptchaModule,
+  I18nDirective,
   PageTitleComponent,
+  TranslatablePipe,
 ]
 
 @NgModule({

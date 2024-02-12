@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy } from '@angular/core';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Subject, takeUntil } from 'rxjs';
 import { Maybe, PageEmbeddingEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { PageEmbeddingAttributes } from '../../typings/page-embedding';
 import { mapEmbeddingToAttributes } from '../../utils/portal-page-embeddings.utils';
 

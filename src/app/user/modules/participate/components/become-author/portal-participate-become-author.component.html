@@ -1,22 +1,22 @@
 <div class="border-box">
-  <h2 class="mat-headline-6" appLabel="becomeAuthor"></h2>
+  <h2 class="mat-headline-6" i18nLabel="becomeAuthor"></h2>
   <div>
-    <p appLabel="becomeAuthorText"></p>
-    <p appLabel="becomeAuthorAdvantages"></p>
+    <p i18nLabel="becomeAuthorText"></p>
+    <p i18nLabel="becomeAuthorAdvantages"></p>
   </div>
   <ul>
-    <li appLabel="becomeAuthorAdvantages1"></li>
-    <li appLabel="becomeAuthorAdvantages2"></li>
-    <li appLabel="becomeAuthorAdvantages3"></li>
+    <li i18nLabel="becomeAuthorAdvantages1"></li>
+    <li i18nLabel="becomeAuthorAdvantages2"></li>
+    <li i18nLabel="becomeAuthorAdvantages3"></li>
   </ul>
 
   <form [formGroup]="form"> 
     <mat-form-field appearance="outline">
-      <mat-label appLabel="content"></mat-label>
+      <mat-label i18nLabel="content"></mat-label>
       <textarea formControlName="content" matInput rows="5"></textarea>
     </mat-form-field>
   </form>
   <section>
-    <button mat-flat-button [disabled]="form.invalid" color="primary" appLabel="send" (click)="save()"></button>
+    <button mat-flat-button [disabled]="form.invalid" color="primary" i18nLabel="send" (click)="save()"></button>
   </section>
 </div>

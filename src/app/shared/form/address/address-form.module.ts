@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { CoreModule } from 'src/app/core/core.module';
 import { AddressFormComponent } from './component/address-form.component';
@@ -40,6 +41,7 @@ const libs = [
 
   GridColumnDirective,
   GridRowComponent,
+  I18nDirective,
 ]
 
 @NgModule({

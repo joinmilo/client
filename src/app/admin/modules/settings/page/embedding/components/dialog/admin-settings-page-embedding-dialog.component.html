@@ -1,4 +1,4 @@
-<h2 mat-dialog-title appLabel="chooseContentType"></h2>
+<h2 mat-dialog-title i18nLabel="chooseContentType"></h2>
 <mat-dialog-content>
   @for (embeddingType of embeddingTypes | async; track embeddingType) {
     <mat-card
@@ -13,6 +13,6 @@
 <mat-dialog-actions align="end">
   <button mat-button
     mat-dialog-close
-    appLabel="cancel">
+    i18nLabel="cancel">
   </button>
 </mat-dialog-actions>

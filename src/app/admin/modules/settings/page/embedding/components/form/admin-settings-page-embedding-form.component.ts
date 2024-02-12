@@ -3,16 +3,16 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Subscription, take } from 'rxjs';
 import {
-  Maybe,
-  MediaEntity,
-  PageAttributeEntity,
-  PageAttributeTypeEntity,
-  PageEmbeddingEntity,
-  PageEmbeddingTypeEntity,
+    Maybe,
+    MediaEntity,
+    PageAttributeEntity,
+    PageAttributeTypeEntity,
+    PageEmbeddingEntity,
+    PageEmbeddingTypeEntity,
 } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { selectPlugins } from '../../state/admin-settings-page-embedding.selectors';
 import { PageEmbeddingFormFieldType } from '../../typings/page-embeddings-form';
 

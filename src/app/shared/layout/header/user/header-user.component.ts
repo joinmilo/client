@@ -4,7 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
+import { AuthService } from 'ngx-cinlib/security';
 import { Subject, takeUntil } from 'rxjs';
 import { userUrl } from 'src/app/core/constants/module.constants';
 import { CoreModule } from 'src/app/core/core.module';
@@ -20,7 +22,7 @@ import { selectIsAuthenticated } from 'src/app/core/state/selectors/user.selecto
     CommonModule,
     CoreModule,
     IconComponent,
-
+    I18nDirective,
     MatButtonModule,
     MatMenuModule,
   ]
@@ -32,6 +34,7 @@ export class HeaderUserComponent implements OnDestroy {
   private destroy = new Subject<void>();
 
   constructor(
+    private authService: AuthService,
     private router: Router,
     private store: Store) {
     this.store.select(selectIsAuthenticated)
@@ -46,8 +49,7 @@ export class HeaderUserComponent implements OnDestroy {
   }
 
   public logout(): void {
-    this.store.dispatch(CoreUserActions.logout());
-    this.router.navigate(['/']);
+    this.authService.clear();
   }
 
   public ngOnDestroy(): void {

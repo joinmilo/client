@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule } from '@angular/router';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from '../../../core/core.module';
@@ -29,6 +30,7 @@ const framework = [
 const modules = [
   CoreModule,
   IconComponent,
+  I18nDirective,
 ];
 
 const materials = [

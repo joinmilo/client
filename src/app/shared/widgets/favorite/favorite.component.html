@@ -14,7 +14,7 @@
       [size]="'lg'">
     </cin-icon>
     <ng-container *ngIf="withLabel">
-      <span *ngIf="!isFavorite" [appLabel]="addToFavoritesLabel"></span>
-      <span *ngIf="isFavorite" [appLabel]="removeFromFavoritesLabel"></span>
+      <span *ngIf="!isFavorite" [i18nLabel]="addToFavoritesLabel"></span>
+      <span *ngIf="isFavorite" [i18nLabel]="removeFromFavoritesLabel"></span>
     </ng-container>
   </div>

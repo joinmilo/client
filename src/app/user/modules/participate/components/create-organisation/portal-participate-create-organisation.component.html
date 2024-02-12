@@ -1,8 +1,8 @@
 <div>
   <section class="border-box">
-    <h2 class="mat-headline-6" appLabel="createYourOrganisation"></h2>
-    <p appLabel="organisationText1"></p>
-    <p appLabel="organisationText2"></p>
+    <h2 class="mat-headline-6" i18nLabel="createYourOrganisation"></h2>
+    <p i18nLabel="organisationText1"></p>
+    <p i18nLabel="organisationText2"></p>
   </section>
 
   <cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
@@ -10,7 +10,7 @@
     <cin-form-step titleLabel="content" [formGroup]="descriptionForm" descriptionLabel="describeYourOrganisation">
       <cin-grid-row columns="2">
         <mat-form-field appearance="outline">
-          <mat-label appLabel="organisationName"></mat-label>
+          <mat-label i18nLabel="organisationName"></mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
       </cin-grid-row>
@@ -28,22 +28,22 @@
     <cin-form-step titleLabel="contact" [formGroup]="contactForm" descriptionLabel="enterYourContactData">
       <cin-grid-row columns="2">
         <mat-form-field appearance="outline">
-          <mat-label appLabel="email"></mat-label>
+          <mat-label i18nLabel="email"></mat-label>
           <input matInput formControlName="email">
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label appLabel="name"></mat-label>
+          <mat-label i18nLabel="name"></mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
       </cin-grid-row>
 
       <cin-grid-row columns="2">
         <mat-form-field appearance="outline">
-          <mat-label appLabel="website"></mat-label>
+          <mat-label i18nLabel="website"></mat-label>
           <input matInput formControlName="website">
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <mat-label appLabel="phone"></mat-label>
+          <mat-label i18nLabel="phone"></mat-label>
           <input matInput formControlName="phone" type="number">
         </mat-form-field>
       </cin-grid-row>

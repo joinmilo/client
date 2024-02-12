@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <h1 class="mat-headline-6" appLabel="inviteFriends"></h1>
+  <h1 class="mat-headline-6" i18nLabel="inviteFriends"></h1>
   <mat-divider></mat-divider>
   <div *ngFor="let friend of friends">
     <cin-media-avatar [user]="friend"></cin-media-avatar>
@@ -9,6 +9,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>
-    <span appLabel="cancel"></span>
+    <span i18nLabel="cancel"></span>
   </button>
 </mat-dialog-actions>

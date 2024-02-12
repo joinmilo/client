@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { DealEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { shareAction } from 'src/app/core/utils/table.utils';
 import { DealAdminOverviewActions } from '../state/deal-admin-overview.actions';
 import { selectOverviewData } from '../state/deal-portal-overview.selectors';

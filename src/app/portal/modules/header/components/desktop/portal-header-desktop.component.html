@@ -11,10 +11,10 @@
     <ng-container *ngIf="!currentUser?.id">
       <section *ngIf="(isSearching | async) === false" [@fadeIn]>
         <a mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'register']">
-          <span appLabel="register"></span>
+          <span i18nLabel="register"></span>
         </a>
         <a mat-stroked-button color="primary" [routerLink]="['/', accountUrl, 'login']">
-            <span appLabel="login"></span>
+            <span i18nLabel="login"></span>
         </a>
       </section>
     </ng-container>
@@ -37,7 +37,7 @@
           <button mat-menu-item [routerLink]="['/', adminUrl]">
             <div class="admin-button">
               <cin-icon [icon]="['fas', 'gauge']"></cin-icon>
-              <span appLabel="toAdminArea"></span>
+              <span i18nLabel="toAdminArea"></span>
             </div>
           </button>
           <mat-divider></mat-divider>

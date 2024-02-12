@@ -1,14 +1,14 @@
 <mat-form-field appearance="outline">
-  <mat-label appLabel="mediaType"></mat-label>
+  <mat-label i18nLabel="mediaType"></mat-label>
   <mat-select [formControl]="control" multiple>
     <mat-select-trigger>
       <ng-container *ngFor="let selected of control.value; let first = first">
-        <span *ngIf="first" [appLabel]="mimeTypes.get(selected)"></span>
-        <span *ngIf="!first" [appLabel]="mimeTypes.get(selected)" preFix=","></span>
+        <span *ngIf="first" [i18nLabel]="mimeTypes.get(selected)"></span>
+        <span *ngIf="!first" [i18nLabel]="mimeTypes.get(selected)" preFix=","></span>
       </ng-container>
     </mat-select-trigger>
     <mat-option *ngFor="let mimeType of mimeTypes | keyvalue" [value]="mimeType.key">
-      <span [appLabel]="mimeType.value"></span>
+      <span [i18nLabel]="mimeType.value"></span>
     </mat-option>
   </mat-select>
 </mat-form-field>

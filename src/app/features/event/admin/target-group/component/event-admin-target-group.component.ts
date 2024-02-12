@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { AuthService } from 'ngx-cinlib/security';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { EventTargetGroupEntity, FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { Privilege } from 'src/app/core/typings/privilege';
 import { EventAdminTargetGroupActions } from '../state/event-admin-target-group.actions';
 import { selectTargetGroupData } from '../state/event-admin-target-group.selectors';

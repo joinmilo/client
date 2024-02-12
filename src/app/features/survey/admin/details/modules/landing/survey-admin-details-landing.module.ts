@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaSliderComponent } from 'ngx-cinlib/media/elements';
 import { CoreModule } from 'src/app/core/core.module';
@@ -34,7 +35,9 @@ const libs = [
   EffectsModule.forFeature([SurveyAdminDetailsLandingEffects]),
 
   DetailsTitleComponent,
+  I18nDirective,
   MediaSliderComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

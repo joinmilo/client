@@ -1,9 +1,8 @@
 import { Component, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Period } from 'ngx-cinlib/core';
+import { Period, collapse } from 'ngx-cinlib/core';
 import { Subject, debounceTime, filter, take, takeUntil } from 'rxjs';
-import { collapse } from 'src/app/core/animations/animations';
 import { FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
 import { EventFilterActions } from 'src/app/shared/filter/event/state/event-filter.actions';

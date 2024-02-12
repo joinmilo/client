@@ -3,7 +3,7 @@
     <img *ngIf="selectedImage === img.path"
       [src]="img.path"
       [@fadeInFromRight]>
-    <p [appLabel]="img.description" *ngIf="selectedImage === img.path" [@fadeInFromRight]></p>
+    <p [i18nLabel]="img.description" *ngIf="selectedImage === img.path" [@fadeInFromRight]></p>
   </section>
   <div>
     <ng-container *ngFor="let img of images">

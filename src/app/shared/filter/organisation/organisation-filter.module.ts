@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { OrganisationFilterActiveComponent } from './components/active/organisation-filter-active.component';
@@ -45,9 +46,12 @@ const modules = [
 ];
 
 const libs = [
-  FilterAreaComponent,
   EffectsModule.forFeature([OrganisationFilterEffects]),
   StoreModule.forFeature(organisationFilterStateKey, organisationFilterReducer),
+
+  FilterAreaComponent,
+  I18nDirective,
+  
 ];
 
 @NgModule({

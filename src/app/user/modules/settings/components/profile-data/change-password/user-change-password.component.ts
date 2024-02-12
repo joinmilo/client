@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
+import { AuthService } from 'ngx-cinlib/security';
 import { UserSettingsActions } from '../../../state/user-settings.actions';
 
 @Component({
@@ -16,6 +16,7 @@ export class UserChangePasswordComponent {
   });
 
   constructor(  
+    private authService: AuthService,
     private store: Store,
     private fb: FormBuilder,
     ) {
@@ -25,6 +26,6 @@ export class UserChangePasswordComponent {
     this.store.dispatch(UserSettingsActions.changePassword(
       this.form.value.password
     ));
-    this.store.dispatch(CoreUserActions.refreshExpired())
+    this.authService.clear();
   }
 }

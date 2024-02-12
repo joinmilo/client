@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioCardGroupComponent } from 'ngx-cinlib/forms/radio-card';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
@@ -37,6 +38,7 @@ const libs = [
   EffectsModule.forFeature([OrganisationAdminDetailsLayoutEffects]),
 
   IconComponent,
+  I18nDirective,
   PageTitleComponent,
   RadioCardGroupComponent,
 ];

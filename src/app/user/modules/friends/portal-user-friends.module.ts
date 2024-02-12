@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { MediaAvatarComponent } from 'ngx-cinlib/media/elements';
@@ -52,6 +53,7 @@ const modules = [
   CoreModule,
   FormsModule,
   IconComponent,
+  I18nDirective,
   PortalUserFriendsRoutingModule,
   TableCardComponent,
 ];

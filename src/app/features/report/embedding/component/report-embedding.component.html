@@ -1,9 +1,9 @@
 <mat-card>
   <form [formGroup]="form" #formDirective="ngForm">
-    <h2 class="mat-headline-6" appLabel="youWantToWriteUs?"></h2>
+    <h2 class="mat-headline-6" i18nLabel="youWantToWriteUs?"></h2>
     <div>
       <mat-form-field appearance="outline">
-        <mat-label appLabel="topic"></mat-label>
+        <mat-label i18nLabel="topic"></mat-label>
         <mat-select formControlName="type">
           <mat-option [value]="type" *ngFor="let type of types | async">
             {{type | translatable: "name" | async}}
@@ -13,17 +13,17 @@
     </div>
     <div>
       <mat-form-field appearance="outline">
-        <mat-label appLabel="name"></mat-label>
+        <mat-label i18nLabel="name"></mat-label>
         <input matInput id="name" formControlName="name" placeholder="Max Mustermann">
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label appLabel="email"></mat-label>
+        <mat-label i18nLabel="email"></mat-label>
         <input matInput id="email" formControlName="email" placeholder="mail@example.com">
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="outline">
-        <mat-label appLabel="content"></mat-label>
+        <mat-label i18nLabel="content"></mat-label>
         <textarea formControlName="content" matInput rows="5"></textarea>
       </mat-form-field>
     </div>

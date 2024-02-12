@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslatablePipe } from 'ngx-cinlib/i18n';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { AdminSettingsPageDetailsLandingComponent } from './components/admin-settings-page-details-landing.component';
@@ -35,6 +36,7 @@ const libs = [
   EffectsModule.forFeature([AdminSettingsPageDetailsLandingEffects]),
 
   DetailsTitleComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

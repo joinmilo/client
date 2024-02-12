@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Injectable } from '@angular/core';
+import { maxMobileSize } from 'ngx-cinlib/core';
 import { map } from 'rxjs/operators';
-import { maxMobileSize } from '../constants/core.constants';
 
 @Injectable({
   providedIn: 'root',

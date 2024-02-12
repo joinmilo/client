@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { DetailsTitleComponent, PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { AuthService } from 'ngx-cinlib/security';
@@ -24,6 +25,7 @@ import { Privilege } from 'src/app/core/typings/privilege';
     CoreModule,
     DetailsTitleComponent,
     IconComponent,
+    I18nDirective,
     MatCardModule,
     MatDividerModule,
     PageTitleComponent,

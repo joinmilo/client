@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { fadeInAnimation } from 'src/app/core/animations/animations';
+import { fadeInAnimation } from 'ngx-cinlib/core';
 import { SearchActions } from '../../state/search.actions';
 
 @Component({

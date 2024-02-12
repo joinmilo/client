@@ -1,30 +1,30 @@
 <button mat-menu-item (click)="route('favorites')">
   <section>
     <cin-icon [icon]="['far', 'heart']"></cin-icon>
-    <span appLabel="favorites"></span>
+    <span i18nLabel="favorites"></span>
   </section>
 </button>
 <button mat-menu-item (click)="route('friends')">
   <section>
     <cin-icon [icon]="['fas', 'users']"></cin-icon>
-    <span appLabel="friends"></span>
+    <span i18nLabel="friends"></span>
   </section>
 </button>
 <button mat-menu-item (click)="route('settings')">
   <section>
     <cin-icon [icon]="['fas', 'gear']"></cin-icon>
-    <span appLabel="settings"></span>
+    <span i18nLabel="settings"></span>
   </section>
 </button>
 <button mat-menu-item (click)="route('participate')">
   <section>
     <cin-icon [icon]="['fas', 'pen']"></cin-icon>
-    <span appLabel="participate"></span>
+    <span i18nLabel="participate"></span>
   </section>
 </button>
 <button mat-menu-item (click)="logout()" *ngIf="isAuthenticated">
   <section>
     <cin-icon [icon]="['fas', 'right-from-bracket']"></cin-icon>
-    <span appLabel="logout"></span>
+    <span i18nLabel="logout"></span>
   </section>
 </button>

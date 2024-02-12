@@ -6,14 +6,14 @@
   <cin-form-step titleLabel="content" [formGroup]="contentForm">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="name"></mat-label>
+        <mat-label i18nLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
     </cin-grid-row>
 
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="category"></mat-label>
+        <mat-label i18nLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
           <mat-option [value]="category.id"
             *ngFor="let category of categories | async">
@@ -41,7 +41,7 @@
   <cin-form-step titleLabel="shortDescription" [formGroup]="shortDescriptionForm">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="shortDescription"></mat-label>
+        <mat-label i18nLabel="shortDescription"></mat-label>
         <textarea matInput formControlName="shortDescription" rows="5"></textarea>
       </mat-form-field>
     </cin-grid-row>
@@ -51,7 +51,7 @@
     [formGroup]="additionalInfoForm">
     <cin-grid-row columns="1">
       <div>
-        <span appLabel="commentsAllowed"></span>
+        <span i18nLabel="commentsAllowed"></span>
         <mat-slide-toggle color="primary" formControlName="commentsAllowed">
         </mat-slide-toggle>
       </div>
@@ -59,7 +59,7 @@
 
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="metaDescription"></mat-label>
+        <mat-label i18nLabel="metaDescription"></mat-label>
         <textarea matInput formControlName="metaDescription" rows="5">
         </textarea>
       </mat-form-field>

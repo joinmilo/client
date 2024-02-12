@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { CalendarComponent } from 'ngx-cinlib/calendar';
 import { LocalDatePipe } from 'ngx-cinlib/date/pipes';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { CategoryPieceComponent } from 'ngx-cinlib/layouts/category';
 import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
@@ -97,6 +98,7 @@ const libs = [
   CategoryPieceComponent,
   DetailsTitleComponent,
   IconComponent,
+  I18nDirective,
   LocalDatePipe,
   MailPieceComponent,
   MediaAvatarComponent,
@@ -105,6 +107,7 @@ const libs = [
   MediaTitleComponent,
   PhonePieceComponent,
   ShareButtonComponent,
+  TranslatablePipe,
 ]
 
 @NgModule({

@@ -1,16 +1,16 @@
 <div class="main">
   <cin-page-title titleLabel="yourStory"></cin-page-title>
   <div class="border-box">
-    <h2 class="mat-headline-6" appLabel="giveUsYourStory!"></h2>
-    <p appLabel="guestArticleIntro"></p>
-    <p appLabel="guestArticleIncentive"></p>
-    <p appLabel="guestArticleHowTo"></p>
+    <h2 class="mat-headline-6" i18nLabel="giveUsYourStory!"></h2>
+    <p i18nLabel="guestArticleIntro"></p>
+    <p i18nLabel="guestArticleIncentive"></p>
+    <p i18nLabel="guestArticleHowTo"></p>
   </div>
   <cin-form-stepper [captchaRequired]="true" (cancelled)="cancelled()" (saved)="saved($event)">
     <cin-form-step titleLabel="content" [formGroup]="contentForm">
       <cin-grid-row columns="2">
         <mat-form-field appearance="outline">
-          <mat-label appLabel="name"></mat-label>
+          <mat-label i18nLabel="name"></mat-label>
           <input matInput formControlName="name">
         </mat-form-field>
       </cin-grid-row>
@@ -24,11 +24,11 @@
     <cin-form-step titleLabel="userInformation" [formGroup]="infomationForm">
       <cin-grid-row columns="2">
         <mat-form-field appearance="outline" [cinAssignColumns]="1">
-          <mat-label appLabel="userName"></mat-label>
+          <mat-label i18nLabel="userName"></mat-label>
           <input matInput formControlName="userName">
         </mat-form-field>
         <mat-form-field appearance="outline" [cinAssignColumns]="1">
-          <mat-label appLabel="email"></mat-label>
+          <mat-label i18nLabel="email"></mat-label>
           <input matInput formControlName="email" type="email">
         </mat-form-field>
       </cin-grid-row>

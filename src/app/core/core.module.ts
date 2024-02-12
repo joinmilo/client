@@ -11,6 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { ConfirmService } from 'ngx-cinlib/modals/confirm';
 import { FeedbackComponent, FeedbackService } from 'ngx-cinlib/modals/feedback';
@@ -18,11 +19,8 @@ import { CookieComponent } from './components/cookie/cookie.component';
 import { HelpComponent } from './components/help/help.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { appStateKey } from './constants/core.constants';
-import { HtmlDirective } from './directives/html.directive';
-import { LabelDirective } from './directives/label.directive';
 import { FilterPipe } from './pipes/filter.pipe';
 import { StripTagsPipe } from './pipes/strip-tags.pipe';
-import { TranslatablePipe } from './pipes/translatable.pipe';
 import { TruncateWordsPipe } from './pipes/truncate-words.pipe';
 import { CoreUserEffects } from './state/effects/core-user.effects';
 import { CoreEffects } from './state/effects/core.effects';
@@ -34,15 +32,9 @@ const components = [
   LogoComponent,
 ];
 
-const directives = [
-  LabelDirective,
-  HtmlDirective,
-];
-
 const pipes = [
   FilterPipe,
   StripTagsPipe,
-  TranslatablePipe,
   TruncateWordsPipe,
 ];
 
@@ -63,13 +55,15 @@ const materials = [
 ];
 
 const libs = [
-  FeedbackComponent,
-  IconComponent,
   EffectsModule.forFeature([CoreEffects, CoreUserEffects]),
   StoreModule.forFeature(appStateKey, {
     core: appReducers.core,
     coreUser: localStorageMetaReducer(appReducers.coreUser),
   }),
+
+  FeedbackComponent,
+  IconComponent,
+  I18nDirective,
 ];
 
 const providers = [
@@ -80,7 +74,6 @@ const providers = [
 @NgModule({
   declarations: [
     ...components,
-    ...directives,
     ...pipes,
   ],
   imports: [
@@ -90,7 +83,6 @@ const providers = [
   ],
   exports: [
     ...components,
-    ...directives,
     ...pipes,
   ],
   providers: [

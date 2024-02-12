@@ -1,7 +1,7 @@
 <div class="main">
   <section class="border-box">
     <h2 class="mat-headline-5"
-      [appLabel]="(verified | async)
+      [i18nLabel]="(verified | async)
         ? 'congratulations'
         : 'failure'"></h2>
     <cin-icon 
@@ -14,23 +14,23 @@
         : 'var(--color-warn-500)'">
     </cin-icon>
 
-    <p [appLabel]="(verified | async)
+    <p [i18nLabel]="(verified | async)
         ? 'verificationSuccess'
         : 'verificationFailure'"></p>
     <button *ngIf="(verified | async)"
       mat-raised-button
       color="primary"
       [routerLink]="['/account/login']">
-        <span appLabel="login"></span>
+        <span i18nLabel="login"></span>
     </button>
     <button *ngIf="(verified | async) === false"
       mat-raised-button
       color="primary"
       [routerLink]="['/account/verification']">
-        <span appLabel="sendNewMail"></span>
+        <span i18nLabel="sendNewMail"></span>
     </button>
     <small *ngIf="(verified | async) === false">
-      <a class="link" [routerLink]="['/account/login']" appLabel="backToLogin"></a>
+      <a class="link" [routerLink]="['/account/login']" i18nLabel="backToLogin"></a>
     </small>
   </section>
 </div>

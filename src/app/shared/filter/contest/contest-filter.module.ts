@@ -9,6 +9,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { FilterAreaComponent } from 'ngx-cinlib/filters/filter-area';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContestFilterComponent } from './components/contest-filter.component';
 import { ContestFilterTypesComponent } from './components/types/contest-filter-types.component';
@@ -40,9 +41,12 @@ const modules = [
 ];
 
 const libs = [
-  FilterAreaComponent,
   EffectsModule.forFeature([ContestFilterEffects]),
   StoreModule.forFeature(contestFilterStateKey, contestFilterReducer),
+
+  FilterAreaComponent,
+  I18nDirective,
+  TranslatablePipe,
 ];
 
 @NgModule({

@@ -23,11 +23,6 @@ export const selectLabels = createSelector(
   state => state?.labels
 );
 
-export const selectLanguage = createSelector(
-  selectCoreState,
-  state => state?.language
-);
-
 export const selectLanguages = createSelector(
   selectCoreState,
   state => state?.languages

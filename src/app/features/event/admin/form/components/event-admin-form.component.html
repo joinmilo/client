@@ -6,14 +6,14 @@
   <cin-form-step [formGroup]="contentForm" titleLabel="content">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="name"></mat-label>
+        <mat-label i18nLabel="name"></mat-label>
         <input matInput formControlName="name" />
       </mat-form-field>
     </cin-grid-row>
 
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="category"></mat-label>
+        <mat-label i18nLabel="category"></mat-label>
         <mat-select formControlName="categoryId">
           <mat-option
             [value]="category.id"
@@ -48,7 +48,7 @@
 
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline" [ariaDisabled]="true">
-        <mat-label appLabel="videoChatLink"></mat-label>
+        <mat-label i18nLabel="videoChatLink"></mat-label>
         <input matInput formControlName="videoChatLink" />
       </mat-form-field>
     </cin-grid-row>
@@ -59,7 +59,7 @@
     titleLabel="shortDescription">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="shortDescription"></mat-label>
+        <mat-label i18nLabel="shortDescription"></mat-label>
         <textarea formControlName="shortDescription" rows="5" matInput>
         </textarea>
       </mat-form-field>
@@ -80,11 +80,11 @@
     [formGroup]="contactAndOrganisationForm">
     <cin-grid-row columns="2" *ngIf="userOrganisations?.length">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="assignOrganisationToThisEvent?"></mat-label>
+        <mat-label i18nLabel="assignOrganisationToThisEvent?"></mat-label>
         <mat-select formControlName="organisationId">
           <mat-option 
             [value]="null"
-            appLabel="NoOrganisation">
+            i18nLabel="NoOrganisation">
           </mat-option>
           <mat-option
             [value]="organisation?.id"
@@ -108,7 +108,7 @@
   <cin-form-step titleLabel="attendance" [formGroup]="attendeeConfigForm">
     <cin-grid-row columns="1">
       <div>
-        <span appLabel="configureAttendance"></span>
+        <span i18nLabel="configureAttendance"></span>
         <mat-slide-toggle color="primary" formControlName="configureAttendance">
         </mat-slide-toggle>
       </div>
@@ -119,7 +119,7 @@
 
     <cin-grid-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="1">
       <div>
-        <span appLabel="attandanceNeedsApproval"></span>
+        <span i18nLabel="attandanceNeedsApproval"></span>
         <mat-slide-toggle color="primary" formControlName="approval">
         </mat-slide-toggle>
       </div>
@@ -127,7 +127,7 @@
 
     <cin-grid-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="5">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="maxAttendees"></mat-label>
+        <mat-label i18nLabel="maxAttendees"></mat-label>
         <input formControlName="maxAttendees" matInput />
       </mat-form-field>
     </cin-grid-row>
@@ -136,14 +136,14 @@
   <cin-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
     <cin-grid-row columns="8">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="entryFee"></mat-label>
+        <mat-label i18nLabel="entryFee"></mat-label>
         <input formControlName="entryFee" matInput placeholder="&euro;" />
       </mat-form-field>
     </cin-grid-row>
 
     <cin-grid-row columns="1">
       <div>
-        <span appLabel="commentsAllowed"></span>
+        <span i18nLabel="commentsAllowed"></span>
         <mat-slide-toggle color="primary" formControlName="commentsAllowed">
         </mat-slide-toggle>
       </div>
@@ -151,7 +151,7 @@
 
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="targetGroup"></mat-label>
+        <mat-label i18nLabel="targetGroup"></mat-label>
         <mat-select formControlName="targetGroups" multiple>
           <mat-option
             [value]="targetGroup.id"
@@ -164,7 +164,7 @@
 
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="metaDescription"></mat-label>
+        <mat-label i18nLabel="metaDescription"></mat-label>
         <textarea matInput formControlName="metaDescription" rows="5">
         </textarea>
       </mat-form-field>

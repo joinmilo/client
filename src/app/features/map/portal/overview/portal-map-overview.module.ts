@@ -8,6 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { TablePaginatorComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
@@ -59,6 +60,7 @@ const modules = [
 
 const libs = [
   IconComponent,
+  I18nDirective,
   RadioButtonGroupComponent,
   TablePaginatorComponent
 ];

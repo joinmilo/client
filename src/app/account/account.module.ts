@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CaptchaModule } from 'ngx-cinlib/forms/captcha';
 import { PasswordConfirmComponent, PasswordFieldComponent } from 'ngx-cinlib/forms/password';
+import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { LoadingComponent } from 'ngx-cinlib/layouts/loading';
 import { MediaFormComponent } from 'ngx-cinlib/media/forms';
@@ -81,6 +82,7 @@ const libs = [
 
   CaptchaModule,
   IconComponent,
+  I18nDirective,
   LoadingComponent,
   MediaFormComponent,
   PasswordConfirmComponent,

@@ -1,11 +1,11 @@
 <div class="border-box">
 
-  <h2 class="mat-headline-6" appLabel="joinIn"></h2>
-  <p appLabel="joinOrganisationText1"></p>
-  <p appLabel="joinOrganisationText2"></p>
+  <h2 class="mat-headline-6" i18nLabel="joinIn"></h2>
+  <p i18nLabel="joinOrganisationText1"></p>
+  <p i18nLabel="joinOrganisationText2"></p>
 
   <mat-form-field appearance="outline">
-    <mat-label appLabel="search"></mat-label>
+    <mat-label i18nLabel="search"></mat-label>
     <input matInput type="text" [(ngModel)]="value" (input)="filterOrganisations(value)">
     <button *ngIf="!value" matSuffix mat-icon-button>
       <cin-icon [icon]="['fas', 'magnifying-glass']"></cin-icon>
@@ -34,11 +34,11 @@
 
   <section>
     <button mat-flat-button color="accent" (click)="clearAll()">
-      <span appLabel="clearAll"></span>
+      <span i18nLabel="clearAll"></span>
     </button>
 
     <button mat-flat-button color="primary" (click)="sendOrganisationRequest()">
-      <span appLabel="join"></span>
+      <span i18nLabel="join"></span>
     </button>
   </section>
 

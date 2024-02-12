@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
@@ -52,9 +53,11 @@ const libs = [
   StoreModule.forFeature(portalDealOverviewStateKey, portalDealOverviewReducer),
   EffectsModule.forFeature([PortalDealOverviewEffects]),
 
+  I18nDirective,
   PageTitleComponent,
   RadioButtonGroupComponent,
   TableComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

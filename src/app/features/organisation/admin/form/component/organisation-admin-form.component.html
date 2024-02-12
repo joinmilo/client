@@ -6,7 +6,7 @@
   <cin-form-step titleLabel="content" [formGroup]="descriptionForm" descriptionLabel="describeYourOrganisation">
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline">
-        <mat-label appLabel="organisationName"></mat-label>
+        <mat-label i18nLabel="organisationName"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
     </cin-grid-row>
@@ -40,7 +40,7 @@
   <cin-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
     <cin-grid-row columns="1">
       <div>
-        <span appLabel="commentsAllowed"></span>
+        <span i18nLabel="commentsAllowed"></span>
         <mat-slide-toggle color="primary" formControlName="commentsAllowed">
         </mat-slide-toggle>
       </div>
