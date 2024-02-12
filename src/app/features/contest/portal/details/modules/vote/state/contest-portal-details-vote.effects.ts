@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService } from 'ngx-cinlib/modals/confirm';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import {
   ContestVoteEntity,
@@ -9,10 +11,8 @@ import {
 } from 'src/app/core/api/generated/schema';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetContestParticipationsGQL } from 'src/app/features/contest/api/generated/get-contest-participations.query.generated';
 import { SaveContestVoteGQL } from 'src/app/features/contest/api/generated/save-contest-vote.mutation.generated';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
 import { ContestPortalDetailsVoteActions } from './contest-portal-details-vote.actions';
 import { selectContestMaxVotes, selectParams, selectSlug, selectUserVotes } from './contest-portal-details-vote.selectors';
 

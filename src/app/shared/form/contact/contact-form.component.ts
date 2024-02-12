@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit
+    Component,
+    Input,
+    OnChanges,
+    OnDestroy,
+    OnInit
 } from '@angular/core';
 import {
-  ControlValueAccessor,
-  FormBuilder,
-  NG_VALUE_ACCESSOR,
-  ReactiveFormsModule,
-  Validators,
+    ControlValueAccessor,
+    FormBuilder,
+    NG_VALUE_ACCESSOR,
+    ReactiveFormsModule,
+    Validators,
 } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -63,8 +63,8 @@ export class ContactFormComponent implements ControlValueAccessor, OnInit, OnDes
   public form = this.fb.group({
     contactOptionLabel: [undefined as Maybe<string>],
     name: ['' as Maybe<string>],
-    email: ['' as Maybe<string>, [Validators.required, CinValidators.email()]],
-    phone: ['' as Maybe<string>, [CinValidators.phone()]],
+    email: ['' as Maybe<string>, [Validators.required, CinValidators.email]],
+    phone: ['' as Maybe<string>, [CinValidators.phone]],
     website: ['' as Maybe<string>],
   });
 

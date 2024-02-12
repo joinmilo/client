@@ -8,6 +8,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { DatetimeFormComponent } from 'ngx-cinlib/date/datetime-form';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
+import { MediaFormComponent } from 'ngx-cinlib/media/forms';
 import { CoreModule } from 'src/app/core/core.module';
 import { ContestFilterModule } from 'src/app/shared/filter/contest/contest-filter.module';
 import { ContestAdminFormComponent } from './component/contest-admin-form.component';
@@ -35,21 +41,24 @@ const materials = [
 ];
 
 const modules = [
-  CkEditorFormComponent,
   ContestFilterModule,
   ContestAdminFormRoutingModule,
-  ContactFormComponent,
   CoreModule,
-  DatetimeFormComponent,
-  FormStepperModule,
-  GridLayoutModule,
-  MediaFormModule,
-  TableModule,
 ];
 
 const libs = [
   StoreModule.forFeature(contestAdminFormStateKey, contestAdminFormReducer),
   EffectsModule.forFeature([ContestAdminFormEffects]),
+
+  DatetimeFormComponent,
+  FormStepComponent,
+  FormStepperComponent,
+  GridColumnDirective,
+  GridRowComponent,
+  I18nDirective,
+  MediaFormComponent,
+  PageTitleComponent,
+  TranslatablePipe,
 ];
 
 @NgModule({

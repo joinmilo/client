@@ -12,27 +12,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { DatePieceComponent } from 'ngx-cinlib/date/piece';
+import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
+import { MailPieceComponent } from 'ngx-cinlib/layouts/mail';
+import { PhonePieceComponent } from 'ngx-cinlib/layouts/phone';
+import { WebsitePieceComponent } from 'ngx-cinlib/layouts/website';
+import { MediaGalleryComponent, MediaSliderComponent, MediaTitleComponent } from 'ngx-cinlib/media/elements';
+import { ShareButtonComponent } from 'ngx-cinlib/share';
 import { CoreModule } from 'src/app/core/core.module';
-import { ConfirmComponent } from 'src/app/shared/confirm/component/confirm.component';
-import { CkEditorFormComponent } from 'src/app/shared/form/ck-editor/ck-editor-form.component';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { RadioButtonFormModule } from 'src/app/shared/form/radio-button/radio-button-form.module';
-import { FormStepperModule } from 'src/app/shared/form/stepper/form-stepper.module';
-import { DatePieceComponent } from 'src/app/shared/layout/date/date-piece.component';
-import { GridLayoutModule } from 'src/app/shared/layout/grid-layout/grid-layout.module';
-import { MailPieceComponent } from 'src/app/shared/layout/mail/mail-piece.component';
-import { PhonePieceComponent } from 'src/app/shared/layout/phone/phone-piece.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { WebsitePieceComponent } from 'src/app/shared/layout/website/website-piece.component';
-import { MediaFormModule } from 'src/app/shared/media/modules/form/media-form.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { CalendarModule } from 'src/app/shared/widgets/calendar/calendar.module';
 import { CardModule } from 'src/app/shared/widgets/card/card.module';
 import { FavoriteComponent } from 'src/app/shared/widgets/favorite/favorite.component';
 import { MapModule } from 'src/app/shared/widgets/map/map.module';
 import { RatingModule } from 'src/app/shared/widgets/rating/rating.module';
-import { ShareModule } from 'src/app/shared/widgets/share/share.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ContestPortalDetailsCommentComponent } from './components/comment/portal-contest-details-comment.component';
 import { ContestPortalDetailsLandingComponent } from './components/contest-portal-details-landing.component';
 import { ContestPortalDetailsSummaryComponent } from './components/summary/contest-portal-details-summary.component';
@@ -69,33 +61,30 @@ const materials = [
 ];
 
 const modules = [
-  CalendarModule,
   CardModule,
-  CkEditorFormComponent,
   CommentModule,
-  ConfirmComponent,
   ContestPortalDetailsLandingRoutingModule,
   CoreModule,
-  DatePieceComponent,
   FavoriteComponent,
-  FormStepperModule,
-  GridLayoutModule,
-  MailPieceComponent,
   MapModule,
-  MediaFormModule,
-  MediaWidgetsModule,
-  PhonePieceComponent,
-  RadioButtonFormModule,
   RatingModule,
-  ShareModule,
-  TableModule,
-  TitleModule,
-  WebsitePieceComponent,
 ];
 
 const libs = [
   StoreModule.forFeature(contestPortalDetailsLandingStateKey, portalContestDetailsReducer),
-  EffectsModule.forFeature([ContestPortalDetailsLandingEffects]),]
+  EffectsModule.forFeature([ContestPortalDetailsLandingEffects]),
+
+  DatePieceComponent,
+  I18nDirective,
+  MailPieceComponent,
+  MediaGalleryComponent,
+  MediaSliderComponent,
+  MediaTitleComponent,
+  PhonePieceComponent,
+  ShareButtonComponent,
+  TranslatablePipe,
+  WebsitePieceComponent,
+]
 
 @NgModule({
   declarations: [...components],

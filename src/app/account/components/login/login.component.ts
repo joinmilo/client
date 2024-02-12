@@ -15,7 +15,7 @@ import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 export class LoginComponent {
 
   public form = this.fb.group({
-    email: ['', [Validators.required, CinValidators.email()]],
+    email: ['', [Validators.required, CinValidators.email]],
     password: ['', [Validators.required]],
   });
 

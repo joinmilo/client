@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { map, switchMap, tap } from 'rxjs';
 import { ContestEntity, ContestTypeEntity } from 'src/app/core/api/generated/schema';
 import { contestsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { GetContestFormGQL } from '../../../api/generated/get-contest-form.query.generated';
 import { GetContestTypesGQL } from '../../../api/generated/get-contest-types.query.generated';
 import { SaveContestGQL } from '../../../api/generated/save-contest.mutation.generated';

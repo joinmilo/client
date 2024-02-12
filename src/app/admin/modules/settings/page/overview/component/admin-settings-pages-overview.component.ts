@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, Maybe, PageEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
 import { AdminSettingsPageActions } from '../state/admin-settings-pages.actions';
 import { selectPages } from '../state/admin-settings-pages.selectors';
 

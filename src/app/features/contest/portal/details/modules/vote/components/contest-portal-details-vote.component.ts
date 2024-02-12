@@ -3,31 +3,15 @@ import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import { SortOption, SortPaginate } from 'ngx-cinlib/tables';
 import { Subject, switchMap, take, takeUntil, tap, withLatestFrom } from 'rxjs';
-import {
-  ContestParticipationEntity,
-  UserContextEntity
-} from 'src/app/core/api/generated/schema';
+import { ContestParticipationEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
-import {
-  selectCurrentUser,
-  selectIsAuthenticated,
-} from 'src/app/core/state/selectors/user.selectors';
-import { selectParams } from 'src/app/shared/widgets/table/state/table.selectors';
-import {
-  SortOption,
-  SortPaginate,
-} from 'src/app/shared/widgets/table/typings/table';
+import { selectCurrentUser, selectIsAuthenticated, } from 'src/app/core/state/selectors/user.selectors';
 import { ActionInfo } from '../../../typings/actionInfo';
 import { ContestPortalDetailsVoteActions } from '../state/contest-portal-details-vote.actions';
-import {
-  selectContestMaxVotes,
-  selectContestParticipations,
-  selectParticipationsTotal,
-  selectUserVotes
-} from '../state/contest-portal-details-vote.selectors';
-
+import { selectContestMaxVotes, selectContestParticipations, selectParams, selectParticipationsTotal, selectUserVotes } from '../state/contest-portal-details-vote.selectors';
 @Component({
   selector: 'app-contest-portal-details-vote',
   templateUrl: './contest-portal-details-vote.component.html',

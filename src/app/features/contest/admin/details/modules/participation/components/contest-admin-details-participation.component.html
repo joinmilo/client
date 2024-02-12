@@ -1,8 +1,7 @@
-<app-table 
+<cin-table 
   [data]="participations"
   [actions]="actions"
-  [entity]="'ContestEntity'"
   [columns]="columns"
   (sortPaginate)="updateParams(undefined ,$event)"
   (rowClicked)="rowClicked($event)">
-</app-table>
+</cin-table>

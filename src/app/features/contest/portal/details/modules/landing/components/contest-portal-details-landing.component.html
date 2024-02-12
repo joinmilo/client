@@ -1,8 +1,8 @@
 <div class="details">
   <div class="title-area">
-    <app-media-title [media]="mediaTitle"></app-media-title>
+    <cin-media-title [media]="mediaTitle"></cin-media-title>
     <div class="card-box">
-      <app-share-button> </app-share-button>
+      <cin-share-button> </cin-share-button>
     </div>
   </div>
   <div class="content-area">
@@ -22,7 +22,7 @@
             class="border-box">
             <img src="assets/draw.svg" />
             <a mat-raised-button color="primary"
-              [appLabel]="(maxParticipationsReached | async) ? 'maxParticipationsReached' : 'participate'"
+              [i18nLabel]="(maxParticipationsReached | async) ? 'maxParticipationsReached' : 'participate'"
               [routerLink]="[participationRoute]"
               [disabled]="(maxParticipationsReached | async)">
             </a>
@@ -33,7 +33,7 @@
           <section class="border-box">
             <img src="assets/vote.svg" />
             <a mat-raised-button color="primary"
-               appLabel="vote"
+               i18nLabel="vote"
                [routerLink]="voteRoute">
             </a>
           </section>
@@ -43,7 +43,7 @@
           <section class="border-box">
             <img src="assets/waiting.svg" />
             <button mat-raised-button color="primary"
-               appLabel="evaluationInProgress"
+               i18nLabel="evaluationInProgress"
                disabled></button>
           </section>
         }
@@ -52,18 +52,18 @@
           <section class="border-box">
             <img src="assets/winner.svg" />
             <a mat-raised-button color="primary"
-               appLabel="showWinners"
+               i18nLabel="showWinners"
                [routerLink]="'winners'">
             </a>
           </section>
         }
       </div>
 
-    <app-media-slider
+    <cin-media-slider
       *ngIf="media && media.length"
       [media]="media"
       [link]="['./media']">
-    </app-media-slider>
+    </cin-media-slider>
 
     <app-portal-contest-details-comment *ngIf="contest?.commentsAllowed">
     </app-portal-contest-details-comment>

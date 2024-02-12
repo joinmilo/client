@@ -1,32 +1,32 @@
 <section>
-  <app-mail-piece
+  <cin-mail-piece
     class="a-piece"
     *ngIf="(contest | async)?.contact?.email"
     [mail]="(contest | async)?.contact?.email">
-  </app-mail-piece>
+  </cin-mail-piece>
 
-  <app-phone-piece
+  <cin-phone-piece
     class="a-piece"
     *ngIf="(contest | async)?.contact?.phone"
     [phone]="(contest | async)?.contact?.phone">
-  </app-phone-piece>
+  </cin-phone-piece>
 
-  <app-website-piece
+  <cin-website-piece
     class="a-piece"
     [website]="(contest | async)?.contact?.website">
-  </app-website-piece>
+  </cin-website-piece>
 </section>
 <section>
   <div>
-    <span class="piece" appLabel="endOfParticipation"></span>
-    <app-date-piece
+    <span class="piece" i18nLabel="endOfParticipation"></span>
+    <cin-date-piece
       class="piece"
-      [date]="(contest | async)?.participationEndDate"></app-date-piece>
+      [date]="(contest | async)?.participationEndDate"></cin-date-piece>
   </div>
   <div>
-    <span class="piece" appLabel="endOfVote"></span>
-    <app-date-piece
+    <span class="piece" i18nLabel="endOfVote"></span>
+    <cin-date-piece
       class="piece"
-      [date]="(contest | async)?.voteEndDate"></app-date-piece>
+      [date]="(contest | async)?.voteEndDate"></cin-date-piece>
   </div>
 </section>

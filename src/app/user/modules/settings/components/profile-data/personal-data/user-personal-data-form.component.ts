@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ValidationErrors, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
 import {
-    AddressEntity,
-    Maybe,
-    MediaEntity,
-    UserContextEntity
+  AddressEntity,
+  Maybe,
+  MediaEntity,
+  UserContextEntity
 } from 'src/app/core/api/generated/schema';
 import { selectLanguages } from 'src/app/core/state/selectors/core.selectors';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
@@ -25,11 +25,8 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
   public userForm = this.fb.group({
     firstName: [undefined as Maybe<string>, [Validators.required]],
     lastName: [undefined as Maybe<string>, [Validators.required]],
-    email: [
-      undefined as Maybe<string>,
-      [Validators.required, CinValidators.email()],
-    ],
-    phone: [undefined as Maybe<string>, [CinValidators.phone()]],
+    email: ['', [Validators.required, CinValidators.email as () => ValidationErrors]],
+    phone: ['', [CinValidators.phone as () => ValidationErrors]],
   });
 
   public ProfilePictureForm = this.fb.group({
@@ -45,8 +42,8 @@ export class UserPersonalDataFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    description: [undefined as Maybe<string>],
-    languageId: [undefined as Maybe<string>],
+    description: [''],
+    languageId: [''],
   });
 
   public user?: Maybe<UserContextEntity>;

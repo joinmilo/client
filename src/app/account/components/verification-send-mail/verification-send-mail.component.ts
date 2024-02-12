@@ -16,7 +16,7 @@ import { AccountActions } from '../../state/account.actions';
 export class VerificationSendMailComponent {
 
   public form = this.fb.group({
-    email: ['', [Validators.required, CinValidators.email()]],
+    email: ['', [Validators.required, CinValidators.email]],
   });
 
   constructor(

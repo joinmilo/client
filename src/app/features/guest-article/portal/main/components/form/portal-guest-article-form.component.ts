@@ -20,7 +20,7 @@ export class PortalGuestArticleFormComponent{
 
   public infomationForm = this.fb.group({
     userName: ['' as Maybe<string>, [Validators.required]],
-    email: ['' as Maybe<string>, [Validators.required, CinValidators.email()]],
+    email: ['' as Maybe<string>, [Validators.required, CinValidators.email]],
   });
 
   constructor(

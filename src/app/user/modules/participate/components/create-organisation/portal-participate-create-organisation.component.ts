@@ -19,10 +19,10 @@ export class PortalParticipateCreateOrganisationComponent {
   });
 
   public contactForm = this.fb.group({
-    email: ['' as Maybe<string>, [Validators.required, CinValidators.email()]],
+    email: ['' as Maybe<string>, [Validators.required, CinValidators.email]],
     name: ['' as Maybe<string>],
     website: ['' as Maybe<string>],
-    phone: ['' as Maybe<string>, [CinValidators.phone()]],
+    phone: ['' as Maybe<string>, [CinValidators.phone]],
   });
 
   public addressForm = this.fb.group({

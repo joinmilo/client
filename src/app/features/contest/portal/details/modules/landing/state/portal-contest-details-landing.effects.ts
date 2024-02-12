@@ -6,11 +6,11 @@ import { ContestCommentEntity, ContestEntity } from 'src/app/core/api/generated/
 import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
-import { FeedbackType } from 'src/app/core/typings/feedback';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
 import { GetContestDetailsGQL } from '../../../../../api/generated/get-contest-details.query.generated';
 import { SaveContestCommentGQL } from '../../../../../api/generated/save-contest-comment.mutation.generated';
 
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
 import { ContestPortalDetailsLandingActions } from './portal-contest-details-landing.actions';
 import { selectContestDetails } from './portal-contest-details-landing.selectors';
 

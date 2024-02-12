@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Maybe } from 'graphql/jsutils/Maybe';
+import { CinValidators } from 'ngx-cinlib/forms/validators';
 import { Subject, filter, switchMap, takeUntil, tap } from 'rxjs';
 import {
   ContactEntity,
@@ -10,7 +11,6 @@ import {
   ContestMediaEntity
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { AppValidators } from 'src/app/core/validators/validators';
 import { ContestAdminFormActions } from '../state/contest-admin-form.actions';
 import {
   selectContest,
@@ -49,8 +49,8 @@ export class ContestAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    maxVotes: [undefined as Maybe<number>, [AppValidators.minValue(1)]],
-    maxParticipations: [undefined as Maybe<number>, [AppValidators.minValue(1)]],
+    maxVotes: [undefined as Maybe<number>, [CinValidators.minValue(1)]],
+    maxParticipations: [undefined as Maybe<number>, [CinValidators.minValue(1)]],
     participationApproval: [undefined as Maybe<boolean>],    
 
     commentsAllowed: [undefined as Maybe<boolean>],

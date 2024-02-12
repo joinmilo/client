@@ -1,12 +1,12 @@
 <div class="main">
-  <app-page-title titleLabel="yourVoteCounts"></app-page-title>
+  <cin-page-title titleLabel="yourVoteCounts"></cin-page-title>
 
   @if (sortOptions) {
-    <app-table-sort
+    <cin-table-sort
       [options]="sortOptions"
       [queryParams]="true"
       (sortChange)="changeSort($event)">
-    </app-table-sort>
+    </cin-table-sort>
   }
 
   <section>
@@ -22,12 +22,12 @@
   </section>
 
   <mat-card>
-    <app-table-paginator
+    <cin-table-paginator
       (page)="updateParams($event)"
       [length]="participationsTotal | async"
       [pageSize]="(params | async)?.size"
       [pageIndex]="(params | async)?.page"
       [pageSizeOption]="pageSizeOptions">
-    </app-table-paginator>
+    </cin-table-paginator>
   </mat-card>
 </div>

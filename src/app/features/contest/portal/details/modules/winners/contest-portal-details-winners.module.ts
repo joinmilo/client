@@ -4,12 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
-import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
-import { TitleModule } from 'src/app/shared/layout/title/title.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
-import { ConfettiComponent } from 'src/app/shared/widgets/contest-winner/confetti.component';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
+import { ConfettiComponent } from 'src/app/shared/widgets/confetti/confetti.component';
 import { ContestPortalDetailsParticipationsCardComponent } from '../card/contest-portal-details-participations-card.component';
 import { ContestPortalDetailsWinnersComponent } from './components/contest-portal-details-winners.component';
 import { contestPortalDetailsWinnersStateKey } from './constants/contest-portal-details-winners.constants';
@@ -34,15 +31,13 @@ const modules = [
   ConfettiComponent,
   ContestPortalDetailsParticipationsCardComponent,
   CoreModule,
-  DateRangeFilterComponent,
-  MediaWidgetsModule,
-  TableModule,
-  TitleModule,
 ];
 
 const libs = [
   StoreModule.forFeature(contestPortalDetailsWinnersStateKey, contestPortalDetailsWinnersReducer),
   EffectsModule.forFeature([ContestPortalDetailsWinnersEffects]),
+
+  PageTitleComponent,
 ];
 
 @NgModule({

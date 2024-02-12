@@ -3,9 +3,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
+import { I18nDirective } from 'ngx-cinlib/i18n';
+import { MediaElementComponent } from 'ngx-cinlib/media/elements';
 import { Maybe, MediaEntity } from 'src/app/core/api/generated/schema';
 import { CoreModule } from 'src/app/core/core.module';
-import { MediaWidgetsModule } from 'src/app/shared/media/modules/widgets/media-widgets.module';
 import { TextElementComponent } from 'src/app/shared/widgets/text/element/text-element.component';
 
 @Component({
@@ -14,11 +15,12 @@ import { TextElementComponent } from 'src/app/shared/widgets/text/element/text-e
   styleUrls: ['./contest-portal-details-participations-card.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
+    CoreModule,
+    I18nDirective,
     MatButtonModule,
     MatCardModule,
-    CommonModule,
-    MediaWidgetsModule,
-    CoreModule,
+    MediaElementComponent,
     TextElementComponent,
   ],
 })

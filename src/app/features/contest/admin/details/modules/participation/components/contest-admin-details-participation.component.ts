@@ -2,6 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { MediaViewerData } from 'ngx-cinlib/media/common';
+import { MediaViewerComponent } from 'ngx-cinlib/media/elements';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { Subject, takeUntil } from 'rxjs';
 import {
   ContestParticipationEntity,
@@ -9,9 +12,6 @@ import {
   Maybe
 } from 'src/app/core/api/generated/schema';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { MediaViewerComponent } from 'src/app/shared/media/modules/widgets/components/viewer/media-viewer.component';
-import { MediaViewerData } from 'src/app/shared/media/typings/media';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { TextViewerComponent } from 'src/app/shared/widgets/text/viewer/text-viewer.component';
 import { ContestAdminDetailsParticipationActions } from '../state/contest-admin-details-participation.actions';
 import { selectContestAdminDetailsParticipation } from '../state/contest-admin-details-participation.selectors';

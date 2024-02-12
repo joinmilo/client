@@ -17,7 +17,7 @@ import { selectRegisteredUserId } from '../../state/account.selectors';
 export class RegistrationComponent implements OnDestroy {
 
   public form = this.fb.group({
-    email: ['', [Validators.required, CinValidators.email()]],
+    email: ['', [Validators.required, CinValidators.email]],
     password: ['', Validators.required],
     termsAccepted: [false, [Validators.requiredTrue]],
   });

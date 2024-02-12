@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ConfirmService } from 'ngx-cinlib/modals/confirm';
 import { EMPTY, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { ContestEntity, ContestParticipationEntity } from 'src/app/core/api/generated/schema';
 import { contestsFeatureKey } from 'src/app/core/constants/feature.constants';
@@ -10,7 +11,6 @@ import { CoreUserActions } from 'src/app/core/state/actions/core-user.actions';
 import { GetContestParticipationFormGQL } from 'src/app/features/contest/api/generated/get-contest-participation-form.query.generated';
 import { SaveContestParticipationGQL } from 'src/app/features/contest/api/generated/save-contest-participation.mutation.generated';
 import { PortalActions } from 'src/app/portal/state/portal.actions';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
 import { ContestPortalDetailsParticipationFormActions } from './contest-portal-details-participation-form.actions';
 import { selectContestDetails, selectSlug, selectUserPartipations } from './contest-portal-details-participation-form.selectors';
 

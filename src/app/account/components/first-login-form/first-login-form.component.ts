@@ -28,7 +28,7 @@ export class FirstLoginFormComponent implements OnInit, OnDestroy {
   public form = this.fb.group({
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    phone: ['', [CinValidators.phone()]],
+    phone: ['', [CinValidators.phone]],
     content: [''],
     author: [false],
     organisations: [[] as OrganisationEntity[]],

@@ -17,7 +17,7 @@ export class PortalReportFormComponent implements OnDestroy {
   public form = this.fb.group({
     type: [{} as ReportTypeEntity, [Validators.required]],
     name: ['', [Validators.required]],
-    email: ['', [Validators.required, CinValidators.email()]],
+    email: ['', [Validators.required, CinValidators.email]],
     content: ['', [Validators.required]],
   });
 

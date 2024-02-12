@@ -30,7 +30,7 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
   });
 
   public additionalInfoForm = this.fb.group({
-    price: ['' as Maybe<string>, [CinValidators.number()]],
+    price: ['' as Maybe<string>, [CinValidators.number]],
     isPublic: [true as Maybe<boolean>],
     selectedType: ['offer' as Maybe<string>]
   });

@@ -5,9 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from 'src/app/core/core.module';
-import { DateRangeFilterComponent } from 'src/app/shared/filter/date-range/date-range-filter.component';
 import { CommentModule } from 'src/app/shared/form/comment/comment.module';
-import { TableModule } from 'src/app/shared/widgets/table/table.module';
 import { ContestPortalDetailsCommentsComponent } from './components/contest-portal-details-comments.component';
 import { contestPortalDetailsCommentsStateKey } from './constants/contest-portal-details-comments.constants';
 import { ContestPortalDetailsCommentsEffects } from './state/contest-portal-details-comments.effects';
@@ -29,8 +27,6 @@ const materials = [
 const modules = [
   CommentModule,
   CoreModule,
-  DateRangeFilterComponent,
-  TableModule,
 ];
 
 const libs = [

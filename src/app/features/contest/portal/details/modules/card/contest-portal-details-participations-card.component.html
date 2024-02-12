@@ -1,9 +1,9 @@
 <mat-card>
   <mat-card-header>
     @if (media) {
-      <app-media-element
+      <cin-media-element
         [media]="media">
-      </app-media-element>
+      </cin-media-element>
     } @else {
       <app-text-element
         [text]="text">
@@ -15,7 +15,7 @@
     <span>{{ media?.name }}</span>
     <button mat-flat-button
       color="primary"
-      [appLabel]="actionLabel"
+      [i18nLabel]="actionLabel"
       (click)="action.emit()"
       [disabled]="actionDisabled">
     </button>

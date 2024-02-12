@@ -2,17 +2,19 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
+import { IconComponent } from 'ngx-cinlib/icons';
 import { Maybe } from 'src/app/core/api/generated/schema';
-import { CoreModule } from 'src/app/core/core.module';
-import { IconComponent } from '../../icon/icon.component';
 import { TextViewerComponent } from '../viewer/text-viewer.component';
-
 @Component({
   selector: 'app-text-element',
   templateUrl: './text-element.component.html',
   styleUrls: ['./text-element.component.scss'],
   standalone: true,
-  imports: [IconComponent, CommonModule, CoreModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    IconComponent,
+    MatButtonModule
+  ],
 })
 export class TextElementComponent{
   
@@ -51,7 +53,7 @@ export class TextElementComponent{
         const boldElement = doc.createElement('h3'); 
         boldElement.textContent = heading.textContent || '';
         heading.parentNode?.replaceChild(boldElement, heading);
-      });;
+      });
       return doc.body.innerHTML;
     }
     return null;
