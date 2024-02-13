@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { TranslationService } from 'ngx-cinlib/i18n';
+import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, PluginEntity } from 'src/app/core/api/generated/schema';
-import { TranslationService } from 'src/app/core/services/translation.service';
-import { Column, RowAction } from 'src/app/shared/widgets/table/typings/table';
 import { AdminSettingsPluginActions } from '../../state/admin-settings-plugin.actions';
 import { selectPlugins } from '../../state/admin-settings-plugin.selectors';
 import { AdminSettingsPluginMenuAssignComponent } from '../menu-assign/admin-settings-plugin-menu-assign.component';
@@ -40,7 +40,7 @@ export class AdminSettingsPluginOverviewComponent {
     {
       field: 'released',
       label: 'released',
-      value: row => this.translationService.label(row.released ? 'yes' : 'comingSoon'),
+      value: row => this.translationService.getLabel(row.released ? 'yes' : 'comingSoon'),
       sort: true
     },
     {

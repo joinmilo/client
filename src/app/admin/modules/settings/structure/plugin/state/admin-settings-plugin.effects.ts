@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { EMPTY, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
+import { FeedbackType } from 'ngx-cinlib/modals/feedback';
+import { EMPTY, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { ChangePluginActivationGQL } from 'src/app/admin/api/generated/change-plugin-activation.mutation.generated';
 import { GetMenuItemsGQL } from 'src/app/admin/api/generated/get-menu-items.query.generated';
 import { GetPluginsGQL } from 'src/app/admin/api/generated/get-plugins.query.generated';
 import { SaveMenuItemGQL } from 'src/app/admin/api/generated/save-menu-item.mutation.generated';
 import { ConjunctionOperator, MenuItemEntity, PageableList_PluginEntity, QueryOperator } from 'src/app/core/api/generated/schema';
 import { CoreActions } from 'src/app/core/state/actions/core.actions';
-import { FeedbackType } from 'src/app/core/typings/feedback';
-import { ConfirmService } from 'src/app/shared/confirm/service/confirm.service';
-import { ConfirmType } from 'src/app/shared/confirm/typings/confirm';
 import { AdminSettingsPluginActions } from './admin-settings-plugin.actions';
 import { selectParams } from './admin-settings-plugin.selectors';
 
@@ -43,7 +42,7 @@ export class AdminSettingsPluginEffects {
         id: action.plugin?.id,
         active: !action.plugin?.active,
       })),
-      switchMap(plugin => this.confirmDialogService
+      switchMap(plugin => this.confirmService
         .confirm({ type: ConfirmType.Change,
           context: !plugin.active
             ? 'cautionThisWillDeactivatePlugin'
@@ -101,7 +100,6 @@ export class AdminSettingsPluginEffects {
 
   savePluginMenuItem = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPluginActions.savePluginMenuItem),
-    tap((action) => console.log(action)),
     switchMap(action => this.saveMenuItemService.mutate({
       entity: {
         parent: action.menuItem,
@@ -124,7 +122,7 @@ export class AdminSettingsPluginEffects {
   constructor(
     private actions: Actions,
     private changePluginActivationService: ChangePluginActivationGQL,
-    private confirmDialogService: ConfirmService,
+    private confirmService: ConfirmService,
     private getMenuItemsService: GetMenuItemsGQL,
     private getPluginsService: GetPluginsGQL,
     private saveMenuItemService: SaveMenuItemGQL,
