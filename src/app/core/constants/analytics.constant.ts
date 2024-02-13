@@ -16,7 +16,7 @@ export const searchConsolePositionsKey = 'position';
 export const searchConsoleCtrKey = 'ctr';
 
 // Ratings
-export const scoreDistributionKey = 'percentages';
+export const scoreDistributionKey = 'scoreDistribution';
 export const timeAmountDistributionKey = 'timeAmountDistribution';
 export const timeAverageDistributionKey = 'timeAverageDistribution';
 

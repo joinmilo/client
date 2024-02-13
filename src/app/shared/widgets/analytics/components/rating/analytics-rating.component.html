@@ -34,7 +34,7 @@
     [colors]="[scoreDistributionColor]"
     [data]="scoreDistribution.series"
     [titleLabel]="scoreDistributionKey"
-    [yAxisLabel]="scoreDistributionKey"
+    yAxisLabel="percentages"
     xAxisLabel="stars">
   </cin-chart-bar-vertical>
 
@@ -43,7 +43,7 @@
     [colors]="[timeAmountDistributionColor]"
     [data]="timeAmountDistribution.series"
     [titleLabel]="timeAmountDistributionKey"
-    [yAxisLabel]="timeAmountDistributionKey">
+    yAxisLabel="amount">
   </cin-chart-bar-vertical>
 
   <cin-chart-bar-vertical *ngIf="timeAverageDistribution"
@@ -51,6 +51,6 @@
     [colors]="[timeAverageDistributionColor]"
     [data]="timeAverageDistribution.series"
     [titleLabel]="timeAverageDistributionKey"
-    [yAxisLabel]="timeAverageDistributionKey">
+    yAxisLabel="averageRating">
   </cin-chart-bar-vertical>
 </section>
