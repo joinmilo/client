@@ -14,14 +14,14 @@
 
 <section class="summary">
   <cin-chart-summary
-    [actions]="[scoreDistributionAction]"
+    [actions]="[averageRatingAction]"
     [color]="scoreDistributionColor"
     [summary]="scoreDistribution?.average"
     titleLabel="averageScore">
   </cin-chart-summary>
 
   <cin-chart-summary
-    [actions]="[scoreDistributionAction]"
+    [actions]="[totalAmountAction]"
     [color]="timeAmountDistributionColor"
     [summary]="scoreDistribution?.sum"
     titleLabel="totalAmount">
@@ -34,8 +34,7 @@
     [colors]="[scoreDistributionColor]"
     [data]="scoreDistribution.series"
     [titleLabel]="scoreDistributionKey"
-    yAxisLabel="percentages"
-    xAxisLabel="stars">
+    yAxisLabel="percentages">
   </cin-chart-bar-vertical>
 
   <cin-chart-bar-vertical *ngIf="timeAmountDistribution"

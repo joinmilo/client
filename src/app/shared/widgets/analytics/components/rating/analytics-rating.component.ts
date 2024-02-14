@@ -48,7 +48,7 @@ export class AnalyticsRatingComponent implements OnInit {
   @Input()
   public period: Period = {
     startDate: new Date(new Date().getFullYear(), 0, 1, 12),
-    endDate: new Date()
+    endDate:  new Date(new Date().setHours(23, 59, 59, 999))
   };
 
   @Input()
@@ -61,7 +61,21 @@ export class AnalyticsRatingComponent implements OnInit {
     label: 'help',
     icon: 'circle-question' as RegularIconsType,
   };
-  
+
+  public averageRatingAction = {
+    ...this.helpAction, clicked: () => this.store.dispatch(CoreActions.setHelp({
+      titleLabel: 'averageRatingHelpTitle',
+      contentLabel: 'averageRatingHelpDescription'
+    }))
+  };
+
+  public totalAmountAction = {
+    ...this.helpAction, clicked: () => this.store.dispatch(CoreActions.setHelp({
+      titleLabel: 'totalAmountHelpTitle',
+      contentLabel: 'totalAmountHelpDescription'
+    }))
+  };  
+
   public scoreDistribution?: AnalyticsDto;
   public scoreDistributionColor = '--color-primary-200';
   public scoreDistributionKey = scoreDistributionKey;

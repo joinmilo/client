@@ -51,7 +51,7 @@ export class AnalyticsSearchComponent implements OnInit {
   @Input()
   public period: Period = {
     startDate: new Date(new Date().getFullYear(), 0, 1, 12),
-    endDate: new Date()
+    endDate: new Date(new Date().setHours(23, 59, 59, 999))
   };
 
   @Input()
