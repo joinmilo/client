@@ -1,0 +1,74 @@
+<!-- <div>
+  <h2 mat-dialog-title i18nLabel="assignMenu"></h2>
+  <mat-dialog-content [formGroup]="form">
+    <span i18nLabel="assignMenuText"></span>
+    <mat-form-field appearance="outline">
+      <mat-label i18nLabel="menuItem"></mat-label>
+      <mat-select required="menu" formControlName="menu">
+        @for (menuItem of menuItems | async; track menuItem) {
+          <mat-option [value]="menuItem">
+            <span>{{ menuItem | translatable: 'name' | async }}</span>
+          </mat-option>
+         }
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+    <mat-dialog-actions align="end">
+    <button 
+      mat-button 
+      mat-dialog-close 
+      i18nLabel="cancel">
+    </button>
+    <button
+      [disabled]="(form.invalid)" 
+      mat-button [mat-dialog-close]="true" 
+      i18nLabel="save"
+      (click)="saved()">
+    </button>
+  </mat-dialog-actions>
+</div> -->
+
+<h2 mat-dialog-title i18nLabel="organizeMenu"></h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <span i18nLabel="chooseParentMenuItem"></span>
+
+    <mat-form-field appearance="outline">
+      <mat-label i18nLabel="menuItem"></mat-label>
+      <mat-select formControlName="parent">
+        <!-- @for (parentMenuItem of parentMenuItems | async; track parentMenuItem) {
+        <mat-option [value]="parentMenuItem">
+          <span>{{ parentMenuItem | translatable: "name" | async }}</span>
+          @if (!parentMenuItem.header) {
+          (<span i18nLabel="onlyFooter"></span>)
+          }
+        </mat-option> -->
+        <!-- } -->
+      </mat-select>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <cin-drag-drop-container [deletable]="false" (updated)="sorted($event)">
+      @for (item of form.value.items; track item; let index = $index) {
+      @if (item.newEntity) {
+      <cin-drag-drop-element titleLabel="yourPage" [expanded]="true">
+        <span i18nLabel="orderYourPageInMenu"></span>
+      </cin-drag-drop-element>
+      } @else {
+      <cin-drag-drop-element [title]="item.menu | translatable: 'name' | async" [expandable]="false">
+      </cin-drag-drop-element>
+      }
+      }
+    </cin-drag-drop-container>
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close i18nLabel="cancel">
+  </button>
+
+  <button mat-flat-button color="primary" i18nLabel="save" (click)="saved()">
+  </button>
+</mat-dialog-actions>

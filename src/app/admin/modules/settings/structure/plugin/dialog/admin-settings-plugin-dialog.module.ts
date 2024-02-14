@@ -10,21 +10,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
+import { IconComponent, IconFormComponent } from 'ngx-cinlib/icons';
+import { DragDropContainerComponent, DragDropElementComponent } from 'ngx-cinlib/layouts/drag-drop';
+import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-layout';
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
-import { AdminSettingsPluginRoutingModule } from './admin-settings-plugin-routing.module';
-import { AdminSettingsPluginMenuAssignComponent } from './components/menu-assign/admin-settings-plugin-menu-assign.component';
-import { AdminSettingsPluginOverviewComponent } from './components/overview/admin-settings-plugin-overview.component';
-import { adminSettingsPluginStateKey } from './constants/admin-settings-plugin.constants';
-import { AdminSettingsPluginEffects } from './state/admin-settings-plugin.effects';
-import { adminSettingsPluginReducer } from './state/admin-settings-plugin.reducer';
+import { AdminSettingsPluginDialogRoutingModule } from './admin-settings-plugin-dialog-routing.module';
+import { AdminSettingsPluginDialogComponent } from './component/admin-settings-plugin-dialog.component';
+import { adminSettingsPluginDialogStateKey } from './constants/admin-settings-plugin-dialog.constants';
+import { AdminSettingsPluginDialogEffects } from './state/admin-settings-plugin-dialog.effects';
+import { adminSettingsPluginDialogReducer } from './state/admin-settings-plugin-dialog.reducer';
+
+
 
 const components = [
-  AdminSettingsPluginOverviewComponent,
-  AdminSettingsPluginMenuAssignComponent,
-]
+  AdminSettingsPluginDialogComponent,
+];
 
 const framework = [
   CommonModule,
@@ -43,13 +47,21 @@ const materials = [
 
 const modules = [
   CoreModule,
-  AdminSettingsPluginRoutingModule,
+  AdminSettingsPluginDialogRoutingModule,
 ];
 
 const libs = [
-  StoreModule.forFeature(adminSettingsPluginStateKey, adminSettingsPluginReducer),
-  EffectsModule.forFeature([AdminSettingsPluginEffects]),
+  StoreModule.forFeature(adminSettingsPluginDialogStateKey, adminSettingsPluginDialogReducer),
+  EffectsModule.forFeature([AdminSettingsPluginDialogEffects]),
 
+  DragDropContainerComponent,
+  DragDropElementComponent,
+  GridColumnDirective,
+  GridRowComponent,
+  FormStepComponent,
+  FormStepperComponent,
+  IconComponent,
+  IconFormComponent,
   I18nDirective,
   PageTitleComponent,
   TableComponent,
@@ -66,4 +78,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class AdminSettingsPluginModule { }
+export class AdminSettingsPluginDialogModule { }

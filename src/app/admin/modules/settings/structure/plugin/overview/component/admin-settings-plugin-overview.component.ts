@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { FilterSortPaginateInput, PluginEntity } from 'src/app/core/api/generated/schema';
-import { AdminSettingsPluginActions } from '../../state/admin-settings-plugin.actions';
-import { selectPlugins } from '../../state/admin-settings-plugin.selectors';
-import { AdminSettingsPluginMenuAssignComponent } from '../menu-assign/admin-settings-plugin-menu-assign.component';
+import { AdminSettingsPluginOverviewActions } from '../state/admin-settings-plugin-overview.actions';
+import { selectPlugins } from '../state/admin-settings-plugin-overview.selectors';
 
 @Component({
   selector: 'app-admin-settings-plugin-overview',
@@ -21,13 +20,15 @@ export class AdminSettingsPluginOverviewComponent {
     {
       icon: 'toggle-off',
       callback: plugin =>
-        plugin?.active 
-        ? this.store.dispatch(AdminSettingsPluginActions.deactivatePlugin(plugin)) 
-        : this.dialog.open(AdminSettingsPluginMenuAssignComponent, {
-          data: plugin 
-        }),
-      disable: (row) => !row?.released,
+        this.store.dispatch(AdminSettingsPluginOverviewActions.togglePlugin(plugin)),
       tooltipLabel: 'toggleActivatePlugin',
+    },
+    {
+      icon: 'folder-tree',
+      callback: row => 
+        this.router.navigate(['admin/settings/structure/plugins', row?.code, 'form']),
+      disable: (row) => !row?.active,
+      tooltipLabel: 'changeMenuPoint',
     },
   ];
 
@@ -53,11 +54,12 @@ export class AdminSettingsPluginOverviewComponent {
 
   constructor(
     private store: Store,
-    private dialog: MatDialog,
+    private router: Router,
     private translationService: TranslationService
   ) { }
 
   public updateParams(params: FilterSortPaginateInput) {
-    this.store.dispatch(AdminSettingsPluginActions.updateParams(params));
+    this.store.dispatch(AdminSettingsPluginOverviewActions.updateParams(params));
   }
+
 }

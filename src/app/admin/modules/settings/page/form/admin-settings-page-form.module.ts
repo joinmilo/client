@@ -16,10 +16,10 @@ import { GridColumnDirective, GridRowComponent } from 'ngx-cinlib/layouts/grid-l
 import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { AdminSettingsPageEmbeddingModule } from '../embedding/admin-settings-page-embedding.module';
-import { AdminSettingsPageMenuModule } from '../menu/admin-settings-page-menu.module';
-import { AdminSettingsPageFormRoutingModule } from './admin-settings-page-form.module-routing.module';
+import { AdminSettingsPageFormRoutingModule } from './admin-settings-page-form-routing.module';
 import { AdminSettingsPageFormComponent } from './component/admin-settings-page-form.component';
 import { adminSettingsPageFormStateKey } from './constants/admin-settings-page-form.constants';
+import { AdminSettingsPageMenuModule } from './menu/admin-settings-page-menu.module';
 import { AdminSettingsPageFormEffects } from './state/admin-settings-page-form.effects';
 import { adminSettingsPageFormReducer } from './state/admin-settings-page-form.reducer';
 

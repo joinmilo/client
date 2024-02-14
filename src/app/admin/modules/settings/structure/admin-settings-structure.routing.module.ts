@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AdminActions } from 'src/app/admin/state/admin.actions';
 import { AdminSettingsRoute } from 'src/app/admin/typings/menu';
+import { code } from 'src/app/core/constants/queryparam.constants';
 import { requireAnyPrivilege } from 'src/app/core/utils/privilege.utils';
 
 const baseRoute = 'structure';
 
-const routes: AdminSettingsRoute[] = [
+const menuRoutes: AdminSettingsRoute[] = [
   {
     path: `${baseRoute}/menu`,
     loadComponent: () => import('./menu/admin-settings-menu.component')
@@ -35,9 +36,9 @@ const routes: AdminSettingsRoute[] = [
     canActivate: [requireAnyPrivilege('cms_admin')],
   },
   {
-    path: `${baseRoute}/plugins`,
-    loadChildren: () => import('./plugin/admin-settings-plugin.module')
-      .then((imported) => imported.AdminSettingsPluginModule),
+    path: `${baseRoute}/plugins/overview`,
+    loadChildren: () => import('./plugin/overview/admin-settings-plugin-overview.module')
+      .then((imported) => imported.AdminSettingsPluginOverviewModule),
     data: {
       name: 'plugins',
       description: 'pluginsDescription',
@@ -60,9 +61,19 @@ const routes: AdminSettingsRoute[] = [
   },
 ];
 
+const routes: Routes = [
+  {
+    path: `${baseRoute}/plugins/:${code}/form`,
+    loadChildren: () => import('./plugin/form/admin-settings-plugin-form.module')
+      .then((imported) => imported.AdminSettingsPluginFormModule),
+    canActivate: [requireAnyPrivilege('cms_admin')]
+  },
+]
+
 @NgModule({
   imports: [RouterModule.forChild([
-    ...routes,
+    ...menuRoutes,
+    ...routes
   ])],
   exports: [RouterModule]
 })
@@ -74,7 +85,7 @@ export class AdminSettingsStructureRoutingModule {
     this.store.dispatch(AdminActions.addSettingsMenu({
       name: 'structure',
       privileges: ['cms_admin'],
-      childs: routes.map(route => ({
+      childs: menuRoutes.map(route => ({
         name: route.data?.name,
         description: route.data?.description,
         route: route.path,

@@ -1,0 +1,12 @@
+query getPlugin($entity: PluginEntityInput) {
+  getPlugin(entity: $entity) {
+    id
+    code
+    icon
+    menuItems {
+      id
+    }
+    name
+    
+  }
+}
