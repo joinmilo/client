@@ -1,12 +1,12 @@
 <cin-page-title [title]="deal | translatable: 'name' | async">
 </cin-page-title>
 
-<button mat-flat-button color="primary" [routerLink]="['form']">
+<a mat-flat-button color="primary" [routerLink]="['form']">
   <span>
     <cin-icon [icon]="['fas', 'pen-to-square']"></cin-icon>
     <span i18nLabel="editDeal"></span>
   </span>
-</button>
+</a>
 
 <cin-radio-card-group
   [value]="initValue"
