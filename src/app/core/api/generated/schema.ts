@@ -5138,6 +5138,7 @@ export type PluginEntity = {
   modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   released?: Maybe<Scalars['Boolean']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
   translatables?: Maybe<Array<Maybe<PluginTranslatableEntity>>>;
 };
 
@@ -5151,6 +5152,7 @@ export type PluginEntityInput = {
   modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
   released?: InputMaybe<Scalars['Boolean']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
   translatables?: InputMaybe<Array<InputMaybe<PluginTranslatableEntityInput>>>;
 };
 
@@ -5161,6 +5163,7 @@ export type PluginTranslatableEntity = {
   language?: Maybe<LanguageEntity>;
   modified?: Maybe<Scalars['OffsetDateTime']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  shortDescription?: Maybe<Scalars['String']['output']>;
 };
 
 export type PluginTranslatableEntityInput = {
@@ -5168,6 +5171,7 @@ export type PluginTranslatableEntityInput = {
   id?: InputMaybe<Scalars['String']['input']>;
   modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  shortDescription?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type PrivilegeApplicationEntity = {
