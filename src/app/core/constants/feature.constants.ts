@@ -11,6 +11,7 @@ export const formsFeatureKey = 'forms';
 export const guestArticlesFeatureKey = 'guestarticle';
 export const mapFeatureKey = 'map';
 export const mediaFeatureKey = 'media';
+export const navigatorFeatureKey = 'navigator';
 export const organisationsFeatureKey = 'organisations';
 export const reportsFeatureKey = 'reports';
 export const surveysFeatureKey = 'surveys';
