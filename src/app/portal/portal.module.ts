@@ -14,6 +14,7 @@ import { EventPortalRoutingModule } from '../features/event/portal/event-portal-
 import { GuestArticlePortalRoutingModule } from '../features/guest-article/portal/guest-article-portal-routing.module';
 import { MapPortalRoutingModule } from '../features/map/portal/map-portal-routing.module';
 import { MediaPortalRoutingModule } from '../features/media/portal/media-portal-routing.module';
+import { NavigatorPortalRoutingModule } from '../features/navigator/portal/navigator-portal-routing.module';
 import { OrganisationPortalRoutingModule } from '../features/organisation/portal/organisation-portal-routing.module';
 import { ReportPortalRoutingModule } from '../features/report/portal/report-portal-routing.module';
 import { SurveyPortalRoutingModule } from '../features/survey/portal/survey-portal-routing.module';
@@ -41,6 +42,7 @@ const routes = [
   GuestArticlePortalRoutingModule,
   MapPortalRoutingModule,
   MediaPortalRoutingModule,
+  NavigatorPortalRoutingModule,
   OrganisationPortalRoutingModule,
   ReportPortalRoutingModule,
   SurveyPortalRoutingModule,

@@ -1,0 +1,21 @@
+<cin-page-title
+  [titleLabel]="contentForm.value.id ? 'editDeal' : 'createNewDeal'">
+</cin-page-title>
+
+<cin-form-stepper (cancelled)="cancelled()" (saved)="saved()">
+  <cin-form-step titleLabel="content" [formGroup]="contentForm">
+    <cin-grid-row columns="2">
+      <mat-form-field appearance="outline">
+        <mat-label i18nLabel="name"></mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </cin-grid-row>
+
+
+    <cin-grid-row columns="1">
+      <cin-richtext-editor-form formControlName="content">
+      </cin-richtext-editor-form>
+    </cin-grid-row>
+  </cin-form-step>
+
+</cin-form-stepper>

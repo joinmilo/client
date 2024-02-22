@@ -1,0 +1,26 @@
+query getNavigatorNodeDetails($entity: NavigatorNodeEntityInput) {
+  getNavigatorNode(entity: $entity) {
+    id
+    modified
+    created
+    slug
+    title
+    content
+    additionalInformation
+    name
+  
+    translatables {
+      id
+      name
+      content
+      additionalInformation
+      title
+      language {
+        id
+        locale
+        name
+      }
+    }
+
+  }
+}
