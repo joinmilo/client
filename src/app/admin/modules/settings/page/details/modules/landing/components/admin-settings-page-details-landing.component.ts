@@ -1,9 +1,11 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { Maybe, MediaEntity, PageEntity } from 'src/app/core/api/generated/schema';
+import { platformUrlConfig } from 'src/app/core/constants/configuration.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { selectConfiguration } from 'src/app/core/state/selectors/core.selectors';
 import { AdminSettingsPageDetailsLandingActions } from '../state/admin-settings-page-details-landing.actions';
 import { selectAdminSettingsPageDetailsLanding } from '../state/admin-settings-page-details-landing.selectors';
 
@@ -13,15 +15,14 @@ import { selectAdminSettingsPageDetailsLanding } from '../state/admin-settings-p
   styleUrls: ['./admin-settings-page-details-landing.component.scss']
 })
 export class AdminSettingsPageDetailsLandingComponent implements OnInit, OnDestroy {
-
-  public page?: Maybe<PageEntity>;
+  
+  public expanded = false;
 
   public media?: Maybe<MediaEntity[]>;
 
-  public expanded = false;
-  
-  @ViewChild('contentParagraph', { static: true })
-  private contentParagraph?: ElementRef<HTMLParagraphElement>;
+  public page?: Maybe<PageEntity>;
+
+  public platformUrl = this.store.select(selectConfiguration(platformUrlConfig));
 
   private destroy = new Subject<void>();
 

@@ -4,6 +4,8 @@
     linkIcon="pen-to-square">
   </cin-details-title>
 
+  <a [href]="[(platformUrl | async)?.value + '/portal/' + page?.slug]" class="link" i18nLabel="toYourPage"></a>
+
   <section>
     @for(embedding of page?.embeddings; track embedding) {
       <article>
