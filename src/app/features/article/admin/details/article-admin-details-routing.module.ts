@@ -15,7 +15,7 @@ const routes: Routes = [
       .then((imported) => imported.ArticleAdminDetailsLandingModule),
     component: ArticleAdminDetailsLandingComponent
   },
-    {
+  {
     path: searchRoute,
     loadChildren: () => import('./modules/search/article-admin-details-search.module')
       .then((imported) => imported.ArticleAdminDetailsSearchModule),

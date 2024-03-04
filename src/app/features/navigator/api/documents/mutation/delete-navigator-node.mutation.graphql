@@ -1,3 +1,3 @@
-mutation deleteNavigatorNode($id: String) {
-  deleteNavigatorNode(id: $id)
+mutation deleteNavigatorPage($id: String) {
+  deleteNavigatorPage(id: $id)
 }
