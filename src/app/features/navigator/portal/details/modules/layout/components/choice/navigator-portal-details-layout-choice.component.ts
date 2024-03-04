@@ -1,11 +1,13 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { collapse } from 'ngx-cinlib/core';
 import { RadioCardInput } from 'ngx-cinlib/forms/radio-card';
 import { TranslationService } from 'ngx-cinlib/i18n';
 import { Maybe, NavigatorChoiceEntity } from 'src/app/core/api/generated/schema';
+import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
+import { navigatorStartRoute } from '../../../../constants/navigator-details.constant';
 import { NavigatorPortalDetailsLayoutActions } from '../../state/navigator-portal-details-layout.actions';
 import { selectNavigatorStateInputs } from '../../state/navigator-portal-details-layout.selectors';
 
@@ -13,7 +15,20 @@ import { selectNavigatorStateInputs } from '../../state/navigator-portal-details
   selector: 'app-navigator-portal-details-layout-choice',
   templateUrl: './navigator-portal-details-layout-choice.component.html',
   styleUrls: ['./navigator-portal-details-layout-choice.component.scss'],
-  animations: [collapse()]
+  animations: [
+      trigger('collapse', [
+        state('false', style({
+          height: '0',
+          padding: '0',
+          overflow: 'hidden'
+        })),
+        state('true', style({
+          height: '*',
+          padding: '2rem'
+        })),
+        transition('true <=> false', animate('300ms ease'))
+      ])
+  ]
 })
 export class NavigatorPortalDetailsLayoutChoiceComponent {
 
@@ -46,6 +61,6 @@ export class NavigatorPortalDetailsLayoutChoiceComponent {
     this.store.dispatch(NavigatorPortalDetailsLayoutActions
       .setNavigatorState(this.inputs, this.inputs.length));
 
-    this.router.navigate([portalUrl, 'navigator', 'start', choice?.nextPage?.slug]);
+    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorStartRoute, choice?.nextPage?.slug]);
   }
 }
