@@ -1,10 +1,24 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
+  gap: 3rem;
   align-items: center;
-  margin: var(--gap) auto;
+  justify-content: center;
+  overflow-x: hidden;
+  // margin: var(--gap) auto;
 }
 
+.container {
+  // width: 60rem;
+  // max-width: calc(100% - var(--gap));
+}
 
+cin-radio-card-group{
+  margin: 0 auto;
+  overflow-x: scroll;
+}
+
+app-navigator-portal-details-layout-page{
+  width: 40rem;
+  max-width: calc(100% - var(--gap));
+}

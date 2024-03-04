@@ -7,6 +7,17 @@ query getNavigatorPage($entity: NavigatorPageEntityInput) {
     title
     additionalInformation
 
+    translatables {
+      id
+      additionalInformation
+      title
+      language {
+        id
+        locale
+        name
+      }
+    }
+
     choices {
       id
       description
@@ -41,20 +52,22 @@ query getNavigatorPage($entity: NavigatorPageEntityInput) {
         locale
         name
       }
-    }
-      
-    }
-  
-    translatables {
+    }    
+  }
+
+    links {
       id
-      additionalInformation
-      title
-      language {
+      name
+      url
+      translatables {
         id
-        locale
         name
+        language {
+          id
+          locale
+          name
+        }        
       }
     }
-
   }
 }

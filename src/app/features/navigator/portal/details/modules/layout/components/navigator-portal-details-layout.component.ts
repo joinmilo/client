@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { RadioCardInput } from 'ngx-cinlib/forms/radio-card';
-import { TranslationService } from 'ngx-cinlib/i18n';
 import { Subject, filter, switchMap } from 'rxjs';
-import { Maybe, NavigatorChoiceEntity, NavigatorPageEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, NavigatorPageEntity } from 'src/app/core/api/generated/schema';
+import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
+import { navigatorStartRoute } from '../../../constants/navigator-details.constant';
 import { NavigatorPortalDetailsLayoutActions } from '../state/navigator-portal-details-layout.actions';
 import { selectCurrentPage, selectNavigatorStateInputs } from '../state/navigator-portal-details-layout.selectors';
 
@@ -25,8 +26,6 @@ export class NavigatorPortalDetailsLayoutComponent implements OnInit, OnDestroy 
 
   public initValue = '';
 
-  private currentIndex = 0;
-
   public showDescription: number | null = null;
 
   toggleDescription(index: number) {
@@ -36,13 +35,9 @@ export class NavigatorPortalDetailsLayoutComponent implements OnInit, OnDestroy 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store,
-    private translationService: TranslationService) {
-      
-    }
+    private store: Store) {}
 
     public ngOnInit(): void {
-
       this.activatedRoute?.params.pipe(
         switchMap(params => {
           const action = params[slug]
@@ -53,47 +48,15 @@ export class NavigatorPortalDetailsLayoutComponent implements OnInit, OnDestroy 
         }),
         filter(page => !!page),
       ).subscribe(page => {
-        // var choiceName: Maybe<string>;
-        // this.translationService.translatable(page?.parentChoices?.[0]?.translatables, 'name')
-        // .subscribe(name => choiceName = name);
-        // this.inputs.push({
-        //   display: (this.inputs.length + 1).toString(),
-        //   label: choiceName ? choiceName : "Start",
-        //   value: page?.slug,
-        // });
-        // this.store.select(selectNavigatorStateIndex).subscribe(index => this.currentIndex = index);
-        
-        // console.log("be4Slice", this.inputs);
-        // console.log("index", this.currentIndex);
-        // this.currentIndex = this.currentIndex + 1;
-        // this.inputs = this.inputs.slice(0, this.currentIndex);
-        // console.log("sliced", this.inputs);
-        // this.inputs = this.inputs.slice(0, (this.inputs.findIndex(input => input.value == page?.slug) +1));
-        
         this.currentPage = page; 
-        this.initValue = page?.slug!});
+        this.initValue = (page?.parentChoices?.length ?? 0)  > 0 ? page?.slug! : ''});
         this.store.select(selectNavigatorStateInputs).subscribe(inputs => this.inputs = inputs);
     }
 
   public route(route: string | null): void {
-    this.router.navigate([portalUrl, 'navigator', 'start', route]);
+    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorStartRoute, route]);
   }
-
-  public toNewPage(choice: Maybe<NavigatorChoiceEntity>){
-    var choiceName: Maybe<string>;
-    this.translationService.translatable(choice?.translatables, 'name').subscribe(name => choiceName = name);
-
-    this.inputs = [...this.inputs, {
-        display: (this.inputs.length + 1).toString(),
-        label: choiceName!,
-        value: choice?.nextPage?.slug,
-      }];
-
-    this.store.dispatch(NavigatorPortalDetailsLayoutActions.setNavigatorState(this.inputs, this.inputs.length));
-    
-    this.router.navigate([portalUrl, 'navigator', 'start', choice?.nextPage?.slug]);
-  }
-
+  
   public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();

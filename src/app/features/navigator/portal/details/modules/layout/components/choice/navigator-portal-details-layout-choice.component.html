@@ -1,18 +1,18 @@
-<button id="choice" mat-raised-button (click)="toNewPage(choice)"
+<a mat-raised-button (click)="toNewPage(choice)"
   [class.active]="!showDescription">
   <div>
     <span>{{ choice | translatable : "name" | async}}</span>
     @if((choice | translatable : "description" | async) !== null){
-      <button mat-button (click)="showDescription = !showDescription; $event.stopPropagation()">
-         <cin-icon [size]="'xs'" [icon]="['fas', 'chevron-down']"></cin-icon>
+      <button (click)="showDescription = !showDescription; $event.stopPropagation()">
+         @if (!showDescription) { <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon> }
+         @if (showDescription) { <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon> }
        </button> 
         }
   </div>
-</button>
-  <span id="description" [@collapse]="showDescription">
-          {{ choice | translatable : "description" | async}}
-  </span>
-   
+</a>
+<p [@collapse]="showDescription">
+  {{ choice | translatable : "description" | async}}
+</p>
   
 
 
