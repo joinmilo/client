@@ -1,0 +1,60 @@
+query getNavigatorPage($entity: NavigatorPageEntityInput) {
+  getNavigatorPage(entity: $entity) {
+    id
+    modified
+    created
+    slug
+    title
+    additionalInformation
+
+    choices {
+      id
+      description
+      name
+      parent {
+        id
+        slug
+      }
+      nextPage {
+        id
+        slug
+      }
+      translatables {
+        id
+        name
+        description
+        language {
+          id
+          locale
+          name
+        }
+      }
+    } 
+
+    parentChoices {
+      id
+      translatables {
+      id
+      name
+      language {
+        id
+        locale
+        name
+      }
+    }
+      
+    }
+  
+    translatables {
+      id
+      additionalInformation
+      title
+      language {
+        id
+        locale
+        name
+      }
+    }
+
+  }
+}

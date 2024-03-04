@@ -1,0 +1,14 @@
+<cin-details-title [title]="page | translatable : 'title' | async">
+</cin-details-title>
+
+<div class="container">
+  @for (choice of page?.choices; track choice; let index = $index) {
+    <app-navigator-portal-details-layout-choice [choice]="choice"></app-navigator-portal-details-layout-choice>
+  }
+
+  <span class="border-box">
+    Die Desmane, auch Bisamspitz­mäuse genannt, sind eine Gattungs­gruppe der Maul­würfe (Talpidae). Sie umfasst mit dem Rus­sischen Desman und dem Pyrenäen-Desman zwei rezente Arten. Die Tiere sind von allen Maul­würfen am besten ans Wasser­leben angepasst. Anzei­chen dafür finden sich unter anderem in dem gedrun­genen Körper­bau mit langer Schnauze und ver­schließ­baren Nasen­löchern, dem langen und teilweise oder voll­ständig abge­platte­ten Schwanz, den gegenüber den Vorder­füßen sehr großen Hinter­füßen und den Schwimm­häuten zwischen den Zehen. </span>  
+  
+</div>
+
+
