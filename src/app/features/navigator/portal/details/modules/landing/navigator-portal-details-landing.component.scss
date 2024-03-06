@@ -1,19 +1,51 @@
-// a {
-//   padding: 1.75rem;
-//   width: fit-content;
-//   color: var(--color-primary-contrast-900);
-//   background-image: linear-gradient(45deg,
-//     var(--color-primary-900),
-//     var(--color-primary-700),
-//     var(--color-primary-500),
-//     var(--color-accent-500),
-//     var(--color-accent-700),
-//     var(--color-accent-900));
-//   background-size: 300%;
-//   background-position: left;
-//   transition: background-position .5s;
-// }
+@import 'ngx-cinlib/styles/mobile-mixins.scss';
 
-// a:hover {
-//   background-position: right;
-// }
+header {
+  display: flex;
+  justify-content: center;
+  min-height: 80vh;
+  gap: 5rem;
+  flex-flow: row-reverse;
+
+  img {
+    max-width: 40%;
+    @include responsive(phone) {
+      display: none;
+    }
+  }
+
+  cin-page-title{
+    width: min-content;
+  }
+
+  section {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+
+    app-gradient-button {
+      width: fit-content;
+    }
+
+    p {
+      color: var(--color-dark-gray);
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.5;
+      max-width: 35vw;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+
+      @include responsive(phone) {
+        max-width: 90vw;
+      }
+    }
+  }
+}

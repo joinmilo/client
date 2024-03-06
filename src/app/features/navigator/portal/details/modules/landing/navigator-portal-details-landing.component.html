@@ -1,3 +1,15 @@
-<img src="assets/in-progress.svg" />
-<a mat-raised-button [routerLink]="'/portal/navigator/start'" [i18nLabel]="'Los gehts'"> </a>
+<header>
+  <img src="assets/navigator-choose.svg" alt="hero-section">
+  <section>
+    <div>
+      <cin-page-title titleLabel="navigator"></cin-page-title>
 
+      <p i18nLabel="navigatorDescription"></p>
+    
+      <app-gradient-button 
+        url="/portal/navigator/start"
+        [label]="'Los gehts'">
+      </app-gradient-button>
+    </div>
+  </section>
+</header>

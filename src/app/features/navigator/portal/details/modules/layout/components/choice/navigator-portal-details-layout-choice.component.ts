@@ -1,4 +1,3 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -15,20 +14,6 @@ import { selectNavigatorStateInputs } from '../../state/navigator-portal-details
   selector: 'app-navigator-portal-details-layout-choice',
   templateUrl: './navigator-portal-details-layout-choice.component.html',
   styleUrls: ['./navigator-portal-details-layout-choice.component.scss'],
-  animations: [
-      trigger('collapse', [
-        state('false', style({
-          height: '0',
-          padding: '0',
-          overflow: 'hidden'
-        })),
-        state('true', style({
-          height: '*',
-          padding: '2rem'
-        })),
-        transition('true <=> false', animate('300ms ease'))
-      ])
-  ]
 })
 export class NavigatorPortalDetailsLayoutChoiceComponent {
 
@@ -54,7 +39,7 @@ export class NavigatorPortalDetailsLayoutChoiceComponent {
 
     this.inputs = [...this.inputs, {
         display: (this.inputs.length + 1).toString(),
-        label: choiceName!,
+        label: choiceName ?? '',
         value: choice?.nextPage?.slug,
       }];
 

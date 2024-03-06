@@ -1,48 +1,4 @@
-a {
+app-gradient-button {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  height: max-content;
-  background-color: var(--color-primary-200) !important;
-
-  div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
 
-button {
-  background-color: transparent;
-  cursor: pointer;
-  border: none;
-  border-radius: 5rem;
-  padding: .5rem;
-}
-
-button:hover {
-  background-color: lightgray;
-}
-
-cin-icon{
-  color: unset;
-}
-
-p {
-  display: flex;
-  width: auto;
-  background-color: var(--color-primary-50);
-  border-radius: 0 0 var(--mdc-shape-small) var(--mdc-shape-small);
-  box-shadow: 0px 2px 8px 0px var(--color-box-shadow);
-}
-
-:host ::ng-deep {
-  .mdc-button__label {
-    width: 100%;
-    margin: .75rem;
-    :first-child{
-      text-align: start;
-    }
-  }
-}

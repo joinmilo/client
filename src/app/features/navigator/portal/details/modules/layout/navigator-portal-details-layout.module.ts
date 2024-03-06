@@ -11,6 +11,7 @@ import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
 import { DetailsTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
+import { GradientButtonComponent } from 'src/app/shared/widgets/gradient-button/gradient-button.component';
 import { NavigatorPortalDetailsLayoutChoiceComponent } from './components/choice/navigator-portal-details-layout-choice.component';
 import { NavigatorPortalDetailsLayoutComponent } from './components/navigator-portal-details-layout.component';
 import { NavigatorPortalDetailsLayoutPageComponent } from './components/page/navigator-portal-details-layout-page.component';
@@ -43,6 +44,7 @@ const libs = [
   StoreModule.forFeature(navigatorPortalDetailsLayoutStateKey, navigatorAdminDetailsLayoutReducer),
   EffectsModule.forFeature([NavigatorPortalDetailsLayoutEffects]),
   
+  GradientButtonComponent,
   IconComponent,
   I18nDirective,
   DetailsTitleComponent,

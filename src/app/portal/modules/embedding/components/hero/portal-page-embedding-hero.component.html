@@ -11,12 +11,12 @@
       <p [innerHTML]="element?.text | translatable: 'translatable' | async"></p>
 
       @if (element?.url) {
-        <a mat-raised-button
-          [href]="element?.url?.value"
-          [i18nLabel]="element?.button
-            ? (element?.button | translatable: 'translatable' | async)
-            : 'learnMore'">
-        </a>
+        <app-gradient-button 
+          [url]="element?.url?.value"
+          [label]="element?.button
+          ? (element?.button | translatable: 'translatable' | async)
+          : 'learnMore'">
+        </app-gradient-button>
       }
     </div>
   </section>

@@ -1,0 +1,32 @@
+@if (url) {
+  <a mat-raised-button [href]="url" target="_blank" [i18nLabel]="label ? label : null">
+    {{ name }}
+    @if(description){
+      <button (click)="showDescription = !showDescription; $event.stopPropagation()">
+        @if (!showDescription) { <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon> }
+        @if (showDescription) { <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon> }
+    </button> 
+  }
+    @if(icon) { <cin-icon [icon]="icon"></cin-icon> }
+  </a>
+  <div [@collapse]="showDescription">
+    <p>{{ description }}</p>
+  </div>
+}
+
+@if (!url) {
+  <a mat-raised-button [i18nLabel]="label ? label : null">
+    {{ name }}
+    @if(description){
+      <button (click)="showDescription = !showDescription; $event.stopPropagation()">
+        @if (!showDescription) { <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon> }
+        @if (showDescription) { <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon> }
+    </button> 
+  }
+    @if(icon) { <cin-icon [icon]="icon"></cin-icon> }
+  </a>
+
+  <div [@collapse]="showDescription">
+    <p>{{ description }}</p>
+  </div>
+}

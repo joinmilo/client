@@ -1,24 +1,22 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
   align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
-  // margin: var(--gap) auto;
+  margin: var(--gap) auto;
 }
 
-.container {
-  // width: 60rem;
-  // max-width: calc(100% - var(--gap));
+cin-radio-card-group {
+  max-width: calc(100% - var(--gap));
+  margin: var(--gap) auto;
 }
 
-cin-radio-card-group{
-  margin: 0 auto;
-  overflow-x: scroll;
+::ng-deep cin-radio-card-group cin-radio-card {
+  margin: auto; 
 }
 
-app-navigator-portal-details-layout-page{
+
+app-navigator-portal-details-layout-page {
   width: 40rem;
   max-width: calc(100% - var(--gap));
 }
