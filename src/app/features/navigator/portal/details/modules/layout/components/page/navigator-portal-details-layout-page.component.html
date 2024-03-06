@@ -13,9 +13,11 @@
 
 @if (page?.links){
   @for (link of page?.links; track link) {
-  <a class="border-box" [href]="link?.url" target="_blank" rel="noopener noreferrer">
-    {{ link | translatable : 'name' | async}}
-  </a>
+  <app-gradient-button 
+    [url]="link?.url"
+    [name]="link | translatable : 'name' | async"
+    [icon]="['fas', 'arrow-right']">
+  </app-gradient-button>
   }
 }
 

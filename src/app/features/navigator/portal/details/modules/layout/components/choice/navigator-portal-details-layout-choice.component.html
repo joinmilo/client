@@ -1,18 +1,9 @@
-<a mat-raised-button (click)="toNewPage(choice)"
-  [class.active]="!showDescription">
-  <div>
-    <span>{{ choice | translatable : "name" | async}}</span>
-    @if((choice | translatable : "description" | async) !== null){
-      <button (click)="showDescription = !showDescription; $event.stopPropagation()">
-         @if (!showDescription) { <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon> }
-         @if (showDescription) { <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon> }
-       </button> 
-        }
-  </div>
-</a>
-<p [@collapse]="showDescription">
-  {{ choice | translatable : "description" | async}}
-</p>
+<app-gradient-button 
+  [name]="choice | translatable : 'name' | async"
+  (click)="toNewPage(choice)"
+  [description]="choice | translatable : 'description' | async">
+</app-gradient-button>
+
   
 
 

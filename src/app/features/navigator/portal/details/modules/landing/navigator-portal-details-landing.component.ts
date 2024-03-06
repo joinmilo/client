@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigator-portal-details-landing.component.scss']
 })
 export class NavigatorPortalDetailsLandingComponent {
-
-
 }

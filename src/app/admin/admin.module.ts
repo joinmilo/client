@@ -10,6 +10,7 @@ import { DealAdminRoutingModule } from '../features/deal/admin/deal-admin-routin
 import { EventAdminRoutingModule } from '../features/event/admin/event-admin-routing.module';
 import { GuestArticleAdminRoutingModule } from '../features/guest-article/admin/guest-article-admin-routing.module';
 import { MediaAdminRoutingModule } from '../features/media/admin/media-admin-routing.module';
+import { NavigatorAdminRoutingModule } from '../features/navigator/admin/navigator-admin-routing.module';
 import { OrganisationAdminRoutingModule } from '../features/organisation/admin/organisation-admin-routing.module';
 import { ReportAdminRoutingModule } from '../features/report/admin/report-admin-routing.module';
 import { SurveyAdminRoutingModule } from '../features/survey/admin/survey-admin-routing.module';
@@ -35,6 +36,7 @@ const routes = [
   ReportAdminRoutingModule,
   GuestArticleAdminRoutingModule,
   AuthorAdminRoutingModule,
+  NavigatorAdminRoutingModule,
   AdminRoutingModule, //TODO: always last entry duet to order and redirect to 404, Remove 404 and put in AppRouter
 ];
 
