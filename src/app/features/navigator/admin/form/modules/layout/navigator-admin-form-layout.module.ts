@@ -4,8 +4,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { PageTitleComponent } from 'ngx-cinlib/layouts/title';
 import { TableComponent } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
+import { NavigatorAdminFormOverviewModule } from '../overview/navigator-admin-form-overview.module';
 import { NavigatorAdminFormLayoutComponent } from './components/navigator-admin-form-layout.component';
 import { navigatorAdminFormLayoutStateKey } from './constants/navigator-admin-form-layout.constants';
 import { NavigatorAdminFormLayoutEffects } from './state/navigator-admin-form-layout.effects';
@@ -26,6 +28,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  NavigatorAdminFormOverviewModule,
 ];
 
 const libs = [
@@ -33,6 +36,7 @@ const libs = [
   EffectsModule.forFeature([NavigatorAdminFormLayoutEffects]),
 
   TableComponent,
+  PageTitleComponent,
 ];
 
 @NgModule({
