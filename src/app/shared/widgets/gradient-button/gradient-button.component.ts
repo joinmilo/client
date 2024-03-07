@@ -37,6 +37,9 @@ export class GradientButtonComponent {
   
   @Input()
   public icon?: SolidIcon | RegularIcon;
+
+  @Input()
+  public openNewTab = false;
   
   public showDescription = false;
 
