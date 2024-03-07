@@ -1,0 +1,31 @@
+<cin-details-title 
+  [title]="page | translatable : 'title' | async">
+</cin-details-title>
+
+@if (page?.choices){ 
+  <section>
+    @for (choice of page?.choices; track choice; let index = $index) {
+      <app-navigator-portal-details-layout-choice [choice]="choice">
+      </app-navigator-portal-details-layout-choice>
+    }
+  </section>
+}
+
+@if (page?.links){
+  @for (link of page?.links; track link) {
+  <app-gradient-button 
+    [url]="link?.url"
+    [name]="link | translatable : 'name' | async"
+    [icon]="['fas', 'arrow-right']"
+    [openNewTab]="true">
+  </app-gradient-button>
+  }
+}
+
+@if (page | translatable: 'additionalInformation' | async) {
+  <div class="border-box">
+    {{ (page | translatable: 'additionalInformation' | async) }}
+  </div>  
+}
+
+

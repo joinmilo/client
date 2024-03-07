@@ -1,0 +1,3 @@
+mutation deleteNavigatorPage($id: String) {
+  deleteNavigatorPage(id: $id)
+}

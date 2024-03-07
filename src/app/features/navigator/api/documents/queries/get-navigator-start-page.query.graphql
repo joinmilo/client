@@ -1,0 +1,46 @@
+query getNavigatorStartPage {
+  getNavigatorStartPage {
+    id
+    modified
+    created
+    slug
+    title
+    additionalInformation
+    isResultPage
+
+    choices {
+      id
+      description
+      name
+      nextPage {
+        id
+        slug
+      }
+      translatables {
+        id
+        name
+        description
+        language {
+          id
+          locale
+          name
+        }
+      }
+    } 
+
+    parentChoices {
+      id
+    }
+  
+    translatables {
+      id
+      additionalInformation
+      title
+      language {
+        id
+        locale
+        name
+      }
+    }
+  }
+}

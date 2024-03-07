@@ -39,7 +39,6 @@ const components = [
   ContestPortalDetailsCommentComponent,
   ContestPortalDetailsSummaryComponent,
   PortalContestDetailsMediaComponent
-
 ];
 
 const framework = [

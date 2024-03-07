@@ -20,4 +20,5 @@ export type Privilege = 'addresses_admin'
   | 'surveys_admin'
   | 'surveys_manage'
   | 'translator_admin'
-  | 'user_admin';
+  | 'user_admin'
+  | 'navigator_admin';

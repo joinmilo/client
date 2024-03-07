@@ -1820,6 +1820,12 @@ export type Mutation = {
   deleteMilestoneMedia?: Maybe<Scalars['Boolean']['output']>;
   deleteMilestoneMedium?: Maybe<Scalars['Boolean']['output']>;
   deleteMilestones?: Maybe<Scalars['Boolean']['output']>;
+  deleteNavigatorChoice?: Maybe<Scalars['Boolean']['output']>;
+  deleteNavigatorChoices?: Maybe<Scalars['Boolean']['output']>;
+  deleteNavigatorPage?: Maybe<Scalars['Boolean']['output']>;
+  deleteNavigatorPages?: Maybe<Scalars['Boolean']['output']>;
+  deleteNavigatorResultPage?: Maybe<Scalars['Boolean']['output']>;
+  deleteNavigatorResultPages?: Maybe<Scalars['Boolean']['output']>;
   deleteNotification?: Maybe<Scalars['Boolean']['output']>;
   deleteNotifications?: Maybe<Scalars['Boolean']['output']>;
   deleteOrganisation?: Maybe<Scalars['Boolean']['output']>;
@@ -1971,6 +1977,12 @@ export type Mutation = {
   saveMilestoneMedia?: Maybe<Array<Maybe<MilestoneMediaEntity>>>;
   saveMilestoneMedium?: Maybe<MilestoneMediaEntity>;
   saveMilestones?: Maybe<Array<Maybe<MilestoneEntity>>>;
+  saveNavigatorChoice?: Maybe<NavigatorChoiceEntity>;
+  saveNavigatorChoices?: Maybe<Array<Maybe<NavigatorChoiceEntity>>>;
+  saveNavigatorPage?: Maybe<NavigatorPageEntity>;
+  saveNavigatorPages?: Maybe<Array<Maybe<NavigatorPageEntity>>>;
+  saveNavigatorResultPage?: Maybe<NavigatorResultLinkEntity>;
+  saveNavigatorResultPages?: Maybe<Array<Maybe<NavigatorResultLinkEntity>>>;
   saveNotification?: Maybe<NotificationEntity>;
   saveNotifications?: Maybe<Array<Maybe<NotificationEntity>>>;
   saveOrganisation?: Maybe<OrganisationEntity>;
@@ -2613,6 +2625,42 @@ export type MutationDeleteMilestoneMediumArgs = {
 
 /** Mutation root */
 export type MutationDeleteMilestonesArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNavigatorChoiceArgs = {
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNavigatorChoicesArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNavigatorPageArgs = {
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNavigatorPagesArgs = {
+  ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNavigatorResultPageArgs = {
+  id?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Mutation root */
+export type MutationDeleteNavigatorResultPagesArgs = {
   ids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -3525,6 +3573,42 @@ export type MutationSaveMilestonesArgs = {
 
 
 /** Mutation root */
+export type MutationSaveNavigatorChoiceArgs = {
+  entity?: InputMaybe<NavigatorChoiceEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveNavigatorChoicesArgs = {
+  entities?: InputMaybe<Array<InputMaybe<NavigatorChoiceEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveNavigatorPageArgs = {
+  entity?: InputMaybe<NavigatorPageEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveNavigatorPagesArgs = {
+  entities?: InputMaybe<Array<InputMaybe<NavigatorPageEntityInput>>>;
+};
+
+
+/** Mutation root */
+export type MutationSaveNavigatorResultPageArgs = {
+  entity?: InputMaybe<NavigatorResultLinkEntityInput>;
+};
+
+
+/** Mutation root */
+export type MutationSaveNavigatorResultPagesArgs = {
+  entities?: InputMaybe<Array<InputMaybe<NavigatorResultLinkEntityInput>>>;
+};
+
+
+/** Mutation root */
 export type MutationSaveNotificationArgs = {
   entity?: InputMaybe<NotificationEntityInput>;
 };
@@ -3971,6 +4055,135 @@ export type MutationVerifyArgs = {
 /** Mutation root */
 export type MutationVerifyAddressArgs = {
   entity?: InputMaybe<AddressEntityInput>;
+};
+
+export type NavigatorChoiceEntity = {
+  __typename?: 'NavigatorChoiceEntity';
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  nextPage?: Maybe<NavigatorPageEntity>;
+  parent?: Maybe<NavigatorPageEntity>;
+  resultPage?: Maybe<NavigatorResultLinkEntity>;
+  slug?: Maybe<Scalars['String']['output']>;
+  translatables?: Maybe<Array<Maybe<NavigatorChoiceTranslatableEntity>>>;
+};
+
+export type NavigatorChoiceEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  nextPage?: InputMaybe<NavigatorPageEntityInput>;
+  parent?: InputMaybe<NavigatorPageEntityInput>;
+  resultPage?: InputMaybe<NavigatorResultLinkEntityInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  translatables?: InputMaybe<Array<InputMaybe<NavigatorChoiceTranslatableEntityInput>>>;
+};
+
+export type NavigatorChoiceTranslatableEntity = {
+  __typename?: 'NavigatorChoiceTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type NavigatorChoiceTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NavigatorPageEntity = {
+  __typename?: 'NavigatorPageEntity';
+  additionalInformation?: Maybe<Scalars['String']['output']>;
+  choices?: Maybe<Array<Maybe<NavigatorChoiceEntity>>>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  isResultPage?: Maybe<Scalars['Boolean']['output']>;
+  links?: Maybe<Array<Maybe<NavigatorResultLinkEntity>>>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  parentChoices?: Maybe<Array<Maybe<NavigatorChoiceEntity>>>;
+  slug?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  translatables?: Maybe<Array<Maybe<NavigatorPageTranslatableEntity>>>;
+};
+
+export type NavigatorPageEntityInput = {
+  additionalInformation?: InputMaybe<Scalars['String']['input']>;
+  choices?: InputMaybe<Array<InputMaybe<NavigatorChoiceEntityInput>>>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  isResultPage?: InputMaybe<Scalars['Boolean']['input']>;
+  links?: InputMaybe<Array<InputMaybe<NavigatorResultLinkEntityInput>>>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  parentChoices?: InputMaybe<Array<InputMaybe<NavigatorChoiceEntityInput>>>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  translatables?: InputMaybe<Array<InputMaybe<NavigatorPageTranslatableEntityInput>>>;
+};
+
+export type NavigatorPageTranslatableEntity = {
+  __typename?: 'NavigatorPageTranslatableEntity';
+  additionalInformation?: Maybe<Scalars['String']['output']>;
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type NavigatorPageTranslatableEntityInput = {
+  additionalInformation?: InputMaybe<Scalars['String']['input']>;
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NavigatorResultLinkEntity = {
+  __typename?: 'NavigatorResultLinkEntity';
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  parent?: Maybe<NavigatorPageEntity>;
+  translatables?: Maybe<Array<Maybe<NavigatorResultLinkTranslatableEntity>>>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type NavigatorResultLinkEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  parent?: InputMaybe<NavigatorPageEntityInput>;
+  translatables?: InputMaybe<Array<InputMaybe<NavigatorResultLinkTranslatableEntityInput>>>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type NavigatorResultLinkTranslatableEntity = {
+  __typename?: 'NavigatorResultLinkTranslatableEntity';
+  created?: Maybe<Scalars['OffsetDateTime']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  language?: Maybe<LanguageEntity>;
+  modified?: Maybe<Scalars['OffsetDateTime']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+};
+
+export type NavigatorResultLinkTranslatableEntityInput = {
+  created?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  modified?: InputMaybe<Scalars['OffsetDateTime']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type NotificationEntity = {
@@ -4687,6 +4900,24 @@ export type PageableList_MilestoneMediaEntity = {
   total: Scalars['Long']['output'];
 };
 
+export type PageableList_NavigatorChoiceEntity = {
+  __typename?: 'PageableList_NavigatorChoiceEntity';
+  result?: Maybe<Array<Maybe<NavigatorChoiceEntity>>>;
+  total: Scalars['Long']['output'];
+};
+
+export type PageableList_NavigatorPageEntity = {
+  __typename?: 'PageableList_NavigatorPageEntity';
+  result?: Maybe<Array<Maybe<NavigatorPageEntity>>>;
+  total: Scalars['Long']['output'];
+};
+
+export type PageableList_NavigatorResultLinkEntity = {
+  __typename?: 'PageableList_NavigatorResultLinkEntity';
+  result?: Maybe<Array<Maybe<NavigatorResultLinkEntity>>>;
+  total: Scalars['Long']['output'];
+};
+
 export type PageableList_NotificationEntity = {
   __typename?: 'PageableList_NotificationEntity';
   result?: Maybe<Array<Maybe<NotificationEntity>>>;
@@ -5065,6 +5296,13 @@ export type Query = {
   getMilestoneMedia?: Maybe<PageableList_MilestoneMediaEntity>;
   getMilestoneMedium?: Maybe<MilestoneMediaEntity>;
   getMilestones?: Maybe<PageableList_MilestoneEntity>;
+  getNavigatorChoice?: Maybe<NavigatorChoiceEntity>;
+  getNavigatorChoices?: Maybe<PageableList_NavigatorChoiceEntity>;
+  getNavigatorPage?: Maybe<NavigatorPageEntity>;
+  getNavigatorPages?: Maybe<PageableList_NavigatorPageEntity>;
+  getNavigatorResultPage?: Maybe<NavigatorResultLinkEntity>;
+  getNavigatorResultPages?: Maybe<PageableList_NavigatorResultLinkEntity>;
+  getNavigatorStartPage?: Maybe<NavigatorPageEntity>;
   getNotification?: Maybe<NotificationEntity>;
   getNotifications?: Maybe<PageableList_NotificationEntity>;
   getOrganisation?: Maybe<OrganisationEntity>;
@@ -5611,6 +5849,42 @@ export type QueryGetMilestoneMediumArgs = {
 
 /** Query root */
 export type QueryGetMilestonesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetNavigatorChoiceArgs = {
+  entity?: InputMaybe<NavigatorChoiceEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetNavigatorChoicesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetNavigatorPageArgs = {
+  entity?: InputMaybe<NavigatorPageEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetNavigatorPagesArgs = {
+  params?: InputMaybe<FilterSortPaginateInput>;
+};
+
+
+/** Query root */
+export type QueryGetNavigatorResultPageArgs = {
+  entity?: InputMaybe<NavigatorResultLinkEntityInput>;
+};
+
+
+/** Query root */
+export type QueryGetNavigatorResultPagesArgs = {
   params?: InputMaybe<FilterSortPaginateInput>;
 };
 

@@ -18,6 +18,7 @@ import { MediaEmbeddingModule } from 'src/app/features/media/embedding/media-emb
 import { OrganisationEmbeddingModule } from 'src/app/features/organisation/embedding/organisation-embedding.module';
 import { ReportEmbeddingModule } from 'src/app/features/report/embedding/report-embedding.module';
 import { SurveyEmbeddingModule } from 'src/app/features/survey/embedding/survey-embedding.module';
+import { GradientButtonComponent } from 'src/app/shared/widgets/gradient-button/gradient-button.component';
 import { PortalPageEmbeddingBannerComponent } from './components/banner/portal-page-embedding-banner.component';
 import { PortalPageEmbeddingBoxComponent } from './components/box/portal-page-embedding-box.component';
 import { PortalPageEmbeddingExpansionComponent } from './components/expansion/portal-page-embedding-expansion.component';
@@ -44,6 +45,7 @@ const framework = [
 ];
 
 const libs = [
+  GradientButtonComponent,
   I18nDirective,
   MediaElementComponent,
   MediaSliderComponent,

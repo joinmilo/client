@@ -1,0 +1,25 @@
+<mat-tree class="border-box"
+[treeControl]="treeControl"
+[dataSource]="dataSource">
+
+<mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+  <button mat-button disabled="true"></button>
+  <span (click)="pageDetails()">{{ (node.item  | translatable: 'title' | async) ?? 
+    (node.item | translatable: 'name' | async) }}</span>
+</mat-tree-node>
+
+<mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding="">
+  <button (click)="getNextPage()"
+    mat-button
+    matTreeNodeToggle>
+    <cin-icon
+    [icon]="treeControl.isExpanded(node) 
+      ? ['fas', 'chevron-down'] 
+      : ['fas', 'chevron-right']"
+      [size]="'sm'"></cin-icon>
+  </button>
+  <span (click)="pageDetails()">{{ (node.item  | translatable: 'title' | async) ?? 
+    (node.item | translatable: 'name' | async) }}</span>
+</mat-tree-node>
+
+</mat-tree>

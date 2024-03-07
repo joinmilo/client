@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin: var(--gap) auto;
+}
+
+cin-radio-card-group {
+  max-width: calc(100% - var(--gap));
+  margin: var(--gap) auto;
+}
+
+::ng-deep cin-radio-card-group cin-radio-card {
+  margin: auto; 
+}
+
+
+app-navigator-portal-details-layout-page {
+  width: 40rem;
+  max-width: calc(100% - var(--gap));
+}
