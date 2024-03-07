@@ -9,10 +9,11 @@ import { IconComponent } from 'ngx-cinlib/icons';
 import { PageTitleComponent, SubTitleComponent } from 'ngx-cinlib/layouts/title';
 import { CoreModule } from 'src/app/core/core.module';
 import { GradientButtonComponent } from 'src/app/shared/widgets/gradient-button/gradient-button.component';
-import { NavigatorPortalDetailsLandingComponent } from './navigator-portal-details-landing.component';
+import { NavigatorPortalLandingComponent } from './component/navigator-portal-landing.component';
+import { NavigatorPortalLandingRoutingModule } from './navigator-portal-landing-routing.module';
 
 const components = [
-  NavigatorPortalDetailsLandingComponent,
+  NavigatorPortalLandingComponent,
 ]
 
 const framework = [
@@ -27,6 +28,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  NavigatorPortalLandingRoutingModule
 ];
 
 const libs = [
@@ -49,4 +51,4 @@ const libs = [
   ],
   exports: [...components],
 })
-export class NavigatorPortalDetailsLandingModule { }
+export class NavigatorPortalLandingModule { }

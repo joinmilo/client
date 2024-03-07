@@ -4,10 +4,9 @@ import { Store } from '@ngrx/store';
 import { Observable, map, tap } from 'rxjs';
 import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
-import { navigatorStartRoute } from '../../../constants/navigator-details.constant';
-import { selectNavigatorStateInputs } from '../state/navigator-portal-details-layout.selectors';
+import { navigatorQuestionsRoute } from '../constants/navigator-questions.constant';
+import { selectNavigatorStateInputs } from '../state/navigator-portal-questions.selectors';
 
-//TODO: replace with function isAuthenticated in privileges.utils.ts
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +19,7 @@ export class NavigatorRefreshGuard {
       map(inputs => inputs.length > 1),
       tap(canActivate => {
         if (!canActivate) {
-          this.router.navigate([portalUrl, navigatorFeatureKey, navigatorStartRoute]);
+          this.router.navigate([portalUrl, navigatorFeatureKey, navigatorQuestionsRoute]);
         }
       })
     );

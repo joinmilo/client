@@ -5,8 +5,8 @@
 @if (page?.choices){ 
   <section>
     @for (choice of page?.choices; track choice; let index = $index) {
-      <app-navigator-portal-details-layout-choice [choice]="choice">
-      </app-navigator-portal-details-layout-choice>
+      <app-navigator-portal-questions-choice [choice]="choice">
+      </app-navigator-portal-questions-choice>
     }
   </section>
 }

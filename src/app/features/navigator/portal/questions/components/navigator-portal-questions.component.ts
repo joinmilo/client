@@ -7,16 +7,16 @@ import { Maybe, NavigatorPageEntity } from 'src/app/core/api/generated/schema';
 import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { navigatorStartRoute } from '../../../constants/navigator-details.constant';
-import { NavigatorPortalDetailsLayoutActions } from '../state/navigator-portal-details-layout.actions';
-import { selectCurrentPage, selectNavigatorStateInputs } from '../state/navigator-portal-details-layout.selectors';
+import { navigatorQuestionsRoute } from '../constants/navigator-questions.constant';
+import { NavigatorPortalQuestionsActions } from '../state/navigator-portal-questions.actions';
+import { selectCurrentPage, selectNavigatorStateInputs } from '../state/navigator-portal-questions.selectors';
 
 @Component({
-  selector: 'app-navigator-portal-details-layout',
-  templateUrl: './navigator-portal-details-layout.component.html',
-  styleUrls: ['./navigator-portal-details-layout.component.scss'],
+  selector: 'app-navigator-portal-questions',
+  templateUrl: './navigator-portal-questions.component.html',
+  styleUrls: ['./navigator-portal-questions.component.scss'],
 })
-export class NavigatorPortalDetailsLayoutComponent implements OnInit, OnDestroy {
+export class NavigatorPortalQuestionsComponent implements OnInit, OnDestroy {
 
   public currentPage?: Maybe<NavigatorPageEntity>;
 
@@ -28,7 +28,7 @@ export class NavigatorPortalDetailsLayoutComponent implements OnInit, OnDestroy 
 
   public showDescription: number | null = null;
 
-  toggleDescription(index: number) {
+  public toggleDescription(index: number) {
     this.showDescription = this.showDescription === index ? null : index;
   }
 
@@ -41,20 +41,20 @@ export class NavigatorPortalDetailsLayoutComponent implements OnInit, OnDestroy 
       this.activatedRoute?.params.pipe(
         switchMap(params => {
           const action = params[slug]
-            ? NavigatorPortalDetailsLayoutActions.getPage(params[slug])
-            : NavigatorPortalDetailsLayoutActions.getStartPage();
+            ? NavigatorPortalQuestionsActions.getPage(params[slug])
+            : NavigatorPortalQuestionsActions.getStartPage();
           this.store.dispatch(action);
           return this.store.select(selectCurrentPage);
         }),
         filter(page => !!page),
       ).subscribe(page => {
         this.currentPage = page; 
-        this.initValue = (page?.parentChoices?.length ?? 0)  > 0 ? page?.slug! : ''});
+        this.initValue = (page?.parentChoices?.length ?? 0)  > 0 ? page?.slug ?? '' : ''});
         this.store.select(selectNavigatorStateInputs).subscribe(inputs => this.inputs = inputs);
     }
 
   public route(route: string | null): void {
-    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorStartRoute, route]);
+    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorQuestionsRoute, route]);
   }
   
   public ngOnDestroy(): void {

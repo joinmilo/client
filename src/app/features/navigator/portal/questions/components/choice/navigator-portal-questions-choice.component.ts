@@ -6,16 +6,16 @@ import { TranslationService } from 'ngx-cinlib/i18n';
 import { Maybe, NavigatorChoiceEntity } from 'src/app/core/api/generated/schema';
 import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
-import { navigatorStartRoute } from '../../../../constants/navigator-details.constant';
-import { NavigatorPortalDetailsLayoutActions } from '../../state/navigator-portal-details-layout.actions';
-import { selectNavigatorStateInputs } from '../../state/navigator-portal-details-layout.selectors';
+import { navigatorQuestionsRoute } from '../../constants/navigator-questions.constant';
+import { NavigatorPortalQuestionsActions } from '../../state/navigator-portal-questions.actions';
+import { selectNavigatorStateInputs } from '../../state/navigator-portal-questions.selectors';
 
 @Component({
-  selector: 'app-navigator-portal-details-layout-choice',
-  templateUrl: './navigator-portal-details-layout-choice.component.html',
-  styleUrls: ['./navigator-portal-details-layout-choice.component.scss'],
+  selector: 'app-navigator-portal-questions-choice',
+  templateUrl: './navigator-portal-questions-choice.component.html',
+  styleUrls: ['./navigator-portal-questions-choice.component.scss'],
 })
-export class NavigatorPortalDetailsLayoutChoiceComponent {
+export class NavigatorPortalDetailsQuestionsChoiceComponent {
 
   @Input()
   public choice?: Maybe<NavigatorChoiceEntity>;
@@ -30,7 +30,7 @@ export class NavigatorPortalDetailsLayoutChoiceComponent {
     private translationService: TranslationService) { }
 
   public toNewPage(choice: Maybe<NavigatorChoiceEntity>){
-    var choiceName: Maybe<string>;
+    let choiceName: Maybe<string>;
     this.translationService.translatable(choice?.translatables, 'name').subscribe(name => choiceName = name);
 
     this.store.select(selectNavigatorStateInputs).subscribe(inputs => {
@@ -43,9 +43,9 @@ export class NavigatorPortalDetailsLayoutChoiceComponent {
         value: choice?.nextPage?.slug,
       }];
 
-    this.store.dispatch(NavigatorPortalDetailsLayoutActions
+    this.store.dispatch(NavigatorPortalQuestionsActions
       .setNavigatorState(this.inputs, this.inputs.length));
 
-    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorStartRoute, choice?.nextPage?.slug]);
+    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorQuestionsRoute, choice?.nextPage?.slug]);
   }
 }

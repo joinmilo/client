@@ -12,16 +12,14 @@
   <div [@collapse]="showDescription">
     <p>{{ description }}</p>
   </div>
-}
-
-@if (!url) {
+} @else {
   <a mat-raised-button [i18nLabel]="label ? label : null">
     {{ name }}
-    @if(description){
+    @if(description) {
       <button (click)="showDescription = !showDescription; $event.stopPropagation()">
         @if (!showDescription) { <cin-icon [icon]="['fas', 'chevron-down']"></cin-icon> }
         @if (showDescription) { <cin-icon [icon]="['fas', 'chevron-up']"></cin-icon> }
-    </button> 
+    </button>
   }
     @if(icon) { <cin-icon [icon]="icon"></cin-icon> }
   </a>

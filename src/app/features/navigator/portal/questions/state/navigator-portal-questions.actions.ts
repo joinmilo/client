@@ -2,8 +2,8 @@ import { createActionGroup, emptyProps } from '@ngrx/store';
 import { RadioCardInput } from 'ngx-cinlib/forms/radio-card';
 import { Maybe, NavigatorPageEntity } from 'src/app/core/api/generated/schema';
 
-export const NavigatorPortalDetailsLayoutActions = createActionGroup({
-  source: 'Navigator Portal Details Layout',
+export const NavigatorPortalQuestionsActions = createActionGroup({
+  source: 'Navigator Portal Questions',
   events: {
     'get start page': emptyProps(),
     'set start page': (startPage: Maybe<NavigatorPageEntity>) => ({ startPage }),
