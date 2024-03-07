@@ -9,7 +9,12 @@ const routes: Routes = [
       .then((imported) => imported.NavigatorAdminFormLayoutModule),
     component: NavigatorAdminFormLayoutComponent
   },
-
+  // {
+  //   path: visitorsRoute,
+  //   loadChildren: () => import('./modules/visitors/event-admin-details-visitors.module')
+  //     .then((imported) => imported.NavigatorAdminDetailsVisitorsModule),
+  //   component: NavigatorAdminDetailsVisitorsComponent
+  // },
 ];
 
 @NgModule({
