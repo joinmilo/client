@@ -29,7 +29,7 @@ export class ArticleAdminCategoryFormEffects {
 
   saved = createEffect(() => this.actions.pipe(
     ofType(ArticleAdminCategoryFormActions.saved),
-    tap(() => this.router.navigate([adminUrl, articlesFeatureKey])),
+    tap(() => this.router.navigate([adminUrl, articlesFeatureKey, 'category'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'savedSuccessfully'

@@ -29,7 +29,7 @@ export class MediaAdminCategoryFormEffects {
 
   saved = createEffect(() => this.actions.pipe(
     ofType(MediaAdminCategoryFormActions.saved),
-    tap(() => this.router.navigate([adminUrl, mediaFeatureKey])),
+    tap(() => this.router.navigate([adminUrl, mediaFeatureKey, 'category'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'savedSuccessfully'

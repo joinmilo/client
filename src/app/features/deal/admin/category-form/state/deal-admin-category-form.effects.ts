@@ -29,7 +29,7 @@ export class DealAdminCategoryFormEffects {
 
   saved = createEffect(() => this.actions.pipe(
     ofType(DealAdminCategoryFormActions.saved),
-    tap(() => this.router.navigate([adminUrl, dealsFeatureKey])),
+    tap(() => this.router.navigate([adminUrl, dealsFeatureKey, 'category'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'savedSuccessfully'

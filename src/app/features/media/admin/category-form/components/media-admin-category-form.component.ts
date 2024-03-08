@@ -26,9 +26,16 @@ export class MediaAdminCategoryFormComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private store: Store,
-  ) {}
+  ) {
+    this.categoryForm.get('name')?.valueChanges.subscribe((value) => {
+      console.log('Input value changed:', value);
+    });
+  }
 
   public ngOnInit(): void {
+    console.log('Initial categoryForm value:', this.categoryForm.value);
+
+
     this.activatedRoute?.parent?.params.pipe(
       filter(params => !!params[id]),
       tap((params) => this.store.dispatch(MediaAdminCategoryFormActions.getCategory(params[id]))),
@@ -36,9 +43,10 @@ export class MediaAdminCategoryFormComponent implements OnInit, OnDestroy {
       filter(category => !!category),
       takeUntil(this.destroy)
     ).subscribe(category => {
-      this.categoryForm = this.fb.group({
-        id: [category?.id],
-        name: [category?.name, [Validators.required]],
+      console.log("categ", category);
+       this.categoryForm.patchValue({
+        id: category?.id,
+        name: category?.name
       });
     });
   }

@@ -29,7 +29,7 @@ export class EventAdminCategoryFormEffects {
 
   saved = createEffect(() => this.actions.pipe(
     ofType(EventAdminCategoryFormActions.saved),
-    tap(() => this.router.navigate([adminUrl, eventsFeatureKey])),
+    tap(() => this.router.navigate([adminUrl, eventsFeatureKey, 'category'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'savedSuccessfully'
