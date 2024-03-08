@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
-import { navigatorQuestionsRoute } from './questions/constants/navigator-questions.constant';
+import { navigatorQuestionsUrl } from './questions/constants/navigator-questions.constant';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
       .then((imported) => imported.NavigatorPortalLandingModule),
   },
   {
-    path: `${navigatorFeatureKey}/${navigatorQuestionsRoute}`,
+    path: `${navigatorFeatureKey}/${navigatorQuestionsUrl}`,
     loadChildren: () => import('./questions/navigator-portal-questions.module')
       .then((imported) => imported.NavigatorPortalQuestionsModule),
   },

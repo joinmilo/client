@@ -7,7 +7,7 @@ import { Maybe, NavigatorPageEntity } from 'src/app/core/api/generated/schema';
 import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
 import { slug } from 'src/app/core/constants/queryparam.constants';
-import { navigatorQuestionsRoute } from '../constants/navigator-questions.constant';
+import { navigatorQuestionsUrl } from '../constants/navigator-questions.constant';
 import { NavigatorPortalQuestionsActions } from '../state/navigator-portal-questions.actions';
 import { selectCurrentPage, selectNavigatorStateInputs } from '../state/navigator-portal-questions.selectors';
 
@@ -54,7 +54,7 @@ export class NavigatorPortalQuestionsComponent implements OnInit, OnDestroy {
     }
 
   public route(route: string | null): void {
-    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorQuestionsRoute, route]);
+    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorQuestionsUrl, route]);
   }
   
   public ngOnDestroy(): void {

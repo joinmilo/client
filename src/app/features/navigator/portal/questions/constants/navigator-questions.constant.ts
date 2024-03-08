@@ -1,3 +1,3 @@
-export const navigatorQuestionsRoute = 'start';
+export const navigatorQuestionsUrl = 'start';
 
 export const navigatorPortalQuestionsStateKey = 'navigatorPortalQuestionsState';

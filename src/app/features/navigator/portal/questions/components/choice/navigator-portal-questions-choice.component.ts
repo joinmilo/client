@@ -6,7 +6,7 @@ import { TranslationService } from 'ngx-cinlib/i18n';
 import { Maybe, NavigatorChoiceEntity } from 'src/app/core/api/generated/schema';
 import { navigatorFeatureKey } from 'src/app/core/constants/feature.constants';
 import { portalUrl } from 'src/app/core/constants/module.constants';
-import { navigatorQuestionsRoute } from '../../constants/navigator-questions.constant';
+import { navigatorQuestionsUrl } from '../../constants/navigator-questions.constant';
 import { NavigatorPortalQuestionsActions } from '../../state/navigator-portal-questions.actions';
 import { selectNavigatorStateInputs } from '../../state/navigator-portal-questions.selectors';
 
@@ -46,6 +46,6 @@ export class NavigatorPortalDetailsQuestionsChoiceComponent {
     this.store.dispatch(NavigatorPortalQuestionsActions
       .setNavigatorState(this.inputs, this.inputs.length));
 
-    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorQuestionsRoute, choice?.nextPage?.slug]);
+    this.router.navigate([portalUrl, navigatorFeatureKey, navigatorQuestionsUrl, choice?.nextPage?.slug]);
   }
 }
