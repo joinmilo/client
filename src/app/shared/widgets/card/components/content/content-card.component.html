@@ -1,7 +1,7 @@
 <mat-card >
   <mat-card-header>
     <a [routerLink]="element?.url">
-      <cin-category-piece class="test" *ngIf="element?.category"
+      <cin-category-piece *ngIf="element?.category"
         [category]="element?.category">
       </cin-category-piece>
     </a>

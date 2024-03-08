@@ -83,7 +83,7 @@ export class AddressFormComponent
           ? this.onChange?.({
               ...address,
               id: this.form.value.id,
-              suburb: { id: this.form.controls.suburb.value },
+              suburb: this.form.controls.suburb.value ? { id: this.form.controls.suburb.value } : null,
             })
           : this.form.setErrors({ addressInvalid: true });
         this.onValidatorChange && this.onValidatorChange();

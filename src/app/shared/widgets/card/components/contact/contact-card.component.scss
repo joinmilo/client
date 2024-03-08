@@ -59,6 +59,7 @@ mat-card {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: initial;
+    word-break: break-word;
   }
 
   app-card-actions {
