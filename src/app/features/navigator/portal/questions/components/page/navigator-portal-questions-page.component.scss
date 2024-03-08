@@ -13,12 +13,13 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    span{
-      width: 100% !important;
+
+    app-navigator-portal-questions-choice {
+      width: 100%;
     }
 
-    app-navigator-portal-details-layout-choice {
-      width: 100%;
+    span {
+      width: 100% !important;
     }
   }
 
