@@ -9,22 +9,28 @@
     titleLabel="suburb"
     [formGroup]="form">
     <cin-grid-row columns="2">
-      <mat-form-field appearance="outline">
+      <mat-form-field id="name" appearance="outline">
         <mat-label i18nLabel="name"></mat-label>
         <input matInput formControlName="name">
       </mat-form-field>
     </cin-grid-row>
 
-    <cin-grid-row columns="8">
+    <cin-grid-row columns="4">
+      <mat-form-field appearance="outline">
+        <mat-label i18nLabel="latitude"></mat-label>
+        <input matInput formControlName="latitude">
+        <mat-hint>
+          <a class="link" href="https://www.koordinaten-umrechner.de/" target="_blank">
+            <span i18nLabel="coordinateConverter"></span>
+          </a>
+        </mat-hint>
+      </mat-form-field>
+      
       <mat-form-field appearance="outline">
         <mat-label i18nLabel="longitude"></mat-label>
         <input matInput formControlName="longitude">
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label i18nLabel="latitude"></mat-label>
-        <input matInput formControlName="latitude">
-      </mat-form-field>
     </cin-grid-row>
   </cin-form-step>
 </cin-form-stepper>

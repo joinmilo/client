@@ -8,7 +8,7 @@ button {
   align-self: flex-start;
 }
 
-:host ::ng-deep {
+#name ::ng-deep {
 
   .mat-mdc-form-field-subscript-wrapper {
     display: none;

@@ -51,7 +51,7 @@ export class EventAdminDetailsLandingEffects {
                     },
                     {
                       entity: {
-                        path: 'startDate',
+                        path: 'endDate',
                         operator: QueryOperator.LessOrEqual,
                         value: action.endDate
                       }

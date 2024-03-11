@@ -31,7 +31,7 @@ export class EventAdminTargetGroupFormEffects {
 
   saved = createEffect(() => this.actions.pipe(
     ofType(EventAdminTargetGroupFormActions.saved),
-    tap(() => this.router.navigate([adminUrl, eventsFeatureKey])),
+    tap(() => this.router.navigate([adminUrl, eventsFeatureKey, 'target-group'])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'savedSuccessfully'
