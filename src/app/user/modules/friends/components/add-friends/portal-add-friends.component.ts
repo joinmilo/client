@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject, takeUntil } from 'rxjs';
-import { Maybe, UserContextEntity } from 'src/app/core/api/generated/schema';
+import { Maybe, MediaEntity, UserContextEntity } from 'src/app/core/api/generated/schema';
 import { selectCurrentUser } from 'src/app/core/state/selectors/user.selectors';
 import { PortalFriendsActions } from '../../state/portal-friends.actions';
 import { selectFilteredUsers } from '../../state/portal-friends.selectors';
@@ -17,6 +17,7 @@ export class PortalAddFriendsComponent implements OnInit, OnDestroy {
   public selectedPortalUsers: Maybe<UserContextEntity>[] = [];
   public value = '';
   private currentUser?: Maybe<UserContextEntity>;
+  public media?: Maybe<MediaEntity>;
 
   private destroy = new Subject<void>();
 

@@ -2,7 +2,11 @@
   <h1 class="mat-headline-6" i18nLabel="inviteFriends"></h1>
   <mat-divider></mat-divider>
   <div *ngFor="let friend of friends">
-    <cin-media-avatar [user]="friend"></cin-media-avatar>
+    <cin-media-avatar 
+      [media]="friend | profilePicture"
+      [name]="friend?.user?.firstName || friend?.user?.lastName">
+    </cin-media-avatar>   
+    
     <span>{{friend?.user?.firstName + ' ' + friend?.user?.lastName}}</span>
   </div>
   <mat-divider></mat-divider>

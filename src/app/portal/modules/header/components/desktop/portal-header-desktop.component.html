@@ -29,8 +29,11 @@
 
       <button mat-icon-button [matMenuTriggerFor]="userMenu" [@fadeIn]>
         <cin-icon *ngIf="!currentUser?.id" [icon]="['far', 'circle-user']"></cin-icon>
-        <cin-media-avatar *ngIf="currentUser?.id" [user]="currentUser"></cin-media-avatar>
-        
+          <cin-media-avatar 
+            *ngIf="currentUser?.id"
+            [media]="currentUser | profilePicture"
+            [name]="currentUser?.user?.firstName || currentUser?.user?.lastName">
+          </cin-media-avatar>        
       </button>
       <mat-menu #userMenu="matMenu">
         <ng-container *ngIf="currentUser?.user?.roles?.length">

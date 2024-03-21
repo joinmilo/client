@@ -26,7 +26,7 @@
 
 <div class="scroll">
   <div *ngFor="let portalUser of filteredUsers">
-    <cin-media-avatar [user]="portalUser"></cin-media-avatar>
+    <cin-media-avatar [media]="portalUser | profilePicture" [name]="portalUser.user?.firstName || portalUser.user?.lastName"></cin-media-avatar>
     <span>{{portalUser?.user?.firstName + ' ' + portalUser?.user?.lastName}}</span>
     <mat-checkbox [checked]="selectedPortalUsers.includes(portalUser)"
       (change)="toggleSelectedUser(portalUser, $event.checked)">

@@ -1,6 +1,9 @@
 <section>
   <span class="border-image">
-    <cin-media-avatar [user]="authorAvatar"></cin-media-avatar>
+    <cin-media-avatar 
+      [media]="authorAvatar | profilePicture"
+      [name]="authorAvatar?.user?.firstName || authorAvatar?.user?.lastName">
+    </cin-media-avatar>   
   </span>
     <div>
       <cin-details-title titleLabel="from"></cin-details-title>

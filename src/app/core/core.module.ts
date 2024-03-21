@@ -20,6 +20,7 @@ import { HelpComponent } from './components/help/help.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { appStateKey } from './constants/core.constants';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ProfilePicturePipe } from './pipes/profilePicture.pipe';
 import { StripTagsPipe } from './pipes/strip-tags.pipe';
 import { TruncateWordsPipe } from './pipes/truncate-words.pipe';
 import { CoreUserEffects } from './state/effects/core-user.effects';
@@ -36,6 +37,7 @@ const pipes = [
   FilterPipe,
   StripTagsPipe,
   TruncateWordsPipe,
+  ProfilePicturePipe
 ];
 
 const framework = [

@@ -3,9 +3,11 @@
     <cin-details-title *ngIf="!attendingFriends?.length" titleLabel="SoFarNoFriendsAreAttending"></cin-details-title>
   <div>
     <section *ngIf="attendingFriends && attendingFriends.length > 0">
-      <cin-media-avatar *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))"
-        [user]="attendingFriend">
-      </cin-media-avatar>
+      <cin-media-avatar 
+        *ngFor="let attendingFriend of (attendingFriends.slice(0, 3))"
+        [media]="attendingFriend | profilePicture"
+        [name]="attendingFriend?.user?.firstName || attendingFriend?.user?.lastName">
+      </cin-media-avatar>      
       <button mat-stroked-button color="primary" (click)="showAllFriends()">
         <span>
           <cin-icon [icon]="['fas', 'users']"></cin-icon>

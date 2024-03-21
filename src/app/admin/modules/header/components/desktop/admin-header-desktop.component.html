@@ -2,7 +2,7 @@
 <app-header-notification></app-header-notification>
 
 <button mat-icon-button [matMenuTriggerFor]="userMenu">
-  <cin-media-avatar [user]="currentUser | async"></cin-media-avatar>
+  <cin-media-avatar [media]="media" [name]="user?.user?.firstName || user?.user?.lastName"></cin-media-avatar>
 </button>
 
 <mat-menu #userMenu="matMenu">

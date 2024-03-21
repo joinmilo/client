@@ -32,7 +32,7 @@ const components = [
   PortalAddFriendsComponent,
   PortalAllFriendsComponent,
   PortalReceivedFriendRequestsComponent,
-  PortalSentFriendRequestsComponent
+  PortalSentFriendRequestsComponent,
 ];
 
 const framework = [

@@ -1,6 +1,9 @@
 <article>
   <section>
-    <cin-media-avatar [user]="comment?.userContext"></cin-media-avatar>
+    <cin-media-avatar 
+      [media]="comment?.userContext | profilePicture"
+      [name]="comment?.userContext?.user?.firstName || comment?.userContext?.user?.lastName">
+    </cin-media-avatar>
     <span>{{comment?.userContext?.user?.firstName}} {{comment?.userContext?.user?.lastName}}</span>
   </section>
   <cin-date-piece *ngIf="comment?.created" [date]="comment?.created"></cin-date-piece>

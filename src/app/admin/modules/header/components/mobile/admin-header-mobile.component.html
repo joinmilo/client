@@ -7,7 +7,10 @@
 <app-header-notification></app-header-notification>
 
 <button mat-icon-button [matMenuTriggerFor]="userMenu">
-  <cin-media-avatar [user]="currentUser | async"></cin-media-avatar>
+  <cin-media-avatar *ngIf="(currentUser | async) as currentUser"
+    [media]="currentUser | profilePicture"
+    [name]="currentUser?.user?.firstName || currentUser?.user?.lastName">
+  </cin-media-avatar>   
 </button>
 <mat-menu #userMenu="matMenu">
   <ng-container>
