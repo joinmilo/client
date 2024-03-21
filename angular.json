@@ -34,6 +34,7 @@
               "ngx-cinlib/styles/theme-palette.scss",
               "src/styles/theme/theme.scss",
               "ngx-cinlib/styles/components.scss",
+              "ngx-cinlib/styles/styles.scss",
               "src/styles/styles.scss",
               "node_modules/ngx-sharebuttons/themes/default.scss",
               "node_modules/leaflet/dist/leaflet.css",
