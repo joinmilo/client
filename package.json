@@ -34,7 +34,7 @@
     "graphql": "^16.8.1",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
-    "ngx-cinlib": "^0.1.30",
+    "ngx-cinlib": "^0.1.32",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.2",
     "zone.js": "^0.14.2"
