@@ -12,7 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { PasswordFieldComponent } from 'ngx-cinlib/forms/password';
+import { PasswordConfirmComponent } from 'ngx-cinlib/forms/password';
 import { FormStepComponent, FormStepperComponent } from 'ngx-cinlib/forms/stepper';
 import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
@@ -86,7 +86,7 @@ const libs = [
   I18nDirective,
   MediaFormComponent,
   PageTitleComponent,
-  PasswordFieldComponent,
+  PasswordConfirmComponent
 ];
 
 @NgModule({
