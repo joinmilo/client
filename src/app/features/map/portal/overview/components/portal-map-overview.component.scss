@@ -1,11 +1,15 @@
 @import 'ngx-cinlib/styles/mobile-mixins.scss';
 
+:host {
+  --mat-drawer-size: 45vw;
+}
+
 mat-drawer-container {
   height: 100% ;
 }
 
 mat-drawer {
-  width: 45vw;
+  width: var(--mat-drawer-size);
   background-color: var(--color-background);
 
   .drawer-container {
@@ -77,7 +81,12 @@ mat-drawer {
     left: 1rem;
     bottom: 2rem;
   }
+}
 
+.opened-sidenav {
+  display: flex;
+  height: 100%;
+  width: calc(100vw - var(--mat-drawer-size));
 }
 
 :host ::ng-deep {

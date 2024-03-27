@@ -21,6 +21,8 @@ export class PortalMapOverviewComponent{
   public entityType = this.store.select(selectActiveEntityFilter)
     .pipe(take(1));
 
+  public isSidenavOpen = false;
+
   public entityQueryParam = displayQueryParam;
 
   public inputs: RadioButtonInput[] = [
@@ -44,17 +46,17 @@ export class PortalMapOverviewComponent{
   @ViewChild(MapComponent)
   private map?: MapComponent;
 
-  constructor(
-    private store: Store,
-  ) { }
+  constructor(private store: Store){}
 
   public updateEntityFilter(entityType?: Maybe<MapEntityFilter>) {
+
     if (entityType) {
       this.store.dispatch(MapFeatureActions.setEntityFilter(entityType));
     }
   }
 
   public menuToggled(): void {
+    this.isSidenavOpen = !this.isSidenavOpen;
     // See: https://stackoverflow.com/questions/53796791/resize-sidenav-content-when-toggle-sidenav-with-material-angular-and-leaflet
     // TODO: try openedChange, maybe its fired after animation is done or trigger rerender during animation
     this.map?.rerender();

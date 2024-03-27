@@ -36,12 +36,13 @@ export class MapComponent implements OnInit, OnDestroy {
       : markerDefinition
         ? this.markerService.definitionToMarker(markerDefinition)
         : [];
-
+        
+    this.markerClusterGroup.clearLayers();
+    
     if (this.markers?.length) {
       this.bounds = new FeatureGroup(this.markers as Layer[]).getBounds();
+      this.markerClusterGroup.addLayers(this.markers as Layer[]);
     }
-
-    this.addMarkersToMap();
   }
   
   @Input()
@@ -57,15 +58,8 @@ export class MapComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private store: Store,
-    private markerService: MapMarkerService
-  ) {}
-
-  public ngOnInit(): void {
-    this.initMap();
-    this.initQueryParams();
-  }
-
-  private initMap(): void {
+    private markerService: MapMarkerService,
+  ) {
     combineLatest([
       this.store.select(selectConfiguration(mapLongitudeConfig)),
       this.store.select(selectConfiguration(mapLatitudeConfig)),
@@ -84,6 +78,10 @@ export class MapComponent implements OnInit, OnDestroy {
         layers: [tileLayer(locationTileLayerURL, tileLayerOptions)]
       }
     });
+  }
+
+  public ngOnInit(): void {
+    this.initQueryParams();
   }
 
   private initQueryParams() {
@@ -112,13 +110,6 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map = map;
     this.rerender();
     this.markerClusterGroup.addTo(map);
-  }
-
-  public addMarkersToMap(){
-    if (this.markerClusterGroup != null) {
-			this.markerClusterGroup.clearLayers();
-			this.markerClusterGroup.addLayers(this.markers as Layer[]);
-		}
   }
 
   public rerender(): void {
