@@ -38,7 +38,7 @@ export class MapComponent implements OnInit, OnDestroy {
         : [];
         
     this.markerClusterGroup.clearLayers();
-    
+      
     if (this.markers?.length) {
       this.bounds = new FeatureGroup(this.markers as Layer[]).getBounds();
       this.markerClusterGroup.addLayers(this.markers as Layer[]);
@@ -109,7 +109,7 @@ export class MapComponent implements OnInit, OnDestroy {
   public onMapReady(map: Map) {
     this.map = map;
     this.rerender();
-    this.markerClusterGroup.addTo(map);
+    map.addLayer(this.markerClusterGroup);
   }
 
   public rerender(): void {

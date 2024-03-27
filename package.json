@@ -25,7 +25,6 @@
     "@angular/router": "^17.1.2",
     "@apollo/client": "^3.8.8",
     "@asymmetrik/ngx-leaflet": "^17.0.0",
-    "@asymmetrik/ngx-leaflet-markercluster": "^17.0.0",
     "@ngrx/effects": "^17.0.1",
     "@ngrx/store": "^17.0.1",
     "@ngrx/store-devtools": "^17.0.1",

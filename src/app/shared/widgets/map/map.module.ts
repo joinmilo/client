@@ -2,7 +2,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
-import { LeafletMarkerClusterModule } from '@asymmetrik/ngx-leaflet-markercluster';
 import { AddressPieceComponent } from 'ngx-cinlib/address';
 import { DatePieceComponent } from 'ngx-cinlib/date/piece';
 import { TranslatablePipe } from 'ngx-cinlib/i18n';
@@ -33,7 +32,6 @@ const libs = [
   DatePieceComponent,
   IconComponent,
   LeafletModule,
-  LeafletMarkerClusterModule,
   TranslatablePipe,
 ];
 
