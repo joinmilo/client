@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import {
+import L, {
   FeatureGroup,
   LatLngBounds,
   Layer,
@@ -11,6 +11,7 @@ import {
   latLngBounds,
   tileLayer
 } from 'leaflet';
+import 'leaflet.markercluster';
 import { combineLatest, map, take } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
 import { mapLatitudeConfig, mapLongitudeConfig } from 'src/app/core/constants/configuration.constants';
@@ -39,6 +40,8 @@ export class MapComponent implements OnInit, OnDestroy {
     if (this.markers?.length) {
       this.bounds = new FeatureGroup(this.markers as Layer[]).getBounds();
     }
+
+    this.addMarkersToMap();
   }
   
   @Input()
@@ -47,8 +50,7 @@ export class MapComponent implements OnInit, OnDestroy {
   public markers?: Maybe<Marker[]>;
   public leafletOptions?: MapOptions;
   public bounds?: LatLngBounds;
-  public markerClusterOptions = markerClusterOptions;
-  
+  private markerClusterGroup = L.markerClusterGroup(markerClusterOptions);
   private map?: Map;
 
   constructor(
@@ -56,7 +58,14 @@ export class MapComponent implements OnInit, OnDestroy {
     private router: Router,
     private store: Store,
     private markerService: MapMarkerService
-  ) {
+  ) {}
+
+  public ngOnInit(): void {
+    this.initMap();
+    this.initQueryParams();
+  }
+
+  private initMap(): void {
     combineLatest([
       this.store.select(selectConfiguration(mapLongitudeConfig)),
       this.store.select(selectConfiguration(mapLatitudeConfig)),
@@ -75,10 +84,6 @@ export class MapComponent implements OnInit, OnDestroy {
         layers: [tileLayer(locationTileLayerURL, tileLayerOptions)]
       }
     });
-  }
-
-  public ngOnInit(): void {
-    this.initQueryParams();
   }
 
   private initQueryParams() {
@@ -100,12 +105,20 @@ export class MapComponent implements OnInit, OnDestroy {
       ? bounds
       : this.markers?.length
         ? new FeatureGroup(this.markers as Layer[]).getBounds()
-        : latLngBounds(defaultBounds));
+        : latLngBounds(defaultBounds)); 
   }
 
   public onMapReady(map: Map) {
     this.map = map;
     this.rerender();
+    this.markerClusterGroup.addTo(map);
+  }
+
+  public addMarkersToMap(){
+    if (this.markerClusterGroup != null) {
+			this.markerClusterGroup.clearLayers();
+			this.markerClusterGroup.addLayers(this.markers as Layer[]);
+		}
   }
 
   public rerender(): void {
