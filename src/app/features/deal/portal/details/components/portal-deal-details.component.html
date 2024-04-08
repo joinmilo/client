@@ -20,7 +20,7 @@
         {{deal | translatable: 'name' | async}}
       </span>
 
-      <app-portal-deal-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
+      <app-portal-deal-details-summary (addressClicked)="scrollToMap()">
       </app-portal-deal-details-summary>
 
       <p class="details-content"
@@ -34,12 +34,10 @@
     <cin-media-slider *ngIf="media && media.length" [media]="media" [link]="['./media']">
     </cin-media-slider>
 
-    <div #map>
-      <div *ngIf="deal?.address" class="map-area" >
-        <cin-details-title titleLabel="mapView"></cin-details-title>
-        <app-map [queryParams]="false" [markerDefinition]="marker">
-        </app-map>
-      </div>
+    <div *ngIf="deal?.address" class="map-area">
+      <cin-details-title titleLabel="mapView"></cin-details-title>
+      <app-map [queryParams]="false" [markerDefinition]="marker">
+      </app-map>
     </div>
   </section>
 </div>

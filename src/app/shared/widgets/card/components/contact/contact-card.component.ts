@@ -32,12 +32,6 @@ export class ContactCardComponent implements OnInit {
       this.element = dataToElement(this.entity, this.data);
     }
   }
-
-  public route(): void {
-    if (this.element?.url) {
-      this.router.navigate(this.element.url);
-    }
-  }
   
   public emit(action: CardActionInput): void {
     this.actionClicked.emit({ ...action, element: this.element as CardElement})

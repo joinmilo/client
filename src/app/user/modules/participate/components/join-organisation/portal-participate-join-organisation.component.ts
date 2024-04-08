@@ -33,6 +33,8 @@ export class PortalParticipateJoinOrganisationComponent implements OnInit, OnDes
     this.store.select(selectJoinableOrganisations)
       .pipe(takeUntil(this.destroy))
       .subscribe(joinableOrganisations => this.joinableOrganisations = joinableOrganisations); 
+
+      this.store.dispatch(PortalParticipateActions.getOrganisations())
   }
 
   public filterOrganisations(value: string): void {

@@ -16,4 +16,11 @@ export class PortalCalendarComponent {
   
   public title?: string;
 
+  filterEventsWithSchedule(events: Maybe<EventEntity>[] | undefined): Maybe<EventEntity>[] {
+    if (!events) {
+      return [];
+    }
+    return events.filter(event => !!event?.schedule);
+  }
+
 }

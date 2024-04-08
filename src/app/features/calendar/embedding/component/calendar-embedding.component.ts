@@ -14,4 +14,11 @@ export class CalendarEmbeddingComponent {
     this.events = events;
   }
 
+  filterEventsWithSchedule(events: Maybe<EventEntity>[] | undefined): Maybe<EventEntity>[] {
+    if (!events) {
+      return [];
+    }
+    return events.filter(event => !!event?.schedule);
+  }
+
 }

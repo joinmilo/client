@@ -22,7 +22,7 @@ export class OrganisationAdminFormComponent implements OnInit, OnDestroy{
   });
 
   public contactForm = this.fb.group({
-    contact: [undefined as Maybe<ContactEntity>],
+    contact: [undefined as Maybe<ContactEntity>, [Validators.required]],
   });
 
   public addressForm = this.fb.group({

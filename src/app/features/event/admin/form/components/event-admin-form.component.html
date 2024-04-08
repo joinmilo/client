@@ -46,6 +46,8 @@
       <app-address-form formControlName="address"> </app-address-form>
     </cin-grid-row>
 
+    <mat-divider></mat-divider>
+
     <cin-grid-row columns="2">
       <mat-form-field appearance="outline" [ariaDisabled]="true">
         <mat-label i18nLabel="videoChatLink"></mat-label>
@@ -70,7 +72,7 @@
     titleLabel="time"
     descriptionLabel="createSchedules"
     [formGroup]="scheduleForm">
-    <cin-grid-row columns="2">
+    <cin-grid-row>
       <cin-scheduler-form formControlName="schedules"> </cin-scheduler-form>
     </cin-grid-row>
   </cin-form-step>
@@ -78,7 +80,7 @@
   <cin-form-step
     titleLabel="contactAndOrganisation"
     [formGroup]="contactAndOrganisationForm">
-    <cin-grid-row columns="2" *ngIf="userOrganisations?.length">
+    <cin-grid-row *ngIf="userOrganisations?.length">
       <mat-form-field appearance="outline">
         <mat-label i18nLabel="assignOrganisationToThisEvent?"></mat-label>
         <mat-select formControlName="organisationId">
@@ -125,7 +127,7 @@
       </div>
     </cin-grid-row>
 
-    <cin-grid-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="5">
+    <cin-grid-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="2">
       <mat-form-field appearance="outline">
         <mat-label i18nLabel="maxAttendees"></mat-label>
         <input formControlName="maxAttendees" matInput />
@@ -134,7 +136,7 @@
   </cin-form-step>
 
   <cin-form-step titleLabel="additionalInfo" [formGroup]="additionalInfoForm">
-    <cin-grid-row columns="8">
+    <cin-grid-row columns="4">
       <mat-form-field appearance="outline">
         <mat-label i18nLabel="entryFee"></mat-label>
         <input formControlName="entryFee" matInput placeholder="&euro;" />

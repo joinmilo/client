@@ -35,12 +35,12 @@ export class DealAdminFormComponent implements OnInit, OnDestroy {
     selectedType: ['offer' as Maybe<string>]
   });
 
+  public contactForm = this.fb.group({
+    contact: [undefined as Maybe<ContactEntity>, [Validators.required]],
+  });
+  
   public locationForm = this.fb.group({
     address: [undefined as Maybe<AddressEntity>],
-  });
-
-  public contactForm = this.fb.group({
-    contact: [undefined as Maybe<ContactEntity>,],
   });
 
   public uploadsForm = this.fb.group({

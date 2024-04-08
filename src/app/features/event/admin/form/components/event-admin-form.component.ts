@@ -9,6 +9,7 @@ import {
   AddressEntity,
   ContactEntity,
   EventMediaEntity,
+  EventScheduleEntity,
   Maybe,
   OrganisationEntity,
   UserContextEntity
@@ -51,7 +52,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   );
 
   public scheduleForm = this.fb.group({
-    schedules: undefined as Maybe<Period[]>,
+    schedules: [undefined as Maybe<Period[]>, [Validators.required]],
   });
 
   public uploadsForm = this.fb.group({
@@ -67,7 +68,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
   public contactAndOrganisationForm = this.fb.group({
     organisationId: [undefined as Maybe<string>],
-    contact: [undefined as Maybe<ContactEntity>],
+    contact: [undefined as Maybe<ContactEntity>, [Validators.required]], 
   });
 
   public attendeeConfigForm = this.fb.group({
@@ -136,13 +137,13 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
         this.scheduleForm.patchValue(
           {
-            schedules: event?.schedules?.map(
+            schedules: [event?.schedules?.map(
               (schedule) =>
                 ({
                   startDate: schedule?.startDate,
                   endDate: schedule?.endDate,
-                } as Period)
-            ),
+                })
+            )],
           },
           { emitEvent: false }
         );
@@ -233,10 +234,12 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         videoChatLink: this.locationForm.value.videoChatLink,
         address: this.locationForm.value.address,
 
-        schedules: this.scheduleForm.value.schedules?.map((schedule) => ({
-          startDate: schedule.startDate,
-          endDate: schedule.endDate,
-        })),
+        schedules: (this.scheduleForm.value.schedules as EventScheduleEntity[])?.map(schedule => (
+          { 
+            startDate: schedule?.startDate,
+            endDate: schedule?.endDate
+          }
+        )),
 
         entryFee: Number(
           this.additionalInfoForm.value.entryFee?.replace(',', '.')

@@ -8,7 +8,7 @@
   <section *ngIf="events?.length">
     <app-card-slider
       entity="EventEntity"
-      [data]="events">
+      [data]="filterEventsWithSchedule(events)">
     </app-card-slider>
   </section>
 </mat-card>

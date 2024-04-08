@@ -1,9 +1,9 @@
 <mat-card>
   <a [class.non-clickable]="!element?.url"
-    (click)="route()">
+    [routerLink]="element?.url">
   <figure [class.non-clickable]="!element?.url"
-    (click)="route()">
-    <cin-media-element *ngIf="element?.image"
+    [routerLink]="element?.url">
+    <cin-media-element [class.non-clickable]="!element?.url" *ngIf="element?.image"
       class="border-image"
       [clickable]="false"
       [media]="element?.image">
@@ -14,9 +14,9 @@
   </figure>
   </a>
   <a [class.non-clickable]="!element?.url"
-    (click)="route()">
+    [routerLink]="element?.url">
     <h1 [class.non-clickable]="!element?.url"
-      (click)="route()">
+      [routerLink]="element?.url">
       {{element?.creator ? element?.creator: ''}}
     </h1>
   </a>
@@ -29,7 +29,7 @@
   </app-card-actions>
 
   <a [class.non-clickable]="!element?.url"
-    (click)="route()"> 
+    [routerLink]="element?.url"> 
     <section (click)="$event.stopPropagation();">
       <button mat-button *ngIf="element?.email">
         <a href="mailto:{{element?.email}}">

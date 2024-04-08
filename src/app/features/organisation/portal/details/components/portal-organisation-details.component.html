@@ -17,8 +17,8 @@
   <section class="content-area">
     <section>
       <span class="details-headline">{{organisation?.name}}</span>
-      <app-portal-organisation-details-summary (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
-      </app-portal-organisation-details-summary>
+    <app-portal-organisation-details-summary (addressClicked)="scrollToMap()">
+    </app-portal-organisation-details-summary>
 
       <p class="details-content"
         [innerHtml]="organisation | translatable : 'description' | async">
@@ -37,7 +37,7 @@
     <app-portal-organisation-details-comment *ngIf="organisation?.commentsAllowed">
     </app-portal-organisation-details-comment>
 
-    <div class="map-area" #map>
+    <div *ngIf="organisation?.address" class="map-area">
       <cin-details-title titleLabel="mapView"></cin-details-title>
       <app-map [queryParams]="false" [markerDefinition]="marker">
       </app-map>

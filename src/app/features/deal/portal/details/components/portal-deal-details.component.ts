@@ -64,6 +64,13 @@ export class PortalDealDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
+  public scrollToMap(): void {
+    const mapElement = document.querySelector('.map-area') as HTMLElement;
+    if (mapElement) {
+      mapElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();

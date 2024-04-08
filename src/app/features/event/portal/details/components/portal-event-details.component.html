@@ -28,7 +28,7 @@
       </p> -->
 
       <app-portal-event-details-summary
-        (addressClicked)="map.scrollIntoView({behavior: 'smooth'})">
+        (addressClicked)="scrollToMap()">
       </app-portal-event-details-summary>
 
       <p class="details-content" 
@@ -52,7 +52,7 @@
     <app-portal-event-details-participants>
     </app-portal-event-details-participants>
 
-    <div #map class="map-area">
+    <div *ngIf="event?.address" class="map-area">
       <cin-details-title titleLabel="mapView">
       </cin-details-title>
       <app-map [queryParams]="false"

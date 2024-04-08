@@ -10,10 +10,10 @@
       (daySelected)="title = $event.startDate.toLocaleDateString()">
     </app-event-calendar>
   </mat-card>
-  <section *ngIf="events?.length">
+  <section *ngIf="events && events.length > 0">
     <app-card-slider
       entity="EventEntity"
-      [data]="events"
+      [data]="filterEventsWithSchedule(events)"
       [titleLabel]="title">
     </app-card-slider>
   </section>
