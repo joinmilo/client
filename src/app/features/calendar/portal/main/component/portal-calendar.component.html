@@ -13,7 +13,7 @@
   <section *ngIf="events && events.length > 0">
     <app-card-slider
       entity="EventEntity"
-      [data]="filterEventsWithSchedule(events)"
+      [data]="filteredEvents"
       [titleLabel]="title">
     </app-card-slider>
   </section>

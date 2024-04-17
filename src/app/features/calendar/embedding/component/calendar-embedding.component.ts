@@ -8,17 +8,16 @@ import { EventEntity, Maybe } from 'src/app/core/api/generated/schema';
 })
 export class CalendarEmbeddingComponent {
   
-  public events?: Maybe<EventEntity>[];
+  public set events(events: Maybe<Maybe<EventEntity>[]>) {
+    this.filteredEvents = events
+      ? events.filter(event => !!event?.schedule)
+      : [];
+  }
+
+  public filteredEvents?: Maybe<EventEntity>[];
 
   public selectedEvents(events?: Maybe<EventEntity>[]): void {
     this.events = events;
-  }
-
-  filterEventsWithSchedule(events: Maybe<EventEntity>[] | undefined): Maybe<EventEntity>[] {
-    if (!events) {
-      return [];
-    }
-    return events.filter(event => !!event?.schedule);
   }
 
 }

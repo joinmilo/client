@@ -52,7 +52,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   );
 
   public scheduleForm = this.fb.group({
-    schedules: [undefined as Maybe<Period[]>, [Validators.required]],
+    schedules: [undefined as Maybe<Period[]>],
   });
 
   public uploadsForm = this.fb.group({
@@ -234,16 +234,12 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         videoChatLink: this.locationForm.value.videoChatLink,
         address: this.locationForm.value.address,
 
-        schedules: (this.scheduleForm.value.schedules as EventScheduleEntity[])?.map(schedule => (
-          { 
-            startDate: schedule?.startDate,
-            endDate: schedule?.endDate
-          }
-        )),
+        schedules: (this.scheduleForm.value.schedules as EventScheduleEntity[])?.map(schedule => ({ 
+          startDate: schedule?.startDate,
+          endDate: schedule?.endDate
+        })),
 
-        entryFee: Number(
-          this.additionalInfoForm.value.entryFee?.replace(',', '.')
-        ),
+        entryFee: Number(this.additionalInfoForm.value.entryFee?.replace(',', '.')),
         metaDescription: this.additionalInfoForm.value.metaDescription,
         commentsAllowed: this.additionalInfoForm.value.commentsAllowed,
         targetGroups: this.additionalInfoForm.value.targetGroups?.map((id) => ({
