@@ -27,7 +27,7 @@ export class AdminSettingsPageFormEffects {
 
   cancelled = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPageFormActions.cancelled),
-    tap(() => this.router.navigate([`/admin/settings/pages/overview`])),
+    tap(() => this.router.navigate([`/admin/settings/structure/plugins`])),
   ), { dispatch: false });
 
   save = createEffect(() => this.actions.pipe(
@@ -40,7 +40,7 @@ export class AdminSettingsPageFormEffects {
 
   saved = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPageFormActions.saved),
-    tap(() => this.router.navigate([`/admin/settings/pages/overview`])),
+    tap(() => this.router.navigate([`/admin/settings/structure/plugins`])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
       labelMessage: 'savedSuccessfully'

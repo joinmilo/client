@@ -42,12 +42,12 @@ export class AdminSettingsPluginFormComponent implements OnInit, OnDestroy {
       takeUntil(this.destroy)
       ).subscribe(plugin => {
         this.plugin = plugin;
-      this.defaultMenuItem = {
-        // name: plugin?.name,
-        // shortDescription: plugin?.shortDescription,
-        translatables: plugin?.translatables as MenuItemTranslatableEntity[],
-        icon: plugin?.icon
-      }
+        this.defaultMenuItem = {
+          // name: plugin?.name,
+          // shortDescription: plugin?.shortDescription,
+          translatables: plugin?.translatables as MenuItemTranslatableEntity[],
+          icon: plugin?.icon
+        }
 
       this.menuForm.patchValue({
         menuItems: plugin?.menuItems
@@ -61,8 +61,6 @@ export class AdminSettingsPluginFormComponent implements OnInit, OnDestroy {
   }
 
   public saved(): void {
-    console.log("plugin", this.plugin);
-    console.log("menuitems", this.menuForm.value.menuItems);
     this.store.dispatch(AdminSettingsPluginActions.savePlugin({
       id: this.plugin?.id,
       menuItems: this.menuForm.value.menuItems

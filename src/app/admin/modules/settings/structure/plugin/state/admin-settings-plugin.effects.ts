@@ -80,29 +80,24 @@ export class AdminSettingsPluginEffects {
   savePlugin = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPluginActions.savePlugin),
     switchMap(action => this.savePluginService.mutate(
-      {
-        entity: action.plugin
-      }
+      { entity: action.plugin }
     )),
-    map(response => AdminSettingsPluginActions.pluginSaved())
+    map(() => AdminSettingsPluginActions.pluginSaved())
   ));
 
   pluginSaved = createEffect(() => this.actions.pipe(
     ofType(AdminSettingsPluginActions.pluginSaved),
+    tap(() => this.router.navigate([`/admin/settings/plugins/overview`])),
     map(() => CoreActions.setFeedback({
       type: FeedbackType.Success,
-      labelMessage: 'pluginSaved'
+      labelMessage: 'savedSuccessfully'
     }))
   ));
 
-  cancelled = createEffect(
-    () =>
-      this.actions.pipe(
-        ofType(AdminSettingsPluginActions.cancelled),
-        tap(() => this.router.navigate([adminUrl, settingsUrl, structureRoute, 'plugins']))
-      ),
-    { dispatch: false }
-  );
+  cancelled = createEffect(() => this.actions.pipe(
+    ofType(AdminSettingsPluginActions.cancelled),
+    tap(() => this.router.navigate([adminUrl, settingsUrl, structureRoute, 'plugins']))
+  ), { dispatch: false });
 
   constructor(
     private actions: Actions,
