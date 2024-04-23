@@ -3,7 +3,7 @@ import { ControlValueAccessor, FormBuilder, NG_VALIDATORS, NG_VALUE_ACCESSOR, Va
 import { TranslationService } from 'ngx-cinlib/i18n';
 import { SolidIconsType } from 'ngx-cinlib/icons';
 import { ConfirmService, ConfirmType } from 'ngx-cinlib/modals/confirm';
-import { Subject, combineLatest, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Maybe, MenuItemEntity } from 'src/app/core/api/generated/schema';
 
 @Component({
@@ -82,22 +82,16 @@ export class MenuItemFormComponent implements ControlValueAccessor, Validator, O
   }   
 
   public writeValue(menuItem: Maybe<MenuItemEntity>): void {
-
     if (menuItem) {
-      combineLatest([
-        this.translationService.translatable(menuItem, 'name'),
-        this.translationService.translatable(menuItem, 'shortDescription')
-      ])
-      .pipe(takeUntil(this.destroy))
-      .subscribe(([name, shortDescription]) => {this.form.setValue({
-          id: menuItem.id ?? '',
-          icon: menuItem.icon as Maybe<SolidIconsType>,
-          order: menuItem.order,
-          parent: menuItem.parent,
-          name,
-          shortDescription});
-          });
-      }
+      this.form.setValue({
+        id: menuItem.id ?? '',
+        icon: menuItem.icon as Maybe<SolidIconsType>,
+        order: menuItem.order,
+        parent: menuItem.parent,
+        name: this.translationService.translatable(menuItem, 'name'),
+        shortDescription: this.translationService.translatable(menuItem, 'shortDescription')
+      });
+    }
   }
 
   public registerOnChange(onChange: (menuItem: Maybe<MenuItemEntity>) => void): void {
