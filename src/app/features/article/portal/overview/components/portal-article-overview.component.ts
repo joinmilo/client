@@ -61,7 +61,7 @@ export class PortalArticleOverviewComponent implements OnDestroy {
     this.store.dispatch(PortalArticleOverviewActions.updateParams(params));
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
   }

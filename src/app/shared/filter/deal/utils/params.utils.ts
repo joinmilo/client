@@ -5,6 +5,7 @@ import { DealFilterQueryDefinition } from 'src/app/core/typings/filter-params/de
 
 export const transformFn = (queryParams?: Maybe<{ [key: string]: string }>): Filter => {
   const params = {
+    search: '',
     expression: {
       conjunction: {
         operands: [],

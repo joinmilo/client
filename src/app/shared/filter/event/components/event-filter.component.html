@@ -5,6 +5,10 @@
 
   <!-- The filters to use in this filter area -->
   <ng-container filters>
+    <app-free-search-filter></app-free-search-filter>
+  </ng-container>
+
+  <ng-template cinExtendedSearch>
     <app-event-filter-targetgroup>
     </app-event-filter-targetgroup>
     
@@ -22,6 +26,6 @@
     
     <app-event-filter-free>
     </app-event-filter-free>
-  </ng-container>
+  </ng-template>
 
 </cin-filter-area>

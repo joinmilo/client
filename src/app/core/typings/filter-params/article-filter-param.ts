@@ -8,5 +8,6 @@ export enum ArticleFilterQueryDefinition {
 export type ArticleFilterQueryParams = {
   [ArticleFilterQueryDefinition.articleCategories]?: Maybe<string[]>,
   [FilterQueryDefinition.endDate]?: Maybe<string>,
+  [FilterQueryDefinition.freeSearch]?: Maybe<string>,
   [FilterQueryDefinition.startDate]?: Maybe<string>,
 };

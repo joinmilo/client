@@ -5,13 +5,15 @@
 
   <!-- The filters to use in this filter area -->
   <ng-container filters>
-    
+    <app-free-search-filter></app-free-search-filter>
+  </ng-container>
+
+  <ng-template cinExtendedSearch>
     <app-article-filter-category>
     </app-article-filter-category>
     
     <cin-date-range-filter>
     </cin-date-range-filter>
-
-  </ng-container>
+  </ng-template>
 
 </cin-filter-area>

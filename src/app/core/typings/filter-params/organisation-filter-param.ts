@@ -7,6 +7,7 @@ export enum OrganisationFilterQueryDefinition {
 
 export type OrganisationFilterQueryParams = {
   [OrganisationFilterQueryDefinition.activeEvents]?: Maybe<boolean | string>,
+  [FilterQueryDefinition.freeSearch]?: Maybe<string>,
   [FilterQueryDefinition.suburbs]?: Maybe<string[]>,
 };
 

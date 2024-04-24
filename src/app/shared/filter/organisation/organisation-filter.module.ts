@@ -8,9 +8,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { FilterAreaComponent, FilterService } from 'ngx-cinlib/filters';
+import { ExtendedSearchDirective, FilterAreaComponent, FilterService } from 'ngx-cinlib/filters';
 import { I18nDirective } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
+import { FreeSearchFilterComponent } from '../free-search/free-search-filter.component';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { OrganisationFilterActiveComponent } from './components/active/organisation-filter-active.component';
 import { OrganisationFilterComponent } from './components/organisation-filter.component';
@@ -37,10 +38,12 @@ const materials = [
 
 const modules = [
   CoreModule,
+  FreeSearchFilterComponent,
   SuburbFilterModule,
 ];
 
 const libs = [
+  ExtendedSearchDirective,
   FilterAreaComponent,
   I18nDirective,
 ];

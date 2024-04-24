@@ -1,18 +1,23 @@
 import { Maybe } from 'ngx-cinlib/core';
 import { Filter } from 'ngx-cinlib/filters';
-import { FilterSortPaginateInput, QueryOperator } from 'src/app/core/api/generated/schema';
+import { QueryOperator } from 'src/app/core/api/generated/schema';
 import { EventFilterQueryDefinition } from 'src/app/core/typings/filter-params/event-filter-param';
 import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { createListParam } from 'src/app/core/utils/params.utils';
 
 export const transformFn = (queryParams?: Maybe<{ [key: string]: string }>): Filter => {
   const params = {
+    search: '',
     expression: {
       conjunction: {
         operands: [],
       }
     }
-  } as FilterSortPaginateInput;
+  } as Filter;
+
+  if (queryParams && queryParams[FilterQueryDefinition.freeSearch]) {
+    params.search = queryParams[FilterQueryDefinition.freeSearch];
+  }
 
   if (queryParams && queryParams[EventFilterQueryDefinition.eventCategories]) {
 

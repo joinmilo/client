@@ -5,6 +5,7 @@ import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
 
 import { FilterService } from 'ngx-cinlib/filters';
 import { ContestFilterQueryDefinition, ContestFilterQueryParams } from 'src/app/core/typings/filter-params/contest-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { transformFn } from '../utils/transform.utils';
 
 @Component({
@@ -30,7 +31,10 @@ export class ContestFilterComponent implements OnInit, OnDestroy {
   ) { }
   
   public ngOnInit(): void {
-    this.filterService.init(ContestFilterQueryDefinition);
+    this.filterService.init({
+      ...FilterQueryDefinition,
+      ...ContestFilterQueryDefinition
+    });
 
     this.filterService.queryParams()
       .pipe(takeUntil(this.destroy))

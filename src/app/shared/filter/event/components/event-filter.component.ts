@@ -4,6 +4,7 @@ import { FilterService } from 'ngx-cinlib/filters';
 import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { EventFilterQueryDefinition, EventFilterQueryParams } from 'src/app/core/typings/filter-params/event-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { transformFn } from '../utils/transform.utils';
 
 @Component({
@@ -31,7 +32,10 @@ export class EventFilterComponent implements OnInit, OnDestroy {
   ) { }
   
   public ngOnInit(): void {
-    this.filterService.init(EventFilterQueryDefinition);
+    this.filterService.init({
+      ...FilterQueryDefinition,
+      ...EventFilterQueryDefinition
+    });
 
     this.filterService.queryParams()
       .pipe(takeUntil(this.destroy))

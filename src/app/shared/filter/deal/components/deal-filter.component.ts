@@ -4,6 +4,7 @@ import { FilterService } from 'ngx-cinlib/filters';
 import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { DealFilterQueryDefinition, DealFilterQueryParams } from 'src/app/core/typings/filter-params/deal-filter-param';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { transformFn } from '../utils/params.utils';
 
 @Component({
@@ -33,7 +34,10 @@ export class DealFilterComponent implements OnInit, OnDestroy {
   ) { }
   
   public ngOnInit(): void {
-    this.filterService.init(DealFilterQueryDefinition);
+    this.filterService.init({
+      ...FilterQueryDefinition,
+      ...DealFilterQueryDefinition
+    });
 
     this.filterService.queryParams()
       .pipe(takeUntil(this.destroy))

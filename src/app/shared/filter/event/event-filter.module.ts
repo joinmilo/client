@@ -8,9 +8,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { DateRangeFilterComponent, FilterAreaComponent, FilterService } from 'ngx-cinlib/filters';
+import { DateRangeFilterComponent, ExtendedSearchDirective, FilterAreaComponent, FilterService } from 'ngx-cinlib/filters';
 import { I18nDirective, TranslatablePipe } from 'ngx-cinlib/i18n';
 import { CoreModule } from 'src/app/core/core.module';
+import { FreeSearchFilterComponent } from '../free-search/free-search-filter.component';
 import { SuburbFilterModule } from '../suburb/suburb-filter.module';
 import { EventFilterCategoryComponent } from './components/category/event-filter-category.component';
 import { EventFilterComponent } from './components/event-filter.component';
@@ -44,6 +45,7 @@ const materials = [
 
 const modules = [
   CoreModule,
+  FreeSearchFilterComponent,
   SuburbFilterModule,
 ];
 
@@ -52,6 +54,7 @@ const libs = [
   EffectsModule.forFeature([EventFilterEffects]),
 
   DateRangeFilterComponent,
+  ExtendedSearchDirective,
   FilterAreaComponent,
   I18nDirective,
   TranslatablePipe,

@@ -7,12 +7,17 @@ import { createListParam } from 'src/app/core/utils/params.utils';
 
 export const transformFn = (queryParams?: Maybe<{ [key: string]: string }>): Filter => {
   const params = {
+    search: '',
     expression: {
       conjunction: {
         operands: [],
       }
     }
   } as FilterSortPaginateInput;
+
+  if (queryParams && queryParams[FilterQueryDefinition.freeSearch]) {
+    params.search = queryParams[FilterQueryDefinition.freeSearch];
+  }
 
   if (queryParams && queryParams[FilterQueryDefinition.suburbs]) {
     params.expression?.conjunction?.operands?.push(

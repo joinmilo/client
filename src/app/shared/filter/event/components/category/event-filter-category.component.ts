@@ -36,7 +36,7 @@ export class EventFilterCategoryComponent implements OnInit, OnDestroy {
   }
   
   public ngOnInit(): void {
-    this.queryParamKey && this.filterService.queryParams()
+    this.filterService.queryParams()
       .pipe(takeUntil(this.destroy))
       .subscribe(params => {
         const value = typeof params?.[this.queryParamKey] === 'string'

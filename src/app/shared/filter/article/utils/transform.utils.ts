@@ -8,6 +8,7 @@ import { createListParam } from 'src/app/core/utils/params.utils';
 
 export const transformFn = (queryParams?: Maybe<{ [key: string]: string }>): Filter => {
   const params = {
+    search: '',
     expression: {
       conjunction: {
         operands: [],
@@ -15,8 +16,11 @@ export const transformFn = (queryParams?: Maybe<{ [key: string]: string }>): Fil
     }
   } as FilterSortPaginateInput;
 
-  if (queryParams && queryParams[ArticleFilterQueryDefinition.articleCategories]) {
+  if (queryParams && queryParams[FilterQueryDefinition.freeSearch]) {
+    params.search = queryParams[FilterQueryDefinition.freeSearch];
+  }
 
+  if (queryParams && queryParams[ArticleFilterQueryDefinition.articleCategories]) {
     params.expression?.conjunction?.operands?.push(
       createListParam(
         queryParams[ArticleFilterQueryDefinition.articleCategories],

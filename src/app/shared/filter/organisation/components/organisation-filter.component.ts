@@ -3,6 +3,7 @@ import { collapse } from 'ngx-cinlib/core';
 import { FilterService } from 'ngx-cinlib/filters';
 import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { OrganisationFilterQueryDefinition, OrganisationFilterQueryParams } from 'src/app/core/typings/filter-params/organisation-filter-param';
 import { transformFn } from '../utils/transform.utils';
 
@@ -29,7 +30,10 @@ export class OrganisationFilterComponent implements OnInit, OnDestroy {
   ) { }
   
   public ngOnInit(): void {
-    this.filterService.init(OrganisationFilterQueryDefinition);
+    this.filterService.init({
+      ...FilterQueryDefinition,
+      ...OrganisationFilterQueryDefinition
+    });
 
     this.filterService.queryParams()
       .pipe(takeUntil(this.destroy))

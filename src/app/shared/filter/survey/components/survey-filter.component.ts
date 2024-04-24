@@ -3,6 +3,7 @@ import { Maybe } from 'ngx-cinlib/core';
 import { FilterService } from 'ngx-cinlib/filters';
 import { Subject, takeUntil } from 'rxjs';
 import { FilterSortPaginateInput } from 'src/app/core/api/generated/schema';
+import { FilterQueryDefinition } from 'src/app/core/typings/filter-params/filter-param';
 import { SurveyFilterQueryDefinition, SurveyFilterQueryParams } from 'src/app/core/typings/filter-params/survey-filter-param';
 import { transformFn } from '../utils/transform.utils';
 
@@ -26,7 +27,10 @@ export class SurveyFilterComponent implements OnInit, OnDestroy {
   ) { }
   
   public ngOnInit(): void {
-    this.filterService.init(SurveyFilterQueryDefinition);
+    this.filterService.init({
+      ...FilterQueryDefinition,
+      ...SurveyFilterQueryDefinition
+    });
 
     this.filterService.queryParams()
       .pipe(takeUntil(this.destroy))
