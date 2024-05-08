@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ChartBarVerticalComponent, ChartSummaryComponent } from 'ngx-cinlib/charts';
 import { Period } from 'ngx-cinlib/core';
-import { DateRangeFilterComponent, IntervalFilterComponent } from 'ngx-cinlib/filters';
+import { DateRangeFilterComponent, FilterService, IntervalFilterComponent } from 'ngx-cinlib/filters';
 import { RegularIconsType } from 'ngx-cinlib/icons';
 import { AnalyticsDto, IntervalFilter, Maybe } from 'src/app/core/api/generated/schema';
 import { searchConsoleClicksKey, searchConsoleCtrKey, searchConsoleImpressionsKey, searchConsolePositionsKey } from 'src/app/core/constants/analytics.constant';
@@ -16,6 +16,9 @@ import { AnalyticsParams } from '../../typings/analytics';
   templateUrl: './analytics-search.component.html',
   styleUrls: ['./analytics-search.component.scss'],
   standalone: true,
+  providers: [
+    FilterService
+  ],
   imports: [
     ChartBarVerticalComponent,
     ChartSummaryComponent,
