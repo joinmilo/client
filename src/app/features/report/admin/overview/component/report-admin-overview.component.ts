@@ -37,11 +37,6 @@ export class ReportAdminOverviewComponent {
       sort: true
     },
     {
-      field: 'translatables.content',
-      label: 'content',
-      value: row => this.translationService.watchTranslatable(row.translatables, 'content')
-    },
-    {
       field: 'type.translatables.name',
       label: 'type',
       value: row => this.translationService.watchTranslatable(row.type?.translatables, 'name')

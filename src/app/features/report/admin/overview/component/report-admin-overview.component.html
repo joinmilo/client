@@ -5,4 +5,8 @@
   [actions]="actions"
   [columns]="columns"
   (sortPaginate)="updateParams($event)">
+
+  <ng-template #details let-row>
+    <span> {{ row | translatable: 'content' | async }}</span>
+  </ng-template>
 </cin-table>
