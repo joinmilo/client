@@ -35,7 +35,7 @@ export class AdminSettingsPluginOverviewComponent {
 
   public columns: Column<PluginEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'plugins',
       value: row => this.translationService.translatable(row.translatables, 'name'),
     },

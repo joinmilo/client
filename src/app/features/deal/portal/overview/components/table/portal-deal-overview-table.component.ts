@@ -27,7 +27,7 @@ export class PortalDealOverviewTableComponent {
 
   public columns: Column<DealEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'title',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -59,7 +59,7 @@ export class PortalDealOverviewTableComponent {
   public rowClicked(deal: Maybe<DealEntity>): void {
     this.router.navigate([deal?.slug], { relativeTo: this.activatedRoute })
   }
-  
+
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(PortalDealOverviewActions.updateParams(params));
   }

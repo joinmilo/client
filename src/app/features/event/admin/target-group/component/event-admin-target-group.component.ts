@@ -20,7 +20,7 @@ export class EventAdminTargetGroupComponent implements OnInit{
 
   public isEventAdmin = false;
 
-  public actions: RowAction<EventTargetGroupEntity>[] = [    
+  public actions: RowAction<EventTargetGroupEntity>[] = [
     {
       icon: 'pen-to-square',
       callback: row =>
@@ -37,12 +37,12 @@ export class EventAdminTargetGroupComponent implements OnInit{
 
   public columns: Column<EventTargetGroupEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'targetGroup',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     }
   ];
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
@@ -54,7 +54,7 @@ export class EventAdminTargetGroupComponent implements OnInit{
   public ngOnInit(): void {
     this.checkPrivileges();
   }
-  
+
   private checkPrivileges(): void {
     this.isEventAdmin = this.authService.hasAnyPrivileges<Privilege>(['events_admin']);
   }

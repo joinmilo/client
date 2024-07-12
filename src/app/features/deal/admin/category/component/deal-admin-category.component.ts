@@ -41,7 +41,7 @@ export class DealAdminCategoryComponent implements OnInit {
 
   public columns: Column<DealCategoryEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'category',
       value: (row) =>
         this.translationService.watchTranslatable(row.translatables, 'name'),
@@ -69,7 +69,7 @@ export class DealAdminCategoryComponent implements OnInit {
   public ngOnInit(): void {
     this.checkPrivileges();
   }
-  
+
   private checkPrivileges() {
     this.isDealAdmin = this.authService.hasAnyPrivileges<Privilege>(['deals_admin']);
   }

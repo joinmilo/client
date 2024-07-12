@@ -43,7 +43,7 @@ export class DealAdminOverviewComponent {
 
   public columns: Column<DealEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'deals',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },

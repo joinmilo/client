@@ -16,7 +16,7 @@ export class ReportAdminOverviewComponent {
 
   public reports = this.store.select(selectOverviewData);
 
-  public actions: RowAction<ReportEntity>[] = [    
+  public actions: RowAction<ReportEntity>[] = [
     {
       icon: 'trash',
       callback: report =>
@@ -37,7 +37,7 @@ export class ReportAdminOverviewComponent {
       sort: true
     },
     {
-      field: 'type.translatables.name',
+      field: 'type.name',
       label: 'type',
       value: row => this.translationService.watchTranslatable(row.type?.translatables, 'name')
     },
@@ -48,7 +48,7 @@ export class ReportAdminOverviewComponent {
       sort: true,
     },
   ];
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,

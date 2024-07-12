@@ -1,21 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Period } from 'ngx-cinlib/core';
+import { FilterService } from 'ngx-cinlib/filters';
 import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { Subject, takeUntil } from 'rxjs';
 import { ContestCommentEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
-import { slug } from '../../../../../../../core/constants/queryparam.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
 import { ContestAdminDetailsCommentsActions } from '../state/contest-admin-details-comments.actions';
 import { selectContestAdminDetailsComments } from '../state/contest-admin-details-comments.selectors';
-
-
 
 @Component({
   selector: 'app-contest-admin-details-comments',
   templateUrl: './contest-admin-details-comments.component.html',
-  styleUrls: ['./contest-admin-details-comments.component.scss']
+  styleUrls: ['./contest-admin-details-comments.component.scss'],
+  providers: [
+    FilterService,
+  ]
 })
 export class ContestAdminDetailsCommentsComponent implements OnInit, OnDestroy {
 
@@ -53,7 +55,7 @@ export class ContestAdminDetailsCommentsComponent implements OnInit, OnDestroy {
       sort: true,
     },
     {
-      field: 'translatables.content',
+      field: 'content',
       label: 'content',
       value: row => this.translationService.watchTranslatable(row.translatables, 'content')
     },
@@ -62,7 +64,6 @@ export class ContestAdminDetailsCommentsComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private translationService: TranslationService,
   ) { }
 
@@ -87,7 +88,7 @@ export class ContestAdminDetailsCommentsComponent implements OnInit, OnDestroy {
     startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
     endDate: new Date()
   }
-  
+
   ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();

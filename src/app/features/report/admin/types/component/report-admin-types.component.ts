@@ -16,7 +16,7 @@ export class ReportAdminTypesComponent {
 
   public reports = this.store.select(selectTypesData);
 
-  public actions: RowAction<ReportTypeEntity>[] = [    
+  public actions: RowAction<ReportTypeEntity>[] = [
     // {
     //   icon: 'pen-to-square',
     //   callback: row =>
@@ -33,12 +33,12 @@ export class ReportAdminTypesComponent {
 
   public columns: Column<ReportTypeEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'type',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
   ];
-  
+
   constructor(
     private store: Store,
     private translationService: TranslationService,

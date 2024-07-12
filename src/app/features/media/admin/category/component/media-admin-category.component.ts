@@ -20,7 +20,7 @@ export class MediaAdminCategoryComponent implements OnInit {
 
   public isMediaAdmin = false;
 
-  public actions: RowAction<InfoMediaCategoryEntity>[] = [    
+  public actions: RowAction<InfoMediaCategoryEntity>[] = [
     {
       icon: 'pen-to-square',
       callback: row =>
@@ -37,12 +37,12 @@ export class MediaAdminCategoryComponent implements OnInit {
 
   public columns: Column<InfoMediaCategoryEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'category',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
   ];
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
@@ -54,11 +54,11 @@ export class MediaAdminCategoryComponent implements OnInit {
   public ngOnInit(): void {
     this.checkPrivileges();
   }
-  
+
   private checkPrivileges(): void {
     this.isMediaAdmin = this.authService.hasAnyPrivileges<Privilege>(['media_admin']);
   }
-  
+
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(MediaAdminCategoryActions.updateParams(params));
   }

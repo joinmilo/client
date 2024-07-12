@@ -20,7 +20,7 @@ export class EventAdminCategoryComponent implements OnInit {
 
   public isEventAdmin = false;
 
-  public actions: RowAction<EventCategoryEntity>[] = [    
+  public actions: RowAction<EventCategoryEntity>[] = [
     {
       icon: 'pen-to-square',
       callback: row =>
@@ -37,7 +37,7 @@ export class EventAdminCategoryComponent implements OnInit {
 
   public columns: Column<EventCategoryEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'category',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -52,7 +52,7 @@ export class EventAdminCategoryComponent implements OnInit {
       type: 'COLOR',
     },
   ];
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
@@ -60,17 +60,17 @@ export class EventAdminCategoryComponent implements OnInit {
     private store: Store,
     private translationService: TranslationService,
   ) { }
-  
+
   public ngOnInit(): void {
     this.checkPrivileges();
   }
-  
+
   private checkPrivileges(): void {
     this.isEventAdmin = this.authService.hasAnyPrivileges<Privilege>(['events_admin']);
   }
-  
+
   public updateParams(params: FilterSortPaginateInput) {
     this.store.dispatch(EventAdminCategoryActions.updateParams(params));
   }
-  
+
 }

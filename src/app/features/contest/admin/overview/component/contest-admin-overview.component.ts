@@ -44,7 +44,7 @@ export class ContestAdminOverviewComponent {
 
   public columns: Column<ContestEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'contests',
       value: (row) =>
         this.translationService.watchTranslatable(row.translatables, 'name'),

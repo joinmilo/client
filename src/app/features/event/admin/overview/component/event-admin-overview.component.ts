@@ -43,7 +43,7 @@ export class EventAdminOverviewComponent {
 
   public columns: Column<EventEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'activities',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -73,7 +73,7 @@ export class EventAdminOverviewComponent {
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
-    private router: Router,    
+    private router: Router,
     private translationService: TranslationService,
   ) { }
 

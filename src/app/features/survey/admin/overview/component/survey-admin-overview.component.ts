@@ -43,7 +43,7 @@ export class SurveyAdminOverviewComponent {
 
   public columns: Column<SurveyEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'survey',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -74,7 +74,7 @@ export class SurveyAdminOverviewComponent {
   constructor(
     private store: Store,
     private activatedRoute: ActivatedRoute,
-    private router: Router,    
+    private router: Router,
     private translationService: TranslationService
   ) { }
 

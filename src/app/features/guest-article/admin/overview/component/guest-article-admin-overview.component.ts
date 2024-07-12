@@ -39,7 +39,7 @@ export class GuestArticleAdminOverviewComponent {
 
   public columns: Column<ArticleEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'title',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -68,7 +68,7 @@ export class GuestArticleAdminOverviewComponent {
       sort: true,
     },
   ];
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,

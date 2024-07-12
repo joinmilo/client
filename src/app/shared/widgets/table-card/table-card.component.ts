@@ -3,6 +3,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewC
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PageableList } from 'ngx-cinlib/core';
+import { FilterService } from 'ngx-cinlib/filters';
 import { Sort, SortOption, SortPaginate, TablePaginatorComponent, TableSortComponent } from 'ngx-cinlib/tables';
 import { Observable, startWith, take } from 'rxjs';
 import { Maybe } from 'src/app/core/api/generated/schema';
@@ -15,6 +16,9 @@ import { CardModule } from '../card/card.module';
   templateUrl: './table-card.component.html',
   styleUrls: ['./table-card.component.scss'],
   standalone: true,
+  providers: [
+    FilterService,
+  ],
   imports: [
     CardModule,
     CommonModule,

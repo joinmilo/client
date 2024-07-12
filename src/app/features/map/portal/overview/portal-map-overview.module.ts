@@ -10,7 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { RadioButtonGroupComponent } from 'ngx-cinlib/forms/radio-button';
 import { I18nDirective } from 'ngx-cinlib/i18n';
 import { IconComponent } from 'ngx-cinlib/icons';
-import { TablePaginatorComponent } from 'ngx-cinlib/tables';
+import { TablePaginatorComponent, TableService } from 'ngx-cinlib/tables';
 import { CoreModule } from 'src/app/core/core.module';
 import { DealFilterModule } from 'src/app/shared/filter/deal/deal-filter.module';
 import { EventFilterModule } from 'src/app/shared/filter/event/event-filter.module';
@@ -65,6 +65,10 @@ const libs = [
   TablePaginatorComponent
 ];
 
+const providers = [
+  TableService,
+]
+
 @NgModule({
   declarations: [
     ...components,
@@ -79,5 +83,8 @@ const libs = [
   exports: [
     ...components
   ],
+  providers: [
+    ...providers
+  ]
 })
 export class PortalMapOverviewModule {}

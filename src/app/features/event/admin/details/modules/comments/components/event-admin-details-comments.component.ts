@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Period } from 'ngx-cinlib/core';
+import { FilterService } from 'ngx-cinlib/filters';
 import { TranslationService } from 'ngx-cinlib/i18n';
 import { Column, RowAction } from 'ngx-cinlib/tables';
 import { Subject, takeUntil } from 'rxjs';
@@ -13,7 +14,10 @@ import { selectEventAdminDetailsComments } from '../state/event-admin-details-co
 @Component({
   selector: 'app-event-admin-details-comments',
   templateUrl: './event-admin-details-comments.component.html',
-  styleUrls: ['./event-admin-details-comments.component.scss']
+  styleUrls: ['./event-admin-details-comments.component.scss'],
+  providers: [
+    FilterService,
+  ]
 })
 export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
 
@@ -50,7 +54,7 @@ export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
       sort: true,
     },
     {
-      field: 'translatables.content',
+      field: 'content',
       label: 'content',
       value: row => this.translationService.watchTranslatable(row.translatables, 'content')
     },
@@ -83,7 +87,7 @@ export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
     startDate: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
     endDate: new Date()
   }
-  
+
   ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();

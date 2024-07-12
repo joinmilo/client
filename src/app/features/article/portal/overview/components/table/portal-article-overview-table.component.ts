@@ -26,7 +26,7 @@ export class PortalArticleOverviewTableComponent {
 
   public columns: Column<ArticleEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'title',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -51,7 +51,7 @@ export class PortalArticleOverviewTableComponent {
   public rowClicked(article: Maybe<ArticleEntity>): void {
     this.router.navigate([article?.slug], { relativeTo: this.activatedRoute })
   }
-  
+
   constructor(
     private store: Store,
     private translationService: TranslationService,

@@ -26,7 +26,7 @@ export class PortalEventOverviewTableComponent {
 
   public columns: Column<EventEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'title',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -50,7 +50,7 @@ export class PortalEventOverviewTableComponent {
   public rowClicked(event: Maybe<EventEntity>): void {
     this.router.navigate([event?.slug], { relativeTo: this.activatedRoute })
   }
-  
+
   constructor(
     private store: Store,
     private translationService: TranslationService,

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
 import { ContestTypeEntity } from 'src/app/core/api/generated/schema';
@@ -17,8 +16,6 @@ export class ContestFilterEffects {
 
   constructor(
     private actions: Actions,
-    private activatedRoute: ActivatedRoute,
     private getTypesService: GetContestTypesGQL,
-    private router: Router,
   ) { }
 }

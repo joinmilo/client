@@ -20,7 +20,7 @@ export class ArticleAdminCategoryComponent implements OnInit {
 
   public isArticleAdmin = false;
 
-  public actions: RowAction<ArticleCategoryEntity>[] = [    
+  public actions: RowAction<ArticleCategoryEntity>[] = [
     {
       icon: 'pen-to-square',
       callback: row =>
@@ -37,7 +37,7 @@ export class ArticleAdminCategoryComponent implements OnInit {
 
   public columns: Column<ArticleCategoryEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'category',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -52,7 +52,7 @@ export class ArticleAdminCategoryComponent implements OnInit {
       type: 'COLOR'
     },
   ];
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
@@ -64,7 +64,7 @@ export class ArticleAdminCategoryComponent implements OnInit {
   public ngOnInit(): void {
     this.checkPrivileges();
   }
-  
+
   private checkPrivileges() {
     this.isArticleAdmin = this.authService.hasAnyPrivileges<Privilege>(['articles_admin']);
   }

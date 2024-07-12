@@ -17,7 +17,7 @@ export class ArticleAdminOverviewComponent {
 
   public articles = this.store.select(selectOverviewData);
 
-  public actions: RowAction<ArticleEntity>[] = [    
+  public actions: RowAction<ArticleEntity>[] = [
     {
       icon: 'pen-to-square',
       callback: row =>
@@ -43,7 +43,7 @@ export class ArticleAdminOverviewComponent {
 
   public columns: Column<ArticleEntity>[] = [
     {
-      field: 'translatables.name',
+      field: 'name',
       label: 'title',
       value: row => this.translationService.watchTranslatable(row.translatables, 'name')
     },
@@ -70,7 +70,7 @@ export class ArticleAdminOverviewComponent {
       sort: true,
     },
   ];
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
