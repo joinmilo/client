@@ -11,7 +11,7 @@ export const selectOrganisationAdminDetailsEvents = createSelector(
 
 export const selectSlug = createSelector(
   selectOrganisationAdminDetailsEventsState,
-  state => state.id
+  state => state.slug
 );
 
 export const selectParams = createSelector(

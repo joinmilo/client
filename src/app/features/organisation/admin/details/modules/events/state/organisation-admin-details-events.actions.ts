@@ -7,7 +7,7 @@ export const OrganisationAdminDetailsEventsActions = createActionGroup({
   source: 'Organisation Admin Details Events',
   events: {
     'set events': (events: PageableList_EventEntity) => ({ events }),
-    'update params': (id: Maybe<string> , params?: FilterSortPaginateInput) => ({ id, params }),
+    'update params': (slug: Maybe<string> , params?: FilterSortPaginateInput) => ({ slug, params }),
 
     'delete event': (event?: Maybe<EventEntity>) => ({ event }),
     'event deleted': emptyProps(),

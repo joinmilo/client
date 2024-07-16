@@ -69,12 +69,12 @@ export class EventAdminDetailsCommentsComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.activatedRoute.parent?.params.pipe(takeUntil(this.destroy)).subscribe(params => {
       this.slug = params[slug],
-        this.updateParams(
-          params[slug],
-          {
-            startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
-            endDate: new Date()
-          },)
+      this.updateParams(
+        params[slug],
+        {
+          startDate: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
+          endDate: new Date()
+        },)
     }
     )
   }

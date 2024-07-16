@@ -20,14 +20,14 @@ export class OrganisationAdminDetailsEventsEffects {
     withLatestFrom(
       this.store.select(selectSlug),
       this.store.select(selectParams)),
-    switchMap(([, id, params]) => this.getOrganisationEventsService.watch({
+    switchMap(([, slug, params]) => this.getOrganisationEventsService.watch({
       params: {
         ...params,
         expression: {
           entity: {
-            path: 'organisation.id',
+            path: 'organisation.slug',
             operator: QueryOperator.Equal,
-            value: id
+            value: slug
           }
         }
       }

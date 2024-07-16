@@ -5,12 +5,12 @@ import { OrganisationAdminDetailsEventsActions } from './organisation-admin-deta
 
 export interface OrganisationAdminDetailsEventsState {
   events?: PageableList_EventEntity,
-  id?: Maybe<string>,
+  slug?: Maybe<string>,
   params : FilterSortPaginateInput
 }
 
 export const initialState: OrganisationAdminDetailsEventsState = {
-  params:{}
+  params: {}
 };
 
 export const organisationAdminDetailsEventsReducer = createReducer(
@@ -21,7 +21,7 @@ export const organisationAdminDetailsEventsReducer = createReducer(
   )),
 
   on(OrganisationAdminDetailsEventsActions.updateParams, (state, action): OrganisationAdminDetailsEventsState => (
-    { ...state, id: action.id }
+    { ...state, slug: action.slug }
   )),
 
   on(OrganisationAdminDetailsEventsActions.setEvents, (state, action): OrganisationAdminDetailsEventsState => (

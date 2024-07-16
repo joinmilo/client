@@ -6,7 +6,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { EventEntity, FilterSortPaginateInput, Maybe } from 'src/app/core/api/generated/schema';
 import { eventsFeatureKey } from 'src/app/core/constants/feature.constants';
 import { adminUrl } from 'src/app/core/constants/module.constants';
-import { id } from 'src/app/core/constants/queryparam.constants';
+import { slug } from 'src/app/core/constants/queryparam.constants';
 import { shareAction } from 'src/app/core/utils/table.utils';
 import { OrganisationAdminDetailsEventsActions } from '../state/organisation-admin-details-events.actions';
 import { selectOrganisationAdminDetailsEvents } from '../state/organisation-admin-details-events.selectors';
@@ -20,7 +20,7 @@ export class OrganisationAdminDetailsEventsComponent implements OnInit, OnDestro
 
   public events = this.store.select(selectOrganisationAdminDetailsEvents);
 
-  public id?: Maybe<string>;
+  public slug?: Maybe<string>;
 
   private destroy = new Subject<void>();
 
@@ -74,20 +74,23 @@ export class OrganisationAdminDetailsEventsComponent implements OnInit, OnDestro
     private activatedRoute: ActivatedRoute,
     private store: Store,
     private router: Router,
-  ) { 
+  ) {
   }
 
   public ngOnInit(): void {
-    this.activatedRoute.parent?.params.pipe(takeUntil(this.destroy)).subscribe(params => {
-      this.id = params[id],
-        this.updateParams(params[id])
+    this.activatedRoute.parent?.params.pipe(
+      takeUntil(this.destroy)
+    )
+    .subscribe(params => {
+      this.slug = params[slug],
+      this.updateParams(params[slug])
     })
   }
 
-  public updateParams(id?: Maybe<string>, params?: FilterSortPaginateInput) {
-    this.store.dispatch(OrganisationAdminDetailsEventsActions.updateParams(this.id ?? id, params));
+  public updateParams(slug?: Maybe<string>, params?: FilterSortPaginateInput) {
+    this.store.dispatch(OrganisationAdminDetailsEventsActions.updateParams(this.slug ?? slug, params));
   }
-  
+
   ngOnDestroy(): void {
     this.destroy.next();
     this.destroy.complete();
