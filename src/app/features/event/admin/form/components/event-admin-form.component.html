@@ -130,7 +130,7 @@
     <cin-grid-row *ngIf="attendeeConfigForm.value.configureAttendance" [columns]="2">
       <mat-form-field appearance="outline">
         <mat-label i18nLabel="maxAttendees"></mat-label>
-        <input formControlName="maxAttendees" matInput />
+        <input formControlName="maxAttendees" matInput type="number"/>
       </mat-form-field>
     </cin-grid-row>
   </cin-form-step>
