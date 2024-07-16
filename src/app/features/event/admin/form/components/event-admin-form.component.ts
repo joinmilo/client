@@ -9,7 +9,6 @@ import {
   AddressEntity,
   ContactEntity,
   EventMediaEntity,
-  EventScheduleEntity,
   Maybe,
   OrganisationEntity,
   UserContextEntity
@@ -52,7 +51,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
   );
 
   public scheduleForm = this.fb.group({
-    schedules: [undefined as Maybe<Period[]>],
+    schedules: [[] as Maybe<Period>[]],
   });
 
   public uploadsForm = this.fb.group({
@@ -137,13 +136,13 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
 
         this.scheduleForm.patchValue(
           {
-            schedules: [event?.schedules?.map(
+            schedules: event?.schedules?.map(
               (schedule) =>
                 ({
                   startDate: schedule?.startDate,
                   endDate: schedule?.endDate,
                 })
-            )],
+            ),
           },
           { emitEvent: false }
         );
@@ -234,7 +233,7 @@ export class EventAdminFormComponent implements OnInit, OnDestroy {
         videoChatLink: this.locationForm.value.videoChatLink,
         address: this.locationForm.value.address,
 
-        schedules: (this.scheduleForm.value.schedules as EventScheduleEntity[])?.map(schedule => ({ 
+        schedules: (this.scheduleForm.value.schedules)?.map(schedule => ({ 
           startDate: schedule?.startDate,
           endDate: schedule?.endDate
         })),
