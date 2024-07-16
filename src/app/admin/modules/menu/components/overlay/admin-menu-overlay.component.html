@@ -9,6 +9,12 @@
   <button mat-menu-item *ngFor="let child of item?.childs"
     [i18nLabel]="child.name"
     [routerLink]="menuService.createRouterLink(child)"
-    routerLinkActive="menu-active">
+    routerLinkActive="menu-active"
+    [routerLinkActiveOptions]="{
+      matrixParams: 'ignored',
+      queryParams: 'ignored',
+      fragment: 'ignored',
+      paths: 'exact'
+    }">
   </button>
 </mat-menu>

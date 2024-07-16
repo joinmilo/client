@@ -3,7 +3,7 @@
     [hideToggle]="!item?.childs?.length || item?.childs?.length === 1 "
     (opened)="click()">
     <mat-expansion-panel-header>
-      <mat-panel-title [ngClass]="{'menu-active': active }">     
+      <mat-panel-title [ngClass]="{'menu-active': active }">
         <cin-icon *ngIf="item?.icon" [icon]="['fas', item!.icon!]" [size]="'lg'"></cin-icon>
         <strong [i18nLabel]="item?.name"></strong>
       </mat-panel-title>
@@ -15,7 +15,12 @@
         [i18nLabel]="child.name"
         [routerLink]="menuService.createRouterLink(child)"
         routerLinkActive="menu-active"
-        [routerLinkActiveOptions]="{ exact: true }">
+        [routerLinkActiveOptions]="{
+          matrixParams: 'ignored',
+          queryParams: 'ignored',
+          fragment: 'ignored',
+          paths: 'exact'
+        }">
       </a>
     </div>
 
